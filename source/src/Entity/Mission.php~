@@ -1,0 +1,40 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mission
+ *
+ * @ORM\Table(name="mission")
+ * @ORM\Entity
+ */
+class Mission
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="N", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $n;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Mission", type="string", length=255, nullable=true)
+     */
+    private $mission;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="CaptureDate", type="datetime", nullable=true)
+     */
+    private $capturedate;
+
+
+}
+

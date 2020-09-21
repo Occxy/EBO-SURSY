@@ -1,0 +1,82 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tinfo
+ *
+ * @ORM\Table(name="tinfo")
+ * @ORM\Entity
+ */
+class Tinfo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Num", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $num;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom", type="string", length=30, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prenom", type="string", length=30, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Age", type="integer", nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse", type="string", length=180, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Telephone", type="integer", nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Sexe", type="string", length=1, nullable=true)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Pays", type="string", length=60, nullable=true)
+     */
+    private $pays;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Affiliations", type="string", length=180, nullable=true)
+     */
+    private $affiliations;
+
+
+}
+

@@ -1,0 +1,173 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Animaux
+ *
+ * @ORM\Table(name="animaux", uniqueConstraints={@ORM\UniqueConstraint(name="NIdent", columns={"NIdent"})}, indexes={@ORM\Index(name="NIdentMother", columns={"NIdentMother"}), @ORM\Index(name="SPCode", columns={"SPCode"})})
+ * @ORM\Entity
+ */
+class Animaux
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $nident;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SPCode", type="string", length=3, nullable=true)
+     */
+    private $spcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Sex", type="string", length=255, nullable=true)
+     */
+    private $sex;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Age", type="string", length=255, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Pregnant", type="boolean", nullable=true)
+     */
+    private $pregnant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Lactating", type="boolean", nullable=true)
+     */
+    private $lactating;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="MotherIdentified", type="boolean", nullable=true)
+     */
+    private $motheridentified;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdentMother", type="string", length=255, nullable=true)
+     */
+    private $nidentmother;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SiteName", type="string", length=255, nullable=true)
+     */
+    private $sitename;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="CapturedInCave", type="boolean", nullable=true)
+     */
+    private $capturedincave;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="DeadAnimal", type="boolean", nullable=true)
+     */
+    private $deadanimal;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Capture Date", type="datetime", nullable=true)
+     */
+    private $captureDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GPSXUTM", type="string", length=7, nullable=true)
+     */
+    private $gpsxutm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GPSYUTM", type="string", length=7, nullable=true)
+     */
+    private $gpsyutm;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="BioSamples", type="boolean", nullable=true)
+     */
+    private $biosamples;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="EctoParasite", type="boolean", nullable=true)
+     */
+    private $ectoparasite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ModeCapture", type="string", length=255, nullable=true)
+     */
+    private $modecapture;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="DungCollected", type="boolean", nullable=true)
+     */
+    private $dungcollected;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="BloodSample", type="boolean", nullable=true)
+     */
+    private $bloodsample;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="BloodSpot", type="boolean", nullable=true)
+     */
+    private $bloodspot;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ThinSmear", type="boolean", nullable=true)
+     */
+    private $thinsmear;
+
+
+}
+

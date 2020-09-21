@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    
+   <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="vendor/ladda/ladda-themeless.min.css">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>
+    
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
+        
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">    
+    
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- <script src="js/charts-home.js"></script> -->
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"> </script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+    
+    <!-- Data Tables-->
+    <script src="vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/tables-datatable.js"></script>
+    
+    <!-- Forms init-->
+    <!-- <script src="js/forms-advanced.js"></script>-->
+    
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    
+    <!-- Loading buttons-->
+    <script src="vendor/ladda/spin.min.js"></script>
+    <script src="vendor/ladda/ladda.min.js"></script>
+    <script src="js/components-ladda.js"></script>
+    
+    <script src="js/pouchdb.authentication.js"></script> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+    
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    
+    <script src="js/uuid.js"></script>
+    
+    <script src="js/load-page.js"></script> 
+    
+    <script src="js/addReference.js"></script>  
+    
+  </head>
+  <body onload="loaded_viande_de_brousse()">
+  
+    <script>
+		logged_only();
+		var clickedBtn = null;
+		var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
+		} else {
+			debug = localStorage.getItem('debug');
+		};
+		var html = 'viande_de_brousse';
+	</script> 
+  
+    <!-- <script type="text/javascript">
+    	showAlertFlash();
+    </script> -->
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	                            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                    <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                        
+                    <li id="li_transvihmiDropdown" name="1" class="active"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="true" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled show">
+                        
+                        <li id="li_site_transvihmi" name="1" style="text-align: right"><a href="site_transvihmi.html">Site</a></li>                            
+		                                        
+                        <li id="li_batTransvihmiDropdown" name="1"><a id="a_batTransvihmiDropdown" name="1" href="#ul_batTransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batTransvihmiDropdown" name="1" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_transvihmi.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_transvihmi.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_batTransvihmiCaptureesDropdown" name="1"><a id="a_batTransvihmiCaptureesDropdown" name="1" href="#ul_batTransvihmiCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_batTransvihmiCaptureesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_transvihmi" name="1"><a href="bat_capturees_transvihmi.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_transvihmi" name="1"><a href="bat_map_capturees_transvihmi.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_transvihmi" name="1"><a href="importation_chauves_souris_capturees_transvihmi.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batTransvihmiNonInvasivesDropdown" name="1"><a id="a_batTransvihmiNonInvasivesDropdown" name="1" href="#ul_batTransvihmiNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batTransvihmiNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_transvihmi" name="1"><a href="bat_non_invasives_transvihmi.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_transvihmi" name="1"><a href="bat_map_non_invasives_transvihmi.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_transvihmi" name="1"><a href="importation_chauves_souris_non_invasives_transvihmi.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	    <li id="li_viande_de_brousse_TransvihmiDropdown" name="1"><a id="a_viande_de_brousse_TransvihmiDropdown" href="#ul_viande_de_brousse_TransvihmiDropdown" aria-expanded="true" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_TransvihmiDropdown" name="1" class="collapse list-unstyled show">
+                        	<li id="li_viande_de_broussetransvihmi" name="1" class="active"><a href="viande_de_brousse_transvihmi.html">données</a>                           
+                        	<li id="li_viande_de_brousse_map_transvihmi" name="1"><a href="viande_de_brousse_map_transvihmi.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_transvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+                      </ul>
+                    </li>
+                    
+                    <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="site_mivegec.html">Site</a></li>                            
+		                
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_mivegec.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_mivegec.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="bat_capturees_mivegec.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="bat_map_capturees_mivegec.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="importation_chauves_souris_capturees_mivegec.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="bat_non_invasives_mivegec.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="bat_map_non_invasives_mivegec.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="importation_chauves_souris_non_invasives_mivegec.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_MivegecDropdown" name="2"><a id="a_viande_de_brousse_MivegecDropdown" href="#ul_viande_de_brousse_MivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_MivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussemivegec" name="2"><a href="viande_de_brousse_mivegec.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="viande_de_brousse_map_mivegec.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="importation_viande_de_brousse_mivegec.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                    
+                    <li id="li_astreDropdown" name="6"> <a id="a_astreDropdown" name="6" href="#ul_astreDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_site_astre" name="6" style="text-align: right"><a href="site_astre.html">Site</a></li>                            
+		                
+                        <li id="li_batAstreDropdown" name="6"><a id="a_batAstreDropdown" name="6" href="#ul_batAstreDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batAstreDropdown" name="6" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_astre.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_astre.html">Suivi longitudinal - données journalières</a></li>                              
+                        		                    
+		                    <li id="li_batAstreCaptureesDropdown" name="6"><a id="a_batAstreCaptureesDropdown" name="6" href="#ul_batAstreCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batAstreCaptureesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_astre" name="6"><a href="bat_capturees_astre.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_astre" name="6"><a href="bat_map_capturees_astre.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_astre" name="6"><a href="importation_chauves_souris_capturees_astre.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batAstreNoninvasivesDropdown" name="6"><a id="a_batAstreNonInvasivesDropdown" name="6" href="#ul_batAstreNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batAstreNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_non_invasives_astre.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_map_non_invasives_astre.html">carte</a></li>
+    	                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="importation_chauves_souris_non_invasives_astre.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
+                        <li id="li_individualCIBUDropdown" name="3"><a id="a_individualCIBUDropdown" name="3" href="#ul_individualCIBUDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individualCIBUDropdown" name="3" class="collapse list-unstyled">
+		                    <li id="li_individualCIBUSpecies1Dropdown" name="3"><a id="a_individualCIBUSpecies1Dropdown" name="3" href="#ul_individualCIBUSpecies1Dropdown" aria-expanded="false" data-toggle="collapse">(Espèces?)</a>
+		                      <ul id="ul_individualCIBUSpecies1Dropdown" name="3" class="collapse list-unstyled">
+		                        <li id="li_individual_species1_CIBU" name="3"><a href="liste_cibu.html?table=individus_cibu">données</a></li>                            
+		                        <li id="li_individual_map_species1_cibu" name ="3"><a href="#">carte</a></li>
+		                        <li id="li_importation_individual_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li> 
+                    
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNoninvasivesDropdown" name="4"><a id="a_batEpvoNoninvasivesDropdown" href="#ul_batEpvoNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNoninvasivesDropdown" name="5"><a id="a_batIPGNoninvasivesDropdown" href="#ul_batIPGNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Base de données des Viandes de brousse</h2>
+            </div>
+          </header>
+          
+          <section>          
+            <div class="container-fluid">              
+              <div class="row">                
+                <div class="col-lg-12">                  
+                  <div class="card">        
+                   <div class="card-header">
+                     <h4>Nouvelle Viande de brousse</h4>
+                    </div>
+                    <div class="card-body">                                            
+                      <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
+				        
+				        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Identification</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_identification_echantillon">Numéro d'identification échantillon</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="N_identification_echantillon" placeholder="Numéro d'identification échantillon" required>
+	                                <div class="invalid-feedback">
+		                      	      S'il vous plaît fournir un numéro d'identification échantillon valide !	      				  	      				    
+	    					        </div>
+	    					      </div>
+	    					    </div>
+							  </div>
+						      <div class="col-lg-6">
+	            				<div class="form-group">
+	                              <label for="Date">Date</label>                                
+	                              <div class="input-group">
+	    							<input type="text" class="form-control input-datepicker" id="Date" placeholder="Date" required>
+	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
+	                                  <span class="fa fa-calendar"></span>
+	    							</div>
+	    							<div class="invalid-feedback">
+		                              S'il vous plaît fournir une date !
+		                            </div>
+	                              </div>
+	    					    </div> 
+							  </div>							  
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">           
+		                        <div class="form-group">
+		                          <label for="Pays">Pays</label>
+		                          <div class="input-group">	                        
+		                            <select id="Pays" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label  id="nouveauPays" class="input-group-addon btn btn-primary" for="Pays" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un pays valide !
+		      				        </div>
+		      				      </div>
+		      			        </div>
+		      			      </div>
+		      			      <div class="col-lg-8">
+	       					    <div class="form-group">
+			                      <label for="Enqueteur">Enqueteur</label>
+		                          <input type="text" class="form-control" id="Enqueteur" placeholder="Enqueteur" >
+		                        </div>  	
+		                      </div> 
+                            </div>
+                                       
+                            <div class="row">
+		      				  <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Region_collecte">Région (ex. nom de la ville, nom du parc...)</label>
+		                          <input type="text" class="form-control" id="Region_collecte" placeholder="Région (ex. nom de la ville, nom du parc...)">
+		                        </div>
+		      			      </div>
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Site_collecte">Site précis (ex. village, lieu-dit)</label>
+		                          <input type="text" class="form-control" id="Site_collecte" placeholder="Site précis (ex. village, lieu-dit)">
+		                        </div>
+		      				  </div>
+		      			    </div>	           
+                                                                                                      
+                          </div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données générales</h3>
+                          </div>
+                          <div class="card-body">
+		      				<div class="row">
+		      				  <div class="col-lg-6">	    
+		      			        <div class="form-group">
+		                          <label for="Environnement">Environnement (ex. forêt)</label>
+		                          <div class="input-group">	                        
+		                            <select id="Environnement" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelEnvironnement" class="input-group-addon btn btn-primary" for="Environnement" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un environnement valide !
+		      				        </div>
+		      				      </div>
+		      				    </div>
+		      			      </div>
+	    					  <div class="col-lg-6">	    
+		      			        <div class="form-group">
+		                          <label for="Lieu_collecte">Lieu de collecte (ex. maison)</label>
+		                          <div class="input-group">	                        
+		                            <select id="Lieu_collecte" class="form-control" required >
+	                                  <option></option>
+	                          	    </select>
+	                                <label  id="nouveauLieu_collecte" class="input-group-addon btn btn-primary" for="Lieu_collecte" data-toggle="modal" data-target="#nouvelleReference" >
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un lieu de collecte valide !
+		      				        </div>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      			    </div>	 		      			       				
+	      				    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">
+		      			    	<div class="form-group">
+		      			    	  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
+								  <input type="text" class="form-control" id="Lat_degre_dec" placeholder="Latitude coordonnées" >
+								</div>
+							  </div>
+							  <div class="col-lg-2">	
+								<div class="form-group">	  
+								  <label for="Latitude">Latitude</label>
+	                          	  <select id="Latitude" class="form-control" required >
+	                            	<option></option>
+	                            	<option>N</option>
+	                            	<option>S</option>
+	                            	<option>Manquant</option>
+	                          	  </select>
+	                          	  <div class="invalid-feedback">
+								    Latitude !
+								  </div>
+	                          	</div>	
+	                          </div>											    
+	                          <div class="col-lg-4">      			        
+							    <div class="form-group">
+								  <label for="Long_degre_dec">Longitude coord. (deg. déc.)</label>
+								  <input type="text" class="form-control" id="Long_degre_dec" placeholder="Longitude coordonnées" >
+								</div>	
+							  </div>
+							  <div class="col-lg-2">
+							    <div class="form-group">
+	                              <label for="Longitude">Longitude</label>
+	                              <select id="Longitude" class="form-control" required >
+	                                <option></option>
+	                                <option>E</option>
+	                                <option>W</option>
+	                                <option>Manquant</option>
+	                              </select>
+	                              <div class="invalid-feedback">
+								    Longitude !
+								  </div>
+	                            </div>
+	                          </div>
+	                        </div>
+	                        
+	                        <div class="row">
+	                    	  <div class="col-lg-4">	    
+		      			        <div class="form-group">
+		                          <label for="Preleve_chez">Prélevé chez</label>
+		                          <div class="input-group">	                        
+		                            <select id="Preleve_chez" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouveauPreleve_chez" class="input-group-addon btn btn-primary" for="Preleve_chez" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît indiquer où a été prélevé la viande de brousse !
+		      				        </div>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      			      <div class="col-lg-4"> 	      			    
+		      			        <div class="form-group">
+		                          <label for="Tue_par_chasseur">Tué par chasseur</label>
+		                          <select id="Tue_par_chasseur" class="form-control" required>
+	                                <option></option>
+	                                <option>Oui</option>
+	                                <option>Non (carcasse trouvée par hasard et ramassée, mort naturelle)</option>
+	                                <option>Non (encore vivant)</option>
+	                                <option>IN</option>  
+	                                <option>Manquant</option>                                 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        Cette viande de brousse a-t'elle été tuée par un chasseur !
+		      				      </div>
+		      			        </div>
+		      			      </div>
+		      			      <div class="col-lg-4">	    
+		      			        <div class="form-group">
+		                          <label for="Methode_chasse">Méthode de chasse</label>
+		                          <div class="input-group">	                        
+		                            <select id="Methode_chasse" class="form-control">
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleMethode_chasse" class="input-group-addon btn btn-primary" for="Methode_chasse" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      			    </div>			      			      
+		      			  
+		      			    <div class="row">	                    	  		      			      
+		      			      <div class="col-lg-6">  	      				
+		      				    <div class="form-group">
+		                          <label for="Nbre_pieges">Nombre de pièges posés</label>
+		                          <input type="text" class="form-control" id="Nbre_pieges" placeholder="Nombre de pièges posés" >
+		                        </div>	
+		      				  </div>
+		      				  <div class="col-lg-6">  	      				
+		      				    <div class="form-group">
+		                          <label for="Distance_village">Animal trouvé ou tué à quelle distance du village</label>
+		                          <input type="text" class="form-control" id="Distance_village" placeholder="Animal trouvé ou tué à quelle distance du village" >
+		                        </div>	
+		      				  </div>
+		      				</div>
+		      				
+		      				<div class="row">	                    	  		      			      
+		      			      <div class="col-lg-3"> 	      			    
+		      			        <div class="form-group">
+		                          <label for="Duree_de_chasse">Durée de chasse</label>
+		                          <select id="Duree_de_chasse" class="form-control" required>
+	                                <option></option>
+	                                <option><1 jour</option>
+	                                <option>Entre 1 et 2 jours</option>
+	                                <option>>2 jours</option>
+	                                <option>IN</option>  
+	                                <option>Manquant</option>                                 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît indiquer la durée de la chasse !
+		      				      </div>
+		      			        </div>
+		      			      </div>
+		      			      <div class="col-lg-3">	    
+		      			        <div class="form-group">
+		                          <label for="Destination">Carcasse destinée à</label>
+		                          <div class="input-group">	                        
+		                            <select id="Destination" class="form-control">
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleDestination" class="input-group-addon btn btn-primary" for="Destination" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      			      <div class="col-lg-3">  	      				
+		      				    <div class="form-group">
+		                          <label for="Lieu_vente">Lieu de vente</label>
+		                          <input type="text" class="form-control" id="Lieu_vente" placeholder="Lieu de vente" >
+		                        </div>	
+		      				  </div>
+		      			      <div class="col-lg-3">  	      				
+		      				    <div class="form-group">
+		                          <label for="Prix_vente">Prix de vente</label>
+		                          <input type="text" class="form-control" id="Prix_vente" placeholder="Prix de vente" >
+		                        </div>	
+		      				  </div>
+		      				</div>			      			      
+		      			  </div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données sur l'animal</h3>
+                          </div>
+                          <div class="card-body">
+                        
+	                        <div class="row">
+	                        
+	                          <div class="col-lg-6">	    
+		      			        <div class="form-group">
+		                          <label for="Type_animal">Type d'animal</label>
+		                          <div class="input-group">	                        
+		                            <select id="Type_animal" class="form-control">
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouveauType_animal" class="input-group-addon btn btn-primary" for="Type_animal" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		      				      </div>
+		      				    </div>    
+		      			      </div>		      			      
+		      			      <div class="col-lg-6">  	      				
+		      				    <div class="form-group">
+		                          <label for="Espece_nom_local">Espèce (nom local)</label>
+		                          <input type="text" class="form-control" id="Espece_nom_local" placeholder="Espèce (nom local)" >
+		                        </div>	
+		      				  </div>
+		      			    </div>	
+		      			        
+		      			   <div class="row">                    	  	    
+		      			      <div class="col-lg-4">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille">Famille</label>
+		                          <div class="input-group">	                        
+		                            <select id="Famille" class="form-control" onchange="select_famille(this, Genre, Espece)" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleFamille" class="input-group-addon btn btn-primary" for="Famille" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de famille valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>	
+		      			      </div>      	
+		      			      <div class="col-lg-4"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre">Genre</label>
+		                          <div class="input-group">	                        
+		                            <select id="Genre" name="Genre" class="form-control" onchange="select_genre(Famille, this, Espece)" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouveauGenre" class="input-group-addon btn btn-outline-dark input-group-addon-disabled" for="Genre" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de genre valide !
+		      				        </div>
+		      				      </div>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-4">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece">Espece</label>
+		                          <div class="input-group">	                        
+		                            <select id="Espece" name="Espece" class="form-control" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleEspece" class="input-group-addon btn btn-outline-dark input-group-addon-disabled" for="Espece" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir une espèce valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			      	  
+		      			    <div class="row">
+	                    	  <div class="col-lg-2">    			    
+		      			        <div class="form-group">
+		                          <label for="Sexe">Sexe</label>
+		                          <select id="Sexe" class="form-control" required>
+		                            <option></option>
+	                                <option>Male</option>
+	                                <option>Femelle</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît fournir le sexe !
+		      				      </div>	      				      
+		      			        </div>	 	      			        
+		      			      </div> 
+		      			      <div class="col-lg-2">    			    
+		      			        <div class="form-group">	      			        
+		      			          <label for="Age">Age</label>
+		                          <select id="Age" class="form-control" required>
+		                            <option></option>
+	                                <option>Juvénile</option>
+	                                <option>Adulte</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		      			          <div class="invalid-feedback">
+		        			        S'il vous plaît fournir un age valide !
+		        			      </div>
+		      			        </div>
+		      			      </div>	
+		      			      <div class="col-lg-4"> 	      			    
+		      			        <div class="form-group">
+		                          <label for="Mort_depuis">Mort depuis combien de temps ?</label>
+		                          <select id="Mort_depuis" class="form-control" required>
+	                                <option></option>
+	                                <option><1 jour</option>
+	                                <option>Entre 1 et 2 jours</option>
+	                                <option>>2 jours</option>
+	                                <option>IN</option>  
+	                                <option>Manquant</option>                                 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît indiquer depuis combien de temps l'animal est mort !
+		      				      </div>
+		      			        </div>
+		      			      </div>
+		      			      <div class="col-lg-4">	    
+		      			        <div class="form-group">
+		                          <label for="Etat_carcasse_animal">Etat de la carcasse ou animal</label>
+		                          <div class="input-group">	                        
+		                            <select id="Etat_carcasse_animal" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelEtat_carcasse_animal" class="input-group-addon btn btn-primary" for="Etat_carcasse_animal" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît indiquer l'état de la carcasse ou de l'animal !
+		      				        </div>
+		      				      </div>
+		      				    </div>    
+		      			      </div>	      			      
+		      			    </div>
+		      			    
+		      			    <div class="row">	                    	  
+		      			      <div class="col-lg-4"> 	      			    
+		      			        <div class="form-group">
+		                          <label for="Decoupage_carcasse">Découpage carcasse</label>
+		                          <select id="Decoupage_carcasse" class="form-control" required>
+	                                <option></option>
+	                                <option>Entière</option>
+	                                <option>Découpée en morceaux</option>
+	                                <option>Manquant</option>                                 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît indiquer le découpage de la carcasse !
+		      				      </div>
+		      			        </div>
+		      			      </div>		      			      
+		      			      <div class="col-lg-4">  	      				
+		      				    <div class="form-group">
+		                          <label for="L_total_corps">Longueur totale du corps</label>
+		                          <input type="text" class="form-control" id="L_total_corps" placeholder="Longueur totale du corps" >
+		                        </div>	
+		      				  </div>
+		      				  <div class="col-lg-4">  	      				
+		      				    <div class="form-group">
+		                          <label for="Poids">Poids</label>
+		                          <input type="text" class="form-control" id="Poids" placeholder="Poids" >
+		                        </div>	
+		      				  </div>		      			      
+		      			    </div>
+		      			    
+		      			    <div class="row">  		
+		      			      <div class="col-lg-12">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Observations_carcasse">Observations</label>
+		                    	  <textarea class="form-control col-xs-12" id="Observations_carcasse" placeholder="Observations" rows="3"></textarea>
+		                        </div>
+		      			      </div>
+		                    </div> 
+		      			    
+		      		      </div>
+		      		    </div>
+		      		      
+		      		    <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données sur l'échantillon de sang</h3>
+                          </div>
+                          <div class="card-body">
+		      				<div class="row">	                    	  
+		      			      <div class="col-lg-5">    			    
+		      			        <div class="form-group">
+		                          <label for="Collecte_sang_DBS">Collecte de sang sur papier buvard</label>
+		                          <select id="Collecte_sang_DBS" class="form-control" required>
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                              </select>
+	                              <div class="invalid-feedback">
+		        			        Collecte de sang sur papier buvard ?
+		      				      </div>	      				      
+		      			        </div>	 	      			        
+		      			      </div>		      			      
+		      			      <div class="col-lg-4">	    
+		      			        <div class="form-group">
+		                          <label for="Qualite_echantillon">Qualité de l'échantillon</label>
+		                          <div class="input-group">	                        
+		                            <select id="Qualite_echantillon" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleQualite_echantillon" class="input-group-addon btn btn-primary" for="Qualite_echantillon" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît indiquer la qualité de l'échantillon !
+		      				        </div>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      				  <div class="col-lg-3">	    
+		      			        <div class="form-group">
+		                          <label for="Endroit_prelevement">Endroit de prélèvement</label>
+		                          <div class="input-group">	                        
+		                            <select id="Endroit_prelevement" class="form-control" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelEndroit_prelevement" class="input-group-addon btn btn-primary" for="Endroit_prelevement" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît indiquer l'endroit de prélèvement !
+		      				        </div>
+		      				      </div>
+		      				    </div>    
+		      			      </div>
+		      			     </div>	   
+		      			     
+		      			     <div class="row">  		
+		      			      <div class="col-lg-12">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Remarques_echantillon">Remarques sur l'échantillon</label>
+		                    	  <textarea class="form-control col-xs-12" id="Remarques_echantillon" placeholder="Remarques sur l'échantillon" rows="3"></textarea>
+		                        </div>
+		      			      </div>
+		                    </div> 
+		      			        			        			      			      
+		      			  </div>		      			  
+		      			</div>	      			      
+		                              
+	      			    <button id="save" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+	            			<span class="ladda-label">Sauver la viande de brousse</span>
+	            			<span class="ladda-spinner"></span>
+						</button>  
+						  
+				      </form>
+                                               
+                    </div> 
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </section>         
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+	<div id="nouvelleReference" tabindex="-1" role="dialog" aria-labelledby="nouvelleReference" aria-hidden="true" class="modal fade text-left">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="referenceModalLabel" class="modal-title">ModalLabel</h4>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-group-Reference">
+              <div class="form-group">
+                <label id="referenceLabel">Label</label>
+                <input id="referenceInput" type="text" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAnnuler" type="button" data-dismiss="modal" class="btn btn-secondary">Annuler</button>
+            <!-- <button type="submit" class="btn btn-primary" id="btnAjouter">Ajouter</button> -->
+            <button id="btnAjouter" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+	          <span class="ladda-label">Ajouter</span>
+	          <span class="ladda-spinner"></span>
+			</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <script type="text/javascript">
+    	$('.input-datepicker').datepicker({
+        	language: 'fr',
+        	autoclose: true
+      	});
+    </script>    
+    
+    <script type="text/javascript">
+   		$('#spanDate').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date').focus();
+		});
+    </script> 
+    
+    <script type="text/javascript">
+   		$('#nouveauPays').click(function(){   			
+   			$('#referenceModalLabel').html('Nouveau Pays');
+   			$('#referenceLabel').html('Pays :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'pays');
+   			clickedBtn = this;
+   		});
+	       		
+   		$('#nouvelEnvironnement').click(function(){
+   			$('#referenceModalLabel').html('Nouvel Environnement');
+   			$('#referenceLabel').html('Environnement :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'environnement');   			
+   			clickedBtn = this;   			
+		}); 
+   		
+   		$('#nouveauLieu_collecte').click(function(){
+   			$('#referenceModalLabel').html('Nouveau Lieu de collecte');
+   			$('#referenceLabel').html('Lieu de collecte :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'lieu_collecte');
+   			clickedBtn = this;
+		});
+   		
+   		$('#nouveauPreleve_chez').click(function(){
+   			$('#referenceModalLabel').html('Viande de brousse prélevé chez');
+   			$('#referenceLabel').html('Prélevé chez :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'preleve_chez');   			
+   			clickedBtn = this;   			
+		});   		
+   		
+   		$('#nouvelleMethode_chasse').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Méthode de chasse');
+   			$('#referenceLabel').html('Méthode de chasse :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'methode_chasse');   			
+   			clickedBtn = this;   			
+		});   
+		
+   		$('#nouvelleDestination').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Destination');
+   			$('#referenceLabel').html('Carcasse destinée à :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'destination');   			
+   			clickedBtn = this;   			
+		});  
+   		
+   		$('#nouveauType_animal').click(function(){
+   			$('#referenceModalLabel').html('Nouveau Type d\'animal');
+   			$('#referenceLabel').html('Type d\'animal :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'type_animal');   			
+   			clickedBtn = this;   			
+		});    		
+   		
+   		$('#nouvelleFamille').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'famille');   			
+   			clickedBtn = this;   			
+   		}); 
+   		
+   		$('#nouveauGenre').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			$('#btnAjouter').data('data-id', 'genre');   			
+   			clickedBtn = this;   			
+   			
+   			var Famille =  document.getElementById('Famille');
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreForm.appendChild(genreDiv);
+   		});
+   		
+   		$('#nouvelleEspece').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');   			
+   			$('#btnAjouter').data('data-id', 'espece');   			
+   			clickedBtn = this;   			
+   			
+   			var Famille =  document.getElementById('Famille');
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+			
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var Genre =  document.getElementById('Genre');
+   			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			genreInput.value = Genre.value;
+						
+			var genreLabel2 = document.createElement('label');
+			genreLabel2.setAttribute('name', 'genreLabel2');
+			genreLabel2.setAttribute('id', 'genreLabel2');
+			genreLabel2.appendChild(document.createTextNode('Espece :'));
+			
+			var genreInput2 = document.createElement('input');
+			genreInput2.setAttribute('type', 'text');
+			genreInput2.setAttribute('name', 'genreInput2');
+			genreInput2.setAttribute('id', 'genreInput2');
+			genreInput2.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreDiv.appendChild(genreLabel2);
+			genreDiv.appendChild(genreInput2);
+			genreForm.appendChild(genreDiv);
+			
+			$('#genreInput').prop('disabled', true);
+   		});
+   		
+   		$('#nouvelEtat_carcasse_animal').click(function(){
+   			$('#referenceModalLabel').html('Nouvel Etat de la carcasse ou animal');
+   			$('#referenceLabel').html('Etat de la carcasse ou de l\'animal :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'etat_carcasse_animal');   			
+   			clickedBtn = this;   			
+		});
+   		
+   		$('#nouvelleQualite_echantillon').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Qualite de l\'échantillon');
+   			$('#referenceLabel').html('Qualite de l\'échantillon :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'qualite_echantillon');   			
+   			clickedBtn = this;   			
+		});   		
+   		
+   		$('#nouvelEndroit_prelevement').click(function(){
+   			$('#referenceModalLabel').html('Nouvel Endroit de prélèvement');
+   			$('#referenceLabel').html('Endroit de prélèvement :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'endroit_prelevement');   			
+   			clickedBtn = this;   			
+		});
+   		
+   		$("#btnAjouter").click(function(e){
+	    	e.preventDefault();
+	    	if(clickedBtn){	    		
+	    		var l = Ladda.create(document.querySelector('.ladda-button'));
+				l.start();				
+				
+				if ($(this).data('data-id') == 'pays') {
+					var select = document.getElementById('Pays');	    		
+					addReference(html, 'pays', 'Pays', select, null, null);	
+   				} else if ($(this).data('data-id') == 'environnement') {
+					var select = document.getElementById('Environnement');	    		
+					addReference(html, 'environnement', 'Environnement', select, null, null);	
+   				} else if ($(this).data('data-id') == 'lieu_collecte') {
+					var select = document.getElementById('Lieu_collecte');	    		
+					addReference(html, 'lieu_collecte', 'Lieu_collecte', select, null, null);	
+   				} else if ($(this).data('data-id') == 'preleve_chez') {
+					var select = document.getElementById('Preleve_chez');	    		
+					addReference(html, 'preleve_chez', 'Preleve_chez', select, null, null);	
+   				} else if ($(this).data('data-id') == 'methode_chasse') {
+					var select = document.getElementById('Methode_chasse');	    		
+					addReference(html, 'methode_chasse', 'Methode_chasse', select, null, null);	
+   				} else if ($(this).data('data-id') == 'destination') {
+					var select = document.getElementById('Destination');	    		
+					addReference(html, 'destination', 'Destination', select, null, null);	
+   				} else if ($(this).data('data-id') == 'type_animal') {
+					var select = document.getElementById('Type_animal');	    		
+					addReference(html, 'type_animal', 'Type_animal', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille') {
+					var select = document.getElementById('Famille');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'genre') {
+   					var select = document.getElementById('Famille');
+					var select2 = document.getElementById('Genre');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'espece') {
+   					var select = document.getElementById('Famille');
+					var select2 = document.getElementById('Genre');	
+					var select3 = document.getElementById('Espece');
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				} else if ($(this).data('data-id') == 'etat_carcasse_animal') {
+					var select = document.getElementById('Etat_carcasse_animal');	    		
+					addReference(html, 'etat_carcasse_animal', 'Etat_carcasse_animal', select, null, null);	
+   				};
+   				
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";				
+				l.stop();				
+				clickedBtn = null;
+	    		$('#nouvelleReference').modal('hide');
+	        	// close the modal dialog.
+	      	}
+	    });
+   		
+   		$("#btnAnnuler").click(function(e){
+	    	e.preventDefault();
+	    	$('#nouvelleReference').modal('hide');
+   		});
+   		
+   		$(function () {
+   		    $('#nouvelleReference').on('hidden.bs.modal', function () {
+   		    	removeModalDiv();
+	   		});
+   		});
+   		
+   		function removeModalDiv() {
+   			try {
+   				$('#referenceInput').prop('disabled', false);
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";
+	    		var genreForm = document.getElementById('form-group-Reference');
+			    var genreLabel = document.getElementById('genreLabel');
+			    var genreInput = document.getElementById('genreInput');
+			    var genreDiv = document.getElementById('genreDiv');
+			    genreDiv.removeChild(genreLabel);
+			    genreDiv.removeChild(genreInput);
+			    genreForm.removeChild(genreDiv);
+		    }
+	    	catch(error) {
+	    	};	
+   		};   		
+   		
+   		function addNom(NomX) {
+		    this.Nom = NomX;
+		    	    
+		    this.NomX = function() {
+		        return this.Nom;
+		    };		    
+		};
+   		
+    </script> 
+    
+    <script type="text/javascript">
+    
+    	// Example starter JavaScript for disabling form submissions if there are invalid fields
+  		(function() {
+  		  'use strict';
+  		  window.addEventListener('load', function() {
+  		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  		    var forms = document.getElementsByClassName('needs-validation');
+  		    // Loop over them and prevent submission
+  		    var validation = Array.prototype.filter.call(forms, function(form) {
+  		      form.addEventListener('submit', function(event) {
+  		    	if (form.checkValidity() === false) {
+  		          event.preventDefault();
+  		          event.stopPropagation();
+  		        } else {
+  		          event.preventDefault();
+  		          addBushmeat();
+  		        } 		        
+  		        form.classList.add('was-validated');
+  		      }, false);
+  		    });
+  		  }, false);
+  		})();
+ 		
+  		function addBushmeat() {  
+			var l = Ladda.create( document.querySelector('.ladda-button'));
+
+			// Start loading
+			l.start();
+			
+			var id = uuid();
+			var N_identification_echantillon = document.getElementById('N_identification_echantillon').value;
+			var Date = document.getElementById('Date').value;	
+			var Pays = document.getElementById('Pays').value;	
+			var Enqueteur = document.getElementById('Enqueteur').value;	
+			var Region_collecte = document.getElementById('Region_collecte').value;	
+			var Site_collecte = document.getElementById('Site_collecte').value;	
+			var Environnement = document.getElementById('Environnement').value;	
+			var Lieu_collecte = document.getElementById('Lieu_collecte').value;	
+			var Latitude = document.getElementById('Latitude').value;	
+			var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;	
+			var Longitude = document.getElementById('Longitude').value; 	
+			var Long_degre_dec = document.getElementById('Long_degre_dec').value;	
+			var Preleve_chez = document.getElementById('Preleve_chez').value;	
+			var Tue_par_chasseur = document.getElementById('Tue_par_chasseur').value; 	
+			var Methode_chasse = document.getElementById('Methode_chasse').value;	
+			var Nbre_pieges = document.getElementById('Nbre_pieges').value; 	
+			var Distance_village = document.getElementById('Distance_village').value;	
+			var Duree_de_chasse = document.getElementById('Duree_de_chasse').value;          	
+			var Destination = document.getElementById('Destination').value;	 
+			var Lieu_vente = document.getElementById('Lieu_vente').value;	
+			var Prix_vente = document.getElementById('Prix_vente').value;	
+			var Type_animal = document.getElementById('Type_animal').value;	
+			var Espece_nom_local = document.getElementById('Espece_nom_local').value;
+			var Famille = document.getElementById('Famille').value;
+			var Genre = document.getElementById('Genre').value;
+			var Espece = document.getElementById('Espece').value;
+			var Sexe = document.getElementById('Sexe').value;	
+			var Age = document.getElementById('Age').value;	
+			var Mort_depuis = document.getElementById('Mort_depuis').value;       	
+			var Etat_carcasse_animal = document.getElementById('Etat_carcasse_animal').value;	
+			var Decoupage_carcasse = document.getElementById('Decoupage_carcasse').value; 	
+			var L_total_corps = document.getElementById('L_total_corps').value; 	
+			var Poids = document.getElementById('Poids').value; 	
+			var Observations_carcasse = document.getElementById('Observations_carcasse').value;	
+			var Collecte_sang_DBS = document.getElementById('Collecte_sang_DBS').value; 	
+			var Qualite_echantillon = document.getElementById('Qualite_echantillon').value;	
+			var Endroit_prelevement = document.getElementById('Endroit_prelevement').value; 	
+			var Remarques_echantillon = document.getElementById('Remarques_echantillon').value;
+		    				    	
+			var localDB = new PouchDB('viande_de_brousse_transvihmi' + debug);	 
+						
+			localDB.put({
+				_id: id,
+				N_identification_echantillon: N_identification_echantillon,
+				Date: Date, 	
+				Pays: Pays,	
+				Enqueteur: Enqueteur,	
+				Region_collecte: Region_collecte,	
+				Site_collecte: Site_collecte, 	
+				Environnement: Environnement,	
+				Lieu_collecte: Lieu_collecte,	
+				Latitude: Latitude,	
+				Lat_degre_dec: Lat_degre_dec,	
+				Longitude: Longitude, 	
+				Long_degre_dec: Long_degre_dec,	
+				Preleve_chez: Preleve_chez,	
+				Tue_par_chasseur: Tue_par_chasseur, 	
+				Methode_chasse: Methode_chasse,	
+				Nbre_pieges: Nbre_pieges, 	
+				Distance_village: Distance_village,	
+				Duree_de_chasse: Duree_de_chasse,          	
+				Destination: Destination,	 
+				Lieu_vente: Lieu_vente, 	
+				Prix_vente: Prix_vente,	
+				Type_animal: Type_animal,	
+				Espece_nom_local: Espece_nom_local,
+				Famille: Famille,
+				Genre: Genre,
+				Espece: Espece,
+				Sexe: Sexe,	
+				Age: Age,	
+				Mort_depuis: Mort_depuis,       	
+				Etat_carcasse_animal: Etat_carcasse_animal,	
+				Decoupage_carcasse: Decoupage_carcasse, 	
+				L_total_corps: L_total_corps, 	
+				Poids: Poids, 	
+				Observations_carcasse: Observations_carcasse,	
+				Collecte_sang_DBS: Collecte_sang_DBS, 	
+				Qualite_echantillon: Qualite_echantillon,	
+				Endroit_prelevement: Endroit_prelevement, 	
+				Remarques_echantillon: Remarques_echantillon
+			}).then(function (response) {
+				
+				if (navigator.onLine) {
+					var localDB2 = new PouchDB('viande_de_brousse_transvihmi' + debug);	
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var remoteDB = new PouchDB(remote_couchdb + 'viande_de_brousse_transvihmi' + debug, {skip_setup: true});
+					
+					localDB2.sync(remoteDB).on('complete', (info) => { 
+						window.location = 'viande_de_brousse_transvihmi.html';
+					}).on('error', function (err) {
+						// error while replicating
+						alert('alert sync new bushmeat ird: ' + JSON.stringify(err));
+						window.location = 'login.html';
+					});
+				} else {
+					window.location = 'viande_de_brousse_transvihmi.html';
+				}
+				l.stop();
+				
+			}).catch(function (err) {
+				alert(JSON.stringify(err));
+				console.log(err);
+			});	
+  		};
+  		
+  		function extraireNombre(str) { 
+  			return str.match(/[0-9]+/g)
+  		};
+  		
+	</script>
+	
+  </body>
+</html>
+	 

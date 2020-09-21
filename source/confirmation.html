@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <script type="text/javascript">
+    function $_GET(param) {
+	  var vars = {};
+	  window.location.href.replace(location.hash, '' ).replace( 
+	    /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+		 function( m, key, value ) { // callback
+		   vars[key] = value !== undefined ? value : '';
+		 }
+	  );
+		
+	  if (param) {
+		return vars[param] ? vars[param] : null;	
+	  }
+	  
+	  return vars;
+    }
+  </script>
+</html>

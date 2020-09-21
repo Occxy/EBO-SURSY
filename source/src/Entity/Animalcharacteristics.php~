@@ -1,0 +1,194 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Animalcharacteristics
+ *
+ * @ORM\Table(name="animalcharacteristics", indexes={@ORM\Index(name="NIdent", columns={"NIdent"})})
+ * @ORM\Entity
+ */
+class Animalcharacteristics
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $nident;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Weigth", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $weigth;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Forearm", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $forearm;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="TotalBodyL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalbodyl;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="TailL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $taill;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Tailcut", type="boolean", nullable=true)
+     */
+    private $tailcut;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="HeadL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $headl;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="EarL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $earl;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="EarW", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $earw;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Metacarpe3L", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $metacarpe3l;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="FirstPhal3rdFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $firstphal3rdfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="SecondPhal3rdFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $secondphal3rdfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="FirstPhal4thFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $firstphal4thfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="SecondPhal4thFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $secondphal4thfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="FirstPhal5thFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $firstphal5thfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="SecondPhal5thFinger", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $secondphal5thfinger;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="LeftBackFeetL", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $leftbackfeetl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EyesSize", type="string", length=255, nullable=true)
+     */
+    private $eyessize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BackLegShape", type="string", length=255, nullable=true)
+     */
+    private $backlegshape;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="BackLegHeary", type="boolean", nullable=true)
+     */
+    private $backlegheary;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EarsShape", type="string", length=255, nullable=true)
+     */
+    private $earsshape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DorsalPelage", type="string", length=255, nullable=true)
+     */
+    private $dorsalpelage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LimitPelage", type="string", length=255, nullable=true)
+     */
+    private $limitpelage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VentralPelage", type="string", length=255, nullable=true)
+     */
+    private $ventralpelage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TailShape", type="string", length=255, nullable=true)
+     */
+    private $tailshape;
+
+
+}
+

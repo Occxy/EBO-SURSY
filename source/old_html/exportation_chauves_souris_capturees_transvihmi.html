@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+        
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->	
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>	
+	<!-- Javascript files-->
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>    
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"> </script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+   
+    <!-- Main File-->
+    <script src="js/front.js"></script> 
+        
+    <script src="js/pouchdb.authentication.js"></script> 
+    <!-- <script src="js/pouchdb-7.0.0.js"></script> --> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+    <script src="js/pouchdb.find.js"></script>
+    
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    
+    <script src="js/uuid.js"></script>
+    
+    <script src="js/load-page.js"></script>
+    
+    <!-- Bootstrap Select-->
+    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <!-- Bootstrap Touchspin-->
+    <script src="vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <!-- MultiSelect-->
+    <script src="vendor/multiselect/js/jquery.multi-select.js"> </script>
+    <!-- Forms init-->
+    <script src="js/forms-advanced.js"></script>
+    
+    <script src="js/FileSaver.js"></script>
+    
+    <script src="js/clock.js"></script>
+    
+  </head>
+  <body onload="load_tables_exportation('chauves_souris_capturees_transvihmi')"> 
+    <script>
+		logged_only();
+		localStorage['export_table'] = 'chauves_souris_capturees_transvihmi';
+	</script> 
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+            <div id="child" style="display: none; color: #fff; background: #2f333e;">
+    		  <label id="progress_label">Synchronisation des données...</label>
+			  <div class="progress">
+  				<div class="progress-bar progress-bar-striped" id="myBar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			  </div>
+			</div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                    <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                        
+                    <li id="li_transvihmiDropdown" name="1" class="active"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="true" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled show">
+                        
+                        <li id="li_site_transvihmi" name="1" style="text-align: right"><a href="site_transvihmi.html">Site</a></li>                            
+		                                        
+                        <li id="li_batTransvihmiDropdown" name="1" class="active"><a id="a_batTransvihmiDropdown" name="1" href="#ul_batTransvihmiDropdown" aria-expanded="true" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batTransvihmiDropdown" name="1" class="collapse list-unstyled show">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_transvihmi.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_transvihmi.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_batTransvihmiCaptureesDropdown" name="1" class="active"><a id="a_batTransvihmiCaptureesDropdown" name="1" href="#ul_batTransvihmiCaptureesDropdown" aria-expanded="true" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_batTransvihmiCaptureesDropdown" name="1" class="collapse list-unstyled show">
+		                        <li id="li_bat_capturees_transvihmi" name="1"><a href="bat_capturees_transvihmi.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_transvihmi" name="1"><a href="bat_map_capturees_transvihmi.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_transvihmi" name="1" class="active"><a href="importation_chauves_souris_capturees_transvihmi.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batTransvihmiNonInvasivesDropdown" name="1"><a id="a_batTransvihmiNonInvasivesDropdown" name="1" href="#ul_batTransvihmiNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batTransvihmiNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_transvihmi" name="1"><a href="bat_non_invasives_transvihmi.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_transvihmi" name="1"><a href="bat_map_non_invasives_transvihmi.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_transvihmi" name="1"><a href="importation_chauves_souris_non_invasives_transvihmi.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	    <li id="li_viande_de_brousse_TransvihmiDropdown" name="1"><a id="a_viande_de_brousse_TransvihmiDropdown" name="1" href="#ul_viande_de_brousse_TransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_TransvihmiDropdown" name="1" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussetransvihmi" name="1"><a href="viande_de_brousse_transvihmi.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_transvihmi" name="1"><a href="viande_de_brousse_map_transvihmi.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_transvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+                      </ul>
+                    </li>
+                    
+                    <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="site_mivegec.html">Site</a></li>                            
+		                
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_mivegec.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_mivegec.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="bat_capturees_mivegec.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="bat_map_capturees_mivegec.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="importation_chauves_souris_capturees_mivegec.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="bat_non_invasives_mivegec.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="bat_map_non_invasives_mivegec.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="importation_chauves_souris_non_invasives_mivegec.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_MivegecDropdown" name="2"><a id="a_viande_de_brousse_MivegecDropdown" href="#ul_viande_de_brousse_MivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_MivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussemivegec" name="2"><a href="viande_de_brousse_mivegec.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="viande_de_brousse_map_mivegec.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="importation_viande_de_brousse_mivegec.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                    
+                    <li id="li_astreDropdown" name="6"> <a id="a_astreDropdown" name="6" href="#ul_astreDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_site_astre" name="6" style="text-align: right"><a href="site_astre.html">Site</a></li>                            
+		                
+                        <li id="li_batAstreDropdown" name="6"><a id="a_batAstreDropdown" name="6" href="#ul_batAstreDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batAstreDropdown" name="6" class="collapse list-unstyled">
+		                
+		                    <li id="li_suivi_longitudinal_donnees_missions_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_astre.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_astre.html">Suivi longitudinal - données journalières</a></li>                              
+                            
+		                    <li id="li_batAstreCaptureesDropdown" name="6"><a id="a_batAstreCaptureesDropdown" name="6" href="#ul_batAstreCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batAstreCaptureesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_astre" name="6"><a href="bat_capturees_astre.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_astre" name="6"><a href="bat_map_capturees_astre.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_astre" name="6"><a href="importation_chauves_souris_capturees_astre.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batAstreNoninvasivesDropdown" name="6"><a id="a_batAstreNonInvasivesDropdown" name="6" href="#ul_batAstreNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batAstreNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_non_invasives_astre.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_map_non_invasives_astre.html">carte</a></li>
+    	                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="importation_chauves_souris_non_invasives_astre.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
+                        <li id="li_individualCIBUDropdown" name="3"><a id="a_individualCIBUDropdown" name="3" href="#ul_individualCIBUDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individualCIBUDropdown" name="3" class="collapse list-unstyled">
+		                    <li id="li_individualCIBUSpecies1Dropdown" name="3"><a id="a_individualCIBUSpecies1Dropdown" name="3" href="#ul_individualCIBUSpecies1Dropdown" aria-expanded="false" data-toggle="collapse">(Espèces?)</a>
+		                      <ul id="ul_individualCIBUSpecies1Dropdown" name="3" class="collapse list-unstyled">
+		                        <li id="li_individual_species1_CIBU" name="3"><a href="liste_cibu.html?table=individus_cibu">données</a></li>                            
+		                        <li id="li_individual_map_species1_cibu" name ="3"><a href="#">carte</a></li>
+		                        <li id="li_importation_individual_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNoninvasivesDropdown" name="4"><a id="a_batEpvoNoninvasivesDropdown" href="#ul_batEpvoNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNoninvasivesDropdown" name="5"><a id="a_batIPGNoninvasivesDropdown" href="#ul_batIPGNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Base de données EBO-SURSY</h2>
+            </div>
+          </header>
+          
+          <section>          
+            <div class="container-fluid">              
+  			  <div class="card">
+                <div class="card-header">
+                  <h4>Liste des champs des chauves-souris capturées</h4>
+                </div>
+              <div class="card-body">
+  			    <form>
+                  <div class="form-group">
+                    <label class="form-control-label">Sélectionner les champs à exporter</label>
+                    <select id="multiselect1" multiple="multiple" name="multiselect1[]">
+                     
+                    </select>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="card-body text-left">
+                <div class="row">
+                  <!-- <div class="col-lg-4">
+                      <a id="add_selection_criteria" href="selection_criteres_chauves_souris_capturees_transvihmi.html" class="btn btn-primary btn-fill">Critères de selection</a></h4>
+			  	  </div> -->
+			  	  
+			  	  <div class="col-lg-4">
+			  	    <div class="form-group">
+	                  <button id="add_selection_criteria" name="add_selection_criteria" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
+			            <span class="ladda-label">Critères de sélection</span>
+			            <span class="ladda-spinner"></span>
+				  	  </button>  
+				  	</div> 
+                  </div>
+                  
+			  	  <div class="col-lg-4">
+			  	    <div class="form-group">
+	                  <button id="export_selected_fields" name="export_selected_fields" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
+			            <span class="ladda-label">Exporter la sélection</span>
+			            <span class="ladda-spinner"></span>
+				  	  </button>  
+				  	</div> 
+                  </div>
+			  	  
+			  	  <div class="col-lg-4">
+			  	    <div class="form-group">
+	                  <button id="export_all_fields" name="export_all_fields" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
+			            <span class="ladda-label">Exporter tous les champs</span>
+			            <span class="ladda-spinner"></span>
+				  	  </button>  
+				  	</div> 
+				  </div>
+                </div>
+              </div>
+              
+            </div>
+          </section>          
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+	    
+    	var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
+		} else {
+			debug = localStorage.getItem('debug');
+		};
+    	var DB = new PouchDB('chauves_souris_capturees_transvihmi' + debug);
+    	
+        var count;
+        
+        var CSV='';
+        
+        var array_selected_fields = [];
+           	
+    	var fields = 'N_identification_CS;N_identification_mere;N_site;Date;'+
+		 'Equipe;Pays;Region_capture;Site_capture;Lieu_capture;'+
+	     'Environnement;Latitude;Lat_degre_dec;Longitude;Long_degre_dec;'+
+	     'Proximite_village_km;Methode_capture;Type_chauve_souris;'+
+	     'Espece_identifiee;Famille_terrain;Genre_terrain;Espece_terrain;'+
+	     'Famille_labo;Genre_labo;Espece_labo;Famille_consensus;Genre_consensus;'+
+	     'Espece_consensus;Sexe;Age;Gestante;Lactation;Suitee;Sexe_enfant;'+
+	     'Poids_enfant;Identifiant_enfant;Vivante;Cause_deces;Poids_gr;'+
+	     'L_avant_bras_mm;L_totale_corps_mm;Taille_yeux;L_queue_mm;'+
+	     'L_metacarpe_3ieme_doigt_mm;Couleur_pelage_dorsal;'+
+	     'Couleur_pelage_ventral;Remarques_anomalies;Sang_DBS_nb_cercles;'+ 
+	     'Sang_tube_EDTA;Feces_RNAl;Urine;Urine_DUS_nombre_cercles;'+
+	     'Feces_urine_RNAl;Ecouvillon_gorge_RNAl;Ecouvillon_rectal_RNAl;'+
+	     'Ectoparasites_ethanol;Poils_ethanol;Wing_punch_ethanol;'+
+	     'Feces_culture_glycerol;Sperme;Autres_echantillons_remarques;'+
+	     'Specimen_entier;Specimen_preserve_dans;Prelevement_organe;'+
+	     'Foie_formol;Foie_RNAl;Rate_formol;Rate_RNAl;Reins_formol;'+
+	     'Reins_RNAl;Intestins_formol;Intestins_RNAl;Poumons_formol;'+
+	     'Poumons_RNAl;Coeur_formol;Coeur_RNAl;Ggl_lymph_formol;'+
+	     'Ggl_lymph_RNAl;Testicules_formol;Testicules_RNAl;Peau_formol;'+
+	     'Peau_RNAl;Muscles_formol;Muscles_RNAl;Cerveau_formol;'+
+	     'Cerveau_RNAl;Autre;Autre_formol;Autre_RNAl;Remarques_echantillons;\r\n';	
+    	
+    	/*$('#multiselect1').multiSelect({
+			afterSelect: function(values){
+				alert("ADD: " + values);
+			},
+			afterDeselect: function(values){
+				alert("REMOVE: " + values);
+			}
+		});*/
+		
+		$('#add_selection_criteria').click(function(){
+			array_selected_fields = [];
+			array_selected_fields.length = 0;
+			
+			$('#multiselect1 :selected').each(function(i, sel){ 
+				array_selected_fields.push($(sel).val()); 
+			});
+						
+			localStorage.setItem("fields_selected", JSON.stringify(array_selected_fields));
+			
+			window.location = 'selection_criteres_chauves_souris_capturees_transvihmi.html';
+        });
+    
+    	$('#export_all_fields').click(function(){
+ 			
+			DB.info().then((infos) => {
+				count = infos.doc_count;
+				
+				CSV = fields;
+				
+				DB.allDocs({  		
+					include_docs: true,
+					attachments: true
+				}).then(function (result) {
+					// handle result
+					if (typeof(JSON.stringify(result)) != "undefined"){  
+			    		var chauves_souris_capturees_TablesData = JSON.parse(JSON.stringify(result));
+						
+			    		chauves_souris_capturees_TablesData.rows.forEach(function(row){   
+			    			addChauves_souris_capturees(row);
+			    			
+			    		});		
+			    		
+			    		var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+		    			
+			    		
+			    		//saveAs(blob, "testfile1.csv");
+			    		saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+			    		
+			    		
+					}
+				}).catch(function (err) {
+					console.log(err);
+				});
+				
+				
+			}).catch((error) => {
+			});
+ 		    
+        });
+		
+		$('#export_selected_fields').click(function(){
+			
+			array_selected_fields = [];
+			array_selected_fields.length = 0;
+			
+			$('#multiselect1 :selected').each(function(i, sel){ 
+				array_selected_fields.push($(sel).val()); 
+			});
+			
+			addChauves_souris_capturees_selected_heading();
+ 			
+			DB.info().then((infos) => {
+				count = infos.doc_count;
+				
+				DB.allDocs({  		
+					include_docs: true,
+					attachments: true
+				}).then(function (result) {
+					// handle result
+					if (typeof(JSON.stringify(result)) != "undefined"){  
+			    		var chauves_souris_capturees_TablesData = JSON.parse(JSON.stringify(result));
+						
+			    		chauves_souris_capturees_TablesData.rows.forEach(function(row){   
+			    			addChauves_souris_capturees_selected(row);
+			    			
+			    		});		
+			    		
+			    		var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+		    			//saveAs(blob, "testfile1.csv");
+		    			
+		    			saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+			    				    		
+					}
+				}).catch(function (err) {
+					console.log(err);
+				});
+				
+				
+			}).catch((error) => {
+			});
+ 		    
+        });
+    	
+    	function addChauves_souris_capturees(row) {
+    		
+    		if (count > 0) {
+	    		
+    			CSV = CSV +
+					row.doc.N_identification_CS + ';' +
+					row.doc.N_identification_mere + ';' + 
+					row.doc.N_site + ';' +
+					row.doc.Date + ';' +
+					row.doc.Equipe + ';' + 
+					row.doc.Pays + ';' + 
+					row.doc.Region_capture + ';' + 
+					row.doc.Site_capture + ';' + 
+					row.doc.Lieu_capture + ';' +
+					row.doc.Environnement + ';' + 
+					row.doc.Latitude + ';' + 
+					row.doc.Lat_degre_dec + ';' + 
+					row.doc.Longitude + ';' + 
+					row.doc.Long_degre_dec + ';' +
+					row.doc.Proximite_village_km + ';' + 
+					row.doc.Methode_capture + ';' + 
+					row.doc.Type_chauve_souris + ';' +
+					row.doc.Espece_identifiee + ';' + 
+					row.doc.Famille_terrain + ';' + 
+					row.doc.Genre_terrain + ';' + 
+					row.doc.Espece_terrain + ';' +
+					row.doc.Famille_labo + ';' + 
+					row.doc.Genre_labo + ';' + 
+					row.doc.Espece_labo + ';' + 
+					row.doc.Famille_consensus + ';' + 
+					row.doc.Genre_consensus + ';' + 
+					row.doc.Espece_consensus + ';' + 
+					row.doc.Sexe + ';' + 
+					row.doc.Age + ';' + 
+					row.doc.Gestante + ';' + 
+					row.doc.Lactation + ';' + 
+					row.doc.Suitee + ';' + 
+					row.doc.Sexe_enfant + ';' +
+					row.doc.Poids_enfant + ';' + 
+					row.doc.Identifiant_enfant + ';' + 
+					row.doc.Vivante + ';' + 
+					row.doc.Cause_deces + ';' + 
+					row.doc.Poids_gr + ';' +
+					row.doc.L_avant_bras_mm + ';' + 
+					row.doc.L_totale_corps_mm + ';' + 
+					row.doc.Taille_yeux + ';' + 
+					row.doc.L_queue_mm + ';' +
+					row.doc.L_metacarpe_3ieme_doigt_mm + ';' + 
+					row.doc.Couleur_pelage_dorsal + ';' +
+					row.doc.Couleur_pelage_ventral + ';' + 
+					row.doc.Remarques_anomalies + ';' + 
+					row.doc.Sang_DBS_nb_cercles + ';' + 
+					row.doc.Sang_tube_EDTA + ';' + 
+					row.doc.Feces_RNAl + ';' + 
+					row.doc.Urine + ';' + 
+					row.doc.Urine_DUS_nombre_cercles + ';' +
+					row.doc.Feces_urine_RNAl + ';' + 
+					row.doc.Ecouvillon_gorge_RNAl + ';' + 
+					row.doc.Ecouvillon_rectal_RNAl + ';' +
+					row.doc.Ectoparasites_ethanol + ';' + 
+					row.doc.Poils_ethanol + ';' + 
+					row.doc.Wing_punch_ethanol + ';' +
+					row.doc.Feces_culture_glycerol + ';' + 
+					row.doc.Sperme + ';' + 
+					row.doc.Autres_echantillons_remarques + ';' +
+					row.doc.Specimen_entier + ';' + 
+					row.doc.Specimen_preserve_dans + ';' + 
+					row.doc.Prelevement_organe + ';' +
+					row.doc.Foie_formol + ';' + 
+					row.doc.Foie_RNAl + ';' + 
+					row.doc.Rate_formol + ';' + 
+					row.doc.Rate_RNAl + ';' + 
+					row.doc.Reins_formol + ';' +
+					row.doc.Reins_RNAl + ';' + 
+					row.doc.Intestins_formol + ';' + 
+					row.doc.Intestins_RNAl + ';' + 
+					row.doc.Poumons_formol + ';' +
+					row.doc.Poumons_RNAl + ';' + 
+					row.doc.Coeur_formol + ';' +
+					row.doc.Coeur_RNAl + ';' + 
+					row.doc.Ggl_lymph_formol + ';' +
+					row.doc.Ggl_lymph_RNAl + ';' + 
+					row.doc.Testicules_formol + ';' + 
+					row.doc.Testicules_RNAl + ';' + 
+					row.doc.Peau_formol + ';' +
+					row.doc.Peau_RNAl + ';' + 
+					row.doc.Muscles_formol + ';' + 
+					row.doc.Muscles_RNAl + ';' + 
+					row.doc.Cerveau_formol + ';' +
+					row.doc.Cerveau_RNAl + ';' + 
+					row.doc.Autre + ';' + 
+					row.doc.Autre_formol + ';' + 
+					row.doc.Autre_RNAl + ';' + 
+					row.doc.Remarques_echantillons + ";\r\n"
+					
+					count--;
+					//console.log(count + ' : ' + row.doc.N_identification_CS);
+    		}
+    	};
+    	
+    	function addChauves_souris_capturees_selected_heading() {
+    		CSV = '';
+    		if (array_selected_fields.indexOf('N_identification_CS') > -1) {
+				CSV = CSV + 'N_identification_CS;'
+			};
+			if (array_selected_fields.indexOf('N_identification_mere') > -1) {
+				CSV = CSV + 'N_identification_mere;'
+			};
+			if (array_selected_fields.indexOf('N_site') > -1) {
+				CSV = CSV + 'N_site;'
+			};
+			if (array_selected_fields.indexOf('Date') > -1) {
+				CSV = CSV + 'Date;'
+			};
+			if (array_selected_fields.indexOf('Equipe') > -1) {
+				CSV = CSV + 'Equipe;'
+			};
+			if (array_selected_fields.indexOf('Pays') > -1) {
+				CSV = CSV + 'Pays;'
+			};
+			if (array_selected_fields.indexOf('Region_capture') > -1) {
+				CSV = CSV + 'Region_capture;'
+			};
+			if (array_selected_fields.indexOf('Site_capture') > -1) {
+				CSV = CSV + 'Site_capture;'
+			};
+			if (array_selected_fields.indexOf('Lieu_capture') > -1) {
+				CSV = CSV + 'Lieu_capture;'
+			};
+			if (array_selected_fields.indexOf('Environnement') > -1) {
+				CSV = CSV + 'Environnement;'
+			};
+			if (array_selected_fields.indexOf('Latitude') > -1) {
+				CSV = CSV + 'Latitude;'
+			};
+			if (array_selected_fields.indexOf('Lat_degre_dec') > -1) {
+				CSV = CSV + 'Lat_degre_dec;'
+			};
+			if (array_selected_fields.indexOf('Longitude') > -1) {
+				CSV = CSV + 'Longitude;'
+			};
+			if (array_selected_fields.indexOf('Long_degre_dec') > -1) {
+				CSV = CSV + 'Long_degre_dec;'
+			};
+			if (array_selected_fields.indexOf('Proximite_village_km') > -1) {
+				CSV = CSV + 'Proximite_village_km;'
+			};
+			if (array_selected_fields.indexOf('Methode_capture') > -1) {
+				CSV = CSV + 'Methode_capture;'
+			};
+			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
+				CSV = CSV + 'Type_chauve_souris;'
+			};
+			if (array_selected_fields.indexOf('Espece_identifiee') > -1) {
+				CSV = CSV + 'Espece_identifiee;'
+			};
+			if (array_selected_fields.indexOf('Famille_terrain') > -1) {
+				CSV = CSV + 'Famille_terrain;'
+			};
+    		if (array_selected_fields.indexOf('Genre_terrain') > -1) {
+				CSV = CSV + 'Genre_terrain;'
+			};
+			if (array_selected_fields.indexOf('Espece_terrain') > -1) {
+				CSV = CSV + 'Espece_terrain;'
+			};
+			if (array_selected_fields.indexOf('Famille_labo') > -1) {
+				CSV = CSV + 'Famille_labo;'
+			};
+			if (array_selected_fields.indexOf('Genre_labo') > -1) {
+				CSV = CSV + 'Genre_labo;'
+			};
+			if (array_selected_fields.indexOf('Espece_labo') > -1) {
+				CSV = CSV + 'Espece_labo;'
+			};
+			if (array_selected_fields.indexOf('Famille_consensus') > -1) {
+				CSV = CSV + 'Famille_consensus;'
+			};
+			if (array_selected_fields.indexOf('Genre_consensus') > -1) {
+				CSV = CSV + 'Genre_consensus;'
+			};
+			if (array_selected_fields.indexOf('Espece_consensus') > -1) {
+				CSV = CSV + 'Espece_consensus;'
+			};
+			if (array_selected_fields.indexOf('Sexe') > -1) {
+				CSV = CSV + 'Sexe;'
+			};
+			if (array_selected_fields.indexOf('Age') > -1) {
+				CSV = CSV + 'Age;'
+			};
+			if (array_selected_fields.indexOf('Gestante') > -1) {
+				CSV = CSV + 'Gestante;'
+			};
+			if (array_selected_fields.indexOf('Lactation') > -1) {
+				CSV = CSV + 'Lactation;'
+			};
+			if (array_selected_fields.indexOf('Suitee') > -1) {
+				CSV = CSV + 'Suitee;'
+			};
+			if (array_selected_fields.indexOf('Sexe_enfant') > -1) {
+				CSV = CSV + 'Sexe_enfant;'
+			};
+			if (array_selected_fields.indexOf('Poids_enfant') > -1) {
+				CSV = CSV + 'Poids_enfant;'
+			};
+			if (array_selected_fields.indexOf('Identifiant_enfant') > -1) {
+				CSV = CSV + 'Identifiant_enfant;'
+			};
+			if (array_selected_fields.indexOf('Vivante') > -1) {
+				CSV = CSV + 'Vivante;'
+			};
+			if (array_selected_fields.indexOf('Cause_deces') > -1) {
+				CSV = CSV + 'Cause_deces;'
+			};
+			if (array_selected_fields.indexOf('Poids_gr') > -1) {
+				CSV = CSV + 'Poids_gr;'
+			};
+			if (array_selected_fields.indexOf('L_avant_bras_mm') > -1) {
+				CSV = CSV + 'L_avant_bras_mm;'
+			};
+			if (array_selected_fields.indexOf('L_totale_corps_mm') > -1) {
+				CSV = CSV + 'L_totale_corps_mm;'
+			};
+    		if (array_selected_fields.indexOf('Taille_yeux') > -1) {
+				CSV = CSV + 'Taille_yeux;'
+			};
+			if (array_selected_fields.indexOf('L_queue_mm') > -1) {
+				CSV = CSV + 'L_queue_mm;'
+			};
+			if (array_selected_fields.indexOf('L_metacarpe_3ieme_doigt_mm') > -1) {
+				CSV = CSV + 'L_metacarpe_3ieme_doigt_mm;'
+			};
+			if (array_selected_fields.indexOf('Couleur_pelage_dorsal') > -1) {
+				CSV = CSV + 'Couleur_pelage_dorsal;'
+			};
+			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
+				CSV = CSV + 'Couleur_pelage_ventral;'
+			};
+			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
+				CSV = CSV + 'Remarques_anomalies;'
+			};
+			if (array_selected_fields.indexOf('Sang_DBS_nb_cercles') > -1) {
+				CSV = CSV + 'Sang_DBS_nb_cercles;'
+			};
+			if (array_selected_fields.indexOf('Sang_tube_EDTA') > -1) {
+				CSV = CSV + 'Sang_tube_EDTA;'
+			};
+			if (array_selected_fields.indexOf('Feces_RNAl') > -1) {
+				CSV = CSV + 'Feces_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Urine') > -1) {
+				CSV = CSV + 'Urine;'
+			};
+			if (array_selected_fields.indexOf('Urine_DUS_nombre_cercles') > -1) {
+				CSV = CSV + 'Urine_DUS_nombre_cercles;'
+			};
+			if (array_selected_fields.indexOf('Feces_urine_RNAl') > -1) {
+				CSV = CSV + 'Feces_urine_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Ecouvillon_gorge_RNAl') > -1) {
+				CSV = CSV + 'Ecouvillon_gorge_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Ecouvillon_rectal_RNAl') > -1) {
+				CSV = CSV + 'Ecouvillon_rectal_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Ectoparasites_ethanol') > -1) {
+				CSV = CSV + 'Ectoparasites_ethanol;'
+			};
+			if (array_selected_fields.indexOf('Poils_ethanol') > -1) {
+				CSV = CSV + 'Poils_ethanol;'
+			};
+			if (array_selected_fields.indexOf('Wing_punch_ethanol') > -1) {
+				CSV = CSV + 'Wing_punch_ethanol;'
+			};
+			if (array_selected_fields.indexOf('Feces_culture_glycerol') > -1) {
+				CSV = CSV + 'Feces_culture_glycerol;'
+			};
+			if (array_selected_fields.indexOf('Sperme') > -1) {
+				CSV = CSV + 'Sperme;'
+			};
+			if (array_selected_fields.indexOf('Autres_echantillons_remarques') > -1) {
+				CSV = CSV + 'Autres_echantillons_remarques;'
+			};
+			if (array_selected_fields.indexOf('Specimen_entier') > -1) {
+				CSV = CSV + 'Specimen_entier;'
+			};
+    		if (array_selected_fields.indexOf('Specimen_preserve_dans') > -1) {
+				CSV = CSV + 'Specimen_preserve_dans;'
+			};
+			if (array_selected_fields.indexOf('Prelevement_organe') > -1) {
+				CSV = CSV + 'Prelevement_organe;'
+			};
+			if (array_selected_fields.indexOf('Foie_formol') > -1) {
+				CSV = CSV + 'Foie_formol;'
+			};
+			if (array_selected_fields.indexOf('Foie_RNAl') > -1) {
+				CSV = CSV + 'Foie_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Rate_formol') > -1) {
+				CSV = CSV + 'Rate_formol;'
+			};
+			if (array_selected_fields.indexOf('Rate_RNAl') > -1) {
+				CSV = CSV + 'Rate_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Reins_formol') > -1) {
+				CSV = CSV + 'Reins_formol;'
+			};
+			if (array_selected_fields.indexOf('Reins_RNAl') > -1) {
+				CSV = CSV + 'Reins_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Intestins_formol') > -1) {
+				CSV = CSV + 'Intestins_formol;'
+			};
+			if (array_selected_fields.indexOf('Intestins_RNAl') > -1) {
+				CSV = CSV + 'Intestins_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Poumons_formol') > -1) {
+				CSV = CSV + 'Poumons_formol;'
+			};
+			if (array_selected_fields.indexOf('Poumons_RNAl') > -1) {
+				CSV = CSV + 'Poumons_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Coeur_formol') > -1) {
+				CSV = CSV + 'Coeur_formol;'
+			};
+			if (array_selected_fields.indexOf('Coeur_RNAl') > -1) {
+				CSV = CSV + 'Coeur_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Ggl_lymph_formol') > -1) {
+				CSV = CSV + 'Ggl_lymph_formol;'
+			};
+			if (array_selected_fields.indexOf('Ggl_lymph_RNAl') > -1) {
+				CSV = CSV + 'Ggl_lymph_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Testicules_formol') > -1) {
+				CSV = CSV + 'Testicules_formol;'
+			};
+			if (array_selected_fields.indexOf('Testicules_RNAl') > -1) {
+				CSV = CSV + 'Testicules_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Peau_formol') > -1) {
+				CSV = CSV + 'Peau_formol;'
+			};
+			if (array_selected_fields.indexOf('Peau_RNAl') > -1) {
+				CSV = CSV + 'Peau_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Muscles_formol') > -1) {
+				CSV = CSV + 'Muscles_formol;'
+			};
+			if (array_selected_fields.indexOf('Muscles_RNAl') > -1) {
+				CSV = CSV + 'Muscles_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Cerveau_formol') > -1) {
+				CSV = CSV + 'Cerveau_formol;'
+			};
+			if (array_selected_fields.indexOf('Cerveau_RNAl') > -1) {
+				CSV = CSV + 'Cerveau_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Autre') > -1) {
+				CSV = CSV + 'Autre;'
+			};
+			if (array_selected_fields.indexOf('Autre_formol') > -1) {
+				CSV = CSV + 'Autre_formol;'
+			};
+			if (array_selected_fields.indexOf('Autre_RNAl') > -1) {
+				CSV = CSV + 'Autre_RNAl;'
+			};
+			if (array_selected_fields.indexOf('Remarques_echantillons') > -1) {
+				CSV = CSV + 'Remarques_echantillons;'
+			};
+			CSV = CSV + "\r\n";
+    	}
+    	
+		function addChauves_souris_capturees_selected(row) {
+			if (count > 0) {
+	    		
+    			if (array_selected_fields.indexOf('N_identification_CS') > -1) {
+    				CSV = CSV + row.doc.N_identification_CS + ";" 
+				};
+    			if (array_selected_fields.indexOf('N_identification_mere') > -1) {
+    				CSV = CSV + row.doc.N_identification_mere + ";"
+    			};
+    			if (array_selected_fields.indexOf('N_site') > -1) {
+    				CSV = CSV + row.doc.N_site + ";"
+    			};
+    			if (array_selected_fields.indexOf('Date') > -1) {
+    				CSV = CSV + row.doc.Date + ";"
+    			};
+    			if (array_selected_fields.indexOf('Equipe') > -1) {
+    				CSV = CSV + row.doc.Equipe + ";"
+    			};
+    			if (array_selected_fields.indexOf('Pays') > -1) {
+    				CSV = CSV + row.doc.Pays + ";"
+    			};
+    			if (array_selected_fields.indexOf('Region_capture') > -1) {
+    				CSV = CSV + row.doc.Region_capture + ";"
+    			};
+    			if (array_selected_fields.indexOf('Site_capture') > -1) {
+    				CSV = CSV + row.doc.Site_capture + ";"
+    			};
+    			if (array_selected_fields.indexOf('Lieu_capture') > -1) {
+    				CSV = CSV + row.doc.Lieu_capture + ";"
+    			};
+    			if (array_selected_fields.indexOf('Environnement') > -1) {
+    				CSV = CSV + row.doc.Environnement + ";"
+    			};
+    			if (array_selected_fields.indexOf('Latitude') > -1) {
+    				CSV = CSV + row.doc.Latitude + ";"
+    			};
+    			if (array_selected_fields.indexOf('Lat_degre_dec') > -1) {
+    				CSV = CSV + row.doc.Lat_degre_dec + ";"
+    			};
+    			if (array_selected_fields.indexOf('Longitude') > -1) {
+    				CSV = CSV + row.doc.Longitude + ";"
+    			};
+    			if (array_selected_fields.indexOf('Long_degre_dec') > -1) {
+    				CSV = CSV + row.doc.Long_degre_dec + ";"
+    			};
+    			if (array_selected_fields.indexOf('Proximite_village_km') > -1) {
+    				CSV = CSV + row.doc.Proximite_village_km + ";"
+    			};
+    			if (array_selected_fields.indexOf('Methode_capture') > -1) {
+    				CSV = CSV + row.doc.Methode_capture + ";"
+    			};
+    			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
+    				CSV = CSV + row.doc.Type_chauve_souris + ";"
+    			};
+    			if (array_selected_fields.indexOf('Espece_identifiee') > -1) {
+    				CSV = CSV + row.doc.Espece_identifiee + ";"
+    			};
+    			if (array_selected_fields.indexOf('Famille_terrain') > -1) {
+    				CSV = CSV + row.doc.Famille_terrain + ";"
+    			};
+        		if (array_selected_fields.indexOf('Genre_terrain') > -1) {
+    				CSV = CSV + row.doc.Genre_terrain + ";"
+    			};
+    			if (array_selected_fields.indexOf('Espece_terrain') > -1) {
+    				CSV = CSV + row.doc.Espece_terrain + ";"
+    			};
+    			if (array_selected_fields.indexOf('Famille_labo') > -1) {
+    				CSV = CSV + row.doc.Famille_labo + ";"
+    			};
+    			if (array_selected_fields.indexOf('Genre_labo') > -1) {
+    				CSV = CSV + row.doc.Genre_labo + ";"
+    			};
+    			if (array_selected_fields.indexOf('Espece_labo') > -1) {
+    				CSV = CSV + row.doc.Espece_labo + ";"
+    			};
+    			if (array_selected_fields.indexOf('Famille_consensus') > -1) {
+    				CSV = CSV + row.doc.Famille_consensus + ";"
+    			};
+    			if (array_selected_fields.indexOf('Genre_consensus') > -1) {
+    				CSV = CSV + row.doc.Genre_consensus + ";"
+    			};
+    			if (array_selected_fields.indexOf('Espece_consensus') > -1) {
+    				CSV = CSV + row.doc.Espece_consensus + ";"
+    			};
+    			if (array_selected_fields.indexOf('Sexe') > -1) {
+    				CSV = CSV + row.doc.Sexe + ";"
+    			};
+    			if (array_selected_fields.indexOf('Age') > -1) {
+    				CSV = CSV + row.doc.Age + ";"
+    			};
+    			if (array_selected_fields.indexOf('Gestante') > -1) {
+    				CSV = CSV + row.doc.Gestante + ";"
+    			};
+    			if (array_selected_fields.indexOf('Lactation') > -1) {
+    				CSV = CSV + row.doc.Lactation + ";"
+    			};
+    			if (array_selected_fields.indexOf('Suitee') > -1) {
+    				CSV = CSV + row.doc.Suitee + ";"
+    			};
+    			if (array_selected_fields.indexOf('Sexe_enfant') > -1) {
+    				CSV = CSV + row.doc.Sexe_enfant + ";"
+    			};
+    			if (array_selected_fields.indexOf('Poids_enfant') > -1) {
+    				CSV = CSV + row.doc.Poids_enfant + ";"
+    			};
+    			if (array_selected_fields.indexOf('Identifiant_enfant') > -1) {
+    				CSV = CSV + row.doc.Identifiant_enfant + ";"
+    			};
+    			if (array_selected_fields.indexOf('Vivante') > -1) {
+    				CSV = CSV + row.doc.Vivante + ";"
+    			};
+    			if (array_selected_fields.indexOf('Cause_deces') > -1) {
+    				CSV = CSV + row.doc.Cause_deces + ";"
+    			};
+    			if (array_selected_fields.indexOf('Poids_gr') > -1) {
+    				CSV = CSV + row.doc.Poids_gr + ";"
+    			};
+    			if (array_selected_fields.indexOf('L_avant_bras_mm') > -1) {
+    				CSV = CSV + row.doc.L_avant_bras_mm + ";"
+    			};
+    			if (array_selected_fields.indexOf('L_totale_corps_mm') > -1) {
+    				CSV = CSV + row.doc.L_totale_corps_mm + ";"
+    			};
+        		if (array_selected_fields.indexOf('Taille_yeux') > -1) {
+    				CSV = CSV + row.doc.Taille_yeux + ";"
+    			};
+    			if (array_selected_fields.indexOf('L_queue_mm') > -1) {
+    				CSV = CSV + row.doc.L_queue_mm + ";"
+    			};
+    			if (array_selected_fields.indexOf('L_metacarpe_3ieme_doigt_mm') > -1) {
+    				CSV = CSV + row.doc.L_metacarpe_3ieme_doigt_mm + ";"
+    			};
+    			if (array_selected_fields.indexOf('Couleur_pelage_dorsal') > -1) {
+    				CSV = CSV + row.doc.Couleur_pelage_dorsal + ";"
+    			};
+    			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
+    				CSV = CSV + row.doc.Couleur_pelage_ventral + ";"
+    			};
+    			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
+    				CSV = CSV + row.doc.Remarques_anomalies + ";"
+    			};
+    			if (array_selected_fields.indexOf('Sang_DBS_nb_cercles') > -1) {
+    				CSV = CSV + row.doc.Sang_DBS_nb_cercles + ";"
+    			};
+    			if (array_selected_fields.indexOf('Sang_tube_EDTA') > -1) {
+    				CSV = CSV + row.doc.Sang_tube_EDTA + ";"
+    			};
+    			if (array_selected_fields.indexOf('Feces_RNAl') > -1) {
+    				CSV = CSV + row.doc.Feces_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Urine') > -1) {
+    				CSV = CSV + row.doc.Urine + ";"
+    			};
+    			if (array_selected_fields.indexOf('Urine_DUS_nombre_cercles') > -1) {
+    				CSV = CSV + row.doc.Urine_DUS_nombre_cercles + ";"
+    			};
+    			if (array_selected_fields.indexOf('Feces_urine_RNAl') > -1) {
+    				CSV = CSV + row.doc.Feces_urine_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Ecouvillon_gorge_RNAl') > -1) {
+    				CSV = CSV + row.doc.Ecouvillon_gorge_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Ecouvillon_rectal_RNAl') > -1) {
+    				CSV = CSV + row.doc.Ecouvillon_rectal_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Ectoparasites_ethanol') > -1) {
+    				CSV = CSV + row.doc.Ectoparasites_ethanol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Poils_ethanol') > -1) {
+    				CSV = CSV + row.doc.Poils_ethanol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Wing_punch_ethanol') > -1) {
+    				CSV = CSV + row.doc.Wing_punch_ethanol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Feces_culture_glycerol') > -1) {
+    				CSV = CSV + row.doc.Feces_culture_glycerol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Sperme') > -1) {
+    				CSV = CSV + row.doc.Sperme + ";"
+    			};
+    			if (array_selected_fields.indexOf('Autres_echantillons_remarques') > -1) {
+    				CSV = CSV + row.doc.Autres_echantillons_remarques + ";"
+    			};
+    			if (array_selected_fields.indexOf('Specimen_entier') > -1) {
+    				CSV = CSV + row.doc.Specimen_entier + ";"
+    			};
+        		if (array_selected_fields.indexOf('Specimen_preserve_dans') > -1) {
+    				CSV = CSV + row.doc.Specimen_preserve_dans + ";"
+    			};
+    			if (array_selected_fields.indexOf('Prelevement_organe') > -1) {
+    				CSV = CSV + row.doc.Prelevement_organe + ";"
+    			};
+    			if (array_selected_fields.indexOf('Foie_formol') > -1) {
+    				CSV = CSV + row.doc.Foie_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Foie_RNAl') > -1) {
+    				CSV = CSV + row.doc.Foie_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Rate_formol') > -1) {
+    				CSV = CSV + row.doc.Rate_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Rate_RNAl') > -1) {
+    				CSV = CSV + row.doc.Rate_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Reins_formol') > -1) {
+    				CSV = CSV + row.doc.Reins_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Reins_RNAl') > -1) {
+    				CSV = CSV + row.doc.Reins_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Intestins_formol') > -1) {
+    				CSV = CSV + row.doc.Intestins_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Intestins_RNAl') > -1) {
+    				CSV = CSV + row.doc.Intestins_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Poumons_formol') > -1) {
+    				CSV = CSV + row.doc.Poumons_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Poumons_RNAl') > -1) {
+    				CSV = CSV + row.doc.Poumons_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Coeur_formol') > -1) {
+    				CSV = CSV + row.doc.Coeur_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Coeur_RNAl') > -1) {
+    				CSV = CSV + row.doc.Coeur_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Ggl_lymph_formol') > -1) {
+    				CSV = CSV + row.doc.Ggl_lymph_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Ggl_lymph_RNAl') > -1) {
+    				CSV = CSV + row.doc.Ggl_lymph_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Testicules_formol') > -1) {
+    				CSV = CSV + row.doc.Testicules_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Testicules_RNAl') > -1) {
+    				CSV = CSV + row.doc.Testicules_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Peau_formol') > -1) {
+    				CSV = CSV + row.doc.Peau_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Peau_RNAl') > -1) {
+    				CSV = CSV + row.doc.Peau_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Muscles_formol') > -1) {
+    				CSV = CSV + row.doc.Muscles_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Muscles_RNAl') > -1) {
+    				CSV = CSV + row.doc.Muscles_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Cerveau_formol') > -1) {
+    				CSV = CSV + row.doc.Cerveau_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Cerveau_RNAl') > -1) {
+    				CSV = CSV + row.doc.Cerveau_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Autre') > -1) {
+    				CSV = CSV + row.doc.Autre + ";"
+    			};
+    			if (array_selected_fields.indexOf('Autre_formol') > -1) {
+    				CSV = CSV + row.doc.Autre_formol + ";"
+    			};
+    			if (array_selected_fields.indexOf('Autre_RNAl') > -1) {
+    				CSV = CSV + row.doc.Autre_RNAl + ";"
+    			};
+    			if (array_selected_fields.indexOf('Remarques_echantillons') > -1) {
+    				CSV = CSV + row.doc.Remarques_echantillons + ";"
+    			};
+    			CSV = CSV + "\r\n";
+    				
+				count--;
+			}
+    		
+    	};
+        
+    </script> 
+      
+  </body>
+</html>
+	 

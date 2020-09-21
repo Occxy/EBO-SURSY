@@ -1,0 +1,222 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Testresults
+ *
+ * @ORM\Table(name="testresults", indexes={@ORM\Index(name="NIdent", columns={"NIdent"})})
+ * @ORM\Entity
+ */
+class Testresults
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="N", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $n;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=true)
+     */
+    private $nident;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MarburgvirusRTPCR", type="string", length=255, nullable=false)
+     */
+    private $marburgvirusrtpcr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MarburgvirusCONVPCR", type="string", length=255, nullable=false)
+     */
+    private $marburgvirusconvpcr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ParamyxovirusFR", type="string", length=255, nullable=true)
+     */
+    private $paramyxovirusfr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ParamyxovirusORG", type="string", length=255, nullable=true)
+     */
+    private $paramyxovirusorg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ParamyxovirusGS", type="string", length=255, nullable=true)
+     */
+    private $paramyxovirusgs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ParamyxovirusCX", type="string", length=255, nullable=true)
+     */
+    private $paramyxoviruscx;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ParamyxovirusInt", type="string", length=255, nullable=true)
+     */
+    private $paramyxovirusint;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CoronavirusFR", type="string", length=255, nullable=true)
+     */
+    private $coronavirusfr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CoronavirusORG", type="string", length=255, nullable=true)
+     */
+    private $coronavirusorg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CoronavirusGS", type="string", length=255, nullable=true)
+     */
+    private $coronavirusgs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CoronavirusCX", type="string", length=255, nullable=true)
+     */
+    private $coronaviruscx;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CoronavirusInt", type="string", length=255, nullable=true)
+     */
+    private $coronavirusint;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlavivirusFR", type="string", length=255, nullable=true)
+     */
+    private $flavivirusfr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlavivirusORG", type="string", length=255, nullable=true)
+     */
+    private $flavivirusorg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlavivirusGS", type="string", length=255, nullable=true)
+     */
+    private $flavivirusgs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlavivirusCX", type="string", length=255, nullable=true)
+     */
+    private $flaviviruscx;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlavivirusInt", type="string", length=255, nullable=true)
+     */
+    private $flavivirusint;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlphavirusFR", type="string", length=255, nullable=true)
+     */
+    private $alphavirusfr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlphavirusORG", type="string", length=255, nullable=true)
+     */
+    private $alphavirusorg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlphavirusGS", type="string", length=255, nullable=true)
+     */
+    private $alphavirusgs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlphavirusCX", type="string", length=255, nullable=true)
+     */
+    private $alphaviruscx;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlphavirusInt", type="string", length=255, nullable=true)
+     */
+    private $alphavirusint;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LissavirusFR", type="string", length=255, nullable=true)
+     */
+    private $lissavirusfr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LissavirusORG", type="string", length=255, nullable=true)
+     */
+    private $lissavirusorg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LissavirusGS", type="string", length=255, nullable=true)
+     */
+    private $lissavirusgs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LissavirusCX", type="string", length=255, nullable=true)
+     */
+    private $lissaviruscx;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LissavirusInt", type="string", length=255, nullable=true)
+     */
+    private $lissavirusint;
+
+
+}
+

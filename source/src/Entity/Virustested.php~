@@ -1,0 +1,75 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Virustested
+ *
+ * @ORM\Table(name="virustested", indexes={@ORM\Index(name="NIdent", columns={"NIdent"})})
+ * @ORM\Entity
+ */
+class Virustested
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=true)
+     */
+    private $nident;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="MarburgVirusTested", type="boolean", nullable=true)
+     */
+    private $marburgvirustested;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ParamyxovirusTested", type="boolean", nullable=true)
+     */
+    private $paramyxovirustested;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="CoronavirusTested", type="boolean", nullable=true)
+     */
+    private $coronavirustested;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="FlavivirusTested", type="boolean", nullable=true)
+     */
+    private $flavivirustested;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Alphavirus", type="boolean", nullable=true)
+     */
+    private $alphavirus;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Lissavirus", type="boolean", nullable=true)
+     */
+    private $lissavirus;
+
+
+}
+

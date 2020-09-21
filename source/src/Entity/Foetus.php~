@@ -1,0 +1,89 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Foetus
+ *
+ * @ORM\Table(name="foetus", indexes={@ORM\Index(name="NIdentMother", columns={"NIdentMother"})})
+ * @ORM\Entity
+ */
+class Foetus
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="N", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $n;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdentMother", type="string", length=255, nullable=true)
+     */
+    private $nidentmother;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NbFoetus", type="integer", nullable=true)
+     */
+    private $nbfoetus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus1", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus2", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus3", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus4", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus5", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus5;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus6", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus6;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SexFoetus7", type="string", length=255, nullable=true)
+     */
+    private $sexfoetus7;
+
+
+}
+

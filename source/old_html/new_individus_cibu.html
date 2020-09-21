@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    
+    <!-- <style>
+		.input-group-addon{color:#ff0000; background-color: #ffffff;}
+	</style> -->
+        
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="vendor/ladda/ladda-themeless.min.css">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>
+    
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
+        
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">    
+    
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- <script src="js/charts-home.js"></script> -->
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"></script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+    
+    <!-- Data Tables-->
+    <script src="vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/tables-datatable.js"></script>
+    
+    <!-- Forms init-->
+    <!-- <script src="js/forms-advanced.js"></script>-->
+    
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    
+    <!-- Loading buttons-->
+    <script src="vendor/ladda/spin.min.js"></script>
+    <script src="vendor/ladda/ladda.min.js"></script>
+    <script src="js/components-ladda.js"></script>
+    
+    <script src="js/pouchdb.authentication.js"></script> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+    
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    
+    <script src="js/uuid.js"></script>
+    
+    <script src="js/load-page.js"></script> 
+    
+    <script src="js/addReference.js"></script> 
+    
+  </head>
+  <body onload="loaded_bat('chauves_souris_capturees_astre')">
+  
+    <script>
+		logged_only();
+		var clickedBtn = null;
+		var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
+		} else {
+			debug = localStorage.getItem('debug');
+		};
+		var html = 'capturees';
+		//loadjs('js/menu_rights.js');
+	</script> 
+  
+    <!-- <script type="text/javascript">
+    	showAlertFlash();
+    </script> -->	
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	                            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                    <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                        
+                    <li id="li_transvihmiDropdown" name="1"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled">
+                        
+                        <li id="li_site_transvihmi" name="1" style="text-align: right"><a href="site_transvihmi.html">Site</a></li>                            
+		                                       
+                        <li id="li_batTransvihmiDropdown" name="1"><a id="a_batTransvihmiDropdown" name="1" href="#ul_batTransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batTransvihmiDropdown" name="1" class="collapse list-unstyled show">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_transvihmi.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_transvihmi.html">Suivi longitudinal - données journalières</a></li>                            
+                         		                    
+		                    <li id="li_batTransvihmiCaptureesDropdown" name="1"><a id="a_batTransvihmiCaptureesDropdown" name="1" href="#ul_batTransvihmiCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_batTransvihmiCaptureesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_transvihmi" name="1"><a href="bat_capturees_transvihmi.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_transvihmi" name="1"><a href="bat_map_capturees_transvihmi.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_transvihmi" name="1"><a href="importation_chauves_souris_capturees_transvihmi.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batTransvihmiNonInvasivesDropdown" name="1"><a id="a_batTransvihmiNonInvasivesDropdown" name="1" href="#ul_batTransvihmiNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batTransvihmiNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_transvihmi" name="1"><a href="bat_non_invasives_transvihmi.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_transvihmi" name="1"><a href="bat_map_non_invasives_transvihmi.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_transvihmi" name="1"><a href="importation_chauves_souris_non_invasives_transvihmi.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	    <li id="li_viande_de_brousse_TransvihmiDropdown" name="1"><a id="a_viande_de_brousse_TransvihmiDropdown" name="1" href="#ul_viande_de_brousse_TransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_TransvihmiDropdown" name="1" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussetransvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">données</a>                           
+                        	<li id="li_viande_de_brousse_map_transvihmi" name="1"><a href="viande_de_brousse_map_transvihmi.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_transvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+                      </ul>
+                    </li>
+                    
+                    <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="site_mivegec.html">Site</a></li>                            
+		                
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_mivegec.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_mivegec.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="bat_capturees_mivegec.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="bat_map_capturees_mivegec.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="importation_chauves_souris_capturees_mivegec.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="bat_non_invasives_mivegec.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="bat_map_non_invasives_mivegec.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="importation_chauves_souris_non_invasives_mivegec.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_MivegecDropdown" name="2"><a id="a_viande_de_brousse_MivegecDropdown" href="#ul_viande_de_brousse_MivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_MivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussemivegec" name="2"><a href="viande_de_brousse_mivegec.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="viande_de_brousse_map_mivegec.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="importation_viande_de_brousse_mivegec.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                    
+                    <li id="li_astreDropdown" name="6"> <a id="a_astreDropdown" name="6" href="#ul_astreDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_site_astre" name="6" style="text-align: right"><a href="site_astre.html">Site</a></li>                            
+		                
+                        <li id="li_batAstreDropdown" name="6"><a id="a_batAstreDropdown" name="6" href="#ul_batAstreDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batAstreDropdown" name="6" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_astre.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_astre.html">Suivi longitudinal - données journalières</a></li>                              
+                        		                    
+		                    <li id="li_batAstreCaptureesDropdown" name="6"><a id="a_batAstreCaptureesDropdown" name="6" href="#ul_batAstreCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batAstreCaptureesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_astre" name="6"><a href="bat_capturees_astre.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_astre" name="6"><a href="bat_map_capturees_astre.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_astre" name="6"><a href="importation_chauves_souris_capturees_astre.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batAstreNoninvasivesDropdown" name="6"><a id="a_batAstreNonInvasivesDropdown" name="6" href="#ul_batAstreNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batAstreNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_non_invasives_astre.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_map_non_invasives_astre.html">carte</a></li>
+    	                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="importation_chauves_souris_non_invasives_astre.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_CIBUDropdown" name="3" class="active"> <a id="a_CIBUDropdown" href="#ul_CIBUDropdown" aria-expanded="true" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" class="collapse list-unstyled show">
+                        <li id="li_individualCIBUDropdown" name="3" class="active"><a id="a_individualCIBUDropdown" href="#ul_individualCIBUDropdown" aria-expanded="true" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individualCIBUDropdown" class="collapse list-unstyled show">
+		                    <li id="li_individualCIBUSpecies1Dropdown" name="3" class="active"><a id="a_individualCIBUSpecies1Dropdown" href="#ul_individualCIBUSpecies1Dropdown" aria-expanded="true" data-toggle="collapse">(Espèces?)</a>
+		                      <ul id="ul_individualCIBUSpecies1Dropdown" class="collapse list-unstyled show">
+		                        <li id="li_individual_species1_cibu" name="3" class="active"><a href="#">données</a></li>                            
+		                        <li id="li_individual_map_species1_cibu" name ="3"><a href="#">carte</a></li>
+		                        <li id="li_importation_individual_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNoninvasivesDropdown" name="4"><a id="a_batEpvoNoninvasivesDropdown" href="#ul_batEpvoNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNoninvasivesDropdown" name="5"><a id="a_batIPGNoninvasivesDropdown" href="#ul_batIPGNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Base de données des Individus</h2>
+            </div>
+          </header>
+            <section>          
+              <div class="container-fluid">              
+                <div class="row">                
+                  <div class="col-lg-12">                  
+                    <div class="card">        
+                      <div class="card-header">
+                       <h4>Nouvel Individu</h4>
+                      </div>
+                      <div class="card-body">                                            
+                        <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
+				        
+				          <div class="card bg-light">
+				            <div class="card-header card-header-transparent d-flex align-items-center">
+                              <h3 class="h4">Identification</h3>
+                            </div>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-lg-4">                    	      
+	      			    	      <div class="form-group">
+	      			    	        <label for="N_identification">Numéro d'identification individu</label>
+					                <div class="input-group">
+					                  <input type="text" class="form-control" id="N_identification" placeholder="Numéro d'identification individu" required>
+	                                  <div class="invalid-feedback">
+		                      	        S'il vous plaît fournir un numéro d'identification individu valide !	      				  	      				    
+	    					          </div>
+	    					        </div>
+	    					      </div>
+								  </div>
+							      <div class="col-lg-4">	
+								    <div class="form-group">	  
+								      <label for="Coordonnees_GPS">Coordonnées GPS</label>
+					          	      <input type="text" class="form-control" id="Coordonnees_GPS" placeholder="Coordonnées GPS" >
+	                        	    </div>											    
+	                              </div>
+	                              <div class="col-lg-4">
+		            				<div class="form-group">
+		                              <label for="Date_d_apparition_des_symptomes">Date d'apparition des symptomes</label>                                
+		                              <div class="input-group">
+		    							<input type="text" class="form-control input-datepicker" id="Date_d_apparition_des_symptomes" placeholder="Date d'apparition des symptomes" required>
+		    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
+		                                  <span class="fa fa-calendar"></span>
+		    							</div>
+		    							<div class="invalid-feedback">
+			                              S'il vous plaît fournir une date d'apparition des symptomes valide !
+			                            </div>
+		                              </div>
+		    					    </div> 
+		    					  </div>
+	                            </div>                                                                                     
+	                          </div>
+	                        </div>
+	                        
+		                    <div class="card bg-light">
+					          <div class="card-header card-header-transparent d-flex align-items-center">
+		                         <h3 class="h4">Prélèvements</h3>
+		                      </div>
+		                      <div class="card-body">
+                                <div class="row">
+				      	   	      <div class="col-lg-6">	
+							        <div class="form-group">	  
+							          <label for="ID_preleveur">ID préleveur</label>
+					         	      <input type="text" class="form-control" id="ID_preleveur" placeholder="ID préleveur" >
+		                       	    </div>											    
+		                          </div>
+				      			  <div class="col-lg-6">	
+								    <div class="form-group">	  
+							          <label for="Type_echantillon">Type_echantillon</label>
+						         	  <input type="text" class="form-control" id="Type_echantillon" placeholder="Type_echantillon" >
+		                            </div>											    
+		                          </div>
+				      		    </div>
+				      	      
+				      			<div class="row">
+				      	   	      <div class="col-lg-6">	
+							        <div class="form-group">	  
+							          <label for="Kit_de_prelevement">Kit de prélèvement</label>
+					         	      <input type="text" class="form-control" id="Kit_de_prelevement" placeholder="Kit de prélèvement" >
+		                       	    </div>											    
+		                          </div>
+				      			  <div class="col-lg-6">
+		            				<div class="form-group">
+		                              <label for="Date_de_prelevement">Date de prélèvement</label>                                
+		                              <div class="input-group">
+		    							<input type="text" class="form-control input-datepicker" id="Date_de_prelevement" placeholder="Date de prélèvement" required>
+		    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
+		                                  <span class="fa fa-calendar"></span>
+		    							</div>
+		    							<div class="invalid-feedback">
+			                              S'il vous plaît fournir une date date de prélèvement valide !
+			                            </div>
+		                              </div>
+		    					    </div> 
+		    					  </div>
+				      		    </div> 
+				      	        
+		                      </div>
+		                    </div>
+		                  
+		                    <div class="card bg-light">
+					          <div class="card-header card-header-transparent d-flex align-items-center">
+		                         <h3 class="h4">Analyses</h3>
+		                      </div>
+		                      <div class="card-body">
+                                <div class="row">
+				      	   	      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Ebolavirus_Zaire">RT PCR Ebolavirus Zaire</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Zaire" placeholder="RT PCR Ebolavirus Zaire" >
+		                       	    </div>											    
+		                          </div>
+				      			  <div class="col-lg-4">	
+								    <div class="form-group">	  
+							          <label for="RT_PCR_Ebolavirus_Reston">RT PCR Ebolavirus Reston</label>
+						         	  <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Reston" placeholder="RT PCR Ebolavirus Reston" >
+		                            </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Ebolavirus_Tai_Forest">RT PCR Ebolavirus Tai Forest</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Tai_Forest" placeholder="RT PCR Ebolavirus Tai Forest" >
+		                       	    </div>											    
+		                          </div>
+				      		    </div>
+				      	      
+				      			<div class="row">
+				      	   	      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Ebolavirus_Soudan">RT PCR Ebolavirus Soudan</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Soudan" placeholder="RT PCR Ebolavirus Soudan" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Ebolavirus_Bundibugyo">RT PCR Ebolavirus Bundibugyo</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Bundibugyo" placeholder="RT PCR Ebolavirus Bundibugyo" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Marbug_virus">RT PCR Marbug virus</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Marbug_virus" placeholder="RT PCR Marbug virus" >
+		                       	    </div>											    
+		                          </div>
+				      		    </div> 
+				      		    
+				      		    <div class="row">
+				      	   	      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Lassa_virus">RT PCR Lassa virus</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Lassa_virus" placeholder="RT PCR Lassa virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_RVF_virus">RT PCR RVF virus</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_RVF_virus" placeholder="RT PCR RVF virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_CCHF_virus">RT PCR CCHF virus</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_CCHF_virus" placeholder="RT PCR CCHF virus" >
+		                       	    </div>											    
+		                          </div>
+				      		    </div> 
+				      		    
+				      		    <div class="row">
+				      	   	      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="RT_PCR_Nipah">RT PCR Nipah</label>
+					         	      <input type="text" class="form-control" id="RT_PCR_Nipah" placeholder="RT PCR Nipah" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_ELISA_Ebolavirus">IgM ELISA Ebolavirus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_Ebolavirus" placeholder="IgM ELISA Ebolavirus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_ELISA_Marbug_virus">IgM LISA Marbug virus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_Marbug_virus" placeholder="IgM ELISA Marbug virus" >
+		                       	    </div>											    
+		                          </div>
+				      		    </div> 
+				      		    <div class="row">
+				      		      <div class="col-lg-4">	
+							        <div class="form-group">
+							          <label for="IgM_ELISA_Marbug_virus">Ig ELISA Marbug virus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_Marbug_virus" placeholder="IgM ELISA Marbug virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">
+							          <label for="IgM_ELISA_Lassa_virus">IgM ELISA Lassa virus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_Lassa_virus" placeholder="IgM ELISA Lassa virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">
+							          <label for="IgM_ELISA_RVF_virus">IgM ELISA RVF virus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_RVF_virus" placeholder="IgM ELISA RVF virus" >
+		                       	    </div>											    
+		                          </div>
+		                       </div> 
+		                       
+		                       <div class="row">   
+		                         <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_ELISA_CCHF_virus">IgM ELISA CCHF virus</label>
+					         	      <input type="text" class="form-control" id="IgM_ELISA_CCHF_virus" placeholder="IgM ELISA CCHF virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_MIA_Ebolavirus">IgM MIA Ebolavirus</label>
+					         	      <input type="text" class="form-control" id="IgM_MIA_Ebolavirus" placeholder="IgM MIA Ebolavirus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_MIA_Marbug_virus">IgM MIA Marbug virus</label>
+					         	      <input type="text" class="form-control" id="IgM_MIA_Marbug_virus" placeholder="IgM_MIA_Marbug_virus" >
+		                       	    </div>											    
+		                          </div>
+		                        </div> 
+				      		 
+				      		    <div class="row">
+				      	   	      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_MIA_Lassa_virus">IgM MIA Lassa virus</label>
+					         	      <input type="text" class="form-control" id="IgM_MIA_Lassa_virus" placeholder="IgM MIA Lassa virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_MIA_RVF_virus">IgM MIA RVF virus</label>
+					         	      <input type="text" class="form-control" id="IgM_MIA_RVF_virus" placeholder="IgM MIA RVF virus" >
+		                       	    </div>											    
+		                          </div>
+		                          
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="IgM_MIA_CCHF_virus">IgM_MIA CCHF virus</label>
+					         	      <input type="text" class="form-control" id="IgM_MIA_CCHF_virus" placeholder="IgM MIA RVF virus" >
+		                       	    </div>											    
+		                          </div>
+				      		    </div> 
+				      		  
+				      		    <div class="row">
+				      		      <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="SNT_Ebolavirus">SNT Ebolavirus</label>
+					         	      <input type="text" class="form-control" id="SNT_Ebolavirus" placeholder="SNT Ebolavirus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="SNT_Marbug_virus">SNT Marbug virus</label>
+					         	      <input type="text" class="form-control" id="SNT_Marbug_virus" placeholder="SNT Marbug virus" >
+		                       	    </div>											    
+		                          </div>
+		                          <div class="col-lg-4">	
+							        <div class="form-group">	  
+							          <label for="SNT_Lassa_virus">SNT Lassa virus</label>
+					         	      <input type="text" class="form-control" id="SNT_Lassa_virus" placeholder="SNT Lassa virus" >
+		                       	    </div>											    
+		                          </div>
+		                        </div> 
+				      		    
+				      		    <div class="row">
+				      		      <div class="col-lg-4">	
+								    <div class="form-group">	  
+							          <label for="SNT_RVF_virus">SNT RVF virus</label>
+						        	  <input type="text" class="form-control" id="SNT_RVF_virus" placeholder="SNT RVF virus" >
+			                       	</div>											    
+			                      </div>
+			                      <div class="col-lg-4">	
+								    <div class="form-group">
+								      <label for="SNT_CCHF_virus">SNT CCHF virus</label>
+						         	  <input type="text" class="form-control" id="SNT_CCHF_virus" placeholder="SNT CCHF virus" >
+			                       	</div>											    
+			                      </div>
+							      <div class="col-lg-4">
+							        <div class="form-group">
+							          <label for="SEQ_Genbank_ID">SEQ Genbank ID</label>
+					         	      <input type="text" class="form-control" id="SEQ_Genbank_ID" placeholder="SEQ Genbank ID" >
+		                       	    </div>
+		                       	  </div>											    
+		                        </div>
+				      		  </div> 
+                              
+		                    </div>
+		                    
+				      	    <button id="save" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+				              <span class="ladda-label">Sauver l'individu</span>
+				           	  <span class="ladda-spinner"></span>
+						    </button>  
+						  
+				          </form>
+                                                
+	                    </div> 
+	                  </div>
+	                </div>
+	              </div>  
+	            </div>
+             
+            
+            
+            
+            </section>      
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+	<div id="nouvelleReference" tabindex="-1" role="dialog" aria-labelledby="nouvelleReference" aria-hidden="true" class="modal fade text-left">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="referenceModalLabel" class="modal-title">ModalLabel</h4>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-group-Reference">
+              <div class="form-group">
+                <label id="referenceLabel">Label</label>
+                <input id="referenceInput" type="text" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAnnuler" type="button" data-dismiss="modal" class="btn btn-secondary">Annuler</button>
+            <!-- <button type="submit" class="btn btn-primary" id="btnAjouter">Ajouter</button> -->
+            <button id="btnAjouter" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+	          <span class="ladda-label">Ajouter</span>
+	          <span class="ladda-spinner"></span>
+			</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <script type="text/javascript">
+    	$('.input-datepicker').datepicker({
+        	language: 'fr',
+        	autoclose: true
+      	});
+    </script>    
+    
+    <script type="text/javascript">
+   		$('#spanDate').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date').focus();
+		});
+    </script> 
+    
+    <script type="text/javascript">
+   		$('#nouveauPays').click(function(){   			
+   			$('#referenceModalLabel').html('Nouveau Pays');
+   			$('#referenceLabel').html('Pays :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'pays');
+   			clickedBtn = this;
+   		});
+	       		
+   		$('#nouveauLieu_capture').click(function(){
+   			$('#referenceModalLabel').html('Nouveau Lieu de capture');
+   			$('#referenceLabel').html('Lieu de capture :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'lieu_capture');
+   			clickedBtn = this;
+		});
+   		
+   		$('#nouvelEnvironnement').click(function(){
+   			$('#referenceModalLabel').html('Nouvel Environnement');
+   			$('#referenceLabel').html('Environnement :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'environnement');   			
+   			clickedBtn = this;   			
+		});   		
+   		
+   		$('#nouvelleMethode_capture').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Méthode de capture');
+   			$('#referenceLabel').html('Méthode de capture :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'methode_capture');   			
+   			clickedBtn = this;   			
+		});   
+		
+   		$('.nouvelleFamille').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			$('#referenceInput').prop('disabled', false);
+   			
+			var nouvelleFamille = $(this).attr('id');
+   			
+   			if (nouvelleFamille == 'nouvelleFamille_terrain') {
+   				$('#btnAjouter').data('data-id', 'famille_terrain'); 	
+   			} else if (nouvelleFamille == 'nouvelleFamille_labo') {
+   				$('#btnAjouter').data('data-id', 'famille_labo'); 	
+   			} else if (nouvelleFamille == 'nouvelleFamille_consensus') {
+   				$('#btnAjouter').data('data-id', 'famille_consensus'); 	
+   			};
+   			
+   			clickedBtn = this;   			
+   		}); 
+   		
+   		$('.nouveauGenre').click(function(){
+   			
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			
+   			var nouveauGenre = $(this).attr('id');
+   			
+   			if (nouveauGenre == 'nouveauGenre_terrain') {
+   				$('#btnAjouter').data('data-id', 'genre_terrain'); 	
+   				var Famille =  document.getElementById('Famille_terrain');
+   			} else if (nouveauGenre == 'nouveauGenre_labo') {
+   				$('#btnAjouter').data('data-id', 'genre_labo'); 	
+   				var Famille =  document.getElementById('Famille_labo');
+   			} else if (nouveauGenre == 'nouveauGenre_consensus') {
+   				$('#btnAjouter').data('data-id', 'genre_consensus'); 	
+   				var Famille =  document.getElementById('Famille_consensus');
+   			};
+   			 
+   			clickedBtn = this;   			
+   			   			
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreForm.appendChild(genreDiv);
+   		});
+   		
+   		$('.nouvelleEspece').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');   			
+   			
+			var nouvelleEspece = $(this).attr('id');
+   			
+   			if (nouvelleEspece == 'nouvelleEspece_terrain') {
+   				$('#btnAjouter').data('data-id', 'espece_terrain'); 	
+   				var Famille =  document.getElementById('Famille_terrain');
+   				var Genre =  document.getElementById('Genre_terrain');
+   			} else if (nouvelleEspece == 'nouvelleEspece_labo') {
+   				$('#btnAjouter').data('data-id', 'espece_labo'); 	
+   				var Famille =  document.getElementById('Famille_labo');
+   				var Genre =  document.getElementById('Genre_labo');
+   			} else if (nouvelleEspece == 'nouvelleEspece_consensus') {
+   				$('#btnAjouter').data('data-id', 'espece_consensus'); 	
+   				var Famille =  document.getElementById('Famille_consensus');
+   				var Genre =  document.getElementById('Genre_consensus');
+   			};
+   			
+   			clickedBtn = this;   	  			
+   			
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+			
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			genreInput.value = Genre.value;
+						
+			var genreLabel2 = document.createElement('label');
+			genreLabel2.setAttribute('name', 'genreLabel2');
+			genreLabel2.setAttribute('id', 'genreLabel2');
+			genreLabel2.appendChild(document.createTextNode('Espece :'));
+			
+			var genreInput2 = document.createElement('input');
+			genreInput2.setAttribute('type', 'text');
+			genreInput2.setAttribute('name', 'genreInput2');
+			genreInput2.setAttribute('id', 'genreInput2');
+			genreInput2.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreDiv.appendChild(genreLabel2);
+			genreDiv.appendChild(genreInput2);
+			genreForm.appendChild(genreDiv);
+			
+			$('#genreInput').prop('disabled', true);
+   		});
+   		
+   		$("#btnAjouter").click(function(e){
+	    	e.preventDefault();
+	    	if(clickedBtn){	    		
+	    		var l = Ladda.create(document.querySelector('.ladda-button'));
+				l.start();				
+				
+				if ($(this).data('data-id') == 'pays') {
+					var select = document.getElementById('Pays');	    		
+					addReference(html, 'pays', 'Pays', select, null, null);	
+   				} else if ($(this).data('data-id') == 'lieu_capture') {
+					var select = document.getElementById('Lieu_capture');	    		
+					addReference(html, 'lieu_capture', 'Lieu_capture', select, null, null);	
+   				} else if ($(this).data('data-id') == 'environnement') {
+					var select = document.getElementById('Environnement');	    		
+					addReference(html, 'environnement', 'Environnement', select, null, null);	
+   				} else if ($(this).data('data-id') == 'methode_capture') {
+					var select = document.getElementById('Methode_capture');	    		
+					addReference(html, 'methode_capture', 'Methode_capture', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_terrain') {
+					var select = document.getElementById('Famille_terrain');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_labo') {
+					var select = document.getElementById('Famille_labo');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_consensus') {
+					var select = document.getElementById('Famille_consensus');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'genre_terrain') {
+   					var select = document.getElementById('Famille_terrain');
+					var select2 = document.getElementById('Genre_terrain');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'genre_labo') {
+   					var select = document.getElementById('Famille_labo');
+					var select2 = document.getElementById('Genre_labo');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'genre_consensus') {
+   					var select = document.getElementById('Famille_consensus');
+					var select2 = document.getElementById('Genre_consensus');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'espece_terrain') {
+   					var select = document.getElementById('Famille_terrain');
+					var select2 = document.getElementById('Genre_terrain');	
+					var select3 = document.getElementById('Espece_terrain');
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				} else if ($(this).data('data-id') == 'espece_labo') {
+   					var select = document.getElementById('Famille_labo');
+					var select2 = document.getElementById('Genre_labo');	
+					var select3 = document.getElementById('Espece_labo');		
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				} else if ($(this).data('data-id') == 'espece_consensus') {
+   					var select = document.getElementById('Famille_consensus');
+					var select2 = document.getElementById('Genre_consensus');	
+					var select3 = document.getElementById('Espece_consensus');
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				};
+   				
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";				
+				l.stop();				
+				clickedBtn = null;
+	    		$('#nouvelleReference').modal('hide');
+	        	// close the modal dialog.
+	      	}
+	    });
+   		
+   		$("#btnAnnuler").click(function(e){
+	    	e.preventDefault();
+	    	$('#nouvelleReference').modal('hide');
+   		});
+   		
+   		$(function () {
+   		    $('#nouvelleReference').on('hidden.bs.modal', function () {
+   		    	removeModalDiv();
+	   		});
+   		});
+   		
+   		function removeModalDiv() {
+   			try {
+   				$('#referenceInput').prop('disabled', false);
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";
+	    		var genreForm = document.getElementById('form-group-Reference');
+			    var genreLabel = document.getElementById('genreLabel');
+			    var genreInput = document.getElementById('genreInput');
+			    var genreDiv = document.getElementById('genreDiv');
+			    genreDiv.removeChild(genreLabel);
+			    genreDiv.removeChild(genreInput);
+			    genreForm.removeChild(genreDiv);
+		    }
+	    	catch(error) {
+	    	};	
+   		};   		
+   		
+   		function addNom(NomX) {
+		    this.Nom = NomX;
+		    	    
+		    this.NomX = function() {
+		        return this.Nom;
+		    };		    
+		};
+   		
+    </script> 
+ 
+	 <script type="text/javascript">	
+		function select_suitee(select) {			
+			var valeurSuitee = select.options[select.selectedIndex].value;			
+			if ((valeurSuitee == "Oui") || (valeurSuitee == "")) {
+				var elem = document.getElementById("child");
+				elem.style.display = "block";
+			}  else if (valeurSuitee == "Non") {
+				var elem = document.getElementById("child");
+				elem.style.display = "none";
+			}
+		}
+	</script>
+      
+    <script type="text/javascript">
+    
+    	// Example starter JavaScript for disabling form submissions if there are invalid fields
+  		(function() {
+  		  'use strict';
+  		  window.addEventListener('load', function() {
+  		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  		    var forms = document.getElementsByClassName('needs-validation');
+  		    // Loop over them and prevent submission
+  		    var validation = Array.prototype.filter.call(forms, function(form) {
+  		      form.addEventListener('submit', function(event) {
+  		    	if (form.checkValidity() === false) {
+  		          event.preventDefault();
+  		          event.stopPropagation();
+  		        } else {
+  		          event.preventDefault();
+  		          addBat();
+  		        } 		        
+  		        form.classList.add('was-validated');
+  		      }, false);
+  		    });
+  		  }, false);
+  		})();
+ 		
+  		function addBat() {  
+  			
+  			//alert('add');
+  			
+			var l = Ladda.create( document.querySelector('.ladda-button'));
+			
+			// Start loading
+			l.start();
+			
+			var id = uuid();
+			var N_identification = document.getElementById('N_identification').value;
+			var Coordonnees_GPS = document.getElementById('Coordonnees_GPS').value;
+			var Date_d_apparition_des_symptomes = document.getElementById('Date_d_apparition_des_symptomes').value;
+			var ID_preleveur = document.getElementById('ID_preleveur').value;
+		    var Type_echantillon = document.getElementById('Type_echantillon').value;
+		    var Kit_de_prelevement = document.getElementById('Kit_de_prelevement').value;
+		    var Date_de_prelevement = document.getElementById('Date_de_prelevement').value;	
+		    var RT_PCR_Ebolavirus_Zaire = document.getElementById('RT_PCR_Ebolavirus_Zaire').value;
+		    var RT_PCR_Ebolavirus_Reston = document.getElementById('RT_PCR_Ebolavirus_Reston').value;
+		    var RT_PCR_Ebolavirus_Tai_Forest = document.getElementById('RT_PCR_Ebolavirus_Tai_Forest').value;
+		    var RT_PCR_Ebolavirus_Soudan = document.getElementById('RT_PCR_Ebolavirus_Soudan').value;
+		    var RT_PCR_Ebolavirus_Bundibugyo = document.getElementById('RT_PCR_Ebolavirus_Bundibugyo').value;	
+		    var RT_PCR_Marbug_virus = document.getElementById('RT_PCR_Marbug_virus').value;
+		    var RT_PCR_Lassa_virus = document.getElementById('RT_PCR_Lassa_virus').value;
+		    var RT_PCR_RVF_virus = document.getElementById('RT_PCR_RVF_virus').value;
+		    var RT_PCR_CCHF_virus = document.getElementById('RT_PCR_CCHF_virus').value;
+		    var RT_PCR_Nipah = document.getElementById('RT_PCR_Nipah').value;
+		    var IgM_ELISA_Ebolavirus = document.getElementById('IgM_ELISA_Ebolavirus').value;
+		    var IgM_ELISA_Marbug_virus = document.getElementById('IgM_ELISA_Marbug_virus').value;
+		    var IgM_ELISA_Lassa_virus = document.getElementById('IgM_ELISA_Lassa_virus').value;
+		    var IgM_ELISA_RVF_virus = document.getElementById('IgM_ELISA_RVF_virus').value;
+		    var IgM_ELISA_CCHF_virus = document.getElementById('IgM_ELISA_CCHF_virus').value;
+		    var IgM_MIA_Ebolavirus = document.getElementById('IgM_MIA_Ebolavirus').value;
+		    var IgM_MIA_Marbug_virus = document.getElementById('IgM_MIA_Marbug_virus').value;
+		    var IgM_MIA_Lassa_virus = document.getElementById('IgM_MIA_Lassa_virus').value;
+		    var IgM_MIA_RVF_virus = document.getElementById('IgM_MIA_RVF_virus').value;
+		    var IgM_MIA_CCHF_virus = document.getElementById('IgM_MIA_CCHF_virus').value;
+		    var SNT_Ebolavirus = document.getElementById('SNT_Ebolavirus').value;
+		    var SNT_Marbug_virus = document.getElementById('SNT_Marbug_virus').value;
+		    var SNT_Lassa_virus = document.getElementById('SNT_Lassa_virus').value;
+		    var SNT_RVF_virus = document.getElementById('SNT_RVF_virus').value;
+		    var SNT_CCHF_virus = document.getElementById('SNT_CCHF_virus').value;
+		    var SEQ_Genbank_ID = document.getElementById('SEQ_Genbank_ID').value;
+						
+		    var localDB = new PouchDB('individus_cibu' + debug);	 
+			
+			localDB.put({
+				_id: id,
+				N_identification: N_identification,
+				Coordonnees_GPS: Coordonnees_GPS,
+				Date_d_apparition_des_symptomes: Date_d_apparition_des_symptomes,
+				ID_preleveur: ID_preleveur,
+			    Type_echantillon: Type_echantillon,
+			    Kit_de_prelevement: Kit_de_prelevement,
+			    Date_de_prelevement: Date_de_prelevement,	
+			    RT_PCR_Ebolavirus_Zaire: RT_PCR_Ebolavirus_Zaire,
+			    RT_PCR_Ebolavirus_Reston: RT_PCR_Ebolavirus_Reston,
+			    RT_PCR_Ebolavirus_Tai_Forest: RT_PCR_Ebolavirus_Tai_Forest,
+			    RT_PCR_Ebolavirus_Soudan: RT_PCR_Ebolavirus_Soudan,
+			    RT_PCR_Ebolavirus_Bundibugyo: RT_PCR_Ebolavirus_Bundibugyo,	
+			    RT_PCR_Marbug_virus: RT_PCR_Marbug_virus,
+			    RT_PCR_Lassa_virus: RT_PCR_Lassa_virus,
+			    RT_PCR_RVF_virus: RT_PCR_RVF_virus,
+			    RT_PCR_CCHF_virus: RT_PCR_CCHF_virus,
+			    RT_PCR_Nipah: RT_PCR_Nipah,
+			    IgM_ELISA_Ebolavirus: IgM_ELISA_Ebolavirus,
+			    IgM_ELISA_Marbug_virus: IgM_ELISA_Marbug_virus,
+			    IgM_ELISA_Lassa_virus: IgM_ELISA_Lassa_virus,
+			    IgM_ELISA_RVF_virus: IgM_ELISA_RVF_virus,
+			    IgM_ELISA_CCHF_virus: IgM_ELISA_CCHF_virus,
+			    IgM_MIA_Ebolavirus: IgM_MIA_Ebolavirus,
+			    IgM_MIA_Marbug_virus: IgM_MIA_Marbug_virus,
+			    IgM_MIA_Lassa_virus: IgM_MIA_Lassa_virus,
+			    IgM_MIA_RVF_virus: IgM_MIA_RVF_virus,
+			    IgM_MIA_CCHF_virus: IgM_MIA_CCHF_virus,
+			    SNT_Ebolavirus: SNT_Ebolavirus,
+			    SNT_Marbug_virus: SNT_Marbug_virus,
+			    SNT_Lassa_virus: SNT_Lassa_virus,
+			    SNT_RVF_virus: SNT_RVF_virus,
+			    SNT_CCHF_virus: SNT_CCHF_virus,
+			    SEQ_Genbank_ID: SEQ_Genbank_ID
+				
+			}).then(function (response) {
+								
+				if (navigator.onLine) {
+					var localDB2 = new PouchDB('individus_cibu' + debug);	
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var remoteDB = new PouchDB(remote_couchdb + 'individus_cibu' + debug, {skip_setup: true});
+					
+					localDB2.sync(remoteDB).on('complete', (info) => { 
+						window.location = 'individual_cibu.html';
+					}).on('error', function (err) {
+						// error while replicating
+						alert('alert sync new individus cibu: ' + JSON.stringify(err));
+						window.location = 'login.html';
+					});
+				} else {
+					window.location = 'individual_cibu.html.html';
+				}
+				
+				l.stop();
+				
+			}).catch(function (err) {
+				alert(JSON.stringify(err));
+				console.log(err);
+			});	
+  		};
+  		
+  		function extraireNombre(str) { 
+  			return str.match(/[0-9]+/g)
+  		};
+  		
+	</script>
+	
+  </body>
+</html>
+	 

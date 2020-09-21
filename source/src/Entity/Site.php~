@@ -1,0 +1,75 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Site
+ *
+ * @ORM\Table(name="site", indexes={@ORM\Index(name="SiteName", columns={"SiteName"})})
+ * @ORM\Entity
+ */
+class Site
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="N", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $n;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SiteName", type="string", length=255, nullable=true)
+     */
+    private $sitename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SiteDescription", type="string", length=255, nullable=true)
+     */
+    private $sitedescription;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GPSXUTM", type="integer", nullable=true)
+     */
+    private $gpsxutm;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GPSYUTM", type="integer", nullable=true)
+     */
+    private $gpsyutm;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Altitude", type="integer", nullable=true)
+     */
+    private $altitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Province", type="string", length=255, nullable=true)
+     */
+    private $province;
+
+
+}
+

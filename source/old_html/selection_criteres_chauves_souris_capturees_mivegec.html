@@ -1,0 +1,3349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    
+    <!-- <style>
+		.input-group-addon{color:#ff0000; background-color: #ffffff;}
+	</style> -->
+        
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="vendor/ladda/ladda-themeless.min.css">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>
+    
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
+        
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">    
+    
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- <script src="js/charts-home.js"></script> -->
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"></script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+    
+    <!-- Data Tables-->
+    <script src="vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/tables-datatable.js"></script>
+    
+    <!-- Forms init-->
+    <!-- <script src="js/forms-advanced.js"></script>-->
+    
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    
+    <!-- Loading buttons-->
+    <script src="vendor/ladda/spin.min.js"></script>
+    <script src="vendor/ladda/ladda.min.js"></script>
+    <script src="js/components-ladda.js"></script>
+    
+    <script src="js/pouchdb.authentication.js"></script> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+    <script src="js/pouchdb.find.js"></script> 
+    
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    
+    <script src="js/uuid.js"></script>
+    
+    <script src="js/load-page.js"></script> 
+    
+    <script src="js/addReference.js"></script> 
+    
+    <script src="js/FileSaver.js"></script>
+    
+    <script src="js/clock.js"></script>
+    
+  </head>
+  <!-- <body onload="loaded_bat('chauves_souris_capturees_mivegec')"> -->
+  
+
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	                            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+            <div id="child" style="display: none; color: #fff; background: #2f333e;">
+    		  <label id="progress_label">Synchronisation des données...</label>
+			  <div class="progress">
+  				<div class="progress-bar progress-bar-striped" id="myBar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			  </div>
+			</div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                   <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                        
+                    <li id="li_transvihmiDropdown" name="1"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled">
+                        
+                        <li id="li_site_transvihmi" name="1" style="text-align: right"><a href="site_transvihmi.html">Site</a></li>                            
+		                                        
+                        <li id="li_batTransvihmiDropdown" name="1"><a id="a_batTransvihmiDropdown" name="1" href="#ul_batTransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batTransvihmiDropdown" name="1" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_transvihmi.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_transvihmi.html">Suivi longitudinal - données journalières</a></li>                            
+                        
+		                    <li id="li_batTransvihmiCaptureesDropdown" name="1"><a id="a_batTransvihmiCaptureesDropdown" name="1" href="#ul_batTransvihmiCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_batTransvihmiCaptureesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_transvihmi" name="1"><a href="bat_capturees_transvihmi.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_transvihmi" name="1"><a href="bat_map_capturees_transvihmi.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_transvihmi" name="1"><a href="importation_chauves_souris_capturees_transvihmi.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batTransvihmiNonInvasivesDropdown" name="1"><a id="a_batTransvihmiNonInvasivesDropdown" name="1" href="#ul_batTransvihmiNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batTransvihmiNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_transvihmi" name="1"><a href="bat_non_invasives_transvihmi.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_transvihmi" name="1"><a href="bat_map_non_invasives_transvihmi.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_transvihmi" name="1"><a href="importation_chauves_souris_non_invasives_transvihmi.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	    <li id="li_viande_de_brousse_TransvihmiDropdown" name="1"><a id="a_viande_de_brousse_TransvihmiDropdown" name="1" href="#ul_viande_de_brousse_TransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_TransvihmiDropdown" name="1" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussetransvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">données</a>                           
+                        	<li id="li_viande_de_brousse_map_transvihmi" name="1"><a href="viande_de_brousse_map_transvihmi.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_transvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+                      </ul>
+                    </li>
+                    
+                    <li id="li_mivegecDropdown" name="2" class="active"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="true" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" class="collapse list-unstyled show">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="site_mivegec.html">Site</a></li>                            
+		                                        
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_mivegec.html">Suivi longitudinal - données missions</a></li>
+		                	<li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_mivegec.html">Suivi longitudinal - données journalières</a></li>                            
+                        			                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="bat_capturees_mivegec.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="bat_map_capturees_mivegec.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="importation_chauves_souris_capturees_mivegec.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batMivegecNonInvasivesDropdown" class="collapse list-unstyled show">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="bat_non_invasives_mivegec.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="bat_map_non_invasives_mivegec.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="importation_chauves_souris_non_invasives_mivegec.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_bushmeatMivegecDropdown" name="2" class="active"><a id="a_bushmeatMivegecDropdown" href="#ul_bushmeatMivegecDropdown" aria-expanded="true" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_bushmeatMivegecDropdown" class="collapse list-unstyled show">
+                        	<li id="li_viande_de_broussemivegec" name="2"><a href="viande_de_brousse_mivegec.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="viande_de_brousse_map_mivegec.html">carte</a></li>
+                        	<li id="li_importation_bushmeat_mivegec" name="2" class="active"><a href="importation_viande_de_brousse._mivegec.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                    
+                    <li id="li_astreDropdown" name="6"> <a id="a_astreDropdown" name="6" href="#ul_astreDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_site_astre" name="6" style="text-align: right"><a href="site_astre.html">Site</a></li>                            
+		                
+                        <li id="li_batAstreDropdown" name="6"><a id="a_batAstreDropdown" name="6" href="#ul_batAstreDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batAstreDropdown" name="6" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_astre.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_astre.html">Suivi longitudinal - données journalières</a></li>                              
+                        		                    
+		                    <li id="li_batAstreCaptureesDropdown" name="6"><a id="a_batAstreCaptureesDropdown" name="6" href="#ul_batAstreCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batAstreCaptureesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_astre" name="6"><a href="bat_capturees_astre.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_astre" name="6"><a href="bat_map_capturees_astre.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_astre" name="6"><a href="importation_chauves_souris_capturees_astre.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batAstreNoninvasivesDropdown" name="6"><a id="a_batAstreNonInvasivesDropdown" name="6" href="#ul_batAstreNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batAstreNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_non_invasives_astre.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_map_non_invasives_astre.html">carte</a></li>
+    	                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="importation_chauves_souris_non_invasives_astre.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
+                        <li id="li_individualCIBUDropdown" name="3"><a id="a_individualCIBUDropdown" name="3" href="#ul_individualCIBUDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individualCIBUDropdown" name="3" class="collapse list-unstyled">
+		                    <li id="li_individualCIBUSpecies1Dropdown" name="3"><a id="a_individualCIBUSpecies1Dropdown" name="3" href="#ul_individualCIBUSpecies1Dropdown" aria-expanded="false" data-toggle="collapse">(Espèces?)</a>
+		                      <ul id="ul_individualCIBUSpecies1Dropdown" name="3" class="collapse list-unstyled">
+		                        <li id="li_individual_species1_CIBU" name="3"><a href="liste_cibu.html?table=individus_cibu">données</a></li>                            
+		                        <li id="li_individual_map_species1_cibu" name ="3"><a href="#">carte</a></li>
+		                        <li id="li_importation_individual_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNoninvasivesDropdown" name="4"><a id="a_batEpvoNoninvasivesDropdown" href="#ul_batEpvoNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNoninvasivesDropdown" name="5"><a id="a_batIPGNoninvasivesDropdown" href="#ul_batIPGNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Exportation par sélection de critères</h2>
+            </div>
+          </header>
+          
+          <section>          
+            <div class="container-fluid">              
+              <div class="row">                
+                <div class="col-lg-12">                  
+                  <div class="card">        
+                   <div class="card-header">
+                     <h4>Vous pouvez mettre un ';' si vous voulez filtrer sur plusieurs critères</h4>
+                    </div>
+                    <div class="card-body">                                            
+                      <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
+				        
+				        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Critères</h3>
+                          </div>
+                          <div class="card-body">
+                            
+                            <div id="N_identification_CS_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                     	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_identification_CS">Numéro d'identification chauve-souris</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="N_identification_CS_1" name="N_identification_CS" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="N_identification_CS_value" type="text" class="form-control" placeholder="Numéro d'identification chauve-souris" >
+				                </div>
+							  </div>	
+                            </div>                                                                                     
+                            
+                            <div id="N_identification_mere_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_identification_mere">Numéro d'identification de la mère</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="N_identification_mere_1" name="N_identification_mere"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="N_identification_mere_value" type="text" class="form-control" placeholder="Numéro d'identification de la mère" >
+				                </div>
+							  </div>	
+                            </div>                                                                                     
+                            
+                            <div id="N_site_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_site">N site</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="N_site_1" name="N_site"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="N_site_value" type="text" class="form-control" placeholder="N site" >
+				                </div>
+							  </div>	
+                            </div>    
+                            
+                            <div id="Date_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Date">Date</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Date_1" name="Date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="Date_2" name="Date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Date_3" name="Date"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Date_4" name="Date"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Date_5" name="Date"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group" style="display: flex;">
+	      			    	      <input type="text" class="form-control input-datepicker" id="Date_value" placeholder="Date" required>
+		    					  <div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
+		                            <span class="fa fa-calendar"></span>
+		    					  </div>
+				                </div>
+							  </div>	
+                            </div>    
+                            
+                            <div id="Equipe_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Equipe">Equipe</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Equipe_1" name="Equipe" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Equipe_value" type="text" class="form-control" placeholder="Equipe" >
+				                </div>
+							  </div>	
+                            </div>     
+                                                        
+                            <div id="Pays_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Pays">Pays</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Pays_1" name="Pays" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Pays_value" type="text" class="form-control" placeholder="Pays" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Region_capture_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Region_capture">Region_capture</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Region_capture_1" name="Region_capture" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Region_capture_value" type="text" class="form-control" placeholder="Region_capture" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            
+                            <div id="Site_capture_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Site_capture">Site_capture</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Site_capture_1" name="Site_capture" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Site_capture_value" type="text" class="form-control" placeholder="Site_capture" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Lieu_capture_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Lieu_capture">Lieu_capture</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Lieu_capture_1" name="Lieu_capture" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Lieu_capture_value" type="text" class="form-control" placeholder="Lieu_capture" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Environnement_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Environnement">Environnement</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Environnement_1" name="Environnement" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Environnement_value" type="text" class="form-control" placeholder="Environnement" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Latitude_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Latitude">Latitude</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Latitude_1" name="Latitude" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Latitude_value" type="text" class="form-control" placeholder="Latitude" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Lat_degre_dec_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Lat_degre_dec_1" name="Lat_degre_dec" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Lat_degre_dec_value" type="text" class="form-control" placeholder="Latitude coord. (deg. déc.)" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                           
+                            
+                           <div id="Longitude_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Longitude">Longitude</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Longitude_1" name="Longitude" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Longitude_value" type="text" class="form-control" placeholder="Longitude" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Long_degre_dec_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Long_degre_dec">Longitude coord. (deg. déc.)</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Long_degre_dec_1" name="Long_degre_dec" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Long_degre_dec_value" type="text" class="form-control" placeholder="Longitude coord. (deg. déc.)" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Proximite_village_km_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Proximite_village_km">Proximite village km</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Proximite_village_km_1" name="Proximite_village_km"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="Proximite_village_km_2" name="Proximite_village_km"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Proximite_village_km_3" name="Proximite_village_km"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Proximite_village_km_4" name="Proximite_village_km"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Proximite_village_km_5" name="Proximite_village_km"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Proximite_village_km_value" type="text" class="form-control" placeholder="Proximite_village_km" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Methode_capture_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Methode_capture">Methode de capture</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Methode_capture_1" name="Methode_capture" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Methode_capture_value" type="text" class="form-control" placeholder="Methode de capture" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+							<div id="Type_chauve_souris_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Type_chauve_souris">Type de chauve-souris</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Type_chauve_souris_1" name="Type_chauve_souris" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Type_chauve_souris_value" type="text" class="form-control" placeholder="Type de chauve-souris" >
+				                </div>
+							  </div>	
+                            </div>       
+                            
+		 				    <div id="Espece_identifiee_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Espece_identifiee">Espece_identifiee</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Espece_identifiee_1" name="Espece identifiee" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Espece_identifiee_value" type="text" class="form-control" placeholder="Espece identifiee" >
+				                </div>
+							  </div>	
+                            </div>           
+                            
+  		 				    <div id="Famille_terrain_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Famille_terrain">Famille - terrain</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Famille_terrain_1" name="Famille_terrain" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Famille_terrain_value" type="text" class="form-control" placeholder="Famille - terrain" >
+				                </div>
+							  </div>	
+                            </div>     
+                            
+		 				    <div id="Genre_terrain_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Genre_terrain">Genre - terrain</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Genre_terrain_1" name="Genre_terrain" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Genre_terrain_value" type="text" class="form-control" placeholder="Genre - terrain" >
+				                </div>
+							  </div>	
+                            </div>        
+                            
+                            <div id="Espece_terrain_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Espece_terrain">Espece - terrain</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Espece_terrain_1" name="Espece_terrain" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Espece_terrain_value" type="text" class="form-control" placeholder="Espece - terrain" >
+				                </div>
+							  </div>	
+                            </div>        
+                            
+                            <div id="Famille_labo_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Famille_labo">Famille - labo</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Famille_labo_1" name="Famille_labo" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Famille_labo_value" type="text" class="form-control" placeholder="Famille - labo" >
+				                </div>
+							  </div>	
+                            </div>       
+                            
+                            <div id="Genre_labo_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Genre_labo">Genre - labo</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Genre_labo_1" name="Genre_labo" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Genre_labo_value" type="text" class="form-control" placeholder="Genre - labo" >
+				                </div>
+							  </div>	
+                            </div>           
+                            
+                            <div id="Espece_labo_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Espece_labo">Espece - labo</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Espece_labo_1" name="Espece - labo" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Espece_labo_value" type="text" class="form-control" placeholder="Longitude" >
+				                </div>
+							  </div>	
+                            </div>     
+                            
+                            <div id="Famille_consensus_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Famille_consensus">Famille - consensus</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Famille_consensus_1" name="Famille - consensus" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Famille_consensus_value" type="text" class="form-control" placeholder="Famille_consensus" >
+				                </div>
+							  </div>	
+                            </div>      
+                            
+                            <div id="Genre_consensus_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Genre_consensus">Genre_consensus</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Genre_consensus_1" name="Genre_consensus" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Genre_consensus_value" type="text" class="form-control" placeholder="Genre_consensus" >
+				                </div>
+							  </div>	
+                            </div>         
+                            
+                            <div id="Espece_consensus_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Espece_consensus">Espece - consensus</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Espece_consensus_1" name="Espece_consensus" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Espece_consensus_value" type="text" class="form-control" placeholder="Espece - consensus" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Sexe_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sexe">Sexe</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sexe_1" name="Sexe" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sexe_value" type="text" class="form-control" placeholder="Sexe" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Age_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Age">Age</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Age_1" name="Age"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Age_value" type="text" class="form-control" placeholder="Age" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Gestante_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Gestante">Gestante</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Gestante_1" name="Gestante" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Gestante_value" type="text" class="form-control" placeholder="Gestante" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Lactation_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Lactation">Lactation</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Lactation_1" name="Lactation" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Lactation_value" type="text" class="form-control" placeholder="Lactation" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Suitee_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Suitee">Suitee</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Suitee_1" name="Suitee" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Suitee_value" type="text" class="form-control" placeholder="Suitee" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+ 		 				    <div id="Sexe_enfant_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sexe_enfant">Sexe_enfant</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sexe_enfant_1" name="Sexe_enfant" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sexe_enfant_value" type="text" class="form-control" placeholder="Sexe_enfant" >
+				                </div>
+							  </div>	
+                            </div>        
+                            
+                            <div id="Poids_enfant_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Poids_enfant">Poids de l'enfant</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Poids_enfant_1" name="Poids_enfant"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="Poids_enfant_2" name="Poids_enfant"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Poids_enfant_3" name="Poids_enfant"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Poids_enfant_4" name="Poids_enfant"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Poids_enfant_5" name="Poids_enfant"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Poids_enfant_value" type="text" class="form-control" placeholder="Poids de l'enfant" >
+				                </div>
+							  </div>	
+                            </div>   
+                                                                
+                            <div id="Identifiant_enfant_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Identifiant_enfant">Identifiant_enfant</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Identifiant_enfant_1" name="Identifiant_enfant" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Identifiant_enfant_value" type="text" class="form-control" placeholder="Identifiant_enfant" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Vivante_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Vivante">Vivante</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Vivante_1" name="Vivante" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Vivante_value" type="text" class="form-control" placeholder="Vivante" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Cause_deces_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Cause_deces">Cause_deces</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Cause_deces_1" name="Cause_deces" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Cause_deces_value" type="text" class="form-control" placeholder="Cause_deces" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Poids_gr_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Poids_gr">Poids</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Poids_gr_1" name="Poids_gr"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="Poids_gr_2" name="Poids_gr"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Poids_gr_3" name="Poids_gr"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Poids_gr_4" name="Poids_gr"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Poids_gr_5" name="Poids_gr"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Poids_gr_value" type="text" class="form-control" placeholder="Poids" >
+				                </div>
+							  </div>	
+                            </div>   
+                            
+                            <div id="L_avant_bras_mm_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="L_avant_bras_mm">Longueur avant-bras</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="L_avant_bras_mm_1" name="L_avant_bras_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="L_avant_bras_mm_2" name="L_avant_bras_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="L_avant_bras_mm_3" name="L_avant_bras_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="L_avant_bras_mm_4" name="L_avant_bras_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="L_avant_bras_mm_5" name="L_avant_bras_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="L_avant_bras_mm_value" type="text" class="form-control" placeholder="Longueur avant-bras" >
+				                </div>
+							  </div>	
+                            </div> 
+                            
+                            <div id="L_totale_corps_mm_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="L_totale_corps_mm">Longueur corporelle totale</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="L_totale_corps_mm_1" name="L_totale_corps_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="L_totale_corps_mm_2" name="L_totale_corps_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="L_totale_corps_mm_3" name="L_totale_corps_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="L_totale_corps_mm_4" name="L_totale_corps_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="L_totale_corps_mm_5" name="L_totale_corps_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="L_totale_corps_mm_value" type="text" class="form-control" placeholder="Longueur corporelle totale" >
+				                </div>
+							  </div>	
+                            </div>   
+                            
+                            <div id="Taille_yeux_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Taille_yeux">Taille des yeux</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Taille_yeux_1" name="Taille_yeux" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Taille_yeux_value" type="text" class="form-control" placeholder="Taille des yeux" >
+				                </div>
+							  </div>	
+                            </div>
+                                                        
+                            <div id="L_queue_mm_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="L_queue_mm">Longueur queue</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="L_queue_mm_1" name="L_queue_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="L_queue_mm_2" name="L_queue_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="L_queue_mm_3" name="L_queue_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="L_queue_mm_4" name="L_queue_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="L_queue_mm_5" name="L_queue_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="L_queue_mm_value" type="text" class="form-control" placeholder="Longueur queue" >
+				                </div>
+							  </div>	
+                            </div>   
+                            
+                            <div id="L_metacarpe_3ieme_doigt_mm_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="L_metacarpe_3ieme_doigt_mm">Longueur métacarpe 3ième doigt</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="L_metacarpe_3ieme_doigt_mm_1" name="L_metacarpe_3ieme_doigt_mm" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="L_metacarpe_3ieme_doigt_mm_2" name="L_metacarpe_3ieme_doigt_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="L_metacarpe_3ieme_doigt_mm_3" name="L_metacarpe_3ieme_doigt_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="L_metacarpe_3ieme_doigt_mm_4" name="L_metacarpe_3ieme_doigt_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="L_metacarpe_3ieme_doigt_mm_5" name="L_metacarpe_3ieme_doigt_mm"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="L_metacarpe_3ieme_doigt_mm_value" type="text" class="form-control" placeholder="Longueur métacarpe 3ième doigt" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Couleur_pelage_dorsal_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Couleur_pelage_dorsal">Couleur pelage dorsal</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Couleur_pelage_dorsal_1" name="Couleur_pelage_dorsal" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Couleur_pelage_dorsal_2" name="Couleur_pelage_dorsal"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Couleur_pelage_dorsal_3" name="Couleur_pelage_dorsal"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Couleur_pelage_dorsal_4" name="Couleur_pelage_dorsal"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Couleur_pelage_dorsal_5" name="Couleur_pelage_dorsal"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Couleur_pelage_dorsal_value" type="text" class="form-control" placeholder="Couleur pelage dorsal" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Couleur_pelage_ventral_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Couleur_pelage_ventral">Couleur pelage dorsal</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Couleur_pelage_ventral_1" name="Couleur_pelage_ventral" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Couleur_pelage_ventral_value" type="text" class="form-control" placeholder="Couleur pelage dorsal" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Remarques_anomalies_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Remarques_anomalies">Remarques anomalies</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Remarques_anomalies_1" name="Remarques_anomalies" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Remarques_anomalies_value" type="text" class="form-control" placeholder="Remarques anomalies" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Longitude_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Longitude">Longitude</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Longitude_1" name="Longitude" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Longitude_value" type="text" class="form-control" placeholder="Longitude" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Sang_DBS_nb_cercles_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sang_DBS_nb_cercles">Sang - papier buvard</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sang_DBS_nb_cercles_1" name="Sang_DBS_nb_cercles" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Sang_DBS_nb_cercles_2" name="Sang_DBS_nb_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Sang_DBS_nb_cercles_3" name="Sang_DBS_nb_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Sang_DBS_nb_cercles_4" name="Sang_DBS_nb_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Sang_DBS_nb_cercles_5" name="Sang_DBS_nb_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sang_DBS_nb_cercles_value" type="text" class="form-control" placeholder="Sang - papier buvard" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Sang_tube_EDTA_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sang_tube_EDTA">Sang - tube EDTA</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sang_tube_EDTA_1" name="Sang_tube_EDTA" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sang_tube_EDTA_value" type="text" class="form-control" placeholder="Sang - tube EDTA" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+		 				    <div id="Feces_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Feces_RNAl">Feces - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Feces_RNAl_1" name="Feces_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Feces_RNAl_value" type="text" class="form-control" placeholder="Feces - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Urine_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Urine">Urine</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Urine_1" name="Urine" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Urine_value" type="text" class="form-control" placeholder="Urine" >
+				                </div>
+							  </div>	
+                            </div>
+                                      
+                            <div id="Urine_DUS_nombre_cercles_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Urine_DUS_nombre_cercles">Urine - tube sec</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Urine_DUS_nombre_cercles_1" name="Urine_DUS_nombre_cercles" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Urine_DUS_nombre_cercles_2" name="Urine_DUS_nombre_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Urine_DUS_nombre_cercles_3" name="Urine_DUS_nombre_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Urine_DUS_nombre_cercles_4" name="Urine_DUS_nombre_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Urine_DUS_nombre_cercles_5" name="Urine_DUS_nombre_cercles"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Urine_DUS_nombre_cercles_value" type="text" class="form-control" placeholder="Urine - tube sec" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Feces_urine_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Feces_urine_RNAl">Feces/urine - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Feces_urine_RNAl_1" name="Feces_urine_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Feces_urine_RNAl_value" type="text" class="form-control" placeholder="Feces/urine - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Ecouvillon_gorge_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Ecouvillon_gorge_RNAl">Ecouvillon gorge - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Ecouvillon_gorge_RNAl_1" name="Ecouvillon_gorge_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Ecouvillon_gorge_RNAl_value" type="text" class="form-control" placeholder="Ecouvillon gorge - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                                                        
+                            <div id="Ecouvillon_rectal_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Ecouvillon_rectal_RNAl">Ecouvillon rectal - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Ecouvillon_rectal_RNAl_1" name="Ecouvillon_rectal_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Ecouvillon_rectal_RNAl_value" type="text" class="form-control" placeholder="Ecouvillon rectal - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Ectoparasites_ethanol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Ectoparasites_ethanol">Ectoparasites - éthanol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Ectoparasites_ethanol_1" name="Ectoparasites_ethanol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Ectoparasites_ethanol_value" type="text" class="form-control" placeholder="Ectoparasites - éthanol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Poils_ethanol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Poils_ethanol">Poils - tube éthanol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Poils_ethanol_1" name="Poils_ethanol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Poils_ethanol_value" type="text" class="form-control" placeholder="Poils - tube éthanol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Wing_punch_ethanol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Wing_punch_ethanol">Biopsie aile - éthanol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Wing_punch_ethanol_1" name="Wing_punch_ethanol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Wing_punch_ethanol_value" type="text" class="form-control" placeholder="Biopsie aile - éthanol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Feces_culture_glycerol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Feces_culture_glycerol">Feces culture - glycérol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Feces_culture_glycerol_1" name="Feces_culture_glycerol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Feces_culture_glycerol_value" type="text" class="form-control" placeholder="Feces culture - glycérol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Sperme_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sperme">Sperme</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sperme_1" name="Sperme" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sperme_value" type="text" class="form-control" placeholder="Sperme" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Autres_echantillons_remarques_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Autres_echantillons_remarques">Autres échantillons</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Autres_echantillons_remarques_1" name="Autres_echantillons_remarques" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Autres_echantillons_remarques_value" type="text" class="form-control" placeholder="Autres échantillons" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Specimen_entier_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Specimen_entier">Spécimen entier préservé ?</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Specimen_entier_1" name="Specimen_entier" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Specimen_entier_value" type="text" class="form-control" placeholder="Spécimen entier préservé ?" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Specimen_preserve_dans_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Specimen_preserve_dans">Spécimen préservé dans</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Specimen_preserve_dans_1" name="Specimen_preserve_dans" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Specimen_preserve_dans_value" type="text" class="form-control" placeholder="Spécimen préservé dans" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Prelevement_organe_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Prelevement_organe">Prélèvement d'organe ?</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Prelevement_organe_1" name="Prelevement_organe" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Prelevement_organe_value" type="text" class="form-control" placeholder="Prélèvement d'organe ?" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Foie_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Foie_formol">Foie - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Foie_formol_1" name="Foie_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Foie_formol_value" type="text" class="form-control" placeholder="Foie - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Foie_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Foie_RNAl">Foie - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Foie_RNAl_1" name="Foie_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Foie_RNAl_value" type="text" class="form-control" placeholder="Foie - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Rate_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Rate_formol">Rate - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Rate_formol_1" name="Rate_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Rate_formol_value" type="text" class="form-control" placeholder="Rate - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                           <div id="Rate_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Rate_RNAl">Rate - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Rate_RNAl_1" name="Rate_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Rate_RNAl_value" type="text" class="form-control" placeholder="Rate - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Reins_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Reins_formol">Reins - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Reins_formol_1" name="Reins_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Reins_formol_value" type="text" class="form-control" placeholder="Reins - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Reins_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Reins_RNAl">Reins - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Reins_RNAl_1" name="Reins_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Reins_RNAl_value" type="text" class="form-control" placeholder="Reins - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Intestins_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Intestins_formol">Intestins - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Intestins_formol_1" name="Intestins_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Intestins_formol_value" type="text" class="form-control" placeholder="Intestins - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Intestins_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Intestins_RNAl">Intestins - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Intestins_RNAl_1" name="Intestins_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Intestins_formol_value" type="text" class="form-control" placeholder="Intestins - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Poumons_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Poumons_formol">Poumons - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Poumons_formol_1" name="Poumons_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Poumons_formol_value" type="text" class="form-control" placeholder="Poumons - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Poumons_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Poumons_RNAl">Poumons - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Poumons_RNAl_1" name="Poumons_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Poumons_RNAl_value" type="text" class="form-control" placeholder="Poumons - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Coeur_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Coeur_formol">Coeur - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Coeur_formol_1" name="Coeur_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Coeur_formol_value" type="text" class="form-control" placeholder="Coeur - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Coeur_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Coeur_RNAl">Coeur - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Coeur_RNAl_1" name="Coeur_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Coeur_RNAl_value" type="text" class="form-control" placeholder="Coeur - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Ggl_lymph_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Ggl_lymph_formol">Ganglion lymph - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Ggl_lymph_formol_1" name="Ggl_lymph_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Ggl_lymph_formol_value" type="text" class="form-control" placeholder="Ganglion lymph - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Ggl_lymph_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Ggl_lymph_RNAl">Ganglion lymph - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Ggl_lymph_RNAl_1" name="Ggl_lymph_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Ggl_lymph_RNAl_value" type="text" class="form-control" placeholder="Ganglion lymph - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Testicules_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Testicules_formol">Testicules - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Testicules_formol_1" name="Testicules_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Testicules_formol_value" type="text" class="form-control" placeholder="Testicules - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Testicules_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Testicules_RNAl">Testicules - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Testicules_RNAl_1" name="Testicules_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Testicules_RNAl_value" type="text" class="form-control" placeholder="Testicules - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Peau_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Peau_formol">Peau - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Peau_formol_1" name="Peau_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Peau_formol_value" type="text" class="form-control" placeholder="Peau - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Peau_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Peau_RNAl">Peau - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Peau_RNAl_1" name="Peau_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Peau_RNAl_value" type="text" class="form-control" placeholder="Peau - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Peau_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Peau_RNAl">Peau - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Peau_RNAl_1" name="Peau_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Peau_RNAl_value" type="text" class="form-control" placeholder="Peau - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Muscles_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Muscles_formol">Muscles - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Muscles_formol_1" name="Muscles_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Muscles_formol_value" type="text" class="form-control" placeholder="Muscles - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Muscles_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Muscles_RNAl">Muscles - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Muscles_RNAl_1" name="Muscles_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Muscles_RNAl_value" type="text" class="form-control" placeholder="Muscles - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Cerveau_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Cerveau_formol">Cerveau - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Cerveau_formol_1" name="Cerveau_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Cerveau_formol_value" type="text" class="form-control" placeholder="Cerveau - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Cerveau_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Cerveau_RNAl">Cerveau - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Cerveau_RNAl_1" name="Cerveau_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Cerveau_RNAl_value" type="text" class="form-control" placeholder="Cerveau - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Autre_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Autre">Autre</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Autre_1" name="Autre" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Autre_value" type="text" class="form-control" placeholder="Autre" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Autre_formol_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Autre_formol">Autre - formol</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Autre_formol_1" name="Autre_formol" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Autre_formol_value" type="text" class="form-control" placeholder="Autre - formol" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Autre_RNAl_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Autre_RNAl">Autre - RNAl</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Autre_RNAl_1" name="Autre_RNAl" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Autre_RNAl_value" type="text" class="form-control" placeholder="Autre - RNAl" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Remarques_echantillons_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Remarques_echantillons">Remarques échantillons</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Remarques_echantillons_1" name="Remarques_echantillons" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Remarques_echantillons_value" type="text" class="form-control" placeholder="Remarques échantillons" >
+				                </div>
+							  </div>	
+                            </div>
+                                              
+                          </div>
+                        </div>
+                      </form>
+                    </div> 
+                    
+                    <div class="card-body text-right">
+	                  <div class="row">
+				  	    <div class="col-lg-4">
+				  	      <div class="form-group">			  		   
+						    <div class="form-group">
+		                      <button id="export_selection" name="export_selection" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">                        	
+				                <span class="ladda-label">Exporter la selection</span>
+				                <span class="ladda-spinner"></span>
+					  		  </button>  
+					  	    </div> 
+					  	  </div> 
+	                    </div>
+	                  </div>
+                    </div>
+                  </div>                 
+                </div>
+              </div>  
+            </div>
+          </section>         
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+	<div id="nouvelleReference" tabindex="-1" role="dialog" aria-labelledby="nouvelleReference" aria-hidden="true" class="modal fade text-left">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="referenceModalLabel" class="modal-title">ModalLabel</h4>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-group-Reference">
+              <div class="form-group">
+                <label id="referenceLabel">Label</label>
+                <input id="referenceInput" type="text" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAnnuler" type="button" data-dismiss="modal" class="btn btn-secondary">Annuler</button>
+            <!-- <button type="submit" class="btn btn-primary" id="btnAjouter">Ajouter</button> -->
+            <button id="btnAjouter" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+	          <span class="ladda-label">Ajouter</span>
+	          <span class="ladda-spinner"></span>
+			</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+   		$('#spanDate').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date_value').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date_value').focus();
+		});
+    </script>
+    
+    <script type="text/javascript">
+    	$('.button_select').click(function(){
+    		
+    		var name = $(this).attr('name');
+    		//alert($(this).attr('id').substr($(this).attr('id').length -1));
+    		var num_crit = $(this).attr('id').substr($(this).attr('id').length -1);
+    		   
+    		
+    		if ((name == 'Date') || (name == 'Proximite_village_km') || (name == 'Poids_enfant')
+    				|| (name == 'Poids_gr')|| (name == 'L_avant_bras_mm')|| (name == 'L_totale_corps_mm')
+    				|| (name == 'L_queue_mm')|| (name == 'L_metacarpe_3ieme_doigt_mm')|| (name == 'Couleur_pelage_dorsal')
+    				|| (name == 'Sang_DBS_nb_cercles')|| (name == 'Urine_DUS_nombre_cercles')){
+	    		for (i=1;i<6;i++) {
+	    			if (num_crit != i) {
+	    				var Element = document.getElementById(name + '_' + i );
+		    			if (Element.classList.contains('btn-primary')) {
+		    				$('#' + name + '_' + i).addClass('btn-secondary');
+		    				$('#' + name + '_' + i).removeClass('btn-primary');
+		    			}
+	    			}
+	    		};
+    		}
+	    		
+    		var Element = document.getElementById(name + '_' + num_crit);
+    		//alert(name + '_' + num_crit);
+    		if (Element.classList.contains('btn-primary')) {
+    			$('#' + name + '_' + num_crit).addClass('btn-secondary');
+		   		$('#' + name + '_' + num_crit).removeClass('btn-primary');
+			} else if (Element.classList.contains('btn-secondary')) {
+				$('#' + name + '_' + num_crit).removeClass('btn-secondary');
+		   		$('#' + name + '_' + num_crit).addClass('btn-primary');
+			};
+		
+    		
+    		
+    	});
+    </script> 
+    
+    <script type="text/javascript">   
+    
+		var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
+		} else {
+			debug = localStorage.getItem('debug');
+		};
+		var DB = new PouchDB('chauves_souris_capturees_mivegec' + debug);
+		
+	    var count, step;
+	    var progressbar_count;
+	    var width = 0;
+	    var i = 0;
+	    var filter = false;
+	    
+	    var CSV='';
+    
+    	$('#export_selection').click(function(){
+ 			
+    		var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+
+			// Start loading
+			l.start();
+			
+			DB.info().then((infos) => {
+				count = infos.doc_count;
+				
+				progressbar_count = Math.round(count / 20);
+				step = 100 / progressbar_count; 
+				
+				
+				show_progress_bar();
+				
+				DB.allDocs({  		
+					include_docs: true,
+					attachments: true
+				}).then(function (result) {
+					// handle result
+					if (typeof(JSON.stringify(result)) != "undefined"){  
+						
+						CSV = '';
+						
+						var array_selected_fields = JSON.parse(localStorage.getItem("fields_selected"));
+		    			
+		    			if (array_selected_fields.indexOf('N_identification_CS') > -1) {
+							CSV = CSV + 'N_identification_CS;'
+						};
+						if (array_selected_fields.indexOf('N_identification_mere') > -1) {
+							CSV = CSV + 'N_identification_mere;'
+						};
+						if (array_selected_fields.indexOf('N_site') > -1) {
+							CSV = CSV + 'N_site;'
+						};
+						if (array_selected_fields.indexOf('Date') > -1) {
+							CSV = CSV + 'Date;'
+						};
+						if (array_selected_fields.indexOf('Equipe') > -1) {
+							CSV = CSV + 'Equipe;'
+						};
+						if (array_selected_fields.indexOf('Pays') > -1) {
+							CSV = CSV + 'Pays;'
+						};
+						if (array_selected_fields.indexOf('Region_capture') > -1) {
+							CSV = CSV + 'Region_capture;'
+						};
+						if (array_selected_fields.indexOf('Site_capture') > -1) {
+							CSV = CSV + 'Site_capture;'
+						};
+						if (array_selected_fields.indexOf('Lieu_capture') > -1) {
+							CSV = CSV + 'Lieu_capture;'
+						};
+						if (array_selected_fields.indexOf('Environnement') > -1) {
+							CSV = CSV + 'Environnement;'
+						};
+						if (array_selected_fields.indexOf('Latitude') > -1) {
+							CSV = CSV + 'Latitude;'
+						};
+						if (array_selected_fields.indexOf('Lat_degre_dec') > -1) {
+							CSV = CSV + 'Lat_degre_dec;'
+						};
+						if (array_selected_fields.indexOf('Longitude') > -1) {
+							CSV = CSV + 'Longitude;'
+						};
+						if (array_selected_fields.indexOf('Long_degre_dec') > -1) {
+							CSV = CSV + 'Long_degre_dec;'
+						};
+						if (array_selected_fields.indexOf('Proximite_village_km') > -1) {
+							CSV = CSV + 'Proximite_village_km;'
+						};
+						if (array_selected_fields.indexOf('Methode_capture') > -1) {
+							CSV = CSV + 'Methode_capture;'
+						};
+						if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
+							CSV = CSV + 'Type_chauve_souris;'
+						};
+						if (array_selected_fields.indexOf('Espece_identifiee') > -1) {
+							CSV = CSV + 'Espece_identifiee;'
+						};
+						if (array_selected_fields.indexOf('Famille_terrain') > -1) {
+							CSV = CSV + 'Famille_terrain;'
+						};
+			    		if (array_selected_fields.indexOf('Genre_terrain') > -1) {
+							CSV = CSV + 'Genre_terrain;'
+						};
+						if (array_selected_fields.indexOf('Espece_terrain') > -1) {
+							CSV = CSV + 'Espece_terrain;'
+						};
+						if (array_selected_fields.indexOf('Famille_labo') > -1) {
+							CSV = CSV + 'Famille_labo;'
+						};
+						if (array_selected_fields.indexOf('Genre_labo') > -1) {
+							CSV = CSV + 'Genre_labo;'
+						};
+						if (array_selected_fields.indexOf('Espece_labo') > -1) {
+							CSV = CSV + 'Espece_labo;'
+						};
+						if (array_selected_fields.indexOf('Famille_consensus') > -1) {
+							CSV = CSV + 'Famille_consensus;'
+						};
+						if (array_selected_fields.indexOf('Genre_consensus') > -1) {
+							CSV = CSV + 'Genre_consensus;'
+						};
+						if (array_selected_fields.indexOf('Espece_consensus') > -1) {
+							CSV = CSV + 'Espece_consensus;'
+						};
+						if (array_selected_fields.indexOf('Sexe') > -1) {
+							CSV = CSV + 'Sexe;'
+						};
+						if (array_selected_fields.indexOf('Age') > -1) {
+							CSV = CSV + 'Age;'
+						};
+						if (array_selected_fields.indexOf('Gestante') > -1) {
+							CSV = CSV + 'Gestante;'
+						};
+						if (array_selected_fields.indexOf('Lactation') > -1) {
+							CSV = CSV + 'Lactation;'
+						};
+						if (array_selected_fields.indexOf('Suitee') > -1) {
+							CSV = CSV + 'Suitee;'
+						};
+						if (array_selected_fields.indexOf('Sexe_enfant') > -1) {
+							CSV = CSV + 'Sexe_enfant;'
+						};
+						if (array_selected_fields.indexOf('Poids_enfant') > -1) {
+							CSV = CSV + 'Poids_enfant;'
+						};
+						if (array_selected_fields.indexOf('Identifiant_enfant') > -1) {
+							CSV = CSV + 'Identifiant_enfant;'
+						};
+						if (array_selected_fields.indexOf('Vivante') > -1) {
+							CSV = CSV + 'Vivante;'
+						};
+						if (array_selected_fields.indexOf('Cause_deces') > -1) {
+							CSV = CSV + 'Cause_deces;'
+						};
+						if (array_selected_fields.indexOf('Poids_gr') > -1) {
+							CSV = CSV + 'Poids_gr;'
+						};
+						if (array_selected_fields.indexOf('L_avant_bras_mm') > -1) {
+							CSV = CSV + 'L_avant_bras_mm;'
+						};
+						if (array_selected_fields.indexOf('L_totale_corps_mm') > -1) {
+							CSV = CSV + 'L_totale_corps_mm;'
+						};
+			    		if (array_selected_fields.indexOf('Taille_yeux') > -1) {
+							CSV = CSV + 'Taille_yeux;'
+						};
+						if (array_selected_fields.indexOf('L_queue_mm') > -1) {
+							CSV = CSV + 'L_queue_mm;'
+						};
+						if (array_selected_fields.indexOf('L_metacarpe_3ieme_doigt_mm') > -1) {
+							CSV = CSV + 'L_metacarpe_3ieme_doigt_mm;'
+						};
+						if (array_selected_fields.indexOf('Couleur_pelage_dorsal') > -1) {
+							CSV = CSV + 'Couleur_pelage_dorsal;'
+						};
+						if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
+							CSV = CSV + 'Couleur_pelage_ventral;'
+						};
+						if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
+							CSV = CSV + 'Remarques_anomalies;'
+						};
+						if (array_selected_fields.indexOf('Sang_DBS_nb_cercles') > -1) {
+							CSV = CSV + 'Sang_DBS_nb_cercles;'
+						};
+						if (array_selected_fields.indexOf('Sang_tube_EDTA') > -1) {
+							CSV = CSV + 'Sang_tube_EDTA;'
+						};
+						if (array_selected_fields.indexOf('Feces_RNAl') > -1) {
+							CSV = CSV + 'Feces_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Urine') > -1) {
+							CSV = CSV + 'Urine;'
+						};
+						if (array_selected_fields.indexOf('Urine_DUS_nombre_cercles') > -1) {
+							CSV = CSV + 'Urine_DUS_nombre_cercles;'
+						};
+						if (array_selected_fields.indexOf('Feces_urine_RNAl') > -1) {
+							CSV = CSV + 'Feces_urine_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Ecouvillon_gorge_RNAl') > -1) {
+							CSV = CSV + 'Ecouvillon_gorge_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Ecouvillon_rectal_RNAl') > -1) {
+							CSV = CSV + 'Ecouvillon_rectal_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Ectoparasites_ethanol') > -1) {
+							CSV = CSV + 'Ectoparasites_ethanol;'
+						};
+						if (array_selected_fields.indexOf('Poils_ethanol') > -1) {
+							CSV = CSV + 'Poils_ethanol;'
+						};
+						if (array_selected_fields.indexOf('Wing_punch_ethanol') > -1) {
+							CSV = CSV + 'Wing_punch_ethanol;'
+						};
+						if (array_selected_fields.indexOf('Feces_culture_glycerol') > -1) {
+							CSV = CSV + 'Feces_culture_glycerol;'
+						};
+						if (array_selected_fields.indexOf('Sperme') > -1) {
+							CSV = CSV + 'Sperme;'
+						};
+						if (array_selected_fields.indexOf('Autres_echantillons_remarques') > -1) {
+							CSV = CSV + 'Autres_echantillons_remarques;'
+						};
+						if (array_selected_fields.indexOf('Specimen_entier') > -1) {
+							CSV = CSV + 'Specimen_entier;'
+						};
+			    		if (array_selected_fields.indexOf('Specimen_preserve_dans') > -1) {
+							CSV = CSV + 'Specimen_preserve_dans;'
+						};
+						if (array_selected_fields.indexOf('Prelevement_organe') > -1) {
+							CSV = CSV + 'Prelevement_organe;'
+						};
+						if (array_selected_fields.indexOf('Foie_formol') > -1) {
+							CSV = CSV + 'Foie_formol;'
+						};
+						if (array_selected_fields.indexOf('Foie_RNAl') > -1) {
+							CSV = CSV + 'Foie_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Rate_formol') > -1) {
+							CSV = CSV + 'Rate_formol;'
+						};
+						if (array_selected_fields.indexOf('Rate_RNAl') > -1) {
+							CSV = CSV + 'Rate_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Reins_formol') > -1) {
+							CSV = CSV + 'Reins_formol;'
+						};
+						if (array_selected_fields.indexOf('Reins_RNAl') > -1) {
+							CSV = CSV + 'Reins_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Intestins_formol') > -1) {
+							CSV = CSV + 'Intestins_formol;'
+						};
+						if (array_selected_fields.indexOf('Intestins_RNAl') > -1) {
+							CSV = CSV + 'Intestins_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Poumons_formol') > -1) {
+							CSV = CSV + 'Poumons_formol;'
+						};
+						if (array_selected_fields.indexOf('Poumons_RNAl') > -1) {
+							CSV = CSV + 'Poumons_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Coeur_formol') > -1) {
+							CSV = CSV + 'Coeur_formol;'
+						};
+						if (array_selected_fields.indexOf('Coeur_RNAl') > -1) {
+							CSV = CSV + 'Coeur_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Ggl_lymph_formol') > -1) {
+							CSV = CSV + 'Ggl_lymph_formol;'
+						};
+						if (array_selected_fields.indexOf('Ggl_lymph_RNAl') > -1) {
+							CSV = CSV + 'Ggl_lymph_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Testicules_formol') > -1) {
+							CSV = CSV + 'Testicules_formol;'
+						};
+						if (array_selected_fields.indexOf('Testicules_RNAl') > -1) {
+							CSV = CSV + 'Testicules_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Peau_formol') > -1) {
+							CSV = CSV + 'Peau_formol;'
+						};
+						if (array_selected_fields.indexOf('Peau_RNAl') > -1) {
+							CSV = CSV + 'Peau_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Muscles_formol') > -1) {
+							CSV = CSV + 'Muscles_formol;'
+						};
+						if (array_selected_fields.indexOf('Muscles_RNAl') > -1) {
+							CSV = CSV + 'Muscles_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Cerveau_formol') > -1) {
+							CSV = CSV + 'Cerveau_formol;'
+						};
+						if (array_selected_fields.indexOf('Cerveau_RNAl') > -1) {
+							CSV = CSV + 'Cerveau_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Autre') > -1) {
+							CSV = CSV + 'Autre;'
+						};
+						if (array_selected_fields.indexOf('Autre_formol') > -1) {
+							CSV = CSV + 'Autre_formol;'
+						};
+						if (array_selected_fields.indexOf('Autre_RNAl') > -1) {
+							CSV = CSV + 'Autre_RNAl;'
+						};
+						if (array_selected_fields.indexOf('Remarques_echantillons') > -1) {
+							CSV = CSV + 'Remarques_echantillons;'
+						};
+						CSV = CSV + "\r\n";						
+						
+			    		var chauves_souris_capturees_TablesData = JSON.parse(JSON.stringify(result));
+						
+			    		chauves_souris_capturees_TablesData.rows.forEach(function(row){   
+			    			addChauves_souris_capturees(row);
+			    		});		
+			    		
+			    		var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+		    			//saveAs(blob, "testfile1.csv");
+		    			
+		    			saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+		    			
+		    			hide_progress_bar();
+		    			l.stop();
+			    				    		
+					}
+				}).catch(function (err) {
+					console.log(err);
+				});
+				
+				
+			}).catch((error) => {
+			});
+ 		    
+        });
+    	
+    	function addChauves_souris_capturees(row) {
+    		
+    		if (count > 0) {
+    			
+    			move();
+	    				    	
+		    	if (addToCSV('N_identification_CS', row.doc.N_identification_CS) &&
+		    		addToCSV('N_identification_mere', row.doc.N_identification_mere) &&	
+		    		addToCSV('N_site', row.doc.N_site) &&
+		    		addDateToCSV('Date', row.doc.Date) &&
+		    		addToCSV('Equipe', row.doc.Equipe) &&
+		    		addToCSV('Pays', row.doc.Pays) &&
+		    		addToCSV('Region_capture', row.doc.Region_capture) &&
+		    		addToCSV('Site_capture', row.doc.Site_capture) &&
+		    		addToCSV('Lieu_capture', row.doc.Lieu_capture) &&
+		    		addToCSV('Environnement', row.doc.Environnement) &&
+		    		addToCSV('Latitude', row.doc.Latitude) &&
+		    		addToCSV('Lat_degre_dec', row.doc.Lat_degre_dec) &&
+		    		addToCSV('Longitude', row.doc.Longitude) &&
+		    		addToCSV('Long_degre_dec', row.doc.Long_degre_dec) &&
+		    		addNumberToCSV('Proximite_village_km', row.doc.Proximite_village_km) &&
+		    		addToCSV('Methode_capture', row.doc.Methode_capture) &&
+		    		addToCSV('Type_chauve_souris', row.doc.Type_chauve_souris) &&
+		    		addToCSV('Espece_identifiee', row.doc.Espece_identifiee) &&
+		    		addToCSV('Famille_terrain', row.doc.Famille_terrain) &&
+		    		addToCSV('Genre_terrain', row.doc.Genre_terrain) &&
+		    		addToCSV('Espece_terrain', row.doc.Espece_terrain) &&
+		    		addToCSV('Famille_labo', row.doc.Famille_labo) &&
+		    		addToCSV('Genre_labo', row.doc.Famille_labo) &&
+		    		addToCSV('Espece_labo', row.doc.Famille_labo) &&
+		    		addToCSV('Famille_consensus', row.doc.Famille_labo) &&
+		    		addToCSV('Genre_consensus', row.doc.Famille_labo) &&
+		    		addToCSV('Espece_consensus', row.doc.Famille_labo) &&
+		    		addToCSV('Sexe', row.doc.Sexe) &&
+		    		addToCSV('Age', row.doc.Age) && 
+		    		addToCSV('Gestante', row.doc.Gestante) && 
+		    		addToCSV('Lactation', row.doc.Lactation) && 
+		    		addToCSV('Suitee', row.doc.Suitee) &&
+		    		addToCSV('Sexe_enfant', row.doc.Sexe_enfant) &&
+		    		addNumberToCSV('Poids_enfant', row.doc.Poids_enfant) &&
+		    		addToCSV('Identifiant_enfant', row.doc.Identifiant_enfant) &&
+		    		addToCSV('Vivante', row.doc.Vivante) &&
+		    		addToCSV('Cause_deces', row.doc.Cause_deces) &&
+		    		addNumberToCSV('Poids_gr', row.doc.Poids_gr) &&
+		    		addNumberToCSV('L_avant_bras_mm', row.doc.L_avant_bras_mm) &&
+		    		addNumberToCSV('L_totale_corps_mm', row.doc.L_totale_corps_mm) &&
+		    		addToCSV('Taille_yeux', row.doc.Taille_yeux) &&
+		    		addNumberToCSV('L_queue_mm', row.doc.L_queue_mm) &&
+		    		addNumberToCSV('L_metacarpe_3ieme_doigt_mm', row.doc.L_metacarpe_3ieme_doigt_mm) &&
+		    		addToCSV('Couleur_pelage_dorsal', row.doc.Couleur_pelage_dorsal) &&
+		    		addToCSV('Couleur_pelage_ventral', row.doc.Couleur_pelage_ventral) &&
+		    		addToCSV('Remarques_anomalies', row.doc.Remarques_anomalies) &&
+		    		addNumberToCSV('Sang_DBS_nb_cercles', row.doc.Sang_DBS_nb_cercles) &&
+		    		addToCSV('Sang_tube_EDTA', row.doc.Sang_tube_EDTA) &&
+		    		addToCSV('Feces_RNAl', row.doc.Feces_RNAl) &&
+		    		addToCSV('Urine', row.doc.Urine) &&
+		    		addToCSV('Urine_DUS_nombre_cercles', row.doc.Urine_DUS_nombre_cercles) &&
+		    		addToCSV('Feces_urine_RNAl', row.doc.Feces_urine_RNAl) &&
+		    		addToCSV('Ecouvillon_gorge_RNAl', row.doc.Ecouvillon_gorge_RNAl) &&
+		    		addToCSV('Ecouvillon_rectal_RNAl', row.doc.Ecouvillon_rectal_RNAl) &&
+		    		addToCSV('Ectoparasites_ethanol', row.doc.Ectoparasites_ethanol) &&
+		    		addToCSV('Poils_ethanol', row.doc.Poils_ethanol) &&
+		    		addToCSV('Wing_punch_ethanol', row.doc.Wing_punch_ethanol) &&
+		    		addToCSV('Feces_culture_glycerol', row.doc.Feces_culture_glycerol) &&
+		    		addToCSV('Specimen_entier', row.doc.Specimen_entier) &&
+		    		addToCSV('Specimen_preserve_dans', row.doc.Specimen_preserve_dans) &&
+		    		addToCSV('Prelevement_organe', row.doc.Prelevement_organe) &&
+		    		addToCSV('Foie_formol', row.doc.Foie_formol) &&
+		    		addToCSV('Foie_RNAl', row.doc.Foie_RNAl) &&
+		    		addToCSV('Rate_formol', row.doc.Rate_formol) &&
+		    		addToCSV('Rate_RNAl', row.doc.Rate_RNAl) &&
+		    		addToCSV('Reins_formol', row.doc.Reins_formol) &&
+		    		addToCSV('Reins_RNAl', row.doc.Reins_RNAl) &&
+		    		addToCSV('Intestins_formol', row.doc.Intestins_formol) &&
+		    		addToCSV('Intestins_RNAl', row.doc.Intestins_RNAl) &&
+		    		addToCSV('Poumons_formol', row.doc.Poumons_formol) &&
+		    		addToCSV('Poumons_RNAl', row.doc.Poumons_RNAl) &&
+		    		addToCSV('Coeur_formol', row.doc.Coeur_formol) &&
+		    		addToCSV('Coeur_RNAl', row.doc.Coeur_RNAl) &&
+		    		addToCSV('Ggl_lymph_formol', row.doc.Ggl_lymph_formol) &&
+		    		addToCSV('Ggl_lymph_RNAl', row.doc.Ggl_lymph_RNAl) &&
+		    		addToCSV('Testicules_formol', row.doc.Testicules_formol) &&
+		    		addToCSV('Testicules_RNAl', row.doc.Testicules_RNAl) &&
+		    		addToCSV('Peau_formol', row.doc.Peau_formol) &&
+		    		addToCSV('Peau_RNAl', row.doc.Peau_RNAl) &&
+		    		addToCSV('Muscles_formol', row.doc.Muscles_formol) &&
+		    		addToCSV('Muscles_RNAl', row.doc.Muscles_RNAl) &&
+		    		addToCSV('Cerveau_formol', row.doc.Cerveau_formol) &&
+		    		addToCSV('Cerveau_RNAl', row.doc.Cerveau_RNAl) &&
+		    		addToCSV('Autre', row.doc.Autre) &&
+		    		addToCSV('Autre_formol', row.doc.Autre_formol) &&
+		    		addToCSV('Autre_RNAl', row.doc.Autre_RNAl) &&
+		    		addToCSV('Remarques_echantillons', row.doc.Remarques_echantillons)
+		    		
+		    		
+		    		
+		    	) {
+			    			    		
+		    		if (array_selected_fields.indexOf('N_identification_CS') > -1) {
+	    				CSV = CSV + row.doc.N_identification_CS + ";" 
+					};
+	    			if (array_selected_fields.indexOf('N_identification_mere') > -1) {
+	    				CSV = CSV + row.doc.N_identification_mere + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('N_site') > -1) {
+	    				CSV = CSV + row.doc.N_site + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Date') > -1) {
+	    				CSV = CSV + row.doc.Date + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Equipe') > -1) {
+	    				CSV = CSV + row.doc.Equipe + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Pays') > -1) {
+	    				CSV = CSV + row.doc.Pays + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Region_capture') > -1) {
+	    				CSV = CSV + row.doc.Region_capture + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Site_capture') > -1) {
+	    				CSV = CSV + row.doc.Site_capture + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Lieu_capture') > -1) {
+	    				CSV = CSV + row.doc.Lieu_capture + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Environnement') > -1) {
+	    				CSV = CSV + row.doc.Environnement + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Latitude') > -1) {
+	    				CSV = CSV + row.doc.Latitude + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Lat_degre_dec') > -1) {
+	    				CSV = CSV + row.doc.Lat_degre_dec + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Longitude') > -1) {
+	    				CSV = CSV + row.doc.Longitude + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Long_degre_dec') > -1) {
+	    				CSV = CSV + row.doc.Long_degre_dec + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Proximite_village_km') > -1) {
+	    				CSV = CSV + row.doc.Proximite_village_km + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Methode_capture') > -1) {
+	    				CSV = CSV + row.doc.Methode_capture + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
+	    				CSV = CSV + row.doc.Type_chauve_souris + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Espece_identifiee') > -1) {
+	    				CSV = CSV + row.doc.Espece_identifiee + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Famille_terrain') > -1) {
+	    				CSV = CSV + row.doc.Famille_terrain + ";"
+	    			};
+	        		if (array_selected_fields.indexOf('Genre_terrain') > -1) {
+	    				CSV = CSV + row.doc.Genre_terrain + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Espece_terrain') > -1) {
+	    				CSV = CSV + row.doc.Espece_terrain + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Famille_labo') > -1) {
+	    				CSV = CSV + row.doc.Famille_labo + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Genre_labo') > -1) {
+	    				CSV = CSV + row.doc.Genre_labo + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Espece_labo') > -1) {
+	    				CSV = CSV + row.doc.Espece_labo + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Famille_consensus') > -1) {
+	    				CSV = CSV + row.doc.Famille_consensus + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Genre_consensus') > -1) {
+	    				CSV = CSV + row.doc.Genre_consensus + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Espece_consensus') > -1) {
+	    				CSV = CSV + row.doc.Espece_consensus + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Sexe') > -1) {
+	    				CSV = CSV + row.doc.Sexe + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Age') > -1) {
+	    				CSV = CSV + row.doc.Age + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Gestante') > -1) {
+	    				CSV = CSV + row.doc.Gestante + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Lactation') > -1) {
+	    				CSV = CSV + row.doc.Lactation + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Suitee') > -1) {
+	    				CSV = CSV + row.doc.Suitee + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Sexe_enfant') > -1) {
+	    				CSV = CSV + row.doc.Sexe_enfant + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Poids_enfant') > -1) {
+	    				CSV = CSV + row.doc.Poids_enfant + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Identifiant_enfant') > -1) {
+	    				CSV = CSV + row.doc.Identifiant_enfant + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Vivante') > -1) {
+	    				CSV = CSV + row.doc.Vivante + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Cause_deces') > -1) {
+	    				CSV = CSV + row.doc.Cause_deces + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Poids_gr') > -1) {
+	    				CSV = CSV + row.doc.Poids_gr + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('L_avant_bras_mm') > -1) {
+	    				CSV = CSV + row.doc.L_avant_bras_mm + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('L_totale_corps_mm') > -1) {
+	    				CSV = CSV + row.doc.L_totale_corps_mm + ";"
+	    			};
+	        		if (array_selected_fields.indexOf('Taille_yeux') > -1) {
+	    				CSV = CSV + row.doc.Taille_yeux + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('L_queue_mm') > -1) {
+	    				CSV = CSV + row.doc.L_queue_mm + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('L_metacarpe_3ieme_doigt_mm') > -1) {
+	    				CSV = CSV + row.doc.L_metacarpe_3ieme_doigt_mm + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Couleur_pelage_dorsal') > -1) {
+	    				CSV = CSV + row.doc.Couleur_pelage_dorsal + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
+	    				CSV = CSV + row.doc.Couleur_pelage_ventral + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
+	    				CSV = CSV + row.doc.Remarques_anomalies + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Sang_DBS_nb_cercles') > -1) {
+	    				CSV = CSV + row.doc.Sang_DBS_nb_cercles + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Sang_tube_EDTA') > -1) {
+	    				CSV = CSV + row.doc.Sang_tube_EDTA + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Feces_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Feces_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Urine') > -1) {
+	    				CSV = CSV + row.doc.Urine + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Urine_DUS_nombre_cercles') > -1) {
+	    				CSV = CSV + row.doc.Urine_DUS_nombre_cercles + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Feces_urine_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Feces_urine_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Ecouvillon_gorge_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Ecouvillon_gorge_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Ecouvillon_rectal_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Ecouvillon_rectal_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Ectoparasites_ethanol') > -1) {
+	    				CSV = CSV + row.doc.Ectoparasites_ethanol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Poils_ethanol') > -1) {
+	    				CSV = CSV + row.doc.Poils_ethanol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Wing_punch_ethanol') > -1) {
+	    				CSV = CSV + row.doc.Wing_punch_ethanol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Feces_culture_glycerol') > -1) {
+	    				CSV = CSV + row.doc.Feces_culture_glycerol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Sperme') > -1) {
+	    				CSV = CSV + row.doc.Sperme + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Autres_echantillons_remarques') > -1) {
+	    				CSV = CSV + row.doc.Autres_echantillons_remarques + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Specimen_entier') > -1) {
+	    				CSV = CSV + row.doc.Specimen_entier + ";"
+	    			};
+	        		if (array_selected_fields.indexOf('Specimen_preserve_dans') > -1) {
+	    				CSV = CSV + row.doc.Specimen_preserve_dans + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Prelevement_organe') > -1) {
+	    				CSV = CSV + row.doc.Prelevement_organe + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Foie_formol') > -1) {
+	    				CSV = CSV + row.doc.Foie_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Foie_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Foie_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Rate_formol') > -1) {
+	    				CSV = CSV + row.doc.Rate_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Rate_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Rate_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Reins_formol') > -1) {
+	    				CSV = CSV + row.doc.Reins_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Reins_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Reins_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Intestins_formol') > -1) {
+	    				CSV = CSV + row.doc.Intestins_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Intestins_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Intestins_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Poumons_formol') > -1) {
+	    				CSV = CSV + row.doc.Poumons_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Poumons_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Poumons_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Coeur_formol') > -1) {
+	    				CSV = CSV + row.doc.Coeur_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Coeur_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Coeur_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Ggl_lymph_formol') > -1) {
+	    				CSV = CSV + row.doc.Ggl_lymph_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Ggl_lymph_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Ggl_lymph_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Testicules_formol') > -1) {
+	    				CSV = CSV + row.doc.Testicules_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Testicules_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Testicules_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Peau_formol') > -1) {
+	    				CSV = CSV + row.doc.Peau_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Peau_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Peau_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Muscles_formol') > -1) {
+	    				CSV = CSV + row.doc.Muscles_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Muscles_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Muscles_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Cerveau_formol') > -1) {
+	    				CSV = CSV + row.doc.Cerveau_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Cerveau_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Cerveau_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Autre') > -1) {
+	    				CSV = CSV + row.doc.Autre + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Autre_formol') > -1) {
+	    				CSV = CSV + row.doc.Autre_formol + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Autre_RNAl') > -1) {
+	    				CSV = CSV + row.doc.Autre_RNAl + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Remarques_echantillons') > -1) {
+	    				CSV = CSV + row.doc.Remarques_echantillons + ";"
+	    			};
+	    			CSV = CSV + "\r\n";
+		    		
+		    		count--;
+	    			console.log(count + ' : ' + row.doc.N_identification_CS);
+		    	}
+	    	}
+    	};
+    	
+    	function addToCSV(NameElement, field) {
+			var filter = false;
+			var Element = document.getElementById(NameElement + '_1');
+		 	if (Element.classList.contains('btn-primary')) {
+		 		filter = addIfFilter(NameElement, field);	    		
+	    	} else {
+	    		filter = true;
+	    	};
+	    	return filter;
+	    };
+	    
+	    function addDateToCSV(NameElement, field) {
+			var filter = false;
+			var Element = document.getElementById(NameElement + '_1');
+			var Element2 = document.getElementById(NameElement + '_2');
+			var Element3 = document.getElementById(NameElement + '_3');
+			var Element4 = document.getElementById(NameElement + '_4');
+			var Element5 = document.getElementById(NameElement + '_5');
+		 	if (Element.classList.contains('btn-primary')) {
+		 		filter = addIfDateFilter(NameElement, field, '<');	    		
+	    	} else if (Element2.classList.contains('btn-primary')) {
+	    		filter = addIfDateFilter(NameElement, field, '<=');	    		
+	    	} else if (Element3.classList.contains('btn-primary')) {
+	    		filter = addIfDateFilter(NameElement, field, '=');	    		
+	    	} else if (Element4.classList.contains('btn-primary')) {
+	    		filter = addIfDateFilter(NameElement, field, '>=');	    		
+	    	} else if (Element5.classList.contains('btn-primary')) {
+	    		filter = addIfDateFilter(NameElement, field, '>');	    		
+	    	} else {
+	    		filter = true;
+	    	};
+	    	return filter;
+	    };
+	    
+	    function addNumberToCSV(NameElement, field) {
+			var filter = false;
+			var Element = document.getElementById(NameElement + '_1');
+			var Element2 = document.getElementById(NameElement + '_2');
+			var Element3 = document.getElementById(NameElement + '_3');
+			var Element4 = document.getElementById(NameElement + '_4');
+			var Element5 = document.getElementById(NameElement + '_5');
+		 	if (Element.classList.contains('btn-primary')) {
+		 		filter = addIfNumberFilter(NameElement, field, '<');	    		
+	    	} else if (Element2.classList.contains('btn-primary')) {
+	    		filter = addIfNumberFilter(NameElement, field, '<=');	    		
+	    	} else if (Element3.classList.contains('btn-primary')) {
+	    		filter = addIfNumberFilter(NameElement, field, '=');	    		
+	    	} else if (Element4.classList.contains('btn-primary')) {
+	    		filter = addIfNumberFilter(NameElement, field, '>=');	    		
+	    	} else if (Element5.classList.contains('btn-primary')) {
+	    		filter = addIfNumberFilter(NameElement, field, '>');	    		
+	    	} else {
+	    		filter = true;
+	    	};
+	    	return filter;
+	    };
+    	
+	    function addIfFilter(NameElement, field) {
+	    	var tab = []; 
+    		var Element_value = document.getElementById(NameElement + '_value').value;
+    		tab = Element_value.split(";");
+    		for (var i=0; i<tab.length; i++) {
+    			if ((field == tab[i]) && (tab[i] != '')) {
+    				console.log(NameElement + ': ' + tab[i]);
+    				return true;
+    			}
+    		}	
+	    }
+	    
+	    function addIfDateFilter(NameElement, field, comparator) {
+	    	var tab = []; 
+    		var Element_value = document.getElementById(NameElement + '_value').value;
+    		tab = Element_value.split(";");
+    		for (var i=0; i<tab.length; i++) {
+    			if (comparator === '<') {
+	    			try {
+	    				if (compareDates_inf(field, tab[i]) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '<=') { 
+    				try {
+	    				if (compareDates_inf_eg(field, tab[i]) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '=') { 
+    				try {
+	    				if (compareDates_eg(field, tab[i]) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '>=') { 
+    				try {
+	    				if (compareDates_sup_eg(field, tab[i]) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '>') { 
+    				try {
+	    				if (compareDates_sup(field, tab[i]) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			}
+    			
+    			return false;
+    		}	
+    		
+    		function compareDates_inf(d1, d2){
+    			var parts =d1.split('/');
+    			var d1 = Number(parts[2] + parts[1] + parts[0]);
+    			parts = d2.split('/');
+    			var d2 = Number(parts[2] + parts[1] + parts[0]);
+    			return d1 < d2;
+    		}
+    		
+    		function compareDates_inf_eg(d1, d2){
+    			var parts =d1.split('/');
+    			var d1 = Number(parts[2] + parts[1] + parts[0]);
+    			parts = d2.split('/');
+    			var d2 = Number(parts[2] + parts[1] + parts[0]);
+    			return d1 <= d2;
+    		}
+    		
+    		function compareDates_eg(d1, d2){
+    			var parts =d1.split('/');
+    			var d1 = Number(parts[2] + parts[1] + parts[0]);
+    			parts = d2.split('/');
+    			var d2 = Number(parts[2] + parts[1] + parts[0]);
+    			return d1 == d2;
+    		}
+    		
+    		function compareDates_sup_eg(d1, d2){
+    			var parts =d1.split('/');
+    			var d1 = Number(parts[2] + parts[1] + parts[0]);
+    			parts = d2.split('/');
+    			var d2 = Number(parts[2] + parts[1] + parts[0]);
+    			return d1 >= d2;
+    		}
+    		
+    		function compareDates_sup(d1, d2){
+    			var parts =d1.split('/');
+    			var d1 = Number(parts[2] + parts[1] + parts[0]);
+    			parts = d2.split('/');
+    			var d2 = Number(parts[2] + parts[1] + parts[0]);
+    			return d1 > d2;
+    		}
+	    }
+	    
+	    function addIfNumberFilter(NameElement, field, comparator) {
+	    	var tab = []; 
+    		var Element_value = document.getElementById(NameElement + '_value').value;
+    		tab = Element_value.split(";");
+    		for (var i=0; i<tab.length; i++) {
+    			if (comparator === '<') {
+	    			try {
+	    				if ((Number(field) < Number(tab[i])) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '<=') { 
+    				try {
+	    				if ((Number(field) <= Number(tab[i])) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '=') { 
+    				try {
+	    				if ((Number(field) == Number(tab[i])) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '>=') { 
+    				try {
+	    				if ((Number(field) >= Number(tab[i])) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			} else if (comparator === '>') { 
+    				try {
+	    				if ((Number(field) > Number(tab[i])) && (tab[i] != '')) {
+		    				console.log(NameElement + ': ' + tab[i]);
+		    				return true;
+		    			}
+	    			} catch(error) {
+	    			}
+    			}
+    			
+    			return false;
+    		}	
+    	}
+	    
+    </script>
+    
+    <script type="text/javascript"> 
+		function move() {
+			i++;
+			if (i == 20) { 
+				var bar = document.getElementById("myBar");
+		    	width = width + step;
+		    	bar.style.width = width + '%';
+		    	i = 0;
+		    };
+		};
+		
+		function move_2() {
+		    var elem = document.getElementById("myBar");
+		    width = width + step;
+		    elem.style.width = width + '%';
+		};
+		
+		function hide_progress_bar() {		
+			var elem = document.getElementById("child");
+			elem.style.display = "none";
+		};
+		
+		function show_progress_bar() {		
+			var elem = document.getElementById("child");
+			elem.style.display="block";
+			var label =  document.getElementById("progress_label");
+			label.innerHTML = 'Importation des données...';
+		};
+		
+		function success() {
+			var elem = document.getElementById("success_label");
+			elem.style.display = "block";
+			var label =  document.getElementById("success");
+			label.style.color = "green";
+			label.innerHTML = 'Importation du fichier réussie !';
+		};
+		
+		function failure_fields(msg) {
+			var elem = document.getElementById("success_label");
+			elem.style.display = "block";
+			var label =  document.getElementById("success");
+			label.style.color = "red";
+			label.innerHTML = msg;
+			enable_li();
+			enable_button();
+		};
+		
+		function hide_success() {	
+			var elem = document.getElementById("success_label");
+			elem.style.display = "none";
+		};
+	</script>	
+	
+	<script>
+    	var array_selected_fields = JSON.parse(localStorage.getItem("fields_selected"));
+    	
+    	/*for (i=0;i<array_selected_fields.length;i++) {
+    		console.log(array_selected_fields[i]);
+    		if (array_selected_fields.indexOf(array_selected_fields[i]) > -1) {
+    			
+    			//alert(array_selected_fields[i] + '_div');
+    			var Element = document.getElementById(array_selected_fields[i] + '_div');
+    			Element.style.display = 'flex';
+    			//alert(Element.style.display);
+    		};
+    	};*/
+    	
+    	var i = array_selected_fields.length-1;
+    	
+    	ShowElement();
+    	
+    	function ShowElement() {
+    		if (i > -1) {
+    			console.log(array_selected_fields[i]);
+    			if (array_selected_fields.indexOf(array_selected_fields[i]) > -1) {
+        			var Element = document.getElementById(array_selected_fields[i] + '_div');
+        			Element.style.display = 'flex';
+        			i--;
+        			ShowElement()
+        		};
+        	}
+        }
+        		
+    			
+    			
+	</script> 
+	
+  </body>
+</html>
+	 

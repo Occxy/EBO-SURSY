@@ -1,0 +1,194 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Zlistechoixmultiples
+ *
+ * @ORM\Table(name="zlistechoixmultiples")
+ * @ORM\Entity
+ */
+class Zlistechoixmultiples
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Sex", type="string", length=255, nullable=true)
+     */
+    private $sex;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Age", type="string", length=255, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="UICNStatus", type="string", length=255, nullable=true)
+     */
+    private $uicnstatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Province", type="string", length=255, nullable=true)
+     */
+    private $province;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SiteDescription", type="string", length=255, nullable=true)
+     */
+    private $sitedescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ModeCollecte", type="string", length=255, nullable=true)
+     */
+    private $modecollecte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ModeCapture", type="string", length=255, nullable=true)
+     */
+    private $modecapture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PCR", type="string", length=255, nullable=true)
+     */
+    private $pcr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Organ", type="string", length=255, nullable=true)
+     */
+    private $organ;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VirusFamily", type="string", length=255, nullable=true)
+     */
+    private $virusfamily;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MammalsOrder", type="string", length=255, nullable=true)
+     */
+    private $mammalsorder;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MammalsFamily", type="string", length=255, nullable=true)
+     */
+    private $mammalsfamily;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Diet", type="string", length=255, nullable=true)
+     */
+    private $diet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EyesSize", type="string", length=255, nullable=true)
+     */
+    private $eyessize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BackLegShape", type="string", length=255, nullable=true)
+     */
+    private $backlegshape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EarsShape", type="string", length=255, nullable=true)
+     */
+    private $earsshape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DorsalPelageAspect", type="string", length=255, nullable=true)
+     */
+    private $dorsalpelageaspect;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DorsalPelageCor", type="string", length=255, nullable=true)
+     */
+    private $dorsalpelagecor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LimitPelage", type="string", length=255, nullable=true)
+     */
+    private $limitpelage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VentralPelage", type="string", length=255, nullable=true)
+     */
+    private $ventralpelage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TailShape", type="string", length=255, nullable=true)
+     */
+    private $tailshape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CapturePlace", type="string", length=255, nullable=true)
+     */
+    private $captureplace;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TestResults", type="string", length=255, nullable=true)
+     */
+    private $testresults;
+
+
+}
+

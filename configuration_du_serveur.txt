@@ -1,0 +1,15 @@
+1) in Apache config file (for me the path was C:\wamp\bin\apache\apache2.4.18\conf\httpd.conf) add the line: Header set Access-Control-Allow-Origin "*" in the content of the <Directory> tag:
+
+DocumentRoot "c:/wamp/www"
+<Directory "c:/wamp/www/">
+    Options +Indexes +FollowSymLinks
+    Header set Access-Control-Allow-Origin "*"
+    AllowOverride all
+    Require local
+</Directory>
+
+2) activate the "headers_module" in apache's modules (it will also restart your apache server, effectively applying the change made in step 1)
+
+3) clear your browser cache (I am using chrome and i was told the best way to "hard clear" the cache was to go in the developper tools -> Networks tab -> right click -> clear browser cache) (by the way, clearing the browser cache is often useful when debugging in chrome)
+
+Now it should work. Good luck !

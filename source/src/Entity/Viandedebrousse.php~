@@ -1,0 +1,61 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Viandedebrousse
+ *
+ * @ORM\Table(name="viandedebrousse", indexes={@ORM\Index(name="Code", columns={"Code"})})
+ * @ORM\Entity
+ */
+class Viandedebrousse
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="N", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $n;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Province", type="string", length=255, nullable=true)
+     */
+    private $province;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Code", type="string", length=255, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Village", type="string", length=255, nullable=true)
+     */
+    private $village;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Genre", type="string", length=255, nullable=true)
+     */
+    private $genre;
+
+
+}
+

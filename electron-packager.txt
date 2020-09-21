@@ -1,0 +1,5 @@
+electron-packager ./source ebo-sursy --overwrite --platform=win32 --arch=ia32 --icon=./source/img/Ebola.ico --prune=true --out=release-builds-ebo-sursy --version-string.CompanyName=CIRAD --version-string.FileDescription=CIRAD --version-string.ProductName="Ebo-Sursy" --electron-version=3.0.4
+
+electron-packager ./source --overwrite --platform=darwin --arch=x64 --icon=./source/img/Ebola.icns --prune=true --out=release-builds --electron-version=3.0.4 --asar
+
+bitbucket

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+        
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>	
+	
+	<!-- Javascript files-->  
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"> </script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+   
+    <!-- Main File-->
+    <script src="js/front.js"></script> 
+    
+    <script src="js/pouchdb.authentication.js"></script> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+   
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    <!-- <script src="js/load-page.js"></script> -->
+    
+  </head>
+  <body>     	   
+  
+  	<script>
+		let searchParams = new URLSearchParams(window.location.search);
+		link = "https://database.ebo-sursy.eu/ebola/videos/" + searchParams.get('link');
+		titre = searchParams.get('titre');
+	</script>
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+              	<!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+            <div id="child" style="display: none; color: #fff; background: #2f333e;">
+    		  <label>Synchronisation des données...</label>
+			  <div class="progress">
+  				<div class="progress-bar progress-bar-striped" id="myBar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			  </div>
+			</div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav id="nav" class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <!-- <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+            <div class="title">
+              <h1 class="h4">Ebola</h1>
+              <p>Virus</p>
+            </div> -->
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                    <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                                                
+                    <li id="li_transvihmiDropdown" name="1"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled">
+                        
+                        <li id="li_transvihmi_guineeDropdown" name="1" pays="guinee"> <a id="a_transvihmi_guineeDropdown" name="1" href="#ul_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</i> </a>
+                       	  <ul id="ul_transvihmi_guineeDropdown" name="1" pays="guinee" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_transvihmi_guinee" name="1" style="text-align: right"><a href="liste_sites.html?table=_transvihmi_guinee">Site</a></li>                            
+			                                        
+	                        <li id="li_bat_transvihmi_guineeDropdown" name="1"><a id="a_bat_transvihmi_guineeDropdown" name="1" href="#ul_bat_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_transvihmi_guineeDropdown" name="1" class="collapse list-unstyled">
+			                    			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi_guineeDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_transvihmi_guineeDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_transvihmi_guinee" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_transvihmi_guinee">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>			                    			                    
+			                    	 
+	                        	<li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_guineeDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_transvihmi_guineeDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_guinee" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_transvihmi_guinee">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>	 
+	                        		                    
+			                    <li id="li_bat_transvihmi_guineeCaptureesDropdown" name="1"><a id="a_bat_transvihmi_guineeCaptureesDropdown" name="1" href="#ul_bat_transvihmi_guineeCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+			                      <ul id="ul_bat_transvihmi_guineeCaptureesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_transvihmi_guinee" name="1"><a href="liste_chauves_souris_capturees.html?table=_transvihmi_guinee">données</a></li>                            
+			                        <li id="li_bat_map_capturees_transvihmi_guinee" name="1"><a href="cartographie.html?table=_transvihmi_guinee&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_transvihmi_guineeNonInvasivesDropdown" name="1"><a id="a_bat_transvihmi_guineeNonInvasivesDropdown" name="1" href="#ul_bat_transvihmi_guineeNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+			                      <ul id="ul_bat_transvihmi_guineeNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_transvihmi_guinee" name="1"><a href="liste_chauves_souris_non_invasives.html?table=_transvihmi_guinee">données</a></li>                          
+		                            <li id="li_bat_map_non_invasives_transvihmi_guinee" name="1"><a href="cartographie.html?table=_transvihmi_guinee&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+			                    </li>
+		                      </ul>
+	                	    </li>
+	                	    <li id="li_viande_de_brousse_transvihmi_guineeDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_guineeDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+	                      	  <ul id="ul_viande_de_brousse_transvihmi_guineeDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_transvihmi_guinee" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_guinee">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_map_transvihmi_guinee" name="1"><a href="cartographie.html?table=_transvihmi_guinee&type=viande_de_brousse">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                      </ul>
+	                    </li>
+	                    
+	                    <li id="li_transvihmi_camerounDropdown" name="1" pays="cameroun"> <a id="a_transvihmi_camerounDropdown" name="1" href="#ul_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse">Cameroun</a>
+                       	  <ul id="ul_transvihmi_camerounDropdown" name="1" pays="cameroun" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_transvihmi_cameroun" name="1" style="text-align: right"><a href="liste_sites.html?table=_transvihmi_cameroun">Site</a></li>                            
+			                                        
+	                        <li id="li_bat_transvihmi_camerounDropdown" name="1"><a id="a_bat_transvihmi_camerounDropdown" name="1" href="#ul_bat_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi_camerounDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_transvihmi_camerounDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_transvihmi_cameroun" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_transvihmi_cameroun">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+	                        	<li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_camerounDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_transvihmi_camerounDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_cameroun" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_transvihmi_cameroun">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>	
+	                        		                    
+			                    <li id="li_bat_transvihmi_camerounCaptureesDropdown" name="1"><a id="a_bat_transvihmi_camerounCaptureesDropdown" name="1" href="#ul_bat_transvihmi_camerounCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+			                      <ul id="ul_bat_transvihmi_camerounCaptureesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_transvihmi_cameroun" name="1"><a href="liste_chauves_souris_capturees.html?table=_transvihmi_cameroun">données</a></li>                            
+			                        <li id="li_map_bat_capturees_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_transvihmi_camerounNonInvasivesDropdown" name="1"><a id="a_bat_transvihmi_camerounNonInvasivesDropdown" name="1" href="#ul_bat_transvihmi_camerounNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_transvihmi_camerounNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_transvihmi_cameroun" name="1"><a href="liste_chauves_souris_non_invasives.html?table=_transvihmi_cameroun">données</a></li>                          
+		                            <li id="li_bat_map_non_invasives_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=chauves_souris_non_invasives&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+			                    </li>
+		                      </ul>
+	                	    </li>
+	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                      </ul>
+	                    </li>
+	                    
+	                    <li id="li_transvihmi_rdcDropdown" name="1" pays="rdc"> <a id="a_transvihmi_rdcDropdown" name="1" href="#ul_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse">RDC</a>
+                       	  <ul id="ul_transvihmi_rdcDropdown" name="1" pays="rdc" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_transvihmi_rdc" name="1" style="text-align: right"><a href="liste_sites.html?table=_transvihmi_rdc">Site</a></li>                            
+			                                        
+	                        <li id="li_bat_transvihmi_rdcDropdown" name="1"><a id="a_bat_transvihmi_rdcDropdown" name="1" href="#ul_bat_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi_rdcDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_transvihmi_rdcDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_transvihmi_rdc" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_transvihmi_rdc">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_rdcDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_transvihmi_rdcDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi_rdc" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_transvihmi_rdc">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>	 
+	                        		                    
+			                    <li id="li_bat_transvihmi_rdcCaptureesDropdown" name="1"><a id="a_bat_transvihmi_rdcCaptureesDropdown" name="1" href="#ul_bat_transvihmi_rdcCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+			                      <ul id="ul_bat_transvihmi_rdcCaptureesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_transvihmi_rdc" name="1"><a href="liste_chauves_souris_capturees.html?table=_transvihmi_rdc">données</a></li>                            
+			                        <li id="li_bat_map_capturees_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_transvihmi_rdcNonInvasivesDropdown" name="1"><a id="a_bat_transvihmi_rdcNonInvasivesDropdown" name="1" href="#ul_bat_transvihmi_rdcNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_transvihmi_rdcNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_transvihmi_rdc" name="1"><a href="liste_chauves_souris_non_invasives.html?table=_transvihmi_rdc">données</a></li>                          
+		                            <li id="li_bat_map_non_invasives_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+			                    </li>
+		                      </ul>
+	                	    </li>
+	                	    <li id="li_viande_de_brousse_transvihmi_rdcDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_rdcDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+	                      	  <ul id="ul_viande_de_brousse_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_transvihmi_rdc" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_rdc">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_map_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=viande_de_brousse">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                      </ul>
+	                    </li>
+	                    
+	                  </ul>
+	                </li>
+	                    
+                    <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="liste_sites.html?table=_mivegec">Site</a></li>                            
+		                
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                  <ul id="ul_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" class="collapse list-unstyled">
+			                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_mivegec">données missions</a></li>
+			                   	<li id="li_importation_suivi_longitudinal_donnees_missions_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_mission">importation/exportation</a></li>                            
+	                          </ul>
+			                </li>
+		                    	                    
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                  <ul id="ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" class="collapse list-unstyled">
+			                     <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_mivegec">données journalières</a></li>                            
+	                        	 <li id="li_importation_suivi_longitudinal_donnees_journalieres_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_journalieres">importation/exportation</a></li>                            
+	                          </ul>
+			                </li>
+		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="liste_chauves_souris_capturees.html?table=_mivegec">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_capturees">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_capturees">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="liste_chauves_souris_non_invasives.html?table=_mivegec">données</a></li> 
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_non_invasives">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_non_invasives">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_mivegecDropdown" name="2"><a id="a_viande_de_brousse_mivegecDropdown" name="2" href="#ul_viande_de_brousse_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_mivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_brousse_mivegec" name="2"><a href="liste_viande_de_brousse.html?table=_mivegec">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=viande_de_brousse">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=viande_de_brousse">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                                        
+                    <li id="li_astreDropdown" name="6"> <a id="a_astreDropdown" name="6" href="#ul_astreDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_astre_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_guineeDropdown" name="6" href="#ul_astre_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
+                          <ul id="ul_astre_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_astre_guinee" name="6" style="text-align: right"><a href="liste_sites.html?table=_astre_guinee">Site</a></li>                            
+			                
+	                        <li id="li_bat_astre_guineeDropdown" name="6"><a id="a_bat_astre_guineeDropdown" name="6" href="#ul_bat_astre_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_astre_guineeDropdown" name="6" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_astre_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_missions_astre_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_astre_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_astre_guineeDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_astre_guinee" name="6"style="text-align: right"><a href="liste_donnees_missions.html?table=_astre_guinee">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_astre_guinee" name="6"><a href="import_export.html?table=_astre_guinee&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_journalieres_astre_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_journalieres_astre_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_astre_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_astre_guineeDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_astre_guinee" name="6"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_astre_guinee">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_astre_guinee" name="6"><a href="import_export.html?table=_astre_guinee&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+	                        		                    
+			                    <li id="li_bat_astre_guineeCaptureesDropdown" name="6"><a id="a_bat_astre_guineeCaptureesDropdown" name="6" href="#ul_bat_astre_guineeCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+			                      <ul id="ul_bat_astre_guineeCaptureesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_astre_guinee" name="6"><a href="liste_chauves_souris_capturees.html?table=_astre_guinee">données</a></li>                            
+			                        <li id="li_bat_map_capturees_astre_guinee" name="6"><a href="cartographie.html?table=_astre_guinee&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_astre_guinee" name="6"><a href="import_export.html?table=_astre_guinee&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_astre_guineeNonInvasivesDropdown" name="6"><a id="a_bat_astre_guineeNonInvasivesDropdown" name="6" href="#ul_bat_astre_guineeNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_astre_guineeNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_astre_guinee" name="6"><a href="liste_chauves_souris_non_invasives.html?table=_astre_guinee">données</a></li> 
+		                            <li id="li_bat_map_non_invasives_astre_guinee" name="6"><a href="cartographie.html?table=_astre_guinee&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_astre_guinee" name="6"><a href="import_export.html?table=_astre_guinee&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+	                            </li>
+	                          </ul>
+	                        </li>                          
+                          </ul>
+                   	    </li>
+                   	    
+                   	    <li id="li_astre_congoDropdown" name="6" pays="congo"> <a id="a_astre_congoDropdown" name="6" href="#ul_astre_congoDropdown" aria-expanded="false" data-toggle="collapse">République du Congo</a>
+                          <ul id="ul_astre_congoDropdown" name="6" pays="congo" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_astre_congo" name="6" style="text-align: right"><a href="liste_sites.html?table=_astre_congo">Site</a></li>                            
+			                
+	                        <li id="li_bat_astre_congoDropdown" name="6"><a id="a_bat_astre_congoDropdown" name="6" href="#ul_bat_astre_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_astre_congoDropdown" name="6" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_astre_congoDropdown" name="6"><a id="a_suivi_longitudinal_donnees_missions_astre_congoDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_astre_congoDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_astre_congoDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_astre_congo" name="6"style="text-align: right"><a href="liste_donnees_missions.html?table=_astre_congo">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_astre_congo" name="6"><a href="import_export.html?table=_astre_congo&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_journalieres_astre_congoDropdown" name="6"><a id="a_suivi_longitudinal_donnees_journalieres_astre_congoDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_astre_congoDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_astre_congoDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_astre_congo" name="6"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_astre_congo">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_astre_congo" name="6"><a href="import_export.html?table=_astre_congo&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    	                    
+			                    <li id="li_bat_astre_congoCaptureesDropdown" name="6"><a id="a_bat_astre_congoCaptureesDropdown" name="6" href="#ul_bat_astre_congoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+			                      <ul id="ul_bat_astre_congoCaptureesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_astre_congo" name="6"><a href="liste_chauves_souris_capturees.html?table=_astre_congo">données</a></li>                            
+			                        <li id="li_bat_map_capturees_astre_congo" name="6"><a href="cartographie.html?table=_astre_congo&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_astre_congo" name="6"><a href="import_export.html?table=_astre_congo&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_astre_congoNonInvasivesDropdown" name="6"><a id="a_bat_astre_congoNonInvasivesDropdown" name="6" href="#ul_bat_astre_congoNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_astre_congoNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_astre_congo" name="6"><a href="liste_chauves_souris_non_invasives.html?table=_astre_congo">données</a></li> 
+		                            <li id="li_bat_map_non_invasives_astre_congo" name="6"><a href="cartographie.html?table=_astre_congo&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_astre_congo" name="6"><a href="import_export.html?table=_astre_congo&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+	                            </li>
+	                          </ul>
+	                        </li>                          
+                          </ul>
+                   	    </li>
+                   	    
+                   	    <li id="li_astre_gabonDropdown" name="6" pays="gabon"> <a id="a_astre_gabonDropdown" name="6" href="#ul_astre_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
+                          <ul id="ul_astre_gabonDropdown" name="6" pays="gabon" class="collapse list-unstyled">
+                                              
+	                        <li id="li_site_astre_gabon" name="6" style="text-align: right"><a href="liste_sites.html?table=_astre_gabon">Site</a></li>                            
+			                
+	                        <li id="li_bat_astre_gabonDropdown" name="6"><a id="a_bat_astre_gabonDropdown" name="6" href="#ul_bat_astre_gabonDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_astre_gabonDropdown" name="6" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_astre_gabonDropdown" name="6"><a id="a_suivi_longitudinal_donnees_missions_astre_gabonDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_astre_gabonDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_astre_gabonDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_astre_gabon" name="6"style="text-align: right"><a href="liste_donnees_missions.html?table=_astre_gabon">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_astre_gabon" name="6"><a href="import_export.html?table=_astre_gabon&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_journalieres_astre_gabonDropdown" name="6"><a id="a_suivi_longitudinal_donnees_journalieres_astre_gabonDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_astre_gabonDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_astre_gabonDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_astre_gabon" name="6"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_astre_gabon">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_astre_gabon" name="6"><a href="import_export.html?table=_astre_gabon&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+	                        		                    
+			                    <li id="li_bat_astre_gabonCaptureesDropdown" name="6"><a id="a_bat_astre_gabonCaptureesDropdown" name="6" href="#ul_bat_astre_gabonCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+			                      <ul id="ul_bat_astre_gabonCaptureesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_astre_gabon" name="6"><a href="liste_chauves_souris_capturees.html?table=_astre_gabon">données</a></li>                            
+			                        <li id="li_bat_map_capturees_astre_gabon" name="6"><a href="cartographie.html?table=_astre_gabon&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_astre_gabon" name="6"><a href="import_export.html?table=_astre_gabon&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_astre_gabonNonInvasivesDropdown" name="6"><a id="a_bat_astre_gabonNonInvasivesDropdown" name="6" href="#ul_bat_astre_gabonNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_astre_gabonNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_astre_gabon" name="6"><a href="liste_chauves_souris_non_invasives.html?table=_astre_gabon">données</a></li> 
+		                            <li id="li_bat_map_non_invasives_astre_gabon" name="6"><a href="cartographie.html?table=_astre_gabon&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_astre_gabon" name="6"><a href="import_export.html?table=_astre_gabon&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+	                            </li>
+	                          </ul>
+	                        </li>                          
+                          </ul>
+                   	    </li>
+                   	    
+                      </ul>
+                    </li>                   
+
+					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
+                        <li id="li_individuCIBUDropdown" name="3"><a id="a_individuCIBUDropdown" name="3" href="#ul_individuCIBUDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individuCIBUDropdown" name="3" class="collapse list-unstyled">
+                            <li id="li_individu_CIBU" name="3"><a href="liste_individus_cibu.html?table=individus_cibu">données</a></li>                            
+	                        <li id="li_individu_map_cibu" name ="3"><a href="#">carte</a></li>
+	                        <li id="li_importation_individu_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                          </ul>
+		                </li>
+		                <li id="li_prelevementCIBUDropdown" name="3"><a id="a_prelevementCIBUDropdown" name="3" href="#ul_prelevementCIBUDropdown" aria-expanded="false" data-toggle="collapse">Prélèvement</a>
+		                  <ul id="ul_prelevementCIBUDropdown" name ="3" class="collapse list-unstyled">
+		                    <li id="li_prelevement_CIBU" name="3"><a href="liste_prelevements_cibu.html?table=prelevements_cibu">données</a></li>                            
+		                    <li id="li_importation_prelevement_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                          </ul>
+		                </li>
+	                  </ul>
+                    </li>
+
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNonInvasivesDropdown" name="4"><a id="a_batEpvoNonInvasivesDropdown" href="#ul_batEpvoNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNonInvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNonInvasivesDropdown" name="5"><a id="a_batIPGNonInvasivesDropdown" href="#ul_batIPGNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNonInvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>                    
+                    
+                    <li id="li_help"> 
+                    	<a href="aide.html"><i class='a-aide'></i></a>
+                    </li>
+                                    
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Aide pour l'utilisation</h2>
+            </div>
+          </header>
+          
+          <section>          
+            <div class="container-fluid">              
+              
+              <div class="row">
+                <div class="col-lg-12">
+                
+                  <div class="card">
+	                <div class="card-header"  id="titre">
+	                  <script type="text/javascript">
+	                   	var line = document.createElement("div");  
+	                   	line.innerHTML = '<h4>' + titre + '</h4>';
+	                   	document.getElementById("titre").appendChild(line);
+		              </script>
+					</div>
+	                <div class="card-body">
+	                  <div class="row">
+	                    <div class="embed-responsive embed-responsive-16by9"  id="video">
+	                      <script type="text/javascript">
+	                        var line = document.createElement("div");
+		                    line.innerHTML = '<iframe class="embed-responsive-item" src="' + link + '"></iframe>';
+		                    document.getElementById("video").appendChild(line);  	
+		                  </script>
+						</div>
+	                  </div>
+	                </div>  
+                  </div>
+                  
+                </div>
+              </div>  
+              
+            </div>
+          </section>          
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+   
+  </body>
+  
+ 	<script type="text/javascript">
+		document.addEventListener("keydown", function(event) {
+		  if (event.keyCode == 13) {
+		    event.preventDefault();
+		    return false;
+		  }
+		}, true); // "true" => phase de capture
+ 	 	
+  		var component_a = document.getElementById('li_help');
+		component_a.classList.add('active');
+  	</script> 
+  
+</html>
+	 

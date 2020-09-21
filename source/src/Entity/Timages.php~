@@ -1,0 +1,40 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Timages
+ *
+ * @ORM\Table(name="timages", indexes={@ORM\Index(name="NIdent", columns={"NIdent"})})
+ * @ORM\Entity
+ */
+class Timages
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=true)
+     */
+    private $nident;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="blob", nullable=true)
+     */
+    private $image;
+
+
+}
+

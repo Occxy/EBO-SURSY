@@ -1,0 +1,2612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet EBO-SURSY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    
+    <!-- <style>
+		.input-group-addon{color:#ff0000; background-color: #ffffff;}
+	</style> -->
+        
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="vendor/ladda/ladda-themeless.min.css">
+    
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">    
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        
+    <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<script>
+		delete window.module;
+	</script>
+    
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
+        
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">    
+    
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- <script src="js/charts-home.js"></script> -->
+    <!-- Notifications-->
+    <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <!-- <script src="js/home-premium.js"></script> -->
+    
+    <!-- Bootstrap DatePicker-->
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+    
+    <!-- Data Tables-->
+    <script src="vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/tables-datatable.js"></script>
+    
+    <!-- Forms init-->
+    <!-- <script src="js/forms-advanced.js"></script>-->
+    
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    
+    <!-- Loading buttons-->
+    <script src="vendor/ladda/spin.min.js"></script>
+    <script src="vendor/ladda/ladda.min.js"></script>
+    <script src="js/components-ladda.js"></script>
+    
+    <script src="js/pouchdb.authentication.js"></script> 
+    <script src="js/pouchdb-6.4.2.min.js"></script> 
+    <script src="js/pouchdb.find.js"></script> 
+    
+    <script src="js/function.js"></script>
+    <script src="js/menu.js"></script>
+    
+    <script src="js/loadjs.js"></script>
+    
+    <script src="js/uuid.js"></script>
+    
+    <script src="js/load-page-chauves-souris-capturees.js"></script> 
+    
+    <script src="js/addReference.js"></script> 
+    
+  </head>
+  <body onload="chargement_des_chauves_souris_capturees()">
+  
+    <script>
+		logged_only();
+		var clickedBtn = null;
+		var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
+		} else {
+			debug = localStorage.getItem('debug');
+		};
+		var html = 'capturees';
+		//loadjs('js/menu_rights.js');
+	</script> 
+  
+    <!-- <script type="text/javascript">
+    	showAlertFlash();
+    </script> -->	
+    
+    <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                <li class="nav-item d-flex align-items-center">
+                  <div class="led-box">
+	    		    <div id="led"></div>
+	    		    <p id="p_led"></p>
+	    		  </div>
+	            </li>
+	                            
+                <!-- Logout    -->
+                <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
+          <ul class="list-unstyled">
+                    
+                    <li id="li_dashboard" name="10"> <a href="main.html"> <i class="a-logo-tableau-de-bord"></i></a></li>
+                                        
+                    <li id="li_transvihmiDropdown" name="1"> <a id="a_transvihmiDropdown" name="1" href="#ul_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-ird"></i> </a>
+                      <ul id="ul_transvihmiDropdown" name="1" class="collapse list-unstyled">
+                        
+                        <li id="li_site_transvihmi" name="1" style="text-align: right"><a href="site_transvihmi.html">Site</a></li>                            
+		                
+                        <li id="li_batTransvihmiDropdown" name="1"><a id="a_batTransvihmiDropdown" name="1" href="#ul_batTransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batTransvihmiDropdown" name="1" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_transvihmi.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_transvihmi" name="1"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_transvihmi.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_batTransvihmiCaptureesDropdown" name="1"><a id="a_batTransvihmiCaptureesDropdown" name="1" href="#ul_batTransvihmiCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_batTransvihmiCaptureesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_transvihmi" name="1"><a href="bat_capturees_transvihmi.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_transvihmi" name="1"><a href="bat_map_capturees_transvihmi.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_transvihmi" name="1"><a href="importation_chauves_souris_capturees_transvihmi.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batTransvihmiNonInvasivesDropdown" name="1"><a id="a_batTransvihmiNonInvasivesDropdown" name="1" href="#ul_batTransvihmiNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_batTransvihmiNonInvasivesDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_transvihmi" name="1"><a href="bat_non_invasives_transvihmi.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_transvihmi" name="1"><a href="bat_map_non_invasives_transvihmi.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_transvihmi" name="1"><a href="importation_chauves_souris_non_invasives_transvihmi.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	    <li id="li_viande_de_brousse_TransvihmiDropdown" name="1"><a id="a_viande_de_brousse_TransvihmiDropdown" name="1" href="#ul_viande_de_brousse_TransvihmiDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_TransvihmiDropdown" name="1" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussetransvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">données</a>                           
+                        	<li id="li_viande_de_brousse_map_transvihmi" name="1"><a href="viande_de_brousse_map_transvihmi.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_transvihmi" name="1"><a href="importation_viande_de_brousse_transvihmi.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+                      </ul>
+                    </li>
+                    
+                    <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
+                      <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="site_mivegec.html">Site</a></li>                            
+		                
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_mivegec.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="2"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_mivegec.html">Suivi longitudinal - données journalières</a></li>                            
+                        		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="bat_capturees_mivegec.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="bat_map_capturees_mivegec.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="importation_chauves_souris_capturees_mivegec.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="bat_non_invasives_mivegec.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="bat_map_non_invasives_mivegec.html">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="importation_chauves_souris_non_invasives_mivegec.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_MivegecDropdown" name="2"><a id="a_viande_de_brousse_MivegecDropdown" href="#ul_viande_de_brousse_MivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_MivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_broussemivegec" name="2"><a href="viande_de_brousse_mivegec.html">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="viande_de_brousse_map_mivegec.html">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="importation_viande_de_brousse_mivegec.html">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
+                      </ul>
+                    </li>
+                    
+                    <li id="li_astreDropdown" name="6" class="active"> <a id="a_astreDropdown" href="#ul_astreDropdown" aria-expanded="true" data-toggle="collapse"> <i class="a-logo-cirad"></i> </a>
+                      <ul id="ul_astreDropdown" name="6" class="collapse list-unstyled show">
+                        
+                        <li id="li_site_astre" name="6" style="text-align: right"><a href="site_astre.html">Site</a></li>                            
+		                                        
+                        <li id="li_batAstreDropdown" name="6" class="active"><a id="a_batAstreDropdown" href="#ul_batAstreDropdown" aria-expanded="true" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batAstreDropdown" name="6" class="collapse list-unstyled show">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_missions_astre.html">Suivi longitudinal - données missions</a></li>
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_astre" name="6"style="text-align: right"><a href="suivi_longitudinal_donnees_journalieres_astre.html">Suivi longitudinal - données journalières</a></li>                              
+                        		                    
+		                    <li id="li_batAstreCaptureesDropdown" name="6" class="active"><a id="a_batAstreCaptureesDropdown" href="#ul_batAstreCaptureesDropdown" aria-expanded="true" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batAstreCaptureesDropdown" class="collapse list-unstyled show">
+		                        <li id="li_bat_capturees_astre" name="6" class="active"><a href="bat_capturees_astre.html">données</a></li>                            
+		                        <li id="li_bat_map_capturees_astre" name="6"><a href="bat_map_capturees_astre.html">carte</a></li>
+		                        <li id="li_importation_bat_capturees_astre" name="6"><a href="importation_chauves_souris_capturees_astre.html">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batAstreNoninvasivesDropdown" name="6"><a id="a_batAstreNonInvasivesDropdown" name="6" href="#ul_batAstreNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batAstreNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_non_invasives_astre.html">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_astre" name="6"><a href="bat_map_non_invasives_astre.html">carte</a></li>
+    	                        <li id="li_bat_map_non_invasives_astre" name="6"><a href="importation_chauves_souris_non_invasives_astre.html">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
+                      <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
+                        <li id="li_individualCIBUDropdown" name="3"><a id="a_individualCIBUDropdown" name="3" href="#ul_individualCIBUDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-rodent"></i>Individus</a>
+                          <ul id="ul_individualCIBUDropdown" name="3" class="collapse list-unstyled">
+		                    <li id="li_individualCIBUSpecies1Dropdown" name="3"><a id="a_individualCIBUSpecies1Dropdown" name="3" href="#ul_individualCIBUSpecies1Dropdown" aria-expanded="false" data-toggle="collapse">(Espèces?)</a>
+		                      <ul id="ul_individualCIBUSpecies1Dropdown" name="3" class="collapse list-unstyled">
+		                        <li id="li_individual_species1_CIBU" name="3"><a href="liste_cibu.html?table=individus_cibu">données</a></li>                            
+		                        <li id="li_individual_map_species1_cibu" name ="3"><a href="#">carte</a></li>
+		                        <li id="li_importation_individual_cibu" name="3"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_EpvoDropdown" name="4"> <a id="a_EpvoDropdown" href="#ul_EpvoDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-epvo"></i> </a>
+                      <ul id="ul_EpvoDropdown" class="collapse list-unstyled">
+                        <li id="li_batEpvoDropdown" name="4"><a id="a_batEpvoDropdown" href="#ul_batEpvoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batEpvoDropdown" class="collapse list-unstyled">
+		                    <li id="li_batEpvoCaptureesDropdown" name="4"><a id="a_batEpvoCaptureesDropdown" href="#ul_batEpvoCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batEpvoCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_epvo" name="4"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_epvo" name="4"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batEpvoNoninvasivesDropdown" name="4"><a id="a_batEpvoNoninvasivesDropdown" href="#ul_batEpvoNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batEpvoNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_epvo" name="4"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_epvo" name="4"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_epvo" name="4"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNoninvasivesDropdown" name="5"><a id="a_batIPGNoninvasivesDropdown" href="#ul_batIPGNoninvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNoninvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
+          </ul>
+        </nav>
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Base de données des Chauves-souris</h2>
+            </div>
+          </header>
+          
+          <section>          
+            <div class="container-fluid">              
+              <div class="row">                
+                <div class="col-lg-12">                  
+                  <div class="card">        
+                   <div class="card-header" id="header">
+                     <!-- <h4>Nouvelle Chauve-souris</h4> -->
+                     <script type="text/javascript">
+	                    var line = document.createElement("div");
+	                    let searchParams = new URLSearchParams(window.location.search);
+	                    option = searchParams.get('option');
+	                    nom_table = searchParams.get('table');
+	                    if ((option == 0) || (option == 1)) {
+	                    	line.innerHTML = '<h4>Nouvelle Chauve-souris</h4>';
+	                    } else if (option == 2) {
+	                    	var ID = 'ID_' + nom_table;
+	                    	line.innerHTML = '<h4>Modifier la chauve-souris : ID = '+ localStorage.getItem(ID) + '</h4>';
+	                    }
+		             	document.getElementById("header").appendChild(line);
+		         	 </script>
+                     
+                     
+                    </div>
+                    <div class="card-body">                                            
+                      <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
+				        
+				        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Identification</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_identification_CS">Numéro d'identification chauve-souris</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="N_identification_CS" placeholder="Numéro d'identification chauve-souris" required>
+	                                <div class="invalid-feedback">
+		                      	      S'il vous plaît fournir un numéro d'identification chauve-souris valide !	      				  	      				    
+	    					        </div>
+	    					      </div>
+	    					    </div>
+							  </div>
+						      <div class="col-lg-6">	
+							    <div class="form-group">	  
+							      <label for="N_identification_mere">Numéro d'identification de la mère</label>
+				          	      <input type="text" class="form-control" id="N_identification_mere" placeholder="Numéro d'identification de la mère" >
+                        	    </div>											    
+                              </div>
+                            </div>                                                                                     
+                          </div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données du site</h3>
+                          </div>
+                          <div class="card-body">
+		      				
+		      				<div class="row">
+		      				  <div class="col-lg-4">
+	            				<div class="form-group">
+				                  <label for="N_site">N site</label>
+			                      <div class="input-group">	                        
+			                        <select id="N_site" class="form-control" onchange="select_N_site(this)">
+	                                  <option></option>
+	                          	    </select>
+	                              </div>
+			                    </div> 
+	    					  </div>
+	    					</div>	
+		      				
+		      				<div id="child_site" style="display: block;">		      				
+			      				<div class="row">
+			      				  <div class="col-lg-6">
+		       					    <div class="form-group">
+				                      <label for="Equipe">Equipe</label>
+			                          <input type="text" class="form-control" id="Equipe" placeholder="Equipe" >
+			                        </div>  	
+			                      </div>         
+			                      <div class="col-lg-6">           
+			                        <div class="form-group">
+			                          <label for="Pays">Pays</label>
+			                          <div class="input-group">	                        
+			                            <select id="Pays" class="form-control" required>
+		                                  <option></option>
+		                          	    </select>
+		                                <label id="nouveauPays" class="input-group-addon btn btn-primary" for="Pays" data-toggle="modal" data-target="#nouvelleReference">
+		       					          <span class="fa fa-plus"></span>
+		    					        </label>
+			                            <div class="invalid-feedback">
+			        			          S'il vous plaît fournir un pays valide !
+			      				        </div>
+			      				      </div>
+			      			        </div>
+			      			      </div>
+			      			    </div>	 
+			      			       			      				      			    
+			      			    <div class="row">
+			      				  <div class="col-lg-6">
+			      			        <div class="form-group">
+			                          <label for="Region_capture">Région (ex. nom de la ville, nom du parc...)</label>
+			                          <input type="text" class="form-control" id="Region_capture" placeholder="Région (ex. nom de la ville, nom du parc...)">
+			                        </div>
+			      			      </div>
+			      			      <div class="col-lg-6">
+			      			        <div class="form-group">
+			                          <label for="Site_capture">Site précis de capture (ex. village, lieu-dit)</label>
+			                          <input type="text" class="form-control" id="Site_capture" placeholder="Site précis de capture (ex. village, lieu-dit)">
+			                        </div>
+			      				  </div>
+			      			    </div>	 
+			      			         		
+			      			    <div class="row">
+			      			      <div class="col-lg-6">	    
+			      			        <div class="form-group">
+			                          <label for="Environnement">Environnement (ex. forêt)</label>
+			                          <div class="input-group">	                        
+			                            <select id="Environnement" class="form-control" required>
+		                                  <option></option>
+		                          	    </select>
+		                                <label id="nouvelEnvironnement" class="input-group-addon btn btn-primary" for="Environnement" data-toggle="modal" data-target="#nouvelleReference">
+		       					          <span class="fa fa-plus"></span>
+		    					        </label>
+			                            <div class="invalid-feedback">
+			        			          S'il vous plaît fournir un environnement valide !
+			      				        </div>
+			      				      </div>
+			      				    </div>
+			      			      </div>
+			      			      <div class="col-lg-6">      
+		                            <div class="form-group">
+			                          <label for="Proximite_village_km">Proximité du village en km</label>
+			                          <input type="text" class="form-control" id="Proximite_village_km" placeholder="Proximité du village en km" >
+			                        </div>	      				  
+			      				  </div>
+			      			    </div>     			    
+			      			    
+			      			    <div class="row">
+		                    	  <div class="col-lg-4">
+			      			    	<div class="form-group">
+			      			    	  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
+									  <input type="text" class="form-control" id="Lat_degre_dec" placeholder="Latitude coordonnées" >
+									</div>
+								  </div>
+								  <div class="col-lg-2">	
+									<div class="form-group">	  
+									  <label for="Latitude">Latitude</label>
+		                          	  <select id="Latitude" class="form-control" required >
+		                            	<option></option>
+		                            	<option>N</option>
+		                            	<option>S</option>
+		                            	<option>Manquant</option>
+		                          	  </select>
+		                          	  <div class="invalid-feedback">
+									    Latitude !
+									  </div>
+		                          	</div>	
+		                          </div>											    
+		                          <div class="col-lg-4">      			        
+								    <div class="form-group">
+									  <label for="Long_degre_dec">Longitude coord. (deg. déc.)</label>
+									  <input type="text" class="form-control" id="Long_degre_dec" placeholder="Longitude coordonnées" >
+									</div>	
+								  </div>
+								  <div class="col-lg-2">
+								    <div class="form-group">
+		                              <label for="Longitude">Longitude</label>
+		                              <select id="Longitude" class="form-control" required >
+		                                <option></option>
+		                                <option>E</option>
+		                                <option>W</option>
+		                                <option>Manquant</option>
+		                              </select>
+		                              <div class="invalid-feedback">
+									    Longitude !
+									  </div>
+		                            </div>
+		                          </div>
+		                        </div>
+		                      </div>
+			      			</div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données de capture</h3>
+                          </div>
+                          <div class="card-body">
+                          	<div class="row">
+                          	  <div class="col-lg-4">
+		            			<div class="form-group">
+		                          <label for="Date">Date</label>                                
+		                          <div class="input-group">
+		    						<input type="text" class="form-control input-datepicker" id="Date"  name="site" placeholder="Date" required>
+		    						<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
+		                              <span class="fa fa-calendar"></span>
+		    						</div>
+		    					    <div class="invalid-feedback">
+			                          S'il vous plaît fournir une date valide !
+			                        </div>
+		                          </div>
+		    				    </div> 
+		    				  </div>
+                          	
+                          	  <div class="col-lg-4">	    
+			      		  	    <div class="form-group">
+			                      <label for="Lieu_capture">Lieu de capture (ex. grotte)</label>
+			                      <div class="input-group">	                        
+			                        <select id="Lieu_capture" class="form-control" required>
+		                              <option></option>
+		                            </select>
+		                            <label id="nouveauLieu_capture" class="input-group-addon btn btn-primary" for="Lieu_capture" data-toggle="modal" data-target="#nouvelleReference">
+		       			  	  	      <span class="fa fa-plus"></span>
+		    			  	  	    </label>
+			                        <div class="invalid-feedback">
+			        	  	  	      S'il vous plaît fournir un lieu valide !
+			      		  	  	    </div>
+			      		  	  	  </div>
+			      		  	    </div>    
+			      		  	  </div>
+			      		  	  <div class="col-lg-4"> 	      			    
+			      			    <div class="form-group">
+			                      <label for="Methode_capture">Méthode de capture</label>
+			                  	  <div class="input-group">	                        
+			                        <select id="Methode_capture" class="form-control" required>
+		                              <option></option>
+		                            </select>
+		                            <label id="nouvelleMethode_capture" class="input-group-addon btn btn-primary" for="Methode_capture" data-toggle="modal" data-target="#nouvelleReference">
+		       				  	      <span class="fa fa-plus"></span>
+		    				  	    </label>
+			                        <div class="invalid-feedback">
+			        		  	      S'il vous plaît fournir un pays valide !
+			      			  	    </div>
+			      			      </div>
+			      			    </div>	
+                          	  </div> 
+                          	</div>                           	      			      	      			      
+		      			  </div>		      			      	      			      	      			      
+		      			</div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données de l'individu capturé</h3>
+                          </div>
+                          <div class="card-body">
+                        
+	                        <div class="row">
+		      			      <div class="col-lg-4"> 	      			    
+		      			        <div class="form-group">
+		                          <label for="Type_chauve_souris">Type de chauve-souris</label>
+		                          <select id="Type_chauve_souris" class="form-control" required>
+	                                <option></option>
+	                                <option>Frugivore</option>
+	                                <option>Insectivore</option>
+	                                <option>IN</option>  
+	                                <option>Manquant</option>                                 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît fournir un type de chauve-souris valide !
+		      				      </div>
+		      			        </div>
+		      			      </div>	
+		      			      <div class="col-lg-4">       			    
+		      			        <div class="form-group">
+		                          <label for="Espece_identifiee">Espèce identifiée</label>
+		                          <div class="input-group">	                        
+		                            <select id="Espece_identifiee" class="form-control" required>
+	                                  <option></option>
+	                                  <option>Oui</option>
+	                                  <option>Oui avec incertitude</option>                                  
+	                                  <option>Non</option> 
+	                                  <option>IN</option>  
+	                                  <option>Manquant</option>                                       
+	                          	    </select>
+		                            <div class="invalid-feedback">
+		        			          L'espèce est-elle identifiée ?
+		        			        </div>
+		      				      </div>
+		      			        </div>
+		      			      </div>
+		      			    </div>	
+		      			        
+		      			    <div class="row">                    	  	    
+		      			      <div class="col-lg-4">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille_terrain">Famille - terrain</label>
+		                          <div class="input-group">	                        
+		                            <select id="Famille_terrain" class="form-control" onchange="select_famille(this, Genre_terrain, Espece_terrain)" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleFamille_terrain" class="input-group-addon btn btn-primary nouvelleFamille" for="Famille_terrain" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de famille - terrain valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>	
+		      			      </div> 
+		      			      <div class="col-lg-4"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre_terrain">Genre - terrain</label>
+		                          <div class="input-group">	                        
+		                            <select id="Genre_terrain" name="Genre_terrain" class="form-control"  onchange="select_genre(Famille_terrain, this, Espece_terrain)" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                           		<label  id="nouveauGenre_terrain" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouveauGenre" for="Genre_terrain" data-toggle="modal" data-target="#nouvelleReference">
+	       					   		  <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de genre - terrain valide !
+		      				        </div>
+		      				      </div>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-4">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece_terrain">Espece - terrain</label>
+		                          <div class="input-group">	                        
+		                            <select id="Espece_terrain" name="Espece_terrain" class="form-control" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleEspece_terrain" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouvelleEspece" for="Espece_terrain" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir une espèce - terrain valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-4">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille_labo">Famille - labo</label>
+		                          <div class="input-group">	                        
+		                            <select id="Famille_labo" class="form-control" onchange="select_famille(this, Genre_labo, Espece_labo)" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleFamille_labo" class="input-group-addon btn btn-primary nouvelleFamille" for="Famille_labo" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de famille - labo valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>	
+		      			      </div> 
+		      			      <div class="col-lg-4"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre_labo">Genre - labo</label>
+		                          <div class="input-group">	                        
+		                            <select id="Genre_labo" name="Genre_labo" class="form-control"  onchange="select_genre(Famille_labo, this, Espece_labo)" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                           		<label  id="nouveauGenre_labo" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouveauGenre" for="Genre_labo" data-toggle="modal" data-target="#nouvelleReference">
+	       					   		  <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de genre - labo valide !
+		      				        </div>
+		      				      </div>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-4">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece_labo">Espece - labo</label>
+		                          <div class="input-group">	                        
+		                            <select id="Espece_labo" name="Espece_labo" class="form-control" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleEspece_labo" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouvelleEspece" for="Espece_labo" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir une espèce - labo valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">                    	  	    
+		      			      <div class="col-lg-4">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille_consensus">Famille - consensus</label>
+		                          <div class="input-group">	                        
+		                            <select id="Famille_consensus" class="form-control" onchange="select_famille(this, Genre_consensus, Espece_consensus)" required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleFamille_consensus" class="input-group-addon btn btn-primary nouvelleFamille" for="Famille_consensus" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de famille - consensus valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>	
+		      			      </div> 
+		      			      <div class="col-lg-4"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre_consensus">Genre - consensus</label>
+		                          <div class="input-group">	                        
+		                            <select id="Genre_consensus" name="Genre_consensus" class="form-control"  onchange="select_genre(Famille_consensus, this, Espece_consensus)" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                           		<label  id="nouveauGenre_consensus" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouveauGenre" for="Genre_consensus" data-toggle="modal" data-target="#nouvelleReference">
+	       					   		  <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir un type de genre - consensus valide !
+		      				        </div>
+		      				      </div>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-4">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece_consensus">Espece - consensus</label>
+		                          <div class="input-group">	                        
+		                            <select id="Espece_consensus" name="Espece_consensus" class="form-control" disabled required>
+	                                  <option></option>
+	                          	    </select>
+	                                <label id="nouvelleEspece_consensus" class="input-group-addon btn btn-outline-dark input-group-addon-disabled noclick nouvelleEspece" for="Espece_consensus" data-toggle="modal" data-target="#nouvelleReference">
+	       					          <span class="fa fa-plus"></span>
+	    					        </label>
+		                            <div class="invalid-feedback">
+		        			          S'il vous plaît fournir une espèce - consensus valide !
+		      				        </div>
+		      				      </div>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-3">    			    
+		      			        <div class="form-group">
+		                          <label for="Sexe">Sexe</label>
+		                          <select id="Sexe" class="form-control" required>
+		                            <option></option>
+	                                <option>Male</option>
+	                                <option>Femelle</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                              <div class="invalid-feedback">
+		        			        S'il vous plaît fournir le sexe !
+		      				      </div>	      				      
+		      			        </div>	 	      			        
+		      			      </div> 
+		      			      <div class="col-lg-3">    			    
+		      			        <div class="form-group">	      			        
+		      			          <label for="Age">Age</label>
+		                          <select id="Age" class="form-control" required>
+		                            <option></option>
+	                                <option>Juvénile</option>
+	                                <option>Adulte</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		      			          <div class="invalid-feedback">
+		        			        S'il vous plaît fournir un age valide !
+		        			      </div>
+		      			        </div>
+		      			      </div>	
+		      			      <div class="col-lg-2">    			    
+		      			        <div class="form-group">
+		                          <label for="Gestante">Gestante</label>
+		                          <select id="Gestante" class="form-control" required>
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		      			          <div class="invalid-feedback">
+		        			        La chauve-souris est-elle gestante ?
+		        			      </div>                          
+		      			        </div>	   
+		      			      </div>
+		      			      <div class="col-lg-2">	   			    
+		      			        <div class="form-group">
+		                          <label for="Lactation">Lactation</label>
+		                          <select id="Lactation" class="form-control" required>
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                          <div class="invalid-feedback">
+		        			        Lactation ?	        			          
+		        			      </div>
+		      			        </div>	
+		      			      </div>
+		      			      <div class="col-lg-2">
+		      			        <div class="form-group">
+		      			          <label for="Suitee">Suitée</label>
+		                          <select id="Suitee" class="form-control" onchange="select_suitee(this)" required>
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                          	  <div class="invalid-feedback">
+		        			        Suitée ?
+		      				      </div>
+	                          	</div> 
+		      			      </div>	      			      
+		      			    </div>
+		      			    
+		      			    <div id="child" style="display: block;">
+		      			      <div class="row">
+		      			        <div class="col-lg-4">  				
+		      				      <div class="form-group">
+		                            <label for="Sexe_enfant">Sexe de l'enfant</label>
+		                            <select id="Sexe_enfant" class="form-control" >
+		                              <option></option>
+		                              <option>M</option>
+		                              <option>F</option>
+		                              <option>IN</option>	   
+		                              <option>Manquant</option>                            
+	                          	    </select>
+		                          </div>
+		      				    </div>
+		      				    <div class="col-lg-4">  	      				
+		      				      <div class="form-group">
+		                            <label for="Poids_enfant">Poids de l'enfant</label>
+		                            <input type="text" class="form-control" id="Poids_enfant" placeholder="Poids de l'enfant" >
+		                          </div>	
+		      				    </div>
+		      				    <div class="col-lg-4"> 
+		      				      <div class="form-group">
+		                            <label for="Identifiant_enfant">Identifiant de l'enfant</label>
+		                            <input type="text" class="form-control" id="Identifiant_enfant" placeholder="Identifiant de l'enfant" >
+		                          </div>
+		      				    </div>
+		      				  </div>
+		      				</div>
+		      				 
+		      			    <div class="row">
+		      			    
+		      			      <div class="col-lg-2">    			    
+		      			        <div class="form-group">
+		                          <label for="Vivante">Vivante ?</label>
+		                          <select id="Vivante" class="form-control" onchange="select_vivante(this)" required>
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                          <div class="invalid-feedback">
+		        			        Vivante ?
+		        			      </div>
+		      			        </div>	  
+		      			      </div>	      			    
+	                    	  <div class="col-lg-5">  			    
+		      			        <div class="form-group">
+		                          <label for="Cause_deces">Cause du décès</label>
+		                          <select id="Cause_deces" class="form-control" required>
+		                            <option></option>
+		                            <option>Mort du à capture/manip/euthanasie.</option>
+		                            <option>mort naturelle, carcasse trouvée</option>	
+		                            <option>Manquant</option>                               
+	                          	  </select>
+		                      	  <div class="invalid-feedback">	        			  
+		        			   		S'il vous plaît fournir une cause de décès !
+		      				      </div>
+		      			        </div>
+		      			      </div>		      			      	      			      	      			      
+		      			    </div>
+		      			    
+		      			  </div>		      			      	      			      	      			      
+		      			</div>
+		      			
+		      			<div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Caratéristiques morphologiques</h3>
+                          </div>
+                          <div class="card-body">
+	      			          
+		      			    <div class="row">	      			    
+		      			      <div class="col-lg-3">  			    
+		      			        <div class="form-group">
+		                          <label for="Poids_gr">Poids</label>
+		                      	  <input type="text" class="form-control" id="Poids_gr" placeholder="Poids" >
+		                        </div>
+		      				  </div>
+		      				  <div class="col-lg-3"> 
+		      				    <div class="form-group">
+		                          <label for="L_avant_bras_mm">Longueur avant-bras</label>
+		                          <input type="text" class="form-control" id="L_avant_bras_mm" placeholder="Longueur avant-bras" >
+		                        </div>
+		      			      </div>		      			      
+		      			      <div class="col-lg-3">
+		      			        <div class="form-group">
+		                          <label for="L_totale_corps_mm">Longueur corporelle totale</label>
+		                          <input type="text" class="form-control" id="L_totale_corps_mm" placeholder="Longueur corporelle totale" >
+		                        </div>  
+		      			      </div>	
+		      			      <div class="col-lg-3">
+		      			        <div class="form-group">
+		                          <label for="Taille_yeux">Taille des yeux</label>
+		                          <input type="text" class="form-control" id="Taille_yeux" placeholder="Taille des yeux" >
+		                        </div>  
+		      			      </div>
+		      			    </div>   			    		    		               			      			    	
+		      			      	    
+		      			    <div class="row">  
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="L_queue_mm">Longueur queue</label>
+		                          <input type="text" class="form-control" id="L_queue_mm" placeholder="Longueur queue" >
+		                        </div>  
+		      			      </div> 	
+		      			      <div class="col-lg-6">      
+		      			        <div class="form-group">
+		                          <label for="L_metacarpe_3ieme_doigt_mm">Longueur métacarpe 3ième doigt</label>
+		                          <input type="text" class="form-control" id="L_metacarpe_3ieme_doigt_mm" placeholder="Longueur métacarpe 3ième doigt" >
+		                        </div>
+		      			      </div>			      			      
+		                    </div> 	   
+		                    
+		                    <div class="row">
+		                     <div class="col-lg-6">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Couleur_pelage_dorsal">Couleur pelage dorsal</label>
+		                          <input type="text" class="form-control" id="Couleur_pelage_dorsal" placeholder="Couleur pelage dorsal" >
+		                        </div>
+		      				  </div>
+		      			      <div class="col-lg-6">      
+		      			        <div class="form-group">
+		                          <label for="Couleur_pelage_ventral">Couleur pelage ventral</label>
+		                          <input type="text" class="form-control" id="Couleur_pelage_ventral" placeholder="Couleur pelage ventral" >
+		                        </div>
+		      			      </div>
+		      			    </div>
+		                    
+		                    <div class="row">  		
+		      			      <div class="col-lg-12">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Remarques_anomalies">Remarques, anomalies</label>
+		                    	  <textarea class="form-control col-xs-12" id="Remarques_anomalies" placeholder="Remarques, anomalies" rows="3"></textarea>
+		                        </div>
+		      			      </div>
+		                    </div> 
+		                
+		                  </div>
+		                </div>
+		                
+		                <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Echantillons</h3>
+                          </div>
+                          <div class="card-body">
+	                       			     
+		      			    <div class="row">  		
+		      			      <div class="col-lg-3">      			      
+		      			        <div class="form-group">
+		                          <label for="Sang_DBS_nb_cercles">Sang - papier buvard</label>
+		                          <input type="text" class="form-control" id="Sang_DBS_nb_cercles" placeholder="Sang - papier buvard" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Sang - papier buvard !
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      			      <div class="col-lg-3"> 			      			    	
+		      			        <div class="form-group">
+		                          <label for="Sang_tube_EDTA">Sang - tube EDTA</label>
+		                          <input type="text" class="form-control" id="Sang_tube_EDTA" placeholder="Sang - tube EDTA" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Sang - tube EDTA !
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-3"> 			      			    	
+		      			        <div class="form-group">
+		                          <label for="Feces_RNAl">Feces - RNAl</label>
+		                          <input type="text" class="form-control" id="Feces_RNAl" placeholder="Feces - RNAl" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Feces - RNAl !
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-3"> 			      			    	
+		      			        <div class="form-group">
+		                          <label for="Urine">Urine - tube sec</label>
+		                          <input type="text" class="form-control" id="Urine" placeholder="Urine - tube sec" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Urine - tube sec !
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				</div> 		    
+		      			    	      			    
+		      			    <div class="row">  		
+		      			      <div class="col-lg-3">  		      			    
+		      			        <div class="form-group">
+		                          <label for="Urine_DUS_nombre_cercles">Urine - papier buvard</label>
+		                          <input type="text" class="form-control" id="Urine_DUS_nombre_cercles" placeholder="Urine - papier buvard" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Urine - papier buvard !
+		      				      </div>
+		      				    </div>	      	
+		      				  </div>		
+		      				  <div class="col-lg-3">  	 
+		        				<div class="form-group">
+		                          <label for="Feces_urine_RNAl">Feces/urine - RNAl</label>
+		                          <input type="text" class="form-control" id="Feces_urine_RNAl" placeholder="Feces/urine - RNAl" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Feces/urine - RNAl !
+		      				      </div>
+		      				    </div>
+		      				  </div>	
+		      				  <div class="col-lg-3">      				
+		      				    <div class="form-group">
+		                          <label for="Ecouvillon_gorge_RNAl">Ecouvillon gorge - RNAl</label>
+		                          <input type="text" class="form-control" id="Ecouvillon_gorge_RNAl" placeholder="Ecouvillon gorge - RNAl" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Ecouvillon gorge - RNAl !
+		      				      </div>
+		      				    </div>	     
+		      				  </div>	
+		      				  <div class="col-lg-3">  				
+		      				    <div class="form-group">
+		                          <label for="Ecouvillon_rectal_RNAl">Ecouvillon rectal - RNAl</label>
+		                          <input type="text" class="form-control" id="Ecouvillon_rectal_RNAl" placeholder="Ecouvillon rectal - RNAl" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Ecouvillon rectal - RNAl !
+		      				      </div>
+		      				    </div>	    
+		      				  </div>
+		      				</div>
+		      				  			
+		      				<div class="row">  		
+		      			      <div class="col-lg-3">	
+		      				    <div class="form-group">
+		                          <label for="Ectoparasites_ethanol">Ectoparasites - éthanol</label>
+		                          <input type="text" class="form-control" id="Ectoparasites_ethanol" placeholder="Ectoparasites - éthanol" >
+		                          <div class="invalid-feedback">
+		                            Ectoparasites - éthanol !
+		                          </div>
+		                        </div>	  
+		                      </div>    		
+		                      <div class="col-lg-3">		
+		      				    <div class="form-group">
+		                          <label for="Poils_ethanol">Poils - tube éthanol</label>
+		                          <input type="text" class="form-control" id="Poils_ethanol" placeholder="Poils - tube éthanol" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Poils - tube éthanol !
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Wing_punch_ethanol">Biopsie aile - éthanol</label>
+		                          <input type="text" class="form-control" id="Wing_punch_ethanol" placeholder="Biopsie aile - éthanol" required>
+		                          <div class="invalid-feedback">	        			  
+		        			        Biopsie aile - éthanol !
+		      				      </div>
+		      				    </div>	  
+		      				  </div>    	
+		      				  <div class="col-lg-3">			
+		      				    <div class="form-group">
+		                          <label for="Feces_culture_glycerol">Feces culture - glycérol</label>
+		                          <input type="text" class="form-control" id="Feces_culture_glycerol" placeholder="Feces culture - glycérol" required>
+		                          <div class="invalid-feedback">
+		                            Feces culture - glycérol !
+		                          </div>
+		                        </div>	
+		      				  </div>	
+		      				</div>	      				
+		      				      		
+		      			    <div class="row">  		
+		      			      <div class="col-lg-2">	      				
+		      				    <div class="form-group">
+		                          <label for="Sperme">Sperme</label>
+		                          <input type="text" class="form-control" id="Sperme" placeholder="Sperme" required>
+		                          <div class="invalid-feedback">
+		                            Sperme !
+		                          </div>
+		                        </div>	
+		                      </div>  
+		                      <div class="col-lg-4">    			    
+		      			        <div class="form-group">
+		                          <label for="Autres_echantillons_remarques">Autres échantillons</label>
+		                          <input type="text" class="form-control" id="Autres_echantillons_remarques" placeholder="Autres échantillons" >
+		                        </div>	
+		                      </div>    
+		                      	      				  
+		      				</div>
+		      				  
+		      				<div class="row"> 	      				  	      				
+		      				  <div class="col-lg-4">
+	             			    <div class="form-group">
+		                          <label for="Specimen_entier">Spécimen entier préservé ?</label>
+		                          <div class="input-group">	                        
+		                            <select id="Specimen_entier" class="form-control" onchange="select_specimen_preserve_entier(this)" required>
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>            
+		                              <option>Manquant</option>                   
+	                          	    </select>
+		                            <div class="invalid-feedback">	        			  
+		        			          Spécimen entier préservé? 
+		      				        </div>
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-4">
+		      				    <div class="form-group">
+		                          <label for="Specimen_preserve_dans">Spécimen préservé dans</label>
+		                          <div class="input-group">	                        
+		                            <select id="Specimen_preserve_dans" class="form-control" required>
+		                              <option></option>
+		                              <option>Ethanol</option>
+		                              <option>Formol</option>         
+		                              <option>Manquant</option>                      
+	                          	    </select>
+		                            <div class="invalid-feedback">	        			  
+		        			          S'il vous plaît indiquer où est préservé le spécimen !
+		        			        </div>
+		        			      </div>
+		        			    </div>   
+		      				  </div>
+		      				  <div class="col-lg-4"> 
+		      				    <div class="form-group">
+		                          <label for="Prelevement_organe">Prélèvement d'organe ?</label>
+		                          <div class="input-group">	                        
+		                            <select id="Prelevement_organe" class="form-control" required>
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>                              
+	                          	    </select>
+		                            <div class="invalid-feedback">	        			  
+		        			          Prélèvement d'organe ? 
+		        			        </div>
+		        			      </div>
+		        			    </div>
+		      				  </div>
+		      				</div>
+		      				
+		      				<div class="row"> 	      				  
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Foie_formol">Foie - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Foie_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>   
+		                              <option>Manquant</option>                            
+	                          	    </select>
+	                          	  </div>	                        
+		                        </div>
+		                      </div>	 
+		                      <div class="col-lg-3">     
+		                        <div class="form-group">
+		                          <label for="Foie_RNAl">Foie - RNAl</label>
+		                          <input type="text" class="form-control" id="Foie_RNAl" placeholder="Foie - RNAl" >
+		      				    </div>
+		      				  </div>	
+		      				  <div class="col-lg-3"> 
+		      					<div class="form-group">
+		                          <label for="Rate_formol">Rate - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Rate_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>    
+		                              <option>Manquant</option>                           
+	                          	    </select>
+		      				      </div>
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Rate_RNAl">Rate - RNAl</label>
+		                          <input type="text" class="form-control" id="Rate_RNAl" placeholder="Rate - RNAl" >
+		      				    </div>	
+		      				  </div>			  
+		      				</div>
+		      				
+		      				<div class="row"> 	      				  
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Reins_formol">Reins - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Reins_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>    
+		                              <option>Manquant</option>                           
+	                          	    </select>
+	                          	  </div>	      				   
+		      				    </div>
+		      				  </div>
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Reins_RNAl">Reins - RNAl</label>
+		                          <input type="text" class="form-control" id="Reins_RNAl" placeholder="Reins - RNAl" >
+		      				    </div>	
+		      				  </div>
+		      				  <div class="col-lg-3">      				
+		      				    <div class="form-group">
+		                          <label for="Intestins_formol">Intestins - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Intestins_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>  
+		                              <option>Manquant</option>                             
+	                          	    </select>
+	                          	  </div>	      				    
+		      				    </div>	
+		      				  </div>
+		      				  <div class="col-lg-3"> 
+		      				    <div class="form-group">
+		                          <label for="Intestins_RNAl">Intestins - RNAl</label>
+		                          <input type="text" class="form-control" id="Intestins_RNAl" placeholder="Intestins - RNAl" >
+		      				    </div>	
+		      				  </div>
+		      				</div>	
+		      				          				
+		      				<div class="row"> 	      				  	
+		      				  <div class="col-lg-3">   
+		      				    <div class="form-group">
+		                          <label for="Poumons_formol">Poumons - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Poumons_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>  
+		                              <option>Manquant</option>                             
+	                          	    </select>
+	                          	  </div>	      				    
+		      				    </div>	
+		      				  </div>   	
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Poumons_RNAl">Poumons - RNAl</label>
+		                          <input type="text" class="form-control" id="Poumons_RNAl" placeholder="Poumons - RNAl" >
+		      				    </div>
+		      				  </div>		
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Coeur_formol">Coeur - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Coeur_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>        
+		                              <option>Manquant</option>                       
+	                          	    </select>
+	                          	  </div>
+	                          	</div>
+		      				  </div>	
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Coeur_RNAl">Coeur - RNAl</label>
+		                          <input type="text" class="form-control" id="Coeur_RNAl" placeholder="Coeur - RNAl" >
+		      				    </div>
+		      				  </div>	  
+		      				</div>
+		      				
+		      				<div class="row"> 	      				  				  
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Ggl_lymph_formol">Ganglion lymph - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Ggl_lymph_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>        
+		                              <option>Manquant</option>                       
+	                          	    </select>
+	                          	  </div>	      				    
+		      				    </div>	
+		      				  </div>
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+		                          <label for="Ggl_lymph_RNAl">Ganglion lymph - RNAl</label>
+		                          <input type="text" class="form-control" id="Ggl_lymph_RNAl" placeholder="Ganglion lymph - RNAl" >
+		      				    </div>
+		      				  </div>	
+		      				  <div class="col-lg-3">
+		      				    <div class="form-group">
+					              <label for="Testicules_formol">Testicules - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Testicules_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>       
+		                              <option>Manquant</option>                        
+	                          	    </select>
+	                          	  </div>                            
+	                            </div>                        
+	                          </div>
+	                          <div class="col-lg-3">
+	                            <div class="form-group">
+					              <label for="Testicules_RNAl">Testicules - RNAl</label>
+					              <input type="text" class="form-control" id="Testicules_RNAl" placeholder="Testicules - RNAl" >
+	                            </div> 
+	                          </div>       				  			
+		      				</div>
+		      				
+		      				<div class="row"> 	      				    
+	                          <div class="col-lg-3">
+	                            <div class="form-group">
+					              <label for="Peau_formol">Peau - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Peau_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>        
+		                              <option>Manquant</option>                       
+	                          	    </select>
+	                          	  </div>                           
+	                            </div> 
+	                          </div>    
+	                          <div class="col-lg-3"> 
+	                            <div class="form-group">
+					              <label for="Peau_RNAl">Peau - RNAl</label>
+					              <input type="text" class="form-control" id="Peau_RNAl" placeholder="Peau - RNAl" >
+	                            </div>     
+	                          </div>  
+	                          <div class="col-lg-3">                                                  
+	                            <div class="form-group">
+					              <label for="Muscles_formol">Muscles - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Muscles_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>     
+		                              <option>Manquant</option>                          
+	                          	    </select>
+	                          	  </div>                            
+	                            </div>                            
+	                          </div>
+	                          <div class="col-lg-3"> 
+	                            <div class="form-group">
+					              <label for="Muscles_RNAl">Muscles - RNAl</label>
+					              <input type="text" class="form-control" id="Muscles_RNAl" placeholder="Muscles - RNAl" >
+	                            </div> 
+	                          </div>                                      
+	                        </div>
+	                        
+	                        <div class="row"> 	      				  
+	                          <div class="col-lg-3"> 
+	                            <div class="form-group">
+					              <label for="Cerveau_formol">Cerveau - formol</label>
+		                          <div class="input-group">	                        
+		                            <select id="Cerveau_formol" class="form-control" >
+		                              <option></option>
+		                              <option>Oui</option>
+		                              <option>Non</option>  
+		                              <option>Manquant</option>                             
+	                          	    </select>
+	                          	  </div>                            
+	                            </div> 
+	                          </div>      
+	                          <div class="col-lg-3"> 
+	                            <div class="form-group">
+					              <label for="Cerveau_RNAl">Cerveau - RNAl</label>
+					              <input type="text" class="form-control" id="Cerveau_RNAl" placeholder="Cerveau - RNAl" >
+	                            </div>  
+	                          </div>                    
+	                        </div>                        
+	                        
+	                        <div class="row"> 
+		      				  <div class="col-lg-6"> 
+	                            <div class="form-group">
+					              <label for="Autre">Autre organe</label>
+					              <input type="text" class="form-control" id="Autre" placeholder="Autre organe" >
+	                            </div> 
+	                          </div> 
+	                          <div class="col-lg-3"> 
+	                            <div class="form-group">
+					              <label for="Autre_formol">Autre - formol</label>
+		                          <select id="Autre_formol" class="form-control" >
+		                            <option></option>
+		                            <option>Oui</option>
+		                            <option>Non</option>    
+		                            <option>Manquant</option>                           
+	                          	  </select>	                              
+	                            </div>  
+	                          </div>
+	                          <div class="col-lg-3">
+	                            <div class="form-group">
+					              <label for="Autre_RNAl">Autre - RNAl</label>
+					              <input type="text" class="form-control" id="Autre_RNAl" placeholder="Autre - RNAl" >
+	                            </div> 
+	                          </div>                        
+	                        </div> 
+	                        
+	                        <div class="row">  		
+		      			      <div class="col-lg-12">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Remarques_echantillons">Remarques échantillons</label>
+		                    	  <textarea class="form-control col-xs-12" id="Remarques_echantillons" placeholder="Remarques échantillons" rows="3"></textarea>
+		                        </div>
+		      			      </div>
+		                    </div> 
+		                  </div>
+		                </div>
+		                
+                        <div class="card-body text-right" id="header_button">
+                        
+                           <script type="text/javascript">
+			               		var line = document.createElement("div");
+			                    /*let searchParams2 = new URLSearchParams(window.location.search);
+			                    var option = searchParams2.get('option');*/
+			                    if ((option == 0) || (option == 1)) {
+			                    	line.innerHTML = 
+			                          '<div class="row">' +
+			                            '<div class="col-lg-9">' +
+			                              '<div class="form-group">' +
+			                                '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
+					            	  	      '<span class="ladda-label">Sauver la chauve-souris</span>' +
+					            	  	      '<span class="ladda-spinner"></span>' +
+									        '</button>' +  
+									      '</div>' +  
+									    '</div>' +
+									    '<div class="col-lg-3">' +
+									      '<div class="form-group">' +
+									        '<div class="i-checks">' +
+			                                  '<input id="andAdd" type="checkbox" value="" checked="" class="checkbox-template">' +
+			                                  '<label for="andAdd">et ajouter</label>' +
+			                                '</div>' +  
+			                              '</div>' + 
+			                            '</div>' +
+			                          '</div>'
+			                    } else if (option == 2) {
+			                    	line.innerHTML = 
+			                    	  '<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
+				            			'<span class="ladda-label">Modifier la chauve-souris</span>' +
+				            			'<span class="ladda-spinner"></span>' +
+									  '</button>' 
+			                    }
+				           		document.getElementById("header_button").appendChild(line);
+				           </script>
+                        </div>
+	      			      
+				      </form>
+                                               
+                    </div> 
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </section>         
+          
+          <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Projet EBO-SURSY  2017-2021</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Conçu par Bruno Rosset - Cirad</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+	<div id="nouvelleReference" tabindex="-1" role="dialog" aria-labelledby="nouvelleReference" aria-hidden="true" class="modal fade text-left">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="referenceModalLabel" class="modal-title">ModalLabel</h4>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-group-Reference">
+              <div class="form-group">
+                <label id="referenceLabel">Label</label>
+                <input id="referenceInput" type="text" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAnnuler" type="button" data-dismiss="modal" class="btn btn-secondary">Annuler</button>
+            <!-- <button type="submit" class="btn btn-primary" id="btnAjouter">Ajouter</button> -->
+            <button id="btnAjouter" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
+	          <span class="ladda-label">Ajouter</span>
+	          <span class="ladda-spinner"></span>
+			</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <script type="text/javascript">
+    	$('.input-datepicker').datepicker({
+        	language: 'fr',
+        	autoclose: true
+      	});
+    </script>    
+    
+    <script type="text/javascript">
+   		$('#spanDate').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date').focus();
+		});
+    </script> 
+    
+    <script type="text/javascript">
+   		$('#nouveauPays').click(function(){   			
+   			$('#referenceModalLabel').html('Nouveau Pays');
+   			$('#referenceLabel').html('Pays :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'pays');
+   			clickedBtn = this;
+   		});
+	       		
+   		$('#nouveauLieu_capture').click(function(){
+   			$('#referenceModalLabel').html('Nouveau Lieu de capture');
+   			$('#referenceLabel').html('Lieu de capture :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'lieu_capture');
+   			clickedBtn = this;
+		});
+   		
+   		$('#nouvelEnvironnement').click(function(){
+   			$('#referenceModalLabel').html('Nouvel Environnement');
+   			$('#referenceLabel').html('Environnement :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'environnement');   			
+   			clickedBtn = this;   			
+		});   		
+   		
+   		$('#nouvelleMethode_capture').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Méthode de capture');
+   			$('#referenceLabel').html('Méthode de capture :');
+   			$('#referenceInput').prop('disabled', false);
+   			$('#btnAjouter').data('data-id', 'methode_capture');   			
+   			clickedBtn = this;   			
+		});   
+		
+   		$('.nouvelleFamille').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			$('#referenceInput').prop('disabled', false);
+   			
+			var nouvelleFamille = $(this).attr('id');
+   			
+   			if (nouvelleFamille == 'nouvelleFamille_terrain') {
+   				$('#btnAjouter').data('data-id', 'famille_terrain'); 	
+   			} else if (nouvelleFamille == 'nouvelleFamille_labo') {
+   				$('#btnAjouter').data('data-id', 'famille_labo'); 	
+   			} else if (nouvelleFamille == 'nouvelleFamille_consensus') {
+   				$('#btnAjouter').data('data-id', 'famille_consensus'); 	
+   			};
+   			
+   			clickedBtn = this;   			
+   		}); 
+   		
+   		$('.nouveauGenre').click(function(){
+   			
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');
+   			
+   			var nouveauGenre = $(this).attr('id');
+   			
+   			if (nouveauGenre == 'nouveauGenre_terrain') {
+   				$('#btnAjouter').data('data-id', 'genre_terrain'); 	
+   				var Famille =  document.getElementById('Famille_terrain');
+   			} else if (nouveauGenre == 'nouveauGenre_labo') {
+   				$('#btnAjouter').data('data-id', 'genre_labo'); 	
+   				var Famille =  document.getElementById('Famille_labo');
+   			} else if (nouveauGenre == 'nouveauGenre_consensus') {
+   				$('#btnAjouter').data('data-id', 'genre_consensus'); 	
+   				var Famille =  document.getElementById('Famille_consensus');
+   			};
+   			 
+   			clickedBtn = this;   			
+   			   			
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreForm.appendChild(genreDiv);
+   		});
+   		
+   		$('.nouvelleEspece').click(function(){
+   			$('#referenceModalLabel').html('Nouvelle Famille');
+   			$('#referenceLabel').html('Famille :');   			
+   			
+			var nouvelleEspece = $(this).attr('id');
+   			
+   			if (nouvelleEspece == 'nouvelleEspece_terrain') {
+   				$('#btnAjouter').data('data-id', 'espece_terrain'); 	
+   				var Famille =  document.getElementById('Famille_terrain');
+   				var Genre =  document.getElementById('Genre_terrain');
+   			} else if (nouvelleEspece == 'nouvelleEspece_labo') {
+   				$('#btnAjouter').data('data-id', 'espece_labo'); 	
+   				var Famille =  document.getElementById('Famille_labo');
+   				var Genre =  document.getElementById('Genre_labo');
+   			} else if (nouvelleEspece == 'nouvelleEspece_consensus') {
+   				$('#btnAjouter').data('data-id', 'espece_consensus'); 	
+   				var Famille =  document.getElementById('Famille_consensus');
+   				var Genre =  document.getElementById('Genre_consensus');
+   			};
+   			
+   			clickedBtn = this;   	  			
+   			
+   			var referenceInput = document.getElementById('referenceInput');
+   			referenceInput.value = Famille.value;
+   			$('#referenceInput').prop('disabled', true);
+   			
+   			var genreForm = document.getElementById('form-group-Reference');
+			var genreDiv  = document.createElement('div');
+			genreDiv.className = 'form-group';
+			genreDiv.setAttribute('name', 'genreDiv');
+			genreDiv.setAttribute('id', 'genreDiv');
+			
+			var genreLabel = document.createElement('label');
+			genreLabel.setAttribute('name', 'genreLabel');
+			genreLabel.setAttribute('id', 'genreLabel');
+			genreLabel.appendChild(document.createTextNode('Genre :'));
+			
+			var genreInput = document.createElement('input');
+			genreInput.setAttribute('type', 'text');
+			genreInput.setAttribute('name', 'genreInput');
+			genreInput.setAttribute('id', 'genreInput');
+			genreInput.className = 'form-control';
+			genreInput.value = Genre.value;
+						
+			var genreLabel2 = document.createElement('label');
+			genreLabel2.setAttribute('name', 'genreLabel2');
+			genreLabel2.setAttribute('id', 'genreLabel2');
+			genreLabel2.appendChild(document.createTextNode('Espece :'));
+			
+			var genreInput2 = document.createElement('input');
+			genreInput2.setAttribute('type', 'text');
+			genreInput2.setAttribute('name', 'genreInput2');
+			genreInput2.setAttribute('id', 'genreInput2');
+			genreInput2.className = 'form-control';
+			
+			genreDiv.appendChild(genreLabel);
+			genreDiv.appendChild(genreInput);
+			genreDiv.appendChild(genreLabel2);
+			genreDiv.appendChild(genreInput2);
+			genreForm.appendChild(genreDiv);
+			
+			$('#genreInput').prop('disabled', true);
+   		});
+   		
+   		$("#btnAjouter").click(function(e){
+	    	e.preventDefault();
+	    	if(clickedBtn){	    		
+	    		var l = Ladda.create(document.querySelector('.ladda-button'));
+				l.start();				
+				
+				if ($(this).data('data-id') == 'pays') {
+					var select = document.getElementById('Pays');	    		
+					addReference(html, 'pays', 'Pays', select, null, null);	
+   				} else if ($(this).data('data-id') == 'lieu_capture') {
+					var select = document.getElementById('Lieu_capture');	    		
+					addReference(html, 'lieu_capture', 'Lieu_capture', select, null, null);	
+   				} else if ($(this).data('data-id') == 'environnement') {
+					var select = document.getElementById('Environnement');	    		
+					addReference(html, 'environnement', 'Environnement', select, null, null);	
+   				} else if ($(this).data('data-id') == 'methode_capture') {
+					var select = document.getElementById('Methode_capture');	    		
+					addReference(html, 'methode_capture', 'Methode_capture', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_terrain') {
+					var select = document.getElementById('Famille_terrain');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_labo') {
+					var select = document.getElementById('Famille_labo');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'famille_consensus') {
+					var select = document.getElementById('Famille_consensus');	
+					addReference(html, 'famille', 'Famille', select, null, null);	
+   				} else if ($(this).data('data-id') == 'genre_terrain') {
+   					var select = document.getElementById('Famille_terrain');
+					var select2 = document.getElementById('Genre_terrain');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'genre_labo') {
+   					var select = document.getElementById('Famille_labo');
+					var select2 = document.getElementById('Genre_labo');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'genre_consensus') {
+   					var select = document.getElementById('Famille_consensus');
+					var select2 = document.getElementById('Genre_consensus');	
+					addReference(html, 'genre', 'Genre', select, select2, null);	
+   				} else if ($(this).data('data-id') == 'espece_terrain') {
+   					var select = document.getElementById('Famille_terrain');
+					var select2 = document.getElementById('Genre_terrain');	
+					var select3 = document.getElementById('Espece_terrain');
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				} else if ($(this).data('data-id') == 'espece_labo') {
+   					var select = document.getElementById('Famille_labo');
+					var select2 = document.getElementById('Genre_labo');	
+					var select3 = document.getElementById('Espece_labo');		
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				} else if ($(this).data('data-id') == 'espece_consensus') {
+   					var select = document.getElementById('Famille_consensus');
+					var select2 = document.getElementById('Genre_consensus');	
+					var select3 = document.getElementById('Espece_consensus');
+					addReference(html, 'espece', 'Espece', select, select2, select3);	
+   				};
+   				
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";				
+				l.stop();				
+				clickedBtn = null;
+	    		$('#nouvelleReference').modal('hide');
+	        	// close the modal dialog.
+	      	}
+	    });
+   		
+   		$("#btnAnnuler").click(function(e){
+	    	e.preventDefault();
+	    	$('#nouvelleReference').modal('hide');
+   		});
+   		
+   		$(function () {
+   		    $('#nouvelleReference').on('hidden.bs.modal', function () {
+   		    	removeModalDiv();
+	   		});
+   		});
+   		
+   		function removeModalDiv() {
+   			try {
+   				$('#referenceInput').prop('disabled', false);
+   				var referenceInput = document.getElementById('referenceInput');
+   				referenceInput.value = "";
+	    		var genreForm = document.getElementById('form-group-Reference');
+			    var genreLabel = document.getElementById('genreLabel');
+			    var genreInput = document.getElementById('genreInput');
+			    var genreDiv = document.getElementById('genreDiv');
+			    genreDiv.removeChild(genreLabel);
+			    genreDiv.removeChild(genreInput);
+			    genreForm.removeChild(genreDiv);
+		    }
+	    	catch(error) {
+	    	};	
+   		};   		
+   		
+   		function addNom(NomX) {
+		    this.Nom = NomX;
+		    	    
+		    this.NomX = function() {
+		        return this.Nom;
+		    };		    
+		};
+   		
+    </script> 
+ 
+	 <script type="text/javascript">	
+		function select_suitee(select) {			
+			var valeurSuitee = select.options[select.selectedIndex].value;			
+			if ((valeurSuitee == "Oui") || (valeurSuitee == "")) {
+				var elem = document.getElementById("child");
+				elem.style.display = "block";
+			} else if (valeurSuitee == "Non") {
+				var elem = document.getElementById("child");
+				elem.style.display = "none";
+			}
+		};
+		
+		function select_vivante(select) {
+			var valeurVivante = select.options[select.selectedIndex].value;	
+			if (valeurVivante == "Oui") {
+				var elem = document.getElementById("Cause_deces");
+				elem.value = "Manquant";
+			}; 
+		};
+		
+		function select_specimen_preserve_entier(select) {
+			var valeurSpecimenPreserveDans = select.options[select.selectedIndex].value;	
+			if (valeurSpecimenPreserveDans == "Non") {
+				var elem = document.getElementById("Specimen_preserve_dans");
+				elem.value = "Manquant";
+			}; 
+		}
+		
+	</script>
+      
+    <script type="text/javascript">	
+	    function select_N_site(select) {			
+			var valeurN_site = select.options[select.selectedIndex].text;	
+			
+			if (valeurN_site == "") {
+				
+				var Equipe = document.getElementById("Equipe");
+				Equipe.value = '';
+				Equipe.disabled = false;
+				
+				var Pays = document.getElementById("Pays");			
+				try {
+					Pays.value = '';	
+					Pays.disabled = false;
+				}
+				catch(err) {
+				};
+				
+				var Region_capture = document.getElementById("Region_capture");
+				Region_capture.value = '';
+				Region_capture.disabled = false;
+				
+				var Site_capture = document.getElementById("Site_capture");
+				Site_capture.value = '';
+				Site_capture.disabled = false;
+										
+				var Environnement = document.getElementById("Environnement");
+				Environnement.value = '';
+				Environnement.disabled = false;
+				
+				var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+				Lat_degre_dec.value = '';
+				Lat_degre_dec.disabled = false;
+				
+				var Latitude = document.getElementById("Latitude");
+				Latitude.value = '';
+				Latitude.disabled = false;
+				
+				var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+				Lat_degre_dec.value = '';
+				Lat_degre_dec.disabled = false;
+				
+				var Longitude = document.getElementById("Longitude");
+				Longitude.value = '';
+				Longitude.disabled = false;
+				
+				var Long_degre_dec = document.getElementById("Long_degre_dec");
+				Long_degre_dec.value = '';
+				Long_degre_dec.disabled = false;
+				
+				var Proximite_village_km = document.getElementById("Proximite_village_km");
+				Proximite_village_km.value = '';
+				Proximite_village_km.disabled = false;
+				
+			} else {
+				
+				//var id = select.options[select.selectedIndex].value;
+				
+				if (localStorage.getItem('web') === 'oui') {
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var DB = new PouchDB(remote_couchdb + 'site_astre' + debug);
+				} else {
+					var DB = new PouchDB('site_astre' + debug);
+				};		 
+					
+				DB.find({
+					selector: {N_site: valeurN_site},
+					fields: ['_id', 'N_site', 'Equipe', 'Pays', 'Region_capture', 'Environnement', 
+						     'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec', 'Proximite_village_km']
+				}).then(function (result) {
+			
+					if (localStorage.getItem('web') === 'oui') {
+						var remote_couchdb = localStorage.getItem('remote_couchdb');
+						var DB2 = new PouchDB(remote_couchdb + 'site_astre' + debug);
+					} else {
+						var DB2 = new PouchDB('site_astre' + debug);
+					};
+					
+					console.log(JSON.stringify(result));
+					var res =  JSON.parse(JSON.stringify(result));
+					id = res.docs[0]._id;
+		    		
+					DB2.get(id).then(function (doc) {
+						
+						var Equipe = document.getElementById("Equipe");
+						Equipe.value = doc.Equipe;
+						Equipe.disabled = true;
+						
+						var Pays = document.getElementById("Pays");			
+						try {
+							Pays.value = doc.Pays;	
+							Pays.disabled = true;
+						}
+						catch(err) {
+						};
+						
+						var Region_capture = document.getElementById("Region_capture");
+						Region_capture.value = doc.Region_capture;
+						Region_capture.disabled = true;
+						
+						var Site_capture = document.getElementById("Site_capture");
+						Site_capture.value = doc.Site_capture;
+						Site_capture.disabled = true;
+												
+						var Environnement = document.getElementById("Environnement");
+						Environnement.value = doc.Environnement;
+						Environnement.disabled = true;
+						
+						var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+						Lat_degre_dec.value = doc.Lat_degre_dec;
+						Lat_degre_dec.disabled = true;
+						
+						var Latitude = document.getElementById("Latitude");
+						Latitude.value = doc.Latitude;
+						Latitude.disabled = true;
+						
+						var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+						Lat_degre_dec.value = doc.Lat_degre_dec;
+						Lat_degre_dec.disabled = true;
+						
+						var Longitude = document.getElementById("Longitude");
+						Longitude.value = doc.Longitude;
+						Longitude.disabled = true;
+						
+						var Long_degre_dec = document.getElementById("Long_degre_dec");
+						Long_degre_dec.value = doc.Long_degre_dec;
+						Long_degre_dec.disabled = true;
+						
+						var Proximite_village_km = document.getElementById("Proximite_village_km");
+						Proximite_village_km.value = doc.Proximite_village_km;
+						Proximite_village_km.disabled = true;
+						
+					})
+				});
+				
+				//var DB = new PouchDB('site_astre' + debug);
+				
+			}
+		}
+	</script>
+	
+    <script type="text/javascript">
+    
+    	// Example starter JavaScript for disabling form submissions if there are invalid fields
+  		(function() {
+  		  'use strict';
+  		  window.addEventListener('load', function() {
+  		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  		    var forms = document.getElementsByClassName('needs-validation');
+  		    // Loop over them and prevent submission
+  		    var validation = Array.prototype.filter.call(forms, function(form) {
+  		      form.addEventListener('submit', function(event) {
+  		    	if (form.checkValidity() === false) {
+  		          event.preventDefault();
+  		          event.stopPropagation();
+  		        } else {
+  		          event.preventDefault();
+	  		      //add event listener
+	  		  	  if ((option == 0) || (option == 1)) {
+	  		      	addBat();
+	  		  	  } else if ((option == 2)) {
+	  		  		modifyBat();
+	  		  	  }
+  		        } 		        
+  		        form.classList.add('was-validated');
+  		      }, false);
+  		    });
+  		  }, false);
+  		})();
+  		
+  		function addBat() {  
+  			
+  			//alert('add');
+  			
+			var l = Ladda.create( document.querySelector('.ladda-button'));
+			
+			// Start loading
+			l.start();
+						
+			var id = uuid();
+			var N_identification_CS = document.getElementById('N_identification_CS').value;
+			var Numero_individu = String(extraireNombre(N_identification_CS));
+			var N_identification_mere = document.getElementById('N_identification_mere').value;
+			var N_site = document.getElementById('N_site').value;
+			var Date = document.getElementById('Date').value;
+		    var Equipe = document.getElementById('Equipe').value;
+		    var Pays = document.getElementById('Pays').value;
+		    var Region_capture = document.getElementById('Region_capture').value;	
+		    var Site_capture = document.getElementById('Site_capture').value;
+		    var Lieu_capture = document.getElementById('Lieu_capture').value;
+		    var Environnement = document.getElementById('Environnement').value;
+		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
+		    var Latitude = document.getElementById('Latitude').value;	
+		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
+		    var Longitude = document.getElementById('Longitude').value;
+		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
+		    var Methode_capture = document.getElementById('Methode_capture').value;
+		    var Type_chauve_souris = document.getElementById('Type_chauve_souris').value;
+		    var Espece_identifiee = document.getElementById('Espece_identifiee').value;
+		    var Famille_terrain = document.getElementById('Famille_terrain').value;
+		    var Genre_terrain = document.getElementById('Genre_terrain').value;
+		    var Espece_terrain = document.getElementById('Espece_terrain').value;
+		    var Famille_labo = document.getElementById('Famille_labo').value;
+		    var Genre_labo = document.getElementById('Genre_labo').value;
+		    var Espece_labo = document.getElementById('Espece_labo').value;
+		    var Famille_consensus = document.getElementById('Famille_consensus').value;
+		    var Genre_consensus = document.getElementById('Genre_consensus').value;
+		    var Espece_consensus = document.getElementById('Espece_consensus').value;
+		    var Sexe = document.getElementById('Sexe').value;
+		    var Age = document.getElementById('Age').value;
+		    var Gestante = document.getElementById('Gestante').value;
+		    var Lactation = document.getElementById('Lactation').value;
+		    var Suitee = document.getElementById('Suitee').value;
+					    
+		    var elem = document.getElementById("child");
+		    if (elem.style.display == "none") {
+				var Sexe_enfant = '';
+			    var Poids_enfant = '';
+			    var Identifiant_enfant = '';
+		    } else {
+		    	var Sexe_enfant = document.getElementById('Sexe_enfant').value;
+			    var Poids_enfant = document.getElementById('Poids_enfant').value;
+			    var Identifiant_enfant = document.getElementById('Identifiant_enfant').value;
+		    };
+			
+		    var Vivante = document.getElementById('Vivante').value;
+		    var Cause_deces = document.getElementById('Cause_deces').value;
+		    var Poids_gr = document.getElementById('Poids_gr').value;
+		    var L_avant_bras_mm = document.getElementById('L_avant_bras_mm').value;
+		    var L_totale_corps_mm = document.getElementById('L_totale_corps_mm').value;
+		    var Taille_yeux = document.getElementById('Taille_yeux').value;
+		    var L_queue_mm = document.getElementById('L_queue_mm').value;
+		    var L_metacarpe_3ieme_doigt_mm = document.getElementById('L_metacarpe_3ieme_doigt_mm').value;
+		    var Couleur_pelage_dorsal = document.getElementById('Couleur_pelage_dorsal').value;
+		    var Couleur_pelage_ventral = document.getElementById('Couleur_pelage_ventral').value;
+		    var Remarques_anomalies = document.getElementById('Remarques_anomalies').value;
+		    var Sang_DBS_nb_cercles = document.getElementById('Sang_DBS_nb_cercles').value;
+		    var Sang_tube_EDTA = document.getElementById('Sang_tube_EDTA').value;
+		    var Feces_RNAl = document.getElementById('Feces_RNAl').value;
+		    var Urine = document.getElementById('Urine').value;
+		    var Urine_DUS_nombre_cercles = document.getElementById('Urine_DUS_nombre_cercles').value;
+		    var Feces_urine_RNAl = document.getElementById('Feces_urine_RNAl').value;
+		    var Ecouvillon_gorge_RNAl = document.getElementById('Ecouvillon_gorge_RNAl').value;
+		    var Ecouvillon_rectal_RNAl = document.getElementById('Ecouvillon_rectal_RNAl').value;
+		    var Ectoparasites_ethanol = document.getElementById('Ectoparasites_ethanol').value;
+		    var Poils_ethanol = document.getElementById('Poils_ethanol').value;
+		    var Wing_punch_ethanol = document.getElementById('Wing_punch_ethanol').value;
+		    var Feces_culture_glycerol = document.getElementById('Feces_culture_glycerol').value;
+		    var Sperme = document.getElementById('Sperme').value;
+		    var Autres_echantillons_remarques = document.getElementById('Autres_echantillons_remarques').value;
+		    var Specimen_entier = document.getElementById('Specimen_entier').value;
+		    var Specimen_preserve_dans = document.getElementById('Specimen_preserve_dans').value;
+		    var Prelevement_organe = document.getElementById('Prelevement_organe').value; 
+		    var Foie_formol = document.getElementById('Foie_formol').value; 
+		    var Foie_RNAl = document.getElementById('Foie_RNAl').value; 
+		    var Rate_formol = document.getElementById('Rate_formol').value; 
+		    var Rate_RNAl = document.getElementById('Rate_RNAl').value; 
+		    var Reins_formol = document.getElementById('Reins_formol').value; 
+		    var Reins_RNAl = document.getElementById('Reins_RNAl').value; 
+		    var Intestins_formol = document.getElementById('Intestins_formol').value; 
+		    var Intestins_RNAl = document.getElementById('Intestins_RNAl').value; 
+		    var Poumons_formol = document.getElementById('Poumons_formol').value; 
+		    var Poumons_RNAl = document.getElementById('Poumons_RNAl').value; 
+		    var Coeur_formol = document.getElementById('Coeur_formol').value;
+		    var Coeur_RNAl = document.getElementById('Coeur_RNAl').value;
+		    var Ggl_lymph_formol = document.getElementById('Ggl_lymph_formol').value;
+		    var Ggl_lymph_RNAl = document.getElementById('Ggl_lymph_RNAl').value;
+		    var Testicules_formol = document.getElementById('Testicules_formol').value;
+		    var Testicules_RNAl = document.getElementById('Testicules_RNAl').value;
+		    var Peau_formol = document.getElementById('Peau_formol').value;
+		    var Peau_RNAl = document.getElementById('Peau_RNAl').value; 
+		    var Muscles_formol = document.getElementById('Muscles_formol').value; 
+		    var Muscles_RNAl = document.getElementById('Muscles_RNAl').value; 
+		    var Cerveau_formol = document.getElementById('Cerveau_formol').value; 
+		    var Cerveau_RNAl = document.getElementById('Cerveau_RNAl').value;
+		    var Autre = document.getElementById('Autre').value;
+		    var Autre_formol = document.getElementById('Autre_formol').value;
+		    var Autre_RNAl = document.getElementById('Autre_RNAl').value;
+		    var Remarques_echantillons = document.getElementById('Remarques_echantillons').value;
+		    			
+		    var andAdd = document.getElementById("andAdd");
+		  	if (andAdd.checked == true){
+		  	    var doc = new Object();
+		  		  
+		  		doc.N_identification_mere = N_identification_mere;
+		  		doc.N_site = N_site;
+		  		doc.Date = Date;
+		  		doc.Equipe = Equipe;
+		  		doc.Pays = Pays;
+		  		doc.Region_capture = Region_capture;
+		  		doc.Site_capture = Site_capture;
+		  		doc.Lieu_capture = Lieu_capture;
+		  		doc.Environnement = Environnement;
+		  		doc.Latitude = Latitude;
+		  		doc.Lat_degre_dec = Lat_degre_dec;
+		  		doc.Longitude = Longitude;
+		  		doc.Long_degre_dec = Long_degre_dec;
+		  		doc.Proximite_village_km = Proximite_village_km;
+		  		doc.Methode_capture = Methode_capture;
+		  		doc.Type_chauve_souris = Type_chauve_souris;
+		  		doc.Espece_identifiee = Espece_identifiee;
+		  		doc.Famille_terrain = Famille_terrain;
+		  		doc.Genre_terrain = Genre_terrain;
+		  		doc.Espece_terrain = Espece_terrain;
+		  		doc.Famille_labo = Famille_labo;
+		  		doc.Genre_labo = Genre_labo;
+		  		doc.Espece_labo = Espece_labo;
+		  		doc.Famille_consensus = Famille_consensus;
+		  		doc.Genre_consensus = Genre_consensus;
+		  		doc.Espece_consensus = Espece_consensus;
+		  		doc.Sexe = Sexe;
+		  		doc.Age = Age;
+		  		doc.Gestante = Gestante;
+			  	doc.Lactation = Lactation;
+			  	doc.Suitee = Suitee;
+			  	doc.Sexe_enfant = Sexe_enfant;
+			    doc.Poids_enfant = Poids_enfant;
+			  	doc.Identifiant_enfant = Identifiant_enfant;
+			  	doc.Vivante = Vivante;
+			  	doc.Cause_deces = Cause_deces;
+			  	doc.Poids_gr = Poids_gr;
+			  	doc.L_avant_bras_mm = L_avant_bras_mm;
+			  	doc.L_totale_corps_mm = L_totale_corps_mm;
+			  	doc.Taille_yeux = Taille_yeux;
+			  	doc.L_queue_mm = L_queue_mm;
+			  	doc.L_metacarpe_3ieme_doigt_mm = L_metacarpe_3ieme_doigt_mm;
+			  	doc.Couleur_pelage_dorsal = Couleur_pelage_dorsal;
+			  	doc.Couleur_pelage_ventral = Couleur_pelage_ventral;
+			  	doc.Remarques_anomalies = Remarques_anomalies;
+			  	doc.Sang_DBS_nb_cercles = Sang_DBS_nb_cercles;
+			  	doc.Sang_tube_EDTA = Sang_tube_EDTA;
+			  	doc.Feces_RNAl = Feces_RNAl;
+			  	doc.Urine = Urine;
+			  	doc.Urine_DUS_nombre_cercles = Urine_DUS_nombre_cercles;
+			  	doc.Feces_urine_RNAl = Feces_urine_RNAl;
+			  	doc.Ecouvillon_gorge_RNAl = Ecouvillon_gorge_RNAl;
+			  	doc.Ecouvillon_rectal_RNAl = Ecouvillon_rectal_RNAl;
+			  	doc.Ectoparasites_ethanol = Ectoparasites_ethanol;
+			  	doc.Poils_ethanol = Poils_ethanol;
+			  	doc.Wing_punch_ethanol = Wing_punch_ethanol;
+			  	doc.Feces_culture_glycerol = Feces_culture_glycerol;
+			  	doc.Sperme = Sperme;
+			  	doc.Autres_echantillons_remarques = Autres_echantillons_remarques;
+			  	doc.Specimen_entier = Specimen_entier;
+			  	doc.Specimen_preserve_dans = Specimen_preserve_dans;
+			  	doc.Prelevement_organe = Prelevement_organe;
+			  	doc.Foie_formol = Foie_formol;
+			  	doc.Foie_RNAl = Foie_RNAl;
+			  	doc.Rate_formol = Rate_formol;
+			  	doc.Rate_RNAl = Rate_RNAl;
+			  	doc.Reins_formol = Reins_formol;
+			  	doc.Reins_RNAl = Reins_RNAl;
+			  	doc.Intestins_formol = Intestins_formol;
+			  	doc.Intestins_RNAl = Intestins_RNAl;
+			  	doc.Poumons_formol = Poumons_formol;
+			  	doc.Poumons_RNAl = Poumons_RNAl;
+			  	doc.Coeur_formol = Coeur_formol;
+			  	doc.Coeur_RNAl = Coeur_RNAl;
+			  	doc.Ggl_lymph_formol = Ggl_lymph_formol;
+			  	doc.Ggl_lymph_RNAl = Ggl_lymph_RNAl;
+			  	doc.Testicules_formol = Testicules_formol;
+			  	doc.Testicules_RNAl = Testicules_RNAl;
+			  	doc.Peau_formol = Peau_formol;
+			  	doc.Peau_RNAl = Peau_RNAl;
+			  	doc.Muscles_formol = Muscles_formol;
+			  	doc.Muscles_RNAl = Muscles_RNAl;
+			  	doc.Cerveau_formol = Cerveau_formol;
+			  	doc.Cerveau_RNAl = Cerveau_RNAl;
+			  	doc.Autre = Autre;
+			  	doc.Autre_formol = Autre_formol;
+			  	doc.Autre_RNAl = Autre_RNAl;
+			  	doc.Remarques_echantillons = Remarques_echantillons;
+		  		  
+		  		localStorage['chauves_souris_captureesTablesData'] = JSON.stringify(doc);
+		  	};
+		  			    
+		    if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees_astre' + debug);
+			} else {
+				var DB = new PouchDB('chauves_souris_capturees_astre' + debug);
+			};
+		    		    
+			DB.put({
+				_id: id,
+				Numero_individu: Numero_individu,
+				N_identification_CS: N_identification_CS,
+				N_identification_mere: N_identification_mere,
+				N_site: N_site,
+				Date: Date,
+				Equipe: Equipe,
+				Pays: Pays,
+				Region_capture: Region_capture,
+				Site_capture: Site_capture,
+				Lieu_capture: Lieu_capture,
+				Environnement: Environnement,
+				Lat_degre_dec: Lat_degre_dec,
+				Latitude: Latitude,
+				Long_degre_dec: Long_degre_dec,
+				Longitude: Longitude,
+				Proximite_village_km: Proximite_village_km,
+				Methode_capture: Methode_capture,
+				Type_chauve_souris: Type_chauve_souris,
+				Espece_identifiee: Espece_identifiee,
+				Famille_terrain: Famille_terrain,
+				Genre_terrain: Genre_terrain,
+				Espece_terrain: Espece_terrain,
+				Famille_labo: Famille_labo,
+				Genre_labo: Genre_labo,
+				Espece_labo: Espece_labo,
+				Famille_consensus: Famille_consensus,
+				Genre_consensus: Genre_consensus,
+				Espece_consensus: Espece_consensus,
+				Sexe: Sexe,
+				Age: Age,
+				Gestante: Gestante,
+				Lactation: Lactation,
+				Suitee: Suitee,
+				Sexe_enfant: Sexe_enfant,
+				Poids_enfant: Poids_enfant,
+				Identifiant_enfant: Identifiant_enfant,
+				Vivante: Vivante,
+				Cause_deces: Cause_deces,
+				Poids_gr: Poids_gr,
+				L_avant_bras_mm: L_avant_bras_mm,
+				L_totale_corps_mm: L_totale_corps_mm,
+				L_queue_mm: L_queue_mm,
+				L_metacarpe_3ieme_doigt_mm: L_metacarpe_3ieme_doigt_mm,
+				Couleur_pelage_dorsal: Couleur_pelage_dorsal,
+				Couleur_pelage_ventral: Couleur_pelage_ventral,
+				Remarques_anomalies: Remarques_anomalies,
+				Sang_DBS_nb_cercles: Sang_DBS_nb_cercles,
+				Sang_tube_EDTA: Sang_tube_EDTA,
+				Feces_RNAl: Feces_RNAl,
+				Urine: Urine,
+				Urine_DUS_nombre_cercles: Urine_DUS_nombre_cercles,
+				Feces_urine_RNAl: Feces_urine_RNAl,
+				Ecouvillon_gorge_RNAl: Ecouvillon_gorge_RNAl,
+				Ecouvillon_rectal_RNAl: Ecouvillon_rectal_RNAl,
+				Ectoparasites_ethanol: Ectoparasites_ethanol,
+				Poils_ethanol: Poils_ethanol,
+				Wing_punch_ethanol: Wing_punch_ethanol,
+				Feces_culture_glycerol: Feces_culture_glycerol,
+				Sperme: Sperme,
+				Autres_echantillons_remarques: Autres_echantillons_remarques,
+				Specimen_entier: Specimen_entier,
+				Specimen_preserve_dans: Specimen_preserve_dans,
+				Prelevement_organe: Prelevement_organe,
+				Foie_formol: Foie_formol,
+				Foie_RNAl: Foie_RNAl,
+				Rate_formol: Rate_formol,
+				Rate_RNAl: Rate_RNAl,
+				Reins_formol: Reins_formol,
+				Reins_RNAl: Reins_RNAl,
+				Intestins_formol: Intestins_formol,
+				Intestins_RNAl: Intestins_RNAl,
+				Poumons_formol: Poumons_formol,
+				Poumons_RNAl: Poumons_RNAl,
+				Coeur_formol: Coeur_formol,
+				Coeur_RNAl: Coeur_RNAl,
+				Ggl_lymph_formol: Ggl_lymph_formol,
+				Ggl_lymph_RNAl: Ggl_lymph_RNAl,
+				Testicules_formol: Testicules_formol,
+				Testicules_RNAl: Testicules_RNAl,
+				Peau_formol: Peau_formol,
+				Peau_RNAl: Peau_RNAl,
+				Muscles_formol: Muscles_formol,
+				Muscles_RNAl: Muscles_RNAl,
+				Cerveau_formol: Cerveau_formol,
+				Cerveau_RNAl: Cerveau_RNAl,
+				Autre: Autre,
+				Autre_formol: Autre_formol,
+				Autre_RNAl: Autre_RNAl,
+				Remarques_echantillons: Remarques_echantillons
+			}).then(function (response) {
+								
+				if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
+					var localDB2 = new PouchDB('chauves_souris_capturees_astre' + debug);	
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var remoteDB = new PouchDB(remote_couchdb + 'chauves_souris_capturees_astre' + debug, {skip_setup: true});
+					
+					localDB2.sync(remoteDB).on('complete', (info) => { 
+						
+						var andAdd = document.getElementById("andAdd");
+					  	if (andAdd.checked == true) {
+					  	  window.location = 'new_bat_capturees_astre.html?option=1';
+					  	} else {
+					  	  window.location = 'bat_capturees_astre.html';	
+					  	};
+					}).on('error', function (err) {
+						// error while replicating
+						alert('alert sync new bat cirad: ' + JSON.stringify(err));
+						window.location = 'login.html';
+					});
+				} else {
+					var andAdd = document.getElementById("andAdd");
+				  	if (andAdd.checked == true) {
+				  	  window.location = 'new_bat_capturees_astre.html?option=1';
+				  	} else {
+				  	  window.location = 'bat_capturees_astre.html';	
+				  	};
+				}
+				
+				l.stop();
+				
+			}).catch(function (err) {
+				alert(JSON.stringify(err));
+				console.log(err);
+			});	
+  		};
+  		
+  		function modifyBat() {  
+			var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+
+			// Start loading
+			l.start();
+			
+			var id = localStorage.getItem('ID_chauves_souris_capturees_astre');
+			var N_identification_CS = document.getElementById('N_identification_CS').value;
+			var Numero_individu = String(extraireNombre(N_identification_CS));
+			var N_identification_mere = document.getElementById('N_identification_mere').value;
+			var N_site = document.getElementById('N_site').value;
+			var Date = document.getElementById('Date').value;
+		    var Equipe = document.getElementById('Equipe').value;
+		    var Pays = document.getElementById('Pays').value;
+		    var Region_capture = document.getElementById('Region_capture').value;	
+		    var Site_capture = document.getElementById('Site_capture').value;
+		    var Lieu_capture = document.getElementById('Lieu_capture').value;
+		    var Environnement = document.getElementById('Environnement').value;
+		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
+		    var Latitude = document.getElementById('Latitude').value;	
+		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
+		    var Longitude = document.getElementById('Longitude').value;
+		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
+		    var Methode_capture = document.getElementById('Methode_capture').value;
+		    var Type_chauve_souris = document.getElementById('Type_chauve_souris').value;
+		    var Espece_identifiee = document.getElementById('Espece_identifiee').value;
+		    var Famille_terrain = document.getElementById('Famille_terrain').value;
+		    var Genre_terrain = document.getElementById('Genre_terrain').value;
+		    var Espece_terrain = document.getElementById('Espece_terrain').value;
+		    var Famille_labo = document.getElementById('Famille_labo').value;
+		    var Genre_labo = document.getElementById('Genre_labo').value;
+		    var Espece_labo = document.getElementById('Espece_labo').value;
+		    var Famille_consensus = document.getElementById('Famille_consensus').value;
+		    var Genre_consensus = document.getElementById('Genre_consensus').value;
+		    var Espece_consensus = document.getElementById('Espece_consensus').value;
+		    var Sexe = document.getElementById('Sexe').value;
+		    var Age = document.getElementById('Age').value;
+		    var Gestante = document.getElementById('Gestante').value;
+		    var Lactation = document.getElementById('Lactation').value;
+		    var Suitee = document.getElementById('Suitee').value;
+		    
+		    var elem = document.getElementById("child");
+		    if (elem.style.display == "none") {
+				var Sexe_enfant = '';
+			    var Poids_enfant = '';
+			    var Identifiant_enfant = '';
+		    } else {
+		    	var Sexe_enfant = document.getElementById('Sexe_enfant').value;
+			    var Poids_enfant = document.getElementById('Poids_enfant').value;
+			    var Identifiant_enfant = document.getElementById('Identifiant_enfant').value;
+		    };
+		    
+		    var Vivante = document.getElementById('Vivante').value;
+		    var Cause_deces = document.getElementById('Cause_deces').value;
+		    var Poids_gr = document.getElementById('Poids_gr').value;
+		    var L_avant_bras_mm = document.getElementById('L_avant_bras_mm').value;
+		    var L_totale_corps_mm = document.getElementById('L_totale_corps_mm').value;
+		    var Taille_yeux = document.getElementById('Taille_yeux').value; 
+		    var L_queue_mm = document.getElementById('L_queue_mm').value;
+		    var L_metacarpe_3ieme_doigt_mm = document.getElementById('L_metacarpe_3ieme_doigt_mm').value;
+		    var Couleur_pelage_dorsal = document.getElementById('Couleur_pelage_dorsal').value;
+		    var Couleur_pelage_ventral = document.getElementById('Couleur_pelage_ventral').value;
+		    var Remarques_anomalies = document.getElementById('Remarques_anomalies').value;
+		    var Sang_DBS_nb_cercles = document.getElementById('Sang_DBS_nb_cercles').value;
+		    var Sang_tube_EDTA = document.getElementById('Sang_tube_EDTA').value;
+		    var Feces_RNAl = document.getElementById('Feces_RNAl').value;
+		    var Urine = document.getElementById('Urine').value;
+		    var Urine_DUS_nombre_cercles = document.getElementById('Urine_DUS_nombre_cercles').value;
+		    var Feces_urine_RNAl = document.getElementById('Feces_urine_RNAl').value;
+		    var Ecouvillon_gorge_RNAl = document.getElementById('Ecouvillon_gorge_RNAl').value;
+		    var Ecouvillon_rectal_RNAl = document.getElementById('Ecouvillon_rectal_RNAl').value;
+		    var Ectoparasites_ethanol = document.getElementById('Ectoparasites_ethanol').value;
+		    var Poils_ethanol = document.getElementById('Poils_ethanol').value;
+		    var Wing_punch_ethanol = document.getElementById('Wing_punch_ethanol').value;
+		    var Feces_culture_glycerol = document.getElementById('Feces_culture_glycerol').value;
+		    var Sperme = document.getElementById('Sperme').value;
+		    var Autres_echantillons_remarques = document.getElementById('Autres_echantillons_remarques').value;
+		    var Specimen_entier = document.getElementById('Specimen_entier').value;
+		    var Specimen_preserve_dans = document.getElementById('Specimen_preserve_dans').value;
+		    var Prelevement_organe = document.getElementById('Prelevement_organe').value; 
+		    var Foie_formol = document.getElementById('Foie_formol').value; 
+		    var Foie_RNAl = document.getElementById('Foie_RNAl').value; 
+		    var Rate_formol = document.getElementById('Rate_formol').value; 
+		    var Rate_RNAl = document.getElementById('Rate_RNAl').value; 
+		    var Reins_formol = document.getElementById('Reins_formol').value; 
+		    var Reins_RNAl = document.getElementById('Reins_RNAl').value; 
+		    var Intestins_formol = document.getElementById('Intestins_formol').value; 
+		    var Intestins_RNAl = document.getElementById('Intestins_RNAl').value; 
+		    var Poumons_formol = document.getElementById('Poumons_formol').value; 
+		    var Poumons_RNAl = document.getElementById('Poumons_RNAl').value; 
+		    var Coeur_formol = document.getElementById('Coeur_formol').value;
+		    var Coeur_RNAl = document.getElementById('Coeur_RNAl').value;
+		    var Ggl_lymph_formol = document.getElementById('Ggl_lymph_formol').value;
+		    var Ggl_lymph_RNAl = document.getElementById('Ggl_lymph_RNAl').value;
+		    var Testicules_formol = document.getElementById('Testicules_formol').value;
+		    var Testicules_RNAl = document.getElementById('Testicules_RNAl').value;
+		    var Peau_formol = document.getElementById('Peau_formol').value;
+		    var Peau_RNAl = document.getElementById('Peau_RNAl').value; 
+		    var Muscles_formol = document.getElementById('Muscles_formol').value; 
+		    var Muscles_RNAl = document.getElementById('Muscles_RNAl').value; 
+		    var Cerveau_formol = document.getElementById('Cerveau_formol').value; 
+		    var Cerveau_RNAl = document.getElementById('Cerveau_RNAl').value;
+		    var Autre = document.getElementById('Autre').value;
+		    var Autre_formol = document.getElementById('Autre_formol').value;
+		    var Autre_RNAl = document.getElementById('Autre_RNAl').value;
+		    var Remarques_echantillons = document.getElementById('Remarques_echantillons').value;
+		    				    	
+			if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees_astre' + debug);
+			} else {
+				var DB = new PouchDB('chauves_souris_capturees_astre' + debug);
+			};	
+						
+			DB.find({
+				selector: {_id: id},
+				fields: ['_id', 'Numero_individu', 'N_identification_CS', 'Date', 'Equipe', 'Pays', 'Site_region']
+			}).then(function (result) {
+		
+				if (localStorage.getItem('web') === 'oui') {
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var DB2 = new PouchDB(remote_couchdb + 'chauves_souris_capturees_astre' + debug);
+				} else {
+					var DB2 = new PouchDB('chauves_souris_capturees_astre' + debug);
+				};	
+				
+				DB2.get(id).then(function (doc) {
+					doc.N_identification_CS = N_identification_CS;
+					doc.Numero_individu = Numero_individu;
+					doc.N_identification_mere = N_identification_mere;
+					doc.N_site = N_site;
+					doc.Date = Date;
+					doc.Equipe = Equipe;
+					doc.Pays = Pays;
+					doc.Region_capture = Region_capture;
+					doc.Site_capture = Site_capture;
+					doc.Lieu_capture = Lieu_capture;
+					doc.Environnement = Environnement;
+					doc.Lat_degre_dec = Lat_degre_dec;
+					doc.Latitude = Latitude;
+					doc.Long_degre_dec = Long_degre_dec;
+					doc.Longitude = Longitude;
+					doc.Proximite_village_km = Proximite_village_km;
+					doc.Methode_capture = Methode_capture;
+					doc.Type_chauve_souris = Type_chauve_souris;
+					doc.Espece_identifiee = Espece_identifiee;
+					doc.Famille_terrain = Famille_terrain;
+					doc.Genre_terrain = Genre_terrain;
+					doc.Espece_terrain = Espece_terrain;
+					doc.Famille_labo = Famille_labo;
+					doc.Genre_labo = Genre_labo;
+					doc.Espece_labo = Espece_labo;
+					doc.Famille_consensus = Famille_consensus;
+					doc.Genre_consensus = Genre_consensus;
+					doc.Espece_consensus = Espece_consensus;
+					doc.Sexe = Sexe;
+					doc.Age = Age;
+					doc.Gestante = Gestante;
+					doc.Lactation = Lactation;
+					doc.Suitee = Suitee;
+					doc.Sexe_enfant = Sexe_enfant;
+					doc.Poids_enfant = Poids_enfant;
+					doc.Identifiant_enfant = Identifiant_enfant;
+					doc.Vivante = Vivante;
+					doc.Cause_deces = Cause_deces;
+					doc.Poids_gr = Poids_gr;
+					doc.L_avant_bras_mm = L_avant_bras_mm;
+					doc.L_totale_corps_mm = L_totale_corps_mm;
+					doc.Taille_yeux = Taille_yeux;
+					doc.L_queue_mm = L_queue_mm;
+					doc.L_metacarpe_3ieme_doigt_mm = L_metacarpe_3ieme_doigt_mm;
+					doc.Couleur_pelage_dorsal = Couleur_pelage_dorsal;
+					doc.Couleur_pelage_ventral = Couleur_pelage_ventral;
+					doc.Remarques_anomalies = Remarques_anomalies;
+					doc.Sang_DBS_nb_cercles = Sang_DBS_nb_cercles;
+					doc.Sang_tube_EDTA = Sang_tube_EDTA;
+					doc.Feces_RNAl = Feces_RNAl;
+					doc.Urine = Urine;
+					doc.Urine_DUS_nombre_cercles = Urine_DUS_nombre_cercles;
+					doc.Feces_urine_RNAl = Feces_urine_RNAl;
+					doc.Ecouvillon_gorge_RNAl = Ecouvillon_gorge_RNAl;
+					doc.Ecouvillon_rectal_RNAl = Ecouvillon_rectal_RNAl;
+					doc.Ectoparasites_ethanol = Ectoparasites_ethanol;
+					doc.Poils_ethanol = Poils_ethanol;
+					doc.Wing_punch_ethanol = Wing_punch_ethanol,
+					doc.Feces_culture_glycerol = Feces_culture_glycerol;
+					doc.Sperme = Sperme;
+					doc.Autres_echantillons_remarques = Autres_echantillons_remarques;
+					doc.Specimen_entier = Specimen_entier;
+					doc.Specimen_preserve_dans = Specimen_preserve_dans;
+					doc.Prelevement_organe = Prelevement_organe;
+					doc.Foie_formol = Foie_formol;
+					doc.Foie_RNAl = Foie_RNAl;
+					doc.Rate_formol = Rate_formol;
+					doc.Rate_RNAl = Rate_RNAl;
+					doc.Reins_formol = Reins_formol;
+					doc.Reins_RNAl = Reins_RNAl;
+					doc.Intestins_formol = Intestins_formol;
+					doc.Intestins_RNAl = Intestins_RNAl;
+					doc.Poumons_formol = Poumons_formol;
+					doc.Poumons_RNAl = Poumons_RNAl;
+					doc.Coeur_formol = Coeur_formol;
+					doc.Coeur_RNAl = Coeur_RNAl;
+					doc.Ggl_lymph_formol = Ggl_lymph_formol;
+					doc.Ggl_lymph_RNAl = Ggl_lymph_RNAl;
+					doc.Testicules_formol = Testicules_formol;
+					doc.Testicules_RNAl = Testicules_RNAl;
+					doc.Peau_formol = Peau_formol;
+					doc.Peau_RNAl = Peau_RNAl;
+					doc.Muscles_formol = Muscles_formol;
+					doc.Muscles_RNAl = Muscles_RNAl;
+					doc.Cerveau_formol = Cerveau_formol;
+					doc.Cerveau_RNAl = Cerveau_RNAl;
+					doc.Autre = Autre;
+					doc.Autre_formol = Autre_formol;
+					doc.Autre_RNAl = Autre_RNAl;
+					doc.Remarques_echantillons = Remarques_echantillons;
+					
+					return DB2.put(doc);
+				}).then(function () {
+					return DB2.get(id);
+				}).then(function (doc) {
+					
+					if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
+						var localDB3 = new PouchDB('chauves_souris_capturees_astre' + debug);	
+						var remote_couchdb = localStorage.getItem('remote_couchdb');
+						var remoteDB = new PouchDB(remote_couchdb + 'chauves_souris_capturees_astre' + debug);
+										
+						localDB3.sync(remoteDB).on('complete', (info) => { 
+							window.location = 'bat_capturees_astre.html';
+						}).on('error', function (err) {
+							// error while replicating
+							alert('alert sync modify bat capturees cirad: ' + JSON.stringify(err));
+							window.location = 'login.html';
+						});	
+					} else {
+						window.location = 'bat_capturees_astre.html';
+					}
+					
+					l.stop();								  
+					console.log(doc);
+				});
+			}).catch(function (err) {
+				console.log(err);
+			});			
+		};
+  		
+  		function extraireNombre(str) { 
+  			return str.match(/[0-9]+/g)
+  		};
+  		
+	</script>
+	
+  </body>
+</html>
+	 

@@ -1,0 +1,61 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Droppings
+ *
+ * @ORM\Table(name="droppings", indexes={@ORM\Index(name="NIdent", columns={"NIdent"})})
+ * @ORM\Entity
+ */
+class Droppings
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DroppingID", type="string", length=255, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $droppingid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ModeCollecte", type="string", length=255, nullable=true)
+     */
+    private $modecollecte;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DateOfCollection", type="datetime", nullable=true)
+     */
+    private $dateofcollection;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SiteName", type="string", length=255, nullable=true)
+     */
+    private $sitename;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="AnimalIdent", type="boolean", nullable=true)
+     */
+    private $animalident;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NIdent", type="string", length=255, nullable=true)
+     */
+    private $nident;
+
+
+}
+
