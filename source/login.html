@@ -86,14 +86,18 @@
             	  	<h1 style="color:red;"> v.
             	  	  <label id="version"></label> 
             	  	  <script type="text/javascript">
-            	  		const { ipcRenderer } = require('electron');
-            	  		const version = document.getElementById('version');
-            	  	    ipcRenderer.send('app_version');
-            	        ipcRenderer.on('app_version', (event, arg) => {
-            	          ipcRenderer.removeAllListeners('app_version');
-            	          version.innerText = arg.version;
-            	        });
-            	  	    //document.write(localStorage.getItem('version'));
+            	  		if (localStorage.getItem('web') === 'non') {
+	            	  		const { ipcRenderer } = require('electron');
+	            	  		const version = document.getElementById('version');
+	            	  	    ipcRenderer.send('app_version');
+	            	        ipcRenderer.on('app_version', (event, arg) => {
+	            	          ipcRenderer.removeAllListeners('app_version');
+	            	          version.innerText = arg.version;
+	            	        });
+            	  		} else if (localStorage.getItem('web') === 'oui') {
+            	  	    	//document.write(localStorage.getItem('version'));
+            	  	    	version.innerText = localStorage.getItem('version')
+            	  		}
             	  	  </script>
             	  	</h1>
                   </div>
