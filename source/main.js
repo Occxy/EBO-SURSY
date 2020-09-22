@@ -1,13 +1,14 @@
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, BrowserWindow, ipcMain } = require('electron');
+const { autoUpdater } = require('electron-updater');
+//const app = electron.app;
+//const BrowserWindow = electron.BrowserWindow;
 
 /*require('update-electron-app')({repo: 'rosset_bruno/ebola/src/master',
 		  updateInterval: '1 hour',
 		  host: 'https://bitbucket.org' }
 )*/
 
-let mainWindow;
+/*let mainWindow;
 
 function createWindow () {
 
@@ -17,6 +18,30 @@ function createWindow () {
 
   mainWindow.on('closed', () => {
 	  mainWindow = null;
+  });
+  
+  mainWindow.once('ready-to-show', () => {
+	autoUpdater.checkForUpdatesAndNotify();
+	var valeur = prompt("Message à afficher");
+  });
+}*/
+
+let mainWindow;
+
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    width: 1800,
+    height: 1200,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+  mainWindow.loadFile('index.html');
+  mainWindow.on('closed', function () {
+    mainWindow = null;
+  });
+  mainWindow.once('ready-to-show', () => {
+	autoUpdater.checkForUpdatesAndNotify();
   });
 }
 
@@ -34,37 +59,24 @@ app.on('activate', () => {
   }
 });
 
-/*const isDev = require('electron-is-dev');
-if (isDev) {
-	console.log('Running in development');
-} else {
-	console.log('Running in production');
-	
-	const { app, autoUpdater, dialog } = require('electron')
-	
-	//const server = 'https://ebola-qggn8qdqj.vercel.app'
-	const server = 'https://vercel.com/rosset-bruno/ebola'
-	const url = `${server}/update/${process.platform}/${app.getVersion()}`
+ipcMain.on('app_version', (event) => {
+	event.sender.send('app_version', { version: app.getVersion() });
+});
 
-	autoUpdater.setFeedURL({ url })
-	
-	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-	  const dialogOpts = {
-	    type: 'info',
-	    buttons: ['Restart', 'Later'],
-	    title: 'Application Update',
-	    message: process.platform === 'win32' ? releaseNotes : releaseName,
-	    detail: 'A new version has been downloaded. Redémarrez l application pour appliquer les mises à jour.'
-	  }
-	
-	  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-	    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-	  })
-	})
-	
-	autoUpdater.on('error', message => {
-	  console.error('There was a problem updating the application')
-	  console.error(message)
-	})
-	
-}*/
+
+/*Checking updates just after app launch and also notify for the same*/
+app.on("ready", function() {
+ autoUpdater.checkForUpdatesAndNotify();
+});
+
+autoUpdater.on('update-available', () => {
+	mainWindow.webContents.send('update_available');
+});
+
+autoUpdater.on('update-downloaded', () => {
+	mainWindow.webContents.send('update_downloaded');
+});
+
+ipcMain.on('restart_app', () => {
+	autoUpdater.quitAndInstall();
+});

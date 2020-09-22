@@ -30,6 +30,7 @@
     <!-- <link rel="stylesheet" href="css/custom.css"> -->
     
     <link rel="stylesheet" href="css/offline_online.css">
+    <link rel="stylesheet" href="css/login.css">
         
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -62,8 +63,8 @@
   
     <script type="text/javascript">    
 	    showAlertFlash();
-    </script>	
-  
+	</script>	
+              
     <div class="page login-page">
       <div class="container"> <!-- d-flex align-items-center -->
         <div class="form-holder has-shadow">
@@ -82,7 +83,19 @@
             	  	  </div>
             	  	</div>
             	  	<!-- <h1>Projet EBO-SURSY</h1> -->
-            	  	<h1 style="color:red;"> v.<script type="text/javascript">document.write(localStorage.getItem('version'));</script></h1>
+            	  	<h1 style="color:red;"> v.
+            	  	  <label id="version"></label> 
+            	  	  <script type="text/javascript">
+            	  		const { ipcRenderer } = require('electron');
+            	  		const version = document.getElementById('version');
+            	  	    ipcRenderer.send('app_version');
+            	        ipcRenderer.on('app_version', (event, arg) => {
+            	          ipcRenderer.removeAllListeners('app_version');
+            	          version.innerText = arg.version;
+            	        });
+            	  	    //document.write(localStorage.getItem('version'));
+            	  	  </script>
+            	  	</h1>
                   </div>
                   <p>Renforcement des capacités et surveillance de la maladie à virus Ebola.</p>
                   
@@ -106,6 +119,16 @@
 		              </div>
 		           	</div>
 		          </div>
+		          
+		          <div id="notification" class="hidden">
+					<p id="message"></p>
+					<button id="close-button" onClick="closeNotification()">
+					  Close
+					</button>
+					<button id="restart-button" onClick="restartApp()" class="hidden">
+					  Restart
+					</button>
+				  </div>
 	           	  
                   
                 </div>
@@ -159,6 +182,10 @@
           </div>
         </div>
       </div>
+      
+      
+      
+            
       <div class="copyrights text-center">
         <p>Conçu par Bruno Rosset - Cirad</p>
         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
@@ -485,8 +512,31 @@
 		  	}
 		}, true); // "true" => phase de capture
 		
-		/*var useSpecieTable = document.getElementById('useSpecieTable');
-		useSpecieTable.checked = false;*/
+		const notification = document.getElementById('notification');
+	    const message = document.getElementById('message');
+	    const restartButton = document.getElementById('restart-button');
+	    
+	    ipcRenderer.on('update_available', () => {
+	      	ipcRenderer.removeAllListeners('update_available');
+	      	message.innerText = 'A new update is available. Downloading now...';
+	      	notification.classList.remove('hidden');
+	    });
+	    
+	    ipcRenderer.on('update_downloaded', () => {
+	    	ipcRenderer.removeAllListeners('update_downloaded');
+	      	message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+	      	restartButton.classList.remove('hidden');
+	      	notification.classList.remove('hidden');
+	    });
+	    
+	    function closeNotification() {
+	    	notification.classList.add('hidden');
+	    }
+	    
+	    function restartApp() {
+	    	ipcRenderer.send('restart_app');
+	    }
+	  
      </script> 
      
   </body>  
