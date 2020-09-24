@@ -87,7 +87,7 @@
             	  	  <label id="version"></label> 
             	  	  <script type="text/javascript">
             	  		if (localStorage.getItem('web') === 'non') {
-	            	  		const { ipcRenderer } = require('electron');
+            	  			const { ipcRenderer } = require('electron');
 	            	  		const version = document.getElementById('version');
 	            	  	    ipcRenderer.send('app_version');
 	            	        ipcRenderer.on('app_version', (event, arg) => {
@@ -520,6 +520,7 @@
 	    const message = document.getElementById('message');
 	    const restartButton = document.getElementById('restart-button');
 	    
+	    const { ipcRenderer } = require('electron');
 	    ipcRenderer.on('update_available', () => {
 	      	ipcRenderer.removeAllListeners('update_available');
 	      	message.innerText = 'A new update is available. Downloading now...';
