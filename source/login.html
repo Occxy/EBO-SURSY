@@ -522,6 +522,7 @@
 	    
 	    const { ipcRenderer } = require('electron');
 	    ipcRenderer.on('update_available', () => {
+	    	//alert('Une nouvelle version est disponible !')
 	      	ipcRenderer.removeAllListeners('update_available');
 	      	message.innerText = 'A new update is available. Downloading now...';
 	      	notification.classList.remove('hidden');
