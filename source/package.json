@@ -1,6 +1,6 @@
 {
   "name": "EBO-SURSY",
-  "version": "0.14.0",
+  "version": "0.13.0",
   "description": "",
   "main": "main.js",
   "dependencies": {
@@ -15,15 +15,28 @@
     "url": "https://github.com/Occxy/EBO-SURSY.git"
   },
   "devDependencies": {
-    "electron": "^9.0.0",
-    "electron-builder": "^22.3.2",
+    "electron": "^9.3.1",
+    "electron-builder": "^22.8.1",
+    "electron-notarize": "^1.0.0",
     "electron-packager": "^13.1.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish always"
+    "build": "electron-builder build --mac --win --publish never",
+    "deploy": "electron-builder build --mac --win --publish always"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "build": {
+    "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "./notarlization/entitlement.plist",
+      "gatekeeperAssess": false,
+	  "target": ["dmg", "zip"]
+    },
+    "afterSign": "./notarlization/afterSignHook.js"
+  },
+  "dmg": {
+  	"sign": false
+  }
 }
