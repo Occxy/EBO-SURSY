@@ -1525,20 +1525,56 @@
 	    			var obj_site = JSON.parse(site);
 	    			
 	    			obj_site.forEach(function(row){
-	    				Pays = row.Pays;
-	    				Region_capture = row.Region_capture;
-	    				Site_capture = row.Site_capture;
-	    				Environnement = row.Environnement;
-    					Latitude = row.Latitude;
-    					Lat_degre_dec = row.Lat_degre_dec;
-    					Lat_degre_dec = Lat_degre_dec.replace('°', '');
-    					Lat_degre_dec = Lat_degre_dec.replace('.', ',');
-    					Longitude = row.Longitude;
-    					Long_degre_dec = row.Long_degre_dec;
-    					Long_degre_dec = Long_degre_dec.replace('°', '');
-    					Long_degre_dec = Long_degre_dec.replace('.', ',');
-    					Proximite_village_km = row.Proximite_village_km;
-    					Proximite_village_km = Proximite_village_km.replace('.', ',')
+	    				if (row.doc.Pays != null) {
+	    					Pays = row.doc.Pays; 
+	    				} else {
+	    					Pays = '';
+						}
+	    				if (row.doc.Region_capture != null) {
+	    					Region_capture = row.doc.Region_capture;
+	    				} else {
+	    					Region_capture = '';
+						}
+	    				if (row.doc.Site_capture != null) {
+	    					Site_capture = row.doc.Site_capture;
+	    				} else {
+	    					Site_capture = '';
+						}
+	    				if (row.doc.Environnement != null) {
+	    					Environnement = row.doc.Environnement;
+	    				} else {
+	    					Environnement = '';
+						}
+	    				if (row.doc.Latitude != null) {
+	    					Latitude = row.doc.Latitude;
+	    				} else {
+	    					Latitude = '';
+						}
+	    				if (row.doc.Lat_degre_dec != null) {
+	    					Lat_degre_dec = row.doc.Lat_degre_dec;
+	    					Lat_degre_dec = Lat_degre_dec.replace('°', '');
+							Lat_degre_dec = Lat_degre_dec.replace('.', ','); 
+	    				} else {
+	    					Lat_degre_dec = '';
+						}
+	    				if (row.doc.Longitude != null) {
+	    					Longitude = row.doc.Longitude;
+	    				} else {
+	    					Longitude = '';
+						}
+	    				if (row.doc.Long_degre_dec != null) {
+	    					Long_degre_dec = row.doc.Long_degre_dec;
+							Long_degre_dec = Long_degre_dec.replace('°', '');
+	    					Long_degre_dec = Long_degre_dec.replace('.', ',');
+	    				} else {
+	    					Long_degre_dec = '';
+						}
+	    				if (row.doc.Proximite_village_km != null) {
+	    					Proximite_village_km = row.doc.Proximite_village_km;
+	    					Proximite_village_km = Proximite_village_km.replace('.', ',');
+	    				} else {
+	    					Proximite_village_km = '';
+						}
     					
     					NbSite = row.NbSite;
 	    			});
