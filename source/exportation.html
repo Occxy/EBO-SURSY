@@ -1538,12 +1538,19 @@
     						Lat_degre_dec = '';
     					}
     					Longitude = row.Longitude;
-    					Long_degre_dec = row.Long_degre_dec;
-    					Long_degre_dec = Long_degre_dec.replace('°', '');
-    					Long_degre_dec = Long_degre_dec.replace('.', ',');
-    					Proximite_village_km = row.Proximite_village_km;
-    					Proximite_village_km = Proximite_village_km.replace('.', ',')
-    					
+    					if (row.Long_degre_dec != null) {
+        					Long_degre_dec = row.Long_degre_dec;
+    						Long_degre_dec = Long_degre_dec.replace('°', '');
+    						Long_degre_dec = Long_degre_dec.replace('.', ',');
+    					} else {
+    						Long_degre_dec = '';
+    					}
+    					if (row.Proximite_village_km != null) {
+    						Proximite_village_km = row.Proximite_village_km;
+    						Proximite_village_km = Proximite_village_km.replace('.', ',')
+    					} else {
+    						Proximite_village_km = '';
+    					}
     					NbSite = row.NbSite;
 	    			});
 	    		}
@@ -1694,20 +1701,54 @@
 					Long_degre_dec_Lieu_capture = '';
 				}
 				
-				Poids_enfant = row.doc.Poids_enfant;
-				Poids_enfant = Poids_enfant.replace('.', ',');
-				Poids_gr = row.doc.Poids_gr;
-				Poids_gr = Poids_gr.replace('.', ',');
-				L_avant_bras_mm = row.doc.L_avant_bras_mm;
-				L_avant_bras_mm = L_avant_bras_mm.replace('.', ',');
-				L_totale_corps_mm = row.doc.L_totale_corps_mm;
-				L_totale_corps_mm = L_totale_corps_mm.replace('.', ',');
-				L_queue_mm = row.doc.L_queue_mm;
-				L_queue_mm = L_queue_mm.replace('.', ',');
-				L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm;
-				L_metacarpe_3ieme_doigt_mm.replace('.', ',');
-				Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles;
-				Sang_DBS_nb_cercles.replace('.', ',');
+				if (row.doc.Poids_enfant != null) {
+					Poids_enfant = row.doc.Poids_enfant;
+					Poids_enfant = Poids_enfant.replace('.', ',');
+				} else {
+					Poids_enfant = '';
+				}
+				if (row.doc.Poids_gr != null) {
+					Poids_gr = row.doc.Poids_gr;
+					Poids_gr = Poids_gr.replace('.', ',');
+				} else {
+					Poids_gr = '';
+				}
+				if (row.doc.L_avant_bras_mm != null) {
+					L_avant_bras_mm = row.doc.L_avant_bras_mm;
+					L_avant_bras_mm = L_avant_bras_mm.replace('.', ',');
+				} else {
+					L_avant_bras_mm = '';
+				}
+				if (row.doc.L_totale_corps_mm != null) {
+					L_totale_corps_mm = row.doc.L_totale_corps_mm;
+					L_totale_corps_mm = L_totale_corps_mm.replace('.', ',');
+				} else {
+					L_totale_corps_mm = '';
+				}
+				if (row.doc.L_queue_mm != null) {
+					L_queue_mm = row.doc.L_queue_mm;
+					L_queue_mm = L_queue_mm.replace('.', ',');
+				} else {
+					L_queue_mm = '';
+				}
+				if (row.doc.L_metacarpe_3ieme_doigt_mm != null) {
+					L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm;
+					L_metacarpe_3ieme_doigt_mm.replace('.', ',');
+				} else {
+					L_metacarpe_3ieme_doigt_mm = '';
+				}
+				if (row.doc.Sang_DBS_nb_cercles != null) {
+					Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles;
+					//alert(Sang_DBS_nb_cercles);
+					//if (Sang_DBS_nb_cercles == 0) {
+					//	alert('ok');
+					//	Sang_DBS_nb_cercles.replace('.', ',');
+					//}
+					Sang_DBS_nb_cercles = Sang_DBS_nb_cercles.toString();
+					Sang_DBS_nb_cercles.replace('.', ',');
+				} else {
+					Sang_DBS_nb_cercles = '';
+				}
 				
 				if ((row.doc.Feces_ethanol == null) || (row.doc.Feces_ethanol == 'undefined')) {
 					Feces_ethanol = '0'
