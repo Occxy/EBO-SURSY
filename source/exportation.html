@@ -1450,7 +1450,7 @@
     		
     		if (count > 0) {
     			
-    			if (row.doc.N_site == null) {
+    			if ((row.doc.N_site == null) || (row.doc.N_site == '')) {
     				console.log(row.doc.N_identification_CS)
     				
     				if (row.doc.Pays != null) {
@@ -2543,7 +2543,7 @@
     				debug = localStorage.getItem('debug');
     			};*/
     			
-    			if (row.doc.N_site == null) {
+    			if ((row.doc.N_site == null) || (row.doc.N_site == '')) {
     				console.log(row.doc.N_identification_CS)
     				
     				if (row.doc.Pays != null) {
@@ -2616,15 +2616,27 @@
 	    				Site_capture = row.Site_capture;
 	    				Environnement = row.Environnement;
     					Latitude = row.Latitude;
-    					Lat_degre_dec = row.Lat_degre_dec;
-    					Lat_degre_dec = Lat_degre_dec.replace('°', '');
-    					Lat_degre_dec = Lat_degre_dec.replace('.', ',');
+    					if (row.Lat_degre_dec != null) {
+    						Lat_degre_dec = row.Lat_degre_dec;
+    						Lat_degre_dec = Lat_degre_dec.replace('°', '');
+    						Lat_degre_dec = Lat_degre_dec.replace('.', ',');
+    					} else {
+    						Lat_degre_dec = '';
+    					}
     					Longitude = row.Longitude;
-    					Long_degre_dec = row.Long_degre_dec;
-    					Long_degre_dec = Long_degre_dec.replace('°', '');
-    					Long_degre_dec = Long_degre_dec.replace('.', ',');
-    					Proximite_village_km = row.Proximite_village_km;
-    					Proximite_village_km = Proximite_village_km.replace('.', ',')
+    					if (row.Long_degre_dec != null) {
+        					Long_degre_dec = row.Long_degre_dec;
+    						Long_degre_dec = Long_degre_dec.replace('°', '');
+    						Long_degre_dec = Long_degre_dec.replace('.', ',');
+    					} else {
+    						Long_degre_dec = '';
+    					}
+    					if (row.Proximite_village_km != null) {
+    						Proximite_village_km = row.Proximite_village_km;
+    						Proximite_village_km = Proximite_village_km.replace('.', ',')
+    					} else {
+    						Proximite_village_km = '';
+    					}
     					NbSite = row.NbSite;
 	    			});
 	    		}
