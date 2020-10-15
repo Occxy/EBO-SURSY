@@ -1514,7 +1514,7 @@
     				debug = localStorage.getItem('debug');
     			};*/
     			
-    			if (row.doc.N_site != null) {
+    			if ((row.doc.N_site != null) && (row.doc.N_site != '')) {
     				console.log(row.doc.N_identification_CS)
 	    			var N_site = row.doc.N_site;
 	    			
@@ -2600,7 +2600,7 @@
     				
     			}
     			
-    			if (row.doc.N_site != null) {
+    			if ((row.doc.N_site != null) && (row.doc.N_site != '')) {
     				console.log(row.doc.N_identification_CS)
 	    			var N_site = row.doc.N_site;
 	    			
