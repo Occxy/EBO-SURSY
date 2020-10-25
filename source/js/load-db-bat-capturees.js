@@ -20,7 +20,8 @@ $(document).ready(function() {
 		
 	var table = $('#example').DataTable({
 		columnDefs: [
-			 { type: 'date-eu', targets: 2 }
+			 { type: 'formatted-num', targets: 0}, 
+			 {  type: 'date-eu', targets: 1} 
 		],
 		columns: [
 			//{ data: null, render: 'Numero_individu'},					
