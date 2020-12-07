@@ -925,7 +925,14 @@
 		} else {
 			debug = localStorage.getItem('debug');
 		};
-	
+		
+		if (localStorage.getItem('web') === 'oui') {
+			var remote_couchdb = localStorage.getItem('remote_couchdb');
+			var DBCS = new PouchDB(remote_couchdb + 'chauves_souris_capturees' + nom_table + debug);
+		} else {
+			var DBCS = new PouchDB('chauves_souris_capturees' + nom_table + debug);
+		};
+		
 		if (localStorage.getItem('web') === 'oui') {
 			var remote_couchdb = localStorage.getItem('remote_couchdb');
 			var DBSite = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
@@ -933,9 +940,142 @@
 			var DBSite = new PouchDB('site' + nom_table + debug);
 		};
 		
+		var tabCS = new Array();
 		var tab = new Array();
 		var tabFilet = new Array();
 		var tabDonneesJournalieres = new Array();
+		
+		
+		DB.allDocs({  		
+			include_docs: true,
+			attachments: true
+		}).then(function (result) {
+			// handle result
+			if (typeof(JSON.stringify(result)) != "undefined"){  
+				var tableData = JSON.parse(JSON.stringify(result));
+				
+				tableData.rows.forEach(function(row){   
+		   			try {
+		   				//tab[i] = new Array();
+		   				var obj = new Object();
+		   				obj.N_identification_CS = row.doc.N_identification_CS
+		   				obj.Num = Number(extraireNombre(row.doc.N_identification_CS))
+	    				obj.N_identification_mere = row.doc.N_identification_mere
+	    				obj.Numero_mission = row.doc.Numero_mission
+	   					obj.N_site = row.doc.N_site
+	   					obj.Date = row.doc.Date
+	   					obj.Equipe = row.doc.Equipe 
+	   					obj.Pays = row.doc.Pays 
+	   					obj.Region_capture = row.doc.Region_capture 
+	   					obj.Site_capture = row.doc.Site_capture 
+	    				obj.Lieu_capture = row.doc.Lieu_capture
+	    				obj.Environnement = row.doc.Environnement 
+	    				obj.Latitude = row.doc.Latitude 
+	    				obj.Lat_degre_dec = row.doc.Lat_degre_dec 
+	    				obj.Longitude = row.doc.Longitude 
+	    				obj.Long_degre_dec = row.doc.Long_degre_dec
+	    				obj.Proximite_village_km = row.doc.Proximite_village_km 
+	   					obj.Methode_capture = row.doc.Methode_capture
+	    				obj.NumFilet = row.doc.NumFilet	
+	    				obj.LongueurFilet = row.doc.LongueurFilet	
+	    				obj.HauteurFilet = row.doc.HauteurFilet	
+	    				obj.Lat_degre_decFilet = row.doc.Lat_degre_decFilet	
+	    				obj.LatitudeFilet = row.doc.LatitudeFilet	
+	    				obj.Long_degre_decFilet	 = row.doc.Long_degre_decFilet
+	    				obj.LongitudeFilet = row.doc.LongitudeFilet	
+	    				obj.Lat_degre_dec_Lieu_capture = row.doc.Lat_degre_dec_Lieu_capture	
+	   					obj.Latitude_Lieu_capture = row.doc.Latitude_Lieu_capture	
+	   					obj.Long_degre_dec_Lieu_capture = row.doc.Long_degre_dec_Lieu_capture
+	    				obj.Longitude_Lieu_capture = row.doc.Longitude_Lieu_capture	
+	    				obj.Type_chauve_souris = row.doc.Type_chauve_souris
+	    				obj.Espece_identifiee = row.doc.Espece_identifiee 
+	   					obj.Famille_terrain = row.doc.Famille_terrain 
+	   					obj.Genre_terrain = row.doc.Genre_terrain 
+	   					obj.Espece_terrain = row.doc.Espece_terrain
+	   					obj.Famille_labo = row.doc.Famille_labo 
+	    				obj.Genre_labo = row.doc.Genre_labo 
+	    				obj.Espece_labo = row.doc.Espece_labo 
+	    				obj.Famille_consensus = row.doc.Famille_consensus 
+	    				obj.Genre_consensus = row.doc.Genre_consensus 
+	    				obj.Espece_consensus = row.doc.Espece_consensus 
+	   					obj.Sexe = row.doc.Sexe 
+	   					obj.Age = row.doc.Age 
+	   					obj.Gestante = row.doc.Gestante 
+	   					obj.Lactation = row.doc.Lactation 
+	   					obj.Suitee = row.doc.Suitee 
+	    				obj.Sexe_enfant = row.doc.Sexe_enfant
+	    				obj.Poids_enfant = row.doc.Poids_enfant
+	    				obj.Identifiant_enfant = row.doc.Identifiant_enfant 
+	    				obj.Vivante = row.doc.Vivante 
+	   					obj.Cause_deces = row.doc.Cause_deces 
+	   					obj.Poids_gr = row.doc.Poids_gr
+	   					obj.L_avant_bras_mm = row.doc.L_avant_bras_mm 
+	   					obj.L_totale_corps_mm = row.doc.L_totale_corps_mm 
+	   					obj.Taille_yeux = row.doc.Taille_yeux 
+	   					obj.L_queue_mm = row.doc.L_queue_mm
+	   					obj.L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm 
+	    				obj.Couleur_pelage_dorsal = row.doc.Couleur_pelage_dorsal
+	    				obj.Couleur_pelage_ventral = row.doc.Couleur_pelage_ventral 
+	   					obj.Remarques_anomalies = row.doc.Remarques_anomalies 
+	   					obj.Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles 
+	   					obj.Sang_tube_EDTA = row.doc.Sang_tube_EDTA 
+	   					obj.Feces_RNAl = row.doc.Feces_RNAl 
+	   					obj.Urine = row.doc.Urine 
+	    				obj.Urine_DUS_nombre_cercles = row.doc.Urine_DUS_nombre_cercles
+	    				obj.Feces_urine_RNAl = row.doc.Feces_urine_RNAl 
+	    				obj.Ecouvillon_gorge_RNAl = row.doc.Ecouvillon_gorge_RNAl 
+	    				obj.Ecouvillon_rectal_RNAl = row.doc.Ecouvillon_rectal_RNAl
+	   					obj.Ectoparasites_ethanol = row.doc.Ectoparasites_ethanol 
+	   					obj.Poils_ethanol = row.doc.Poils_ethanol 
+	   					obj.Wing_punch_ethanol = row.doc.Wing_punch_ethanol
+	   					obj.Feces_culture_glycerol = row.doc.Feces_culture_glycerol 
+	   					obj.Feces_ethanol = row.doc.Feces_ethanol 
+	    				obj.Sperme = row.doc.Sperme 
+	    				obj.Lait = row.doc.Lait 
+	    				obj.Autres_echantillons_remarques = row.doc.Autres_echantillons_remarques
+	    				obj.Specimen_entier = row.doc.Specimen_entier 
+	   					obj.Specimen_preserve_dans = row.doc.Specimen_preserve_dans 
+	   					obj.Prelevement_organe = row.doc.Prelevement_organe
+	   					obj.Foie_formol = row.doc.Foie_formol 
+	   					obj.Foie_RNAl = row.doc.Foie_RNAl 
+	   					obj.Rate_formol = row.doc.Rate_formol 
+	    				obj.Rate_RNAl = row.doc.Rate_RNAl 
+	    				obj.Reins_formol = row.doc.Reins_formol
+	    				obj.Reins_RNAl = row.doc.Reins_RNAl 
+	    				obj.Intestins_formol = row.doc.Intestins_formol 
+	   					obj.Intestins_RNAl = row.doc.Intestins_RNAl 
+	   					obj.Poumons_formol = row.doc.Poumons_formol
+	   					obj.Poumons_RNAl = row.doc.Poumons_RNAl 
+	   					obj.Coeur_formol = row.doc.Coeur_formol
+	   					obj.Coeur_RNAl = row.doc.Coeur_RNAl 
+	    				obj.Ggl_lymph_formol = row.doc.Ggl_lymph_formol
+	    				obj.Ggl_lymph_RNAl = row.doc.Ggl_lymph_RNAl 
+	    				obj.Testicules_formol = row.doc.Testicules_formol 
+	    				obj.Testicules_RNAl = row.doc.Testicules_RNAl 
+	   					obj.Peau_formol = row.doc.Peau_formol
+	   					obj.Peau_RNAl = row.doc.Peau_RNAl 
+	   					obj.Muscles_formol = row.doc.Muscles_formol 
+	   					obj.Muscles_RNAl = row.doc.Muscles_RNAl 
+	   					obj.Cerveau_formol = row.doc.Cerveau_formol
+	    				obj.Cerveau_RNAl = row.doc.Cerveau_RNAl 
+	    				obj.Autre = row.doc.Autre 
+	    				obj.Autre_formol = row.doc.Autre_formol; 
+	    				obj.Autre_RNAl = row.doc.Autre_RNAl;
+	   					obj.Remarques_echantillons = row.doc.Remarques_echantillons;
+		   				tabCS.push(obj);
+		   				//i++;	
+		   				
+		   			} catch(error) {
+						console.log(error);
+					};
+				});	
+					
+		   	}
+		}).then(function () {
+			
+		}).catch(function (err) {
+		   	console.log(err);
+		});
 
 		DBSite.allDocs({  		
 			include_docs: true,
@@ -1282,42 +1422,56 @@
 				
 				CSV = fields_CSV_head;
 				
-				DB.allDocs({  		
-					include_docs: true,
-					attachments: true
-				}).then(function (result) {
-					// handle result
-					if (typeof(JSON.stringify(result)) != "undefined"){  
-			    		var tableData = JSON.parse(JSON.stringify(result));
-						
-			    		tableData.rows.forEach(function(row){   
-			    			if (type_table == 'chauves_souris_capturees') {
-			    				addChauves_souris_capturees(row, false);
-			    			} else if (type_table == 'chauves_souris_non_invasives') {
-			    	    		addChauves_souris_non_invasives(tableData, row);
-			    	    	} else if (type_table == 'viande_de_brousse') {
-			    	    		addViande_de_brousse(row);
-			    	    	} else if (type_table == 'donnees_journalieres') {
-			    	    		addDonnees_journalieres(row);
-			    	    	} else if (type_table == 'donnees_mission') {
-			    	    		addDonnees_missions(row);
-			    	    	} else if (type_table == 'animals') {
-			    	    		addAnimals(row);
-			    	    	}
+				if (type_table == 'chauves_souris_capturees') {
+					var res = alasql("SELECT * FROM ? ORDER BY Num", [tabCS] );
 			    			
-			    		});		
-			    		
-			    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
-		    			
-			    		
-			    		//saveAs(blob, "testfile1.csv");
-			    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
-			    		
-			    		
-					}
-				}).catch(function (err) {
-					console.log(err);
-				});
+				    var CS = JSON.stringify(res);
+				    			
+				    var obj_CS = JSON.parse(CS);
+				    			
+				    obj_CS.forEach(function(row){
+				    	//console.log(row.N_identification_CS)
+				    	addChauves_souris_capturees(row, false);
+				    })
+				} else {
+				
+					DB.allDocs({  		
+						include_docs: true,
+						attachments: true
+					}).then(function (result) {
+						// handle result
+						if (typeof(JSON.stringify(result)) != "undefined"){  
+				    		var tableData = JSON.parse(JSON.stringify(result));
+							
+				    		tableData.rows.forEach(function(row){   
+				    			/*if (type_table == 'chauves_souris_capturees') {
+				    				addChauves_souris_capturees(row, false);
+				    			} else */if (type_table == 'chauves_souris_non_invasives') {
+				    	    		addChauves_souris_non_invasives(tableData, row);
+				    	    	} else if (type_table == 'viande_de_brousse') {
+				    	    		addViande_de_brousse(row);
+				    	    	} else if (type_table == 'donnees_journalieres') {
+				    	    		addDonnees_journalieres(row);
+				    	    	} else if (type_table == 'donnees_mission') {
+				    	    		addDonnees_missions(row);
+				    	    	} else if (type_table == 'animals') {
+				    	    		addAnimals(row);
+				    	    	}
+				    			
+				    		});		
+				    		
+				    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+			    			
+				    		
+				    		//saveAs(blob, "testfile1.csv");
+				    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				    		
+				    		
+						}
+					}).catch(function (err) {
+						console.log(err);
+					});
+				}
 				
 				
 			}).catch((error) => {
@@ -1397,43 +1551,57 @@
 				
 				//CSV = fields_CSV_head;
 				
-				DB.allDocs({  		
-					include_docs: true,
-					attachments: true
-				}).then(function (result) {
-					// handle result
-					if (typeof(JSON.stringify(result)) != "undefined"){  
-			    		var tableData = JSON.parse(JSON.stringify(result));
-						
-			    		tableData.rows.forEach(function(row){   
-			    			if (type_table == 'chauves_souris_capturees') {
-			    				addChauves_souris_capturees(row, true);
-			    			} else if (type_table == 'chauves_souris_non_invasives') {
-			    	    		addChauves_souris_non_invasives_selected(tableData, row);
-			    	    	} else if (type_table == 'viande_de_brousse') {
-			    	    		addViandes_de_brousse_selected(row);
-			    	    	} else if (type_table == 'donnees_journalieres') {
-			    	    		addJournalieres_selected(row);
-			    	    	} else if (type_table == 'donnees_mission') {
-			    	    		addMissions_selected(row);
-			    	    	} else if (type_table == 'animals') {
-			    	    		addAnimals_selected(row);
-			    	    	}
+				if (type_table == 'chauves_souris_capturees') {
+					var res = alasql("SELECT * FROM ? ORDER BY Num", [tabCS] );
 			    			
+				    var CS = JSON.stringify(res);
+				    			
+				    var obj_CS = JSON.parse(CS);
+				    			
+				    obj_CS.forEach(function(row){
+				    	//console.log(row.N_identification_CS)
+				    	addChauves_souris_capturees(row, true);
+				    })
+				} else {
+				
+					DB.allDocs({  		
+						include_docs: true,
+						attachments: true
+					}).then(function (result) {
+						// handle result
+						if (typeof(JSON.stringify(result)) != "undefined"){  
+				    		var tableData = JSON.parse(JSON.stringify(result));
+							
+				    		tableData.rows.forEach(function(row){   
+				    			/*if (type_table == 'chauves_souris_capturees') {
+				    				addChauves_souris_capturees(row, true);
+				    			} else*/ if (type_table == 'chauves_souris_non_invasives') {
+				    	    		addChauves_souris_non_invasives_selected(tableData, row);
+				    	    	} else if (type_table == 'viande_de_brousse') {
+				    	    		addViandes_de_brousse_selected(row);
+				    	    	} else if (type_table == 'donnees_journalieres') {
+				    	    		addJournalieres_selected(row);
+				    	    	} else if (type_table == 'donnees_mission') {
+				    	    		addMissions_selected(row);
+				    	    	} else if (type_table == 'animals') {
+				    	    		addAnimals_selected(row);
+				    	    	}
+				    			
+				    			
+				    		});		
+				    		
+				    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
 			    			
-			    		});		
-			    		
-			    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
-		    			
-			    		
-			    		//saveAs(blob, "testfile1.csv");
-			    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
-			    		
-			    		
-					}
-				}).catch(function (err) {
-					console.log(err);
-				});
+				    		
+				    		//saveAs(blob, "testfile1.csv");
+				    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				    		
+				    		
+						}
+					}).catch(function (err) {
+						console.log(err);
+					});
+				}
 				
 				
 			}).catch((error) => {
@@ -1446,59 +1614,61 @@
     	
     	function addChauves_souris_capturees(row, selected) {
     		
-    		
+    		console.log('ok');
     		
     		if (count > 0) {
     			
-    			if ((row.doc.N_site == null) || (row.doc.N_site == '')) {
-    				console.log(row.doc.N_identification_CS)
+    			console.log(count);
+    			
+    			if ((row.N_site == null) || (row.N_site == '')) {
+    				console.log(row.NUM)
     				
-    				if (row.doc.Pays != null) {
-    					Pays = row.doc.Pays; 
+    				if (row.Pays != null) {
+    					Pays = row.Pays; 
     				} else {
     					Pays = '';
 					}
-    				if (row.doc.Region_capture != null) {
-    					Region_capture = row.doc.Region_capture;
+    				if (row.Region_capture != null) {
+    					Region_capture = row.Region_capture;
     				} else {
     					Region_capture = '';
 					}
-    				if (row.doc.Site_capture != null) {
-    					Site_capture = row.doc.Site_capture;
+    				if (row.Site_capture != null) {
+    					Site_capture = row.Site_capture;
     				} else {
     					Site_capture = '';
 					}
-    				if (row.doc.Environnement != null) {
-    					Environnement = row.doc.Environnement;
+    				if (row.Environnement != null) {
+    					Environnement = row.Environnement;
     				} else {
     					Environnement = '';
 					}
-    				if (row.doc.Latitude != null) {
-    					Latitude = row.doc.Latitude;
+    				if (row.Latitude != null) {
+    					Latitude = row.Latitude;
     				} else {
     					Latitude = '';
 					}
-    				if (row.doc.Lat_degre_dec != null) {
-    					Lat_degre_dec = row.doc.Lat_degre_dec;
+    				if (row.Lat_degre_dec != null) {
+    					Lat_degre_dec = row.Lat_degre_dec;
     					Lat_degre_dec = Lat_degre_dec.replace('°', '');
 						Lat_degre_dec = Lat_degre_dec.replace('.', ','); 
     				} else {
     					Lat_degre_dec = '';
 					}
-    				if (row.doc.Longitude != null) {
-    					Longitude = row.doc.Longitude;
+    				if (row.Longitude != null) {
+    					Longitude = row.Longitude;
     				} else {
     					Longitude = '';
 					}
-    				if (row.doc.Long_degre_dec != null) {
-    					Long_degre_dec = row.doc.Long_degre_dec;
+    				if (row.Long_degre_dec != null) {
+    					Long_degre_dec = row.Long_degre_dec;
 						Long_degre_dec = Long_degre_dec.replace('°', '');
     					Long_degre_dec = Long_degre_dec.replace('.', ',');
     				} else {
     					Long_degre_dec = '';
 					}
-    				if (row.doc.Proximite_village_km != null) {
-    					Proximite_village_km = row.doc.Proximite_village_km;
+    				if (row.Proximite_village_km != null) {
+    					Proximite_village_km = row.Proximite_village_km;
     					Proximite_village_km = Proximite_village_km.replace('.', ',');
     				} else {
     					Proximite_village_km = '';
@@ -1514,9 +1684,9 @@
     				debug = localStorage.getItem('debug');
     			};*/
     			
-    			if ((row.doc.N_site != null) && (row.doc.N_site != '')) {
-    				console.log(row.doc.N_identification_CS)
-	    			var N_site = row.doc.N_site;
+    			if ((row.N_site != null) && (row.N_site != '')) {
+    				console.log(row.N_identification_CS)
+	    			var N_site = row.N_site;
 	    			
 	    			var res = alasql('SELECT N_site, Pays, Region_capture, Site_capture, Environnement, Latitude, Lat_degre_dec, Longitude, Long_degre_dec, Proximite_village_km, COUNT(*) AS NbSite FROM ?  WHERE N_site == "' + N_site + '" GROUP BY N_site, Pays, Region_capture, Site_capture, Environnement, Latitude, Lat_degre_dec, Longitude, Long_degre_dec, Proximite_village_km', [tab] );
 	    			
@@ -1565,8 +1735,8 @@
 				LongitudeFilet = '';
 					
 					
-				if (row.doc.NumFilet != null) {
-					var NumFilet = row.doc.NumFilet;
+				if (row.NumFilet != null) {
+					var NumFilet = row.NumFilet;
 						
 					var res = alasql('SELECT NumFilet, LongueurFilet, HauteurFilet, Lat_degre_decFilet, LatitudeFilet, Long_degre_decFilet, LongitudeFilet FROM ? WHERE NumFilet == "' + NumFilet + '"' + ' GROUP BY NumFilet, LongueurFilet, HauteurFilet, Lat_degre_decFilet, LatitudeFilet, Long_degre_decFilet, LongitudeFilet', [tabFilet] );
 						
@@ -1617,12 +1787,12 @@
 				
 				var id;
 				try {
-					if (row.doc.N_identification_CS.charAt(row.doc.N_identification_CS.length - 1) == 'D') {
-						id = Number(extraireNombre(row.doc.N_identification_CS)) + .1;
+					if (row.N_identification_CS.charAt(row.N_identification_CS.length - 1) == 'D') {
+						id = Number(extraireNombre(row.N_identification_CS)) + .1;
 						//alert(id);
 						idD = true;
 					} else {
-	   					id = Number(extraireNombre(row.doc.N_identification_CS));
+	   					id = Number(extraireNombre(row.N_identification_CS));
 	   					idD = false;
 			   		}
 				} catch (err) {
@@ -1688,57 +1858,57 @@
 					
 				}
 				
-				if (row.doc.Lat_degre_dec_Lieu_capture != null) {
-					Lat_degre_dec_Lieu_capture = row.doc.Lat_degre_dec_Lieu_capture;
+				if (row.Lat_degre_dec_Lieu_capture != null) {
+					Lat_degre_dec_Lieu_capture = row.Lat_degre_dec_Lieu_capture;
 					Lat_degre_dec_Lieu_capture = Lat_degre_dec_Lieu_capture.replace('.', ',');
 				} else {
 					Lat_degre_dec_Lieu_capture = '';
 				}
-				if (row.doc.Long_degre_dec_Lieu_capture != null) {
-					Long_degre_dec_Lieu_capture = row.doc.Long_degre_dec_Lieu_capture;
+				if (row.Long_degre_dec_Lieu_capture != null) {
+					Long_degre_dec_Lieu_capture = row.Long_degre_dec_Lieu_capture;
 					Long_degre_dec_Lieu_capture = Long_degre_dec_Lieu_capture.replace('.', ',');
 				} else {
 					Long_degre_dec_Lieu_capture = '';
 				}
 				
-				if (row.doc.Poids_enfant != null) {
-					Poids_enfant = row.doc.Poids_enfant;
+				if (row.Poids_enfant != null) {
+					Poids_enfant = row.Poids_enfant;
 					Poids_enfant = Poids_enfant.replace('.', ',');
 				} else {
 					Poids_enfant = '';
 				}
-				if (row.doc.Poids_gr != null) {
-					Poids_gr = row.doc.Poids_gr;
+				if (row.Poids_gr != null) {
+					Poids_gr = row.Poids_gr;
 					Poids_gr = Poids_gr.replace('.', ',');
 				} else {
 					Poids_gr = '';
 				}
-				if (row.doc.L_avant_bras_mm != null) {
-					L_avant_bras_mm = row.doc.L_avant_bras_mm;
+				if (row.L_avant_bras_mm != null) {
+					L_avant_bras_mm = row.L_avant_bras_mm;
 					L_avant_bras_mm = L_avant_bras_mm.replace('.', ',');
 				} else {
 					L_avant_bras_mm = '';
 				}
-				if (row.doc.L_totale_corps_mm != null) {
-					L_totale_corps_mm = row.doc.L_totale_corps_mm;
+				if (row.L_totale_corps_mm != null) {
+					L_totale_corps_mm = row.L_totale_corps_mm;
 					L_totale_corps_mm = L_totale_corps_mm.replace('.', ',');
 				} else {
 					L_totale_corps_mm = '';
 				}
-				if (row.doc.L_queue_mm != null) {
-					L_queue_mm = row.doc.L_queue_mm;
+				if (row.L_queue_mm != null) {
+					L_queue_mm = row.L_queue_mm;
 					L_queue_mm = L_queue_mm.replace('.', ',');
 				} else {
 					L_queue_mm = '';
 				}
-				if (row.doc.L_metacarpe_3ieme_doigt_mm != null) {
-					L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm;
+				if (row.L_metacarpe_3ieme_doigt_mm != null) {
+					L_metacarpe_3ieme_doigt_mm = row.L_metacarpe_3ieme_doigt_mm;
 					L_metacarpe_3ieme_doigt_mm.replace('.', ',');
 				} else {
 					L_metacarpe_3ieme_doigt_mm = '';
 				}
-				if (row.doc.Sang_DBS_nb_cercles != null) {
-					Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles;
+				if (row.Sang_DBS_nb_cercles != null) {
+					Sang_DBS_nb_cercles = row.Sang_DBS_nb_cercles;
 					//alert(Sang_DBS_nb_cercles);
 					//if (Sang_DBS_nb_cercles == 0) {
 					//	alert('ok');
@@ -1750,42 +1920,44 @@
 					Sang_DBS_nb_cercles = '';
 				}
 				
-				if ((row.doc.Feces_ethanol == null) || (row.doc.Feces_ethanol == 'undefined')) {
+				if ((row.Feces_ethanol == null) || (row.Feces_ethanol == 'undefined')) {
 					Feces_ethanol = '0'
 				} else {
-					Feces_ethanol = row.doc.Feces_ethanol;
+					Feces_ethanol = row.Feces_ethanol;
 				}
-				if ((row.doc.Lait == null) || (row.doc.Lait == 'undefined') || (row.doc.Lait == '')) {
+				if ((row.Lait == null) || (row.Lait == 'undefined') || (row.Lait == '')) {
 					Lait = '0'
 				} else {
-					Lait = row.doc.Lait;
+					Lait = row.Lait;
 				}
-				if ((row.doc.Username == null) || (row.doc.Username == 'undefined')) {
+				if ((row.Username == null) || (row.Username == 'undefined')) {
 					Username = ''
 				} else {
-					Username = row.doc.Username;
+					Username = row.Username;
 				}
-					
+			    
+				console.log(row.N_identification_CS);
+				
 				if (!selected) { 	
 	    			CSV = CSV +
-	    				row.doc.N_identification_CS + ';' +
-	    				row.doc.N_identification_mere + ';' + 
-	    				row.doc.Numero_mission + ';' +
-	   					row.doc.N_site + ';' +
-	   					row.doc.Date + ';' +
-	   					row.doc.Equipe + ';' + 
+	    				row.N_identification_CS + ';' +
+	    				row.N_identification_mere + ';' + 
+	    				row.Numero_mission + ';' +
+	   					row.N_site + ';' +
+	   					row.Date + ';' +
+	   					row.Equipe + ';' + 
 	   					Pays + ';' + 
 	   					Region_capture + ';' + 
 	    				Site_capture + ';' + 
-	    				row.doc.Lieu_capture + ';' +
+	    				row.Lieu_capture + ';' +
 	    				Environnement + ';' + 
 	    				Latitude + ';' + 
 	   					Lat_degre_dec + ';' + 
 	   					Longitude + ';' + 
 	   					Long_degre_dec + ';' +
 	   					Proximite_village_km + ';' + 
-	   					row.doc.Methode_capture + ';' +
-	    				row.doc.NumFilet + ';' +	
+	   					row.Methode_capture + ';' +
+	    				row.NumFilet + ';' +	
 	    				LongueurFilet + ';' +	
 	    				HauteurFilet + ';' +	
 	    				Lat_degre_decFilet + ';' +	
@@ -1793,106 +1965,106 @@
 	   					Long_degre_decFilet	 + ';' +
 	   					LongitudeFilet + ';' +	
 	   					Lat_degre_dec_Lieu_capture + ';' +	
-	   					row.doc.Latitude_Lieu_capture + ';' +	
+	   					row.Latitude_Lieu_capture + ';' +	
 	    				Long_degre_dec_Lieu_capture + ';' +
-	    				row.doc.Longitude_Lieu_capture + ';' +	
-	    				row.doc.Type_chauve_souris + ';' +
-	    				row.doc.Espece_identifiee + ';' + 
-	   					row.doc.Famille_terrain + ';' + 
-	   					row.doc.Genre_terrain + ';' + 
-	   					row.doc.Espece_terrain + ';' +
-	   					row.doc.Famille_labo + ';' + 
-	    				row.doc.Genre_labo + ';' + 
-	    				row.doc.Espece_labo + ';' + 
-	    				row.doc.Famille_consensus + ';' + 
-	    				row.doc.Genre_consensus + ';' + 
-	    				row.doc.Espece_consensus + ';' + 
-	   					row.doc.Sexe + ';' + 
-	   					row.doc.Age + ';' + 
-	   					row.doc.Gestante + ';' + 
-	   					row.doc.Lactation + ';' + 
-	   					row.doc.Suitee + ';' + 
-	    				row.doc.Sexe_enfant + ';' +
+	    				row.Longitude_Lieu_capture + ';' +	
+	    				row.Type_chauve_souris + ';' +
+	    				row.Espece_identifiee + ';' + 
+	   					row.Famille_terrain + ';' + 
+	   					row.Genre_terrain + ';' + 
+	   					row.Espece_terrain + ';' +
+	   					row.Famille_labo + ';' + 
+	    				row.Genre_labo + ';' + 
+	    				row.Espece_labo + ';' + 
+	    				row.Famille_consensus + ';' + 
+	    				row.Genre_consensus + ';' + 
+	    				row.Espece_consensus + ';' + 
+	   					row.Sexe + ';' + 
+	   					row.Age + ';' + 
+	   					row.Gestante + ';' + 
+	   					row.Lactation + ';' + 
+	   					row.Suitee + ';' + 
+	    				row.Sexe_enfant + ';' +
 	    				Poids_enfant + ';' + 
-	    				row.doc.Identifiant_enfant + ';' + 
-	    				row.doc.Vivante + ';' + 
-	   					row.doc.Cause_deces + ';' + 
+	    				row.Identifiant_enfant + ';' + 
+	    				row.Vivante + ';' + 
+	   					row.Cause_deces + ';' + 
 	   					Poids_gr + ';' +
 	   					L_avant_bras_mm + ';' + 
 	   					L_totale_corps_mm + ';' + 
-	   					row.doc.Taille_yeux + ';' + 
+	   					row.Taille_yeux + ';' + 
 	    				L_queue_mm + ';' +
 	    				L_metacarpe_3ieme_doigt_mm + ';' + 
-	    				row.doc.Couleur_pelage_dorsal + ';' +
-	    				row.doc.Couleur_pelage_ventral + ';' + 
-	   					row.doc.Remarques_anomalies.split(';').join(',') + ';' + 
+	    				row.Couleur_pelage_dorsal + ';' +
+	    				row.Couleur_pelage_ventral + ';' + 
+	   					row.Remarques_anomalies.split(';').join(',') + ';' + 
 	   					Sang_DBS_nb_cercles + ';' + 
-	   					row.doc.Sang_tube_EDTA + ';' + 
-	   					row.doc.Feces_RNAl + ';' + 
-	   					row.doc.Urine + ';' + 
-	    				row.doc.Urine_DUS_nombre_cercles + ';' +
-	    				row.doc.Feces_urine_RNAl + ';' + 
-	    				row.doc.Ecouvillon_gorge_RNAl + ';' + 
-	    				row.doc.Ecouvillon_rectal_RNAl + ';' +
-	   					row.doc.Ectoparasites_ethanol + ';' + 
-	   					row.doc.Poils_ethanol + ';' + 
-	   					row.doc.Wing_punch_ethanol + ';' +
-	   					row.doc.Feces_culture_glycerol + ';' + 
+	   					row.Sang_tube_EDTA + ';' + 
+	   					row.Feces_RNAl + ';' + 
+	   					row.Urine + ';' + 
+	    				row.Urine_DUS_nombre_cercles + ';' +
+	    				row.Feces_urine_RNAl + ';' + 
+	    				row.Ecouvillon_gorge_RNAl + ';' + 
+	    				row.Ecouvillon_rectal_RNAl + ';' +
+	   					row.Ectoparasites_ethanol + ';' + 
+	   					row.Poils_ethanol + ';' + 
+	   					row.Wing_punch_ethanol + ';' +
+	   					row.Feces_culture_glycerol + ';' + 
 	   					Feces_ethanol + ';' + 
-	    				row.doc.Sperme + ';' + 
+	    				row.Sperme + ';' + 
 	    				Lait + ';' + 
-	    				row.doc.Autres_echantillons_remarques.split(';').join(',') + ';' +
-	    				row.doc.Specimen_entier + ';' + 
-	   					row.doc.Specimen_preserve_dans + ';' + 
-	   					row.doc.Prelevement_organe + ';' +
-	   					row.doc.Foie_formol + ';' + 
-	   					row.doc.Foie_RNAl + ';' + 
-	   					row.doc.Rate_formol + ';' + 
-	    				row.doc.Rate_RNAl + ';' + 
-	    				row.doc.Reins_formol + ';' +
-	    				row.doc.Reins_RNAl + ';' + 
-	    				row.doc.Intestins_formol + ';' + 
-	   					row.doc.Intestins_RNAl + ';' + 
-	   					row.doc.Poumons_formol + ';' +
-	   					row.doc.Poumons_RNAl + ';' + 
-	   					row.doc.Coeur_formol + ';' +
-	   					row.doc.Coeur_RNAl + ';' + 
-	    				row.doc.Ggl_lymph_formol + ';' +
-	    				row.doc.Ggl_lymph_RNAl + ';' + 
-	    				row.doc.Testicules_formol + ';' + 
-	    				row.doc.Testicules_RNAl + ';' + 
-	   					row.doc.Peau_formol + ';' +
-	   					row.doc.Peau_RNAl + ';' + 
-	   					row.doc.Muscles_formol + ';' + 
-	   					row.doc.Muscles_RNAl + ';' + 
-	   					row.doc.Cerveau_formol + ';' +
-	    				row.doc.Cerveau_RNAl + ';' + 
-	    				row.doc.Autre + ';' + 
-	    				row.doc.Autre_formol + ';' + 
-	    				row.doc.Autre_RNAl + ';' + 
-	   					row.doc.Remarques_echantillons.split(';').join(',') + ';' +
+	    				row.Autres_echantillons_remarques.split(';').join(',') + ';' +
+	    				row.Specimen_entier + ';' + 
+	   					row.Specimen_preserve_dans + ';' + 
+	   					row.Prelevement_organe + ';' +
+	   					row.Foie_formol + ';' + 
+	   					row.Foie_RNAl + ';' + 
+	   					row.Rate_formol + ';' + 
+	    				row.Rate_RNAl + ';' + 
+	    				row.Reins_formol + ';' +
+	    				row.Reins_RNAl + ';' + 
+	    				row.Intestins_formol + ';' + 
+	   					row.Intestins_RNAl + ';' + 
+	   					row.Poumons_formol + ';' +
+	   					row.Poumons_RNAl + ';' + 
+	   					row.Coeur_formol + ';' +
+	   					row.Coeur_RNAl + ';' + 
+	    				row.Ggl_lymph_formol + ';' +
+	    				row.Ggl_lymph_RNAl + ';' + 
+	    				row.Testicules_formol + ';' + 
+	    				row.Testicules_RNAl + ';' + 
+	   					row.Peau_formol + ';' +
+	   					row.Peau_RNAl + ';' + 
+	   					row.Muscles_formol + ';' + 
+	   					row.Muscles_RNAl + ';' + 
+	   					row.Cerveau_formol + ';' +
+	    				row.Cerveau_RNAl + ';' + 
+	    				row.Autre + ';' + 
+	    				row.Autre_formol + ';' + 
+	    				row.Autre_RNAl + ';' + 
+	   					row.Remarques_echantillons.split(';').join(',') + ';' +
 	   					Username + ';' +
 	   					Filet_temps + ';' +  
 	   					Arret_Capture + ";\r\n"
     			
 	   			} else {
 	   				if (array_selected_fields.indexOf('N_identification_CS') > -1) {
-	    				CSV = CSV + row.doc.N_identification_CS + ";" 
+	    				CSV = CSV + row.N_identification_CS + ";" 
 					};
 	    			if (array_selected_fields.indexOf('N_identification_mere') > -1) {
-	    				CSV = CSV + row.doc.N_identification_mere + ";"
+	    				CSV = CSV + row.N_identification_mere + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Numero_mission') > -1) {
-	    				CSV = CSV + row.doc.Numero_mission + ";"
+	    				CSV = CSV + row.Numero_mission + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('N_site') > -1) {
-	    				CSV = CSV + row.doc.N_site + ";"
+	    				CSV = CSV + row.N_site + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Date') > -1) {
-	    				CSV = CSV + row.doc.Date + ";"
+	    				CSV = CSV + row.Date + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Equipe') > -1) {
-	    				CSV = CSV + row.doc.Equipe + ";"
+	    				CSV = CSV + row.Equipe + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Pays') > -1) {
 	    				CSV = CSV + Pays + ";"
@@ -1904,7 +2076,7 @@
 	    				CSV = CSV + Site_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Lieu_capture') > -1) {
-	    				CSV = CSV + row.doc.Lieu_capture + ";"
+	    				CSV = CSV + row.Lieu_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Environnement') > -1) {
 	    				CSV = CSV + Environnement + ";"
@@ -1925,10 +2097,10 @@
 	    				CSV = CSV + Proximite_village_km + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Methode_capture') > -1) {
-	    				CSV = CSV + row.doc.Methode_capture + ";"
+	    				CSV = CSV + row.Methode_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('NumFilet') > -1) {
-	    				CSV = CSV + row.doc.NumFilet + ";"
+	    				CSV = CSV + row.NumFilet + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('LongueurFilet') > -1) {
 	    				CSV = CSV + LongueurFilet + ";"
@@ -1952,76 +2124,76 @@
 	    				CSV = CSV + Lat_degre_dec_Lieu_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Latitude_Lieu_capture') > -1) {
-	    				CSV = CSV + row.doc.Latitude_Lieu_capture + ";"
+	    				CSV = CSV + row.Latitude_Lieu_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Long_degre_dec_Lieu_capture') > -1) {
 	    				CSV = CSV + Long_degre_dec_Lieu_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Longitude_Lieu_capture') > -1) {
-	    				CSV = CSV + row.doc.Longitude_Lieu_capture + ";"
+	    				CSV = CSV + row.Longitude_Lieu_capture + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
-	    				CSV = CSV + row.doc.Type_chauve_souris + ";"
+	    				CSV = CSV + row.Type_chauve_souris + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Espece_identifiee') > -1) {
-	    				CSV = CSV + row.doc.Espece_identifiee + ";"
+	    				CSV = CSV + row.Espece_identifiee + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Famille_terrain') > -1) {
-	    				CSV = CSV + row.doc.Famille_terrain + ";"
+	    				CSV = CSV + row.Famille_terrain + ";"
 	    			};
 	        		if (array_selected_fields.indexOf('Genre_terrain') > -1) {
-	    				CSV = CSV + row.doc.Genre_terrain + ";"
+	    				CSV = CSV + row.Genre_terrain + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Espece_terrain') > -1) {
-	    				CSV = CSV + row.doc.Espece_terrain + ";"
+	    				CSV = CSV + row.Espece_terrain + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Famille_labo') > -1) {
-	    				CSV = CSV + row.doc.Famille_labo + ";"
+	    				CSV = CSV + row.Famille_labo + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Genre_labo') > -1) {
-	    				CSV = CSV + row.doc.Genre_labo + ";"
+	    				CSV = CSV + row.Genre_labo + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Espece_labo') > -1) {
-	    				CSV = CSV + row.doc.Espece_labo + ";"
+	    				CSV = CSV + row.Espece_labo + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Famille_consensus') > -1) {
-	    				CSV = CSV + row.doc.Famille_consensus + ";"
+	    				CSV = CSV + row.Famille_consensus + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Genre_consensus') > -1) {
-	    				CSV = CSV + row.doc.Genre_consensus + ";"
+	    				CSV = CSV + row.Genre_consensus + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Espece_consensus') > -1) {
-	    				CSV = CSV + row.doc.Espece_consensus + ";"
+	    				CSV = CSV + row.Espece_consensus + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Sexe') > -1) {
-	    				CSV = CSV + row.doc.Sexe + ";"
+	    				CSV = CSV + row.Sexe + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Age') > -1) {
-	    				CSV = CSV + row.doc.Age + ";"
+	    				CSV = CSV + row.Age + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Gestante') > -1) {
-	    				CSV = CSV + row.doc.Gestante + ";"
+	    				CSV = CSV + row.Gestante + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Lactation') > -1) {
-	    				CSV = CSV + row.doc.Lactation + ";"
+	    				CSV = CSV + row.Lactation + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Suitee') > -1) {
-	    				CSV = CSV + row.doc.Suitee + ";"
+	    				CSV = CSV + row.Suitee + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Sexe_enfant') > -1) {
-	    				CSV = CSV + row.doc.Sexe_enfant + ";"
+	    				CSV = CSV + row.Sexe_enfant + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Poids_enfant') > -1) {
 	    				CSV = CSV + Poids_enfant + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Identifiant_enfant') > -1) {
-	    				CSV = CSV + row.doc.Identifiant_enfant + ";"
+	    				CSV = CSV + row.Identifiant_enfant + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Vivante') > -1) {
-	    				CSV = CSV + row.doc.Vivante + ";"
+	    				CSV = CSV + row.Vivante + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Cause_deces') > -1) {
-	    				CSV = CSV + row.doc.Cause_deces + ";"
+	    				CSV = CSV + row.Cause_deces + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Poids_gr') > -1) {
 	    				CSV = CSV + Poids_gr + ";"
@@ -2033,7 +2205,7 @@
 	    				CSV = CSV + L_totale_corps_mm + ";"
 	    			};
 	        		if (array_selected_fields.indexOf('Taille_yeux') > -1) {
-	    				CSV = CSV + row.doc.Taille_yeux + ";"
+	    				CSV = CSV + row.Taille_yeux + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('L_queue_mm') > -1) {
 	    				CSV = CSV + L_queue_mm + ";"
@@ -2042,148 +2214,148 @@
 	    				CSV = CSV + L_metacarpe_3ieme_doigt_mm + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Couleur_pelage_dorsal') > -1) {
-	    				CSV = CSV + row.doc.Couleur_pelage_dorsal + ";"
+	    				CSV = CSV + row.Couleur_pelage_dorsal + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
-	    				CSV = CSV + row.doc.Couleur_pelage_ventral + ";"
+	    				CSV = CSV + row.Couleur_pelage_ventral + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
-	    				CSV = CSV + row.doc.Remarques_anomalies.split(';').join(',') + ";"
+	    				CSV = CSV + row.Remarques_anomalies.split(';').join(',') + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Sang_DBS_nb_cercles') > -1) {
 	    				CSV = CSV + Sang_DBS_nb_cercles + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Sang_tube_EDTA') > -1) {
-	    				CSV = CSV + row.doc.Sang_tube_EDTA + ";"
+	    				CSV = CSV + row.Sang_tube_EDTA + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Feces_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Feces_RNAl + ";"
+	    				CSV = CSV + row.Feces_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Urine') > -1) {
-	    				CSV = CSV + row.doc.Urine + ";"
+	    				CSV = CSV + row.Urine + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Urine_DUS_nombre_cercles') > -1) {
-	    				CSV = CSV + row.doc.Urine_DUS_nombre_cercles + ";"
+	    				CSV = CSV + row.Urine_DUS_nombre_cercles + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Feces_urine_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Feces_urine_RNAl + ";"
+	    				CSV = CSV + row.Feces_urine_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Ecouvillon_gorge_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Ecouvillon_gorge_RNAl + ";"
+	    				CSV = CSV + row.Ecouvillon_gorge_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Ecouvillon_rectal_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Ecouvillon_rectal_RNAl + ";"
+	    				CSV = CSV + row.Ecouvillon_rectal_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Ectoparasites_ethanol') > -1) {
-	    				CSV = CSV + row.doc.Ectoparasites_ethanol + ";"
+	    				CSV = CSV + row.Ectoparasites_ethanol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Poils_ethanol') > -1) {
-	    				CSV = CSV + row.doc.Poils_ethanol + ";"
+	    				CSV = CSV + row.Poils_ethanol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Wing_punch_ethanol') > -1) {
-	    				CSV = CSV + row.doc.Wing_punch_ethanol + ";"
+	    				CSV = CSV + row.Wing_punch_ethanol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Feces_culture_glycerol') > -1) {
-	    				CSV = CSV + row.doc.Feces_culture_glycerol + ";"
+	    				CSV = CSV + row.Feces_culture_glycerol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Feces_ethanol') > -1) {
 	    				CSV = CSV + Feces_ethanol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Sperme') > -1) {
-	    				CSV = CSV + row.doc.Sperme + ";"
+	    				CSV = CSV + row.Sperme + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Lait') > -1) {
 	    				CSV = CSV + Lait + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Autres_echantillons_remarques') > -1) {
-	    				CSV = CSV + row.doc.Autres_echantillons_remarques.split(';').join(',') + ";"
+	    				CSV = CSV + row.Autres_echantillons_remarques.split(';').join(',') + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Specimen_entier') > -1) {
-	    				CSV = CSV + row.doc.Specimen_entier + ";"
+	    				CSV = CSV + row.Specimen_entier + ";"
 	    			};
 	        		if (array_selected_fields.indexOf('Specimen_preserve_dans') > -1) {
-	    				CSV = CSV + row.doc.Specimen_preserve_dans + ";"
+	    				CSV = CSV + row.Specimen_preserve_dans + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Prelevement_organe') > -1) {
-	    				CSV = CSV + row.doc.Prelevement_organe + ";"
+	    				CSV = CSV + row.Prelevement_organe + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Foie_formol') > -1) {
-	    				CSV = CSV + row.doc.Foie_formol + ";"
+	    				CSV = CSV + row.Foie_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Foie_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Foie_RNAl + ";"
+	    				CSV = CSV + row.Foie_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Rate_formol') > -1) {
-	    				CSV = CSV + row.doc.Rate_formol + ";"
+	    				CSV = CSV + row.Rate_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Rate_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Rate_RNAl + ";"
+	    				CSV = CSV + row.Rate_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Reins_formol') > -1) {
-	    				CSV = CSV + row.doc.Reins_formol + ";"
+	    				CSV = CSV + row.Reins_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Reins_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Reins_RNAl + ";"
+	    				CSV = CSV + row.Reins_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Intestins_formol') > -1) {
-	    				CSV = CSV + row.doc.Intestins_formol + ";"
+	    				CSV = CSV + row.Intestins_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Intestins_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Intestins_RNAl + ";"
+	    				CSV = CSV + row.Intestins_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Poumons_formol') > -1) {
-	    				CSV = CSV + row.doc.Poumons_formol + ";"
+	    				CSV = CSV + row.Poumons_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Poumons_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Poumons_RNAl + ";"
+	    				CSV = CSV + row.Poumons_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Coeur_formol') > -1) {
-	    				CSV = CSV + row.doc.Coeur_formol + ";"
+	    				CSV = CSV + row.Coeur_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Coeur_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Coeur_RNAl + ";"
+	    				CSV = CSV + row.Coeur_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Ggl_lymph_formol') > -1) {
-	    				CSV = CSV + row.doc.Ggl_lymph_formol + ";"
+	    				CSV = CSV + row.Ggl_lymph_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Ggl_lymph_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Ggl_lymph_RNAl + ";"
+	    				CSV = CSV + row.Ggl_lymph_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Testicules_formol') > -1) {
-	    				CSV = CSV + row.doc.Testicules_formol + ";"
+	    				CSV = CSV + row.Testicules_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Testicules_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Testicules_RNAl + ";"
+	    				CSV = CSV + row.Testicules_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Peau_formol') > -1) {
-	    				CSV = CSV + row.doc.Peau_formol + ";"
+	    				CSV = CSV + row.Peau_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Peau_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Peau_RNAl + ";"
+	    				CSV = CSV + row.Peau_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Muscles_formol') > -1) {
-	    				CSV = CSV + row.doc.Muscles_formol + ";"
+	    				CSV = CSV + row.Muscles_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Muscles_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Muscles_RNAl + ";"
+	    				CSV = CSV + row.Muscles_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Cerveau_formol') > -1) {
-	    				CSV = CSV + row.doc.Cerveau_formol + ";"
+	    				CSV = CSV + row.Cerveau_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Cerveau_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Cerveau_RNAl + ";"
+	    				CSV = CSV + row.Cerveau_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Autre') > -1) {
-	    				CSV = CSV + row.doc.Autre + ";"
+	    				CSV = CSV + row.Autre + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Autre_formol') > -1) {
-	    				CSV = CSV + row.doc.Autre_formol + ";"
+	    				CSV = CSV + row.Autre_formol + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Autre_RNAl') > -1) {
-	    				CSV = CSV + row.doc.Autre_RNAl + ";"
+	    				CSV = CSV + row.Autre_RNAl + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Remarques_echantillons') > -1) {
-	    				CSV = CSV + row.doc.Remarques_echantillons.split(';').join(',') + ";"
+	    				CSV = CSV + row.Remarques_echantillons.split(';').join(',') + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Username') > -1) {
 	    				CSV = CSV + Username + ";"
@@ -2704,7 +2876,7 @@
 				var Filet_temps = '';
 				var Arret_Capture = '';
 				
-				var id;
+				var id, idD;
 				try {
 					if (row.doc.N_identification_CS.charAt(row.doc.N_identification_CS.length - 1) == 'D') {
 						id = Number(extraireNombre(row.doc.N_identification_CS)) + .1;
