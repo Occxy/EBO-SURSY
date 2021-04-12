@@ -3,3 +3,6 @@ electron-packager ./source ebo-sursy --overwrite --platform=win32 --arch=ia32 --
 electron-packager ./source --overwrite --platform=darwin --arch=x64 --icon=./source/img/Ebola.icns --prune=true --out=release-builds --electron-version=3.0.4 --asar
 
 bitbucket
+
+npm run deploy
+export GH_TOKEN=47b9ff371f4108bdcf4a28e27e9ce1c6265757cf
