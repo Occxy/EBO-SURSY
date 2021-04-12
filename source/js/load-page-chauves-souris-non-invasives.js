@@ -177,6 +177,7 @@ function modifier(table, option) {
 		addValue('Heure_fin');
 		addValue('Lieu_collecte');
 		addValue('Type_site');
+		addValue('Methode_collecte');
 		addValue('Type_chauves_souris');
 		
 		var Famille_1 = document.getElementById("Famille_1");
@@ -259,6 +260,7 @@ function modifier(table, option) {
 				addValue('Heure_fin');
 				addValue('Lieu_collecte');
 				addValue('Type_site');
+				addValue('Methode_collecte');
 				addValue('Type_chauves_souris');
 				
 				var Famille_1 = document.getElementById("Famille_1");

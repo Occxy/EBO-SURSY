@@ -32,7 +32,7 @@ var valid_field =
 	 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type_site', 'Proximite_village_km',
 	 'Type_chauves_souris', 'Famille_1', 'Genre_1', 'Espece_1', 'Famille_2', 'Genre_2', 'Espece_2', 'Famille_3', 
 	 'Genre_3', 'Espece_3', 'Remarques', 'N_identification_echantillon', 'Type_echantillon', 'Nbre_feces_par_tube',
-	 'Urine_methode', 'Urine_papier_buvard_nbre_cercles'];	
+	 'Urine_methode', 'Urine_papier_buvard_nbre_cercles', 'Methode_collecte'];	
 
 var field = [];
 var data = [];
@@ -74,7 +74,7 @@ DB.allDocs({
 
 var siteTablesData = JSON.parse(localStorage.getItem('site' + import_table + 'TablesData'));
 siteTablesData.rows.forEach(function(row){  
-	alert();
+	//alert();
 	tabN_site.push(row.doc.N_site);
 });
 tab_Pays();
@@ -238,6 +238,7 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 			new_code = new_code + lat.replace(',', '');
 			var long = tab[i][12];
 			new_code = new_code + long.replace(',', '');
+			var Methode_collecte = tab[i][rowContent_length-1];
 			
 			if (new_code === N_identification_collecte) {
 				if (typeof myTab !== "undefined") {
@@ -265,7 +266,8 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 				    		if (record_exists(result)) {
 				    			var id = result.docs[0]._id;
 				    			j = 0;
-				    			put_with_id_non_invasives(id, i, Echantillons, /*local*/DB, j, k, N_identification_collecte, row);
+				    			//alert(id);
+				    			put_with_id_non_invasives(id, i, Echantillons, /*local*/DB, j, k, N_identification_collecte, row, Methode_collecte);
 				    			//search_N_identification_Recursif_collecte(localDB, i-1, j, k, N_identification_collecte, row);
 				    		} else {
 				    			console.log('no change : ' + new_code);
@@ -296,6 +298,9 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 							new_doc.N_identification_collecte = N_identification_collecte;
 							new_doc.Echantillons = Echantillons;
 							new_doc.Username = localStorage.getItem('loginUsername');
+							
+							//Methode_collecte
+							new_doc.Methode_collecte = tab[i+1][rowContent_length-1];
 							
 							put_new_id_bat_non_invasives(new_doc/*, i*/);
 							move();
@@ -343,6 +348,7 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 		new_code = new_code + lat.replace(',', '');
 		var long = tab[i][12];
 		new_code = new_code + long.replace(',', '');
+		var Methode_collecte = tab[i][rowContent_length-1];
 		
 		if (new_code !== N_identification_collecte) {
 			myTab = null;
@@ -366,7 +372,7 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 	    		if (record_exists(result)) {
 	    			var id = result.docs[0]._id;
 	    			console.log('id = ' + id);
-	    			put_with_id_non_invasives(id, i, Echantillons, /*local*/DB, j, k, N_identification_collecte, row);
+	    			put_with_id_non_invasives(id, i, Echantillons, /*local*/DB, j, k, N_identification_collecte, row, Methode_collecte);
 	    			//search_N_identification_Recursif_collecte(localDB, i-1, j, k, N_identification_collecte, row);
 	    		
 	    			for(var rowCountContent = 0; rowCountContent < rowContent_length - 5; rowCountContent++) {
@@ -405,6 +411,10 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 				new_doc._id = id;
 				new_doc.N_identification_collecte = new_code;
 				new_doc.Echantillons = Echantillons;
+				
+				//Methode_collecte
+				new_doc.Methode_collecte = tab[i][rowContent_length-1];
+				
 				new_doc.Username = localStorage.getItem('loginUsername');
 				
 				put_new_id_bat_non_invasives(new_doc/*, i*/);
@@ -431,7 +441,7 @@ function search_N_identification_Recursif_collecte(/*localDB,*/ i, j, k, N_ident
 	};
 };
 
-function put_with_id_non_invasives(id, i, Echantillons, localDB, j, k, N_identification_collecte, row) {
+function put_with_id_non_invasives(id, i, Echantillons, localDB, j, k, N_identification_collecte, row, Methode_collecte) {
 	
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
@@ -442,7 +452,7 @@ function put_with_id_non_invasives(id, i, Echantillons, localDB, j, k, N_identif
 	
 	DB.get(id).then(function (doc) {
 		
-		for(var rowCountContent = 0; rowCountContent < rowContent_length - 5; rowCountContent++) {
+		for(var rowCountContent = 0; rowCountContent < rowContent_length - 5 ; rowCountContent++) {
 			
 			var name_field = field[rowCountContent];
 			
@@ -464,6 +474,7 @@ function put_with_id_non_invasives(id, i, Echantillons, localDB, j, k, N_identif
 		};
 		
 		doc.Echantillons = Echantillons;
+		doc.Methode_collecte = Methode_collecte;
 		doc.Username = localStorage.getItem('loginUsername');
 		
 		//addEspeceInTableReferenceBatNoninvasives(i+1);
