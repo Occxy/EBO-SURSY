@@ -1,18 +1,19 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?3a9mfn');
-  src:  url('fonts/icomoon.eot?3a9mfn#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?3a9mfn') format('truetype'),
-    url('fonts/icomoon.woff?3a9mfn') format('woff'),
-    url('fonts/icomoon.svg?3a9mfn#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?78e6d0');
+  src:  url('fonts/icomoon.eot?78e6d0#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?78e6d0') format('truetype'),
+    url('fonts/icomoon.woff?78e6d0') format('woff'),
+    url('fonts/icomoon.svg?78e6d0#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -24,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Grand_singe_antilope:before {
+  content: "\e900";
+}
 .icon-Picto_ANTILOPE:before {
   content: "\e904";
 }
@@ -35,9 +39,6 @@
 }
 .icon-rodent:before {
   content: "\e901";
-}
-.icon-bat:before {
-  content: "\e900";
 }
 .icon-menu:before {
   content: "\e902";

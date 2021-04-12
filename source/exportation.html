@@ -238,6 +238,13 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
+	                	    <li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
+	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
 	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
 	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
@@ -548,6 +555,8 @@
 	     				table = 'données missions'
 	     			} else if (type_table == 'animals') {
 	     				table = 'animaux'
+	     			} else if (type_table == 'grands_singes_antilopes') {
+	     				table = 'grands singes et des antilopes'
 	     			}
 			       	line.innerHTML = 
 			        	'<h4>Liste des champs des ' +
@@ -913,10 +922,20 @@
 			 'testicules;lesions_ou_nodules;lait;foetus;observation;' +
 			 'guano;longueur_bras;longueur_avant_bras;longueur_corporelle;'+
 			 'Username;\r\n'
-
+		} else if (type_table == 'grands_singes_antilopes') {
+    		var fields = 
+    			['N_espece_terrain', 'date_collecte', 'pays', 'lieu_code', 'lieu_principal',	
+    			 'lieu_detail', 'fraicheur', 'boite_labo', 'N_labo', 'temp1', 'temp2', 'espece_labo_mitDNA',
+    			 'espece_labo_12S', 'espece_consensus', 'individu_microsatellite', 'sous-espece', 'temp3', 'point_GPS', 
+    			 'GPS_corrige', 'observations_terrain', 'preveleur', 'autres_observations',
+    			 'Username']
     		
-    		
-    	}
+    		var fields_CSV_head = 'N_espece_terrain;date_collecte;pays;lieu_code;lieu_principal;' +
+    	     'lieu_detail;fraicheur;boite_labo;N_labo;temp1;temp2;espece_labo_mitDNA;' +
+    	     'espece_labo_12S;espece_consensus;individu_microsatellite;sous-espece;temp3;point_GPS;' +
+			 'GPS_corrige;observations_terrain;preveleur;autres_observations;' + 
+			 'Username;\r\n'
+		}
         
         //chargement de la table site
         var debug;
@@ -1416,7 +1435,8 @@
 					 || (type_table == 'viande_de_brousse')
 					 || (type_table == 'donnees_journalieres')
 					 || (type_table == 'donnees_mission')
-					 || (type_table == 'animals')) {
+					 || (type_table == 'animals')
+					 || (type_table == 'grands_singes_antilopes')) {
 					count = infos.doc_count;
 				}
 				
@@ -1456,6 +1476,8 @@
 				    	    		addDonnees_missions(row);
 				    	    	} else if (type_table == 'animals') {
 				    	    		addAnimals(row);
+				    	    	} else if (type_table == 'grands_singes_antilopes') {
+				    	    		addGrandsSingesAntilopes(row);
 				    	    	}
 				    			
 				    		});		
@@ -9101,6 +9123,54 @@
 			}
     		
     	};
+    	
+		function addGrandsSingesAntilopes(row) {
+    		
+    		if (count > 0) {   	
+    			
+    			var debug;
+    			if (localStorage.getItem('debug') === null) {
+    				debug = '';
+    			} else {
+    				debug = localStorage.getItem('debug');
+    			};
+    			
+    			CSV = CSV +
+    			
+    			    row.doc.N_espece_terrain + ';' +
+				    row.doc.date_collecte + ';' +
+				    row.doc.pays + ';' +
+				    row.doc.lieu_code + ';' +
+				    row.doc.lieu_principal + ';' +
+				    row.doc.lieu_detail + ';' +
+				    row.doc.fraicheur + ';' +
+				    row.doc.boite_labo + ';' +
+				    row.doc.N_labo + ';' +
+				    row.doc.temp1 + ';' +
+				    row.doc.temp2 + ';' +
+				    row.doc.espece_labo_mitDNA + ';' +
+				    row.doc.espece_labo_12S + ';' +
+				    row.doc.espece_consensus + ';' +
+				    row.doc.individu_microsatellite + ';' +
+				    row.doc['sous-espece'] + ';' +
+				    row.doc.temp3 + ';' +
+				    row.doc.point_GPS + ';' +
+				    row.doc.GPS_corrige + ';' +
+				    row.doc.observations_terrain + ';' +
+				    row.doc.preveleur + ';' +
+				    row.doc.autres_observations + ';' +
+				    row.doc.Username + ";\r\n";
+							
+				count--
+				console.log(count);
+					    					
+				if (count == 0) {
+				   	var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+				    	//saveAs(blob, "testfile1.csv");
+				   	saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				}
+		    }	
+		};
     		
     	function extraireNombre(str) { 
     		return str.match(/[0-9]+/g)

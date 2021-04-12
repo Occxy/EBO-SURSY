@@ -250,6 +250,13 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
+	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
+	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
 	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
 	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
@@ -801,6 +808,16 @@
 								</div>	
 							  </div>
 						    </div>
+						    
+						    <div class="row">	
+	                          <div class="col-lg-6">	    
+		      			        <div class="form-group">
+		                          <label for="Methode_collecte">Méthode de collecte</label>
+		                          <input type="text" class="form-control" id="Methode_collecte" placeholder="Méthode de collecte" >
+		                        </div>    
+		      			      </div>
+						    </div>
+						    
 						  </div>
 						</div>
 					    
@@ -1666,6 +1683,7 @@
 			var Heure_debut = document.getElementById('Heure_debut').value;
 			var Heure_fin = document.getElementById('Heure_fin').value;
 			var Equipe = document.getElementById('Equipe').value;
+			var Methode_collecte = document.getElementById('Methode_collecte').value;
 			var Type_chauves_souris = document.getElementById('Type_chauves_souris').value;
 			var Famille_1 = document.getElementById('Famille_1').value;
 			var Genre_1 = document.getElementById('Genre_1').value;
@@ -1722,7 +1740,8 @@
 		  		doc.Heure_fin = Heure_fin;
 		  		doc.Lieu_collecte = Lieu_collecte;
 		  		doc.Type_site = Type_site;
-		  	    doc.Type_chauves_souris = Type_chauves_souris;
+		  		doc.Methode_collecte = Methode_collecte;
+				doc.Type_chauves_souris = Type_chauves_souris;
 		  	    doc.Famille_1 = Famille_1;
 		  	    doc.Genre_1 = Genre_1;
 		  	    doc.Espece_1 = Espece_1;
@@ -1764,6 +1783,7 @@
 				Heure_debut: Heure_debut,
 				Heure_fin: Heure_fin,
 				Lieu_collecte: Lieu_collecte,
+				Methode_collecte: Methode_collecte,				
 				Type_chauves_souris: Type_chauves_souris,
 				Famille_1: Famille_1,
 				Genre_1: Genre_1,
@@ -1838,6 +1858,7 @@
 			var Heure_fin = document.getElementById('Heure_fin').value;
 			var Equipe = document.getElementById('Equipe').value;
 			var Lieu_collecte = document.getElementById('Lieu_collecte').value;
+			var Methode_collecte = document.getElementById('Methode_collecte').value;			
 			var Type_chauves_souris = document.getElementById('Type_chauves_souris').value;
 			var Famille_1 = document.getElementById('Famille_1').value;
 			var Genre_1 = document.getElementById('Genre_1').value;
@@ -1909,6 +1930,7 @@
 					doc.Heure_debut = Heure_debut;
 					doc.Heure_fin = Heure_fin;
 					doc.Type_site = Type_site;
+					doc.Methode_collecte = Methode_collecte;					
 					doc.Type_chauves_souris = Type_chauves_souris;
 					doc.Famille_1 = Famille_1;
 					doc.Genre_1 = Genre_1;
@@ -1986,7 +2008,7 @@
 			    language: {
 	                url: 'plug-ins/i18n/French.lang.json'
 			    },
-			    //paging: false
+			    paging: false
 			});		
 			
 			if (option == 2) {

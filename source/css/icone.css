@@ -35,6 +35,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Grand_singe_antilope:before {
+  content: "\e900";
+}
 .icon-Picto_ANTILOPE:before {
   content: "\e904";
 }
@@ -46,9 +49,6 @@
 }
 .icon-rodent:before {
   content: "\e901";
-}
-.icon-bat:before {
-  content: "\e900";
 }
 .icon-menu:before {
   content: "\e902";

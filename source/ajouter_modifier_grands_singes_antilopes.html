@@ -5,13 +5,17 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Projet EBO-SURSY</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
+    
+    <!-- <style>
+		.input-group-addon{color:#ff0000; background-color: #ffffff;}
+	</style> -->
         
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -21,6 +25,8 @@
     <link rel="stylesheet" href="css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="vendor/ladda/ladda-themeless.min.css">
     
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="css/style.default.premium.css" id="theme-stylesheet">
@@ -31,66 +37,91 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/icone.css">
-    
-    <link rel="stylesheet" href="css/offline_online.css">
-    
-    <script src="vendor/jquery/jquery.min.js"></script>
-    
+        
     <script src="vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
 	<script>
 		delete window.module;
-	</script>	
-	
-	<!-- Javascript files-->  
+	</script>
+    
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
+        
+    <link rel="stylesheet" href="css/icone.css">
+    
+    <link rel="stylesheet" href="css/offline_online.css">    
+    
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- <script src="js/charts-home.js"></script> -->
     <!-- Notifications-->
     <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
     <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
-    <!-- <script src="js/home-premium.js"> </script> -->
+    <!-- <script src="js/home-premium.js"></script> -->
     
     <!-- Bootstrap DatePicker-->
     <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
-   
+    
+    <!-- Data Tables-->
+    <script src="vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/tables-datatable.js"></script>
+    
+    <!-- Forms init-->
+    <!-- <script src="js/forms-advanced.js"></script>-->
+    
     <!-- Main File-->
-    <script src="js/front.js"></script> 
+    <script src="js/front.js"></script>
+    
+    <!-- Loading buttons-->
+    <script src="vendor/ladda/spin.min.js"></script>
+    <script src="vendor/ladda/ladda.min.js"></script>
+    <script src="js/components-ladda.js"></script>
     
     <script src="js/pouchdb.authentication.js"></script> 
     <script src="js/pouchdb-6.4.2.min.js"></script> 
-   
+    <script src="js/pouchdb.find.js"></script> 
+    
     <script src="js/function.js"></script>
     <script src="js/menu.js"></script>
     
     <script src="js/loadjs.js"></script>
     
-    <!-- <script src="js/charts.js"></script> -->
+    <script src="js/uuid.js"></script>
     
-    <!-- <script src="js/load-page.js"></script> -->
+    <script src="js/load-page-grands-singes-antilopes.js"></script> 
+    
+    <script src="js/addReference.js"></script> 
     
   </head>
-  <body onload="showConnexionStatus()"> 
+  <body onload="chargement_des_grands_singes_et_des_antilopes()">
+  
     <script>
 		logged_only();
-		if (localStorage.getItem('db_loaded') != '1') {
-			if (localStorage.getItem('web') === 'oui') {
-				loadjs('js/load-db-web.js');
-			} else if (navigator.onLine) {
-				loadjs('js/load-db-tables-references-online.js');
-			} else {
-		     	loadjs('js/load-alldbs-offline.js');
-	        };
+		var clickedBtn = null;
+		
+		let searchParams = new URLSearchParams(window.location.search);
+		nom_table = searchParams.get('table');
+		
+		var debug;
+		if (localStorage.getItem('debug') === null) {
+			debug = '';
 		} else {
-			loadjs('js/db_loaded.js');
+			debug = localStorage.getItem('debug');
 		};
+		var html = 'grands_singes_antilopes';
 		
-		
-				
-	</script>	   
+	</script> 
+  
+    <!-- <script type="text/javascript">
+    	showAlertFlash();
+    </script> -->	
     
     <div class="page">
       <!-- Main Navbar-->
@@ -100,7 +131,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-              	<!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>Projet</span><strong>EBO-SURSY</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>ES</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -114,30 +145,19 @@
 	    		    <p id="p_led"></p>
 	    		  </div>
 	            </li>
-	            
+	                            
                 <!-- Logout    -->
                 <li class="nav-item"><a href="logout.html" class="nav-link logout">Se déconnecter<i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
-            <div id="child" style="display: none; color: #fff; background: #2f333e;">
-    		  <label>Synchronisation des données...</label>
-			  <div class="progress">
-  				<div class="progress-bar progress-bar-striped" id="myBar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-			  </div>
-			</div>
           </div>
         </nav>
       </header>
       <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
-        <nav id="nav" class="side-navbar">
+        <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <!-- <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
-            <div class="title">
-              <h1 class="h4">Ebola</h1>
-              <p>Virus</p>
-            </div> -->
             <img src="logos/Logo_1lign-eboSURSY_coul.jpg" class="img-fluid">
           </div>
           <!-- Sidebar Navidation Menus--><span class="heading">MENU</span>
@@ -192,7 +212,7 @@
 	                        	<li id="li_viande_de_brousse_map_transvihmi_guinee" name="1"><a href="cartographie.html?table=_transvihmi_guinee&type=viande_de_brousse">carte</a></li>
 	                        	<li id="li_importation_viande_de_brousse_transvihmi_guinee" name="1"><a href="import_export.html?table=_transvihmi_guinee&type=viande_de_brousse">importation/exportation</a></li>
 	                      	  </ul>
-	                    	</li>                    	
+	                    	</li>
 	                      </ul>
 	                    </li>
 	                    
@@ -221,7 +241,7 @@
 			                    <li id="li_bat_transvihmi_camerounCaptureesDropdown" name="1"><a id="a_bat_transvihmi_camerounCaptureesDropdown" name="1" href="#ul_bat_transvihmi_camerounCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
 			                      <ul id="ul_bat_transvihmi_camerounCaptureesDropdown" name="1" class="collapse list-unstyled">
 			                        <li id="li_bat_capturees_transvihmi_cameroun" name="1"><a href="liste_chauves_souris_capturees.html?table=_transvihmi_cameroun">données</a></li>                            
-			                        <li id="li_bat_map_capturees_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=chauve_souris_capturees">carte</a></li>
+			                        <li id="li_map_bat_capturees_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=chauves_souris_capturees">carte</a></li>
 			                        <li id="li_importation_bat_capturees_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=chauves_souris_capturees">importation/exportation</a></li>                            
 	                              </ul>
 			                    </li>
@@ -234,20 +254,20 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
-	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
-	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
-	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
-	                        	<li id="li_viande_de_brousse_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse">carte</a></li>
-	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
-	                      	  </ul>
-	                    	</li>
-	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                	    <li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
 	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
 	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
+	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>	                    	
 	                      </ul>
 	                    </li>
 	                    
@@ -301,9 +321,7 @@
 	                    
 	                  </ul>
 	                </li>
-	                
-	                
-	                      
+	                    
                     <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
                       <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
                     
@@ -496,19 +514,28 @@
                 	  </ul>
                     </li>
                     
-                    <li id="li_ipgDropdown" name="5"> <a id="a_ipgDropdown" href="#ul_ipgDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
-                      <ul id="ul_ipgDropdown" class="collapse list-unstyled">
-                      
-                    	<li id="li_ipg_guineeDropdown" name="5" pays="guinee"> <a id="a_ipg_guineeDropdown" name="5" href="#ul_ipg_guineeDropdown" aria-expanded="false" data-toggle="collapse">guinee</a>
-                      	  <ul id="ul_ipg_guineeDropdown" name="5" pays="guinee" class="collapse list-unstyled">
-                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals.html?table=_ipg_guinee">données</a></li>                            
-		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
-		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
-                          </ul>
-		                </li>                   	
-                      
-                      </ul>
-                    </li>                    
+                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
+                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
+		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
+		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
+		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_batIPGNonInvasivesDropdown" name="5"><a id="a_batIPGNonInvasivesDropdown" href="#ul_batIPGNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+		                      <ul id="ul_batIPGNonInvasivesDropdown" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
+	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
+    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	  </ul>
+                    </li>
                     
                     <li id="li_help"> 
                     	<a href="aide.html"><i class='a-aide'></i></a>
@@ -520,528 +547,255 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Tableau de bord</h2>
+              <h2 class="no-margin-bottom">Base de données des grands singes et des antilopes</h2>
             </div>
           </header>
           
-          <section class="charts">          
-            <div class="container-fluid">   
-            
-              <div class="row">
-                <!-- Line Charts-->
-                <div class="col-lg-12">
-                  <div class="line-chart-example card" name="6" pays="congo" style="display: none;">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
+          <section>          
+            <div class="container-fluid">              
+              <div class="row">                
+                <div class="col-lg-12">                  
+                  <div class="card">        
+                   <div class="card-header" id="header">
+                     <!-- <h4>Nouvelle Chauve-souris</h4> -->
+                     <script type="text/javascript">
+	                    var line = document.createElement("div");
+	                    option = searchParams.get('option');
+	                    nom_table = searchParams.get('table');
+	                    if ((option == 0) || (option == 1)) {
+	                    	line.innerHTML = '<h4>Nouveau grand singe ou antilope </h4>';
+	                    } else if (option == 2) {
+	                    	var ID = 'ID_grands_singes_antilopes' + nom_table;
+	                    	line.innerHTML = "<h4>Modifier le grand singe ou l'antilope : ID = " + localStorage.getItem(ID) + '</h4>';
+	                    }
+		             	document.getElementById("header").appendChild(line);
+		         	 </script>
+                      
                     </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Données missions</h3>
-                    </div>
-                    <div class="card-body">
-                      <canvas id="lineChartExample"></canvas>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-lg-6">
-		                <label for="year_astre_congo">Année : </label>
-					    <select id="year_astre_congo" class="form-control" onchange="select_year(this, 'donnees_mission_astre_congo')">
-					      <option>2019</option>            
-		                  <option>2020</option>
-		                </select>
-					  </div>
-					</div>	
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="row">  
-                <div class="col-lg-12">
-                  <div class="line-chart-example card" name="6" pays="congo" style="display: none;">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Données journalières</h3>
-                    </div>
-                    <div class="card-body">
-                      <canvas id="lineChartExample1"></canvas>
-                    </div>
-                
-                	<div class="row">
-                      <div class="col-lg-6">
-		                <label for="month_astre_congo">Mois : </label>
-					    <select id="month_astre_congo" class="form-control" onchange="select_month(this, year1_astre_congo, 'donnees_journalieres_astre_congo')">
-					      <option>Janvier</option>            
-		                  <option>Février</option>
-		                  <option>Mars</option>            
-		                  <option>Avril</option>
-		                  <option>Mai</option>            
-		                  <option>Juin</option>
-		                  <option>Juillet</option>            
-		                  <option>Août</option>
-		                  <option>Septembre</option>            
-		                  <option>Octobre</option>
-		                  <option>Novembre</option>            
-		                  <option>Décembre</option>
-		                </select>
-					  </div>
-					</div>
-                    <div class="row">
-                      <div class="col-lg-6">
-		                <label for="year1_astre_congo">Année : </label>
-					    <select id="year1_astre_congo" class="form-control" onchange="select_month(month_astre_congo, this, 'donnees_journalieres_astre_congo')">
-					      <option>2019</option>            
-		                  <option>2020</option>
-		                </select>
-					  </div>
-					</div> 
-					
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-lg-12">
-                  
-                  <!-- Datepickers-->
-                  <div id="card_tables_references" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>Gestion des tables de références (supression d'une valeur)</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">    
-		      			    <label>Table</label>
-		      			  </div>                                                                                     
-	                    </div>     
-		      			<div class="row">
-	                      <div class="col-lg-6">    
-		      			    <select id="tables_references" class="form-control">
-	                        </select>
-						  </div>                                                                                     
-	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_references" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
-					          <span class="ladda-spinner"></span>
-						    </button>
-						  </div>
-						</div> 
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <div id="card_tables_phenologie" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>Gestion de la phénologie (ajout d'une valeur)</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">    
-		      			    <label>Table</label>
-		      			  </div>                                                                                     
-	                    </div>     
-		      			<div class="row">
-	                      <div class="col-lg-6">    
-		      			    <select id="tables_phenologie" class="form-control">
-	                        </select>
-						  </div>                                                                                     
-	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_phenologie" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
-					          <span class="ladda-spinner"></span>
-						    </button>
-						  </div>
-						</div> 
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <div id="card_tables_espece_chauves_souris" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>Gestion de la table espece des chauves-souris (ajout d'une valeur)</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">    
-		      			    <label>Table</label>
-		      			  </div>                                                                                     
-	                    </div>     
-		      			<div class="row">
-	                      <div class="col-lg-6">    
-		      			    <select id="tables_espece_chauves_souris" class="form-control">
-	                        </select>
-						  </div>                                                                                     
-	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_espece_chauves_souris" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
-					          <span class="ladda-spinner"></span>
-						    </button>
-						  </div>
-						</div> 
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  	 
-                  <!-- Datepickers-->
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - Guinée - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <!-- Datepickers-->
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - Cameroun - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <!-- Datepickers-->
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - RDC - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Guinée - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Cameroun - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - RDC - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Guinée - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
+                    <div class="card-body">                                            
+                      <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
+				        
+				        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_labo">N° labo</label>
+					              <input type="text" class="form-control" id="N_labo" placeholder="N° labo"required>
+	                                <div class="invalid-feedback">
+		                      	      S'il vous plaît fournir un N° labo valide !	      				  	      				    
+	    					        </div>
+	                            </div>
+							  </div>
+							  <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="N_espece_terrain">N° espece terrain</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="N_espece_terrain" placeholder="N° espece terrain">
+	                              </div>
+	    					    </div>
+							  </div>					      
+                            </div>
+                              
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="date_collecte">Date de collecte</label>
+				          	      <input type="text" class="form-control" id="date_collecte" placeholder="Date de collecte" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="pays">Pays</label>
+					              <input type="text" class="form-control" id="pays" placeholder="Pays">                         </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="lieu_code">Lieu code</label>
+				          	      <input type="text" class="form-control" id="lieu_code" placeholder="Lieu code" >
+                        	    </div>											    
+                              </div>                              
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="lieu_principal">Lieu principal</label>
+				          	      <input type="text" class="form-control" id="lieu_principal" placeholder="Lieu principal" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="lieu_detail">Lieu detail</label>
+					              <input type="text" class="form-control" id="lieu_detail" placeholder="Lieu detail">
+	                            </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="fraicheur">Fraicheur</label>
+				          	      <input type="text" class="form-control" id="fraicheur" placeholder="Fraicheur" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="temp1">Temp 1</label>
+				          	      <input type="text" class="form-control" id="temp1" placeholder="Temp 1" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="temp2">Temp 2</label>
+				          	      <input type="text" class="form-control" id="temp2" placeholder="Temp 2" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="boite_labo">Boite labo</label>
+				          	      <input type="text" class="form-control" id="boite_labo" placeholder="Boite labo" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="espece_labo_mitDNA">Espece labo mitDNA</label>
+					              <input type="text" class="form-control" id="espece_labo_mitDNA" placeholder="Espece labo mitDNA">
+	                            </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="espece_labo_12S">Espece labo 12S</label>
+				          	      <input type="text" class="form-control" id="espece_labo_12S" placeholder="Espece labo 12S" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="espece_consensus">Espece consensus</label>
+				          	      <input type="text" class="form-control" id="espece_consensus" placeholder="Espece consensus" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="individu_microsatellite">Individu microsatellite</label>
+					              <input type="text" class="form-control" id="individu_microsatellite" placeholder="Individu microsatellite">
+	                            </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="sous-espece">Sous-espece</label>
+				          	      <input type="text" class="form-control" id="sous-espece" placeholder="Sous-espece" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="temp3">Temp 3</label>
+				          	      <input type="text" class="form-control" id="temp3" placeholder="Temp 3" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="point_GPS">Point GPS</label>
+					              <input type="text" class="form-control" id="point_GPS" placeholder="Point GPS">
+	                            </div>
+							  </div>
+						      <div class="col-lg-6">	
+							    <div class="form-group">	  
+							      <label for="GPS_corrige">GPS corrigé</label>
+				          	      <input type="text" class="form-control" id="GPS_corrige" placeholder="GPS corrigé" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-12">	
+							    <div class="form-group">	  
+							      <label for="observations_terrain">Observations terrain</label>
+				          	      <textarea class="form-control col-xs-12" id="observations_terrain" placeholder="Observations terrain" rows="3"></textarea>
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="preveleur">Préveleur</label>
+					              <input type="text" class="form-control" id="preveleur" placeholder="preveleur">
+	                            </div>
+							  </div>
+							</div>
+							
+							<div class="row">
+						      <div class="col-lg-12">	
+							    <div class="form-group">	  
+							      <label for="autres_observations">Autres observations</label>
+				          	      <textarea class="form-control col-xs-12" id="autres_observations" placeholder="Autres observations" rows="3"></textarea>
+                        	    </div>											    
+                              </div>
+                            </div>
+						    
+                                                                                                                 
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Cameroun - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
-                          </div>
+                                   
+		                
+                        <div class="card-body text-right" id="header_button">
+                        
+                          <script type="text/javascript">
+			               		var line = document.createElement("div");
+			                    /*let searchParams2 = new URLSearchParams(window.location.search);
+			                    var option = searchParams2.get('option');*/
+			                    if ((option == 0) || (option == 1)) {
+			                    	line.innerHTML = 
+			                          '<div class="row">' +
+			                            '<div class="col-lg-9">' +
+			                              '<div class="form-group">' +
+			                                '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
+					            	  	      "<span class='ladda-label'>Sauver le grand singe / antilope</span>" +
+					            	  	      '<span class="ladda-spinner"></span>' +
+									        '</button>' +  
+									      '</div>' +  
+									    '</div>' +
+									    '<div class="col-lg-3">' +
+									      '<div class="form-group">' +
+									        '<div class="i-checks">' +
+			                                  '<input id="andAdd" type="checkbox" value="" checked="" class="checkbox-template">' +
+			                                  '<label for="andAdd">et ajouter</label>' +
+			                                '</div>' +  
+			                              '</div>' + 
+			                            '</div>' +
+			                    	  '</div>'
+			               } else if (option == 2) {
+			                    line.innerHTML = 
+			                   		'<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
+				            		  "<span class='ladda-label'>Modifier le grand singe / antilope</span>" +
+				            		  '<span class="ladda-spinner"></span>' +
+									'</button>' 
+			                }
+				          	document.getElementById("header_button").appendChild(line);
+				          </script>
                         </div>
-                      </div>
-                    </div>
+	      			      
+				      </form>
+                                               
+                    </div> 
                   </div>
-                  
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - RDC - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="2" pays="congo" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>MIVEGEC - Congo - Animaux</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_animals_mivegec_congo_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="2" pays="gabon" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>MIVEGEC - Gabon - Animaux</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			          <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_animals_mivegec_gabon_count" style="color:red;font-weight: bold;"></label>
-	      			        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="3" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>CIBU - Individus</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_individus_cibu_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="3" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>CIBU - Prélèvements</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_prelevements_cibu_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="guinee" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - Guinée - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_capturees_astre_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>  
-					      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="congo" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - République du Congo - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      		  	        <div class="form-group">
-	      		  	    	  <label>Nombre d'enregistrement collecté : </label>
-	      		  	    	  <label id="label_chauves_souris_capturees_astre_congo_count" style="color:red;font-weight: bold;"></label>
-				  	        </div>  
-				  	      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="gabon" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - Gabon - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      		  	        <div class="form-group">
-	      		  	    	  <label>Nombre d'enregistrement collecté : </label>
-	      		  	    	  <label id="label_chauves_souris_capturees_astre_gabon_count" style="color:red;font-weight: bold;"></label>
-				  	        </div>  
-				  	      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - Guinée - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_guinee_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="congo" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - République du Congo -Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_congo_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="gabon" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - Gabon -Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_gabon_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
                 </div>
               </div>  
-              
             </div>
-          </section>          
+          </section>         
           
           <!-- Page Footer-->
           <footer class="main-footer">
@@ -1067,42 +821,384 @@
         </div>
       </div>
     </div>
-   
-  </body>
+    
+	
+	
+    <script type="text/javascript">
+    
+    	// Example starter JavaScript for disabling form submissions if there are invalid fields
+  		(function() {
+  		  'use strict';
+  		  window.addEventListener('load', function() {
+  		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  		    var forms = document.getElementsByClassName('needs-validation');
+  		    // Loop over them and prevent submission
+  		    var validation = Array.prototype.filter.call(forms, function(form) {
+  		      form.addEventListener('submit', function(event) {
+  		    	if (form.checkValidity() === false) {
+  		          event.preventDefault();
+  		          event.stopPropagation();
+  		        } else {
+  		          event.preventDefault();
+	  		      //add event listener
+	  		  	  if ((option == 0) || (option == 1)) {
+	  		  		individuExists()
+	  		  		//addBat();
+	  		  	  } else if ((option == 2)) {
+	  		  		modifyGrandSingeAntilope()
+	  		  	  }
+  		        } 		        
+  		        form.classList.add('was-validated');
+  		      }, false);
+  		    });
+  		  }, false);
+  		})();
+  		
+    	function individuExists() {
+    		
+    		if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug);
+			} else {
+				var DB = new PouchDB('grands_singes_antilopes' + nom_table + debug);
+			};
+			
+			var N_labo = document.getElementById('N_labo').value;
+						
+			DB.find({
+				selector: {N_labo: N_labo}
+			}).then(function (result) {
+				if (result.docs.length > 0) {
+					alert('L individu existe déja !')					
+				} else {
+					addGrandSingeAntilope();
+				}
+			}).catch(function (err) {
+				console.log(err);
+			});			
+		
+			
+    	};
+    	
+  		function addGrandSingeAntilope() {  
+  			
+  			//alert('add');
+  			
+			var l = Ladda.create( document.querySelector('.ladda-button'));
+			
+			// Start loading
+			l.start();
+						
+			var id = uuid();
+							  
+			var N_espece_terrain = document.getElementById('N_espece_terrain').value;
+			var date_collecte = document.getElementById('date_collecte').value;
+			var pays = document.getElementById('pays').value;
+			var lieu_code = document.getElementById('lieu_code').value;
+		    var lieu_principal = document.getElementById('lieu_principal').value;	
+		    var lieu_detail = document.getElementById('lieu_detail').value;
+		    var fraicheur = document.getElementById('fraicheur').value;
+		    var boite_labo = document.getElementById('boite_labo').value;
+		    var N_labo = document.getElementById('N_labo').value;
+		    var temp1 = document.getElementById('temp1').value;	
+		    var temp2 = document.getElementById('temp2').value;
+		    var espece_labo_mitDNA = document.getElementById('espece_labo_mitDNA').value;
+		    var espece_labo_12S = document.getElementById('espece_labo_12S').value;
+		    var espece_consensus = document.getElementById('espece_consensus').value;
+		    var individu_microsatellite = document.getElementById('individu_microsatellite').value;
+		    var sous_espece = document.getElementById('sous-espece').value;
+		    var temp3 = document.getElementById('temp3').value;
+		   	var point_GPS = document.getElementById('point_GPS').value;
+		    var GPS_corrige = document.getElementById('GPS_corrige').value;
+		    var observations_terrain = document.getElementById('observations_terrain').value;
+		    var preveleur = document.getElementById('preveleur').value;
+		    var autres_observations = document.getElementById('autres_observations').value;
+		    var Username = localStorage.getItem('loginUsername');
+		    
+		    var andAdd = document.getElementById("andAdd");
+		  	if (andAdd.checked == true){
+		  	    var doc = new Object();
+		  		  
+		  	    doc.N_espece_terrain = N_espece_terrain;
+				doc.date_collecte = date_collecte;
+				doc.pays = pays;
+				doc.lieu_code = lieu_code;
+				doc.lieu_principal = lieu_principal;
+			    doc.lieu_detail = lieu_detail;	
+			    doc.fraicheur = fraicheur;
+			    doc.boite_labo = boite_labo;
+			    doc.temp1 = temp1;
+			    doc.temp2 = temp2;	
+			    doc.espece_labo_mitDNA = espece_labo_mitDNA;
+			    doc.espece_labo_12S = espece_labo_12S;
+			    doc.espece_consensus = espece_consensus;
+			    doc.individu_microsatellite = individu_microsatellite;
+			    doc['sous-espece'] = sous_espece;
+			    doc.temp3 = temp3;
+			   	doc.point_GPS = point_GPS;
+			    doc.GPS_corrige = GPS_corrige;
+			    doc.observations_terrain = observations_terrain;
+			    doc.preveleur = preveleur;
+			    doc.autres_observations = autres_observations;
+			    doc.Username = Username;
+			    
+		  		localStorage['grands_singes_antilopesTablesData'] = JSON.stringify(doc);
+		  	};
+		  			    
+		    if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug);
+			} else {
+				var DB = new PouchDB('grands_singes_antilopes' + nom_table + debug);
+			};
   
-  	<script type="text/javascript">
-  		$('#gerer_tables_references').click(function(){
-  			var tables_references = document.getElementById("tables_references");
-  			localStorage['table_reference'] = tables_references.options[tables_references.selectedIndex].text;
-  			localStorage['field_table_reference'] = tables_references.value;
-  			window.location = 'gerer_tables_references.html';
-  		});
+			DB.put({
+				_id: id,
+				N_espece_terrain: N_espece_terrain,
+				date_collecte: date_collecte,
+				pays: pays,
+				lieu_code: lieu_code,
+				lieu_principal: lieu_principal,
+				lieu_detail: lieu_detail,	
+				fraicheur: fraicheur,
+				boite_labo: boite_labo,
+				N_labo: N_labo,
+				temp1: temp1,
+				temp2: temp2,	
+				espece_labo_mitDNA: espece_labo_mitDNA,
+				espece_labo_12S: espece_labo_12S,
+			    espece_consensus: espece_consensus,
+			    individu_microsatellite: individu_microsatellite,
+			    'sous-espece': sous_espece,
+			    temp3: temp3,
+			    point_GPS: point_GPS,
+			    GPS_corrige: GPS_corrige,
+			    observations_terrain: observations_terrain,
+			    preveleur: preveleur,
+			    autres_observations: autres_observations,
+			    Username: Username
+			    
+			}).then(function (response) {
+								
+				if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
+					var localDB2 = new PouchDB('grands_singes_antilopes' + nom_table + debug);	
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var remoteDB = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug, {skip_setup: true});
+					
+					localDB2.sync(remoteDB).on('complete', (info) => { 
+						
+						var andAdd = document.getElementById("andAdd");
+					  	if (andAdd.checked == true) {
+					  	  window.location = 'ajouter_modifier_grands_singes_antilopes.html?option=1&table=' + nom_table;
+					  	} else {
+					  	  window.location = 'liste_grands_singes_antilopes.html?table=' + nom_table;	
+					  	};
+					}).on('error', function (err) {
+						// error while replicating
+						alert('alert sync new grands_singes_antilopes : ' + nom_table  + ' ' + JSON.stringify(err));
+						window.location = 'index.html';
+					});
+				} else {
+					var andAdd = document.getElementById("andAdd");
+				  	if (andAdd.checked == true) {
+				  	  window.location = 'ajouter_modifier_grands_singes_antilopes.html?option=1&table=' + nom_table;
+				  	} else {
+				  	  window.location = 'liste_chauves_grands_singes_antilopes.html?table=' + nom_table;	
+				  	};
+				}
+				
+				l.stop();
+				
+			}).catch(function (err) {
+				alert(JSON.stringify(err));
+				console.log(err);
+			});	
+  		};
   		
-  		$('#gerer_tables_phenologie').click(function(){
-  			var tables_references = document.getElementById("tables_phenologie");
-  			localStorage['table_phenologie'] = tables_phenologie.options[tables_phenologie.selectedIndex].text;
-  			window.location = 'gerer_tables_phenologie.html';
-  		});
+  		function modifyGrandSingeAntilope() {  
+  			
+			var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+
+			// Start loading
+			l.start();
+			
+			var id = localStorage.getItem('ID_grands_singes_antilopes' + nom_table);
+			var N_espece_terrain = document.getElementById('N_espece_terrain').value;
+			var date_collecte = document.getElementById('date_collecte').value;
+			var pays = document.getElementById('pays').value;
+			var lieu_code = document.getElementById('lieu_code').value;
+		    var lieu_principal = document.getElementById('lieu_principal').value;	
+		    var lieu_detail = document.getElementById('lieu_detail').value;
+		    var fraicheur = document.getElementById('fraicheur').value;
+		    var boite_labo = document.getElementById('boite_labo').value;
+		    var N_labo = document.getElementById('N_labo').value;
+		    var temp1 = document.getElementById('temp1').value;	
+		    var temp2 = document.getElementById('temp2').value;
+		    var espece_labo_mitDNA = document.getElementById('espece_labo_mitDNA').value;
+		    var espece_labo_12S = document.getElementById('espece_labo_12S').value;
+		    var espece_consensus = document.getElementById('espece_consensus').value;
+		    var individu_microsatellite = document.getElementById('individu_microsatellite').value;
+		    var sous_espece = document.getElementById('sous-espece').value;
+		    var temp3 = document.getElementById('temp3').value;
+		   	var point_GPS = document.getElementById('point_GPS').value;
+		    var GPS_corrige = document.getElementById('GPS_corrige').value;
+		    var observations_terrain = document.getElementById('observations_terrain').value;
+		    var preveleur = document.getElementById('preveleur').value;
+		    var autres_observations = document.getElementById('autres_observations').value;
+		    var Username = localStorage.getItem('loginUsername');
+		    
+		    
+			if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug);
+			} else {
+				var DB = new PouchDB('grands_singes_antilopes' + nom_table + debug);
+			};	
+						
+			DB.find({
+				selector: {_id: id},
+				fields: ['_id']
+			}).then(function (result) {
+		
+				if (localStorage.getItem('web') === 'oui') {
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var DB2 = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug);
+				} else {
+					var DB2 = new PouchDB('grands_singes_antilopes' + nom_table + debug);
+				};	
+				
+				DB2.get(id).then(function (doc) {
+					doc.N_labo = N_labo;
+					doc.N_espece_terrain = N_espece_terrain;
+					doc.date_collecte = date_collecte;
+					doc.pays = pays;
+					doc.lieu_code = lieu_code;
+					doc.lieu_principal = lieu_principal;
+					doc.lieu_detail = lieu_detail;	
+					doc.fraicheur = fraicheur;
+					doc.boite_labo = boite_labo;
+					doc.N_labo = N_labo;
+					doc.temp1 = temp1;
+					doc.temp2 = temp2;	
+					doc.espece_labo_mitDNA = espece_labo_mitDNA;
+					doc.espece_labo_12S = espece_labo_12S;
+					doc.espece_consensus = espece_consensus;
+					doc.individu_microsatellite = individu_microsatellite;
+				    doc['sous-espece'] = sous_espece;
+				    doc.temp3 = temp3;
+				    doc.point_GPS = point_GPS;
+				    doc.GPS_corrige = GPS_corrige;
+				    doc.observations_terrain = observations_terrain;
+				    doc.preveleur = preveleur;
+				    doc.autres_observations = autres_observations;
+				    doc.Username = Username;
+					
+					return DB2.put(doc);
+				}).then(function () {
+					return DB2.get(id);
+				}).then(function (doc) {
+					
+					if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
+						var localDB3 = new PouchDB('grands_singes_antilopes' + nom_table + debug);	
+						var remote_couchdb = localStorage.getItem('remote_couchdb');
+						var remoteDB = new PouchDB(remote_couchdb + 'grands_singes_antilopes' + nom_table + debug);
+										
+						localDB3.sync(remoteDB).on('complete', (info) => { 
+							window.location = 'liste_grands_singes_antilopes.html?table=' + nom_table;
+						}).on('error', function (err) {
+							// error while replicating
+							alert('alert sync modify grands_singes_antilopes : ' + nom_table + ' ' + JSON.stringify(err));
+							window.location = 'index.html';
+						});	
+					} else {
+						window.location = 'liste_grands_singes_antilopes.html?table=' + nom_table;
+					}
+					
+					l.stop();								  
+					console.log(doc);
+				});
+			}).catch(function (err) {
+				console.log(err);
+			});			
+		};
   		
-  		$('#gerer_tables_espece_chauves_souris').click(function(){
-  			var tables_references = document.getElementById("tables_espece_chauves_souris");
-  			localStorage['table_espece_chauves_souris'] = tables_espece_chauves_souris.options[tables_espece_chauves_souris.selectedIndex].text;
-  			window.location = 'gerer_tables_espece_chauves_souris.html';
-  		});
-  	</script> 
   		
- 	<script type="text/javascript">
+	</script>
+	
+	<script type="text/javascript">
+	
 		document.addEventListener("keydown", function(event) {
 		  if (event.keyCode == 13) {
 		    event.preventDefault();
 		    return false;
 		  }
 		}, true); // "true" => phase de capture
- 	
-  		var component_a = document.getElementById('li_dashboard');
-		component_a.classList.add('active');
 		
-  	</script> 
-  
+		var institut;
+		if ((nom_table == '_transvihmi_guinee') || (nom_table == '_transvihmi_cameroun')
+			|| (nom_table == '_transvihmi_rdc')) {
+			institut = 'transvihmi';			
+		} else if ((nom_table == '_mivegec_congo') || (nom_table == '_mivegec_gabon')) {
+			institut = 'mivegec';
+		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
+				|| (nom_table == '_astre_gabon')) {
+			institut = 'astre';
+		};
+		
+		expanded(nom_table);
+			
+		function expanded(nom_table) {
+			var component_li = document.getElementById('li_' + institut + 'Dropdown');
+			component_li.classList.add('active');
+			var component_a = document.getElementById('a_' + institut + 'Dropdown');
+			component_a.setAttribute('aria-expanded', 'true');
+			var component_ul =  document.getElementById('ul_' + institut + 'Dropdown');
+			component_ul.classList.add('show');
+			 
+			try {
+				var component_li = document.getElementById('li' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			}
+	    	catch(error) {
+	    	};
+	    	
+	    	var component_li = document.getElementById('li_grand_singe_antilope' + nom_table + 'Dropdown');
+			component_li.classList.add('active');
+			var component_a = document.getElementById('a_grand_singe_antilope' + nom_table + 'Dropdown');
+			component_a.setAttribute('aria-expanded', 'true');
+			var component_ul =  document.getElementById('ul_grand_singe_antilope' + nom_table + 'Dropdown');
+			component_ul.classList.add('show');
+	    	
+			/*var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
+			component_li.classList.add('active');
+			var component_a = document.getElementById('a_animals' + nom_table + 'Dropdown');
+			component_a.setAttribute('aria-expanded', 'true');
+			var component_ul =  document.getElementById('ul_animals' + nom_table + 'Dropdown');
+			component_ul.classList.add('show');*/
+			
+			/*try {
+				var component_li = document.getElementById('li_bat' + nom_table + 'CaptureesDropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_bat' + nom_table + 'CaptureesDropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
+				component_ul.classList.add('show');
+			}
+	    	catch(error) {
+	    	};*/
+	    	
+			var component_li = document.getElementById('li_grand_singe_antilope' + nom_table);
+			component_li.classList.add('active');
+		};
+		
+  		
+	</script> 
+
+		
+  </body>
 </html>
 	 

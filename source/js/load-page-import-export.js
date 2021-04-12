@@ -3,7 +3,9 @@ function chargement_des_tables_d_importation() {
 	
     var table = searchParams.get('table');
     
-	chargement_des_tables_de_reference(table);
+    if (table != "_ipg_guinee") {
+    	chargement_des_tables_de_reference(table);
+    }
 }
 
 function chargement_des_tables_de_reference(table) {
