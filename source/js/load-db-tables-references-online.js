@@ -44,7 +44,10 @@ if  (debug !== '') {
 		  'donnees_mission_astre_gabon_debug', 'donnees_journalieres_astre_gabon_debug',
 		  'chauves_souris_capturees_mivegec_debug', 'chauves_souris_non_invasives_mivegec_debug',
 		  'site_mivegec_debug', 
-		  'donnees_mission_mivegec_debug', 'donnees_journalieres_mivegec_debug'];
+		  'donnees_mission_mivegec_debug', 'donnees_journalieres_mivegec_debug',
+		  'grands_singes_antilopes_transvihmi_cameroun_debug', 'grands_singes_antilopes_transvihmi_rdc_debug',
+		  'grands_singes_antilopes_transvihmi_rca_debug', 'grands_singes_antilopes_transvihmi_rwanda_debug',
+		  'animals_ipg_guinee_debug'];
 } else if ((code_equipe === '1') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
 						  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
@@ -52,11 +55,18 @@ if  (debug !== '') {
 } else if ((code_equipe === '1') && (nom_pays == 'cameroun')) {
 			tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
 				  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
-				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun'];
+				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
+				  'grands_singes_antilopes_transvihmi_cameroun'];
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
-		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc'];
+		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',
+		  'grands_singes_antilopes_transvihmi_rdc'];
+} else if ((code_equipe === '1') && (nom_pays == 'rca')) {
+	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
+		  'grands_singes_antilopes_transvihmi_rca'];
+} else if ((code_equipe === '1') && (nom_pays == 'rwanda')) {
+	tables_principales = ['grands_singes_antilopes_transvihmi_rwanda'];
 } else if ((code_equipe === '1') && (nom_pays == 'tous')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
 		  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
@@ -66,13 +76,17 @@ if  (debug !== '') {
 		  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
 		  'chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
-		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc'];
+		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',
+		  'grands_singes_antilopes_transvihmi_cameroun', 'grands_singes_antilopes_transvihmi_rdc',
+		  'grands_singes_antilopes_transvihmi_rca', 'grands_singes_antilopes_transvihmi_rwanda'];
 } else if ((code_equipe === '2') && (nom_pays == 'congo')) {
 	tables_principales = ['animals_mivegec_congo'];
 } else if ((code_equipe === '2') && (nom_pays == 'gabon')) {
 	tables_principales = ['animals_mivegec_gabon'];
 } else if ((code_equipe === '2') && (nom_pays == 'tous')) {
 	tables_principales = ['animals_mivegec_congo', 'animals_mivegec_gabon'];
+} else if ((code_equipe === '5') && (nom_pays == 'tous')) {
+	tables_principales = ['animals_ipg_guinee'];	
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_astre_guinee', 'chauves_souris_non_invasives_astre_guinee', 
 						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee'];
@@ -154,6 +168,8 @@ if  (debug !== '') {
 } else if ((code_equipe === '2') && (nom_pays == 'gabon')) {
 	var tables_references = [];
 } else if ((code_equipe === '2') && (nom_pays == 'tous')) {
+	var tables_references = [];
+} else if ((code_equipe === '5') && (nom_pays == 'tous')) {
 	var tables_references = [];
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	var tables_references = 

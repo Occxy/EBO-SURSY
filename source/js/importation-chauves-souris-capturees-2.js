@@ -249,7 +249,7 @@ function importation() {
 function fields_is_valid() {
 	for (var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 		if (field[rowCountContent] != valid_field[rowCountContent]) {
-			//console.log(field[rowCountContent] + '-' + valid_field[rowCountContent]);	
+			console.log(field[rowCountContent] + '-' + valid_field[rowCountContent]);	
 			if (field[rowCountContent] != '') {
 				return false;
 			}			

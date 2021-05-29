@@ -66,7 +66,7 @@
             	
   </head>
 
-  <body onload="chargement_de_la_page_d_inscription()">
+  <body > <!--  onload="chargement_de_la_page_d_inscription()"-->
   
     <script type="text/javascript">
     	showErrors();   	
@@ -142,7 +142,12 @@
 	                      <label for="registerEquipe">Equipe</label>
 	                      <div class="input-group">	                        
 	                        <select id="registerEquipe" class="form-control" required>
-                              <option></option>
+                              <option value="1">IRD - UMI TransVIHMI</option>
+                              <option value="2">IRD - UMR MIVEGEC</option>
+                              <option value="3">Institut Pasteur Paris - CIBU</option>
+                              <option value="4">Institut Pasteur Paris - Unité d'Epidémiologie et Physiopathologie des Virus Oncogènes</option>
+                              <option value="5">Institut Pasteur Guinée</option>
+                              <option value="6">Cirad – UMR ASTRE</option>
                             </select>                             
                             <div class="invalid-feedback">
                               Veuillez sélectionner une équipe !
@@ -244,7 +249,8 @@
 				l.start();
 					
 				var username = document.getElementById('registerUsername').value;
-				var code_equipe = String(document.getElementById('registerEquipe').selectedIndex);
+				//var code_equipe = String(document.getElementById('registerEquipe').selectedIndex);
+				var code_equipe = String(document.getElementById('registerEquipe').value);
 				var el_equipe = document.getElementById('registerEquipe');
 				var equipe = document.getElementById('registerEquipe').options[el_equipe.selectedIndex].text;
 				var digicode = document.getElementById('registerCodeVerification').value;

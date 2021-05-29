@@ -58,7 +58,7 @@ document.getElementById("label_prelevements_cibu_count").innerHTML = localStorag
 
 if (String(fonction) == 'admin') {
 	
-	if (code_equipe != 2) {
+	if ((code_equipe != 2) && (code_equipe != 5)) {
 		document.getElementById("card_tables_references").style.display="block";
 		document.getElementById("card_tables_phenologie").style.display="block";
 		document.getElementById("card_tables_espece_chauves_souris").style.display="block";
@@ -295,6 +295,10 @@ if (String(fonction) == 'admin') {
 			['espece_transvihmi_rdc', '']
 		];
 	} else if (code_equipe == 2) {
+		var fields = [];
+		var fields2 = [];
+		var fields3 = [];		
+	} else if (code_equipe == 5) {
 		var fields = [];
 		var fields2 = [];
 		var fields3 = [];		

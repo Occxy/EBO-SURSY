@@ -12,6 +12,11 @@ localStorage.removeItem('viande_de_brousse_mivegec_count');
 localStorage.removeItem('chauves_souris_capturees_astre_count');
 localStorage.removeItem('chauves_souris_non_invasives_astre_count');
 
+localStorage.removeItem('grands_singes_antilopes_transvihmi_cameroun');
+localStorage.removeItem('grands_singes_antilopes_transvihmi_rdc');
+localStorage.removeItem('grands_singes_antilopes_transvihmi_rca');
+localStorage.removeItem('grands_singes_antilopes_transvihmi_rwanda');
+
 localStorage.removeItem('step');
 	
 var remote_couchdb = localStorage.getItem('remote_couchdb');

@@ -552,26 +552,17 @@
                 	  </ul>
                     </li>
                     
-                    <li id="li_IPGDropdown" name="5"> <a id="a_IPGDropdown" href="#ul_IPGDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
-                      <ul id="ul_IPGDropdown" class="collapse list-unstyled">
-                        <li id="li_batIPGDropdown" name="5"><a id="a_batIPGDropdown" href="#ul_batIPGDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
-                          <ul id="ul_batIPGDropdown" class="collapse list-unstyled">
-		                    <li id="li_batIPGCaptureesDropdown" name="5"><a id="a_batIPGCaptureesDropdown" href="#ul_batIPGCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
-		                      <ul id="ul_batIPGCaptureesDropdown" class="collapse list-unstyled">
-		                        <li id="li_bat_capturees_ipg" name="5"><a href="#">données</a></li>                            
-		                        <li id="li_bat_map_capturees_ipg" name="5"><a href="#">carte</a></li>
-		                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>                            
-                              </ul>
-		                    </li>
-		                    <li id="li_batIPGNonInvasivesDropdown" name="5"><a id="a_batIPGNonInvasivesDropdown" href="#ul_batIPGNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
-		                      <ul id="ul_batIPGNonInvasivesDropdown" class="collapse list-unstyled">
-		                        <li id="li_bat_non_invasives_ipg" name="5"><a href="#">données</a></li>                          
-	                            <li id="li_bat_map_non_invasives_ipg" name="5"><a href="#">carte</a></li>
-    	                        <li id="li_importation_bat_ipg" name="5"><a href="#">importation/exportation</a></li>
-                              </ul>
-		                    </li>
-	                      </ul>
-                	    </li>
+                    <li id="li_ipgDropdown" name="5"> <a id="a_ipgDropdown" href="#ul_ipgDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-IPG"></i> </a>
+                      <ul id="ul_ipgDropdown" class="collapse list-unstyled">
+                          
+                        <li id="li_ipg_guineeDropdown" name="5" pays="guinee"> <a id="a_ipg_guineeDropdown" name="5" href="#ul_ipg_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
+                      	  <ul id="ul_ipg_guineeDropdown" name="5" pays="guinee" class="collapse list-unstyled">
+                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">données</a></li>                            
+		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
+		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
+                          </ul>
+		                </li>
+                        
                 	  </ul>
                     </li>
                     
@@ -609,87 +600,66 @@
                             
                             
                             
-                            <div id="ID_animal_div" class="row" style="display: none;">
+                            <div id="ID_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="ID_animal">ID animal</label>
+	      			    	      <label for="ID">ID</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="ID_animal_1" name="ID_animal" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="ID_1" name="ID" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
 	      			    	      </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group">
-	      			    	      <input id="ID_animal_value" type="text" class="form-control" placeholder="ID animal" >
+	      			    	      <input id="ID_value" type="text" class="form-control" placeholder="ID" >
 				                </div>
 							  </div>	
                             </div> 
                             
-                            <div id="pays_div" class="row" style="display: none;">
+                            <div id="Especes_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="pays">Pays</label>
+	      			    	      <label for="Especes">Especes</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="pays_1" name="pays" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Especes_1" name="Especes" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
 	      			    	      </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group">
-	      			    	      <input id="pays_value" type="text" class="form-control" placeholder="Pays" >
+	      			    	      <input id="Especes_value" type="text" class="form-control" placeholder="Especes" >
 				                </div>
 							  </div>	
                             </div> 
                             
-                            <div id="mission_div" class="row" style="display: none;">
+                            <div id="Sampling_date_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="mission">Mission</label>
+	      			    	      <label for="Sampling_date">Sampling_date</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="mission_1" name="mission" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="mission_value" type="text" class="form-control" placeholder="Mission" >
-				                </div>
-							  </div>	
-                            </div> 
-                            
-                            
-                            <div id="date_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="date">Date</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="date_1" name="date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
-							  	    <a id="date_2" name="date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
-							  	    <a id="date_3" name="date"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-							  	    <a id="date_4" name="date"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
-							  	    <a id="date_5" name="date"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
+	      			    	        <a id="Sampling_date_1" name="Sampling_date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><</a></h4>
+							  	    <a id="Sampling_date_2" name="Sampling_date"  class="btn btn-secondary btn-fill button_select" style="color: white;"><=</a></h4>
+							  	    <a id="Sampling_date_3" name="Sampling_date"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	    <a id="Sampling_date_4" name="Sampling_date"  class="btn btn-secondary btn-fill button_select" style="color: white;">>=</a></h4>
+							  	    <a id="Sampling_date_5" name="Sampling_date"  class="btn btn-secondary btn-fill button_select" style="color: white;">></a></h4>
 							  	  </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group" style="display: flex;">
-	      			    	      <input type="text" class="form-control input-datepicker" id="date_value" placeholder="Date" required>
+	      			    	      <input type="text" class="form-control input-datepicker" id="Sampling_date_value" placeholder="Sampling_date" required>
 		    					  <div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
 		                            <span class="fa fa-calendar"></span>
 		    					  </div>
@@ -697,42 +667,143 @@
 							  </div>	
                             </div>    
                             
-                            <div id="village_div" class="row" style="display: none;">
+                            <div id="Weight_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="village">Village</label>
+	      			    	      <label for="Weight">Weight</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="village_1" name="village" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Weight_1" name="Weight" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
 	      			    	      </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group">
-	      			    	      <input id="village_value" type="text" class="form-control" placeholder="Village" >
+	      			    	      <input id="Weight_value" type="text" class="form-control" placeholder="Weight" >
 				                </div>
 							  </div>	
                             </div>    
                              
-                            <div id="type_chasse_capture_div" class="row" style="display: none;">
+                            <div id="Enclos_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="type_chasse_capture">Type chasse capture</label>
+	      			    	      <label for="Enclos">Enclos</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="type_chasse_capture_1" name="type_chasse_capture" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Enclos_1" name="Enclos" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
 	      			    	      </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group">
-	      			    	      <input id="type_chasse_capture_value" type="text" class="form-control" placeholder="Type chasse capture" >
+	      			    	      <input id="Enclos_value" type="text" class="form-control" placeholder="Enclos" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Age_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Age">Age</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Age_1" name="Age"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+							  	  </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Age_value" type="text" class="form-control" placeholder="Age" >
+				                </div>
+							  </div>	
+                            </div>                              
+                                                        
+                            <div id="Sex_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sex">Sex</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sex_1" name="Sex" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sex_value" type="text" class="form-control" placeholder="Sex" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Sampling_site_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Sampling_site">Sampling_site</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Sampling_site_1" name="Sampling_site" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Sampling_site_value" type="text" class="form-control" placeholder="Sampling_site" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            
+                            <div id="Owner_name_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Owner_name">Owner_name</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Owner_name_1" name="Owner_name" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Owner_name_value" type="text" class="form-control" placeholder="Owner_name" >
+				                </div>
+							  </div>	
+                            </div>
+                            
+                            <div id="Origin_div" class="row" style="display: none;">
+                              <div class="col-lg-5">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Origin">Origin</label>
+					            </div>
+							  </div>
+							  <div class="col-lg-3">
+							    <div class="form-group">
+							      <div class="row">
+	      			    	        <a id="Origin_1" name="Origin" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	      </div>
+				                </div>
+							  </div>
+				              <div class="col-lg-4">
+							    <div class="form-group">
+	      			    	      <input id="Origin_value" type="text" class="form-control" placeholder="Origin" >
 				                </div>
 							  </div>	
                             </div>
@@ -777,143 +848,22 @@
 							  </div>	
                             </div>
                             
-                            <div id="animal_div" class="row" style="display: none;">
+                            <div id="Other_information_div" class="row" style="display: none;">
                               <div class="col-lg-5">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="animal">Animal</label>
+	      			    	      <label for="Other_information">Other_information</label>
 					            </div>
 							  </div>
 							  <div class="col-lg-3">
 							    <div class="form-group">
 							      <div class="row">
-	      			    	        <a id="animal_1" name="animal"  class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-							  	  </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="animal_value" type="text" class="form-control" placeholder="Animal" >
-				                </div>
-							  </div>	
-                            </div>                              
-                                                        
-                            <div id="especes_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="especes">Especes</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="especes_1" name="especes" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
+	      			    	        <a id="Other_information_1" name="Other_information" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
 	      			    	      </div>
 				                </div>
 							  </div>
 				              <div class="col-lg-4">
 							    <div class="form-group">
-	      			    	      <input id="especes_value" type="text" class="form-control" placeholder="Especes" >
-				                </div>
-							  </div>	
-                            </div>
-                            
-                            <div id="sexes_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="sexes">Sexes</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="sexes_1" name="sexes" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="sexes_value" type="text" class="form-control" placeholder="Sexes" >
-				                </div>
-							  </div>	
-                            </div>
-                            
-                            
-                            <div id="age_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="age">Age</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="age_1" name="age" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="age_value" type="text" class="form-control" placeholder="Age" >
-				                </div>
-							  </div>	
-                            </div>
-                            
-                            <div id="poids_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="poids">Poids</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="poids_1" name="poids" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="poids_value" type="text" class="form-control" placeholder="Poids" >
-				                </div>
-							  </div>	
-                            </div>
-                              
-                            <div id="etat-physioloque_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="etat-physioloque">Etat-physioloque</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="etat-physioloque_1" name="etat-physioloque" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="etat-physioloque_value" type="text" class="form-control" placeholder="Etat-physioloque" >
-				                </div>
-							  </div>	
-                            </div>
-                            
-                            <div id="plasma_div" class="row" style="display: none;">
-                              <div class="col-lg-5">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="plasma">Plasma</label>
-					            </div>
-							  </div>
-							  <div class="col-lg-3">
-							    <div class="form-group">
-							      <div class="row">
-	      			    	        <a id="plasma_1" name="plasma" class="btn btn-secondary btn-fill button_select" style="color: white;">=</a></h4>
-	      			    	      </div>
-				                </div>
-							  </div>
-				              <div class="col-lg-4">
-							    <div class="form-group">
-	      			    	      <input id="plasma_value" type="text" class="form-control" placeholder="Plasma" >
+	      			    	      <input id="Other_information_value" type="text" class="form-control" placeholder="Other_information" >
 				                </div>
 							  </div>	
                             </div>   
@@ -1538,12 +1488,12 @@
     <script type="text/javascript">
    		$('#spanDate').click(function(){
 	   		event.stopPropagation(); 
-	   	    dp = $('#Date_value').datepicker({
+	   	    dp = $('#Sampling_date_value').datepicker({
 	   	    	language: 'fr',
 	   	    	autoclose: true
 	   	    });
 	   		dp.show();
-	   		$('#Date_value').focus();
+	   		$('#Sampling_date_value').focus();
 		});
     </script>
     
@@ -1597,9 +1547,17 @@
 		
 		if (localStorage.getItem('web') === 'oui') {
 			var remote_couchdb = localStorage.getItem('remote_couchdb');
-			var DB = new PouchDB(remote_couchdb + type_table + nom_table + debug);
+			if (type_table == "animals_ipg") {
+				var DB = new PouchDB(remote_couchdb + 'animals' + nom_table + debug);
+			} else {
+				var DB = new PouchDB(remote_couchdb + type_table + nom_table + debug);
+			}
 		} else {
-			var DB = new PouchDB(type_table + nom_table + debug);
+			if (type_table == "animals_ipg") {
+				var DB = new PouchDB(remote_couchdb + 'animals' + nom_table + debug);
+			} else {
+				var DB = new PouchDB(type_table + nom_table + debug);
+			}
 		};
 		
 	    var count, step;
@@ -1637,23 +1595,37 @@
 						
 						var array_selected_fields = JSON.parse(localStorage.getItem("fields_selected"));
 		    			
-						if (array_selected_fields.indexOf('ID_animal') > -1) {
-			    			CSV = CSV + 'ID_animal;'
+						alert('ok');
+						
+						if (array_selected_fields.indexOf('ID') > -1) {
+			    			CSV = CSV + 'ID;'
 			    		};
-			    		if (array_selected_fields.indexOf('pays') > -1) {
-			    			CSV = CSV + 'pays;'
+			    		if (array_selected_fields.indexOf('Especes') > -1) {
+			    			CSV = CSV + 'Especes;'
 			    		};
-			    		if (array_selected_fields.indexOf('mission') > -1) {
-			    			CSV = CSV + 'mission;'
+			    		if (array_selected_fields.indexOf('Sampling_date') > -1) {
+			    			CSV = CSV + 'Sampling_date;'
 			    		};
-			    		if (array_selected_fields.indexOf('date') > -1) {
-			    			CSV = CSV + 'date;'
+			    		if (array_selected_fields.indexOf('Weight') > -1) {
+			    			CSV = CSV + 'Weight;'
 			    		};
-			    		if (array_selected_fields.indexOf('village') > -1) {
-			    			CSV = CSV + 'village;'
+			    		if (array_selected_fields.indexOf('Enclos') > -1) {
+			    			CSV = CSV + 'Enclos;'
 			    		};
-			    		if (array_selected_fields.indexOf('type_chasse_capture') > -1) {
-			    			CSV = CSV + 'type_chasse_capture;'
+			    		if (array_selected_fields.indexOf('Age') > -1) {
+			    			CSV = CSV + 'Age;'
+			    		};
+			    		if (array_selected_fields.indexOf('Sex') > -1) {
+			    			CSV = CSV + 'Sex;'
+			    		};
+			    		if (array_selected_fields.indexOf('Sampling_site') > -1) {
+			    			CSV = CSV + 'Sampling_site;'
+			    		};
+			    		if (array_selected_fields.indexOf('Owner_name') > -1) {
+			    			CSV = CSV + 'Owner_name;'
+			    		};
+			    		if (array_selected_fields.indexOf('Origin') > -1) {
+			    			CSV = CSV + 'Origin;'
 			    		};
 			    		if (array_selected_fields.indexOf('Point_GPS_LAT') > -1) {
 			    			CSV = CSV + 'Point_GPS_LAT;'
@@ -1661,121 +1633,21 @@
 			    		if (array_selected_fields.indexOf('Point_GPS_LONG') > -1) {
 			    			CSV = CSV + 'Point_GPS_LONG;'
 			    		};
-			    		if (array_selected_fields.indexOf('animal') > -1) {
-			    			CSV = CSV + 'animal;'
-			    		};
-			    		if (array_selected_fields.indexOf('especes') > -1) {
-			    			CSV = CSV + 'especes;'
-			    		};
-			    		if (array_selected_fields.indexOf('sexes') > -1) {
-			    			CSV = CSV + 'sexes;'
-			    		};
-			    		if (array_selected_fields.indexOf('age') > -1) {
-			    			CSV = CSV + 'age;'
-			    		};
-			    		if (array_selected_fields.indexOf('poids') > -1) {
-			    			CSV = CSV + 'poids;'
-			    		};
-			    		if (array_selected_fields.indexOf('etat-physioloque') > -1) {
-			    			CSV = CSV + 'etat-physioloque;'
-			    		};
-			    		if (array_selected_fields.indexOf('plasma') > -1) {
-			    			CSV = CSV + 'plasma;'
-			    		};
-			    		if (array_selected_fields.indexOf('serum') > -1) {
-			    			CSV = CSV + 'serum;'
-			    		};
-			    		if (array_selected_fields.indexOf('blood_spot') > -1) {
-			    			CSV = CSV + 'blood_spot;'
-			    		};
-			    		if (array_selected_fields.indexOf('coeur') > -1) {
-			    			CSV = CSV + 'coeur;'
-			    		};
-			    		if (array_selected_fields.indexOf('cerveau') > -1) {
-			    			CSV = CSV + 'cerveau;'
-			    		};
-			    		if (array_selected_fields.indexOf('foie_rate') > -1) {
-			    			CSV = CSV + 'foie_rate;'
-			    		};
-			    		if (array_selected_fields.indexOf('glandes_salivaires') > -1) {
-			    			CSV = CSV + 'glandes_salivaires;'
-			    		};
-			    		if (array_selected_fields.indexOf('poumons') > -1) {
-			    			CSV = CSV + 'poumons;'
-			    		};
-			    		if (array_selected_fields.indexOf('reins') > -1) {
-			    			CSV = CSV + 'reins;'
-			    		};
-			    		if (array_selected_fields.indexOf('intestins') > -1) {
-			    			CSV = CSV + 'intestins;'
-			    		};
-			    		if (array_selected_fields.indexOf('urine') > -1) {
-			    			CSV = CSV + 'urine;'
-			    		};
-			    		if (array_selected_fields.indexOf('ecouvillon_salivaire') > -1) {
-			    			CSV = CSV + 'ecouvillon_salivaire;'
-			    		};
-			    		if (array_selected_fields.indexOf('ecouvillon_rectal') > -1) {
-			    			CSV = CSV + 'ecouvillon_rectal;'
-			    		};
-			    		if (array_selected_fields.indexOf('ecouvillon_nasal') > -1) {
-			    			CSV = CSV + 'ecouvillon_nasal;'
-			    		};
-			    		if (array_selected_fields.indexOf('ectoparasites') > -1) {
-			    			CSV = CSV + 'ectoparasites;'
-			    		};
-			    		if (array_selected_fields.indexOf('placenta') > -1) {
-			    			CSV = CSV + 'placenta;'
-			    		};
-			    		if (array_selected_fields.indexOf('liquide_amniotique') > -1) {
-			    			CSV = CSV + 'liquide_amniotique;'
-			    		};
-			    		if (array_selected_fields.indexOf('testicules') > -1) {
-			    			CSV = CSV + 'testicules;'
-			    		};
-			    		if (array_selected_fields.indexOf('lesions_ou_nodules') > -1) {
-			    			CSV = CSV + 'lesions_ou_nodules;'
-			    		};
-			    		if (array_selected_fields.indexOf('lait') > -1) {
-			    			CSV = CSV + 'lait;'
-			    		};
-			    		if (array_selected_fields.indexOf('foetus') > -1) {
-			    			CSV = CSV + 'foetus;'
-			    		};
-			    		if (array_selected_fields.indexOf('observation') > -1) {
-			    			CSV = CSV + 'observation;'
-			    		};
-			    		if (array_selected_fields.indexOf('guano') > -1) {
-			    			CSV = CSV + 'guano;'
-			    		};
-			    		if (array_selected_fields.indexOf('longueur_bras') > -1) {
-			    			CSV = CSV + 'longueur_bras;'
-			    		};
-			    		if (array_selected_fields.indexOf('longueur_avant_bras') > -1) {
-			    			CSV = CSV + 'longueur_avant_bras;'
-			    		};
-			    		if (array_selected_fields.indexOf('longueur_corporelle') > -1) {
-			    			CSV = CSV + 'longueur_corporelle;'
+			    		if (array_selected_fields.indexOf('Other_information') > -1) {
+			    			CSV = CSV + 'Other_information;'
 			    		};
 			    		if (array_selected_fields.indexOf('Username') > -1) {
 			    			CSV = CSV + 'Username;'
 			    		};
 								    			
-						CSV = CSV + "\r\n";						
+						CSV = CSV + "\r\n";	
 						
-			    		var donnees_journalieres_TablesData = JSON.parse(JSON.stringify(result));
+						var animals_ipg_TablesData = JSON.parse(JSON.stringify(result));
 						
-			    		
-			    		donnees_journalieres_TablesData.rows.forEach(function(row){   
-			    			addDonneesJournalieres(row);
-			    			console.log(row.doc.date);
+						animals_ipg_TablesData.rows.forEach(function(row){   
+			    			addAnimals_ipg(row);
 			    		});		
-			    		
-			    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
-		    			//saveAs(blob, "testfile1.csv");
-		    			
-		    			//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
-		    			
+						
 		    			hide_progress_bar();
 		    			l.stop();
 			    				    		
@@ -1790,71 +1662,57 @@
  		    
         });
     	
-    	function addDonneesJournalieres(row) {
+    	function addAnimals_ipg(row) {
     		
     		if (count > 0) {
     			
     			move();
     			
-				if (addToCSV('ID_animal', row.doc.ID_animal) &&
-				    addToCSV('pays', row.doc.pays) &&
-				    addToCSV('mission', row.doc.mission) &&
-				    addDateToCSV('date', row.doc.date) &&
-				    addToCSV('village', row.doc.village) &&
-				    addToCSV('type_chasse_capture', row.doc.type_chasse_capture) &&
+				if (addToCSV('ID', row.doc.ID) &&
+				    addToCSV('Especes', row.doc.Especes) &&
+				    addDateToCSV('Sampling_date', row.doc.Sampling_date) &&
+				    addToCSV('Weight', row.doc.Weight) &&
+				    addToCSV('Enclos', row.doc.Enclos) &&
+				    addToCSV('Age', row.doc.Age) &&
+				    addToCSV('Sex', row.doc.Sex) &&
+				    addToCSV('Sampling_site', row.doc.Sampling_site) &&
+				    addToCSV('Owner_name', row.doc.Owner_name) &&
+				    addToCSV('Origin', row.doc.Origin) &&
 				    addToCSV('Point_GPS_LAT', row.doc.Point_GPS_LAT) &&
 				    addToCSV('Point_GPS_LONG', row.doc.Point_GPS_LONG) &&
-				    addToCSV('animal', row.doc.animal) &&
-				    addToCSV('especes', row.doc.especes) &&
-				    addToCSV('sexes', row.doc.sexes) &&
-				    addToCSV('age', row.doc.age) &&
-				    addToCSV('poids', row.doc.poids) &&
-				    addToCSV('etat-physioloque', row.doc['etat-physioloque']) &&
-				    addToCSV('plasma', row.doc.plasma) &&
-				    addToCSV('serum', row.doc.serum) &&
-				    addToCSV('blood_spot', row.doc.blood_spot) &&
-				    addToCSV('coeur', row.doc.coeur) &&
-				    addToCSV('cerveau', row.doc.cerveau) &&
-				    addToCSV('foie_rate', row.doc.foie_rate) &&
-				    addToCSV('glandes_salivaires', row.doc.glandes_salivaires) &&
-				    addToCSV('poumons', row.doc.poumons) &&
-				    addToCSV('intestins', row.doc.intestins) &&
-				    addToCSV('urine', row.doc.urine) &&
-				    addToCSV('ecouvillon_salivaire', row.doc.ecouvillon_salivaire) &&
-				    addToCSV('ecouvillon_rectal', row.doc.ecouvillon_rectal) &&
-				    addToCSV('ecouvillon_nasal', row.doc.ecouvillon_nasal) &&
-				    addToCSV('ectoparasites', row.doc.ectoparasites) &&
-				    addToCSV('placenta', row.doc.placenta) &&
-				    addToCSV('liquide_amniotique', row.doc.liquide_amniotique) &&
-				    addToCSV('testicules', row.doc.testicules) &&
-				    addToCSV('lesions_ou_nodules', row.doc.lesions_ou_nodules) &&
-				    addToCSV('lait', row.doc.lait) &&
-				    addToCSV('foetus', row.doc.foetus) &&
-				    addToCSV('observation', row.doc.observation) &&
-				    addToCSV('guano', row.doc.guano) &&
-				    addToCSV('longueur_bras', row.doc.longueur_bras) &&
-				    addToCSV('longueur_avant_bras', row.doc.longueur_avant_bras) &&
-				    addToCSV('longueur_corporelle', row.doc.longueur_corporelle) 
+				    addToCSV('Other_information', row.doc.Other_information) 
 				) {
 					
   				
-					if (array_selected_fields.indexOf('ID_animal') > -1) {
-						CSV = CSV + row.doc.ID_animal + ";"
+					if (array_selected_fields.indexOf('ID') > -1) {
+						CSV = CSV + row.doc.ID + ";"
 					};
-					if (array_selected_fields.indexOf('pays') > -1) {
-						CSV = CSV + row.doc.pays + ";"
+					if (array_selected_fields.indexOf('Especes') > -1) {
+						CSV = CSV + row.doc.Especes + ";"
 					};
-					if (array_selected_fields.indexOf('mission') > -1) {
-						CSV = CSV + row.doc.mission + ";"
+					if (array_selected_fields.indexOf('Sampling_date') > -1) {
+						CSV = CSV + row.doc.Sampling_date + ";"
 					};
-					if (array_selected_fields.indexOf('date') > -1) {
-						CSV = CSV + row.doc.date + ";"
+					if (array_selected_fields.indexOf('Weight') > -1) {
+						CSV = CSV + row.doc.Weight + ";"
 					};
-					if (array_selected_fields.indexOf('village') > -1) {
-						CSV = CSV + row.doc.village + ";"
+					if (array_selected_fields.indexOf('Enclos') > -1) {
+						CSV = CSV + row.doc.Enclos + ";"
 					};
-					if (array_selected_fields.indexOf('type_chasse_capture') > -1) {
-						CSV = CSV + row.doc.type_chasse_capture + ";"
+					if (array_selected_fields.indexOf('Age') > -1) {
+						CSV = CSV + row.doc.Age + ";"
+					};
+					if (array_selected_fields.indexOf('Sex') > -1) {
+						CSV = CSV + row.doc.Sex + ";"
+					};
+					if (array_selected_fields.indexOf('Sampling_site') > -1) {
+						CSV = CSV + row.doc.Sampling_site + ";"
+					};
+					if (array_selected_fields.indexOf('Owner_name') > -1) {
+						CSV = CSV + row.doc.Owner_name + ";"
+					};
+					if (array_selected_fields.indexOf('Origin') > -1) {
+						CSV = CSV + row.doc.Origin + ";"
 					};
 					if (array_selected_fields.indexOf('Point_GPS_LAT') > -1) {
 						CSV = CSV + row.doc.Point_GPS_LAT + ";"
@@ -1862,101 +1720,8 @@
 					if (array_selected_fields.indexOf('Point_GPS_LONG') > -1) {
 						CSV = CSV + row.doc.Point_GPS_LONG + ";"
 					};
-					if (array_selected_fields.indexOf('animal') > -1) {
-						CSV = CSV + row.doc.animal + ";"
-					};
-					if (array_selected_fields.indexOf('especes') > -1) {
-						CSV = CSV + row.doc.especes + ";"
-					};
-					if (array_selected_fields.indexOf('sexes') > -1) {
-						CSV = CSV + row.doc.sexes + ";"
-					};
-					if (array_selected_fields.indexOf('age') > -1) {
-						CSV = CSV + row.doc.age + ";"
-					};
-					if (array_selected_fields.indexOf('poids') > -1) {
-						CSV = CSV + row.doc.poids + ";"
-					};
-					if (array_selected_fields.indexOf('etat-physioloque') > -1) {
-						CSV = CSV + row.doc['etat-physioloque'] + ";"
-					};
-					if (array_selected_fields.indexOf('plasma') > -1) {
-						CSV = CSV + row.doc.plasma + ";"
-					};
-					if (array_selected_fields.indexOf('serum') > -1) {
-						CSV = CSV + row.doc.serum + ";"
-					};
-					if (array_selected_fields.indexOf('blood_spot') > -1) {
-						CSV = CSV + row.doc.blood_spot + ";"
-					};
-					if (array_selected_fields.indexOf('coeur') > -1) {
-						CSV = CSV + row.doc.coeur + ";"
-					};
-					if (array_selected_fields.indexOf('cerveau') > -1) {
-						CSV = CSV + row.doc.cerveau + ";"
-					};
-					if (array_selected_fields.indexOf('foie_rate') > -1) {
-						CSV = CSV + row.doc.foie_rate + ";"
-					};
-					if (array_selected_fields.indexOf('glandes_salivaires') > -1) {
-						CSV = CSV + row.doc.glandes_salivaires + ";"
-					};
-					if (array_selected_fields.indexOf('poumons') > -1) {
-						CSV = CSV + row.doc.poumons + ";"
-					};
-					if (array_selected_fields.indexOf('reins') > -1) {
-						CSV = CSV + row.doc.reins + ";"
-					};
-					if (array_selected_fields.indexOf('intestins') > -1) {
-						CSV = CSV + row.doc.intestins + ";"
-					};
-					if (array_selected_fields.indexOf('urine') > -1) {
-						CSV = CSV + row.doc.urine + ";"
-					};
-					if (array_selected_fields.indexOf('ecouvillon_salivaire') > -1) {
-						CSV = CSV + row.doc.ecouvillon_salivaire + ";"
-					};
-					if (array_selected_fields.indexOf('ecouvillon_rectal') > -1) {
-						CSV = CSV + row.doc.ecouvillon_rectal + ";"
-					};
-					if (array_selected_fields.indexOf('ecouvillon_nasal') > -1) {
-						CSV = CSV + row.doc.ecouvillon_nasal + ";"
-					};
-					if (array_selected_fields.indexOf('ectoparasites') > -1) {
-						CSV = CSV + row.doc.ectoparasites + ";"
-					};
-					if (array_selected_fields.indexOf('placenta') > -1) {
-						CSV = CSV + row.doc.placenta + ";"
-					};
-					if (array_selected_fields.indexOf('liquide_amniotique') > -1) {
-						CSV = CSV + row.doc.liquide_amniotique + ";"
-					};
-					if (array_selected_fields.indexOf('testicules') > -1) {
-						CSV = CSV + row.doc.testicules + ";"
-					};
-					if (array_selected_fields.indexOf('lesions_ou_nodules') > -1) {
-						CSV = CSV + row.doc.lesions_ou_nodules + ";"
-					};
-					if (array_selected_fields.indexOf('lait') > -1) {
-						CSV = CSV + row.doc.lait + ";"
-					};
-					if (array_selected_fields.indexOf('foetus') > -1) {
-						CSV = CSV + row.doc.foetus + ";"
-					};
-					if (array_selected_fields.indexOf('observation') > -1) {
-						CSV = CSV + row.doc.observation + ";"
-					};
-					if (array_selected_fields.indexOf('guano') > -1) {
-						CSV = CSV + row.doc.guano + ";"
-					};
-					if (array_selected_fields.indexOf('longueur_bras') > -1) {
-						CSV = CSV + row.doc.longueur_bras + ";"
-					};
-					if (array_selected_fields.indexOf('longueur_avant_bras') > -1) {
-						CSV = CSV + row.doc.longueur_avant_bras + ";"
-					};
-					if (array_selected_fields.indexOf('longueur_corporelle') > -1) {
-						CSV = CSV + row.doc.longueur_corporelle + ";"
+					if (array_selected_fields.indexOf('Other_information') > -1) {
+						CSV = CSV + row.doc.Other_information + ";"
 					};
 					if (array_selected_fields.indexOf('Username') > -1) {
 						CSV = CSV + row.doc.Username + ";"
@@ -2305,6 +2070,8 @@
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
 				|| (nom_table == '_astre_gabon')) {				
 			institut = 'astre';
+		} else if (nom_table == '_ipg_guinee') {
+			institut = 'ipg';
 		};
 		
 		expanded(nom_table);
@@ -2394,7 +2161,9 @@
 				var component_li = document.getElementById('li_importation_viande_de_brousse' + nom_table);
 			} else if (type_table == 'animals') {
 				var component_li = document.getElementById('li_importation_animals' + nom_table);
-			} 
+			} else if (type_table == 'animals_ipg') {
+				var component_li = document.getElementById('li_importation_animals' + nom_table);
+			}
 			component_li.classList.add('active');
 		};
 	</script> 
