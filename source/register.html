@@ -313,7 +313,7 @@
 			    		var DB_Equipe = new PouchDB('equipe');
 			    	};
 			    	
-			    	alert('digicode test');
+			    	
 			    	
 			    	DB_Equipe.find({
 				    	selector: {Code: code_equipe},
@@ -331,7 +331,9 @@
 				    }).catch(function (err) {
 						alert('erreur code : ' +  JSON.stringify(err));
 			    	});
-				    		    	
+				    		
+			    	alert('digicode test');
+			    	
 			    	if (errors.length > 0) {
 			    		window.location.reload();
 					};
