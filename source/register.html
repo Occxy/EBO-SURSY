@@ -344,22 +344,15 @@
 						
 				    	var password = document.getElementById('register-password').value;
 				    	
-				    	
+				    	alert('ok');
 					   	
-						/*try {
+						try {
 						    var bcrypt = require('bcrypt');
 						}
 						catch(error) {
 						   	var bcrypt = dcodeIO.bcrypt;
-						}*/
-					   	
-						if (localStorage.getItem('web') === 'oui') {
-
-							var bcrypt = require('bcrypt');
-							
-						} else {
-							var bcrypt = dcodeIO.bcrypt;
 						}
+						alert('ok2');
 						
 				  	  	var salt = bcrypt.genSaltSync(10);
 												
