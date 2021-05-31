@@ -319,6 +319,9 @@
 				    	
 				    	if (typeof(JSON.stringify(result.docs[0])) != "undefined"){
 				    		if (digicode != result.docs[0].Digicode_equipe) {
+				    			alert('digicode non ok');
+						    	
+					    		
 				    			addErrors("Le digicode ne correspond pas à celui de l'équipe !");	
 				    			window.location.reload();
 				    		};
@@ -377,8 +380,6 @@
 			 	  				
 					    	if (localStorage.getItem('web') === 'oui') {
 					    		
-					    		alert('ok');
-					    	
 					    		sendMail(id, token, email, msgValidate);
 								l.stop();
 							
