@@ -354,9 +354,11 @@
 						}*/
 					   	
 						if (localStorage.getItem('web') === 'oui') {
-							var bcrypt = dcodeIO.bcrypt;
+
+							var bcrypt = require('bcrypt');
+							
 						} else {
-							var bcrypt = require('bcrypt');	
+							var bcrypt = dcodeIO.bcrypt;
 						}
 						
 				  	  	var salt = bcrypt.genSaltSync(10);
