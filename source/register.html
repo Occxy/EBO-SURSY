@@ -344,7 +344,7 @@
 						
 				    	var password = document.getElementById('register-password').value;
 				    	
-				    	alert('digicode test');
+				    	
 					   	
 						try {
 						    var bcrypt = require('bcrypt');
@@ -358,7 +358,7 @@
 				  	  	password = bcrypt.hashSync(password, salt);
 					    var token = str_random(60);
 						
-					    
+					    alert('digicode test');
 					    
 					    var remote_couchdb = localStorage.getItem('remote_couchdb');
 						var remoteDB3 = new PouchDB(remote_couchdb + 'username', {skip_setup: true});	 
