@@ -63,6 +63,8 @@
     <script src="js/function.js"></script>
     
     <script src="js/send-register-mail.js"></script>
+    
+    <script src="js/bcrypt.js"></script>
             	
   </head>
 
@@ -344,14 +346,15 @@
 						
 				    	var password = document.getElementById('register-password').value;
 				    	
-				    	try {
-						    var bcrypt = require('bcryptjs');
+				    	
+					   	
+						try {
+						    var bcrypt = require('bcrypt');
 						}
 						catch(error) {
 						   	var bcrypt = dcodeIO.bcrypt;
 						}
-						
-						
+					   						
 				  	  	var salt = bcrypt.genSaltSync(10);
 												
 				  	  	password = bcrypt.hashSync(password, salt);
