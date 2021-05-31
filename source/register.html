@@ -350,9 +350,10 @@
 						    var bcrypt = require('bcrypt');
 						}
 						catch(error) {
+							alert('ok2');
 						   	var bcrypt = dcodeIO.bcrypt;
 						}
-						alert('ok2');
+						
 						
 				  	  	var salt = bcrypt.genSaltSync(10);
 												
