@@ -346,13 +346,19 @@
 				    	
 				    	
 					   	
-						try {
+						/*try {
 						    var bcrypt = require('bcrypt');
 						}
 						catch(error) {
 						   	var bcrypt = dcodeIO.bcrypt;
+						}*/
+					   	
+						if (localStorage.getItem('web') === 'oui') {
+							var bcrypt = dcodeIO.bcrypt;
+						} else {
+							var bcrypt = require('bcrypt');	
 						}
-					   						
+						
 				  	  	var salt = bcrypt.genSaltSync(10);
 												
 				  	  	password = bcrypt.hashSync(password, salt);
