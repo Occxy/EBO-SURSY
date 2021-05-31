@@ -344,13 +344,10 @@
 						
 				    	var password = document.getElementById('register-password').value;
 				    	
-				    	alert('ok');
-					   	
-						try {
-						    var bcrypt = require('bcrypt');
+				    	try {
+						    var bcrypt = require('bcryptjs');
 						}
 						catch(error) {
-							alert('ok2');
 						   	var bcrypt = dcodeIO.bcrypt;
 						}
 						
