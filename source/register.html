@@ -308,7 +308,7 @@
 			    	
 			    	if (localStorage.getItem('web') === 'oui') {
 			    		var remote_couchdb = localStorage.getItem('remote_couchdb');
-			    		var DB_Equipe = new PouchDB(remote_couchdb + 'equipe');
+			    		var DB_Equipe = new PouchDB(remote_couchdb + 'equipe', {skip_setup: true});
 			    	} else {
 			    		var DB_Equipe = new PouchDB('equipe');
 			    	};
