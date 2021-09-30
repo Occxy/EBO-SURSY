@@ -178,6 +178,11 @@ function enable_li() {
 		var component_li =  document.getElementById(li);
 		component_li.classList.add("noclick");
 	}
+	
+	if (code_equipe == '20') {
+		var component_li =  document.getElementById('li_sauvegarde');
+		component_li.style.display='block';
+	}
 };
 
 function show_infos() {

@@ -68,30 +68,25 @@
     
     <script src="js/loadjs.js"></script>
     
+    <script src="node_modules/alasql/dist/alasql.js"></script>
+    
+    <script src="js/FileSaver.js"></script>
+    <script src="js/clock.js"></script>
     <!-- <script src="js/charts.js"></script> -->
     
     <!-- <script src="js/load-page.js"></script> -->
     
   </head>
   <body onload="showConnexionStatus()"> 
+    
     <script>
 		logged_only();
-		if (localStorage.getItem('db_loaded') != '1') {
-			if (localStorage.getItem('web') === 'oui') {
-				loadjs('js/load-db-web.js');
-			} else if (navigator.onLine) {
-				loadjs('js/load-db-tables-references-online.js');
-			} else {
-		     	loadjs('js/load-alldbs-offline.js');
-	        };
-		} else {
-			loadjs('js/db_loaded.js');
-		};
-		
-		
-				
-	</script>	   
-    
+		//loadjs('js/sauvegarde.js');
+		var fields_CSV_head;
+		var count, rowcount;
+		var CSV='';
+	</script>
+	
     <div class="page">
       <!-- Main Navbar-->
       <header class="header">
@@ -560,7 +555,7 @@
                     	<a href="aide.html"><i class='a-aide'></i></a>
                     </li>
                     
-                    <li id="li_sauvegarde" style="display:none"> 
+                    <li id="li_sauvegarde"> 
                     	<a href="sauvegarde.html">Sauvegarde mensuelle</a>
                     </li>
                                     
@@ -574,96 +569,32 @@
             </div>
           </header>
           
-          <section class="charts">          
+          <section>          
             <div class="container-fluid">   
             
               <div class="row">
-                <!-- Line Charts-->
-                <div class="col-lg-12">
-                  <div class="line-chart-example card" name="6" pays="congo" style="display: none;">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Données missions</h3>
-                    </div>
-                    <div class="card-body">
-                      <canvas id="lineChartExample"></canvas>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-lg-6">
-		                <label for="year_astre_congo">Année : </label>
-					    <select id="year_astre_congo" class="form-control" onchange="select_year(this, 'donnees_mission_astre_congo')">
-					      <option>2019</option>            
-		                  <option>2020</option>
-		                </select>
-					  </div>
-					</div>	
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="row">  
-                <div class="col-lg-12">
-                  <div class="line-chart-example card" name="6" pays="congo" style="display: none;">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Données journalières</h3>
-                    </div>
-                    <div class="card-body">
-                      <canvas id="lineChartExample1"></canvas>
-                    </div>
-                
-                	<div class="row">
-                      <div class="col-lg-6">
-		                <label for="month_astre_congo">Mois : </label>
-					    <select id="month_astre_congo" class="form-control" onchange="select_month(this, year1_astre_congo, 'donnees_journalieres_astre_congo')">
-					      <option>Janvier</option>            
-		                  <option>Février</option>
-		                  <option>Mars</option>            
-		                  <option>Avril</option>
-		                  <option>Mai</option>            
-		                  <option>Juin</option>
-		                  <option>Juillet</option>            
-		                  <option>Août</option>
-		                  <option>Septembre</option>            
-		                  <option>Octobre</option>
-		                  <option>Novembre</option>            
-		                  <option>Décembre</option>
-		                </select>
-					  </div>
-					</div>
-                    <div class="row">
-                      <div class="col-lg-6">
-		                <label for="year1_astre_congo">Année : </label>
-					    <select id="year1_astre_congo" class="form-control" onchange="select_month(month_astre_congo, this, 'donnees_journalieres_astre_congo')">
-					      <option>2019</option>            
-		                  <option>2020</option>
-		                </select>
-					  </div>
-					</div> 
-					
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row">
                 <div class="col-lg-12">
                   
-                  <!-- Datepickers-->
-                  <div id="card_tables_references" style="display: none;">
+                  <div id="card_tables">
                     <div class="card">
 	                  <div class="card-header">
-	                    <h4>Gestion des tables de références (supression d'une valeur)</h4>
+	                    <h4>Tables sauvegardées</h4>
+	                    <div class="row">
+	                      <div class="col-lg-4">
+		                    <select id="type_table" class="form-control" onchange="select()">
+		                    	<option>chauves_souris_capturees_</option>
+		                    	<option>chauves_souris_non_invasives_</option>
+		                    	<option>viande_de_brousse_</option>
+		                    </select>
+		                  </div>
+	                      <div class="col-lg-4">
+		                    <select id="equipe" class="form-control" onchange="select()">
+		                    	<option>astre</option>
+		                    	<option>transvihmi</option>
+		                    </select>
+		                  </div>
+		                </div>
+	                    
 	                  </div>
 	                  <div class="card-body">
 	                    <div class="row">
@@ -673,12 +604,12 @@
 	                    </div>     
 		      			<div class="row">
 	                      <div class="col-lg-6">    
-		      			    <select id="tables_references" class="form-control">
+		      			    <select id="liste_tables" class="form-control">
 	                        </select>
 						  </div>                                                                                     
 	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_references" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
+	                        <button id="exporter" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
+					          <span class="ladda-label">Exporter</span>
 					          <span class="ladda-spinner"></span>
 						    </button>
 						  </div>
@@ -687,405 +618,7 @@
 	                </div>
                   </div>
                   
-                  <div id="card_tables_phenologie" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>Gestion de la phénologie (ajout d'une valeur)</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">    
-		      			    <label>Table</label>
-		      			  </div>                                                                                     
-	                    </div>     
-		      			<div class="row">
-	                      <div class="col-lg-6">    
-		      			    <select id="tables_phenologie" class="form-control">
-	                        </select>
-						  </div>                                                                                     
-	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_phenologie" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
-					          <span class="ladda-spinner"></span>
-						    </button>
-						  </div>
-						</div> 
-	                  </div>
-	                </div>
-                  </div>
                   
-                  <div id="card_tables_espece_chauves_souris" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>Gestion de la table espece des chauves-souris (ajout d'une valeur)</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">    
-		      			    <label>Table</label>
-		      			  </div>                                                                                     
-	                    </div>     
-		      			<div class="row">
-	                      <div class="col-lg-6">    
-		      			    <select id="tables_espece_chauves_souris" class="form-control">
-	                        </select>
-						  </div>                                                                                     
-	                      <div class="col-lg-6"> 
-	                        <button id="gerer_tables_espece_chauves_souris" type="submit" class="btn btn-primary btn-fill ladda-button" >                        	
-					          <span class="ladda-label">Gérer</span>
-					          <span class="ladda-spinner"></span>
-						    </button>
-						  </div>
-						</div> 
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  	 
-                  <!-- Datepickers-->
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - Guinée - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <!-- Datepickers-->
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - Cameroun - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <!-- Datepickers-->
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-	                  <div class="card-header">
-	                    <h4>transvihmi - RDC - Chauves-souris capturées</h4>
-	                  </div>
-	                  <div class="card-body">
-	                    <div class="row">
-	                      <div class="col-lg-6">                    	      
-		    			    <div class="form-group">
-		      			   	  <label>Nombre d'enregistrement collecté : </label>
-		      			      <label id="label_chauves_souris_capturees_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-						    </div>                                                                                     
-	                      </div>
-	                    </div>
-	                  </div>
-	                </div>
-                  </div>
-                  
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Guinée - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Cameroun - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - RDC - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Guinée - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="cameroun" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - Cameroun - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_cameroun_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="1" pays="rdc" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>transvihmi - RDC - Viande de brousse</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_viande_de_brousse_transvihmi_rdc_count" style="color:red;font-weight: bold;"></label>
-					        </div>                                                                                     
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="2" pays="congo" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>MIVEGEC - Congo - Animaux</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_animals_mivegec_congo_count" style="color:red;font-weight: bold;"></label>
-					        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="2" pays="gabon" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>MIVEGEC - Gabon - Animaux</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			          <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_animals_mivegec_gabon_count" style="color:red;font-weight: bold;"></label>
-	      			        </div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="3" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>CIBU - Individus</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_individus_cibu_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="3" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>CIBU - Prélèvements</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_prelevements_cibu_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="guinee" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - Guinée - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_capturees_astre_guinee_count" style="color:red;font-weight: bold;"></label>
-					        </div>  
-					      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="congo" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - République du Congo - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      		  	        <div class="form-group">
-	      		  	    	  <label>Nombre d'enregistrement collecté : </label>
-	      		  	    	  <label id="label_chauves_souris_capturees_astre_congo_count" style="color:red;font-weight: bold;"></label>
-				  	        </div>  
-				  	      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="gabon" style="display: none;">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>ASTRE - Gabon - Chauves-souris capturées</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      		  	        <div class="form-group">
-	      		  	    	  <label>Nombre d'enregistrement collecté : </label>
-	      		  	    	  <label id="label_chauves_souris_capturees_astre_gabon_count" style="color:red;font-weight: bold;"></label>
-				  	        </div>  
-				  	      </div>                                                                                    
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="guinee" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - Guinée - Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_guinee_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="congo" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - République du Congo -Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_congo_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div name="6" pays="gabon" style="display: none;">
-                    <div class="card">
-                  	  <div class="card-header">
-                        <h4>ASTRE - Gabon -Collecte non-invasive</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-6">                    	      
-	      			        <div class="form-group">
-	      			    	  <label>Nombre d'enregistrement collecté : </label>
-	      			    	  <label id="label_chauves_souris_non_invasives_astre_gabon_count" style="color:red;font-weight: bold;"></label>
-	      			    	</div>
-					      </div>                                                                                     
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   
                 </div>
               </div>  
@@ -1120,26 +653,6 @@
    
   </body>
   
-  	<script type="text/javascript">
-  		$('#gerer_tables_references').click(function(){
-  			var tables_references = document.getElementById("tables_references");
-  			localStorage['table_reference'] = tables_references.options[tables_references.selectedIndex].text;
-  			localStorage['field_table_reference'] = tables_references.value;
-  			window.location = 'gerer_tables_references.html';
-  		});
-  		
-  		$('#gerer_tables_phenologie').click(function(){
-  			var tables_references = document.getElementById("tables_phenologie");
-  			localStorage['table_phenologie'] = tables_phenologie.options[tables_phenologie.selectedIndex].text;
-  			window.location = 'gerer_tables_phenologie.html';
-  		});
-  		
-  		$('#gerer_tables_espece_chauves_souris').click(function(){
-  			var tables_references = document.getElementById("tables_espece_chauves_souris");
-  			localStorage['table_espece_chauves_souris'] = tables_espece_chauves_souris.options[tables_espece_chauves_souris.selectedIndex].text;
-  			window.location = 'gerer_tables_espece_chauves_souris.html';
-  		});
-  	</script> 
   		
  	<script type="text/javascript">
 		document.addEventListener("keydown", function(event) {
@@ -1152,6 +665,1248 @@
   		var component_a = document.getElementById('li_dashboard');
 		component_a.classList.add('active');
 		
+  	</script> 
+  	
+  	<script type="text/javascript">
+  		$('#exporter').click(function(){
+  			
+  			
+  			var type_table = document.getElementById('type_table').value;
+	  		var liste_tables = document.getElementById('liste_tables').value;
+	  		
+	  		
+  			if (type_table == 'chauves_souris_capturees_') {
+  		
+	  			var tabCS = new Array();
+		  		var DB = new PouchDB("http://localhost:5984/" + liste_tables);
+		  		DB.allDocs({  		
+					include_docs: true,
+					attachments: true
+				}).then(function (result) {
+					// handle result
+					if (typeof(JSON.stringify(result)) != "undefined"){  
+						var tableData = JSON.parse(JSON.stringify(result));
+						
+						tableData.rows.forEach(function(row){   
+				   			try {
+				   				//tab[i] = new Array();
+				   				//alert('ok')
+				   				var obj = new Object();
+				   				obj.N_identification_CS = row.doc.N_identification_CS
+				   				console.log(row.doc.N_identification_CS)
+				   				obj.Num = Number(extraireNombre(row.doc.N_identification_CS))
+			    				obj.N_identification_mere = row.doc.N_identification_mere
+			    				obj.Numero_mission = row.doc.Numero_mission
+			   					obj.N_site = row.doc.N_site
+			   					obj.Date = row.doc.Date
+			   					obj.Equipe = row.doc.Equipe 
+			   					obj.Pays = row.doc.Pays 
+			   					obj.Region_capture = row.doc.Region_capture 
+			   					obj.Site_capture = row.doc.Site_capture 
+			    				obj.Lieu_capture = row.doc.Lieu_capture
+			    				obj.Environnement = row.doc.Environnement 
+			    				obj.Latitude = row.doc.Latitude 
+			    				obj.Lat_degre_dec = row.doc.Lat_degre_dec 
+			    				obj.Longitude = row.doc.Longitude 
+			    				obj.Long_degre_dec = row.doc.Long_degre_dec
+			    				obj.Proximite_village_km = row.doc.Proximite_village_km 
+			   					obj.Methode_capture = row.doc.Methode_capture
+			    				obj.NumFilet = row.doc.NumFilet	
+			    				obj.LongueurFilet = row.doc.LongueurFilet	
+			    				obj.HauteurFilet = row.doc.HauteurFilet	
+			    				obj.Lat_degre_decFilet = row.doc.Lat_degre_decFilet	
+			    				obj.LatitudeFilet = row.doc.LatitudeFilet	
+			    				obj.Long_degre_decFilet	 = row.doc.Long_degre_decFilet
+			    				obj.LongitudeFilet = row.doc.LongitudeFilet	
+			    				obj.Lat_degre_dec_Lieu_capture = row.doc.Lat_degre_dec_Lieu_capture	
+			   					obj.Latitude_Lieu_capture = row.doc.Latitude_Lieu_capture	
+			   					obj.Long_degre_dec_Lieu_capture = row.doc.Long_degre_dec_Lieu_capture
+			    				obj.Longitude_Lieu_capture = row.doc.Longitude_Lieu_capture	
+			    				obj.Type_chauve_souris = row.doc.Type_chauve_souris
+			    				obj.Espece_identifiee = row.doc.Espece_identifiee 
+			   					obj.Famille_terrain = row.doc.Famille_terrain 
+			   					obj.Genre_terrain = row.doc.Genre_terrain 
+			   					obj.Espece_terrain = row.doc.Espece_terrain
+			   					obj.Famille_labo = row.doc.Famille_labo 
+			    				obj.Genre_labo = row.doc.Genre_labo 
+			    				obj.Espece_labo = row.doc.Espece_labo 
+			    				obj.Famille_consensus = row.doc.Famille_consensus 
+			    				obj.Genre_consensus = row.doc.Genre_consensus 
+			    				obj.Espece_consensus = row.doc.Espece_consensus 
+			   					obj.Sexe = row.doc.Sexe 
+			   					obj.Age = row.doc.Age 
+			   					obj.Gestante = row.doc.Gestante 
+			   					obj.Lactation = row.doc.Lactation 
+			   					obj.Suitee = row.doc.Suitee 
+			    				obj.Sexe_enfant = row.doc.Sexe_enfant
+			    				obj.Poids_enfant = row.doc.Poids_enfant
+			    				obj.Identifiant_enfant = row.doc.Identifiant_enfant 
+			    				obj.Vivante = row.doc.Vivante 
+			   					obj.Cause_deces = row.doc.Cause_deces 
+			   					obj.Poids_gr = row.doc.Poids_gr
+			   					obj.L_avant_bras_mm = row.doc.L_avant_bras_mm 
+			   					obj.L_totale_corps_mm = row.doc.L_totale_corps_mm 
+			   					obj.Taille_yeux = row.doc.Taille_yeux 
+			   					obj.L_queue_mm = row.doc.L_queue_mm
+			   					obj.L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm 
+			    				obj.Couleur_pelage_dorsal = row.doc.Couleur_pelage_dorsal
+			    				obj.Couleur_pelage_ventral = row.doc.Couleur_pelage_ventral 
+			   					obj.Remarques_anomalies = row.doc.Remarques_anomalies 
+			   					obj.Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles 
+			   					obj.Sang_tube_EDTA = row.doc.Sang_tube_EDTA 
+			   					obj.Feces_RNAl = row.doc.Feces_RNAl 
+			   					obj.Urine = row.doc.Urine 
+			    				obj.Urine_DUS_nombre_cercles = row.doc.Urine_DUS_nombre_cercles
+			    				obj.Feces_urine_RNAl = row.doc.Feces_urine_RNAl 
+			    				obj.Ecouvillon_gorge_RNAl = row.doc.Ecouvillon_gorge_RNAl 
+			    				obj.Ecouvillon_rectal_RNAl = row.doc.Ecouvillon_rectal_RNAl
+			   					obj.Ectoparasites_ethanol = row.doc.Ectoparasites_ethanol 
+			   					obj.Poils_ethanol = row.doc.Poils_ethanol 
+			   					obj.Wing_punch_ethanol = row.doc.Wing_punch_ethanol
+			   					obj.Feces_culture_glycerol = row.doc.Feces_culture_glycerol 
+			   					obj.Feces_ethanol = row.doc.Feces_ethanol 
+			    				obj.Sperme = row.doc.Sperme 
+			    				obj.Lait = row.doc.Lait 
+			    				obj.Autres_echantillons_remarques = row.doc.Autres_echantillons_remarques
+			    				obj.Specimen_entier = row.doc.Specimen_entier 
+			   					obj.Specimen_preserve_dans = row.doc.Specimen_preserve_dans 
+			   					obj.Prelevement_organe = row.doc.Prelevement_organe
+			   					obj.Foie_formol = row.doc.Foie_formol 
+			   					obj.Foie_RNAl = row.doc.Foie_RNAl 
+			   					obj.Rate_formol = row.doc.Rate_formol 
+			    				obj.Rate_RNAl = row.doc.Rate_RNAl 
+			    				obj.Reins_formol = row.doc.Reins_formol
+			    				obj.Reins_RNAl = row.doc.Reins_RNAl 
+			    				obj.Intestins_formol = row.doc.Intestins_formol 
+			   					obj.Intestins_RNAl = row.doc.Intestins_RNAl 
+			   					obj.Poumons_formol = row.doc.Poumons_formol
+			   					obj.Poumons_RNAl = row.doc.Poumons_RNAl 
+			   					obj.Coeur_formol = row.doc.Coeur_formol
+			   					obj.Coeur_RNAl = row.doc.Coeur_RNAl 
+			    				obj.Ggl_lymph_formol = row.doc.Ggl_lymph_formol
+			    				obj.Ggl_lymph_RNAl = row.doc.Ggl_lymph_RNAl 
+			    				obj.Testicules_formol = row.doc.Testicules_formol 
+			    				obj.Testicules_RNAl = row.doc.Testicules_RNAl 
+			   					obj.Peau_formol = row.doc.Peau_formol
+			   					obj.Peau_RNAl = row.doc.Peau_RNAl 
+			   					obj.Muscles_formol = row.doc.Muscles_formol 
+			   					obj.Muscles_RNAl = row.doc.Muscles_RNAl 
+			   					obj.Cerveau_formol = row.doc.Cerveau_formol
+			    				obj.Cerveau_RNAl = row.doc.Cerveau_RNAl 
+			    				obj.Autre = row.doc.Autre 
+			    				obj.Autre_formol = row.doc.Autre_formol; 
+			    				obj.Autre_RNAl = row.doc.Autre_RNAl;
+			   					obj.Remarques_echantillons = row.doc.Remarques_echantillons;
+				   				tabCS.push(obj);
+				   				console.log(obj)
+				   				//i++;	
+				   				
+				   			} catch(error) {
+								console.log(error);
+							};
+						});	
+							
+				   	}
+					
+					
+					fields_CSV_head = 'N_identification_CS;N_identification_mere;Numero_mission;N_site;Date;' +
+					 'Equipe;Pays;Region_capture;Site_capture;Lieu_capture;' +
+				     'Environnement;Latitude;Lat_degre_dec;Longitude;Long_degre_dec;' +
+				     'Proximite_village_km;Methode_capture;NumFilet;LongueurFilet;' +
+		     		 'HauteurFilet;Lat_degre_decFilet;LatitudeFilet;Long_degre_decFilet;' +
+		     		 'LongitudeFilet;Lat_degre_dec_Lieu_capture;Latitude_Lieu_capture;' +
+		     		 'Long_degre_dec_Lieu_capture;Longitude_Lieu_capture;' /*Arret_Capture;'*/ +
+		     		 /*'Causes_Arret_Capture;'*/'Type_chauve_souris;' +
+				     'Espece_identifiee;Famille_terrain;Genre_terrain;Espece_terrain;' +
+				     'Famille_labo;Genre_labo;Espece_labo;Famille_consensus;Genre_consensus;' + 
+				     'Espece_consensus;Sexe;Age;Gestante;Lactation;Suitee;Sexe_enfant;' +
+				     'Poids_enfant;Identifiant_enfant;Vivante;Cause_deces;Poids_gr;' +
+				     'L_avant_bras_mm;L_totale_corps_mm;Taille_yeux;L_queue_mm;' +
+				     'L_metacarpe_3ieme_doigt_mm;Couleur_pelage_dorsal;' +
+				     'Couleur_pelage_ventral;Remarques_anomalies;Sang_DBS_nb_cercles;' + 
+				     'Sang_tube_EDTA;Feces_RNAl;Urine;Urine_DUS_nombre_cercles;' +
+				     'Feces_urine_RNAl;Ecouvillon_gorge_RNAl;Ecouvillon_rectal_RNAl;' +
+				     'Ectoparasites_ethanol;Poils_ethanol;Wing_punch_ethanol;' +
+				     'Feces_culture_glycerol;Feces_ethanol;Sperme;Lait;Autres_echantillons_remarques;' +
+				     'Specimen_entier;Specimen_preserve_dans;Prelevement_organe;' +
+				     'Foie_formol;Foie_RNAl;Rate_formol;Rate_RNAl;Reins_formol;' +
+				     'Reins_RNAl;Intestins_formol;Intestins_RNAl;Poumons_formol;' +
+				     'Poumons_RNAl;Coeur_formol;Coeur_RNAl;Ggl_lymph_formol;' +
+				     'Ggl_lymph_RNAl;Testicules_formol;Testicules_RNAl;Peau_formol;' +
+				     'Peau_RNAl;Muscles_formol;Muscles_RNAl;Cerveau_formol;' +
+				     'Cerveau_RNAl;Autre;Autre_formol;Autre_RNAl;Remarques_echantillons;Username;' +
+				     'Filet_temps;Arret_Capture;\r\n';	
+				     
+					CSV = fields_CSV_head;
+					
+					DB.info().then((infos) => {
+						count = infos.doc_count;
+						
+						var res = alasql("SELECT * FROM ? ORDER BY Num", [tabCS] );
+				    			
+					    var CS = JSON.stringify(res);
+					    			
+					    var obj_CS = JSON.parse(CS);
+					    			
+					    obj_CS.forEach(function(row){
+					    	//console.log(row.N_identification_CS)
+					    	addChauves_souris_capturees(row);
+					    })
+					});
+					
+					//if (type_table == 'chauves_souris_capturees') {
+					
+					//}
+					
+				}).then(function () {
+					
+				}).catch(function (err) {
+				   	console.log(err);
+				});
+	  		
+  			} else if (type_table == 'chauves_souris_non_invasives_') {
+  				rowcount = 0;
+  				
+  				fields_CSV_head = 'Date;Heure_debut;Heure_fin;N_site;Equipe;Pays;Region_collecte;Site_collecte;Environnement;' + 
+			 	'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Type_site;Proximite_village_km;' +
+			 	'Type_chauves_souris;Famille_1;Genre_1;Espece_1;Famille_2;Genre_2;Espece_2;Famille_3;' +
+			 	'Genre_3;Espece_3;Remarques;N_identification_echantillon;Type_echantillon;Nbre_feces_par_tube;' +
+			 	'Urine_methode;Urine_papier_buvard_nbre_cercles;Username;\r\n';	
+			 	
+			 	CSV = fields_CSV_head;
+  				
+  				var DB = new PouchDB("http://localhost:5984/" + liste_tables);
+				DB.info().then((infos) => {
+					
+					count = 0;
+					rowcount1 = 0;
+					
+					DB.allDocs({  		
+						include_docs: true,
+						attachments: true
+					}).then(function (result) {
+						// handle result
+						if (typeof(JSON.stringify(result)) != "undefined"){  
+							
+							var tableData = JSON.parse(JSON.stringify(result));
+							
+							tableData.rows.forEach(function(row){   
+				    			try {
+				    				tableData.rows[rowcount1].doc.Echantillons.forEach(function(row1){
+				    					count++
+				    				});
+				    			} catch(error) {
+									console.log(error);
+								};
+								rowcount1++;
+				    		});	
+							
+							DB.allDocs({  		
+								include_docs: true,
+								attachments: true
+							}).then(function (result) {
+								// handle result
+								if (typeof(JSON.stringify(result)) != "undefined"){  
+						    		var tableData = JSON.parse(JSON.stringify(result));
+									
+						    		tableData.rows.forEach(function(row){   
+						    			addChauves_souris_non_invasives(tableData, row);
+						    		});		
+						    		
+						    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+					    			
+						    		
+						    		//saveAs(blob, "testfile1.csv");
+						    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+						    		
+						    		
+								}
+							}).catch(function (err) {
+								console.log(err);
+							});
+							
+				    	}
+					}).catch(function (err) {
+						console.log(err);
+					});
+	    		});
+  	  		} else if (type_table == 'viande_de_brousse_') {
+			
+	  	  		rowcount = 0;
+	  	  		var DB = new PouchDB("http://localhost:5984/" + liste_tables);
+			
+				DB.info().then((infos) => {
+					
+					count = infos.doc_count;
+					
+					fields_CSV_head = 'N_identification_echantillon;N_site;Date;Pays;Enqueteur;Region_collecte;Site_collecte;Environnement;' +
+					  'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Proximite_village_km;Preleve_chez;Tue_par_chasseur;' +
+					  'Methode_chasse;Nbre_pieges;Distance_village;Duree_de_chasse;Destination;Lieu_vente;Prix_vente;' +
+					  'Type_animal;Espece_nom_local;Famille;Genre;Espece;Sexe;Age;Mort_depuis;Etat_carcasse_animal;' +
+					  'Decoupage_carcasse;L_total_corps;Poids;Observations_carcasse;Collecte_sang_DBS;Qualite_echantillon;' +
+					  'Endroit_prelevement;Remarques_echantillon;Username;\r\n';
+					
+					CSV = fields_CSV_head;
+					
+					
+					
+					DB.allDocs({  		
+						include_docs: true,
+						attachments: true
+					}).then(function (result) {
+						// handle result
+						if (typeof(JSON.stringify(result)) != "undefined"){  
+				    		var tableData = JSON.parse(JSON.stringify(result));
+							
+				    		tableData.rows.forEach(function(row){   
+				    			addViande_de_brousse(row);
+				    	    });		
+				    		
+				    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+			    			
+				    		
+				    		//saveAs(blob, "testfile1.csv");
+				    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				    		
+				    		
+						}
+					}).catch(function (err) {
+						console.log(err);
+					});
+					
+					
+					
+				}).catch((error) => {
+				});
+  	  		}
+  		
+  		});
+  		
+		function addChauves_souris_capturees(row) {
+    		
+			
+    		
+    		if (count > 0) {
+    			
+    			
+    			console.log(count);
+    			
+    			/*if ((row.N_site == null) || (row.N_site == '')) {
+    				console.log(row.NUM)
+    				
+    				if (row.Pays != null) {
+    					Pays = row.Pays; 
+    				} else {
+    					Pays = '';
+					}
+    				if (row.Region_capture != null) {
+    					Region_capture = row.Region_capture;
+    				} else {
+    					Region_capture = '';
+					}
+    				if (row.Site_capture != null) {
+    					Site_capture = row.Site_capture;
+    				} else {
+    					Site_capture = '';
+					}
+    				if (row.Environnement != null) {
+    					Environnement = row.Environnement;
+    				} else {
+    					Environnement = '';
+					}
+    				if (row.Latitude != null) {
+    					Latitude = row.Latitude;
+    				} else {
+    					Latitude = '';
+					}
+    				if (row.Lat_degre_dec != null) {
+    					Lat_degre_dec = row.Lat_degre_dec;
+    					Lat_degre_dec = Lat_degre_dec.replace('°', '');
+						Lat_degre_dec = Lat_degre_dec.replace('.', ','); 
+    				} else {
+    					Lat_degre_dec = '';
+					}
+    				if (row.Longitude != null) {
+    					Longitude = row.Longitude;
+    				} else {
+    					Longitude = '';
+					}
+    				if (row.Long_degre_dec != null) {
+    					Long_degre_dec = row.Long_degre_dec;
+						Long_degre_dec = Long_degre_dec.replace('°', '');
+    					Long_degre_dec = Long_degre_dec.replace('.', ',');
+    				} else {
+    					Long_degre_dec = '';
+					}
+    				if (row.Proximite_village_km != null) {
+    					Proximite_village_km = row.Proximite_village_km;
+    					Proximite_village_km = Proximite_village_km.replace('.', ',');
+    				} else {
+    					Proximite_village_km = '';
+					}
+    				
+    				
+    			}*/
+    			
+    			/*var debug;
+    			if (localStorage.getItem('debug') === null) {
+    				debug = '';
+    			} else {
+    				debug = localStorage.getItem('debug');
+    			};*/
+    			
+    			/*if ((row.N_site != null) && (row.N_site != '')) {
+    				console.log(row.N_identification_CS)
+	    			var N_site = row.N_site;
+	    			
+	    			var res = alasql('SELECT N_site, Pays, Region_capture, Site_capture, Environnement, Latitude, Lat_degre_dec, Longitude, Long_degre_dec, Proximite_village_km, COUNT(*) AS NbSite FROM ?  WHERE N_site == "' + N_site + '" GROUP BY N_site, Pays, Region_capture, Site_capture, Environnement, Latitude, Lat_degre_dec, Longitude, Long_degre_dec, Proximite_village_km', [tab] );
+	    			
+	    			var site = JSON.stringify(res);
+	    			
+	    			var obj_site = JSON.parse(site);
+	    			
+	    			obj_site.forEach(function(row){
+	    				Pays = row.Pays;
+	    				Region_capture = row.Region_capture;
+	    				Site_capture = row.Site_capture;
+	    				Environnement = row.Environnement;
+    					Latitude = row.Latitude;
+    					if (row.Lat_degre_dec != null) {
+    						Lat_degre_dec = row.Lat_degre_dec;
+    						Lat_degre_dec = Lat_degre_dec.replace('°', '');
+    						Lat_degre_dec = Lat_degre_dec.replace('.', ',');
+    					} else {
+    						Lat_degre_dec = '';
+    					}
+    					Longitude = row.Longitude;
+    					if (row.Long_degre_dec != null) {
+        					Long_degre_dec = row.Long_degre_dec;
+    						Long_degre_dec = Long_degre_dec.replace('°', '');
+    						Long_degre_dec = Long_degre_dec.replace('.', ',');
+    					} else {
+    						Long_degre_dec = '';
+    					}
+    					if (row.Proximite_village_km != null) {
+    						Proximite_village_km = row.Proximite_village_km;
+    						Proximite_village_km = Proximite_village_km.replace('.', ',')
+    					} else {
+    						Proximite_village_km = '';
+    					}
+    					NbSite = row.NbSite;
+	    			});
+	    		}*/
+	    			
+	    			
+				LongueurFilet = '';
+				HauteurFilet = '';
+				Lat_degre_decFilet = '';
+				LatitudeFilet = '';
+				Long_degre_decFilet = '';
+				LongitudeFilet = '';
+					
+					
+				/*if (row.NumFilet != null) {
+					var NumFilet = row.NumFilet;
+						
+					var res = alasql('SELECT NumFilet, LongueurFilet, HauteurFilet, Lat_degre_decFilet, LatitudeFilet, Long_degre_decFilet, LongitudeFilet FROM ? WHERE NumFilet == "' + NumFilet + '"' + ' GROUP BY NumFilet, LongueurFilet, HauteurFilet, Lat_degre_decFilet, LatitudeFilet, Long_degre_decFilet, LongitudeFilet', [tabFilet] );
+						
+					var filet = JSON.stringify(res);
+						
+					var obj_filet = JSON.parse(filet);
+						
+					obj_filet.forEach(function(row){
+						if (row.LongueurFilet != null) {
+							LongueurFilet = row.LongueurFilet;
+							LongueurFilet = LongueurFilet.replace('.', ',');
+						} else {
+							LongueurFilet = '';
+						}
+						if (row.HauteurFilet != null) {
+							HauteurFilet = row.HauteurFilet;
+							HauteurFilet = HauteurFilet.replace('.', ',');
+						} else {
+							HauteurFilet = '';
+						}
+						if (row.Lat_degre_decFilet != null) {
+							Lat_degre_decFilet = row.Lat_degre_decFilet;
+							Lat_degre_decFilet = Lat_degre_decFilet.replace('.', ',');
+						} else {
+							Lat_degre_decFilet = '';
+						}
+						if (row.LatitudeFilet != null) {
+							LatitudeFilet = row.LatitudeFilet;
+						} else {
+							LatitudeFilet = '';
+						}
+						if (row.Long_degre_decFilet != null) {
+							Long_degre_decFilet = row.Long_degre_decFilet;
+							Long_degre_decFilet = Long_degre_decFilet.replace('.', ',');
+						} else {
+							Long_degre_decFilet = '';
+						}
+						if (row.LongitudeFilet != null) {
+							LongitudeFilet = row.LongitudeFilet;
+						} else {
+							LongitudeFilet = '';
+						}
+					});
+				}*/
+	   			
+				var Filet_temps = '';
+				var Arret_Capture = '';
+				
+				/*var id;
+				try {
+					if (row.N_identification_CS.charAt(row.N_identification_CS.length - 1) == 'D') {
+						id = Number(extraireNombre(row.N_identification_CS)) + .1;
+						//alert(id);
+						idD = true;
+					} else {
+	   					id = Number(extraireNombre(row.N_identification_CS));
+	   					idD = false;
+			   		}
+				} catch (err) {
+					alert('ERROR');
+				}
+	   				
+				if (idD && ((id - 0.1) % 2) == 0) {
+					var res = alasql('SELECT ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture FROM ? WHERE (ID_CS_preleve_debut <= ' + id + ' AND ID_CS_preleve_fin >= ' + id + ' AND (Pairs_impairs == "Pairs" OR Pairs_impairs == "Les deux")) OR (Avec_ID_1 == ' + id + ') OR (Avec_ID_2 == ' + id + ') OR (Avec_ID_3 == ' + id + ') GROUP BY ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture', [tabDonneesJournalieres] );
+				} else if (idD && ((id - 0.1) % 2)!= 0) {
+					var res = alasql('SELECT ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture FROM ? WHERE (ID_CS_preleve_debut <= ' + id + ' AND ID_CS_preleve_fin >= ' + id  + ' AND (Pairs_impairs == "Impairs" OR Pairs_impairs == "Les deux")) OR (Avec_ID_1 == ' + id + ') OR (Avec_ID_2 == ' + id + ') OR (Avec_ID_3 == ' + id + ')  GROUP BY ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture', [tabDonneesJournalieres] );
+				} else if ((id % 2) == 0) {
+					//alert(id + '-> Pair')
+					var res = alasql('SELECT ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture FROM ? WHERE (ID_CS_preleve_debut <= ' + id + ' AND ID_CS_preleve_fin >= ' + id + ' AND (Pairs_impairs == "Pairs" OR Pairs_impairs == "Les deux")) OR (Avec_ID_1 == ' + id + ') OR (Avec_ID_2 == ' + id + ') OR (Avec_ID_3 == ' + id + ')  GROUP BY ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture', [tabDonneesJournalieres] );
+				} else {						//alert(id + '-> Impair')
+					var res = alasql('SELECT ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture FROM ? WHERE (ID_CS_preleve_debut <= ' + id + ' AND ID_CS_preleve_fin >= ' + id  + ' AND (Pairs_impairs == "Impairs" OR Pairs_impairs == "Les deux")) OR (Avec_ID_1 == ' + id + ') OR (Avec_ID_2 == ' + id + ') OR (Avec_ID_3 == ' + id + ')  GROUP BY ID_CS_preleve_debut, ID_CS_preleve_fin, Pairs_impairs, Sans_ID_1, Sans_ID_2, Sans_ID_3, Avec_ID_1, Avec_ID_2, Avec_ID_3, Filet_temps, Arret_Capture', [tabDonneesJournalieres] );
+				}
+					
+				try {
+					var donneesJournaliere = JSON.stringify(res);
+					
+					var obj_donneesJournaliere = JSON.parse(donneesJournaliere);
+					
+					obj_donneesJournaliere.forEach(function(row){
+						if ((id.toString().charAt(id.toString().length - 1) == '1') 
+							&& (id.toString().charAt(id.toString().length - 2) == '.')) {
+							//alert('debut = ' + row.ID_CS_preleve_debut);
+							//alert('fin = ' + row.ID_CS_preleve_fin);
+						}
+							
+						if  ((row.Sans_ID_1 == '') && (row.Sans_ID_2 == '') && (row.Sans_ID_3 == '')) {
+							try {
+								Filet_temps = row.Filet_temps;
+							} catch  (err) {
+								Filet_temps = '';
+							}
+							try {
+								Arret_Capture = row.Arret_Capture;
+							} catch (err) {
+								Arret_Capture = 'Non';
+							}
+						}
+						else if ((row.ID_CS_preleve_debut != '') && (row.ID_CS_preleve_fin != '')) {
+							if ((row.ID_CS_preleve_debut != null) && (row.ID_CS_preleve_fin != null) 									 && (row.Sans_ID_1 != id)
+								&& (row.Sans_ID_2 != id) 
+								&& (row.Sans_ID_3 != id) ){
+									
+								try {
+									Filet_temps = row.Filet_temps;
+								} catch  (err) {
+									Filet_temps = '';
+								}
+								try {
+									Arret_Capture = row.Arret_Capture;
+								} catch (err) {
+									Arret_Capture = 'Non';
+								}
+									
+							}
+						}
+			   				
+					});
+				} catch (err) {
+					
+				}*/
+				
+				if (row.Lat_degre_dec_Lieu_capture != null) {
+					Lat_degre_dec_Lieu_capture = row.Lat_degre_dec_Lieu_capture;
+					Lat_degre_dec_Lieu_capture = Lat_degre_dec_Lieu_capture.replace('.', ',');
+				} else {
+					Lat_degre_dec_Lieu_capture = '';
+				}
+				if (row.Long_degre_dec_Lieu_capture != null) {
+					Long_degre_dec_Lieu_capture = row.Long_degre_dec_Lieu_capture;
+					Long_degre_dec_Lieu_capture = Long_degre_dec_Lieu_capture.replace('.', ',');
+				} else {
+					Long_degre_dec_Lieu_capture = '';
+				}
+				
+				if (row.Poids_enfant != null) {
+					Poids_enfant = row.Poids_enfant;
+					Poids_enfant = Poids_enfant.replace('.', ',');
+				} else {
+					Poids_enfant = '';
+				}
+				if (row.Poids_gr != null) {
+					Poids_gr = row.Poids_gr;
+					Poids_gr = Poids_gr.replace('.', ',');
+				} else {
+					Poids_gr = '';
+				}
+				if (row.L_avant_bras_mm != null) {
+					L_avant_bras_mm = row.L_avant_bras_mm;
+					L_avant_bras_mm = L_avant_bras_mm.replace('.', ',');
+				} else {
+					L_avant_bras_mm = '';
+				}
+				if (row.L_totale_corps_mm != null) {
+					L_totale_corps_mm = row.L_totale_corps_mm;
+					L_totale_corps_mm = L_totale_corps_mm.replace('.', ',');
+				} else {
+					L_totale_corps_mm = '';
+				}
+				if (row.L_queue_mm != null) {
+					L_queue_mm = row.L_queue_mm;
+					L_queue_mm = L_queue_mm.replace('.', ',');
+				} else {
+					L_queue_mm = '';
+				}
+				if (row.L_metacarpe_3ieme_doigt_mm != null) {
+					L_metacarpe_3ieme_doigt_mm = row.L_metacarpe_3ieme_doigt_mm;
+					L_metacarpe_3ieme_doigt_mm.replace('.', ',');
+				} else {
+					L_metacarpe_3ieme_doigt_mm = '';
+				}
+				if (row.Sang_DBS_nb_cercles != null) {
+					Sang_DBS_nb_cercles = row.Sang_DBS_nb_cercles;
+					//alert(Sang_DBS_nb_cercles);
+					//if (Sang_DBS_nb_cercles == 0) {
+					//	alert('ok');
+					//	Sang_DBS_nb_cercles.replace('.', ',');
+					//}
+					Sang_DBS_nb_cercles = Sang_DBS_nb_cercles.toString();
+					Sang_DBS_nb_cercles.replace('.', ',');
+				} else {
+					Sang_DBS_nb_cercles = '';
+				}
+				
+				if ((row.Feces_ethanol == null) || (row.Feces_ethanol == 'undefined')) {
+					Feces_ethanol = '0'
+				} else {
+					Feces_ethanol = row.Feces_ethanol;
+				}
+				if ((row.Lait == null) || (row.Lait == 'undefined') || (row.Lait == '')) {
+					Lait = '0'
+				} else {
+					Lait = row.Lait;
+				}
+				if ((row.Username == null) || (row.Username == 'undefined')) {
+					Username = ''
+				} else {
+					Username = row.Username;
+				}
+			    
+				console.log(row.N_identification_CS);
+				
+				
+				
+				CSV = CSV +
+	    				row.N_identification_CS + ';' +
+	    				row.N_identification_mere + ';' + 
+	    				row.Numero_mission + ';' +
+	   					row.N_site + ';' +
+	   					row.Date + ';' +
+	   					row.Equipe + ';' + 
+	   					row.Pays + ';' + 
+	   					row.Region_capture + ';' + 
+	   					row.Site_capture + ';' + 
+	    				row.Lieu_capture + ';' +
+	    				row.Environnement + ';' + 
+	    				row.Latitude + ';' + 
+	    				row.Lat_degre_dec + ';' + 
+	    				row.Longitude + ';' + 
+	    				row.Long_degre_dec + ';' +
+	    				row.Proximite_village_km + ';' + 
+	   					row.Methode_capture + ';' +
+	    				row.NumFilet + ';' +	
+	    				row.LongueurFilet + ';' +	
+	    				row.HauteurFilet + ';' +	
+	    				row.Lat_degre_decFilet + ';' +	
+	    				row.LatitudeFilet + ';' +	
+	    				row.Long_degre_decFilet	 + ';' +
+	    				row.LongitudeFilet + ';' +	
+	    				row.Lat_degre_dec_Lieu_capture + ';' +	
+	   					row.Latitude_Lieu_capture + ';' +	
+	   					row.Long_degre_dec_Lieu_capture + ';' +
+	    				row.Longitude_Lieu_capture + ';' +	
+	    				row.Type_chauve_souris + ';' +
+	    				row.Espece_identifiee + ';' + 
+	   					row.Famille_terrain + ';' + 
+	   					row.Genre_terrain + ';' + 
+	   					row.Espece_terrain + ';' +
+	   					row.Famille_labo + ';' + 
+	    				row.Genre_labo + ';' + 
+	    				row.Espece_labo + ';' + 
+	    				row.Famille_consensus + ';' + 
+	    				row.Genre_consensus + ';' + 
+	    				row.Espece_consensus + ';' + 
+	   					row.Sexe + ';' + 
+	   					row.Age + ';' + 
+	   					row.Gestante + ';' + 
+	   					row.Lactation + ';' + 
+	   					row.Suitee + ';' + 
+	    				row.Sexe_enfant + ';' +
+	    				Poids_enfant + ';' + 
+	    				row.Identifiant_enfant + ';' + 
+	    				row.Vivante + ';' + 
+	   					row.Cause_deces + ';' + 
+	   					Poids_gr + ';' +
+	   					L_avant_bras_mm + ';' + 
+	   					L_totale_corps_mm + ';' + 
+	   					row.Taille_yeux + ';' + 
+	    				L_queue_mm + ';' +
+	    				L_metacarpe_3ieme_doigt_mm + ';' + 
+	    				row.Couleur_pelage_dorsal + ';' +
+	    				row.Couleur_pelage_ventral + ';' + 
+	   					row.Remarques_anomalies.split(';').join(',') + ';' + 
+	   					Sang_DBS_nb_cercles + ';' + 
+	   					row.Sang_tube_EDTA + ';' + 
+	   					row.Feces_RNAl + ';' + 
+	   					row.Urine + ';' + 
+	    				row.Urine_DUS_nombre_cercles + ';' +
+	    				row.Feces_urine_RNAl + ';' + 
+	    				row.Ecouvillon_gorge_RNAl + ';' + 
+	    				row.Ecouvillon_rectal_RNAl + ';' +
+	   					row.Ectoparasites_ethanol + ';' + 
+	   					row.Poils_ethanol + ';' + 
+	   					row.Wing_punch_ethanol + ';' +
+	   					row.Feces_culture_glycerol + ';' + 
+	   					Feces_ethanol + ';' + 
+	    				row.Sperme + ';' + 
+	    				Lait + ';' + 
+	    				row.Autres_echantillons_remarques.split(';').join(',') + ';' +
+	    				row.Specimen_entier + ';' + 
+	   					row.Specimen_preserve_dans + ';' + 
+	   					row.Prelevement_organe + ';' +
+	   					row.Foie_formol + ';' + 
+	   					row.Foie_RNAl + ';' + 
+	   					row.Rate_formol + ';' + 
+	    				row.Rate_RNAl + ';' + 
+	    				row.Reins_formol + ';' +
+	    				row.Reins_RNAl + ';' + 
+	    				row.Intestins_formol + ';' + 
+	   					row.Intestins_RNAl + ';' + 
+	   					row.Poumons_formol + ';' +
+	   					row.Poumons_RNAl + ';' + 
+	   					row.Coeur_formol + ';' +
+	   					row.Coeur_RNAl + ';' + 
+	    				row.Ggl_lymph_formol + ';' +
+	    				row.Ggl_lymph_RNAl + ';' + 
+	    				row.Testicules_formol + ';' + 
+	    				row.Testicules_RNAl + ';' + 
+	   					row.Peau_formol + ';' +
+	   					row.Peau_RNAl + ';' + 
+	   					row.Muscles_formol + ';' + 
+	   					row.Muscles_RNAl + ';' + 
+	   					row.Cerveau_formol + ';' +
+	    				row.Cerveau_RNAl + ';' + 
+	    				row.Autre + ';' + 
+	    				row.Autre_formol + ';' + 
+	    				row.Autre_RNAl + ';' + 
+	   					row.Remarques_echantillons.split(';').join(',') + ';' +
+	   					Username + ';' +
+	   					Filet_temps + ';' +  
+	   					Arret_Capture + ";\r\n";
+    			
+	   			count--;
+  				console.log(count);
+    					
+    			if (count == 0) {
+    	   			var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+   		       		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+    	   			saveAs(blob, liste_tables.value + ".csv");
+   		       		
+   		   		}
+    				
+   			}
+   		}
+		
+		function addChauves_souris_non_invasives(tableData, row) {
+    		
+			//alert('count = ' + count)
+			
+    		if (count > 0) {
+	    		
+    			//alert('rowcount:' + rowcount);
+    			
+    			tableData.rows[rowcount].doc.Echantillons.forEach(function(row1){
+    			
+    						
+        				CSV = CSV +
+			    			row.doc.Date + ';' +	
+			    			row.doc.Heure_debut + ';' +	
+			    			row.doc.Heure_fin + ';' +	
+			    			row.doc.N_site + ';' +
+			    			row.doc.Equipe + ';' +	
+			    			row.doc.Pays + ';' +	
+			    			row.doc.Region_collecte + ';' +	
+			    			row.doc.Site_collecte + ';' +	
+			    			row.doc.Environnement + ';' +	
+			    			row.doc.Lieu_collecte + ';' +	
+			    			row.doc.Lat_degre_dec + ';' +	
+			    			row.doc.Latitude + ';' +	
+			    			row.doc.Long_degre_dec + ';' +	
+			    			row.doc.Longitude + ';' +	
+			    			row.doc.Type_site + ';' +	
+			    			row.doc.Proximite_village_km + ';' +	
+			    			row.doc.Type_chauves_souris + ';' +	
+			    			row.doc.Famille_1 + ';' +	
+			    			row.doc.Genre_1 + ';' +	
+			    			row.doc.Espece_1 + ';' +	
+			    			row.doc.Famille_2 + ';' +	
+			    			row.doc.Genre_2 + ';' +	
+			    			row.doc.Espece_2 + ';' +	
+			    			row.doc.Famille_3 + ';' +	
+			    			row.doc.Genre_3 + ';' +	
+			    			row.doc.Espece_3 + ';' +	
+			    			row.doc.Remarques.replace(/\n|\r|\;/g,'') + ';' +	
+			    			row1.N_identification_echantillon + ';' +	
+			    			row1.Type_echantillon + ';' +	
+			    			row1.Nbre_feces_par_tube + ';' +	
+			    			row1.Urine_methode + ';' +	
+			    			row1.Urine_papier_buvard_nbre_cercles + ";" +
+			    			row.doc.Username + ";\r\n"
+			    			
+				    	count--		
+						console.log(count);
+								
+				    	if (count == 0) {
+					    	var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+					    			
+							//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+					    	saveAs(blob, liste_tables.value + ".csv");
+					    }
+			    	//}   
+        				//}
+			    		/*}).catch(function (err) {
+					       		console.log(err);
+					    });*/
+    			});	
+    			
+    			rowcount++;
+				
+    		}
+    	};
+    	
+		function addViande_de_brousse(row) {
+    		
+    		if (count > 0) {
+    			
+    			CSV = CSV +
+							row.doc.N_identification_echantillon + ';' +
+							row.doc.N_site + ';' +
+							row.doc.Date + ';' +
+							row.doc.Pays + ';' +
+							row.doc.Enqueteur + ';' +
+							row.doc.Region_collecte + ';' +
+							row.doc.Site_collecte + ';' +
+							row.doc.Environnement + ';' +
+							row.doc.Lieu_collecte + ';' +
+							row.doc.Lat_degre_dec + ';' +
+							row.doc.Latitude + ';' +
+							row.doc.Long_degre_dec + ';' +
+							row.doc.Longitude + ';' +
+							row.doc.Proximite_village_km + ';' + 
+							row.doc.Preleve_chez + ';' +
+							row.doc.Tue_par_chasseur + ';' +
+							row.doc.Methode_chasse + ';' +
+							row.doc.Nbre_pieges + ';' +
+							row.doc.Distance_village + ';' +
+							row.doc.Duree_de_chasse + ';' +
+							row.doc.Destination + ';' +
+							row.doc.Lieu_vente + ';' +
+							row.doc.Prix_vente + ';' +
+							row.doc.Type_animal + ';' +
+							row.doc.Espece_nom_local + ';' +
+							row.doc.Famille + ';' +
+							row.doc.Genre + ';' +
+							row.doc.Espece + ';' +
+							row.doc.Sexe + ';' +
+							row.doc.Age + ';' +
+							row.doc.Mort_depuis + ';' +
+							row.doc.Etat_carcasse_animal + ';' +
+							row.doc.Decoupage_carcasse + ';' +
+							row.doc.L_total_corps + ';' +
+							row.doc.Poids + ';' +
+							row.doc.Observations_carcasse + ';' +
+							row.doc.Collecte_sang_DBS + ';' +
+							row.doc.Qualite_echantillon + ';' + 
+							row.doc.Endroit_prelevement + ';' +
+							row.doc.Remarques_echantillon + ';' +
+							row.doc.Username + ";\r\n"
+						
+						count--
+	    				console.log(count);
+	    					
+	    				if (count == 0) {
+	    		    		var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+	    		    			
+	    			    	//saveAs(blob, "testfile1.csv");
+	    			    	//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+	    		    		saveAs(blob, liste_tables.value + ".csv");
+	    		    	}
+		    		
+    			}	
+				
+    		
+    	};
+		
+		/*function heading(type_table) {
+			
+			if (type_table == 'chauves_souris_capturees') {
+				
+				
+	    		var fields = 
+	    			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
+	    			 'Equipe', 'Pays', 'Region_capture', 'Site_capture', 'Lieu_capture',
+	    		     'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec',
+	    		     'Proximite_village_km', 'Methode_capture', 'NumFilet',	'LongueurFilet',
+	    		     'HauteurFilet', 'Lat_degre_decFilet', 'LatitudeFilet', 'Long_degre_decFilet',
+	    		     'LongitudeFilet',	'Lat_degre_dec_Lieu_capture', 'Latitude_Lieu_capture',
+	    		     'Long_degre_dec_Lieu_capture', 'Longitude_Lieu_capture',  'Type_chauve_souris',
+	    		     'Espece_identifiee', 'Famille_terrain', 'Genre_terrain', 'Espece_terrain',
+	    		     'Famille_labo', 'Genre_labo', 'Espece_labo', 'Famille_consensus', 'Genre_consensus', 
+	    		     'Espece_consensus', 'Sexe', 'Age', 'Gestante', 'Lactation', 'Suitee', 'Sexe_enfant',
+	    		     'Poids_enfant', 'Identifiant_enfant', 'Vivante', 'Cause_deces', 'Poids_gr',
+	    		     'L_avant_bras_mm', 'L_totale_corps_mm', 'Taille_yeux', 'L_queue_mm',
+	    		     'L_metacarpe_3ieme_doigt_mm', 'Couleur_pelage_dorsal',
+	    		     'Couleur_pelage_ventral', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 
+	    		     'Sang_tube_EDTA', 'Feces_RNAl', 'Urine', 'Urine_DUS_nombre_cercles',
+	    		     'Feces_urine_RNAl', 'Ecouvillon_gorge_RNAl', 'Ecouvillon_rectal_RNAl',
+	    		     'Ectoparasites_ethanol', 'Poils_ethanol', 'Wing_punch_ethanol',
+	    		     'Feces_culture_glycerol', 'Feces_ethanol', 'Sperme', 'Lait', 'Autres_echantillons_remarques',
+	    		     'Specimen_entier', 'Specimen_preserve_dans', 'Prelevement_organe',
+	    		     'Foie_formol', 'Foie_RNAl', 'Rate_formol', 'Rate_RNAl', 'Reins_formol',
+	    		     'Reins_RNAl', 'Intestins_formol', 'Intestins_RNAl', 'Poumons_formol',
+	    		     'Poumons_RNAl', 'Coeur_formol', 'Coeur_RNAl', 'Ggl_lymph_formol',
+	    		     'Ggl_lymph_RNAl', 'Testicules_formol', 'Testicules_RNAl', 'Peau_formol',
+	    		     'Peau_RNAl', 'Muscles_formol', 'Muscles_RNAl', 'Cerveau_formol',
+	    		     'Cerveau_RNAl', 'Autre', 'Autre_formol', 'Autre_RNAl', 'Remarques_echantillons', 'Username',
+	    		     'Filet_temps', 'Arret_Capture'];
+	    		
+	    		fields_CSV_head = 'N_identification_CS;N_identification_mere;Numero_mission;N_site;Date;' +
+							 'Equipe;Pays;Region_capture;Site_capture;Lieu_capture;' +
+						     'Environnement;Latitude;Lat_degre_dec;Longitude;Long_degre_dec;' +
+						     'Proximite_village_km;Methode_capture;NumFilet;LongueurFilet;' +
+	    		     		 'HauteurFilet;Lat_degre_decFilet;LatitudeFilet;Long_degre_decFilet;' +
+	    		     		 'LongitudeFilet;Lat_degre_dec_Lieu_capture;Latitude_Lieu_capture;' +
+	    		     		 'Long_degre_dec_Lieu_capture;Longitude_Lieu_capture;Type_chauve_souris;' +
+						     'Espece_identifiee;Famille_terrain;Genre_terrain;Espece_terrain;' +
+						     'Famille_labo;Genre_labo;Espece_labo;Famille_consensus;Genre_consensus;' + 
+						     'Espece_consensus;Sexe;Age;Gestante;Lactation;Suitee;Sexe_enfant;' +
+						     'Poids_enfant;Identifiant_enfant;Vivante;Cause_deces;Poids_gr;' +
+						     'L_avant_bras_mm;L_totale_corps_mm;Taille_yeux;L_queue_mm;' +
+						     'L_metacarpe_3ieme_doigt_mm;Couleur_pelage_dorsal;' +
+						     'Couleur_pelage_ventral;Remarques_anomalies;Sang_DBS_nb_cercles;' + 
+						     'Sang_tube_EDTA;Feces_RNAl;Urine;Urine_DUS_nombre_cercles;' +
+						     'Feces_urine_RNAl;Ecouvillon_gorge_RNAl;Ecouvillon_rectal_RNAl;' +
+						     'Ectoparasites_ethanol;Poils_ethanol;Wing_punch_ethanol;' +
+						     'Feces_culture_glycerol;Feces_ethanol;Sperme;Lait;Autres_echantillons_remarques;' +
+						     'Specimen_entier;Specimen_preserve_dans;Prelevement_organe;' +
+						     'Foie_formol;Foie_RNAl;Rate_formol;Rate_RNAl;Reins_formol;' +
+						     'Reins_RNAl;Intestins_formol;Intestins_RNAl;Poumons_formol;' +
+						     'Poumons_RNAl;Coeur_formol;Coeur_RNAl;Ggl_lymph_formol;' +
+						     'Ggl_lymph_RNAl;Testicules_formol;Testicules_RNAl;Peau_formol;' +
+						     'Peau_RNAl;Muscles_formol;Muscles_RNAl;Cerveau_formol;' +
+						     'Cerveau_RNAl;Autre;Autre_formol;Autre_RNAl;Remarques_echantillons;Username;' +
+						     'Filet_temps;Arret_Capture;\r\n';	
+						     
+						     alert(fields_CSV_head)
+	    		
+	    	} else if (type_table == 'chauves_souris_non_invasives') {
+	    		var fields = 
+	    			['Date', 'Heure_debut', 'Heure_fin', 'N_site', 'Equipe', 'Pays', 'Region_collecte', 'Site_collecte', 'Environnement', 
+	    			 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type_site', 'Proximite_village_km',
+	    			 'Type_chauves_souris', 'Famille_1', 'Genre_1', 'Espece_1', 'Famille_2', 'Genre_2', 'Espece_2', 'Famille_3', 
+	    			 'Genre_3', 'Espece_3', 'Remarques', 'N_identification_echantillon', 'Type_echantillon', 'Nbre_feces_par_tube',
+	    			 'Urine_methode', 'Urine_papier_buvard_nbre_cercles', 'Username'];
+	    		
+	    		var fields_CSV_head = 'Date;Heure_debut;Heure_fin;N_site;Equipe;Pays;Region_collecte;Site_collecte;Environnement;' + 
+	        			 	'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Type_site;Proximite_village_km;' +
+	        			 	'Type_chauves_souris;Famille_1;Genre_1;Espece_1;Famille_2;Genre_2;Espece_2;Famille_3;' +
+	        			 	'Genre_3;Espece_3;Remarques;N_identification_echantillon;Type_echantillon;Nbre_feces_par_tube;' +
+	        			 	'Urine_methode;Urine_papier_buvard_nbre_cercles;Username;\r\n';	
+	    	} else if (type_table == 'viande_de_brousse') {
+	    		var fields = 
+	    			['N_identification_echantillon', 'N_site', 'Date', 'Pays', 'Enqueteur', 'Region_collecte', 'Site_collecte', 'Environnement', 
+					 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Proximite_village_km', 'Preleve_chez', 'Tue_par_chasseur', 
+					 'Methode_chasse', 'Nbre_pieges', 'Distance_village', 'Duree_de_chasse', 'Destination', 'Lieu_vente', 'Prix_vente', 
+					 'Type_animal', 'Espece_nom_local', 'Famille', 'Genre', 'Espece', 'Sexe', 'Age', 'Mort_depuis', 'Etat_carcasse_animal', 
+					 'Decoupage_carcasse', 'L_total_corps', 'Poids', 'Observations_carcasse', 'Collecte_sang_DBS', 'Qualite_echantillon', 
+					 'Endroit_prelevement', 'Remarques_echantillon', 'Username'];
+	    		
+	    		var fields_CSV_head = 'N_identification_echantillon;N_site;Date;Pays;Enqueteur;Region_collecte;Site_collecte;Environnement;' +
+	    							  'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Proximite_village_km;Preleve_chez;Tue_par_chasseur;' +
+	    							  'Methode_chasse;Nbre_pieges;Distance_village;Duree_de_chasse;Destination;Lieu_vente;Prix_vente;' +
+	    							  'Type_animal;Espece_nom_local;Famille;Genre;Espece;Sexe;Age;Mort_depuis;Etat_carcasse_animal;' +
+	    							  'Decoupage_carcasse;L_total_corps;Poids;Observations_carcasse;Collecte_sang_DBS;Qualite_echantillon;' +
+	    							  'Endroit_prelevement;Remarques_echantillon;Username;\r\n';	
+	    	} else if (type_table == 'donnees_journalieres') {
+	    		var fields = 
+	    			['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'N_site',
+	    			 'Pays', 'Region_capture', 'Site_capture', 'Environnement',	'Proximite_village_km',
+	    			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Roost_diurne', 'Presence_diurne', 
+	    			 'Famille_diurne1', 'Genre_diurne1', 'Espece_diurne1',
+	    			 'Famille_diurne2', 'Genre_diurne2', 'Espece_diurne2',
+	    			 'Famille_diurne3', 'Genre_diurne3', 'Espece_diurne3',
+	    			 'Famille_diurne4', 'Genre_diurne4', 'Espece_diurne4',
+	    			 'Famille_diurne5', 'Genre_diurne5', 'Espece_diurne5',
+	    			 'Famille_diurne6', 'Genre_diurne6', 'Espece_diurne6',
+	    			 'Famille_diurne7', 'Genre_diurne7', 'Espece_diurne7',
+	    			 'Methode_comptage_diurne', 'Resultat_comptage_diurne_1', 'Resultat_comptage_diurne_2',
+	    			 'Utilisation_site_nocturne', 'Aliment_consomme', 'Presence_nocturne',
+	    			 'Famille_nocturne1', 'Genre_nocturne1',	'Espece_nocturne1',
+	    			 'Famille_nocturne2', 'Genre_nocturne2',	'Espece_nocturne2',
+	    			 'Famille_nocturne3', 'Genre_nocturne3',	'Espece_nocturne3',
+	    			 'Famille_nocturne4', 'Genre_nocturne4',	'Espece_nocturne4',
+	    			 'Famille_nocturne5', 'Genre_nocturne5',	'Espece_nocturne5',
+	    			 'Famille_nocturne6', 'Genre_nocturne6',	'Espece_nocturne6',
+	    			 'Famille_nocturne7', 'Genre_nocturne7',	'Espece_nocturne7',
+	    			 'Methode_comptage_nocturne', 'Resultat_comptage_nocturne_1', 'Resultat_comptage_nocturne_2',
+	    			 'Vocalisations', 'Parade_sexuelle',
+	    			 'Famille_vocalisations', 'Genre_vocalisations', 'Espece_vocalisations',
+	    			 'Copulations', 
+	    			 'Famille_copulations', 'Genre_copulations', 'Espece_copulations',
+	    			 'Suitee', 
+	    			 'Famille_suitee', 'Genre_suitee', 'Espece_suitee', 
+	    			 'Agressions',
+	    			 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',
+	    			 'Filet_canopee_nb_7', 'Filet_canopee_m2_7',
+	    			 'NumFilet7_1', 'LongueurFilet7_1', 'HauteurFilet7_1',
+	    			 'NumFilet7_2', 'LongueurFilet7_2', 'HauteurFilet7_2',
+	    			 'NumFilet7_3', 'LongueurFilet7_3', 'HauteurFilet7_3',
+	    			 'NumFilet7_4', 'LongueurFilet7_4', 'HauteurFilet7_4',
+	    			 'NumFilet7_5', 'LongueurFilet7_5', 'HauteurFilet7_5',
+	    			 'NumFilet7_6', 'LongueurFilet7_6', 'HauteurFilet7_6',
+	    			 'NumFilet7_7', 'LongueurFilet7_7', 'HauteurFilet7_7',
+	    			 'Filet_canopee_nb_20', 'Filet_canopee_m2_20',
+	    			 'NumFilet20_1', 'LongueurFilet20_1', 'HauteurFilet20_1',
+	    			 'NumFilet20_2', 'LongueurFilet20_2', 'HauteurFilet20_2',
+	    			 'NumFilet20_3', 'LongueurFilet20_3', 'HauteurFilet20_3',
+	    			 'NumFilet20_4', 'LongueurFilet20_4', 'HauteurFilet20_4',
+	    			 'NumFilet20_5', 'LongueurFilet20_5', 'HauteurFilet20_5',
+	    			 'NumFilet20_6', 'LongueurFilet20_6', 'HauteurFilet20_6',
+	    			 'NumFilet20_7', 'LongueurFilet20_7', 'HauteurFilet20_7',
+	    			 'Filet_sol_nb', 'Filet_sol_m2',
+	    			 'NumFiletSol_1', 'LongueurFiletSol_1', 'HauteurFiletSol_1',
+	    			 'NumFiletSol_2', 'LongueurFiletSol_2', 'HauteurFiletSol_2',
+	    			 'NumFiletSol_3', 'LongueurFiletSol_3', 'HauteurFiletSol_3',
+	    			 'NumFiletSol_4', 'LongueurFiletSol_4', 'HauteurFiletSol_4',
+	    			 'NumFiletSol_5', 'LongueurFiletSol_5', 'HauteurFiletSol_5',
+	    			 'NumFiletSol_6', 'LongueurFiletSol_6', 'HauteurFiletSol_6',
+	    			 'NumFiletSol_7', 'LongueurFiletSol_7', 'HauteurFiletSol_7',
+	    			 'Filet_debut', 'Filet_fin', 'Filet_temps', 'Filet_capture_nb', 'Harp_debut',
+	    			 'Harp_fin', 'Harp_temps', 'Harpe_nb', 'Saison', 'Climat', 'Autre_climat',
+	    			 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger', 
+	    			 'Username'];
+	    		
+	    		var fields_CSV_head = 'Date;Equipe;ID_CS_preleve_debut;ID_CS_preleve_fin;N_site;' +
+						    		  'Pays;Region_capture;Site_capture;Environnement;Proximite_village_km;' +
+						    		  'Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Roost_diurne;Presence_diurne;' + 
+						    		  'Famille_diurne1;Genre_diurne1;Espece_diurne1;' +
+						    		  'Famille_diurne2;Genre_diurne2;Espece_diurne2;' +
+						    		  'Famille_diurne3;Genre_diurne3;Espece_diurne3;' +
+						    		  'Famille_diurne4;Genre_diurne4;Espece_diurne4;' +
+						    		  'Famille_diurne5;Genre_diurne5;Espece_diurne5;' +
+						    		  'Famille_diurne6;Genre_diurne6;Espece_diurne6;' +
+						    		  'Famille_diurne7;Genre_diurne7;Espece_diurne7;' +
+						    		  'Methode_comptage_diurne;Resultat_comptage_diurne_1;Resultat_comptage_diurne_2;' +
+						    		  'Utilisation_site_nocturne;Aliment_consomme;Presence_nocturne;' +
+						    		  'Famille_nocturne1;Genre_nocturne1;Espece_nocturne1;' +
+						    		  'Famille_nocturne2;Genre_nocturne2;Espece_nocturne2;' +
+						    		  'Famille_nocturne3;Genre_nocturne3;Espece_nocturne3;' +
+						    		  'Famille_nocturne4;Genre_nocturne4;Espece_nocturne4;' +
+						    		  'Famille_nocturne5;Genre_nocturne5;Espece_nocturne5;' +
+						    		  'Famille_nocturne6;Genre_nocturne6;Espece_nocturne6;' +
+						    		  'Famille_nocturne7;Genre_nocturne7;Espece_nocturne7;' +
+						    		  'Methode_comptage_nocturne;Resultat_comptage_nocturne_1;Resultat_comptage_nocturne_2;' +
+						    		  'Vocalisations;Parade_sexuelle;' +
+						    		  'Famille_vocalisations;Genre_vocalisations;Espece_vocalisations;' +
+						    		  'Copulations;' +
+						    		  'Famille_copulations;Genre_copulations;Espece_copulations;' +
+						    		  'Suitee;' +
+						    		  'Famille_suitee;Genre_suitee;Espece_suitee;' +
+						    		  'Agressions;' +
+						    		  'Famille_agressions;Genre_agressions;Espece_agressions;' +
+						    		  'Filet_canopee_nb_7;Filet_canopee_m2_7;' + 
+						    		  'NumFilet7_1;LongueurFilet7_1;HauteurFilet7_1;' +
+						    		  'NumFilet7_2;LongueurFilet7_2;HauteurFilet7_2;' +
+						    		  'NumFilet7_3;LongueurFilet7_3;HauteurFilet7_3;' +
+						    		  'NumFilet7_4;LongueurFilet7_4;HauteurFilet7_4;' +
+						    		  'NumFilet7_5;LongueurFilet7_5;HauteurFilet7_5;' +
+						    		  'NumFilet7_6;LongueurFilet7_6;HauteurFilet7_6;' +
+						    		  'NumFilet7_7;LongueurFilet7_7;HauteurFilet7_7;' +
+						    		  'Filet_canopee_nb_20;Filet_canopee_m2_20;' + 
+						    		  'NumFilet20_1;LongueurFilet20_1;HauteurFilet20_1;' +
+						    		  'NumFilet20_2;LongueurFilet20_2;HauteurFilet20_2;' +
+						    		  'NumFilet20_3;LongueurFilet20_3;HauteurFilet20_3;' +
+						    		  'NumFilet20_4;LongueurFilet20_4;HauteurFilet20_4;' +
+						    		  'NumFilet20_5;LongueurFilet20_5;HauteurFilet20_5;' +
+						    		  'NumFilet20_6;LongueurFilet20_6;HauteurFilet20_6;' +
+						    		  'NumFilet20_7;LongueurFilet20_7;HauteurFilet20_7;' +
+						    		  'Filet_sol_nb;Filet_sol_m2;' +
+						    		  'NumFiletSol_1;LongueurFiletSol_1;HauteurFiletSol_1;' +
+						    		  'NumFiletSol_2;LongueurFiletSol_2;HauteurFiletSol_2;' +
+						    		  'NumFiletSol_3;LongueurFiletSol_3;HauteurFiletSol_3;' +
+						    		  'NumFiletSol_4;LongueurFiletSol_4;HauteurFiletSol_4;' +
+						    		  'NumFiletSol_5;LongueurFiletSol_5;HauteurFiletSol_5;' +
+						    		  'NumFiletSol_6;LongueurFiletSol_6;HauteurFiletSol_6;' +
+						    		  'NumFiletSol_7;LongueurFiletSol_7;HauteurFiletSol_7;' +
+						    		  'Filet_debut;Filet_fin;Filet_temps;Filet_capture_nb;Harp_debut;' +
+						    		  'Harp_fin;Harp_temps;Harpe_nb;Saison;Climat;Autre_climat;' +
+						    		  'Precipitation;Vent;Lune;Temperature_logger;' + 
+						    		  'Humidite_logger;Username;\r\n';	
+	    	} else if (type_table == 'donnees_mission') {
+	    		var fields = 
+	    			['Date_debut', 'Date_fin', 'Equipe', 'ID_CS_debut', 'ID_CS_fin', 
+	    			 'ID_non_invasif_debut', 'ID_non_invasif_fin', 'N_site', 'Pays', 
+	    			 'Region_capture', 'Site_capture', 'Environnement', 'Proximite_village_km', 
+	    			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type', 
+	    			 'Type_Roost', 'Proximite_eau', 'Hauteur_canope', 'Description_site', 'ID_genet_espece', 
+	    			 'Famille1', 'Genre1', 'Espece1', 'Phenologie1', 'Statut1', 
+	    			 'Famille2', 'Genre2', 'Espece2', 'Phenologie2', 'Statut2', 
+	    			 'Famille3', 'Genre3', 'Espece3', 'Phenologie3', 'Statut3', 
+	    			 'Famille4', 'Genre4', 'Espece4', 'Phenologie4', 'Statut4', 
+	    			 'Famille5', 'Genre5', 'Espece5', 'Phenologie5', 'Statut5', 
+	    			 'Famille6', 'Genre6', 'Espece6', 'Phenologie6', 'Statut6', 
+	    			 'Famille7', 'Genre7', 'Espece7', 'Phenologie7', 'Statut7', 
+	    			 'Espece_animale_sauvage', 'Espece_animale_domestique', 'Interaction', 
+	    			 'Description_interaction_animaux', 'Activite_humaine', 'Description_interaction_homme', 
+	    			 'Camera_trap', 'Heure_debut_camera', 'Heure_fin_camera', 'Username']
+	    		
+	    		var fields_CSV_head = 'Date_debut;Date_fin;Equipe;ID_CS_debut;ID_CS_fin;' +
+	    		                      'ID_non_invasif_debut;ID_non_invasif_fin;N_site;Pays;' +
+	    		                      'Region_capture;Site_capture;Environnement;' +
+	    		                      'Proximite_village_km;Lat_degre_dec;Latitude;' +
+	    		                      'Long_degre_dec;Longitude;Type;Type_Roost;Proximite_eau;' +
+	    		                      'Hauteur_canope;Description_site;ID_genet_espece;' +
+	    		                      'Famille1;Genre1;Espece1;Phenologie1;Statut1;' +
+	    		                      'Famille2;Genre2;Espece2;Phenologie2;Statut2;' +
+	    		                      'Famille3;Genre3;Espece3;Phenologie3;Statut3;' +
+	    		                      'Famille4;Genre4;Espece4;Phenologie4;Statut4;' +
+	    		                      'Famille5;Genre5;Espece5;Phenologie5;Statut5;' +
+	    		                      'Famille6;Genre6;Espece6;Phenologie6;Statut6;' +
+	    		                      'Famille7;Genre7;Espece7;Phenologie7;Statut7;' +
+	    		                      'Espece_animale_sauvage;Espece_animale_domestique;' +
+	    		                      'Interaction;Description_interaction_animaux;' +
+	    		                      'Activite_humaine;Description_interaction_homme;' +
+	    		                      'Camera_trap;Heure_debut_camera;Heure_fin_camera;' +
+	    		                      'Username;\r\n'
+	
+	    		
+	    		
+	    	} else if (type_table == 'animals') {
+	    		var fields = 
+	    			['ID_animal', 'pays', 'mission', 'date', 'village', 'type_chasse_capture',
+	    			 'Point_GPS_LAT', 'Point_GPS_LONG', 'animal', 'especes', 'sexes', 'age',
+	    			 'poids', 'etat-physioloque', 'plasma', 'serum', 'blood_spot', 'coeur', 
+	    			 'cerveau', 'foie_rate', 'glandes_salivaires', 'poumons', 'reins', 
+	    			 'intestins', 'urine', 'ecouvillon_salivaire', 'ecouvillon_rectal', 
+	    			 'ecouvillon_nasal', 'ectoparasites', 'placenta', 'liquide_amniotique', 
+	    			 'testicules', 'lesions_ou_nodules', 'lait', 'foetus', 'observation', 
+	    			 'guano', 'longueur_bras', 'longueur_avant_bras', 'longueur_corporelle',
+	    			 'Username']
+	    		
+	    		var fields_CSV_head = 'ID_animal;pays;mission;date;village;type_chasse_capture;' +
+				 'Point_GPS_LAT;Point_GPS_LONG;animal;especes;sexes;age;' +
+				 'poids;etat-physioloque;plasma;serum;blood_spot;coeur;' +
+				 'cerveau;foie_rate;glandes_salivaires;poumons;reins;' + 
+				 'intestins;urine;ecouvillon_salivaire;ecouvillon_rectal;' + 
+				 'ecouvillon_nasal;ectoparasites;placenta;liquide_amniotique;' + 
+				 'testicules;lesions_ou_nodules;lait;foetus;observation;' +
+				 'guano;longueur_bras;longueur_avant_bras;longueur_corporelle;'+
+				 'Username;\r\n'
+			} else if (type_table == 'grands_singes_antilopes') {
+	    		var fields = 
+	    			['N_espece_terrain', 'date_collecte', 'pays', 'lieu_code', 'lieu_principal',	
+	    			 'lieu_detail', 'fraicheur', 'boite_labo', 'N_labo', 'temp1', 'temp2', 'espece_labo_mitDNA',
+	    			 'espece_labo_12S', 'espece_consensus', 'individu_microsatellite', 'sous-espece', 'temp3', 'point_GPS', 
+	    			 'GPS_corrige', 'observations_terrain', 'preveleur', 'autres_observations',
+	    			 'Username']
+	    		
+	    		var fields_CSV_head = 'N_espece_terrain;date_collecte;pays;lieu_code;lieu_principal;' +
+	    	     'lieu_detail;fraicheur;boite_labo;N_labo;temp1;temp2;espece_labo_mitDNA;' +
+	    	     'espece_labo_12S;espece_consensus;individu_microsatellite;sous-espece;temp3;point_GPS;' +
+				 'GPS_corrige;observations_terrain;preveleur;autres_observations;' + 
+				 'Username;\r\n'
+			} else if (type_table == 'animals_ipg') {
+	    		var fields = 
+	    			['ID', 'Especes', 'Sampling_date', 'Weight', 'Enclos', 'Age',
+	    			 'Sex', 'Sampling_site', 'Owner_name', 'Origin',
+	    			 'Point_GPS_LAT', 'Point_GPS_LONG', 'Other_information',
+	    			 'Username']
+	    		
+	    		var fields_CSV_head = 'ID;Especes;Sampling_date;Weight;Enclos;Age;' +
+	    		 'Sex;Sampling_site;Owner_name;Origin;' +
+				 'Point_GPS_LAT;Point_GPS_LONG;Other_information;' +
+				 'Username;\r\n'
+			}
+		}*/
+  		
+  		
+  		function extraireNombre(str) { 
+    		return str.match(/[0-9]+/g)
+    	};
+    	
+    	
+    	
+    	function select() {
+    		
+    		
+    		var liste_tables = document.getElementById('liste_tables');
+    		var cb_type_table = document.getElementById('type_table');
+    		var cb_equipe = document.getElementById('equipe');
+    		while (liste_tables.options.length > 0) {                
+    			liste_tables.remove(0);
+    	    }   
+    		
+    		var DB = new PouchDB('http://127.0.0.1:5984/_all_dbs');
+
+    		DB.allDocs({
+    			include_docs: true,
+    			attachments: true
+    		}).then(function (result) {
+    			if (typeof(JSON.stringify(result)) != "undefined"){  
+    				
+    				//alert(result);
+    				//var dataTablesData = JSON.parse(JSON.stringify(result));
+    				var dataTablesData = JSON.stringify(result);
+    				
+    				
+    				const db_name = dataTablesData.split(',');
+    				
+    				for (i=1;i<db_name.length;i++) {
+    					var table = db_name[i].replaceAll('"','');
+    					var table = table.replaceAll(']','');
+    					console.log(table);
+    					if ((table.indexOf(cb_type_table.value) > -1) &&
+    						(table.indexOf(cb_equipe.value) > -1))	{
+    						liste_tables.options[liste_tables.options.length] = new Option(table, table);
+    					}
+    				}
+    				
+    				/*dataTablesData.rows.forEach(function(row){   
+    				});*/
+    		    	
+    			}
+    		}).catch(function (err) {
+    			console.log(err);
+    		}); 
+    	}
+    	
+    	
+    	document.getElementById('type_table').onchange();
+    	
   	</script> 
   
 </html>
