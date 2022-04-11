@@ -236,13 +236,20 @@
 	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
+	                    	<li id="li_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse NHP</a>
+	                      	  <ul id="ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse_nhp.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_nhp_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
 	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
 	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
 	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
-	                    	</li>
+	                    	</li>	                    	
 	                      </ul>
 	                    </li>
 	                    
@@ -772,7 +779,9 @@
             	    	loadjs('js/importation-chauves-souris-non-invasives.js');
             	    } else if (type_table == 'viande_de_brousse') {
             	    	loadjs('js/importation-viande-de-brousse.js');
-            	    } else if (type_table == 'donnees_mission') {
+            	    } else if (type_table == 'viande_de_brousse_nhp') {
+            	    	loadjs('js/importation-viande-de-brousse-nhp.js');
+            	    }  else if (type_table == 'donnees_mission') {
             	    	loadjs('js/importation-donnees-missions.js');
             	    } else if (type_table == 'donnees_journalieres') {
             	    	loadjs('js/importation-donnees-journalieres.js');
@@ -992,6 +1001,17 @@
 				document.getElementById("card1").innerHTML = "Importation des viandes de brousse";
 				document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse";
 				document.getElementById("card3").innerHTML = "Exporter les viandes de brousse";
+			} else if (type_table == 'viande_de_brousse_nhp') { 
+				var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
+				document.getElementById("card1").innerHTML = "Importation des viandes de brousse NHP";
+				document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse NHP";
+				document.getElementById("card3").innerHTML = "Exporter les viandes de brousse NHP";
 			} else if (type_table == 'grands_singes_antilopes') { 
 				var component_li = document.getElementById('li_grand_singe_antilope' + nom_table + 'Dropdown');
 				component_li.classList.add('active');

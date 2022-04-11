@@ -27,7 +27,7 @@ if  (debug !== '') {
 		  'viande_de_brousse_transvihmi_guinee_debug', 'site_transvihmi_guinee_debug', 
 		  'donnees_mission_transvihmi_guinee_debug', 'donnees_journalieres_transvihmi_guinee_debug',
 		  'chauves_souris_capturees_transvihmi_cameroun_debug', 'chauves_souris_non_invasives_transvihmi_cameroun_debug',
-		  'viande_de_brousse_transvihmi_cameroun_debug', 'site_transvihmi_cameroun_debug', 
+		  'viande_de_brousse_transvihmi_cameroun_debug', 'viande_de_brousse_nhp_transvihmi_cameroun_debug', 'site_transvihmi_cameroun_debug', 
 		  'donnees_mission_transvihmi_cameroun_debug', 'donnees_journalieres_transvihmi_cameroun_debug',
 		  'chauves_souris_capturees_transvihmi_rdc_debug', 'chauves_souris_non_invasives_transvihmi_rdc_debug',
 		  'viande_de_brousse_transvihmi_rdc_debug', 'site_transvihmi_rdc_debug', 
@@ -54,7 +54,7 @@ if  (debug !== '') {
 						  'donnees_mission_transvihmi_guinee', 'donnees_journalieres_transvihmi_guinee'];
 } else if ((code_equipe === '1') && (nom_pays == 'cameroun')) {
 			tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
-				  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
+				  'viande_de_brousse_transvihmi_cameroun', 'viande_de_brousse_nhp_transvihmi_cameroun', 'site_transvihmi_cameroun', 
 				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
 				  'grands_singes_antilopes_transvihmi_cameroun'];
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {

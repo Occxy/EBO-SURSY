@@ -5,7 +5,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Projet EBO-SURSY</title>
@@ -95,12 +95,12 @@
     
     <script src="js/uuid.js"></script>
     
-    <script src="js/load-page-prelevements-cibu.js"></script> 
+    <script src="js/load-page-viande-de-brousse-nhp.js"></script> 
     
     <script src="js/addReference.js"></script> 
     
   </head>
-  <body onload="chargement_prelevements_cibu()">
+  <body onload="chargement_des_viandes_de_brousse_nhp()">
   
     <script>
 		logged_only();
@@ -115,8 +115,8 @@
 		} else {
 			debug = localStorage.getItem('debug');
 		};
-		var html = 'prelevements_cibu';
-		//loadjs('js/menu_rights.js');
+		var html = 'viande_de_brousse_nhp';
+		
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -267,21 +267,21 @@
 	                        	<li id="li_viande_de_brousse_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse">carte</a></li>
 	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
 	                      	  </ul>
-	                    	</li>
+	                    	</li>	
 	                    	<li id="li_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse NHP</a>
 	                      	  <ul id="ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse_nhp.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_viande_de_brousse_nhp_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">carte</a></li>
 	                        	<li id="li_importation_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">importation/exportation</a></li>
 	                      	  </ul>
-	                    	</li>
+	                    	</li>  
 	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
 	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
 	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
-	                    	</li>
+	                    	</li>                  	
 	                      </ul>
 	                    </li>
 	                    
@@ -370,56 +370,30 @@
 	                      	  </ul>
 	                    	</li>
 	                      </ul>
-	                    </li>  
+	                    </li>
 	                    
 	                  </ul>
 	                </li>
 	                    
                     <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
                       <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
-                        
-                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="liste_sites.html?table=_mivegec">Site</a></li>                            
+                    
+                    	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
+                      	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
+                            <li id="li_animals_mivegec_congo" name="2"><a href="liste_animals.html?table=_mivegec_congo">données</a></li>                            
+		                    <li id="li_animals_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_capturees">carte</a></li>
+		                    <li id="li_importation_animals_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=animals">importation/exportation</a></li>                            
+                          </ul>
+		                </li>    
 		                
-                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
-                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
-		                    
-		                    <li id="li_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
-			                  <ul id="ul_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" class="collapse list-unstyled">
-			                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_mivegec">données missions</a></li>
-			                   	<li id="li_importation_suivi_longitudinal_donnees_missions_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_mission">importation/exportation</a></li>                            
-	                          </ul>
-			                </li>
-		                    	                    
-		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
-			                  <ul id="ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" class="collapse list-unstyled">
-			                     <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_mivegec">données journalières</a></li>                            
-	                        	 <li id="li_importation_suivi_longitudinal_donnees_journalieres_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_journalieres">importation/exportation</a></li>                            
-	                          </ul>
-			                </li>
-		                    
-		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
-		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
-		                        <li id="li_bat_capturees_mivegec" name="2"><a href="liste_chauves_souris_capturees.html?table=_mivegec">données</a></li>                            
-		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_capturees">carte</a></li>
-		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_capturees">importation/exportation</a></li>                            
-                              </ul>
-		                    </li>
-		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
-		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
-		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="liste_chauves_souris_non_invasives.html?table=_mivegec">données</a></li> 
-	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_non_invasives">carte</a></li>
-    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_non_invasives">importation/exportation</a></li>
-                              </ul>
-		                    </li>
-	                      </ul>
-                	    </li>
-                	     <li id="li_viande_de_brousse_mivegecDropdown" name="2"><a id="a_viande_de_brousse_mivegecDropdown" name="2" href="#ul_viande_de_brousse_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
-                      	  <ul id="ul_viande_de_brousse_mivegecDropdown" class="collapse list-unstyled">
-                        	<li id="li_viande_de_brousse_mivegec" name="2"><a href="liste_viande_de_brousse.html?table=_mivegec">données</a></li>                            
-                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=viande_de_brousse">carte</a></li>
-                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=viande_de_brousse">importation/exportation</a></li>
-                      	  </ul>
-                    	</li>                    	
+		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
+                      	  <ul id="ul_mivegec_gabonDropdown" name="2" pays="gabon" class="collapse list-unstyled">
+                            <li id="li_animals_mivegec_gabon" name="2"><a href="liste_animals.html?table=_mivegec_gabon">données</a></li>                            
+		                    <li id="li_animals_map_mivegec_gabon" name="2"><a href="cartographie.html?table=_mivegec_gabon&type=chauves_souris_capturees">carte</a></li>
+		                    <li id="li_importation_animals_mivegec_gabon" name="2"><a href="import_export.html?table=_mivegec_gabon&type=animals">importation/exportation</a></li>                            
+                          </ul>
+		                </li>                   	
+                      
                       </ul>
                     </li>
                                         
@@ -630,7 +604,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Base de données des prélèvement</h2>
+              <h2 class="no-margin-bottom">Base de données des grands singes et des antilopes</h2>
             </div>
           </header>
           
@@ -640,404 +614,167 @@
                 <div class="col-lg-12">                  
                   <div class="card">        
                    <div class="card-header" id="header">
-                     <!-- <h4>Nouveau site</h4> -->
+                     <!-- <h4>Nouvelle Chauve-souris</h4> -->
                      <script type="text/javascript">
-			         	var line = document.createElement("div");
-			            option = searchParams.get('option');
-		                nom_table = searchParams.get('table');
+	                    var line = document.createElement("div");
+	                    option = searchParams.get('option');
+	                    nom_table = searchParams.get('table');
 	                    if ((option == 0) || (option == 1)) {
-	                    	line.innerHTML = '<h4>Nouveau prélèvement</h4>';
-			            } else if (option == 2) {
-			              	var ID = 'ID_' + nom_table;
-		                  	line.innerHTML = "<h4>Modifier le prélèvement : ID = " + localStorage.getItem(ID) + '</h4>';
+	                    	line.innerHTML = '<h4>Nouvelle viande de brousse NHP</h4>';
+	                    } else if (option == 2) {
+	                    	var ID = 'ID_viande_de_brousse_nhp' + nom_table;
+	                    	line.innerHTML = "<h4>Modifier la viande de brousse NHP : ID = " + localStorage.getItem(ID) + '</h4>';
 	                    }
-	                   	document.getElementById("header").appendChild(line);
-				      </script>
+		             	document.getElementById("header").appendChild(line);
+		         	 </script>
+                      
                     </div>
                     <div class="card-body">                                            
                       <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
 				        
 				        <div class="card bg-light">
-				            <div class="card-header card-header-transparent d-flex align-items-center">
-                              <h3 class="h4">Identification</h3>
-                            </div>
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-lg-4">                    	      
-	      			    	      <div class="form-group">
-	      			    	        <label for="N_identification">Numéro d'identification individu</label>
-					                <div class="input-group">
-					                  <input type="text" class="form-control" id="N_identification" placeholder="Numéro d'identification individu" required>
-	                                  <div class="invalid-feedback">
-		                      	        S'il vous plaît fournir un numéro d'identification individu valide !	      				  	      				    
-	    					          </div>
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="number">Number</label>
+					              <input type="text" class="form-control" id="number" placeholder="Number"required>
+	                                <div class="invalid-feedback">
+		                      	      S'il vous plaît fournir un number valide !	      				  	      				    
 	    					        </div>
-	    					      </div>
-								</div>                                                                                     
-	                          </div>
-	                        </div>
-	                        
-		                    <div class="card bg-light">
-					          <div class="card-header card-header-transparent d-flex align-items-center">
-		                         <h3 class="h4">Prélèvements</h3>
-		                      </div>
-		                      <div class="card-body">
-                                <div class="row">
-				      	   	      <div class="col-lg-6">	
-							        <div class="form-group">	  
-							          <label for="ID_preleveur">ID préleveur</label>
-					         	      <input type="text" class="form-control" id="ID_preleveur" placeholder="ID préleveur" >
-		                       	    </div>											    
-		                          </div>
-				      			  <div class="col-lg-6">	
-								    <div class="form-group">	  
-							          <label for="Type_echantillon">Type_echantillon</label>
-						         	  <input type="text" class="form-control" id="Type_echantillon" placeholder="Type_echantillon" >
-		                            </div>											    
-		                          </div>
-				      		    </div>
-				      	      
-				      			<div class="row">
-				      	   	      <div class="col-lg-6">	
-							        <div class="form-group">	  
-							          <label for="Kit_de_prelevement">Kit de prélèvement</label>
-					         	      <input type="text" class="form-control" id="Kit_de_prelevement" placeholder="Kit de prélèvement" >
-		                       	    </div>											    
-		                          </div>
-				      			  <div class="col-lg-4">
-		            				<div class="form-group">
-		                              <label for="Date_de_prelevement">Date de prelevement</label>                                
-		                              <div class="input-group">
-		    							<input type="text" class="form-control input-datepicker" id="Date_de_prelevement" placeholder="Date de prelevement" required>
-		    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
-		                                  <span class="fa fa-calendar"></span>
-		    							</div>
-		    							<div class="invalid-feedback">
-			                              S'il vous plaît fournir une date valide !
-			                            </div>
-		                              </div>
-		    					    </div> 
-		    					  </div>
-				      		    </div> 
-				      	        
-		                      </div>
-		                    </div>
-		                  
-		                    <div class="card bg-light">
-					          <div class="card-header card-header-transparent d-flex align-items-center">
-		                         <h3 class="h4">Analyses</h3>
-		                      </div>
-		                      <div class="card-body">
-                                <div class="row">
-				      	   	      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Ebolavirus_Zaire">RT PCR Ebolavirus Zaire</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Zaire" placeholder="RT PCR Ebolavirus Zaire" >
-		                       	    </div>											    
-		                          </div>
-				      			  <div class="col-lg-4">	
-								    <div class="form-group">	  
-							          <label for="RT_PCR_Ebolavirus_Reston">RT PCR Ebolavirus Reston</label>
-						         	  <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Reston" placeholder="RT PCR Ebolavirus Reston" >
-		                            </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Ebolavirus_Tai_Forest">RT PCR Ebolavirus Tai Forest</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Tai_Forest" placeholder="RT PCR Ebolavirus Tai Forest" >
-		                       	    </div>											    
-		                          </div>
-				      		    </div>
-				      	      
-				      			<div class="row">
-				      	   	      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Ebolavirus_Soudan">RT PCR Ebolavirus Soudan</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Soudan" placeholder="RT PCR Ebolavirus Soudan" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Ebolavirus_Bundibugyo">RT PCR Ebolavirus Bundibugyo</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Ebolavirus_Bundibugyo" placeholder="RT PCR Ebolavirus Bundibugyo" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Marburg_virus">RT PCR Marburg virus</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Marburg_virus" placeholder="RT PCR Marburg virus" >
-		                       	    </div>											    
-		                          </div>
-				      		    </div> 
-				      		    
-				      		    <div class="row">
-				      	   	      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Lassa_virus">RT PCR Lassa virus</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Lassa_virus" placeholder="RT PCR Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_RVF_virus">RT PCR RVF virus</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_RVF_virus" placeholder="RT PCR RVF virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_CCHF_virus">RT PCR CCHF virus</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_CCHF_virus" placeholder="RT PCR CCHF virus" >
-		                       	    </div>											    
-		                          </div>
-				      		    </div> 
-				      		    
-				      		    <div class="row">
-				      	   	      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="RT_PCR_Nipah">RT PCR Nipah</label>
-					         	      <input type="text" class="form-control" id="RT_PCR_Nipah" placeholder="RT PCR Nipah" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>  
-		                          
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_ELISA_Ebolavirus">IgM ELISA Ebolavirus</label>
-					         	      <input type="text" class="form-control" id="IgM_ELISA_Ebolavirus" placeholder="IgM ELISA Ebolavirus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">
-							          <label for="IgM_ELISA_Marburg_virus">IgM ELISA Marburg virus</label>
-					         	      <input type="text" class="form-control" id="IgM_ELISA_Marburg_virus" placeholder="IgM ELISA Marburg virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">
-							          <label for="IgM_ELISA_Lassa_virus">IgM ELISA Lassa virus</label>
-					         	      <input type="text" class="form-control" id="IgM_ELISA_Lassa_virus" placeholder="IgM ELISA Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>
-		                        
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">
-							          <label for="IgM_ELISA_RVF_virus">IgM ELISA RVF virus</label>
-					         	      <input type="text" class="form-control" id="IgM_ELISA_RVF_virus" placeholder="IgM ELISA RVF virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_ELISA_CCHF_virus">IgM ELISA CCHF virus</label>
-					         	      <input type="text" class="form-control" id="IgM_ELISA_CCHF_virus" placeholder="IgM ELISA CCHF virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_ELISA_Ebolavirus">IgG ELISA Ebolavirus</label>
-					         	      <input type="text" class="form-control" id="IgG_ELISA_Ebolavirus" placeholder="IgM ELISA CCHF virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>
-		                        
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">
-							          <label for="IgG_ELISA_Marburg_virus">IgG ELISA Marburg virus</label>
-					         	      <input type="text" class="form-control" id="IgG_ELISA_Marburg_virus" placeholder="IgG ELISA Marburg virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_ELISA_Lassa_virus">IgG ELISA Lassa virus</label>
-					         	      <input type="text" class="form-control" id="IgG_ELISA_Lassa_virus" placeholder="IgG ELISA Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_ELISA_RVF_virus">IgG ELISA RVF virus</label>
-					         	      <input type="text" class="form-control" id="IgG_ELISA_RVF_virus" placeholder="IgG ELISA RVF virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>
-		                        
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">
-							          <label for="IgG_ELISA_CCHF_virus">IgG ELISA CCHF virus</label>
-					         	      <input type="text" class="form-control" id="IgG_ELISA_CCHF_virus" placeholder="IgG ELISA CCHF virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>
-								
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_MIA_Ebolavirus">IgM MIA Ebolavirus</label>
-					         	      <input type="text" class="form-control" id="IgM_MIA_Ebolavirus" placeholder="IgM MIA Ebolavirus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_MIA_Marburg_virus">IgM MIA Marburg virus</label>
-					         	      <input type="text" class="form-control" id="IgM_MIA_Marburg_virus" placeholder="IgM_MIA_Marburg_virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_MIA_Lassa_virus">IgM MIA Lassa virus</label>
-					         	      <input type="text" class="form-control" id="IgM_MIA_Lassa_virus" placeholder="IgM MIA Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div>
-		                        
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_MIA_RVF_virus">IgM MIA RVF virus</label>
-					         	      <input type="text" class="form-control" id="IgM_MIA_RVF_virus" placeholder="IgM MIA RVF virus" >
-		                       	    </div>											    
-		                          </div>		                          
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgM_MIA_CCHF_virus">IgM_MIA CCHF virus</label>
-					         	      <input type="text" class="form-control" id="IgM_MIA_CCHF_virus" placeholder="IgM MIA RVF virus" >
-		                       	    </div>											    
-		                          </div>
-				      		      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_MIA_Ebolavirus">IgG MIA Ebolavirus</label>
-					         	      <input type="text" class="form-control" id="IgG_MIA_Ebolavirus" placeholder="IgG MIA Ebolavirus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div> 
-		                        
-		                        <div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_MIA_Marburg_virus">IgG MIA Marburg virus</label>
-					         	      <input type="text" class="form-control" id="IgG_MIA_Marburg_virus" placeholder="IgG MIA Marburg virus" >
-		                       	    </div>											    
-		                          </div>		                          
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_MIA_Lassa_virus">IgG MIA Lassa virus</label>
-					         	      <input type="text" class="form-control" id="IgG_MIA_Lassa_virus" placeholder="IgG MIA Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-				      		      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_MIA_RVF_virus">IgG MIA RVF virus</label>
-					         	      <input type="text" class="form-control" id="IgG_MIA_RVF_virus" placeholder="IgG MIA RVF virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div> 
-
-								<div class="row">
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="IgG_MIA_CCHF_virus">IgG MIA CCHF virus</label>
-					         	      <input type="text" class="form-control" id="IgG_MIA_CCHF_virus" placeholder="IgG MIA CCHF virus" >
-		                       	    </div>											    
-		                          </div>		                          
-		                        </div> 
-				      		  
-				      		    <div class="row">
-				      		      <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="SNT_Ebolavirus">SNT Ebolavirus</label>
-					         	      <input type="text" class="form-control" id="SNT_Ebolavirus" placeholder="SNT Ebolavirus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="SNT_Marburg_virus">SNT Marburg virus</label>
-					         	      <input type="text" class="form-control" id="SNT_Marburg_virus" placeholder="SNT Marburg virus" >
-		                       	    </div>											    
-		                          </div>
-		                          <div class="col-lg-4">	
-							        <div class="form-group">	  
-							          <label for="SNT_Lassa_virus">SNT Lassa virus</label>
-					         	      <input type="text" class="form-control" id="SNT_Lassa_virus" placeholder="SNT Lassa virus" >
-		                       	    </div>											    
-		                          </div>
-		                        </div> 
-				      		    
-				      		    <div class="row">
-				      		      <div class="col-lg-4">	
-								    <div class="form-group">	  
-							          <label for="SNT_RVF_virus">SNT RVF virus</label>
-						        	  <input type="text" class="form-control" id="SNT_RVF_virus" placeholder="SNT RVF virus" >
-			                       	</div>											    
-			                      </div>
-			                      <div class="col-lg-4">	
-								    <div class="form-group">
-								      <label for="SNT_CCHF_virus">SNT CCHF virus</label>
-						         	  <input type="text" class="form-control" id="SNT_CCHF_virus" placeholder="SNT CCHF virus" >
-			                       	</div>											    
-			                      </div>
-							      <div class="col-lg-4">
-							        <div class="form-group">
-							          <label for="SEQ_Genbank_ID">SEQ Genbank ID</label>
-					         	      <input type="text" class="form-control" id="SEQ_Genbank_ID" placeholder="SEQ Genbank ID" >
-		                       	    </div>
-		                       	  </div>											    
-		                        </div>
-				      		  </div> 
+	                            </div>
+							  </div>
+							  <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="date">Date</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="date" placeholder="Date">
+	                              </div>
+	    					    </div>
+							  </div>	
+							  <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="nom">Nom</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="nom" placeholder="Nom">
+	                              </div>
+	    					    </div>
+							  </div>				      
+                            </div>
                               
-		                    </div>
-		                    
-				      	    <div class="card-body text-right" id="header_button">
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="nom_scientifique">Nom scientifique</label>
+				          	      <input type="text" class="form-control" id="nom_scientifique" placeholder="Nom scientifique" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="site">Site</label>
+					              <input type="text" class="form-control" id="site" placeholder="Site">                         </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="village">Village</label>
+				          	      <input type="text" class="form-control" id="village" placeholder="Village" >
+                        	    </div>											    
+                              </div>                              
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="sex">Sex</label>
+				          	      <input type="text" class="form-control" id="sex" placeholder="Sex" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="age">Age</label>
+					              <input type="text" class="form-control" id="age" placeholder="Age">
+	                            </div>
+							  </div>
+						      <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="M_ou_V">M ou V</label>
+				          	      <input type="text" class="form-control" id="M_ou_V" placeholder="M ou V" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="sero_status_siv">Sero Status SIV</label>
+				          	      <input type="text" class="form-control" id="sero_status_siv" placeholder="Sero Status SIV" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="siv_pcr">SIV pcr</label>
+				          	      <input type="text" class="form-control" id="siv_pcr" placeholder="SIV pcr" >
+                        	    </div>											    
+                              </div>
+                              <div class="col-lg-4">	
+							    <div class="form-group">	  
+							      <label for="dna_species">DNA species</label>
+				          	      <input type="text" class="form-control" id="dna_species" placeholder="DNA species" >
+                        	    </div>											    
+                              </div>
+                            </div>
+                          </div>    
+                        </div>
+                                   
+		                
+                        <div class="card-body text-right" id="header_button">
                         
-	                        <script type="text/javascript">
-				            	var line = document.createElement("div");
-				                /*let searchParams2 = new URLSearchParams(window.location.search);
-				                var option = searchParams2.get('option');*/
-				                if ((option == 0) || (option == 1)) {
-				                   	line.innerHTML = 
-				            	        '<div class="row">' +
-				                          '<div class="col-lg-9">' +
-				                            '<div class="form-group">' +
-				                              '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
-						            	  	    "<span class='ladda-label'>Sauver l'individu</span>" +
-						            	  	    '<span class="ladda-spinner"></span>' +
-										      '</button>' +  
-										    '</div>' +  
-										  '</div>' +
-										  '<div class="col-lg-3">' +
-										    '<div class="form-group">' +
-										      '<div class="i-checks">' +
-				                                '<input id="andAdd" type="checkbox" value="" checked="" class="checkbox-template">' +
-				                                '<label for="andAdd">et ajouter</label>' +
-				                              '</div>' +  
-				                            '</div>' + 
-				                          '</div>' +
-				                    	'</div>'
-				               	} else if (option == 2) {
-				                    line.innerHTML = 
-				                   		'<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
-					            		  "<span class='ladda-label'>Modifier l'individu</span>" +
-					            		  '<span class="ladda-spinner"></span>' +
-										'</button>' 
-				                }
-					          	document.getElementById("header_button").appendChild(line);
-					          </script>
-	                        </div>
-							  
-					      </form>
-                                                
-	                    </div> 
-	                  </div>
-	                </div>
-	              </div>  
-	            </div>
-             
-            
-            
-            
-            </section>      
+                          <script type="text/javascript">
+			               		var line = document.createElement("div");
+			                    /*let searchParams2 = new URLSearchParams(window.location.search);
+			                    var option = searchParams2.get('option');*/
+			                    if ((option == 0) || (option == 1)) {
+			                    	line.innerHTML = 
+			                          '<div class="row">' +
+			                            '<div class="col-lg-9">' +
+			                              '<div class="form-group">' +
+			                                '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
+					            	  	      "<span class='ladda-label'>Sauver la viande de brousse NHP</span>" +
+					            	  	      '<span class="ladda-spinner"></span>' +
+									        '</button>' +  
+									      '</div>' +  
+									    '</div>' +
+									    '<div class="col-lg-3">' +
+									      '<div class="form-group">' +
+									        '<div class="i-checks">' +
+			                                  '<input id="andAdd" type="checkbox" value="" checked="" class="checkbox-template">' +
+			                                  '<label for="andAdd">et ajouter</label>' +
+			                                '</div>' +  
+			                              '</div>' + 
+			                            '</div>' +
+			                    	  '</div>'
+			               } else if (option == 2) {
+			                    line.innerHTML = 
+			                   		'<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
+				            		  "<span class='ladda-label'>Modifier la viande de brousse NHP</span>" +
+				            		  '<span class="ladda-spinner"></span>' +
+									'</button>' 
+			                }
+				          	document.getElementById("header_button").appendChild(line);
+				          </script>
+                        </div>
+	      			      
+				      </form>
+                                               
+                    </div> 
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </section>         
           
           <!-- Page Footer-->
           <footer class="main-footer">
@@ -1064,130 +801,8 @@
       </div>
     </div>
     
-	<div id="nouvelleReference" tabindex="-1" role="dialog" aria-labelledby="nouvelleReference" aria-hidden="true" class="modal fade text-left">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 id="referenceModalLabel" class="modal-title">ModalLabel</h4>
-            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-          </div>
-          <div class="modal-body">
-            <form id="form-group-Reference">
-              <div class="form-group">
-                <label id="referenceLabel">Label</label>
-                <input id="referenceInput" type="text" class="form-control">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button id="btnAnnuler" type="button" data-dismiss="modal" class="btn btn-secondary">Annuler</button>
-            <!-- <button type="submit" class="btn btn-primary" id="btnAjouter">Ajouter</button> -->
-            <button id="btnAjouter" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">                        	
-	          <span class="ladda-label">Ajouter</span>
-	          <span class="ladda-spinner"></span>
-			</button>  
-          </div>
-        </div>
-      </div>
-    </div>
 	
-    <script type="text/javascript">
-    	$('.input-datepicker').datepicker({
-        	language: 'fr',
-        	autoclose: true
-      	});
-    </script>    
-    
-    <script type="text/javascript">
-   		$('#spanDate').click(function(){
-	   		event.stopPropagation(); 
-	   	    dp = $('#Date_de_prelevement').datepicker({
-	   	    	language: 'fr',
-	   	    	autoclose: true
-	   	    });
-	   		dp.show();
-	   		$('#Date_de_prelevement').focus();
-		});
-    </script> 
-    
-    <script type="text/javascript">
-   		$('#nouveauPays').click(function(){   			
-   			$('#referenceModalLabel').html('Nouveau Pays');
-   			$('#referenceLabel').html('Pays :');
-   			$('#referenceInput').prop('disabled', false);
-   			$('#btnAjouter').data('data-id', 'pays');
-   			clickedBtn = this;
-   		});
-	       		
-   		$('#nouveauLieu_capture').click(function(){
-   			$('#referenceModalLabel').html('Nouveau Lieu de capture');
-   			$('#referenceLabel').html('Lieu de capture :');
-   			$('#referenceInput').prop('disabled', false);
-   			$('#btnAjouter').data('data-id', 'lieu_capture');
-   			clickedBtn = this;
-		});
-   		   		
-   		$("#btnAjouter").click(function(e){
-	    	e.preventDefault();
-	    	if(clickedBtn){	    		
-	    		var l = Ladda.create(document.querySelector('.ladda-button'));
-				l.start();				
-				
-				if ($(this).data('data-id') == 'pays') {
-					var select = document.getElementById('Pays');	    		
-					addReference(html, 'pays', 'Pays', select, null, null);	
-   				} else if ($(this).data('data-id') == 'lieu_capture') {
-					var select = document.getElementById('Lieu_capture');	    		
-					addReference(html, 'lieu_capture', 'Lieu_capture', select, null, null);	
-   				}
-   				
-   				var referenceInput = document.getElementById('referenceInput');
-   				referenceInput.value = "";				
-				l.stop();				
-				clickedBtn = null;
-	    		$('#nouvelleReference').modal('hide');
-	        	// close the modal dialog.
-	      	}
-	    });
-   		
-   		$("#btnAnnuler").click(function(e){
-	    	e.preventDefault();
-	    	$('#nouvelleReference').modal('hide');
-   		});
-   		
-   		$(function () {
-   		    $('#nouvelleReference').on('hidden.bs.modal', function () {
-   		    	removeModalDiv();
-	   		});
-   		});
-   		
-   		function removeModalDiv() {
-   			try {
-   				$('#referenceInput').prop('disabled', false);
-   				var referenceInput = document.getElementById('referenceInput');
-   				referenceInput.value = "";
-	    		var genreForm = document.getElementById('form-group-Reference');
-			    var genreLabel = document.getElementById('genreLabel');
-			    var genreInput = document.getElementById('genreInput');
-			    var genreDiv = document.getElementById('genreDiv');
-			    genreDiv.removeChild(genreLabel);
-			    genreDiv.removeChild(genreInput);
-			    genreForm.removeChild(genreDiv);
-		    }
-	    	catch(error) {
-	    	};	
-   		};   		
-   		
-   		function addNom(NomX) {
-		    this.Nom = NomX;
-		    	    
-		    this.NomX = function() {
-		        return this.Nom;
-		    };		    
-		};
-   		
-    </script> 
-     
+	
     <script type="text/javascript">
     
     	// Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -1204,10 +819,12 @@
   		          event.stopPropagation();
   		        } else {
   		          event.preventDefault();
-  		        if ((option == 0) || (option == 1)) {
-	  		      	addPrelevement();
+	  		      //add event listener
+	  		  	  if ((option == 0) || (option == 1)) {
+	  		  		individuExists()
+	  		  		//addBat();
 	  		  	  } else if ((option == 2)) {
-	  		  		modifyPrelevement();
+	  		  		modifyGrandSingeAntilope()
 	  		  	  }
   		        } 		        
   		        form.classList.add('was-validated');
@@ -1215,8 +832,34 @@
   		    });
   		  }, false);
   		})();
- 		
-  		function addPrelevement() {  
+  		
+    	function individuExists() {
+    		
+    		if (localStorage.getItem('web') === 'oui') {
+				var remote_couchdb = localStorage.getItem('remote_couchdb');
+				var DB = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug);
+			} else {
+				var DB = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);
+			};
+			
+			var number = document.getElementById('number').value;
+						
+			DB.find({
+				selector: {number: number}
+			}).then(function (result) {
+				if (result.docs.length > 0) {
+					alert('L individu existe déja !')					
+				} else {
+					addViandeDeBrousseNHP();
+				}
+			}).catch(function (err) {
+				console.log(err);
+			});			
+		
+			
+    	};
+    	
+  		function addViandeDeBrousseNHP() {  
   			
   			//alert('add');
   			
@@ -1224,188 +867,93 @@
 			
 			// Start loading
 			l.start();
-			
-			/*var nom_equipe;
-			if (nom_table == 'site_astre') {
-				nom_equipe = '_astre';
-			} else if (nom_table == 'site_mivegec') {
-				nom_equipe = '_mivegec';
-			} else if (nom_table == 'site_transvihmi') {
-				nom_equipe = '_transvihmi';
-			};*/
-			
+						
 			var id = uuid();
-			var N_identification = document.getElementById('N_identification').value;
-		    var ID_preleveur = document.getElementById('ID_preleveur').value;
-		    var Type_echantillon = document.getElementById('Type_echantillon').value;
-		    var Kit_de_prelevement = document.getElementById('Kit_de_prelevement').value;
-		    var Date_de_prelevement = document.getElementById('Date_de_prelevement').value;
-		    var RT_PCR_Ebolavirus_Zaire = document.getElementById('RT_PCR_Ebolavirus_Zaire').value;
-		    var RT_PCR_Ebolavirus_Reston = document.getElementById('RT_PCR_Ebolavirus_Reston').value;
-		    var RT_PCR_Ebolavirus_Tai_Forest = document.getElementById('RT_PCR_Ebolavirus_Tai_Forest').value;
-		    var RT_PCR_Ebolavirus_Soudan = document.getElementById('RT_PCR_Ebolavirus_Soudan').value;
-		    var RT_PCR_Ebolavirus_Bundibugyo = document.getElementById('RT_PCR_Ebolavirus_Bundibugyo').value;
-		    var RT_PCR_Marburg_virus = document.getElementById('RT_PCR_Marburg_virus').value;
-		    var RT_PCR_Lassa_virus = document.getElementById('RT_PCR_Lassa_virus').value;
-		    var RT_PCR_RVF_virus = document.getElementById('RT_PCR_RVF_virus').value;
-		    var RT_PCR_CCHF_virus = document.getElementById('RT_PCR_CCHF_virus').value;
-			var RT_PCR_Nipah = document.getElementById('RT_PCR_Nipah').value;
-			var IgM_ELISA_Ebolavirus = document.getElementById('IgM_ELISA_Ebolavirus').value;
-			var IgM_ELISA_Marburg_virus = document.getElementById('IgM_ELISA_Marburg_virus').value;
-			var IgM_ELISA_Lassa_virus = document.getElementById('IgM_ELISA_Lassa_virus').value;
-			var IgM_ELISA_RVF_virus = document.getElementById('IgM_ELISA_RVF_virus').value;
-			var IgM_ELISA_CCHF_virus = document.getElementById('IgM_ELISA_CCHF_virus').value;
-			var IgG_ELISA_Ebolavirus = document.getElementById('IgG_ELISA_Ebolavirus').value;
-			var IgG_ELISA_Marburg_virus = document.getElementById('IgG_ELISA_Marburg_virus').value;
-			var IgG_ELISA_Lassa_virus = document.getElementById('IgG_ELISA_Lassa_virus').value;
-			var IgG_ELISA_RVF_virus = document.getElementById('IgG_ELISA_RVF_virus').value;
-			var IgG_ELISA_CCHF_virus = document.getElementById('IgG_ELISA_CCHF_virus').value;
-			var IgM_MIA_Ebolavirus = document.getElementById('IgM_MIA_Ebolavirus').value;
-			var IgM_MIA_Marburg_virus = document.getElementById('IgM_MIA_Marburg_virus').value;
-			var IgM_MIA_Lassa_virus = document.getElementById('IgM_MIA_Lassa_virus').value;
-			var IgM_MIA_RVF_virus = document.getElementById('IgM_MIA_RVF_virus').value;
-			var IgM_MIA_CCHF_virus = document.getElementById('IgM_MIA_CCHF_virus').value;
-			var IgG_MIA_Ebolavirus = document.getElementById('IgG_MIA_Ebolavirus').value;
-			var IgG_MIA_Marburg_virus = document.getElementById('IgG_MIA_Marburg_virus').value;
-			var IgG_MIA_Lassa_virus = document.getElementById('IgG_MIA_Lassa_virus').value;
-			var IgG_MIA_RVF_virus = document.getElementById('IgG_MIA_RVF_virus').value;
-			var IgG_MIA_CCHF_virus = document.getElementById('IgG_MIA_CCHF_virus').value;
-			var SNT_Ebolavirus = document.getElementById('SNT_Ebolavirus').value;
-			var SNT_Marburg_virus = document.getElementById('SNT_Marburg_virus').value;
-			var SNT_Lassa_virus  = document.getElementById('SNT_Lassa_virus').value;
-			var SNT_RVF_virus = document.getElementById('SNT_RVF_virus').value;
-			var SNT_CCHF_virus = document.getElementById('SNT_CCHF_virus').value;
-			var SEQ_Genbank_ID = document.getElementById('SEQ_Genbank_ID').value;
-			var Username = localStorage.getItem('loginUsername');
-					 
+							  
+			var number = document.getElementById('number').value;
+			var date = document.getElementById('date').value;
+			var nom = document.getElementById('nom').value;
+			var nom_scientifique = document.getElementById('nom_scientifique').value;
+		    var site = document.getElementById('site').value;	
+		    var village = document.getElementById('village').value;
+		    var sex = document.getElementById('sex').value;
+		    var age = document.getElementById('age').value;
+		    var M_ou_V = document.getElementById('M_ou_V').value;
+		    var sero_status_siv = document.getElementById('sero_status_siv').value;	
+		    var siv_pcr = document.getElementById('siv_pcr').value;
+		    var dna_species = document.getElementById('dna_species').value;
+		    var Username = localStorage.getItem('loginUsername');
+		    
 		    var andAdd = document.getElementById("andAdd");
 		  	if (andAdd.checked == true){
 		  	    var doc = new Object();
-			  	
-			  	doc.N_identification = N_identification;
-			  	doc.ID_preleveur = ID_preleveur;
-			  	doc.Type_echantillon = Type_echantillon;
-			  	doc.Kit_de_prelevement = Kit_de_prelevement;
-			  	doc.Date_de_prelevement = Date_de_prelevement;
-				doc.RT_PCR_Ebolavirus_Zaire = RT_PCR_Ebolavirus_Zaire;
-				doc.RT_PCR_Ebolavirus_Reston = RT_PCR_Ebolavirus_Reston;
-				doc.RT_PCR_Ebolavirus_Tai_Forest = RT_PCR_Ebolavirus_Tai_Forest;
-				doc.RT_PCR_Ebolavirus_Soudan = RT_PCR_Ebolavirus_Soudan;
-				doc.RT_PCR_Ebolavirus_Bundibugyo = RT_PCR_Ebolavirus_Bundibugyo;
-				doc.RT_PCR_Marburg_virus = RT_PCR_Marburg_virus;
-				doc.RT_PCR_Lassa_virus = RT_PCR_Lassa_virus;
-				doc.RT_PCR_RVF_virus = RT_PCR_RVF_virus;
-				doc.RT_PCR_CCHF_virus = RT_PCR_CCHF_virus;
-				doc.RT_PCR_Nipah = RT_PCR_Nipah;
-				doc.IgM_ELISA_Ebolavirus = IgM_ELISA_Ebolavirus;
-				doc.IgM_ELISA_Marburg_virus = IgM_ELISA_Marburg_virus;
-				doc.IgM_ELISA_Lassa_virus = IgM_ELISA_Lassa_virus;
-				doc.IgM_ELISA_RVF_virus = IgM_ELISA_RVF_virus;
-				doc.IgM_ELISA_CCHF_virus = IgM_ELISA_CCHF_virus;
-				doc.IgG_ELISA_Ebolavirus = IgG_ELISA_Ebolavirus;
-				doc.IgG_ELISA_Marburg_virus = IgG_ELISA_Marburg_virus;
-				doc.IgG_ELISA_Lassa_virus = IgG_ELISA_Lassa_virus;
-				doc.IgG_ELISA_RVF_virus = IgG_ELISA_RVF_virus;
-				doc.IgG_ELISA_CCHF_virus = IgG_ELISA_CCHF_virus;
-				doc.IgM_MIA_Ebolavirus = IgM_MIA_Ebolavirus;
-				doc.IgM_MIA_Marburg_virus = IgM_MIA_Marburg_virus;
-				doc.IgM_MIA_Lassa_virus = IgM_MIA_Lassa_virus;
-				doc.IgM_MIA_RVF_virus = IgM_MIA_RVF_virus;
-				doc.IgM_MIA_CCHF_virus = IgM_MIA_CCHF_virus;
-				doc.IgG_MIA_Ebolavirus = IgG_MIA_Ebolavirus;
-				doc.IgG_MIA_Marburg_virus = IgG_MIA_Marburg_virus;
-				doc.IgG_MIA_Lassa_virus = IgG_MIA_Lassa_virus;
-				doc.IgG_MIA_RVF_virus = IgG_MIA_RVF_virus;
-				doc.IgG_MIA_CCHF_virus = IgG_MIA_CCHF_virus;
-				doc.SNT_Ebolavirus = SNT_Ebolavirus;
-				doc.SNT_Marburg_virus = SNT_Marburg_virus;
-				doc.SNT_Lassa_virus = SNT_Lassa_virus;
-				doc.SNT_RVF_virus = SNT_RVF_virus;
-				doc.SNT_CCHF_virus = SNT_CCHF_virus;
-				doc.SEQ_Genbank_ID = SEQ_Genbank_ID;
-				doc.Username = Username;
-					 
-		  		localStorage['prelevements_cibuTablesData'] = JSON.stringify(doc);
+		  		  
+		  	    doc.number = number;
+				doc.date = date;
+				doc.nom = nom;
+				doc.nom_scientifique = nom_scientifique;
+				doc.site = site;
+			    doc.village = village;	
+			    doc.sex = sex;
+			    doc.age = age;
+			    doc.M_ou_V = M_ou_V;
+			    doc.sero_status_siv = sero_status_siv;	
+			    doc.siv_pcr = siv_pcr;
+			    doc.dna_species = dna_species;
+			    doc.Username = Username;
+			    
+		  		localStorage['viande_de_brousse_nhpTablesData'] = JSON.stringify(doc);
 		  	};
-		    
+		  			    
 		    if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'prelevements_cibu' /*+ nom_equipe*/ + debug);
+				var DB = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('prelevements_cibu' /*+ nom_equipe*/ + debug);
+				var DB = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);
 			};
-			
+  
 			DB.put({
 				_id: id,
-				N_identification: N_identification,
-				ID_preleveur: ID_preleveur,
-				Type_echantillon: Type_echantillon,
-				Kit_de_prelevement: Kit_de_prelevement,
-				Date_de_prelevement: Date_de_prelevement,
-				RT_PCR_Ebolavirus_Zaire: RT_PCR_Ebolavirus_Zaire,
-				RT_PCR_Ebolavirus_Reston: RT_PCR_Ebolavirus_Reston,
-				RT_PCR_Ebolavirus_Tai_Forest: RT_PCR_Ebolavirus_Tai_Forest,
-				RT_PCR_Ebolavirus_Soudan: RT_PCR_Ebolavirus_Soudan,
-				RT_PCR_Ebolavirus_Bundibugyo: RT_PCR_Ebolavirus_Bundibugyo,
-				RT_PCR_Marburg_virus: RT_PCR_Marburg_virus,
-				RT_PCR_Lassa_virus: RT_PCR_Lassa_virus,
-				RT_PCR_RVF_virus: RT_PCR_RVF_virus,
-				RT_PCR_CCHF_virus: RT_PCR_CCHF_virus,
-				RT_PCR_Nipah: RT_PCR_Nipah,
-				IgM_ELISA_Ebolavirus: IgM_ELISA_Ebolavirus,
-				IgM_ELISA_Marburg_virus: IgM_ELISA_Marburg_virus,
-				IgM_ELISA_Lassa_virus: IgM_ELISA_Lassa_virus,
-				IgM_ELISA_RVF_virus: IgM_ELISA_RVF_virus,
-				IgM_ELISA_CCHF_virus: IgM_ELISA_CCHF_virus,
-				IgG_ELISA_Ebolavirus: IgG_ELISA_Ebolavirus,
-				IgG_ELISA_Marburg_virus: IgG_ELISA_Marburg_virus,
-				IgG_ELISA_Lassa_virus: IgG_ELISA_Lassa_virus,
-				IgG_ELISA_RVF_virus: IgG_ELISA_RVF_virus,
-				IgG_ELISA_CCHF_virus: IgG_ELISA_CCHF_virus,
-				IgM_MIA_Ebolavirus: IgM_MIA_Ebolavirus,
-				IgM_MIA_Marburg_virus: IgM_MIA_Marburg_virus,
-				IgM_MIA_Lassa_virus: IgM_MIA_Lassa_virus,
-				IgM_MIA_RVF_virus: IgM_MIA_RVF_virus,
-				IgM_MIA_CCHF_virus: IgM_MIA_CCHF_virus,
-				IgG_MIA_Ebolavirus: IgG_MIA_Ebolavirus,
-				IgG_MIA_Marburg_virus: IgG_MIA_Marburg_virus,
-				IgG_MIA_Lassa_virus: IgG_MIA_Lassa_virus,
-				IgG_MIA_RVF_virus: IgG_MIA_RVF_virus,
-				IgG_MIA_CCHF_virus: IgG_MIA_CCHF_virus,
-				SNT_Ebolavirus: SNT_Ebolavirus,
-				SNT_Marburg_virus: SNT_Marburg_virus,
-				SNT_Lassa_virus: SNT_Lassa_virus,
-				SNT_RVF_virus: SNT_RVF_virus,
-				SNT_CCHF_virus: SNT_CCHF_virus,
-				SEQ_Genbank_ID: SEQ_Genbank_ID,
-				Username: Username
-				
+				number: number,
+				date: date,
+				nom: nom,
+				nom_scientifique: nom_scientifique,
+				site: site,
+				village: village,
+				sex: sex,	
+				age: age,
+				M_ou_V: M_ou_V,
+				sero_status_siv: sero_status_siv,
+				siv_pcr: siv_pcr,
+				dna_species: dna_species,	
+			    Username: Username
+			    
 			}).then(function (response) {
 								
 				if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-					var localDB2 = new PouchDB('prelevements_cibu' + debug);	
+					var localDB2 = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);	
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var remoteDB = new PouchDB(remote_couchdb + 'prelevements_cibu' + debug, {skip_setup: true});
+					var remoteDB = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug, {skip_setup: true});
 					
 					localDB2.sync(remoteDB).on('complete', (info) => { 
 						
 						var andAdd = document.getElementById("andAdd");
 					  	if (andAdd.checked == true) {
-					  	  window.location = 'ajouter_modifier_prelevements_cibu.html?option=1&table=' + nom_table;
+					  	  window.location = 'ajouter_modifier_viande_de_brousse_nhp.html?option=1&table=' + nom_table;
 					  	} else {
-					  	  window.location = 'liste_prelevements_cibu.html?table=' + nom_table;	
+					  	  window.location = 'liste_viande_de_brousse_nhp.html?table=' + nom_table;	
 					  	};
 					}).on('error', function (err) {
 						// error while replicating
-						alert('alert sync new prelevementscibu : ' + nom_equipe  + ' ' + JSON.stringify(err));
-						window.location = 'login.html';
+						alert('alert sync new viande_de_brousse_nhp : ' + nom_table  + ' ' + JSON.stringify(err));
+						window.location = 'index.html';
 					});
 				} else {
 					var andAdd = document.getElementById("andAdd");
 				  	if (andAdd.checked == true) {
-				  	  window.location = 'ajouter_modifier_prelevements_cibu.html?option=1&table=' + nom_table;
+				  	  window.location = 'ajouter_modifier_viande_de_brousse_nhp.html?option=1&table=' + nom_table;
 				  	} else {
-				  	  window.location = 'liste_prelevements_cibu.html?table=' + nom_table;	
+				  	  window.location = 'liste_chauves_viande_de_brousse_nhp.html?table=' + nom_table;	
 				  	};
 				}
 				
@@ -1417,147 +965,80 @@
 			});	
   		};
   		
-  		function modifyPrelevement() {  
+  		function modifyGrandSingeAntilope() {  
+  			
 			var l = Ladda.create( document.querySelector( '.ladda-button' ) );
 
 			// Start loading
 			l.start();
 			
-			/*var nom_equipe;
-			if (nom_table == 'site_astre') {
-				nom_equipe = '_astre';
-			} else if (nom_table == 'site_mivegec') {
-				nom_equipe = '_mivegec';
-			} else if (nom_table == 'site_transvihmi') {
-				nom_equipe = '_transvihmi';
-			};*/
-			
-			var id = localStorage.getItem('ID_prelevements_cibu' /*+ nom_equipe*/);
-			var N_identification = document.getElementById('N_identification').value;
-		    var ID_preleveur = document.getElementById('ID_preleveur').value;
-		    var Type_echantillon = document.getElementById('Type_echantillon').value;
-		    var Kit_de_prelevement = document.getElementById('Kit_de_prelevement').value;
-		    var Date_de_prelevement = document.getElementById('Date_de_prelevement').value;
-		    var RT_PCR_Ebolavirus_Zaire = document.getElementById('RT_PCR_Ebolavirus_Zaire').value;
-		    var RT_PCR_Ebolavirus_Reston = document.getElementById('RT_PCR_Ebolavirus_Reston').value;
-		    var RT_PCR_Ebolavirus_Tai_Forest = document.getElementById('RT_PCR_Ebolavirus_Tai_Forest').value;
-		    var RT_PCR_Ebolavirus_Soudan = document.getElementById('RT_PCR_Ebolavirus_Soudan').value;
-		    var RT_PCR_Ebolavirus_Bundibugyo = document.getElementById('RT_PCR_Ebolavirus_Bundibugyo').value;
-		    var RT_PCR_Marburg_virus = document.getElementById('RT_PCR_Marburg_virus').value;
-		    var RT_PCR_Lassa_virus = document.getElementById('RT_PCR_Lassa_virus').value;
-		    var RT_PCR_RVF_virus = document.getElementById('RT_PCR_RVF_virus').value;
-		    var RT_PCR_CCHF_virus = document.getElementById('RT_PCR_CCHF_virus').value;
-			var RT_PCR_Nipah = document.getElementById('RT_PCR_Nipah').value;
-			var IgM_ELISA_Ebolavirus = document.getElementById('IgM_ELISA_Ebolavirus').value;
-			var IgM_ELISA_Marburg_virus = document.getElementById('IgM_ELISA_Marburg_virus').value;
-			var IgM_ELISA_Lassa_virus = document.getElementById('IgM_ELISA_Lassa_virus').value;
-			var IgM_ELISA_RVF_virus = document.getElementById('IgM_ELISA_RVF_virus').value;
-			var IgM_ELISA_CCHF_virus = document.getElementById('IgM_ELISA_CCHF_virus').value;
-			var IgG_ELISA_Ebolavirus = document.getElementById('IgG_ELISA_Ebolavirus').value;
-			var IgG_ELISA_Marburg_virus = document.getElementById('IgG_ELISA_Marburg_virus').value;
-			var IgG_ELISA_Lassa_virus = document.getElementById('IgG_ELISA_Lassa_virus').value;
-			var IgG_ELISA_RVF_virus = document.getElementById('IgG_ELISA_RVF_virus').value;
-			var IgG_ELISA_CCHF_virus = document.getElementById('IgG_ELISA_CCHF_virus').value;
-			var IgM_MIA_Ebolavirus = document.getElementById('IgM_MIA_Ebolavirus').value;
-			var IgM_MIA_Marburg_virus = document.getElementById('IgM_MIA_Marburg_virus').value;
-			var IgM_MIA_Lassa_virus = document.getElementById('IgM_MIA_Lassa_virus').value;
-			var IgM_MIA_RVF_virus = document.getElementById('IgM_MIA_RVF_virus').value;
-			var IgM_MIA_CCHF_virus = document.getElementById('IgM_MIA_CCHF_virus').value;
-			var IgG_MIA_Ebolavirus = document.getElementById('IgG_MIA_Ebolavirus').value;
-			var IgG_MIA_Marburg_virus = document.getElementById('IgG_MIA_Marburg_virus').value;
-			var IgG_MIA_Lassa_virus = document.getElementById('IgG_MIA_Lassa_virus').value;
-			var IgG_MIA_RVF_virus = document.getElementById('IgG_MIA_RVF_virus').value;
-			var IgG_MIA_CCHF_virus = document.getElementById('IgG_MIA_CCHF_virus').value;
-			var SNT_Ebolavirus = document.getElementById('SNT_Ebolavirus').value;
-			var SNT_Marburg_virus = document.getElementById('SNT_Marburg_virus').value;
-			var SNT_Lassa_virus  = document.getElementById('SNT_Lassa_virus').value;
-			var SNT_RVF_virus = document.getElementById('SNT_RVF_virus').value;
-			var SNT_CCHF_virus = document.getElementById('SNT_CCHF_virus').value;
-			var SEQ_Genbank_ID = document.getElementById('SEQ_Genbank_ID').value;
-			var Username = localStorage.getItem('loginUsername');
-			
+			var id = localStorage.getItem('ID_viande_de_brousse_nhp' + nom_table);
+			var date = document.getElementById('date').value;
+			var nom = document.getElementById('nom').value;
+			var nom_scientifique = document.getElementById('nom_scientifique').value;
+			var site = document.getElementById('site').value;
+		    var village = document.getElementById('village').value;	
+		    var sex = document.getElementById('sex').value;
+		    var age = document.getElementById('age').value;
+		    var M_ou_V = document.getElementById('M_ou_V').value;
+		    var sero_status_siv = document.getElementById('sero_status_siv').value;
+		    var siv_pcr = document.getElementById('siv_pcr').value;	
+		    var dna_species = document.getElementById('dna_species').value;
+		    var Username = localStorage.getItem('loginUsername');
+		    
+		    
 			if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'prelevements_cibu' + debug);
+				var DB = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('prelevements_cibu' + debug);
-			};
+				var DB = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);
+			};	
 						
 			DB.find({
 				selector: {_id: id},
 				fields: ['_id']
 			}).then(function (result) {
-				
+		
 				if (localStorage.getItem('web') === 'oui') {
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var DB2 = new PouchDB(remote_couchdb + 'prelevements_cibu' + debug);
+					var DB2 = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug);
 				} else {
-					var DB2 = new PouchDB('prelevements_cibu' + debug);
-				};
+					var DB2 = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);
+				};	
 				
 				DB2.get(id).then(function (doc) {
-					doc.N_identification = N_identification;
-					doc.ID_preleveur = ID_preleveur;
-					doc.Type_echantillon = Type_echantillon;
-					doc.Kit_de_prelevement = Kit_de_prelevement;
-					doc.Date_de_prelevement = Date_de_prelevement;
-					doc.RT_PCR_Ebolavirus_Zaire = RT_PCR_Ebolavirus_Zaire;
-					doc.RT_PCR_Ebolavirus_Reston = RT_PCR_Ebolavirus_Reston;
-					doc.RT_PCR_Ebolavirus_Tai_Forest = RT_PCR_Ebolavirus_Tai_Forest;
-					doc.RT_PCR_Ebolavirus_Soudan = RT_PCR_Ebolavirus_Soudan;
-					doc.RT_PCR_Ebolavirus_Bundibugyo = RT_PCR_Ebolavirus_Bundibugyo;
-					doc.RT_PCR_Marburg_virus = RT_PCR_Marburg_virus;
-					doc.RT_PCR_Lassa_virus = RT_PCR_Lassa_virus;
-					doc.RT_PCR_RVF_virus = RT_PCR_RVF_virus;
-					doc.RT_PCR_CCHF_virus = RT_PCR_CCHF_virus;
-					doc.RT_PCR_Nipah = RT_PCR_Nipah;
-					doc.IgM_ELISA_Ebolavirus = IgM_ELISA_Ebolavirus;
-					doc.IgM_ELISA_Marburg_virus = IgM_ELISA_Marburg_virus;
-					doc.IgM_ELISA_Lassa_virus = IgM_ELISA_Lassa_virus;
-					doc.IgM_ELISA_RVF_virus = IgM_ELISA_RVF_virus;
-					doc.IgM_ELISA_CCHF_virus = IgM_ELISA_CCHF_virus;
-					doc.IgG_ELISA_Ebolavirus = IgG_ELISA_Ebolavirus;
-					doc.IgG_ELISA_Marburg_virus = IgG_ELISA_Marburg_virus;
-					doc.IgG_ELISA_Lassa_virus = IgG_ELISA_Lassa_virus;
-					doc.IgG_ELISA_RVF_virus = IgG_ELISA_RVF_virus;
-					doc.IgG_ELISA_CCHF_virus = IgG_ELISA_CCHF_virus;
-					doc.IgM_MIA_Ebolavirus = IgM_MIA_Ebolavirus;
-					doc.IgM_MIA_Marburg_virus = IgM_MIA_Marburg_virus;
-					doc.IgM_MIA_Lassa_virus = IgM_MIA_Lassa_virus;
-					doc.IgM_MIA_RVF_virus = IgM_MIA_RVF_virus;
-					doc.IgM_MIA_CCHF_virus = IgM_MIA_CCHF_virus;
-					doc.IgG_MIA_Ebolavirus = IgG_MIA_Ebolavirus;
-					doc.IgG_MIA_Marburg_virus = IgG_MIA_Marburg_virus;
-					doc.IgG_MIA_Lassa_virus = IgG_MIA_Lassa_virus;
-					doc.IgG_MIA_RVF_virus = IgG_MIA_RVF_virus;
-					doc.IgG_MIA_CCHF_virus = IgG_MIA_CCHF_virus;
-					doc.SNT_Ebolavirus = SNT_Ebolavirus;
-					doc.SNT_Marburg_virus = SNT_Marburg_virus;
-					doc.SNT_Lassa_virus = SNT_Lassa_virus;
-					doc.SNT_RVF_virus = SNT_RVF_virus;
-					doc.SNT_CCHF_virus = SNT_CCHF_virus;
-					doc.SEQ_Genbank_ID = SEQ_Genbank_ID;
-					doc.Username = Username;
-										
+					doc.date = date;
+					doc.nom = nom;
+					doc.nom_scientifique = nom_scientifique;
+					doc.site = site;
+					doc.village = village;
+					doc.sex = sex;
+					doc.age = age;	
+					doc.M_ou_V = M_ou_V;
+					doc.sero_status_siv = sero_status_siv;
+					doc.siv_pcr = siv_pcr;
+					doc.dna_species = dna_species;
+				    doc.Username = Username;
+					
 					return DB2.put(doc);
 				}).then(function () {
 					return DB2.get(id);
 				}).then(function (doc) {
 					
 					if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-						var localDB3 = new PouchDB('prelevements_cibu' + debug);	
+						var localDB3 = new PouchDB('viande_de_brousse_nhp' + nom_table + debug);	
 						var remote_couchdb = localStorage.getItem('remote_couchdb');
-						var remoteDB = new PouchDB(remote_couchdb + 'prelevements_cibu' + debug);
+						var remoteDB = new PouchDB(remote_couchdb + 'viande_de_brousse_nhp' + nom_table + debug);
 										
 						localDB3.sync(remoteDB).on('complete', (info) => { 
-							window.location = 'liste_prelevements_cibu.html?table=' + nom_table;
+							window.location = 'liste_viande_de_brousse_nhp.html?table=' + nom_table;
 						}).on('error', function (err) {
 							// error while replicating
-							alert('alert sync modify prelevements : ' + JSON.stringify(err));
+							alert('alert sync modify viande_de_brousse_nhp : ' + nom_table + ' ' + JSON.stringify(err));
 							window.location = 'index.html';
 						});	
 					} else {
-						window.location = 'liste_prelevements_cibu.html?table=' + nom_table;
+						window.location = 'liste_viande_de_brousse_nhp.html?table=' + nom_table;
 					}
 					
 					l.stop();								  
@@ -1566,14 +1047,11 @@
 			}).catch(function (err) {
 				console.log(err);
 			});			
-		}
+		};
   		
-  		function extraireNombre(str) { 
-  			return str.match(/[0-9]+/g)
-  		};
   		
 	</script>
-	  
+	
 	<script type="text/javascript">
 	
 		document.addEventListener("keydown", function(event) {
@@ -1583,39 +1061,71 @@
 		  }
 		}, true); // "true" => phase de capture
 		
-		/*var nom_equipe;
-		if (nom_table == 'chauves_souris_capturees_transvihmi') {
-			nom_equipe = 'transvihmi';
-		} else if (nom_table == 'chauves_souris_capturees_mivegec') {
-			nom_equipe = 'mivegec';
-		} else if (nom_table == 'chauves_souris_capturees_astre') {
-			nom_equipe = 'astre';
-		}*/
+		var institut;
+		if ((nom_table == '_transvihmi_guinee') || (nom_table == '_transvihmi_cameroun')
+			|| (nom_table == '_transvihmi_rdc')) {
+			institut = 'transvihmi';			
+		} else if ((nom_table == '_mivegec_congo') || (nom_table == '_mivegec_gabon')) {
+			institut = 'mivegec';
+		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
+				|| (nom_table == '_astre_gabon')) {
+			institut = 'astre';
+		};
 		
-		var nom_equipe = 'CIBU';
-		
-		expanded(nom_equipe);
+		expanded(nom_table);
 			
-		function expanded(nom_equipe) {	
-			var component_li = document.getElementById('li_' + nom_equipe + 'Dropdown');
+		function expanded(nom_table) {
+			var component_li = document.getElementById('li_' + institut + 'Dropdown');
 			component_li.classList.add('active');
-			var component_a = document.getElementById('a_' + nom_equipe + 'Dropdown');
+			var component_a = document.getElementById('a_' + institut + 'Dropdown');
 			component_a.setAttribute('aria-expanded', 'true');
-			var component_ul =  document.getElementById('ul_' + nom_equipe + 'Dropdown');
+			var component_ul =  document.getElementById('ul_' + institut + 'Dropdown');
 			component_ul.classList.add('show');
+			 
+			try {
+				var component_li = document.getElementById('li' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			}
+	    	catch(error) {
+	    	};
+	    	
+	    	var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+			component_li.classList.add('active');
+			var component_a = document.getElementById('a_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+			component_a.setAttribute('aria-expanded', 'true');
+			var component_ul =  document.getElementById('ul_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+			component_ul.classList.add('show');
+	    	
+			/*var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
+			component_li.classList.add('active');
+			var component_a = document.getElementById('a_animals' + nom_table + 'Dropdown');
+			component_a.setAttribute('aria-expanded', 'true');
+			var component_ul =  document.getElementById('ul_animals' + nom_table + 'Dropdown');
+			component_ul.classList.add('show');*/
 			
-			var component_li = document.getElementById('li_prelevement' + nom_equipe + 'Dropdown');
-			component_li.classList.add('active');
-			var component_a = document.getElementById('a_prelevement' + nom_equipe + 'Dropdown');
-			component_a.setAttribute('aria-expanded', 'true');
-			var component_ul =  document.getElementById('ul_prelevement' + nom_equipe + 'Dropdown');
-			component_ul.classList.add('show');
-					
-			var component_li = document.getElementById('li_prelevement_' + nom_equipe);
+			/*try {
+				var component_li = document.getElementById('li_bat' + nom_table + 'CaptureesDropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_bat' + nom_table + 'CaptureesDropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
+				component_ul.classList.add('show');
+			}
+	    	catch(error) {
+	    	};*/
+	    	
+			var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table);
 			component_li.classList.add('active');
 		};
 		
+  		
 	</script> 
+
+		
   </body>
 </html>
 	 

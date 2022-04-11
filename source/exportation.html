@@ -238,18 +238,25 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
-	                	    <li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
-	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
-	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
-	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
-	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
-	                      	  </ul>
-	                    	</li>
 	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
 	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_viande_de_brousse_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse">carte</a></li>
 	                        	<li id="li_importation_viande_de_brousse_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                    	<li id="li_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse NHP</a>
+	                      	  <ul id="ul_viande_de_brousse_nhp_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse_nhp.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_viande_de_brousse_nhp_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">carte</a></li>
+	                        	<li id="li_importation_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
+	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
 	                      </ul>
@@ -798,6 +805,13 @@
     							  'Type_animal;Espece_nom_local;Famille;Genre;Espece;Sexe;Age;Mort_depuis;Etat_carcasse_animal;' +
     							  'Decoupage_carcasse;L_total_corps;Poids;Observations_carcasse;Collecte_sang_DBS;Qualite_echantillon;' +
     							  'Endroit_prelevement;Remarques_echantillon;Username;\r\n';	
+    	} else if (type_table == 'viande_de_brousse_nhp') {
+    		var fields = 
+    			['number', 'date', 'nom', 'nom_scientifique', 'site', 'village', 'sex', 'age', 
+				 'M_ou_V', 'sero_status_siv', 'siv_pcr', 'dna_species', 'Username'];
+    		
+    		var fields_CSV_head = 'Number;Date;Nom;Pays;Nom_scientifique;Site;Village;Sex;' +
+    							  'Age;M_ou_V;Sero_status_SIV;SIV_pcr;DNA_species;Username;\r\n';	
     	} else if (type_table == 'donnees_journalieres') {
     		var fields = 
     			['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'N_site',
@@ -1027,7 +1041,7 @@
 		var tabDonneesJournalieres = new Array();
 		
 		
-		DB.allDocs({  		
+		DBCS.allDocs({  		
 			include_docs: true,
 			attachments: true
 		}).then(function (result) {
@@ -1497,6 +1511,7 @@
 				
 				if ((type_table == 'chauves_souris_capturees') 
 					 || (type_table == 'viande_de_brousse')
+					 || (type_table == 'viande_de_brousse_nhp')
 					 || (type_table == 'donnees_journalieres')
 					 || (type_table == 'donnees_mission')
 					 || (type_table == 'animals')
@@ -1535,6 +1550,8 @@
 				    	    		addChauves_souris_non_invasives(tableData, row);
 				    	    	} else if (type_table == 'viande_de_brousse') {
 				    	    		addViande_de_brousse(row);
+				    	    	} else if (type_table == 'viande_de_brousse_nhp') {
+				    	    		addViande_de_brousse_NHP(row);
 				    	    	} else if (type_table == 'donnees_journalieres') {
 				    	    		addDonnees_journalieres(row);
 				    	    	} else if (type_table == 'donnees_mission') {
@@ -9392,6 +9409,44 @@
 				}
 		    }	
 		};
+		
+		function addViande_de_brousse_NHP(row) {
+    		
+    		if (count > 0) {   	
+    			
+    			var debug;
+    			if (localStorage.getItem('debug') === null) {
+    				debug = '';
+    			} else {
+    				debug = localStorage.getItem('debug');
+    			};
+    			
+    			CSV = CSV +
+    			
+    			    row.doc.number + ';' +
+				    row.doc.date + ';' +
+				    row.doc.nom + ';' +
+				    row.doc.nom_scientifique + ';' +
+				    row.doc.site + ';' +
+				    row.doc.village + ';' +
+				    row.doc.sex + ';' +
+				    row.doc.age + ';' +
+				    row.doc.M_ou_V + ';' +
+				    row.doc.sero_status_siv + ';' +
+				    row.doc.siv_pcr + ';' +
+				    row.doc.dna_species + ';' +
+				    row.doc.Username + ";\r\n";
+							
+				count--
+				console.log(count);
+					    					
+				if (count == 0) {
+				   	var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+				    	//saveAs(blob, "testfile1.csv");
+				   	saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				}
+		    }	
+		};
     		
     	function extraireNombre(str) { 
     		return str.match(/[0-9]+/g)
@@ -9543,6 +9598,14 @@
 				var component_ul =  document.getElementById('ul_viande_de_brousse' + nom_table + 'Dropdown');
 				component_ul.classList.add('show');
 				
+			} else if (type_table == 'viande_de_brousse_nhp') { 
+				var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
 			} else if (type_table == 'grands_singes_antilopes') { 
 				var component_li = document.getElementById('li_grand_singe_antilope' + nom_table + 'Dropdown');
 				component_li.classList.add('active');
@@ -9563,6 +9626,8 @@
 				var component_li = document.getElementById('li_importation_suivi_longitudinal_donnees_journalieres' + nom_table);
 			} else if (type_table == 'viande_de_brousse') {
 				var component_li = document.getElementById('li_importation_viande_de_brousse' + nom_table);
+			} else if (type_table == 'viande_de_brousse_nhp') {
+				var component_li = document.getElementById('li_importation_viande_de_brousse_nhp' + nom_table);
 			} else if (type_table == 'grands_singes_antilopes') {
 				var component_li = document.getElementById('li_importation_grand_singe_antilope' + nom_table);
 			} else if (type_table == 'animals') {
