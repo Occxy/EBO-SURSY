@@ -95,12 +95,12 @@
     
     <script src="js/uuid.js"></script>
     
-    <script src="js/load-page-sites.js"></script> 
+    <script src="js/load-page-cameras-trap.js"></script> 
     
     <script src="js/addReference.js"></script> 
     
   </head>
-  <body onload="chargement_des_sites()">
+  <body onload="chargement_des_cameras_trap()">
   
     <script>
 		logged_only();
@@ -691,10 +691,10 @@
 			            option = searchParams.get('option');
 		                nom_table = searchParams.get('table');
 	                    if ((option == 0) || (option == 1)) {
-	                    	line.innerHTML = '<h4>Nouveau site</h4>';
+	                    	line.innerHTML = '<h4>Nouvelle camera-trap</h4>';
 			            } else if (option == 2) {
 			              	var ID = 'ID_site' + nom_table;
-		                  	line.innerHTML = '<h4>Modifier le site : ID = '+ localStorage.getItem(ID) + '</h4>';
+		                  	line.innerHTML = '<h4>Modifier la camera-trap : ID = '+ localStorage.getItem(ID) + '</h4>';
 	                    }
 	                   	document.getElementById("header").appendChild(line);
 				      </script>
@@ -704,34 +704,25 @@
 				        
 				        <div class="card bg-light">
 				          <div class="card-header card-header-transparent d-flex align-items-center">
-                            <h3 class="h4">Données du site</h3>
+                            <h3 class="h4">Données de la camera-trap</h3>
                           </div>
                           <div class="card-body">
+		      				
 		      				<div class="row">
-		      				  <div class="col-lg-4">
-	            				<div class="form-group">
-	                              <label for="Date">Date</label>                                
-	                              <div class="input-group">
-	    							<input type="text" class="form-control input-datepicker" id="Date" placeholder="Date" required>
-	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate">
-	                                  <span class="fa fa-calendar"></span>
-	    							</div>
-	    							<div class="invalid-feedback">
-		                              S'il vous plaît fournir une date valide !
-		                            </div>
-	                              </div>
-	    					    </div> 
-	    					  </div>
-	    					  <div class="col-lg-8">
-			                    <div class="form-group">
-				                  <label for="N_site">Numéro de site</label>
-				                  <input type="text" class="form-control" id="N_site" placeholder="Numéro de site" required>
-				                  <div class="invalid-feedback">
-				        	  	    S'il vous plaît fournir un Numéro de site valide !
-				      		  	  </div>
-				      		  	</div>
-				      		  </div>   
-		                    </div>	 
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Equipe">Equipe</label>
+		                          <input type="text" class="form-control" id="Equipe" placeholder="Equipe">
+		                        </div>
+		      				  </div>
+		      				  <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="N_site">N_site</label>
+		                          <input type="text" class="form-control" id="N_site" placeholder="N_site">
+		                        </div>
+		      				  </div>
+		      				</div>
+		      				 
 		      			    	      				      			    
 		      			    <div class="row">
 		      			      <div class="col-lg-6">           
@@ -766,31 +757,11 @@
 		                        </div>
 		      				  </div>
 		      			    
-		      				  <div class="col-lg-6">	    
+		      				  <div class="col-lg-6">
 		      			        <div class="form-group">
-		                          <label for="Environnement">Environnement (ex. forêt)</label>
-		                          <div class="input-group">	                        
-		                            <select id="Environnement" class="form-control" required>
-	                                  <option></option>
-	                                  <option>Ville</option>
-	                            	  <option>Village</option>
-	                            	  <option>Village et lek</option>
-	                            	  <option>Verger</option>
-	                            	  <option>Plantation</option>
-	                            	  <option>Autre plantation</option>
-	                            	  <option>Culture</option>
-	                            	  <option>Foret</option>
-	                            	  <option>Forêt primaire</option>
-	                            	  <option>Forêt secondaire</option>
-	                            	  <option>Végétation arbustive</option>
-	                            	  <option>Végétation herbacée savane</option>
-	                            	  <option>Marais</option>
-	                          	    </select>
-	                                <div class="invalid-feedback">
-		        			          S'il vous plaît fournir un environnement valide !
-		      				        </div>
-		      				      </div>
-		      				    </div>
+		                          <label for="Environnement">Environnement</label>
+		                          <input type="text" class="form-control" id="Environnement" placeholder="Environnement">
+		                        </div>
 		      				  </div>
 		      				</div>    
 		      			    
@@ -844,7 +815,486 @@
 		                          <input type="text" class="form-control" id="Proximite_village_km" placeholder="Proximité du village en km" >
 		                        </div>	      				  
 		      				  </div>
-		      			    </div>			      			      
+		      			    </div>	
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="ID_camera_1">ID camera 1</label>
+		                          <input type="text" class="form-control" id="ID_camera_1" placeholder="ID camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_inseree_1">Num SD inserée 1</label>
+		                          <input type="text" class="form-control" id="NumSD_inseree_1" placeholder="Num SD inserée 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_remplacee_1">Num SD remplacée 1</label>
+		                          <input type="text" class="form-control" id="NumSD_remplacee_1" placeholder="Num SD remplacée 1" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>	
+		      			    <div class="row">
+		      				  <div class="col-lg-6">
+	            				<div class="form-group">
+	                              <label for="Date_debut_camera_1">Date début camera 1</label>                                
+	                              <div class="input-group">
+	    							<input type="text" class="form-control input-datepicker" id="Date_debut_camera_1" placeholder="Date début camera 1">
+	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate_debut_camera_1">
+	                                  <span class="fa fa-calendar"></span>
+	    							</div>
+	                              </div>
+	    					    </div> 
+	    					  </div>
+	    					  <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Heure_debut_camera_1">Heure début camera 1</label>
+								  <input type="time" class="form-control" id="Heure_debut_camera_1" placeholder="Heure début camera 1" >
+							    </div>
+							  </div> 
+		                    </div>	                    
+		                    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_emplacement_camera_1">Changement d'emplacement de la camera 1</label>
+		                          <select id="Changement_emplacement_camera_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Emplacement_camera_1">Emplacement de la camera 1</label>
+		                          <input type="text" class="form-control" id="Emplacement_camera_1" placeholder="Emplacement de la camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumEntree_camera_1">Num entrée camera 1</label>
+		                          <input type="text" class="form-control" id="NumEntree_camera_1" placeholder="Num entrée camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Hauteur_camera_1">Hauteur de la camera 1</label>
+		                          <input type="text" class="form-control" id="Hauteur_camera_1" placeholder="Hauteur de la camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Support_camera_1">Support de la camera 1</label>
+		                          <input type="text" class="form-control" id="Support_camera_1" placeholder="Support de la camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_entree_1">Distance de la camera de l'entrée 1</label>
+		                          <input type="text" class="form-control" id="Distance_camera_entree_1" placeholder="Distance de la camera de l'entrée 1" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Presence_autre_camera_1">Présence d'une autre caméra 1</label>
+		                          <select id="Presence_autre_camera_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_camera_1">Distance camera camera 1</label>
+		                          <input type="text" class="form-control" id="Distance_camera_camera_1" placeholder="Distance camera camera 1" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_batterie_camera_1">Changement de la batterie de la camera 1</label>
+		                          <select id="Changement_batterie_camera_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="ID_camera_2">ID camera 2</label>
+		                          <input type="text" class="form-control" id="ID_camera_2" placeholder="ID camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_inseree_2">Num SD inserée 2</label>
+		                          <input type="text" class="form-control" id="NumSD_inseree_2" placeholder="Num SD inserée 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_remplacee_2">Num SD remplacée 2</label>
+		                          <input type="text" class="form-control" id="NumSD_remplacee_2" placeholder="Num SD remplacée 2" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>	
+		      			    <div class="row">
+		      				  <div class="col-lg-6">
+	            				<div class="form-group">
+	                              <label for="Date_debut_camera_2">Date début camera 2</label>                                
+	                              <div class="input-group">
+	    							<input type="text" class="form-control input-datepicker" id="Date_debut_camera_2" placeholder="Date début camera 2">
+	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate_debut_camera_2">
+	                                  <span class="fa fa-calendar"></span>
+	    							</div>
+	                              </div>
+	    					    </div> 
+	    					  </div>
+	    					  <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Heure_debut_camera_2">Heure début camera 2</label>
+								  <input type="time" class="form-control" id="Heure_debut_camera_2" placeholder="Heure début camera 2" >
+							    </div>
+							  </div> 
+		                    </div>	                    
+		                    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_emplacement_camera_2">Changement d'emplacement de la camera 2</label>
+		                          <select id="Changement_emplacement_camera_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Emplacement_camera_2">Emplacement de la camera 2</label>
+		                          <input type="text" class="form-control" id="Emplacement_camera_2" placeholder="Emplacement de la camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumEntree_camera_2">Num entrée camera 2</label>
+		                          <input type="text" class="form-control" id="NumEntree_camera_2" placeholder="Num entrée camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Hauteur_camera_2">Hauteur de la camera 2</label>
+		                          <input type="text" class="form-control" id="Hauteur_camera_2" placeholder="Hauteur de la camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Support_camera_2">Support de la camera 2</label>
+		                          <input type="text" class="form-control" id="Support_camera_2" placeholder="Support de la camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_entree_2">Distance de la camera de l'entrée 2</label>
+		                          <input type="text" class="form-control" id="Distance_camera_entree_2" placeholder="Distance de la camera de l'entrée 2" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Presence_autre_camera_2">Présence d'une autre caméra 2</label>
+		                          <select id="Presence_autre_camera_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_camera_2">Distance camera camera 2</label>
+		                          <input type="text" class="form-control" id="Distance_camera_camera_2" placeholder="Distance camera camera 2" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_batterie_camera_2">Changement de la batterie de la camera 2</label>
+		                          <select id="Changement_batterie_camera_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="ID_camera_3">ID camera 3</label>
+		                          <input type="text" class="form-control" id="ID_camera_3" placeholder="ID camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_inseree_3">Num SD inserée 3</label>
+		                          <input type="text" class="form-control" id="NumSD_inseree_3" placeholder="Num SD inserée 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_remplacee_3">Num SD remplacée 3</label>
+		                          <input type="text" class="form-control" id="NumSD_remplacee_3" placeholder="Num SD remplacée 3" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>	
+		      			    <div class="row">
+		      				  <div class="col-lg-6">
+	            				<div class="form-group">
+	                              <label for="Date_debut_camera_3">Date début camera 3</label>                                
+	                              <div class="input-group">
+	    							<input type="text" class="form-control input-datepicker" id="Date_debut_camera_3" placeholder="Date début camera 3">
+	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate_debut_camera_3">
+	                                  <span class="fa fa-calendar"></span>
+	    							</div>
+	                              </div>
+	    					    </div> 
+	    					  </div>
+	    					  <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Heure_debut_camera_3">Heure début camera 3</label>
+								  <input type="time" class="form-control" id="Heure_debut_camera_3" placeholder="Heure début camera 3" >
+							    </div>
+							  </div> 
+		                    </div>	                    
+		                    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_emplacement_camera_3">Changement d'emplacement de la camera 3</label>
+		                          <select id="Changement_emplacement_camera_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Emplacement_camera_3">Emplacement de la camera 3</label>
+		                          <input type="text" class="form-control" id="Emplacement_camera_3" placeholder="Emplacement de la camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumEntree_camera_3">Num entrée camera 3</label>
+		                          <input type="text" class="form-control" id="NumEntree_camera_3" placeholder="Num entrée camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Hauteur_camera_3">Hauteur de la camera 3</label>
+		                          <input type="text" class="form-control" id="Hauteur_camera_3" placeholder="Hauteur de la camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Support_camera_3">Support de la camera 3</label>
+		                          <input type="text" class="form-control" id="Support_camera_3" placeholder="Support de la camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_entree_3">Distance de la camera de l'entrée 3</label>
+		                          <input type="text" class="form-control" id="Distance_camera_entree_3" placeholder="Distance de la camera de l'entrée 3" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Presence_autre_camera_3">Présence d'une autre caméra 3</label>
+		                          <select id="Presence_autre_camera_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_camera_3">Distance camera camera 3</label>
+		                          <input type="text" class="form-control" id="Distance_camera_camera_3" placeholder="Distance camera camera 3" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_batterie_camera_3">Changement de la batterie de la camera 3</label>
+		                          <select id="Changement_batterie_camera_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="ID_camera_4">ID camera 4</label>
+		                          <input type="text" class="form-control" id="ID_camera_4" placeholder="ID camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_inseree_4">Num SD inserée 4</label>
+		                          <input type="text" class="form-control" id="NumSD_inseree_4" placeholder="Num SD inserée 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumSD_remplacee_4">Num SD remplacée 4</label>
+		                          <input type="text" class="form-control" id="NumSD_remplacee_4" placeholder="Num SD remplacée 4" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>	
+		      			    <div class="row">
+		      				  <div class="col-lg-6">
+	            				<div class="form-group">
+	                              <label for="Date_debut_camera_4">Date début camera 4</label>                                
+	                              <div class="input-group">
+	    							<input type="text" class="form-control input-datepicker" id="Date_debut_camera_4" placeholder="Date début camera 4">
+	    							<div class="input-group-addon open-datepicker btn btn-primary" id="spanDate_debut_camera_4">
+	                                  <span class="fa fa-calendar"></span>
+	    							</div>
+	                              </div>
+	    					    </div> 
+	    					  </div>
+	    					  <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Heure_debut_camera_4">Heure début camera 4</label>
+								  <input type="time" class="form-control" id="Heure_debut_camera_4" placeholder="Heure début camera 4" >
+							    </div>
+							  </div> 
+		                    </div>	                    
+		                    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_emplacement_camera_4">Changement d'emplacement de la camera 4</label>
+		                          <select id="Changement_emplacement_camera_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Emplacement_camera_4">Emplacement de la camera 4</label>
+		                          <input type="text" class="form-control" id="Emplacement_camera_4" placeholder="Emplacement de la camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="NumEntree_camera_4">Num entrée camera 4</label>
+		                          <input type="text" class="form-control" id="NumEntree_camera_4" placeholder="Num entrée camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Hauteur_camera_4">Hauteur de la camera 4</label>
+		                          <input type="text" class="form-control" id="Hauteur_camera_4" placeholder="Hauteur de la camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Support_camera_4">Support de la camera 4</label>
+		                          <input type="text" class="form-control" id="Support_camera_4" placeholder="Support de la camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_entree_4">Distance de la camera de l'entrée 4</label>
+		                          <input type="text" class="form-control" id="Distance_camera_entree_4" placeholder="Distance de la camera de l'entrée 4" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Presence_autre_camera_4">Présence d'une autre caméra 4</label>
+		                          <select id="Presence_autre_camera_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Distance_camera_camera_4">Distance camera camera 4</label>
+		                          <input type="text" class="form-control" id="Distance_camera_camera_4" placeholder="Distance camera camera 4" >
+		                        </div>	      				  
+		      				  </div>
+		      				  <div class="col-lg-4">      
+	                            <div class="form-group">
+		                          <label for="Changement_batterie_camera_4">Changement de la batterie de la camera 4</label>
+		                          <select id="Changement_batterie_camera_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>
+		                    								
+		                    
+		      			    		      			      
 		      			  </div>
                         </div>
                         
@@ -860,7 +1310,7 @@
 			                            '<div class="col-lg-9">' +
 			                              '<div class="form-group">' +
 			                                '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
-					            	  	      '<span class="ladda-label">Sauver le site</span>' +
+					            	  	      '<span class="ladda-label">Sauver les cameras-trap</span>' +
 					            	  	      '<span class="ladda-spinner"></span>' +
 									        '</button>' +  
 									      '</div>' +  
@@ -877,7 +1327,7 @@
 			               } else if (option == 2) {
 			                    line.innerHTML = 
 			                   		'<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
-				            		  '<span class="ladda-label">Modifier le site</span>' +
+				            		  '<span class="ladda-label">Modifier les cameras-trap</span>' +
 				            		  '<span class="ladda-spinner"></span>' +
 									'</button>' 
 			                }
@@ -954,14 +1404,41 @@
     </script>    
     
     <script type="text/javascript">
-   		$('#spanDate').click(function(){
+   		$('#spanDate_debut_camera_1').click(function(){
 	   		event.stopPropagation(); 
-	   	    dp = $('#Date').datepicker({
+	   	    dp = $('#Date_debut_camera_1').datepicker({
 	   	    	language: 'fr',
 	   	    	autoclose: true
 	   	    });
 	   		dp.show();
-	   		$('#Date').focus();
+	   		$('#Date_debut_camera_1').focus();
+		});
+   		$('#spanDate_debut_camera_2').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date_debut_camera_2').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date_debut_camera_2').focus();
+		});
+   		$('#spanDate_debut_camera_3').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date_debut_camera_3').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date_debut_camera_3').focus();
+		});
+   		$('#spanDate_debut_camera_4').click(function(){
+	   		event.stopPropagation(); 
+	   	    dp = $('#Date_debut_camera_4').datepicker({
+	   	    	language: 'fr',
+	   	    	autoclose: true
+	   	    });
+	   		dp.show();
+	   		$('#Date_debut_camera_4').focus();
 		});
     </script> 
     
@@ -1081,71 +1558,245 @@
 			l.start();
 			
 			var id = uuid();
-			var Date = document.getElementById('Date').value;
-		    var N_site = document.getElementById('N_site').value;
-		    var Pays = document.getElementById('Pays').value;
-		    var Region_capture = document.getElementById('Region_capture').value;	
-		    var Site_capture = document.getElementById('Site_capture').value;
-		    var Environnement = document.getElementById('Environnement').value;
-		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
-		    var Latitude = document.getElementById('Latitude').value;	
-		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
-		    var Longitude = document.getElementById('Longitude').value;
-		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
-		    var Username = localStorage.getItem('loginUsername');
+			
+			var Equipe = document.getElementById('Equipe').value;	
+			var N_site = document.getElementById('N_site').value;		
+			var Pays = document.getElementById('Pays').value;		
+			var Region_capture = document.getElementById('Region_capture').value;				
+			var Site_capture = document.getElementById('Site_capture').value;				
+			var Environnement = document.getElementById('Environnement').value;			
+			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
+			var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;			
+			var Latitude = document.getElementById('Latitude').value;			
+			var Long_degre_dec = document.getElementById('Long_degre_dec').value;		
+			var Longitude = document.getElementById('Longitude').value;			
+			var ID_camera_1 = document.getElementById('ID_camera_1').value;			
+			var NumSD_inseree_1 = document.getElementById('NumSD_inseree_1').value;			
+			var NumSD_remplacee_1 = document.getElementById('NumSD_remplacee_1').value;			
+			var Date_debut_camera_1 = document.getElementById('Date_debut_camera_1').value;			
+			var Heure_debut_camera_1 = document.getElementById('Heure_debut_camera_1').value;			
+			var Changement_emplacement_camera_1	= document.getElementById('Changement_emplacement_camera_1').value;		
+			var Emplacement_camera_1 = document.getElementById('Emplacement_camera_1').value;			
+			var NumEntree_camera_1 = document.getElementById('NumEntree_camera_1').value;			
+			var Hauteur_camera_1 = document.getElementById('Hauteur_camera_1').value;			
+			var Support_camera_1 = document.getElementById('Support_camera_1').value;			
+			var Distance_camera_entree_1 = document.getElementById('Distance_camera_entree_1').value;			
+			var Presence_autre_camera_1 = document.getElementById('Presence_autre_camera_1').value;			
+			var Distance_camera_camera_1 = document.getElementById('Distance_camera_camera_1').value;			
+			var Changement_batterie_camera_1 = document.getElementById('Changement_batterie_camera_1').value;			
+			var ID_camera_2	=  document.getElementById('ID_camera_2').value;		
+			var NumSD_inseree_2	= document.getElementById('NumSD_inseree_2').value;		
+			var NumSD_remplacee_2 = document.getElementById('NumSD_remplacee_2').value;			
+			var Date_debut_camera_2 = document.getElementById('Date_debut_camera_2').value;			
+			var Heure_debut_camera_2 = document.getElementById('Heure_debut_camera_2').value;			
+			var Changement_emplacement_camera_2 = document.getElementById('Changement_emplacement_camera_2').value;		
+			var Emplacement_camera_2 = document.getElementById('Emplacement_camera_2').value;			
+			var NumEntree_camera_2 = document.getElementById('NumEntree_camera_2').value;			
+			var Hauteur_camera_2 = document.getElementById('Hauteur_camera_2').value;			
+			var Support_camera_2 = document.getElementById('Support_camera_2').value;			
+			var Distance_camera_entree_2 = document.getElementById('Distance_camera_entree_2').value;			
+			var Presence_autre_camera_2	= document.getElementById('Presence_autre_camera_2').value;		
+			var Distance_camera_camera_2 = document.getElementById('Distance_camera_camera_2').value;			
+			var Changement_batterie_camera_2 = document.getElementById('Changement_batterie_camera_2').value;			
+			var ID_camera_3	= document.getElementById('ID_camera_3').value;			
+			var NumSD_inseree_3 = document.getElementById('NumSD_inseree_3').value;		
+			var NumSD_remplacee_3 = document.getElementById('NumSD_remplacee_3').value;			
+			var Date_debut_camera_3 = document.getElementById('Date_debut_camera_3').value;			
+			var Heure_debut_camera_3 = document.getElementById('Heure_debut_camera_3').value;			
+			var Changement_emplacement_camera_3 = document.getElementById('Changement_emplacement_camera_3').value;			
+			var Emplacement_camera_3 = document.getElementById('Emplacement_camera_3').value;			
+			var NumEntree_camera_3 = document.getElementById('NumEntree_camera_3').value;			
+			var Hauteur_camera_3 = document.getElementById('Hauteur_camera_3').value;			
+			var Support_camera_3 = document.getElementById('Support_camera_3').value;			
+			var Distance_camera_entree_3 = document.getElementById('Distance_camera_entree_3').value;			
+			var Presence_autre_camera_3 = document.getElementById('Presence_autre_camera_3').value;		
+			var Distance_camera_camera_3 = document.getElementById('Distance_camera_camera_3').value;			
+			var Changement_batterie_camera_3 = document.getElementById('Changement_batterie_camera_3').value;			
+			var ID_camera_4 = document.getElementById('ID_camera_4').value;				
+			var NumSD_inseree_4 = document.getElementById('NumSD_inseree_4').value;				
+			var NumSD_remplacee_4 = document.getElementById('NumSD_remplacee_4').value;			
+			var Date_debut_camera_4 = document.getElementById('Date_debut_camera_4').value;			
+			var Heure_debut_camera_4 = document.getElementById('Heure_debut_camera_4').value;			
+			var Changement_emplacement_camera_4 = document.getElementById('Changement_emplacement_camera_4').value;			
+			var Emplacement_camera_4 = document.getElementById('Emplacement_camera_4').value;			
+			var NumEntree_camera_4 = document.getElementById('NumEntree_camera_4').value;			
+			var Hauteur_camera_4 = document.getElementById('Hauteur_camera_4').value;			
+			var Support_camera_4 = document.getElementById('Support_camera_4').value;			
+			var Distance_camera_entree_4 = document.getElementById('Distance_camera_entree_4').value;			
+			var Presence_autre_camera_4	= document.getElementById('Presence_autre_camera_4').value;		
+			var Distance_camera_camera_4 = document.getElementById('Distance_camera_camera_4').value;			
+			var Changement_batterie_camera_4 = document.getElementById('Changement_batterie_camera_4').value;		
+
+			var Username = localStorage.getItem('loginUsername');
+			
 		    
 		    var andAdd = document.getElementById("andAdd");
 		  	if (andAdd.checked == true){
 		  	    var doc = new Object();
+		  		
+		  	    
+		  	    doc.Equipe = Equipe;	
+				doc.N_site = N_site;		
+				doc.Pays = Pays;		
+				doc.Region_capture = Region_capture;				
+				doc.Site_capture = Site_capture;				
+				doc.Environnement = Environnement;			
+				doc.Proximite_village_km = Proximite_village_km;		
+				doc.Lat_degre_dec = Lat_degre_dec;			
+				doc.Latitude = Latitude;			
+				doc.Long_degre_dec = Long_degre_dec;		
+				doc.Longitude = Longitude;			
+				doc.ID_camera_1 = ID_camera_1;			
+				doc.NumSD_inseree_1 = NumSD_inseree_1;			
+				doc.NumSD_remplacee_1 = NumSD_remplacee_1;			
+				doc.Date_debut_camera_1 = Date_debut_camera_1;			
+				doc.Heure_debut_camera_1 = Heure_debut_camera_1;			
+				doc.Changement_emplacement_camera_1	= Changement_emplacement_camera_1;		
+				doc.Emplacement_camera_1 = Emplacement_camera_1;			
+				doc.NumEntree_camera_1 = NumEntree_camera_1;			
+				doc.Hauteur_camera_1 = Hauteur_camera_1;			
+				doc.Support_camera_1 = Support_camera_1;			
+				doc.Distance_camera_entree_1 = Distance_camera_entree_1;			
+				doc.Presence_autre_camera_1 = Presence_autre_camera_1;			
+				doc.Distance_camera_camera_1 = Distance_camera_camera_1;			
+				doc.Changement_batterie_camera_1 = Changement_batterie_camera_1;			
+				doc.ID_camera_2	=  ID_camera_2;		
+				doc.NumSD_inseree_2	= NumSD_inseree_2;		
+				doc.NumSD_remplacee_2 = NumSD_remplacee_2;			
+				doc.Date_debut_camera_2 = Date_debut_camera_2;			
+				doc.Heure_debut_camera_2 = Heure_debut_camera_2;			
+				doc.Changement_emplacement_camera_2 = Changement_emplacement_camera_2;		
+				doc.Emplacement_camera_2 = Emplacement_camera_2;			
+				doc.NumEntree_camera_2 = NumEntree_camera_2;			
+				doc.Hauteur_camera_2 = Hauteur_camera_2;			
+				doc.Support_camera_2 = Support_camera_2;			
+				doc.Distance_camera_entree_2 = Distance_camera_entree_2;			
+				doc.Presence_autre_camera_2	= Presence_autre_camera_2;		
+				doc.Distance_camera_camera_2 = Distance_camera_camera_2;			
+				doc.Changement_batterie_camera_2 = Changement_batterie_camera_2;			
+				doc.ID_camera_3	= ID_camera_3;			
+				doc.NumSD_inseree_3 = NumSD_inseree_3;		
+				doc.NumSD_remplacee_3 = NumSD_remplacee_3;			
+				doc.Date_debut_camera_3 = Date_debut_camera_3;			
+				doc.Heure_debut_camera_3 = Heure_debut_camera_3;			
+				doc.Changement_emplacement_camera_3 = Changement_emplacement_camera_3;			
+				doc.Emplacement_camera_3 = Emplacement_camera_3;			
+				doc.NumEntree_camera_3 = NumEntree_camera_3;			
+				doc.Hauteur_camera_3 = Hauteur_camera_3;			
+				doc.Support_camera_3 = Support_camera_3;			
+				doc.Distance_camera_entree_3 = Distance_camera_entree_3;			
+				doc.Presence_autre_camera_3 = Presence_autre_camera_3;		
+				doc.Distance_camera_camera_3 = Distance_camera_camera_3;			
+				doc.Changement_batterie_camera_3 = Changement_batterie_camera_3;			
+				doc.ID_camera_4 = ID_camera_4;				
+				doc.NumSD_inseree_4 = NumSD_inseree_4;				
+				doc.NumSD_remplacee_4 = NumSD_remplacee_4;			
+				doc.Date_debut_camera_4 = Date_debut_camera_4;			
+				doc.Heure_debut_camera_4 = Heure_debut_camera_4;			
+				doc.Changement_emplacement_camera_4 = Changement_emplacement_camera_4;			
+				doc.Emplacement_camera_4 = Emplacement_camera_4;			
+				doc.NumEntree_camera_4 = NumEntree_camera_4;	
+				doc.Hauteur_camera_4 = Hauteur_camera_4;			
+				doc.Support_camera_4 = Support_camera_4;			
+				doc.Distance_camera_entree_4 = Distance_camera_entree_4;			
+				doc.Presence_autre_camera_4	= Presence_autre_camera_4;		
+				doc.Distance_camera_camera_4 = Distance_camera_camera_4;			
+				doc.Changement_batterie_camera_4 = Changement_batterie_camera_4;
+				doc.Username = Username
 		  		  
-		  	    doc.Date = Date,
-			  	doc.Pays = Pays,
-			  	doc.Region_capture = Region_capture,
-			  	doc.Site_capture = Site_capture,
-			  	doc.Environnement = Environnement,
-			  	doc.Lat_degre_dec = Lat_degre_dec,
-			  	doc.Latitude = Latitude,
-			  	doc.Long_degre_dec = Long_degre_dec,
-			  	doc.Longitude = Longitude,
-			  	doc.Proximite_village_km = Proximite_village_km,
-			  	doc.Username = Username
-		  		  
-		  		localStorage['siteTablesData'] = JSON.stringify(doc);
+		  		localStorage['cameras_trapTablesData'] = JSON.stringify(doc);
 		  	};
 		    
 		    if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+				var DB = new PouchDB(remote_couchdb + 'cameras_trap' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('site' + nom_table + debug);
+				var DB = new PouchDB('cameras_trap' + nom_table + debug);
 			};
 			
 			DB.put({
 				_id: id,
-				Date: Date,
-				N_site: N_site,
-				Pays: Pays,
-				Region_capture: Region_capture,
-				Site_capture: Site_capture,
-				Environnement: Environnement,
-				Lat_degre_dec: Lat_degre_dec,
-				Latitude: Latitude,
-				Long_degre_dec: Long_degre_dec,
-				Longitude: Longitude,
-				Proximite_village_km: Proximite_village_km,
+				Equipe: Equipe,	
+				N_site: N_site,		
+				Pays: Pays,		
+				Region_capture: Region_capture,				
+				Site_capture: Site_capture,				
+				Environnement: Environnement,			
+				Proximite_village_km: Proximite_village_km,		
+				Lat_degre_dec: Lat_degre_dec,			
+				Latitude: Latitude,			
+				Long_degre_dec: Long_degre_dec,		
+				Longitude: Longitude,			
+				ID_camera_1: ID_camera_1,			
+				NumSD_inseree_1: NumSD_inseree_1,			
+				NumSD_remplacee_1: NumSD_remplacee_1,			
+				Date_debut_camera_1: Date_debut_camera_1,			
+				Heure_debut_camera_1: Heure_debut_camera_1,			
+				Changement_emplacement_camera_1: Changement_emplacement_camera_1,		
+				Emplacement_camera_1: Emplacement_camera_1,			
+				NumEntree_camera_1: NumEntree_camera_1,			
+				Hauteur_camera_1: Hauteur_camera_1,			
+				Support_camera_1: Support_camera_1,			
+				Distance_camera_entree_1: Distance_camera_entree_1,			
+				Presence_autre_camera_1: Presence_autre_camera_1,			
+				Distance_camera_camera_1: Distance_camera_camera_1,			
+				Changement_batterie_camera_1: Changement_batterie_camera_1,			
+				ID_camera_2: ID_camera_2,		
+				NumSD_inseree_2: NumSD_inseree_2,		
+				NumSD_remplacee_2: NumSD_remplacee_2,			
+				Date_debut_camera_2: Date_debut_camera_2,			
+				Heure_debut_camera_2: Heure_debut_camera_2,			
+				Changement_emplacement_camera_2: Changement_emplacement_camera_2,		
+				Emplacement_camera_2: Emplacement_camera_2,			
+				NumEntree_camera_2: NumEntree_camera_2,			
+				Hauteur_camera_2: Hauteur_camera_2,			
+				Support_camera_2: Support_camera_2,			
+				Distance_camera_entree_2: Distance_camera_entree_2,			
+				Presence_autre_camera_2: Presence_autre_camera_2,		
+				Distance_camera_camera_2: Distance_camera_camera_2,			
+				Changement_batterie_camera_2: Changement_batterie_camera_2,			
+				ID_camera_3: ID_camera_3,			
+				NumSD_inseree_3: NumSD_inseree_3,		
+				NumSD_remplacee_3: NumSD_remplacee_3,			
+				Date_debut_camera_3: Date_debut_camera_3,			
+				Heure_debut_camera_3: Heure_debut_camera_3,			
+				Changement_emplacement_camera_3: Changement_emplacement_camera_3,			
+				Emplacement_camera_3: Emplacement_camera_3,			
+				NumEntree_camera_3: NumEntree_camera_3,			
+				Hauteur_camera_3: Hauteur_camera_3,			
+				Support_camera_3: Support_camera_3,			
+				Distance_camera_entree_3: Distance_camera_entree_3,			
+				Presence_autre_camera_3: Presence_autre_camera_3,		
+				Distance_camera_camera_3: Distance_camera_camera_3,			
+				Changement_batterie_camera_3: Changement_batterie_camera_3,			
+				ID_camera_4: ID_camera_4,				
+				NumSD_inseree_4: NumSD_inseree_4,				
+				NumSD_remplacee_4: NumSD_remplacee_4,			
+				Date_debut_camera_4: Date_debut_camera_4,			
+				Heure_debut_camera_4: Heure_debut_camera_4,			
+				Changement_emplacement_camera_4: Changement_emplacement_camera_4,			
+				Emplacement_camera_4: Emplacement_camera_4,			
+				NumEntree_camera_4: NumEntree_camera_4,
+				Hauteur_camera_4: Hauteur_camera_4,			
+				Support_camera_4: Support_camera_4,			
+				Distance_camera_entree_4: Distance_camera_entree_4,			
+				Presence_autre_camera_4: Presence_autre_camera_4,		
+				Distance_camera_camera_4: Distance_camera_camera_4,			
+				Changement_batterie_camera_4: Changement_batterie_camera_4,
 				Username: Username
+				
 			}).then(function (response) {
 								
 				if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-					var localDB2 = new PouchDB('site' + nom_table + debug);	
+					var localDB2 = new PouchDB('cameras_trap' + nom_table + debug);	
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var remoteDB = new PouchDB(remote_couchdb + 'site' + nom_table + debug, {skip_setup: true});
+					var remoteDB = new PouchDB(remote_couchdb + 'cameras_trap' + nom_table + debug, {skip_setup: true});
 					
 					localDB2.sync(remoteDB).on('complete', (info) => { 
 						
 						var andAdd = document.getElementById("andAdd");
 					  	if (andAdd.checked == true) {
-					  	  window.location = 'ajouter_modifier_sites.html?option=1&table=' + nom_table;
+					  	  window.location = 'ajouter_modifier_cameras_trap.html?option=1&table=' + nom_table;
 					  	} else {
 					  	  window.location = 'liste_sites.html?table=' + nom_table;	
 					  	};
@@ -1157,9 +1808,9 @@
 				} else {
 					var andAdd = document.getElementById("andAdd");
 				  	if (andAdd.checked == true) {
-				  	  window.location = 'ajouter_modifier_sites.html?option=1&table=' + nom_table;
+				  	  window.location = 'ajouter_modifier_cameras_trap.html?option=1&table=' + nom_table;
 				  	} else {
-				  	  window.location = 'liste_sites.html?table=' + nom_table;	
+				  	  window.location = 'liste_cameras_trap.html?table=' + nom_table;	
 				  	};
 				}
 				
@@ -1177,51 +1828,163 @@
 			// Start loading
 			l.start();
 			
-			var id = localStorage.getItem('ID_site' + nom_table);
-			var Date = document.getElementById('Date').value;
-		    var N_site = document.getElementById('N_site').value;
-		    var Pays = document.getElementById('Pays').value;
-		    var Region_capture = document.getElementById('Region_capture').value;	
-		    var Site_capture = document.getElementById('Site_capture').value;
-		    var Environnement = document.getElementById('Environnement').value;
-		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
-		    var Latitude = document.getElementById('Latitude').value;	
-		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
-		    var Longitude = document.getElementById('Longitude').value;
-		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
+			var id = localStorage.getItem('ID_cameras_trap' + nom_table);
+			var Equipe = document.getElementById('Equipe').value;	
+			var N_site = document.getElementById('N_site').value;		
+			var Pays = document.getElementById('Pays').value;		
+			var Region_capture = document.getElementById('Region_capture').value;				
+			var Site_capture = document.getElementById('Site_capture').value;				
+			var Environnement = document.getElementById('Environnement').value;			
+			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
+			var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;			
+			var Latitude = document.getElementById('Latitude').value;			
+			var Long_degre_dec = document.getElementById('Long_degre_dec').value;		
+			var Longitude = document.getElementById('Longitude').value;			
+			var ID_camera_1 = document.getElementById('ID_camera_1').value;			
+			var NumSD_inseree_1 = document.getElementById('NumSD_inseree_1').value;			
+			var NumSD_remplacee_1 = document.getElementById('NumSD_remplacee_1').value;			
+			var Date_debut_camera_1 = document.getElementById('Date_debut_camera_1').value;			
+			var Heure_debut_camera_1 = document.getElementById('Heure_debut_camera_1').value;			
+			var Changement_emplacement_camera_1	= document.getElementById('Changement_emplacement_camera_1').value;		
+			var Emplacement_camera_1 = document.getElementById('Emplacement_camera_1').value;			
+			var NumEntree_camera_1 = document.getElementById('NumEntree_camera_1').value;			
+			var Hauteur_camera_1 = document.getElementById('Hauteur_camera_1').value;			
+			var Support_camera_1 = document.getElementById('Support_camera_1').value;			
+			var Distance_camera_entree_1 = document.getElementById('Distance_camera_entree_1').value;			
+			var Presence_autre_camera_1 = document.getElementById('Presence_autre_camera_1').value;			
+			var Distance_camera_camera_1 = document.getElementById('Distance_camera_camera_1').value;			
+			var Changement_batterie_camera_1 = document.getElementById('Changement_batterie_camera_1').value;			
+			var ID_camera_2	=  document.getElementById('ID_camera_2').value;		
+			var NumSD_inseree_2	= document.getElementById('NumSD_inseree_2').value;		
+			var NumSD_remplacee_2 = document.getElementById('NumSD_remplacee_2').value;			
+			var Date_debut_camera_2 = document.getElementById('Date_debut_camera_2').value;			
+			var Heure_debut_camera_2 = document.getElementById('Heure_debut_camera_2').value;			
+			var Changement_emplacement_camera_2 = document.getElementById('Changement_emplacement_camera_2').value;		
+			var Emplacement_camera_2 = document.getElementById('Emplacement_camera_2').value;			
+			var NumEntree_camera_2 = document.getElementById('NumEntree_camera_2').value;			
+			var Hauteur_camera_2 = document.getElementById('Hauteur_camera_2').value;			
+			var Support_camera_2 = document.getElementById('Support_camera_2').value;			
+			var Distance_camera_entree_2 = document.getElementById('Distance_camera_entree_2').value;			
+			var Presence_autre_camera_2	= document.getElementById('Presence_autre_camera_2').value;		
+			var Distance_camera_camera_2 = document.getElementById('Distance_camera_camera_2').value;			
+			var Changement_batterie_camera_2 = document.getElementById('Changement_batterie_camera_2').value;			
+			var ID_camera_3	= document.getElementById('ID_camera_3').value;			
+			var NumSD_inseree_3 = document.getElementById('NumSD_inseree_3').value;		
+			var NumSD_remplacee_3 = document.getElementById('NumSD_remplacee_3').value;			
+			var Date_debut_camera_3 = document.getElementById('Date_debut_camera_3').value;			
+			var Heure_debut_camera_3 = document.getElementById('Heure_debut_camera_3').value;			
+			var Changement_emplacement_camera_3 = document.getElementById('Changement_emplacement_camera_3').value;			
+			var Emplacement_camera_3 = document.getElementById('Emplacement_camera_3').value;			
+			var NumEntree_camera_3 = document.getElementById('NumEntree_camera_3').value;			
+			var Hauteur_camera_3 = document.getElementById('Hauteur_camera_3').value;			
+			var Support_camera_3 = document.getElementById('Support_camera_3').value;			
+			var Distance_camera_entree_3 = document.getElementById('Distance_camera_entree_3').value;			
+			var Presence_autre_camera_3 = document.getElementById('Presence_autre_camera_3').value;		
+			var Distance_camera_camera_3 = document.getElementById('Distance_camera_camera_3').value;			
+			var Changement_batterie_camera_3 = document.getElementById('Changement_batterie_camera_3').value;			
+			var ID_camera_4 = document.getElementById('ID_camera_4').value;				
+			var NumSD_inseree_4 = document.getElementById('NumSD_inseree_4').value;				
+			var NumSD_remplacee_4 = document.getElementById('NumSD_remplacee_4').value;			
+			var Date_debut_camera_4 = document.getElementById('Date_debut_camera_4').value;			
+			var Heure_debut_camera_4 = document.getElementById('Heure_debut_camera_4').value;			
+			var Changement_emplacement_camera_4 = document.getElementById('Changement_emplacement_camera_4').value;			
+			var Emplacement_camera_4 = document.getElementById('Emplacement_camera_4').value;			
+			var NumEntree_camera_4 = document.getElementById('NumEntree_camera_4').value;			
+			var Hauteur_camera_4 = document.getElementById('Hauteur_camera_4').value;			
+			var Support_camera_4 = document.getElementById('Support_camera_4').value;			
+			var Distance_camera_entree_4 = document.getElementById('Distance_camera_entree_4').value;			
+			var Presence_autre_camera_4	= document.getElementById('Presence_autre_camera_4').value;		
+			var Distance_camera_camera_4 = document.getElementById('Distance_camera_camera_4').value;			
+			var Changement_batterie_camera_4 = document.getElementById('Changement_batterie_camera_4').value;
 		    var Username = localStorage.getItem('loginUsername');
 		    
 			if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+				var DB = new PouchDB(remote_couchdb + 'cameras_trap' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('site' + nom_table + debug);
+				var DB = new PouchDB('cameras_trap' + nom_table + debug);
 			};
 						
 			DB.find({
 				selector: {_id: id},
-				fields: ['_id', 'Date', 'Equipe', 'N_site', 'Pays', 'Site_region']
+				fields: ['_id']
 			}).then(function (result) {
 		
 				if (localStorage.getItem('web') === 'oui') {
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var DB2 = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+					var DB2 = new PouchDB(remote_couchdb + 'cameras_trap' + nom_table + debug);
 				} else {
-					var DB2 = new PouchDB('site' + nom_table + debug);
+					var DB2 = new PouchDB('cameras_trap' + nom_table + debug);
 				};
 				
 				DB2.get(id).then(function (doc) {
-					doc.Date = Date;
-					doc.N_site = N_site;
-					doc.Pays = Pays;
-					doc.Region_capture = Region_capture;
-					doc.Site_capture = Site_capture;
-					doc.Environnement = Environnement;
-					doc.Lat_degre_dec = Lat_degre_dec;
-					doc.Latitude = Latitude;
-					doc.Long_degre_dec = Long_degre_dec;
-					doc.Longitude = Longitude;
-					doc.Proximite_village_km = Proximite_village_km;
+					doc.Equipe = Equipe;	
+					doc.N_site = N_site;		
+					doc.Pays = Pays;		
+					doc.Region_capture = Region_capture;				
+					doc.Site_capture = Site_capture;				
+					doc.Environnement = Environnement;			
+					doc.Proximite_village_km = Proximite_village_km;		
+					doc.Lat_degre_dec = Lat_degre_dec;			
+					doc.Latitude = Latitude;			
+					doc.Long_degre_dec = Long_degre_dec;		
+					doc.Longitude = Longitude;			
+					doc.ID_camera_1 = ID_camera_1;			
+					doc.NumSD_inseree_1 = NumSD_inseree_1;			
+					doc.NumSD_remplacee_1 = NumSD_remplacee_1;			
+					doc.Date_debut_camera_1 = Date_debut_camera_1;			
+					doc.Heure_debut_camera_1 = Heure_debut_camera_1;			
+					doc.Changement_emplacement_camera_1	= Changement_emplacement_camera_1;		
+					doc.Emplacement_camera_1 = Emplacement_camera_1;			
+					doc.NumEntree_camera_1 = NumEntree_camera_1;			
+					doc.Hauteur_camera_1 = Hauteur_camera_1;			
+					doc.Support_camera_1 = Support_camera_1;			
+					doc.Distance_camera_entree_1 = Distance_camera_entree_1;			
+					doc.Presence_autre_camera_1 = Presence_autre_camera_1;			
+					doc.Distance_camera_camera_1 = Distance_camera_camera_1;			
+					doc.Changement_batterie_camera_1 = Changement_batterie_camera_1;			
+					doc.ID_camera_2	=  ID_camera_2;		
+					doc.NumSD_inseree_2	= NumSD_inseree_2;		
+					doc.NumSD_remplacee_2 = NumSD_remplacee_2;			
+					doc.Date_debut_camera_2 = Date_debut_camera_2;			
+					doc.Heure_debut_camera_2 = Heure_debut_camera_2;			
+					doc.Changement_emplacement_camera_2 = Changement_emplacement_camera_2;		
+					doc.Emplacement_camera_2 = Emplacement_camera_2;			
+					doc.NumEntree_camera_2 = NumEntree_camera_2;			
+					doc.Hauteur_camera_2 = Hauteur_camera_2;			
+					doc.Support_camera_2 = Support_camera_2;			
+					doc.Distance_camera_entree_2 = Distance_camera_entree_2;			
+					doc.Presence_autre_camera_2	= Presence_autre_camera_2;		
+					doc.Distance_camera_camera_2 = Distance_camera_camera_2;			
+					doc.Changement_batterie_camera_2 = Changement_batterie_camera_2;			
+					doc.ID_camera_3	= ID_camera_3;			
+					doc.NumSD_inseree_3 = NumSD_inseree_3;		
+					doc.NumSD_remplacee_3 = NumSD_remplacee_3;			
+					doc.Date_debut_camera_3 = Date_debut_camera_3;			
+					doc.Heure_debut_camera_3 = Heure_debut_camera_3;			
+					doc.Changement_emplacement_camera_3 = Changement_emplacement_camera_3;			
+					doc.Emplacement_camera_3 = Emplacement_camera_3;			
+					doc.NumEntree_camera_3 = NumEntree_camera_3;			
+					doc.Hauteur_camera_3 = Hauteur_camera_3;			
+					doc.Support_camera_3 = Support_camera_3;			
+					doc.Distance_camera_entree_3 = Distance_camera_entree_3;			
+					doc.Presence_autre_camera_3 = Presence_autre_camera_3;		
+					doc.Distance_camera_camera_3 = Distance_camera_camera_3;			
+					doc.Changement_batterie_camera_3 = Changement_batterie_camera_3;			
+					doc.ID_camera_4 = ID_camera_4;				
+					doc.NumSD_inseree_4 = NumSD_inseree_4;				
+					doc.NumSD_remplacee_4 = NumSD_remplacee_4;			
+					doc.Date_debut_camera_4 = Date_debut_camera_4;			
+					doc.Heure_debut_camera_4 = Heure_debut_camera_4;			
+					doc.Changement_emplacement_camera_4 = Changement_emplacement_camera_4;			
+					doc.Emplacement_camera_4 = Emplacement_camera_4;			
+					doc.NumEntree_camera_4 = NumEntree_camera_4;	
+					doc.Hauteur_camera_4 = Hauteur_camera_4;			
+					doc.Support_camera_4 = Support_camera_4;			
+					doc.Distance_camera_entree_4 = Distance_camera_entree_4;			
+					doc.Presence_autre_camera_4	= Presence_autre_camera_4;		
+					doc.Distance_camera_camera_4 = Distance_camera_camera_4;			
+					doc.Changement_batterie_camera_4 = Changement_batterie_camera_4;
 					doc.Username = Username;
 										
 					return DB2.put(doc);
@@ -1230,19 +1993,19 @@
 				}).then(function (doc) {
 					
 					if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-						var localDB3 = new PouchDB('site' + nom_table + debug);	
+						var localDB3 = new PouchDB('cameras_trap' + nom_table + debug);	
 						var remote_couchdb = localStorage.getItem('remote_couchdb');
-						var remoteDB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+						var remoteDB = new PouchDB(remote_couchdb + 'cameras_trap' + nom_table + debug);
 										
 						localDB3.sync(remoteDB).on('complete', (info) => { 
-							window.location = 'liste_sites.html?table=' + nom_table;
+							window.location = 'liste_cameras_trap.html?table=' + nom_table;
 						}).on('error', function (err) {
 							// error while replicating
-							alert('alert sync modify site : ' + nom_table + JSON.stringify(err));
+							alert('alert sync modify cameras_trap : ' + nom_table + JSON.stringify(err));
 							window.location = 'index.html';
 						});	
 					} else {
-						window.location = 'liste_sites.html?table=' + nom_table;
+						window.location = 'liste_cameras_trap.html?table=' + nom_table;
 					}
 					
 					l.stop();								  
@@ -1302,7 +2065,7 @@
 			catch(error) {
 	    	};
 	    	
-			var component_li = document.getElementById('li_site' + nom_table);
+			var component_li = document.getElementById('li_cameras_trap' + nom_table);
 			component_li.classList.add('active');
 		};
 		

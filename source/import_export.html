@@ -89,6 +89,7 @@
 		nom_table = searchParams.get('table');
 		type_table = searchParams.get('type');
 		
+		
 		localStorage['import_table'] = nom_table;
 	</script> 
     
@@ -501,7 +502,65 @@
                    	    </li>
                    	    
                       </ul>
-                    </li>                   
+                    </li>              
+                    
+                    <li id="li_astre_transvihmiDropdown" name="6"> <a id="a_astre_transvihmiDropdown" name="6" href="#ul_astre_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad-transvihmi"></i> </a>
+                      <ul id="ul_astre_transvihmiDropdown" name="6" class="collapse list-unstyled">
+                        
+                        <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
+                          <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
+                                              
+	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+			                
+			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
+			                
+	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_missions_astre_transvihmi_guinee" name="6"style="text-align: right"><a href="liste_donnees_missions.html?table=_astre_transvihmi_guinee">données missions</a></li>
+			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=donnees_mission">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    
+			                    <li id="li_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guinee" name="6"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_astre_transvihmi_guinee">données journalières</a></li>                            
+	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=donnees_journalieres">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+	                        		                    
+			                    <li id="li_bat_astre_transvihmi_guineeCaptureesDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeCaptureesDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
+			                      <ul id="ul_bat_astre_transvihmi_guineeCaptureesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_capturees_astre_transvihmi_guinee" name="6"><a href="liste_chauves_souris_capturees.html?table=_astre_transvihmi_guinee">données</a></li>                            
+			                        <li id="li_bat_map_capturees_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=chauves_souris_capturees">carte</a></li>
+			                        <li id="li_importation_bat_capturees_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=chauves_souris_capturees">importation/exportation</a></li>                            
+	                              </ul>
+			                    </li>
+			                    <li id="li_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
+			                      <ul id="ul_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6" class="collapse list-unstyled">
+			                        <li id="li_bat_non_invasives_astre_transvihmi_guinee" name="6"><a href="liste_chauves_souris_non_invasives.html?table=_astre_transvihmi_guinee">données</a></li> 
+		                            <li id="li_bat_map_non_invasives_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=chauves_souris_non_invasives">carte</a></li>
+	    	                        <li id="li_importation_bat_non_invasives_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=chauves_souris_non_invasives">importation/exportation</a></li>
+	                              </ul>
+	                            </li>
+	                          </ul>
+	                        </li>                          
+                          </ul>
+                   	    </li>    
+                   	    
+                   	    <li id="li_faune_astre_transvihmi_guineeDropdown" name="6"><a id="a_faune_astre_transvihmi_guineeDropdown" name="6" href="#ul_faune_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline;text-align: right;padding-right: 40px;"> <i class="icon-Picto_ANTILOPE"></i>Faune</a>
+                      	  <ul id="ul_faune_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+                        	<li id="li_faune_astre_transvihmi_guinee" name="6"><a href="liste_faune.html?table=_astre_transvihmi_guinee">données</a></li>                            
+                        	<li id="li_faune_map_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=faune">carte</a></li>
+                        	<li id="li_importation_faune_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=faune">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>
+	                    	
+	                    	
+                      </ul>
+                   	</li>   
 
 					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
                       <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
@@ -775,7 +834,9 @@
         	    	
         	    	if (type_table == 'chauves_souris_capturees') {
 						loadjs('js/importation-chauves-souris-capturees-2.js');
-        	    	} else if (type_table == 'chauves_souris_non_invasives') {
+        	    	} else if ((type_table == 'chauves_souris_non_invasives') && (nom_table == '_astre_transvihmi_guinee')) {
+            	    	loadjs('js/importation-NI_CS_Grotte_GU.js');
+            	    } else if ((type_table == 'chauves_souris_non_invasives') && (nom_table != '_astre_transvihmi_guinee')) {
             	    	loadjs('js/importation-chauves-souris-non-invasives.js');
             	    } else if (type_table == 'viande_de_brousse') {
             	    	loadjs('js/importation-viande-de-brousse.js');
@@ -791,6 +852,12 @@
             	    	loadjs('js/importation-grands-singes-antilopes.js');
             	    } else if (type_table == 'animals_ipg') {
             	    	loadjs('js/importation-animal-ipg.js');
+            	    } else if (type_table == 'caracterisations') {
+            	    	loadjs('js/importation-caracterisations.js');
+            	    }  else if (type_table == 'cameras-trap') {
+            	    	loadjs('js/importation-cameras-trap.js');
+            	    } else if (type_table == 'faune') {
+            	    	loadjs('js/importation-faune.js');
             	    }
         	    };
 				reader.readAsText(file, 'ISO-8859-1');
@@ -909,8 +976,9 @@
 			institut = 'astre';
 		} else if (nom_table == '_ipg_guinee') {
 			institut = 'ipg';
+		} else if (nom_table == '_astre_transvihmi_guinee') {
+			institut = 'astre_transvihmi';
 		};
-			
 		expanded(nom_table);
 				
 		function expanded(nom_table) {
@@ -920,145 +988,195 @@
 			component_a.setAttribute('aria-expanded', 'true');
 			var component_ul =  document.getElementById('ul_' + institut + 'Dropdown');
 			component_ul.classList.add('show');
-				 
-			try {
-				var component_li = document.getElementById('li' + nom_table + 'Dropdown');
+			
+			if ((type_table == 'caracterisations') ||  (type_table == 'cameras_trap')) {
+				
+				
+			
+				var component_li = document.getElementById('li_' + institut + 'Dropdown');
 				component_li.classList.add('active');
-				var component_a = document.getElementById('a' + nom_table + 'Dropdown');
+				var component_a = document.getElementById('a_' + institut + 'Dropdown');
 				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+				var component_ul =  document.getElementById('ul_' + institut + 'Dropdown');
 				component_ul.classList.add('show');
+				
+				try {
+		  			var component_li = document.getElementById('li' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+		  			var component_a = document.getElementById('a' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+				}
+				catch(error) {
+		    	};
+		    	
+		    	var component_li = document.getElementById('li_' + type_table + nom_table);
+				component_li.classList.add('active');
+				
+				if (type_table == 'caracterisations') {
+					document.getElementById("card1").innerHTML = "Importation des caracterisations de grottes";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des caracterisations de grottes";
+					document.getElementById("card3").innerHTML = "Exporter les caracterisations de grottes"; 
+				} else if (type_table == 'cameras_trap') {
+					document.getElementById("card1").innerHTML = "Importation des cameras-trap";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des cameras-trap";
+					document.getElementById("card3").innerHTML = "Exporter les cameras-trap"; 
+				}
+				
+			} else {	
+				try {
+					var component_li = document.getElementById('li' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+				}
+			   	catch(error) {
+			   	};
+			   	
+				if ((type_table == 'chauves_souris_capturees') 
+					|| (type_table == 'chauves_souris_non_invasives')
+					|| (type_table == 'donnees_mission')
+					|| (type_table == 'donnees_journalieres')) { 
+					var component_li = document.getElementById('li_bat' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_bat' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_bat' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+				};
+				
+				if (type_table == 'chauves_souris_capturees') {
+					var component_li = document.getElementById('li_bat' + nom_table + 'CaptureesDropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_bat' + nom_table + 'CaptureesDropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des chauves-souris capturées";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris capturées";
+					document.getElementById("card3").innerHTML = "Exporter les chauves-souris capturées";
+				} else if (type_table == 'chauves_souris_non_invasives') {
+					var component_li = document.getElementById('li_bat' + nom_table + 'NonInvasivesDropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_bat' + nom_table + 'NonInvasivesDropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_bat' + nom_table + 'NonInvasivesDropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des chauves-souris non invasives";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris non invasives";
+					document.getElementById("card3").innerHTML = "Exporter les chauves-souris non invasives";
+				}  else if (type_table == 'donnees_mission') {
+					var component_li = document.getElementById('li_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+				
+					document.getElementById("card1").innerHTML = "Importation des donnees missions";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des donnees missions";
+					document.getElementById("card3").innerHTML = "Exporter les donnees missions";
+					document.getElementById("interface_publique").style.display = "none";
+				}  else if (type_table == 'donnees_journalieres') {
+					var component_li = document.getElementById('li_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+				
+					document.getElementById("card1").innerHTML = "Importation des donnees journalieres";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des donnees journalieres";
+					document.getElementById("card3").innerHTML = "Exporter les donnees journalieres";
+					document.getElementById("interface_publique").style.display = "none";
+				} else if (type_table == 'viande_de_brousse') { 
+					var component_li = document.getElementById('li_viande_de_brousse' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_viande_de_brousse' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_viande_de_brousse' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des viandes de brousse";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse";
+					document.getElementById("card3").innerHTML = "Exporter les viandes de brousse";
+				} else if (type_table == 'viande_de_brousse_nhp') { 
+					var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_viande_de_brousse_nhp' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des viandes de brousse NHP";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse NHP";
+					document.getElementById("card3").innerHTML = "Exporter les viandes de brousse NHP";
+				} else if (type_table == 'grands_singes_antilopes') { 
+					var component_li = document.getElementById('li_grand_singe_antilope' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_grand_singe_antilope' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_grand_singe_antilope' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des grands singes et des antilopes";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des grands singes et des antilopes";
+					document.getElementById("card3").innerHTML = "Exporter les grands singes et les antilopes";
+				} else if (type_table == 'animals') {
+					/*li_importation_animals_mivegec_gabon
+					var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_animals' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_animals' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');*/
+					
+					document.getElementById("card1").innerHTML = "Importation des animaux";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
+					document.getElementById("card3").innerHTML = "Exporter les animaux";
+				} else if (type_table == 'animals_ipg') {
+					document.getElementById("card1").innerHTML = "Importation des animaux";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
+					document.getElementById("card3").innerHTML = "Exporter les animaux";
+				} else if (type_table == 'faune') { 
+					var component_li = document.getElementById('li_faune' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_faune' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_faune' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation de la faune";
+					document.getElementById("card2").innerHTML = "Téléchargement du template dela faune";
+					document.getElementById("card3").innerHTML = "Exporter la faune";
+				}
+				
+				if (type_table == 'chauves_souris_capturees') {
+					var component_li = document.getElementById('li_importation_bat_capturees' + nom_table);
+				} else if (type_table == 'chauves_souris_non_invasives') {
+					var component_li = document.getElementById('li_importation_bat_non_invasives' + nom_table);
+				} else if (type_table == 'donnees_mission') {
+					var component_li = document.getElementById('li_importation_suivi_longitudinal_donnees_missions' + nom_table);
+				}  else if (type_table == 'donnees_journalieres') {
+					var component_li = document.getElementById('li_importation_suivi_longitudinal_donnees_journalieres' + nom_table);
+				} else if (type_table == 'viande_de_brousse') {
+					var component_li = document.getElementById('li_importation_viande_de_brousse' + nom_table);
+				} else if (type_table == 'grands_singes_antilopes') {
+					var component_li = document.getElementById('li_importation_grand_singe_antilope' + nom_table);
+				} else if (type_table == 'animals') {
+					var component_li = document.getElementById('li_importation_animals' + nom_table);
+				} else if (type_table == 'animals_ipg') {
+					var component_li = document.getElementById('li_importation_animals' + nom_table);
+				} else if (type_table == 'faune') {
+					var component_li = document.getElementById('li_importation_faune' + nom_table);
+				}
+				component_li.classList.add('active');
 			}
-		   	catch(error) {
-		   	};
-		   	
-			if ((type_table == 'chauves_souris_capturees') 
-				|| (type_table == 'chauves_souris_non_invasives')
-				|| (type_table == 'donnees_mission')
-				|| (type_table == 'donnees_journalieres')) { 
-				var component_li = document.getElementById('li_bat' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_bat' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_bat' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-			};
-			
-			if (type_table == 'chauves_souris_capturees') {
-				var component_li = document.getElementById('li_bat' + nom_table + 'CaptureesDropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_bat' + nom_table + 'CaptureesDropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
-				component_ul.classList.add('show');
-				
-				document.getElementById("card1").innerHTML = "Importation des chauves-souris capturées";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris capturées";
-				document.getElementById("card3").innerHTML = "Exporter les chauves-souris capturées";
-			} else if (type_table == 'chauves_souris_non_invasives') {
-				var component_li = document.getElementById('li_bat' + nom_table + 'NonInvasivesDropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_bat' + nom_table + 'NonInvasivesDropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_bat' + nom_table + 'NonInvasivesDropdown');
-				component_ul.classList.add('show');
-				
-				document.getElementById("card1").innerHTML = "Importation des chauves-souris non invasives";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris non invasives";
-				document.getElementById("card3").innerHTML = "Exporter les chauves-souris non invasives";
-			}  else if (type_table == 'donnees_mission') {
-				var component_li = document.getElementById('li_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_suivi_longitudinal_donnees_missions' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-			
-				document.getElementById("card1").innerHTML = "Importation des donnees missions";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des donnees missions";
-				document.getElementById("card3").innerHTML = "Exporter les donnees missions";
-				document.getElementById("interface_publique").style.display = "none";
-			}  else if (type_table == 'donnees_journalieres') {
-				var component_li = document.getElementById('li_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_suivi_longitudinal_donnees_journalieres' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-			
-				document.getElementById("card1").innerHTML = "Importation des donnees journalieres";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des donnees journalieres";
-				document.getElementById("card3").innerHTML = "Exporter les donnees journalieres";
-				document.getElementById("interface_publique").style.display = "none";
-			} else if (type_table == 'viande_de_brousse') { 
-				var component_li = document.getElementById('li_viande_de_brousse' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_viande_de_brousse' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_viande_de_brousse' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-				
-				document.getElementById("card1").innerHTML = "Importation des viandes de brousse";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse";
-				document.getElementById("card3").innerHTML = "Exporter les viandes de brousse";
-			} else if (type_table == 'viande_de_brousse_nhp') { 
-				var component_li = document.getElementById('li_viande_de_brousse_nhp' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_viande_de_brousse_nhp' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_viande_de_brousse_nhp' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-				
-				document.getElementById("card1").innerHTML = "Importation des viandes de brousse NHP";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des viandes de brousse NHP";
-				document.getElementById("card3").innerHTML = "Exporter les viandes de brousse NHP";
-			} else if (type_table == 'grands_singes_antilopes') { 
-				var component_li = document.getElementById('li_grand_singe_antilope' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_grand_singe_antilope' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_grand_singe_antilope' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');
-				
-				document.getElementById("card1").innerHTML = "Importation des grands singes et des antilopes";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des grands singes et des antilopes";
-				document.getElementById("card3").innerHTML = "Exporter les grands singes et les antilopes";
-			} else if (type_table == 'animals') {
-				/*li_importation_animals_mivegec_gabon
-				var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_animals' + nom_table + 'Dropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_animals' + nom_table + 'Dropdown');
-				component_ul.classList.add('show');*/
-				
-				document.getElementById("card1").innerHTML = "Importation des animaux";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
-				document.getElementById("card3").innerHTML = "Exporter les animaux";
-			} else if (type_table == 'animals_ipg') {
-				document.getElementById("card1").innerHTML = "Importation des animaux";
-				document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
-				document.getElementById("card3").innerHTML = "Exporter les animaux";
-			}
-			
-			if (type_table == 'chauves_souris_capturees') {
-				var component_li = document.getElementById('li_importation_bat_capturees' + nom_table);
-			} else if (type_table == 'chauves_souris_non_invasives') {
-				var component_li = document.getElementById('li_importation_bat_non_invasives' + nom_table);
-			} else if (type_table == 'donnees_mission') {
-				var component_li = document.getElementById('li_importation_suivi_longitudinal_donnees_missions' + nom_table);
-			}  else if (type_table == 'donnees_journalieres') {
-				var component_li = document.getElementById('li_importation_suivi_longitudinal_donnees_journalieres' + nom_table);
-			} else if (type_table == 'viande_de_brousse') {
-				var component_li = document.getElementById('li_importation_viande_de_brousse' + nom_table);
-			} else if (type_table == 'grands_singes_antilopes') {
-				var component_li = document.getElementById('li_importation_grand_singe_antilope' + nom_table);
-			} else if (type_table == 'animals') {
-				var component_li = document.getElementById('li_importation_animals' + nom_table);
-			} else if (type_table == 'animals_ipg') {
-				var component_li = document.getElementById('li_importation_animals' + nom_table);
-			}
-			component_li.classList.add('active');
 		};
 		
 	</script> 

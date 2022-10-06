@@ -18,7 +18,7 @@ function chargement_des_tables_de_reference(table) {
 	};
 			
 	var nom_equipe;
-	if ((table == '_astre_guinee') || (table == '_astre_congo') || (table == '_astre_gabon')) {
+	if ((table == '_astre_guinee') || (table == '_astre_congo') || (table == '_astre_gabon') || (table == '_astre_transvihmi_guinee')) {
 		var site = 'site' + table;
 		var pays = 'pays' + table;
 		var lieu_collecte = 'lieu_collecte' + table;

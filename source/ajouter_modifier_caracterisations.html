@@ -95,12 +95,12 @@
     
     <script src="js/uuid.js"></script>
     
-    <script src="js/load-page-sites.js"></script> 
+    <script src="js/load-page-caracterisations.js"></script> 
     
     <script src="js/addReference.js"></script> 
     
   </head>
-  <body onload="chargement_des_sites()">
+  <body onload="chargement_des_caracterisations()">
   
     <script>
 		logged_only();
@@ -596,7 +596,18 @@
 	                          </ul>
 	                        </li>                          
                           </ul>
-                   	    </li>           
+                   	    </li>       
+                   	    
+                   	    <li id="li_faune_astre_transvihmi_guineeDropdown" name="6"><a id="a_faune_astre_transvihmi_guineeDropdown" name="6" href="#ul_faune_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline;text-align: right;padding-right: 40px;"> <i class="icon-Picto_ANTILOPE"></i>Faune</a>
+	                      <ul id="ul_faune_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+	                         <li id="li_faune_astre_transvihmi_guinee" name="6"><a href="liste_faune.html?table=_astre_transvihmi_guinee">données</a></li>                            
+	                         <li id="li_faune_map_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=faune">carte</a></li>
+	                         <li id="li_importation_faune_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=faune">importation/exportation</a></li>
+	                      </ul>
+	                    </li>
+	                    	                           
+                      </ul>
+                   	</li>     
 
 					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
                       <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
@@ -691,10 +702,10 @@
 			            option = searchParams.get('option');
 		                nom_table = searchParams.get('table');
 	                    if ((option == 0) || (option == 1)) {
-	                    	line.innerHTML = '<h4>Nouveau site</h4>';
+	                    	line.innerHTML = '<h4>Nouvelle caracterisation de grotte</h4>';
 			            } else if (option == 2) {
-			              	var ID = 'ID_site' + nom_table;
-		                  	line.innerHTML = '<h4>Modifier le site : ID = '+ localStorage.getItem(ID) + '</h4>';
+			              	var ID = 'ID_caracterisations' + nom_table;
+		                  	line.innerHTML = '<h4>Modifier la caracterisation de grotte : ID = '+ localStorage.getItem(ID) + '</h4>';
 	                    }
 	                   	document.getElementById("header").appendChild(line);
 				      </script>
@@ -704,7 +715,7 @@
 				        
 				        <div class="card bg-light">
 				          <div class="card-header card-header-transparent d-flex align-items-center">
-                            <h3 class="h4">Données du site</h3>
+                            <h3 class="h4">Données de caractérisation</h3>
                           </div>
                           <div class="card-body">
 		      				<div class="row">
@@ -752,8 +763,8 @@
 		      			      </div> 
 		      			      <div class="col-lg-6">
 		      			        <div class="form-group">
-		                          <label for="Region_capture">Région (ex. nom de la ville, nom du parc...)</label>
-		                          <input type="text" class="form-control" id="Region_capture" placeholder="Région (ex. nom de la ville, nom du parc...)">
+		                          <label for="Region_capture">Préfecture</label>
+		                          <input type="text" class="form-control" id="Prefecture" placeholder="Préfecture">
 		                        </div>
 		      			      </div>
 		      			    </div>	 
@@ -761,45 +772,43 @@
 		      			    <div class="row">
 		      			      <div class="col-lg-6">
 		      			        <div class="form-group">
+		                          <label for="Sous_prefecture">Sous-prefecture</label>
+		                          <input type="text" class="form-control" id="Sous_prefecture" placeholder="Sous-prefecture">
+		                        </div>
+		      				  </div>
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Ville_village">Ville/village</label>
+		                          <input type="text" class="form-control" id="Ville_village" placeholder="Ville/village">
+		                        </div>
+		      				  </div>
+		      				  
+		      				</div>    
+		      				
+		      					
+		      				
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-6">
+		      			        <div class="form-group">
 		                          <label for="Site_capture">Site précis de capture (ex. village, lieu-dit)</label>
 		                          <input type="text" class="form-control" id="Site_capture" placeholder="Site précis de capture (ex. village, lieu-dit)">
 		                        </div>
 		      				  </div>
-		      			    
-		      				  <div class="col-lg-6">	    
+		      				  <div class="col-lg-6">
 		      			        <div class="form-group">
-		                          <label for="Environnement">Environnement (ex. forêt)</label>
-		                          <div class="input-group">	                        
-		                            <select id="Environnement" class="form-control" required>
-	                                  <option></option>
-	                                  <option>Ville</option>
-	                            	  <option>Village</option>
-	                            	  <option>Village et lek</option>
-	                            	  <option>Verger</option>
-	                            	  <option>Plantation</option>
-	                            	  <option>Autre plantation</option>
-	                            	  <option>Culture</option>
-	                            	  <option>Foret</option>
-	                            	  <option>Forêt primaire</option>
-	                            	  <option>Forêt secondaire</option>
-	                            	  <option>Végétation arbustive</option>
-	                            	  <option>Végétation herbacée savane</option>
-	                            	  <option>Marais</option>
-	                          	    </select>
-	                                <div class="invalid-feedback">
-		        			          S'il vous plaît fournir un environnement valide !
-		      				        </div>
-		      				      </div>
-		      				    </div>
-		      				  </div>
-		      				</div>    
-		      			    
-		      			    <div class="row">
-	                    	  <div class="col-lg-4">
-		      			    	<div class="form-group">
-		      			    	  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
+		                          <label for="Environnement">Environnement</label>
+		                          <input type="text" class="form-control" id="Environnement" placeholder="Environnement">
+		                        </div>
+		      				  </div>		
+		      				</div> 
+		      				
+		      				<div class="row">  
+		      				  <div class="col-lg-4">      			        
+							    <div class="form-group">
+								  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
 								  <input type="text" class="form-control" id="Lat_degre_dec" placeholder="Latitude coordonnées" >
-								</div>
+								</div>	
 							  </div>
 							  <div class="col-lg-2">	
 								<div class="form-group">	  
@@ -838,14 +847,557 @@
 	                        </div>
 	                        
 	                        <div class="row">
-	                    	  <div class="col-lg-4">      
+	                    	  <div class="col-lg-6">      
 	                            <div class="form-group">
 		                          <label for="Proximite_village_km">Proximité du village en km</label>
 		                          <input type="text" class="form-control" id="Proximite_village_km" placeholder="Proximité du village en km" >
 		                        </div>	      				  
 		      				  </div>
-		      			    </div>			      			      
+		      				  <div class="col-lg-6">      
+	                            <div class="form-group">
+		                          <label for="Proximite_source_m">Proximité d'une source en m</label>
+		                          <input type="text" class="form-control" id="Proximite_source_m" placeholder="Proximité d'une source en m" >
+		                        </div>	      				  
+		      				  </div>
+		      			    </div>	
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-6">      
+	                            <div class="form-group">
+		                          <label for="Description_entree">Description entrée</label>
+		                          <input type="text" class="form-control" id="Description_entree" placeholder="Description entrée" >
+		                        </div>	      				  
+		             		  </div>
+		      				  <div class="col-lg-6">      
+                                <div class="form-group">
+	                              <label for="Nb_entree">Nombre d'entrée</label>
+	                              <input type="text" class="form-control" id="Nb_entree" placeholder="Nombre d'entrée" >
+	                            </div>
+	      			          </div>
+	      			        </div>
+	      			      
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_longueur_1">Longueur entrée 1</label>
+	                              <input type="text" class="form-control" id="Entree_longueur_1" placeholder="Longueur entrée 1" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_largeur_1">Largeur entrée 1</label>
+	                              <input type="text" class="form-control" id="Entree_largeur_1" placeholder="Largeur entrée 1" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_hauteur_1">Hauteur entrée 1</label>
+	                              <input type="text" class="form-control" id="Entree_hauteur_1" placeholder="Hauteur entrée 1" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_longueur_2">Longueur entrée 2</label>
+	                              <input type="text" class="form-control" id="Entree_longueur_2" placeholder="Longueur entrée 2" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_largeur_2">Largeur entrée 2</label>
+	                              <input type="text" class="form-control" id="Entree_largeur_2" placeholder="Largeur entrée 2" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_hauteur_2">Hauteur entrée 2</label>
+	                              <input type="text" class="form-control" id="Entree_hauteur_2" placeholder="Hauteur entrée 2" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_longueur_3">Longueur entrée 3</label>
+	                              <input type="text" class="form-control" id="Entree_longueur_3" placeholder="Longueur entrée 3" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_largeur_3">Largeur entrée 3</label>
+	                              <input type="text" class="form-control" id="Entree_largeur_3" placeholder="Largeur entrée 3" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Entree_hauteur_3">Hauteur entrée 3</label>
+	                              <input type="text" class="form-control" id="Entree_hauteur_3" placeholder="Hauteur entrée 3" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_puit_sortie">Présence d'un puit en sortie</label>
+	                              <select id="Presence_puit_sortie" class="form-control" onchange="select_puit(this)">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			        </div>
+	      			          
+	      			         
+	      			        <div id="puit" style="display: block;">
+	      			          <div class="row">
+	      			            <div class="col-lg-4">      
+                                  <div class="form-group">
+	                                <label for="Puit_longueur">Longueur du puit</label>
+	                                <input type="text" class="form-control" id="Puit_longueur" placeholder="Longueur du puit" >
+	                              </div>
+	      			            </div>
+	      			            <div class="col-lg-4">      
+                                  <div class="form-group">
+	                                <label for="Puit_largeur">Largeur du puit</label>
+	                                <input type="text" class="form-control" id="Puit_largeur" placeholder="Largeur du puit" >
+	                              </div>
+	      			            </div>	
+	      			            <div class="col-lg-4">      
+                                  <div class="form-group">
+	                                <label for="Puit_hauteur">Hauteur du puit</label>
+	                                <input type="text" class="form-control" id="Puit_hauteur" placeholder="Hauteur du puit" >
+	                              </div>
+	      			            </div>   
+	      			          </div>    			        
+		      			    </div>
+		      			    
+		      			    <div class="row">  		
+		      			      <div class="col-lg-12">	      
+	    	      			    <div class="form-group">
+		      			          <label for="Description_grotte">Description de la grotte</label>
+		                    	  <textarea class="form-control col-xs-12" id="Description_grotte" placeholder="Description de la grotte" rows="3"></textarea>
+		                        </div>
+		      			      </div>
+		                    </div> 
+		      			    
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Nb_chambre">Nombre de chambres</label>
+	                              <input type="text" class="form-control" id="Nb_chambre" placeholder="Nombre de chambres" >
+	                            </div>
+	      			          </div>
+	      			        </div>
+	      			          
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_longueur_1">Longueur chambre 1</label>
+	                              <input type="text" class="form-control" id="Chambre_longueur_1" placeholder="Longueur chambre 1" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_largeur_1">Largeur chambre 1</label>
+	                              <input type="text" class="form-control" id="Chambre_largeur_1" placeholder="Largeur chambre 1" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_hauteur_1">Hauteur chambre 1</label>
+	                              <input type="text" class="form-control" id="Chambre_hauteur_1" placeholder="Hauteur chambre 1" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_eau_1">Présence d'eau 1</label>
+	                              <select id="Presence_eau_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_annuelle_eau_1">Présence annuelle d'eau 1</label>
+	                              <select id="Presence_annuelle_eau_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_lac_souterrain_1">Présence d'un lac souterrain 1</label>
+	                              <select id="Presence_lac_souterrain_1" class="form-control"">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_riviere_souterraine_1">Présence d'une rivière souterraine 1</label>
+	                              <select id="Presence_riviere_souterraine_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			        </div>	
+	      			        
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Presence_faune_aquatique_1">Présence d'une faune aquatique 1</label>
+	                              <select id="Presence_faune_aquatique_1" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                              <div class="form-group">
+	                              <label for="Espece_aquatique_1">Espèce aquatique 1</label>
+	                              <input type="text" class="form-control" id="Espece_aquatique_1" placeholder="Espèce aquatique" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Autre_faune_1">Autre faune 1</label>
+	                              <input type="text" class="form-control" id="Autre_faune_1" placeholder="Autre faune 1" >
+	                            </div>
+	      			          </div>
+	      			        </div>		
+		      			    				
+		      			    	
+		      			     <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_longueur_2">Longueur chambre 2</label>
+	                              <input type="text" class="form-control" id="Chambre_longueur_2" placeholder="Longueur chambre 2" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_largeur_2">Largeur chambre 2</label>
+	                              <input type="text" class="form-control" id="Chambre_largeur_2" placeholder="Largeur chambre 2" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_hauteur_2">Hauteur chambre 2</label>
+	                              <input type="text" class="form-control" id="Chambre_hauteur_2" placeholder="Hauteur chambre 2" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_eau_2">Présence d'eau 2</label>
+	                              <select id="Presence_eau_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_annuelle_eau_2">Présence annuelle d'eau 2</label>
+	                              <select id="Presence_annuelle_eau_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_lac_souterrain_2">Présence d'un lac souterrain 2</label>
+	                              <select id="Presence_lac_souterrain_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_riviere_souterraine_2">Présence d'une rivière souterraine 2</label>
+	                              <select id="Presence_riviere_souterraine_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			        </div>	
+	      			        
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Presence_faune_aquatique_2">Présence d'une faune aquatique 2</label>
+	                              <select id="Presence_faune_aquatique_2" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                              <div class="form-group">
+	                              <label for="Espece_aquatique_2">Espèce aquatique 2</label>
+	                              <input type="text" class="form-control" id="Espece_aquatique_2" placeholder="Espèce aquatique" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Autre_faune_2">Autre faune 2</label>
+	                              <input type="text" class="form-control" id="Autre_faune_2" placeholder="Autre faune 2" >
+	                            </div>
+	      			          </div>
+	      			        </div>		
+	      			        
+	      			         <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_longueur_3">Longueur chambre 3</label>
+	                              <input type="text" class="form-control" id="Chambre_longueur_3" placeholder="Longueur chambre 3" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_largeur_3">Largeur chambre 3</label>
+	                              <input type="text" class="form-control" id="Chambre_largeur_3" placeholder="Largeur chambre 3" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_hauteur_3">Hauteur chambre 3</label>
+	                              <input type="text" class="form-control" id="Chambre_hauteur_3" placeholder="Hauteur chambre 3" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_eau_3">Présence d'eau 3</label>
+	                              <select id="Presence_eau_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_annuelle_eau_3">Présence annuelle d'eau 3</label>
+	                              <select id="Presence_annuelle_eau_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_lac_souterrain_3">Présence d'un lac souterrain 3</label>
+	                              <select id="Presence_lac_souterrain_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_riviere_souterraine_3">Présence d'une rivière souterraine 3</label>
+	                              <select id="Presence_riviere_souterraine_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			        </div>	
+	      			        
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Presence_faune_aquatique_3">Présence d'une faune aquatique 3</label>
+	                              <select id="Presence_faune_aquatique_3" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                              <div class="form-group">
+	                              <label for="Espece_aquatique_3">Espèce aquatique 3</label>
+	                              <input type="text" class="form-control" id="Espece_aquatique_3" placeholder="Espèce aquatique" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Autre_faune_3">Autre faune 3</label>
+	                              <input type="text" class="form-control" id="Autre_faune_3" placeholder="Autre faune 3" >
+	                            </div>
+	      			          </div>
+	      			        </div>		
+	      			        
+	      			         <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_longueur_4">Longueur chambre 4</label>
+	                              <input type="text" class="form-control" id="Chambre_longueur_4" placeholder="Longueur chambre 4" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_largeur_4">Largeur chambre 4</label>
+	                              <input type="text" class="form-control" id="Chambre_largeur_4" placeholder="Largeur chambre 4" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Chambre_hauteur_4">Hauteur chambre 4</label>
+	                              <input type="text" class="form-control" id="Chambre_hauteur_4" placeholder="Hauteur chambre 4" >
+	                            </div>
+	      			          </div>	      			        
+		      			    </div>
+		      			    
+		      			    <div class="row">
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_eau_4">Présence d'eau 4</label>
+	                              <select id="Presence_eau_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_annuelle_eau_4">Présence annuelle d'eau 4</label>
+	                              <select id="Presence_annuelle_eau_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_lac_souterrain_4">Présence d'un lac souterrain 4</label>
+	                              <select id="Presence_lac_souterrain_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-3">      
+                                <div class="form-group">
+	                              <label for="Presence_riviere_souterraine_4">Présence d'une rivière souterraine 4</label>
+	                              <select id="Presence_riviere_souterraine_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			        </div>	
+	      			        
+	      			        <div class="row">
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Presence_faune_aquatique_4">Présence d'une faune aquatique 4</label>
+	                              <select id="Presence_faune_aquatique_4" class="form-control">
+		                            <option></option>
+	                                <option>Oui</option>
+	                                <option>Non</option>
+	                                <option>IN</option>
+	                                <option>Manquant</option> 
+	                          	  </select>
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                              <div class="form-group">
+	                              <label for="Espece_aquatique_4">Espèce aquatique 4</label>
+	                              <input type="text" class="form-control" id="Espece_aquatique_4" placeholder="Espèce aquatique" >
+	                            </div>
+	      			          </div>
+	      			          <div class="col-lg-4">      
+                                <div class="form-group">
+	                              <label for="Autre_faune_4">Autre faune 4</label>
+	                              <input type="text" class="form-control" id="Autre_faune_4" placeholder="Autre faune 4" >
+	                            </div>
+	      			          </div>
+	      			        </div>		
+		      			    
+		      			    		      			  			
 		      			  </div>
+		      			  
+		      			  
                         </div>
                         
 	      			    <div class="card-body text-right" id="header_button">
@@ -860,7 +1412,7 @@
 			                            '<div class="col-lg-9">' +
 			                              '<div class="form-group">' +
 			                                '<button id="save" name="save" type="submit" class="btn btn-primary btn-fill ladda-button" data-style="expand-right">' +                        	
-					            	  	      '<span class="ladda-label">Sauver le site</span>' +
+					            	  	      '<span class="ladda-label">Sauver la caracterisation de la grotte</span>' +
 					            	  	      '<span class="ladda-spinner"></span>' +
 									        '</button>' +  
 									      '</div>' +  
@@ -877,7 +1429,7 @@
 			               } else if (option == 2) {
 			                    line.innerHTML = 
 			                   		'<button id="modify" name="submit" type="submit" class="btn btn-primary btn-fill pull-right ladda-button" data-style="expand-right">' +                        	
-				            		  '<span class="ladda-label">Modifier le site</span>' +
+				            		  '<span class="ladda-label">Modifier la caraterisation de la grotte</span>' +
 				            		  '<span class="ladda-spinner"></span>' +
 									'</button>' 
 			                }
@@ -966,6 +1518,24 @@
     </script> 
     
     <script type="text/javascript">
+    
+	    function select_puit(select) {			
+			var valeurPuit = select.options[select.selectedIndex].value;			
+			if ((valeurPuit == "Oui") || (valeurPuit == "")) {
+				var elem = document.getElementById("puit");
+				elem.style.display = "block";
+			} else if (valeurPuit == "Non") {
+				var elem = document.getElementById("Puit_longueur");
+				elem.value = "";
+				var elem = document.getElementById("Puit_largeur");
+				elem.value = "";
+				var elem = document.getElementById("Puit_hauteur");
+				elem.value = "";
+				var elem = document.getElementById("puit");
+				elem.style.display = "none";
+			}
+		};
+    
    		$('#nouveauPays').click(function(){   			
    			$('#referenceModalLabel').html('Nouveau Pays');
    			$('#referenceLabel').html('Pays :');
@@ -1060,9 +1630,9 @@
   		        } else {
   		          event.preventDefault();
   		        if ((option == 0) || (option == 1)) {
-	  		      	addSite();
+  		        	addCaracterisation();
 	  		  	  } else if ((option == 2)) {
-	  		  		modifySite();
+	  		  		modifyCaracterisations();
 	  		  	  }
   		        } 		        
   		        form.classList.add('was-validated');
@@ -1071,7 +1641,7 @@
   		  }, false);
   		})();
  		
-  		function addSite() {  
+  		function addCaracterisation() {  
   			
   			//alert('add');
   			
@@ -1080,11 +1650,14 @@
 			// Start loading
 			l.start();
 			
+							
 			var id = uuid();
 			var Date = document.getElementById('Date').value;
 		    var N_site = document.getElementById('N_site').value;
 		    var Pays = document.getElementById('Pays').value;
-		    var Region_capture = document.getElementById('Region_capture').value;	
+		    var Prefecture = document.getElementById('Prefecture').value;
+		    var Sous_prefecture = document.getElementById('Sous_prefecture').value;
+		    var Ville_village = document.getElementById('Ville_village').value;
 		    var Site_capture = document.getElementById('Site_capture').value;
 		    var Environnement = document.getElementById('Environnement').value;
 		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
@@ -1092,62 +1665,242 @@
 		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
 		    var Longitude = document.getElementById('Longitude').value;
 		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
+		    var Proximite_source_m = document.getElementById('Proximite_source_m').value;
+		    var Description_entree = document.getElementById('Description_entree').value;	
+		    var Nb_entree = document.getElementById('Nb_entree').value;	
+		    var Entree_longueur_1 = document.getElementById('Entree_longueur_1').value;	
+		    var Entree_largeur_1 = document.getElementById('Entree_largeur_1').value;	
+		    var Entree_hauteur_1 = document.getElementById('Entree_hauteur_1').value;	
+		    var Entree_longueur_2 = document.getElementById('Entree_longueur_2').value;	
+		    var Entree_largeur_2 = document.getElementById('Entree_largeur_2').value;	
+		    var Entree_hauteur_2 = document.getElementById('Entree_hauteur_2').value;	
+		    var Entree_longueur_3 = document.getElementById('Entree_longueur_3').value;	
+		    var Entree_largeur_3 = document.getElementById('Entree_largeur_3').value;	
+		    var Entree_hauteur_3 = document.getElementById('Entree_hauteur_3').value;	
+		    var Presence_puit_sortie = document.getElementById('Presence_puit_sortie').value;	
+		    var Puit_longueur = document.getElementById('Puit_longueur').value;	
+		    var Puit_largeur = document.getElementById('Puit_largeur').value;	
+		    var Puit_hauteur = document.getElementById('Puit_hauteur').value;	
+		    var Description_grotte = document.getElementById('Description_grotte').value;	
+		    var Nb_chambre = document.getElementById('Nb_chambre').value;	
+		    var Chambre_longueur_1 = document.getElementById('Chambre_longueur_1').value;	
+		    var Chambre_largeur_1 = document.getElementById('Chambre_largeur_1').value;	
+		    var Chambre_hauteur_1 = document.getElementById('Chambre_hauteur_1').value;	
+		    var Presence_eau_1 = document.getElementById('Presence_eau_1').value;	
+		    var Presence_annuelle_eau_1 = document.getElementById('Presence_annuelle_eau_1').value;	
+		    var Presence_lac_souterrain_1 = document.getElementById('Presence_lac_souterrain_1').value;	
+		    var Presence_riviere_souterraine_1 = document.getElementById('Presence_riviere_souterraine_1').value;	
+		    var Presence_faune_aquatique_1 = document.getElementById('Presence_faune_aquatique_1').value;	
+		    var Espece_aquatique_1 = document.getElementById('Espece_aquatique_1').value;	
+		    var Autre_faune_1 = document.getElementById('Autre_faune_1').value;	
+		    var Chambre_longueur_2 = document.getElementById('Chambre_longueur_2').value;	
+		    var Chambre_largeur_2 = document.getElementById('Chambre_largeur_2').value;	
+		    var Chambre_hauteur_2 = document.getElementById('Chambre_hauteur_2').value;	
+		    var Presence_eau_2 = document.getElementById('Presence_eau_2').value;	
+		    var Presence_annuelle_eau_2 = document.getElementById('Presence_annuelle_eau_2').value;	
+		    var Presence_lac_souterrain_2 = document.getElementById('Presence_lac_souterrain_2').value;	
+		    var Presence_riviere_souterraine_2 = document.getElementById('Presence_riviere_souterraine_2').value;	
+		    var Presence_faune_aquatique_2 = document.getElementById('Presence_faune_aquatique_2').value;	
+		    var Espece_aquatique_2 = document.getElementById('Espece_aquatique_2').value;	
+		    var Autre_faune_2 = document.getElementById('Autre_faune_2').value;	
+		    var Chambre_longueur_3 = document.getElementById('Chambre_longueur_3').value;	
+		    var Chambre_largeur_3 = document.getElementById('Chambre_largeur_3').value;	
+		    var Chambre_hauteur_3 = document.getElementById('Chambre_hauteur_3').value;	
+		    var Presence_eau_3 = document.getElementById('Presence_eau_3').value;	
+		    var Presence_annuelle_eau_3 = document.getElementById('Presence_annuelle_eau_3').value;	
+		    var Presence_lac_souterrain_3 = document.getElementById('Presence_lac_souterrain_3').value;	
+		    var Presence_riviere_souterraine_3 = document.getElementById('Presence_riviere_souterraine_3').value;	
+		    var Presence_faune_aquatique_3 = document.getElementById('Presence_faune_aquatique_3').value;	
+		    var Espece_aquatique_3 = document.getElementById('Espece_aquatique_3').value;	
+		    var Autre_faune_3 = document.getElementById('Autre_faune_3').value;	
+		    var Chambre_longueur_4 = document.getElementById('Chambre_longueur_4').value;	
+		    var Chambre_largeur_4 = document.getElementById('Chambre_largeur_4').value;	
+		    var Chambre_hauteur_4 = document.getElementById('Chambre_hauteur_4').value;	
+		    var Presence_eau_4 = document.getElementById('Presence_eau_4').value;	
+		    var Presence_annuelle_eau_4 = document.getElementById('Presence_annuelle_eau_4').value;
+		    var Presence_lac_souterrain_4 = document.getElementById('Presence_lac_souterrain_4').value;	
+		    var Presence_riviere_souterraine_4 = document.getElementById('Presence_riviere_souterraine_4').value;	
+		    var Presence_faune_aquatique_4 = document.getElementById('Presence_faune_aquatique_4').value;	
+		    var Espece_aquatique_4 = document.getElementById('Espece_aquatique_4').value;	
+		    var Autre_faune_4 = document.getElementById('Autre_faune_4').value;
+
 		    var Username = localStorage.getItem('loginUsername');
 		    
 		    var andAdd = document.getElementById("andAdd");
 		  	if (andAdd.checked == true){
 		  	    var doc = new Object();
 		  		  
-		  	    doc.Date = Date,
-			  	doc.Pays = Pays,
-			  	doc.Region_capture = Region_capture,
-			  	doc.Site_capture = Site_capture,
-			  	doc.Environnement = Environnement,
-			  	doc.Lat_degre_dec = Lat_degre_dec,
-			  	doc.Latitude = Latitude,
-			  	doc.Long_degre_dec = Long_degre_dec,
-			  	doc.Longitude = Longitude,
-			  	doc.Proximite_village_km = Proximite_village_km,
+		  	    doc.Date = Date;
+			    doc.N_site = N_site;
+			    doc.Pays = Pays;
+			    doc.Prefecture = Prefecture;
+			    doc['Sous-prefecture'] = Sous_prefecture;
+			    doc['Ville/village'] = Ville_village;
+			    doc.Site_capture = Site_capture;
+			    doc.Environnement = Environnement;
+			    doc.Lat_degre_dec = Lat_degre_dec;
+			    doc.Latitude = Latitude;	
+			    doc.Long_degre_dec = Long_degre_dec;
+			    doc.Longitude = Longitude;
+			    doc.Proximite_village_km = Proximite_village_km;
+			    doc.Proximite_source_m = Proximite_source_m;
+			    doc.Description_entree = Description_entree;	
+			    doc.Nb_entree = Nb_entree;	
+			    doc.Entree_longueur_1 = Entree_longueur_1;	
+			    doc.Entree_largeur_1 = Entree_largeur_1;	
+			    doc.Entree_hauteur_1 = Entree_hauteur_1;	
+			    doc.Entree_longueur_2 = Entree_longueur_2;	
+			    doc.Entree_largeur_2 = Entree_largeur_2;	
+			    doc.Entree_hauteur_2 = Entree_hauteur_2;	
+			    doc.Entree_longueur_3 = Entree_longueur_3;	
+			    doc.Entree_largeur_3 = Entree_largeur_3;	
+			    doc.Entree_hauteur_3 = Entree_hauteur_3;	
+			    doc.Presence_puit_sortie = Presence_puit_sortie;	
+			    doc.Puit_longueur = Puit_longueur;	
+			    doc.Puit_largeur = Puit_largeur;	
+			    doc.Puit_hauteur = Puit_hauteur;	
+			    doc.Description_grotte = Description_grotte;	
+			    doc.Nb_chambre = Nb_chambre;	
+			    doc.Chambre_longueur_1 = Chambre_longueur_1;	
+			    doc.Chambre_largeur_1 = Chambre_largeur_1;	
+			    doc.Chambre_hauteur_1 = Chambre_hauteur_1;	
+			    doc.Presence_eau_1 = Presence_eau_1;	
+			    doc.Presence_annuelle_eau_1 = Presence_annuelle_eau_1;	
+			    doc.Presence_lac_souterrain_1 = Presence_lac_souterrain_1;	
+			    doc.Presence_riviere_souterraine_1 = Presence_riviere_souterraine_1;	
+			    doc.Presence_faune_aquatique_1 = Presence_faune_aquatique_1;	
+			    doc.Espece_aquatique_1 = Espece_aquatique_1;	
+			    doc.Autre_faune_1 = Autre_faune_1;	
+			    doc.Chambre_longueur_2 = Chambre_longueur_2;	
+			    doc.Chambre_largeur_2 = Chambre_largeur_2;	
+			    doc.Chambre_hauteur_2 = Chambre_hauteur_2;	
+			    doc.Presence_eau_2 = Presence_eau_2;	
+			    doc.Presence_annuelle_eau_2 = Presence_annuelle_eau_2;	
+			    doc.Presence_lac_souterrain_2 = Presence_lac_souterrain_2;	
+			    doc.Presence_riviere_souterraine_2 = Presence_riviere_souterraine_2;	
+			    doc.Presence_faune_aquatique_2 = Presence_faune_aquatique_2;	
+			    doc.Espece_aquatique_2 = Espece_aquatique_2;	
+			    doc.Autre_faune_2 = Autre_faune_2;	
+			    doc.Chambre_longueur_3 = Chambre_longueur_3;	
+			    doc.Chambre_largeur_3 = Chambre_largeur_3;	
+			    doc.Chambre_hauteur_3 = Chambre_hauteur_3;	
+			    doc.Presence_eau_3 = Presence_eau_3;	
+			    doc.Presence_annuelle_eau_3 = Presence_annuelle_eau_3;	
+			    doc.Presence_lac_souterrain_3 = Presence_lac_souterrain_3;	
+			    doc.Presence_riviere_souterraine_3 = Presence_riviere_souterraine_3;	
+			    doc.Presence_faune_aquatique_3 = Presence_faune_aquatique_3;	
+			    doc.Espece_aquatique_3 = Espece_aquatique_3;	
+			    doc.Autre_faune_3 = Autre_faune_3;	
+			    doc.Chambre_longueur_4 = Chambre_longueur_4;	
+			    doc.Chambre_largeur_4 = Chambre_largeur_4;	
+			    doc.Chambre_hauteur_4 = Chambre_hauteur_4;	
+			    doc.Presence_eau_4 = Presence_eau_4;	
+			    doc.Presence_annuelle_eau_4 = Presence_annuelle_eau_4;
+			    doc.Presence_lac_souterrain_4 = Presence_lac_souterrain_4;	
+			    doc.Presence_riviere_souterraine_4 = Presence_riviere_souterraine_4;	
+			    doc.Presence_faune_aquatique_4 = Presence_faune_aquatique_4;	
+			    doc.Espece_aquatique_4 = Espece_aquatique_4;	
+			    doc.Autre_faune_4 = Autre_faune_4;
 			  	doc.Username = Username
 		  		  
-		  		localStorage['siteTablesData'] = JSON.stringify(doc);
+		  		localStorage['caracterisationsTablesData'] = JSON.stringify(doc);
 		  	};
 		    
 		    if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+				var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('site' + nom_table + debug);
+				var DB = new PouchDB('caracterisations_grottes' + nom_table + debug);
 			};
 			
 			DB.put({
 				_id: id,
 				Date: Date,
-				N_site: N_site,
-				Pays: Pays,
-				Region_capture: Region_capture,
-				Site_capture: Site_capture,
-				Environnement: Environnement,
-				Lat_degre_dec: Lat_degre_dec,
-				Latitude: Latitude,
-				Long_degre_dec: Long_degre_dec,
-				Longitude: Longitude,
-				Proximite_village_km: Proximite_village_km,
+			    N_site: N_site,
+			    Pays: Pays,
+			    Prefecture: Prefecture,
+			    'Sous-prefecture': Sous_prefecture,
+			    'Ville/village': Ville_village,
+			    Site_capture: Site_capture,
+			    Environnement: Environnement,
+			    Lat_degre_dec: Lat_degre_dec,
+			    Latitude: Latitude,	
+			    Long_degre_dec: Long_degre_dec,
+			    Longitude: Longitude,
+			    Proximite_village_km: Proximite_village_km,
+			    Proximite_source_m: Proximite_source_m,
+			    Description_entree: Description_entree,	
+			    Nb_entree: Nb_entree,	
+			    Entree_longueur_1: Entree_longueur_1,	
+			    Entree_largeur_1: Entree_largeur_1,	
+			    Entree_hauteur_1: Entree_hauteur_1,	
+			    Entree_longueur_2: Entree_longueur_2,	
+			    Entree_largeur_2: Entree_largeur_2,	
+			    Entree_hauteur_2: Entree_hauteur_2,	
+			    Entree_longueur_3: Entree_longueur_3,	
+			    Entree_largeur_3: Entree_largeur_3,	
+			    Entree_hauteur_3: Entree_hauteur_3,	
+			    Presence_puit_sortie: Presence_puit_sortie,	
+			    Puit_longueur: Puit_longueur,	
+			    Puit_largeur: Puit_largeur,	
+			    Puit_hauteur: Puit_hauteur,	
+			    Description_grotte: Description_grotte,	
+			    Nb_chambre: Nb_chambre,	
+			    Chambre_longueur_1: Chambre_longueur_1,	
+			    Chambre_largeur_1: Chambre_largeur_1,	
+			    Chambre_hauteur_1: Chambre_hauteur_1,	
+			    Presence_eau_1: Presence_eau_1,	
+			    Presence_annuelle_eau_1: Presence_annuelle_eau_1,	
+			    Presence_lac_souterrain_1: Presence_lac_souterrain_1,	
+			    Presence_riviere_souterraine_1: Presence_riviere_souterraine_1,	
+			    Presence_faune_aquatique_1: Presence_faune_aquatique_1,	
+			    Espece_aquatique_1: Espece_aquatique_1,	
+			    Autre_faune_1: Autre_faune_1,	
+			    Chambre_longueur_2: Chambre_longueur_2,	
+			    Chambre_largeur_2: Chambre_largeur_2,	
+			    Chambre_hauteur_2: Chambre_hauteur_2,	
+			    Presence_eau_2: Presence_eau_2,	
+			    Presence_annuelle_eau_2: Presence_annuelle_eau_2,	
+			    Presence_lac_souterrain_2: Presence_lac_souterrain_2,	
+			    Presence_riviere_souterraine_2: Presence_riviere_souterraine_2,	
+			    Presence_faune_aquatique_2: Presence_faune_aquatique_2,	
+			    Espece_aquatique_2: Espece_aquatique_2,	
+			    Autre_faune_2: Autre_faune_2,	
+			    Chambre_longueur_3: Chambre_longueur_3,	
+			    Chambre_largeur_3: Chambre_largeur_3,	
+			    Chambre_hauteur_3: Chambre_hauteur_3,	
+			    Presence_eau_3: Presence_eau_3,	
+			    Presence_annuelle_eau_3: Presence_annuelle_eau_3,	
+			    Presence_lac_souterrain_3: Presence_lac_souterrain_3,	
+			    Presence_riviere_souterraine_3: Presence_riviere_souterraine_3,	
+			    Presence_faune_aquatique_3: Presence_faune_aquatique_3,	
+			    Espece_aquatique_3: Espece_aquatique_3,	
+			    Autre_faune_3: Autre_faune_3,	
+			    Chambre_longueur_4: Chambre_longueur_4,	
+			    Chambre_largeur_4: Chambre_largeur_4,	
+			    Chambre_hauteur_4: Chambre_hauteur_4,	
+			    Presence_eau_4: Presence_eau_4,	
+			    Presence_annuelle_eau_4: Presence_annuelle_eau_4,
+			    Presence_lac_souterrain_4: Presence_lac_souterrain_4,	
+			    Presence_riviere_souterraine_4: Presence_riviere_souterraine_4,	
+			    Presence_faune_aquatique_4: Presence_faune_aquatique_4,	
+			    Espece_aquatique_4: Espece_aquatique_4,	
+			    Autre_faune_4: Autre_faune_4,
 				Username: Username
 			}).then(function (response) {
 								
 				if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-					var localDB2 = new PouchDB('site' + nom_table + debug);	
+					var localDB2 = new PouchDB('caracterisations_grottes' + nom_table + debug);	
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var remoteDB = new PouchDB(remote_couchdb + 'site' + nom_table + debug, {skip_setup: true});
+					var remoteDB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug, {skip_setup: true});
 					
 					localDB2.sync(remoteDB).on('complete', (info) => { 
 						
 						var andAdd = document.getElementById("andAdd");
 					  	if (andAdd.checked == true) {
-					  	  window.location = 'ajouter_modifier_sites.html?option=1&table=' + nom_table;
+					  	  window.location = 'ajouter_modifier_caracterisations.html?option=1&table=' + nom_table;
 					  	} else {
-					  	  window.location = 'liste_sites.html?table=' + nom_table;	
+					  	  window.location = 'liste_caracterisations.html?table=' + nom_table;	
 					  	};
 					}).on('error', function (err) {
 						// error while replicating
@@ -1171,17 +1924,19 @@
 			});	
   		};
   		
-  		function modifySite() {  
+  		function modifyCaracterisations() {  
 			var l = Ladda.create( document.querySelector( '.ladda-button' ) );
 
 			// Start loading
 			l.start();
 			
-			var id = localStorage.getItem('ID_site' + nom_table);
+			var id = localStorage.getItem('ID_caracterisations' + nom_table);
 			var Date = document.getElementById('Date').value;
 		    var N_site = document.getElementById('N_site').value;
 		    var Pays = document.getElementById('Pays').value;
-		    var Region_capture = document.getElementById('Region_capture').value;	
+		    var Prefecture = document.getElementById('Prefecture').value;
+		    var Sous_prefecture = document.getElementById('Sous_prefecture').value;
+		    var Ville_village = document.getElementById('Ville_village').value;
 		    var Site_capture = document.getElementById('Site_capture').value;
 		    var Environnement = document.getElementById('Environnement').value;
 		    var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;
@@ -1189,39 +1944,156 @@
 		    var Long_degre_dec = document.getElementById('Long_degre_dec').value;
 		    var Longitude = document.getElementById('Longitude').value;
 		    var Proximite_village_km = document.getElementById('Proximite_village_km').value;
+		    var Proximite_source_m = document.getElementById('Proximite_source_m').value;
+		    var Description_entree = document.getElementById('Description_entree').value;	
+		    var Nb_entree = document.getElementById('Nb_entree').value;	
+		    var Entree_longueur_1 = document.getElementById('Entree_longueur_1').value;	
+		    var Entree_largeur_1 = document.getElementById('Entree_largeur_1').value;	
+		    var Entree_hauteur_1 = document.getElementById('Entree_hauteur_1').value;	
+		    var Entree_longueur_2 = document.getElementById('Entree_longueur_2').value;	
+		    var Entree_largeur_2 = document.getElementById('Entree_largeur_2').value;	
+		    var Entree_hauteur_2 = document.getElementById('Entree_hauteur_2').value;	
+		    var Entree_longueur_3 = document.getElementById('Entree_longueur_3').value;	
+		    var Entree_largeur_3 = document.getElementById('Entree_largeur_3').value;	
+		    var Entree_hauteur_3 = document.getElementById('Entree_hauteur_3').value;	
+		    var Presence_puit_sortie = document.getElementById('Presence_puit_sortie').value;	
+		    var Puit_longueur = document.getElementById('Puit_longueur').value;	
+		    var Puit_largeur = document.getElementById('Puit_largeur').value;	
+		    var Puit_hauteur = document.getElementById('Puit_hauteur').value;	
+		    var Description_grotte = document.getElementById('Description_grotte').value;	
+		    var Nb_chambre = document.getElementById('Nb_chambre').value;	
+		    var Chambre_longueur_1 = document.getElementById('Chambre_longueur_1').value;	
+		    var Chambre_largeur_1 = document.getElementById('Chambre_largeur_1').value;	
+		    var Chambre_hauteur_1 = document.getElementById('Chambre_hauteur_1').value;	
+		    var Presence_eau_1 = document.getElementById('Presence_eau_1').value;	
+		    var Presence_annuelle_eau_1 = document.getElementById('Presence_annuelle_eau_1').value;	
+		    var Presence_lac_souterrain_1 = document.getElementById('Presence_lac_souterrain_1').value;	
+		    var Presence_riviere_souterraine_1 = document.getElementById('Presence_riviere_souterraine_1').value;	
+		    var Presence_faune_aquatique_1 = document.getElementById('Presence_faune_aquatique_1').value;	
+		    var Espece_aquatique_1 = document.getElementById('Espece_aquatique_1').value;	
+		    var Autre_faune_1 = document.getElementById('Autre_faune_1').value;	
+		    var Chambre_longueur_2 = document.getElementById('Chambre_longueur_2').value;	
+		    var Chambre_largeur_2 = document.getElementById('Chambre_largeur_2').value;	
+		    var Chambre_hauteur_2 = document.getElementById('Chambre_hauteur_2').value;	
+		    var Presence_eau_2 = document.getElementById('Presence_eau_2').value;	
+		    var Presence_annuelle_eau_2 = document.getElementById('Presence_annuelle_eau_2').value;	
+		    var Presence_lac_souterrain_2 = document.getElementById('Presence_lac_souterrain_2').value;	
+		    var Presence_riviere_souterraine_2 = document.getElementById('Presence_riviere_souterraine_2').value;	
+		    var Presence_faune_aquatique_2 = document.getElementById('Presence_faune_aquatique_2').value;	
+		    var Espece_aquatique_2 = document.getElementById('Espece_aquatique_2').value;	
+		    var Autre_faune_2 = document.getElementById('Autre_faune_2').value;	
+		    var Chambre_longueur_3 = document.getElementById('Chambre_longueur_3').value;	
+		    var Chambre_largeur_3 = document.getElementById('Chambre_largeur_3').value;	
+		    var Chambre_hauteur_3 = document.getElementById('Chambre_hauteur_3').value;	
+		    var Presence_eau_3 = document.getElementById('Presence_eau_3').value;	
+		    var Presence_annuelle_eau_3 = document.getElementById('Presence_annuelle_eau_3').value;	
+		    var Presence_lac_souterrain_3 = document.getElementById('Presence_lac_souterrain_3').value;	
+		    var Presence_riviere_souterraine_3 = document.getElementById('Presence_riviere_souterraine_3').value;	
+		    var Presence_faune_aquatique_3 = document.getElementById('Presence_faune_aquatique_3').value;	
+		    var Espece_aquatique_3 = document.getElementById('Espece_aquatique_3').value;	
+		    var Autre_faune_3 = document.getElementById('Autre_faune_3').value;	
+		    var Chambre_longueur_4 = document.getElementById('Chambre_longueur_4').value;	
+		    var Chambre_largeur_4 = document.getElementById('Chambre_largeur_4').value;	
+		    var Chambre_hauteur_4 = document.getElementById('Chambre_hauteur_4').value;	
+		    var Presence_eau_4 = document.getElementById('Presence_eau_4').value;	
+		    var Presence_annuelle_eau_4 = document.getElementById('Presence_annuelle_eau_4').value;
+		    var Presence_lac_souterrain_4 = document.getElementById('Presence_lac_souterrain_4').value;	
+		    var Presence_riviere_souterraine_4 = document.getElementById('Presence_riviere_souterraine_4').value;	
+		    var Presence_faune_aquatique_4 = document.getElementById('Presence_faune_aquatique_4').value;	
+		    var Espece_aquatique_4 = document.getElementById('Espece_aquatique_4').value;	
+		    var Autre_faune_4 = document.getElementById('Autre_faune_4').value;
 		    var Username = localStorage.getItem('loginUsername');
 		    
 			if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+				var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
 			} else {
-				var DB = new PouchDB('site' + nom_table + debug);
+				var DB = new PouchDB('caracterisations_grottes' + nom_table + debug);
 			};
 						
 			DB.find({
-				selector: {_id: id},
-				fields: ['_id', 'Date', 'Equipe', 'N_site', 'Pays', 'Site_region']
+				selector: {_id: id}
 			}).then(function (result) {
 		
 				if (localStorage.getItem('web') === 'oui') {
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var DB2 = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+					var DB2 = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
 				} else {
-					var DB2 = new PouchDB('site' + nom_table + debug);
+					var DB2 = new PouchDB('caracterisations_grottes' + nom_table + debug);
 				};
 				
 				DB2.get(id).then(function (doc) {
 					doc.Date = Date;
-					doc.N_site = N_site;
-					doc.Pays = Pays;
-					doc.Region_capture = Region_capture;
-					doc.Site_capture = Site_capture;
-					doc.Environnement = Environnement;
-					doc.Lat_degre_dec = Lat_degre_dec;
-					doc.Latitude = Latitude;
-					doc.Long_degre_dec = Long_degre_dec;
-					doc.Longitude = Longitude;
-					doc.Proximite_village_km = Proximite_village_km;
+				    doc.N_site = N_site;
+				    doc.Pays = Pays;
+				    doc.Prefecture = Prefecture;
+				    doc['Sous-prefecture'] = Sous_prefecture;
+				    doc['Ville/village'] = Ville_village;
+				    doc.Site_capture = Site_capture;
+				    doc.Environnement = Environnement;
+				    doc.Lat_degre_dec = Lat_degre_dec;
+				    doc.Latitude = Latitude;	
+				    doc.Long_degre_dec = Long_degre_dec;
+				    doc.Longitude = Longitude;
+				    doc.Proximite_village_km = Proximite_village_km;
+				    doc.Proximite_source_m = Proximite_source_m;
+				    doc.Description_entree = Description_entree;	
+				    doc.Nb_entree = Nb_entree;	
+				    doc.Entree_longueur_1 = Entree_longueur_1;	
+				    doc.Entree_largeur_1 = Entree_largeur_1;	
+				    doc.Entree_hauteur_1 = Entree_hauteur_1;	
+				    doc.Entree_longueur_2 = Entree_longueur_2;	
+				    doc.Entree_largeur_2 = Entree_largeur_2;	
+				    doc.Entree_hauteur_2 = Entree_hauteur_2;	
+				    doc.Entree_longueur_3 = Entree_longueur_3;	
+				    doc.Entree_largeur_3 = Entree_largeur_3;	
+				    doc.Entree_hauteur_3 = Entree_hauteur_3;	
+				    doc.Presence_puit_sortie = Presence_puit_sortie;	
+				    doc.Puit_longueur = Puit_longueur;	
+				    doc.Puit_largeur = Puit_largeur;	
+				    doc.Puit_hauteur = Puit_hauteur;	
+				    doc.Description_grotte = Description_grotte;	
+				    doc.Nb_chambre = Nb_chambre;	
+				    doc.Chambre_longueur_1 = Chambre_longueur_1;	
+				    doc.Chambre_largeur_1 = Chambre_largeur_1;	
+				    doc.Chambre_hauteur_1 = Chambre_hauteur_1;	
+				    doc.Presence_eau_1 = Presence_eau_1;	
+				    doc.Presence_annuelle_eau_1 = Presence_annuelle_eau_1;	
+				    doc.Presence_lac_souterrain_1 = Presence_lac_souterrain_1;	
+				    doc.Presence_riviere_souterraine_1 = Presence_riviere_souterraine_1;	
+				    doc.Presence_faune_aquatique_1 = Presence_faune_aquatique_1;	
+				    doc.Espece_aquatique_1 = Espece_aquatique_1;	
+				    doc.Autre_faune_1 = Autre_faune_1;	
+				    doc.Chambre_longueur_2 = Chambre_longueur_2;	
+				    doc.Chambre_largeur_2 = Chambre_largeur_2;	
+				    doc.Chambre_hauteur_2 = Chambre_hauteur_2;	
+				    doc.Presence_eau_2 = Presence_eau_2;	
+				    doc.Presence_annuelle_eau_2 = Presence_annuelle_eau_2;	
+				    doc.Presence_lac_souterrain_2 = Presence_lac_souterrain_2;	
+				    doc.Presence_riviere_souterraine_2 = Presence_riviere_souterraine_2;	
+				    doc.Presence_faune_aquatique_2 = Presence_faune_aquatique_2;	
+				    doc.Espece_aquatique_2 = Espece_aquatique_2;	
+				    doc.Autre_faune_2 = Autre_faune_2;	
+				    doc.Chambre_longueur_3 = Chambre_longueur_3;	
+				    doc.Chambre_largeur_3 = Chambre_largeur_3;	
+				    doc.Chambre_hauteur_3 = Chambre_hauteur_3;	
+				    doc.Presence_eau_3 = Presence_eau_3;	
+				    doc.Presence_annuelle_eau_3 = Presence_annuelle_eau_3;	
+				    doc.Presence_lac_souterrain_3 = Presence_lac_souterrain_3;	
+				    doc.Presence_riviere_souterraine_3 = Presence_riviere_souterraine_3;	
+				    doc.Presence_faune_aquatique_3 = Presence_faune_aquatique_3;	
+				    doc.Espece_aquatique_3 = Espece_aquatique_3;	
+				    doc.Autre_faune_3 = Autre_faune_3;	
+				    doc.Chambre_longueur_4 = Chambre_longueur_4;	
+				    doc.Chambre_largeur_4 = Chambre_largeur_4;	
+				    doc.Chambre_hauteur_4 = Chambre_hauteur_4;	
+				    doc.Presence_eau_4 = Presence_eau_4;	
+				    doc.Presence_annuelle_eau_4 = Presence_annuelle_eau_4;
+				    doc.Presence_lac_souterrain_4 = Presence_lac_souterrain_4;	
+				    doc.Presence_riviere_souterraine_4 = Presence_riviere_souterraine_4;	
+				    doc.Presence_faune_aquatique_4 = Presence_faune_aquatique_4;	
+				    doc.Espece_aquatique_4 = Espece_aquatique_4;	
+				    doc.Autre_faune_4 = Autre_faune_4;
 					doc.Username = Username;
 										
 					return DB2.put(doc);
@@ -1230,19 +2102,19 @@
 				}).then(function (doc) {
 					
 					if ((navigator.onLine) && (localStorage.getItem('web') !== 'oui')) {
-						var localDB3 = new PouchDB('site' + nom_table + debug);	
+						var localDB3 = new PouchDB('caracterisations_grottes' + nom_table + debug);	
 						var remote_couchdb = localStorage.getItem('remote_couchdb');
-						var remoteDB = new PouchDB(remote_couchdb + 'site' + nom_table + debug);
+						var remoteDB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
 										
 						localDB3.sync(remoteDB).on('complete', (info) => { 
-							window.location = 'liste_sites.html?table=' + nom_table;
+							window.location = 'liste_caracterisations.html?table=' + nom_table;
 						}).on('error', function (err) {
 							// error while replicating
 							alert('alert sync modify site : ' + nom_table + JSON.stringify(err));
 							window.location = 'index.html';
 						});	
 					} else {
-						window.location = 'liste_sites.html?table=' + nom_table;
+						window.location = 'liste_caracterisations.html?table=' + nom_table;
 					}
 					
 					l.stop();								  
@@ -1302,7 +2174,7 @@
 			catch(error) {
 	    	};
 	    	
-			var component_li = document.getElementById('li_site' + nom_table);
+			var component_li = document.getElementById('li_caracterisations' + nom_table);
 			component_li.classList.add('active');
 		};
 		

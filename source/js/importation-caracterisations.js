@@ -1,5 +1,6 @@
 var import_table = localStorage.getItem('import_table'); 
 var file = localStorage.getItem('file_import');
+
 var debug;
 if (localStorage.getItem('debug') === null) {
 	debug = '';
@@ -7,51 +8,22 @@ if (localStorage.getItem('debug') === null) {
 	debug = localStorage.getItem('debug');
 };
 
-var tabPays = [];
-var tabNewPays = [];
-var tabActivite_humaine = [];
-var tabNewActivite_humaine = [];
 
-if (import_table != '_astre_transvihmi_guinee') {
-  var valid_field = 
-	['Date_debut', 'Date_fin', 'Equipe', 'ID_CS_debut',
-	 'ID_CS_fin', 'ID_non_invasif_debut', 'ID_non_invasif_fin',
-	 'Numero_mission',
-	 'N_site', 'Pays', 'Region_capture',	'Site_capture',
-	 'Environnement', 'Proximite_village_km', 'Lat_degre_dec', 
-	 'Latitude', 'Long_degre_dec', 'Longitude', 'Type',
-	 'Type_Roost', 'Proximite_eau', 'Hauteur_canope',
-	 'Description_site', 'ID_genet_espece',
-	 'Famille1', 'Genre1', 'Espece1', 'Phenologie1', 'Statut1',
-	 'Famille2', 'Genre2', 'Espece2', 'Phenologie2', 'Statut2',
-	 'Famille3', 'Genre3', 'Espece3', 'Phenologie3', 'Statut3',
-	 'Famille4', 'Genre4', 'Espece4', 'Phenologie4', 'Statut4',
-	 'Famille5', 'Genre5', 'Espece5', 'Phenologie5', 'Statut5',
-	 'Famille6', 'Genre6', 'Espece6', 'Phenologie6', 'Statut6',
-	 'Famille7', 'Genre7', 'Espece7', 'Phenologie7', 'Statut7',
-	 'Espece_animale_sauvage', 'Espece_animale_domestique',
-	 'Interaction', 'Description_interaction_animaux',
-	 'Activite_humaine', 'Description_interaction_homme',
-	 'Camera_trap', 'Heure_debut_camera', 'Heure_fin_camera'];
-} else {
-	var valid_field = 
-		['Date_debut_mission', 'Date_fin_mission', 'Equipe', 'N_site', 'Pays',	'Préfecture',	
-		  'Sous-préfecture', 'Ville/village', 'Site_capture', 'Environnement', 'Latitude', 'Lat_degre_dec',
-		  'Longitude', 'Long_degre_dec', 'Proximite_village_km', 'Proximite_source_m',	
-		  'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'ID_NI_CS_debut', 'ID_NI_CS_fin',
-		  'ID_NI_faune_debut', 'ID_NI_faune_fin', 'Espece_vegetale_1',	'Stade_espece_1',
-		  'Espece_vegetale_2', 'Stade_espece_2', 'Espece_vegetale_3', 'Stade_espece_3', 'Espece_vegetale_4', 
-		  'Stade_espece_4', 'Espece_vegetale_5', 'Stade_espece_5', 'Espece_vegetale_6', 'Stade_espece_6', 'Espece_vegetale_7', 
-		  'Stade_espece_7', 'ID_echantillon_vegetale', 'Espece_animale_domestique_1', 'Espece_animale_domestique_2',
-		  'Espece_animale_domestique_3', 'Espece_animale_sauvage_1', 'Espece_animale_sauvage_2', 'Espece_animale_sauvage_3', 
-		  'Espece_animale_sauvage_4', 'NI_faune', 'Interaction_CS_faune', 'Description_interaction_CS_faune', 'Activite_humaine_observee', 
-		  'Description_interaction_CS_homme', 'Camera_traps', 'NumChambre', 'HauteurCapteur', 'Distance_capteur_grotte', 
-		  'Date_debut_capteur', 'Heure_debut_capteur', 'Date_fin_capteur', 'Heure_fin_capteur', 'NumDossier_capteur'];
+var valid_field = 
+	['N_site', 'Date', 'Pays', 'Prefecture', 'Sous-prefecture', 'Ville/village', 'Site_capture', 'Environnement', 'Latitude', 'Lat_degre_dec', 
+	 'Longitude', 'Long_degre_dec', 'Proximite_village_km', 'Proximite_source_m', 'Description_entree', 'Nb_entree', 'Entree_longueur_1', 
+	 'Entree_largeur_1', 'Entree_hauteur_1', 'Entree_longueur_2', 'Entree_largeur_2', 'Entree_hauteur_2', 'Entree_longueur_3', 'Entree_largeur_3', 
+	 'Entree_hauteur_3', 'Presence_puit_sortie', 'Puit_longueur', 'Puit_largeur', 'Puit_hauteur', 'Description_grotte', 'Nb_chambre', 
+	 'Chambre_longueur_1', 'Chambre_largeur_1', 'Chambre_hauteur_1', 'Presence_eau_1', 'Presence_annuelle_eau_1', 'Presence_lac_souterrain_1', 
+	 'Presence_riviere_souterraine_1', 'Presence_faune_aquatique_1', 'Espece_aquatique_1', 'Autre_faune_1', 'Chambre_longueur_2', 'Chambre_largeur_2', 
+	 'Chambre_hauteur_2', 'Presence_eau_2', 'Presence_annuelle_eau_2', 'Presence_lac_souterrain_2', 'Presence_riviere_souterraine_2', 
+	 'Presence_faune_aquatique_2', 'Espece_aquatique_2', 'Autre_faune_2', 'Chambre_longueur_3', 'Chambre_largeur_3', 'Chambre_hauteur_3', 
+	 'Presence_eau_3', 'Presence_annuelle_eau_3', 'Presence_lac_souterrain_3', 'Presence_riviere_souterraine_3', 'Presence_faune_aquatique_3', 
+	 'Espece_aquatique_3', 'Autre_faune_3', 'Chambre_longueur_4', 'Chambre_largeur_4', 'Chambre_hauteur_4', 'Presence_eau_4', 
+	 'Presence_annuelle_eau_4', 'Presence_lac_souterrain_4', 'Presence_riviere_souterraine_4', 'Presence_faune_aquatique_4', 'Espece_aquatique_4', 
+	 'Autre_faune_4'];
 
-	
-}
 
-//
 
 var field = [];
 var data = [];
@@ -76,21 +48,7 @@ var rowContent = [];
 
 var row = 0;
 
-var paysTablesData = JSON.parse(localStorage.getItem('pays' + import_table + 'TablesData'));
-paysTablesData.rows.forEach(function(row){   
-	tabPays.push(row.doc.Pays);
-});
-tab_Activite_humaine();
-
-function tab_Activite_humaine() {
-	var activite_humaineTablesData = JSON.parse(localStorage.getItem('activite_humaine' + import_table + 'TablesData'));
-	activite_humaineTablesData.rows.forEach(function(row){   
-		tabActivite_humaine.push(row.doc.Activite_humaine);
-		//alert(row.doc.Activite_humaine);
-	});
-	
-	importation()
-}
+importation();
 
 function importation() {
 	disable_li();
@@ -111,9 +69,10 @@ function importation() {
 				tab_max = lines_length-1;
 				
 				for (var line = 1; line < lines_length; line++) {
+					
 					rowContent = lines[line].trim().split(";");
 					//console.log(rowContent[0]);
-					fill_tab_datas_missions(line);
+					fill_tab_datas_caracterisations(line);
 				};
 			} else {
 				failure_fields("Le fichier d'importation ne doit concerner qu'un seul et même pays !");
@@ -139,12 +98,8 @@ function fields_is_valid() {
 
 function is_only_one_country() {
 	
-	if (import_table != '_astre_transvihmi_guinee') {
-		var i_pays = 9;
-	} else {
-		
-		var i_pays = 4;
-	}
+	var i_pays = 2;
+
 	
 	var rowContent = lines[1].trim().split(";");
 	var country = rowContent[i_pays]; 
@@ -152,18 +107,20 @@ function is_only_one_country() {
 	for (var line = 2; line < lines_length; line++) {
 		rowContent = lines[line].trim().split(";");
 		if (rowContent[i_pays] != country) {
-			alert(rowContent[i_pays]);
 			return false;
 		};
 	};
 	return true;
 };
 
-function fill_tab_datas_missions(file_line) {
+function fill_tab_datas_caracterisations(file_line) {
+	
+	
 	tab[file_line] = new Array();
 	
 	for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 		tab[file_line][rowCountContent] = rowContent[rowCountContent];
+		
 	};
 	
 	if (file_line == lines_length - 1) {
@@ -184,49 +141,28 @@ function fill_tab_datas_missions(file_line) {
 		var row = []; 
 		row.length = lines_length;
 		
-		search_N_identification_Recursif_Missions(/*DB,*/ lines_length-1, 0, -1, '', row);
+		search_N_identification_Recursif_Caracterisations(/*DB,*/ lines_length-1, 0, -1, '', row);
 	};
 };
 
-function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_identification_missions, row) {
+function search_N_identification_Recursif_Caracterisations(/*localDB,*/ i, j, k, N_site, row) {
 	
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'donnees_mission' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + import_table + debug);
 	} else {
-		var DB = new PouchDB('donnees_mission' + import_table + debug);
+		var DB = new PouchDB('caracterisations_grottes' + import_table + debug);
 	};
 	
 	if (i > 0) {
 
 		if (typeof tab[i] !== "undefined") {
 			
-			var new_code;
 			
-			if (import_table != '_astre_transvihmi_guinee') {
-				var ID_CS_debut = tab[i][3];
-				new_code = ID_CS_debut
-				var ID_CS_fin = tab[i][4];
-				new_code = new_code + ID_CS_fin;
-				var ID_non_invasif_debut = tab[i][5];
-				new_code = new_code + ID_non_invasif_debut;
-				var ID_non_invasif_fin = tab[i][6];
-				new_code = new_code + ID_non_invasif_fin;
-			} else {
-				var ID_CS_debut = tab[i][16];
-				new_code = ID_CS_debut
-				var ID_CS_fin = tab[i][17];
-				new_code = new_code + ID_CS_fin;
-				var ID_non_invasif_debut = tab[i][18];
-				new_code = new_code + ID_non_invasif_debut;
-				var ID_non_invasif_fin = tab[i][19];
-				new_code = new_code + ID_non_invasif_fin;
-			}
-			
-			console.log('new_code : ' + new_code)
+			N_site = tab[i][0];
 			
 			DB.find({
-		       	selector: {N_identification_missions: new_code}
+		       	selector: {N_site: N_site}
 			}).then(function (result) {
 		    	
 		    	if (result.docs.length > 0) {
@@ -234,16 +170,16 @@ function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_ident
 		    		row++;
 		    		//if (record_change_bat_capturees(result, rowContent_length)) {
 		    			var id = result.docs[0]._id;
-		    			put_with_id_missions(id, i);
+		    			put_with_id_caracterisations(id, i);
 		    			
 		    			for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 							var rowContent = tab[i][rowCountContent]
-							addValueInTableReferenceMissions(rowCountContent, rowContent);
+							//addValueInTableReferenceMissions(rowCountContent, rowContent);
 		    			};
 						
 						//addEspeceInTableReferenceBatCapturees(i);
 		    			
-		    			search_N_identification_Recursif_Missions(i-1);
+		    			search_N_identification_Recursif_Caracterisations(i-1);
 		    			//addEspeceInTableReferenceBatCapturees(i);
 		    			
 				    /*} else {
@@ -258,7 +194,13 @@ function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_ident
 		    		
 		    		for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 						var name_field = field[rowCountContent];
-						var rowContent = tab[/*numero_individu*/i][rowCountContent]
+						
+						if ((rowCountContent == 2) && (tab[i][rowCountContent] == "Guinee")) {
+							var rowContent = 'Guinée'
+						} else {
+							var rowContent = tab[i][rowCountContent]
+						}
+						//var rowContent = tab[/*numero_individu*/i][rowCountContent]
 						
 						console.log(name_field + ' : ' + rowContent)
 						
@@ -273,7 +215,7 @@ function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_ident
 						} else {*/
 							new_doc[name_field] = rowContent;
 							
-							addValueInTableReferenceMissions(rowCountContent, rowContent);
+							//addValueInTableReferenceMissions(rowCountContent, rowContent);
 						//};
 					};
 					
@@ -281,29 +223,15 @@ function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_ident
 					
 					var id = uuid();
 					new_doc._id = id;
-					new_doc.N_identification_missions = /*String(numero_individu)*/new_code;
 					new_doc.Username = localStorage.getItem('loginUsername');
 					
-					if (import_table != '_astre_transvihmi_guinee') {
-						myTab = null;
-						myTab = new Array();
-						if (typeof myTab !== "undefined") {
-							
-							addNewObjectToTab(myTab, i);
-						};						
-						var Phenologie = JSON.stringify(myTab);
-						console.log(Phenologie);
-						Phenologie = JSON.parse(Phenologie);
-						
-						new_doc.Phenologie = Phenologie;
-					}
 					
-					put_new_id_missions(new_doc/*, i*/);
+					put_new_id_caracterisations(new_doc/*, i*/);
 					
 					move();
 					row++;
 					
-					search_N_identification_Recursif_Missions(/*localDB, */i-1);
+					search_N_identification_Recursif_Caracterisations(/*localDB, */i-1);
 		    		
 		    	}
 		    }).catch(function (err) {
@@ -316,34 +244,38 @@ function search_N_identification_Recursif_Missions(/*localDB,*/ i, j, k, N_ident
 			move();
 			row++;
 			
-			search_N_identification_Recursif_Missions(/*localDB, */i-1);
+			search_N_identification_Recursif_Caracterisations(/*localDB, */i-1);
 			
 		};
 	} else {
 		
-		synchronizeMissions();
+		synchronizeCaracterisations();
 		/*if (localStorage.getItem('web') !== 'oui') {
 			synchronizeEspece('espece');
 		}*/
 	};
 };
 
-function put_with_id_missions(id, i) {
+function put_with_id_caracterisations(id, i) {
 	
 	var sN_identification;
 		
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'donnees_mission' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + import_table + debug);
 	} else {
-		var DB = new PouchDB('donnees_mission' + import_table + debug);
+		var DB = new PouchDB('caracterisations_grottes' + import_table + debug);
 	};
 	DB.get(id).then(function (doc) {
 		
 		for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 			var name_field = field[rowCountContent];
 			
-			var rowContent = tab[i][rowCountContent];
+			if ((rowCountContent == 2) && (tab[i][rowCountContent] == "Guinee")) {
+				var rowContent = 'Guinée'
+			} else {
+				var rowContent = tab[i][rowCountContent]
+			}
 			
 			//addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
 						
@@ -359,19 +291,6 @@ function put_with_id_missions(id, i) {
 			//};
 				doc.Username = localStorage.getItem('loginUsername');
 				
-				if (import_table != '_astre_transvihmi_guinee') {
-					myTab = null;
-					myTab = new Array();
-					if (typeof myTab !== "undefined") {
-						
-						addNewObjectToTab(myTab, i);
-					};						
-					var Phenologie = JSON.stringify(myTab);
-					console.log(Phenologie);
-					Phenologie = JSON.parse(Phenologie);
-					
-					doc.Phenologie = Phenologie;
-				}
 			
 
 		};
@@ -385,7 +304,7 @@ function put_with_id_missions(id, i) {
 						synchronizeBatCapturees();
 					};
 				};*/
-				//search_N_identification_Recursif_Missions(/*localDB, */i-1)
+				search_N_identification_Recursif_Caracterisations(/*localDB, */i-1)
 			});
 		});
 	}).catch(function (err) {
@@ -394,12 +313,12 @@ function put_with_id_missions(id, i) {
     });
 };
 
-function put_new_id_missions(doc/*, i*/) {
+function put_new_id_caracterisations(doc/*, i*/) {
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'donnees_mission' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + import_table + debug);
 	} else {
-		var DB = new PouchDB('donnees_mission' + import_table + debug);
+		var DB = new PouchDB('caracterisations_grottes' + import_table + debug);
 		
 	};
 	DB.put(doc).then(function () {
@@ -407,14 +326,14 @@ function put_new_id_missions(doc/*, i*/) {
 	});
 };
 
-function synchronizeMissions() {
+function synchronizeCaracterisations() {
 	
 	//alert('synchronizeBatNoninvasives');
 	
 	if (localStorage.getItem('web') !== 'oui') {
-		var localDB = new PouchDB('donnees_mission' + import_table + debug);
+		var localDB = new PouchDB('caracterisations_grottes' + import_table + debug);
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var remoteDB = new PouchDB(remote_couchdb + 'donnees_mission' + import_table + debug, {skip_setup: true});
+		var remoteDB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + import_table + debug, {skip_setup: true});
 		localDB.sync(remoteDB, {batch_size: 20}).on('complete', (info) => {              
 			hide_progress_bar();
 			enable_li();
@@ -507,7 +426,7 @@ function synchronizeMissions() {
 		};
 	};*/
 		
-	var i = tabNewPays.length;
+	/*var i = tabNewPays.length;
 	addPays(i);
 	function addPays(i) {
 	    if (i > 0) {
@@ -517,9 +436,9 @@ function synchronizeMissions() {
 			doc.Pays = tabNewPays[i-1];
 			if (localStorage.getItem('web') === 'oui') {
 				var remote_couchdb = localStorage.getItem('remote_couchdb');
-				var DB = new PouchDB(remote_couchdb + 'pays' + import_table /*+ nom_equipe*/ + debug);
+				var DB = new PouchDB(remote_couchdb + 'pays' + import_table + debug);
 			} else {
-				var DB = new PouchDB('pays' + import_table /*+ nom_equipe*/ + debug);
+				var DB = new PouchDB('pays' + import_table + debug);
 			};
 			DB.put(doc).then(function(response){
 				return addPays(i-1);
@@ -528,14 +447,14 @@ function synchronizeMissions() {
 			});
 		} else {
 			if (localStorage.getItem('web') !== 'oui') {
-				var localDB = new PouchDB('pays' + import_table /*+ nom_equipe*/ + debug);
+				var localDB = new PouchDB('pays' + import_table + debug);
 				localDB.allDocs({
 					include_docs: true,
 					attachments: true
 				}).then(function (result) {
 					// handle result
 					var remote_couchdb = localStorage.getItem('remote_couchdb');
-					var remoteDB = new PouchDB(remote_couchdb + 'pays' + import_table /*+ nom_equipe*/ + debug);
+					var remoteDB = new PouchDB(remote_couchdb + 'pays' + import_table + debug);
 					localDB.sync(remoteDB).on('complete', (info) => {   
 				    }).on('error', function (err) {
 				   		alert('alert sync pays : ' + JSON.stringify(err));
@@ -545,12 +464,12 @@ function synchronizeMissions() {
 				});
 			}
 		};
-	};
+	};*/
 	
 	/*var i = tabNewEspece.length;
 	addFamilleGenreEspece(i, 'espece');*/
 
-	var i = tabNewActivite_humaine.length;
+	/*var i = tabNewActivite_humaine.length;
 	addActivite_humaine(i);
 	function addActivite_humaine(i) {
 	    if (i > 0) {
@@ -589,7 +508,7 @@ function synchronizeMissions() {
 				});
 			}
 		};
-	};
+	};*/
 		
 	console.log('synchronized !');
 };
@@ -659,85 +578,6 @@ function addPhenologie(FamilleX, GenreX, EspeceX, Pheno_especeX, Statut_especeX)
         return this.Statut_espece;
     };
 };
-
-function addValueInTableReferenceMissions(rowCountContent, rowContent) {
-	
-	if (import_table != '_astre_transvihmi_guinee') {
-		var i_pays = 8;
-		var i_activite_humaine = 63;
-	} else {
-		
-		var i_pays = 4;
-		var i_activite_humaine = 47;
-	}
-	//Pays
-	if ((rowCountContent == i_pays) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-		if (rowContent != '') {
-			var new_pays = true;
-			for (var i = 0; i < tabPays.length; i++) {
-				if (tabPays[i] == String(rowContent)) {
-					new_pays = false;
-				};
-			};
-			if (new_pays) {
-				tabPays.push(rowContent);
-				tabNewPays.push(rowContent);		
-			};
-		}
-	} else
-	if ((rowCountContent == i_activite_humaine) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-		if (rowContent != '') {
-			
-			var content = rowContent.split(",");
-			
-			for (var j = 0; j < content.length; j++) {
-				var new_activite_humaine = true;
-				for (var i = 0; i < tabActivite_humaine.length; i++) {
-					if (tabActivite_humaine[i] == String(content[j])) {
-						new_activite_humaine = false;
-					};
-				};
-				if (new_activite_humaine) {
-					tabActivite_humaine.push(content[j]);
-					tabNewActivite_humaine.push(content[j]);		
-				};
-			};
-			
-		}
-	};
-};
-
-/*function addEspeceInTableReferenceBatNoninvasives(i) {
-	console.log(i + ' : ' + tab[i][17].trim() + ' ' + tab[i][18].trim() + ' ' + tab[i][19].trim());
-	console.log(i + ' : ' + tab[i][20].trim() + ' ' + tab[i][21].trim() + ' ' + tab[i][22].trim());
-	console.log(i + ' : ' + tab[i][23].trim() + ' ' + tab[i][24].trim() + ' ' + tab[i][25].trim());
-	
-	//Espece
-	Espece1 = tab[i][17].trim().toUpperCase() + ' ' + tab[i][18].trim() + ' ' + tab[i][19].trim();
-	Espece2 = tab[i][20].trim().toUpperCase() + ' ' + tab[i][21].trim() + ' ' + tab[i][22].trim();
-	Espece3 = tab[i][23].trim().toUpperCase() + ' ' + tab[i][24].trim() + ' ' + tab[i][25].trim();
-	
-	addNewEspeceInTab(Espece1);
-	addNewEspeceInTab(Espece2);
-	addNewEspeceInTab(Espece3);
-	
-	function addNewEspeceInTab(Espece) {
-		var new_espece = true;
-		for (var i = 0; i < tabEspece.length; i++) {
-			if (tabEspece[i].trim() == '') {
-				new_espece = false;
-			} else if (tabEspece[i].trim() == Espece.trim()) {
-				new_espece = false;
-			} else if (tabEspece[i].trim().includes(Espece.trim())) {
-				new_espece = false;
-			};
-		};
-		if (new_espece) {			
-			tabEspece.push(Espece.trim());
-			tabNewEspece.push(Espece.trim());	
-		};
-	};	
-};*/
 
 function addNom(NomX) {
     this.Nom = NomX;
@@ -1127,37 +967,6 @@ function addEspece(value, value2, value3, i, table) {
 		console.log(err);
 	});
 };*/
-
-function addNewObjectToTab(arr, i) {
-	if ((tab[i][24] != '') ||(tab[i][25] != '') ||(tab[i][26] != '') ||(tab[i][27] != '') ||(tab[i][28] != '')) {
-		obj = new addPhenologie(tab[i][24], tab[i][25], tab[i][26], tab[i][27], tab[i][28]);
-		arr.push(obj);
-	}
-	if ((tab[i][29] != '') ||(tab[i][30] != '') ||(tab[i][31] != '') ||(tab[i][32] != '') ||(tab[i][33] != '')) {
-		obj = new addPhenologie(tab[i][29], tab[i][30], tab[i][31], tab[i][32], tab[i][33]);
-		arr.push(obj);
-	}
-	if ((tab[i][34] != '') ||(tab[i][35] != '') ||(tab[i][36] != '') ||(tab[i][37] != '') ||(tab[i][38] != '')) {
-		obj = new addPhenologie(tab[i][34], tab[i][35], tab[i][36], tab[i][37], tab[i][38]);
-		arr.push(obj);
-	}
-	if ((tab[i][39] != '') ||(tab[i][40] != '') ||(tab[i][41] != '') ||(tab[i][42] != '') ||(tab[i][43] != '')) {
-		obj = new addPhenologie(tab[i][39], tab[i][40], tab[i][41], tab[i][42], tab[i][43]);
-		arr.push(obj);
-	}
-	if ((tab[i][44] != '') ||(tab[i][45] != '') ||(tab[i][46] != '') ||(tab[i][47] != '') ||(tab[i][48] != '')) {
-		obj = new addPhenologie(tab[i][44], tab[i][45], tab[i][46], tab[i][47], tab[i][48]);
-		arr.push(obj);
-	}
-	if ((tab[i][49] != '') ||(tab[i][50] != '') ||(tab[i][51] != '') ||(tab[i][52] != '') ||(tab[i][53] != '')) {
-		obj = new addPhenologie(tab[i][49], tab[i][50], tab[i][51], tab[i][52], tab[i][53]);
-		arr.push(obj);
-	}
-	if ((tab[i][54] != '') ||(tab[i][55] != '') ||(tab[i][56] != '') ||(tab[i][57] != '') ||(tab[i][58] != '')) {
-		obj = new addPhenologie(tab[i][54], tab[i][55], tab[i][56], tab[i][57], tab[i][58]);
-		arr.push(obj);
-	}
-};
 
 function extraireNombre(str) { 
 	return str.match(/[0-9]+/g)

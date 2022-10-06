@@ -10,119 +10,147 @@ if (localStorage.getItem('debug') === null) {
 var tabPays = [];
 var tabNewPays = [];
 
-var valid_field = 
-	['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin',
-	 'Pairs_impairs', 'Sans_ID_1', 'Sans_ID_2', 'Sans_ID_3', 'Avec_ID_1', 'Avec_ID_2', 'Avec_ID_3', 'Numero_mission',
-	 'N_site', 'Pays', 'Region_capture', 'Site_capture', 'Environnement',	'Proximite_village_km',
-	 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Roost_diurne', 'Presence_diurne', 
-	 'Famille_diurne1', 'Genre_diurne1', 'Espece_diurne1',
-	 'Famille_diurne2', 'Genre_diurne2', 'Espece_diurne2',
-	 'Famille_diurne3', 'Genre_diurne3', 'Espece_diurne3',
-	 'Famille_diurne4', 'Genre_diurne4', 'Espece_diurne4',
-	 'Famille_diurne5', 'Genre_diurne5', 'Espece_diurne5',
-	 'Famille_diurne6', 'Genre_diurne6', 'Espece_diurne6',
-	 'Famille_diurne7', 'Genre_diurne7', 'Espece_diurne7',
-	 'Methode_comptage_diurne', 'Resultat_comptage_diurne_1', 'Resultat_comptage_diurne_2',
-	 'Utilisation_site_nocturne', 'Aliment_consomme', 'Presence_nocturne',
-	 'Famille_nocturne1', 'Genre_nocturne1',	'Espece_nocturne1',
-	 'Famille_nocturne2', 'Genre_nocturne2',	'Espece_nocturne2',
-	 'Famille_nocturne3', 'Genre_nocturne3',	'Espece_nocturne3',
-	 'Famille_nocturne4', 'Genre_nocturne4',	'Espece_nocturne4',
-	 'Famille_nocturne5', 'Genre_nocturne5',	'Espece_nocturne5',
-	 'Famille_nocturne6', 'Genre_nocturne6',	'Espece_nocturne6',
-	 'Famille_nocturne7', 'Genre_nocturne7',	'Espece_nocturne7',
-	 'Methode_comptage_nocturne', 'Resultat_comptage_nocturne_1', 'Resultat_comptage_nocturne_2',
-	 'Vocalisations', 'Parade_sexuelle',
-	 'Famille_vocalisations', 'Genre_vocalisations', 'Espece_vocalisations',
-	 'Copulations', 
-	 'Famille_copulations', 'Genre_copulations', 'Espece_copulations',
-	 'Suitee', 
-	 'Famille_suitee1', 'Genre_suitee1', 'Espece_suitee1', 
-	 'Famille_suitee2', 'Genre_suitee2', 'Espece_suitee2',
-	 'Famille_suitee3', 'Genre_suitee3', 'Espece_suitee3',
-	 'Famille_suitee4', 'Genre_suitee4', 'Espece_suitee4',
-	 'Agressions',
-	 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',
-	 'Gestante', 
-	 'Famille_gestante1', 'Genre_gestante1', 'Espece_gestante1', 
-	 'Famille_gestante2', 'Genre_gestante2', 'Espece_gestante2',
-	 'Famille_gestante3', 'Genre_gestante3', 'Espece_gestante3',
-	 'Famille_gestante4', 'Genre_gestante4', 'Espece_gestante4',
-	 'Lactante', 
-	 'Famille_lactante1', 'Genre_lactante1', 'Espece_lactante1', 
-	 'Famille_lactante2', 'Genre_lactante2', 'Espece_lactante2',
-	 'Famille_lactante3', 'Genre_lactante3', 'Espece_lactante3',
-	 'Famille_lactante4', 'Genre_lactante4', 'Espece_lactante4', 
-	 'Filet_canopee_nb_7', 'Filet_canopee_m2_7',
-	 'NumFilet7_1', 'LongueurFilet7_1', 'HauteurFilet7_1',
-	 'Lat_degre_decFilet7_1', 'LatitudeFilet7_1',
-	 'Long_degre_decFilet7_1', 'LongitudeFilet7_1',
-	 'NumFilet7_2', 'LongueurFilet7_2', 'HauteurFilet7_2',
-	 'Lat_degre_decFilet7_2', 'LatitudeFilet7_2',
-	 'Long_degre_decFilet7_2', 'LongitudeFilet7_2',
-	 'NumFilet7_3', 'LongueurFilet7_3', 'HauteurFilet7_3',
-	 'Lat_degre_decFilet7_3', 'LatitudeFilet7_3',
-	 'Long_degre_decFilet7_3', 'LongitudeFilet7_3',
-	 'NumFilet7_4', 'LongueurFilet7_4', 'HauteurFilet7_4',
-	 'Lat_degre_decFilet7_4', 'LatitudeFilet7_4',
-	 'Long_degre_decFilet7_4', 'LongitudeFilet7_4',
-	 'NumFilet7_5', 'LongueurFilet7_5', 'HauteurFilet7_5',
-	 'Lat_degre_decFilet7_5', 'LatitudeFilet7_5',
-	 'Long_degre_decFilet7_5', 'LongitudeFilet7_5',
-	 'NumFilet7_6', 'LongueurFilet7_6', 'HauteurFilet7_6',
-	 'Lat_degre_decFilet7_6', 'LatitudeFilet7_6',
-	 'Long_degre_decFilet7_6', 'LongitudeFilet7_6',
-	 'NumFilet7_7', 'LongueurFilet7_7', 'HauteurFilet7_7',
-	 'Lat_degre_decFilet7_7', 'LatitudeFilet7_7',
-	 'Long_degre_decFilet7_7', 'LongitudeFilet7_7',
-	 'Filet_canopee_nb_20', 'Filet_canopee_m2_20', 
-	 'NumFilet20_1', 'LongueurFilet20_1', 'HauteurFilet20_1',
-	 'Lat_degre_decFilet20_1', 'LatitudeFilet20_1',
-	 'Long_degre_decFilet20_1', 'LongitudeFilet20_1',
-	 'NumFilet20_2', 'LongueurFilet20_2', 'HauteurFilet20_2',
-	 'Lat_degre_decFilet20_2', 'LatitudeFilet20_2',
-	 'Long_degre_decFilet20_2', 'LongitudeFilet20_2',
-	 'NumFilet20_3', 'LongueurFilet20_3', 'HauteurFilet20_3',
-	 'Lat_degre_decFilet20_3', 'LatitudeFilet20_3',
-	 'Long_degre_decFilet20_3', 'LongitudeFilet20_3',
-	 'NumFilet20_4', 'LongueurFilet20_4', 'HauteurFilet20_4',
-	 'Lat_degre_decFilet20_4', 'LatitudeFilet20_4',
-	 'Long_degre_decFilet20_4', 'LongitudeFilet20_4',
-	 'NumFilet20_5', 'LongueurFilet20_5', 'HauteurFilet20_5',
-	 'Lat_degre_decFilet20_5', 'LatitudeFilet20_5',
-	 'Long_degre_decFilet20_5', 'LongitudeFilet20_5',
-	 'NumFilet20_6', 'LongueurFilet20_6', 'HauteurFilet20_6',
-	 'Lat_degre_decFilet20_6', 'LatitudeFilet20_6',
-	 'Long_degre_decFilet20_6', 'LongitudeFilet20_6',
-	 'NumFilet20_7', 'LongueurFilet20_7', 'HauteurFilet20_7',
-	 'Lat_degre_decFilet20_7', 'LatitudeFilet20_7',
-	 'Long_degre_decFilet20_7', 'LongitudeFilet20_7',
-	 'Filet_sol_nb', 'Filet_sol_m2',
-	 'NumFiletSol_1', 'LongueurFiletSol_1', 'HauteurFiletSol_1',
-	 'Lat_degre_decFiletSol_1', 'LatitudeFiletSol_1',
-	 'Long_degre_decFiletSol_1', 'LongitudeFiletSol_1',
-	 'NumFiletSol_2', 'LongueurFiletSol_2', 'HauteurFiletSol_2',
-	 'Lat_degre_decFiletSol_2', 'LatitudeFiletSol_2',
-	 'Long_degre_decFiletSol_2', 'LongitudeFiletSol_2',
-	 'NumFiletSol_3', 'LongueurFiletSol_3', 'HauteurFiletSol_3',
-	 'Lat_degre_decFiletSol_3', 'LatitudeFiletSol_3',
-	 'Long_degre_decFiletSol_3', 'LongitudeFiletSol_3',
-	 'NumFiletSol_4', 'LongueurFiletSol_4', 'HauteurFiletSol_4',
-	 'Lat_degre_decFiletSol_4', 'LatitudeFiletSol_4',
-	 'Long_degre_decFiletSol_4', 'LongitudeFiletSol_4',
-	 'NumFiletSol_5', 'LongueurFiletSol_5', 'HauteurFiletSol_5',
-	 'Lat_degre_decFiletSol_5', 'LatitudeFiletSol_5',
-	 'Long_degre_decFiletSol_5', 'LongitudeFiletSol_5',
-	 'NumFiletSol_6', 'LongueurFiletSol_6', 'HauteurFiletSol_6',
-	 'Lat_degre_decFiletSol_6', 'LatitudeFiletSol_6',
-	 'Long_degre_decFiletSol_6', 'LongitudeFiletSol_6',
-	 'NumFiletSol_7', 'LongueurFiletSol_7', 'HauteurFiletSol_7',
-	 'Lat_degre_decFiletSol_7', 'LatitudeFiletSol_7',
-	 'Long_degre_decFiletSol_7', 'LongitudeFiletSol_7',
-	 'Filet_debut', 'Filet_fin', 'Filet_temps', 'Filet_capture_nb', 'Harp_debut',
-	 'Harp_fin', 'Harp_temps', 'Harpe_nb', 'Saison', 'Climat', 'Autre_climat',
-	 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger',
-	 'Arret_Capture', 'Causes_Arret_Capture'];
+if (import_table != '_astre_transvihmi_guinee') {
+	var valid_field = 
+		['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin',
+		 'Pairs_impairs', 'Sans_ID_1', 'Sans_ID_2', 'Sans_ID_3', 'Avec_ID_1', 'Avec_ID_2', 'Avec_ID_3', 'Numero_mission',
+		 'N_site', 'Pays', 'Region_capture', 'Site_capture', 'Environnement',	'Proximite_village_km',
+		 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Roost_diurne', 'Presence_diurne', 
+		 'Famille_diurne1', 'Genre_diurne1', 'Espece_diurne1',
+		 'Famille_diurne2', 'Genre_diurne2', 'Espece_diurne2',
+		 'Famille_diurne3', 'Genre_diurne3', 'Espece_diurne3',
+		 'Famille_diurne4', 'Genre_diurne4', 'Espece_diurne4',
+		 'Famille_diurne5', 'Genre_diurne5', 'Espece_diurne5',
+		 'Famille_diurne6', 'Genre_diurne6', 'Espece_diurne6',
+		 'Famille_diurne7', 'Genre_diurne7', 'Espece_diurne7',
+		 'Methode_comptage_diurne', 'Resultat_comptage_diurne_1', 'Resultat_comptage_diurne_2',
+		 'Utilisation_site_nocturne', 'Aliment_consomme', 'Presence_nocturne',
+		 'Famille_nocturne1', 'Genre_nocturne1',	'Espece_nocturne1',
+		 'Famille_nocturne2', 'Genre_nocturne2',	'Espece_nocturne2',
+		 'Famille_nocturne3', 'Genre_nocturne3',	'Espece_nocturne3',
+		 'Famille_nocturne4', 'Genre_nocturne4',	'Espece_nocturne4',
+		 'Famille_nocturne5', 'Genre_nocturne5',	'Espece_nocturne5',
+		 'Famille_nocturne6', 'Genre_nocturne6',	'Espece_nocturne6',
+		 'Famille_nocturne7', 'Genre_nocturne7',	'Espece_nocturne7',
+		 'Methode_comptage_nocturne', 'Resultat_comptage_nocturne_1', 'Resultat_comptage_nocturne_2',
+		 'Vocalisations', 'Parade_sexuelle',
+		 'Famille_vocalisations', 'Genre_vocalisations', 'Espece_vocalisations',
+		 'Copulations', 
+		 'Famille_copulations', 'Genre_copulations', 'Espece_copulations',
+		 'Suitee', 
+		 'Famille_suitee1', 'Genre_suitee1', 'Espece_suitee1', 
+		 'Famille_suitee2', 'Genre_suitee2', 'Espece_suitee2',
+		 'Famille_suitee3', 'Genre_suitee3', 'Espece_suitee3',
+		 'Famille_suitee4', 'Genre_suitee4', 'Espece_suitee4',
+		 'Agressions',
+		 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',
+		 'Gestante', 
+		 'Famille_gestante1', 'Genre_gestante1', 'Espece_gestante1', 
+		 'Famille_gestante2', 'Genre_gestante2', 'Espece_gestante2',
+		 'Famille_gestante3', 'Genre_gestante3', 'Espece_gestante3',
+		 'Famille_gestante4', 'Genre_gestante4', 'Espece_gestante4',
+		 'Lactante', 
+		 'Famille_lactante1', 'Genre_lactante1', 'Espece_lactante1', 
+		 'Famille_lactante2', 'Genre_lactante2', 'Espece_lactante2',
+		 'Famille_lactante3', 'Genre_lactante3', 'Espece_lactante3',
+		 'Famille_lactante4', 'Genre_lactante4', 'Espece_lactante4', 
+		 'Filet_canopee_nb_7', 'Filet_canopee_m2_7',
+		 'NumFilet7_1', 'LongueurFilet7_1', 'HauteurFilet7_1',
+		 'Lat_degre_decFilet7_1', 'LatitudeFilet7_1',
+		 'Long_degre_decFilet7_1', 'LongitudeFilet7_1',
+		 'NumFilet7_2', 'LongueurFilet7_2', 'HauteurFilet7_2',
+		 'Lat_degre_decFilet7_2', 'LatitudeFilet7_2',
+		 'Long_degre_decFilet7_2', 'LongitudeFilet7_2',
+		 'NumFilet7_3', 'LongueurFilet7_3', 'HauteurFilet7_3',
+		 'Lat_degre_decFilet7_3', 'LatitudeFilet7_3',
+		 'Long_degre_decFilet7_3', 'LongitudeFilet7_3',
+		 'NumFilet7_4', 'LongueurFilet7_4', 'HauteurFilet7_4',
+		 'Lat_degre_decFilet7_4', 'LatitudeFilet7_4',
+		 'Long_degre_decFilet7_4', 'LongitudeFilet7_4',
+		 'NumFilet7_5', 'LongueurFilet7_5', 'HauteurFilet7_5',
+		 'Lat_degre_decFilet7_5', 'LatitudeFilet7_5',
+		 'Long_degre_decFilet7_5', 'LongitudeFilet7_5',
+		 'NumFilet7_6', 'LongueurFilet7_6', 'HauteurFilet7_6',
+		 'Lat_degre_decFilet7_6', 'LatitudeFilet7_6',
+		 'Long_degre_decFilet7_6', 'LongitudeFilet7_6',
+		 'NumFilet7_7', 'LongueurFilet7_7', 'HauteurFilet7_7',
+		 'Lat_degre_decFilet7_7', 'LatitudeFilet7_7',
+		 'Long_degre_decFilet7_7', 'LongitudeFilet7_7',
+		 'Filet_canopee_nb_20', 'Filet_canopee_m2_20', 
+		 'NumFilet20_1', 'LongueurFilet20_1', 'HauteurFilet20_1',
+		 'Lat_degre_decFilet20_1', 'LatitudeFilet20_1',
+		 'Long_degre_decFilet20_1', 'LongitudeFilet20_1',
+		 'NumFilet20_2', 'LongueurFilet20_2', 'HauteurFilet20_2',
+		 'Lat_degre_decFilet20_2', 'LatitudeFilet20_2',
+		 'Long_degre_decFilet20_2', 'LongitudeFilet20_2',
+		 'NumFilet20_3', 'LongueurFilet20_3', 'HauteurFilet20_3',
+		 'Lat_degre_decFilet20_3', 'LatitudeFilet20_3',
+		 'Long_degre_decFilet20_3', 'LongitudeFilet20_3',
+		 'NumFilet20_4', 'LongueurFilet20_4', 'HauteurFilet20_4',
+		 'Lat_degre_decFilet20_4', 'LatitudeFilet20_4',
+		 'Long_degre_decFilet20_4', 'LongitudeFilet20_4',
+		 'NumFilet20_5', 'LongueurFilet20_5', 'HauteurFilet20_5',
+		 'Lat_degre_decFilet20_5', 'LatitudeFilet20_5',
+		 'Long_degre_decFilet20_5', 'LongitudeFilet20_5',
+		 'NumFilet20_6', 'LongueurFilet20_6', 'HauteurFilet20_6',
+		 'Lat_degre_decFilet20_6', 'LatitudeFilet20_6',
+		 'Long_degre_decFilet20_6', 'LongitudeFilet20_6',
+		 'NumFilet20_7', 'LongueurFilet20_7', 'HauteurFilet20_7',
+		 'Lat_degre_decFilet20_7', 'LatitudeFilet20_7',
+		 'Long_degre_decFilet20_7', 'LongitudeFilet20_7',
+		 'Filet_sol_nb', 'Filet_sol_m2',
+		 'NumFiletSol_1', 'LongueurFiletSol_1', 'HauteurFiletSol_1',
+		 'Lat_degre_decFiletSol_1', 'LatitudeFiletSol_1',
+		 'Long_degre_decFiletSol_1', 'LongitudeFiletSol_1',
+		 'NumFiletSol_2', 'LongueurFiletSol_2', 'HauteurFiletSol_2',
+		 'Lat_degre_decFiletSol_2', 'LatitudeFiletSol_2',
+		 'Long_degre_decFiletSol_2', 'LongitudeFiletSol_2',
+		 'NumFiletSol_3', 'LongueurFiletSol_3', 'HauteurFiletSol_3',
+		 'Lat_degre_decFiletSol_3', 'LatitudeFiletSol_3',
+		 'Long_degre_decFiletSol_3', 'LongitudeFiletSol_3',
+		 'NumFiletSol_4', 'LongueurFiletSol_4', 'HauteurFiletSol_4',
+		 'Lat_degre_decFiletSol_4', 'LatitudeFiletSol_4',
+		 'Long_degre_decFiletSol_4', 'LongitudeFiletSol_4',
+		 'NumFiletSol_5', 'LongueurFiletSol_5', 'HauteurFiletSol_5',
+		 'Lat_degre_decFiletSol_5', 'LatitudeFiletSol_5',
+		 'Long_degre_decFiletSol_5', 'LongitudeFiletSol_5',
+		 'NumFiletSol_6', 'LongueurFiletSol_6', 'HauteurFiletSol_6',
+		 'Lat_degre_decFiletSol_6', 'LatitudeFiletSol_6',
+		 'Long_degre_decFiletSol_6', 'LongitudeFiletSol_6',
+		 'NumFiletSol_7', 'LongueurFiletSol_7', 'HauteurFiletSol_7',
+		 'Lat_degre_decFiletSol_7', 'LatitudeFiletSol_7',
+		 'Long_degre_decFiletSol_7', 'LongitudeFiletSol_7',
+		 'Filet_debut', 'Filet_fin', 'Filet_temps', 'Filet_capture_nb', 'Harp_debut',
+		 'Harp_fin', 'Harp_temps', 'Harpe_nb', 'Saison', 'Climat', 'Autre_climat',
+		 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger',
+		 'Arret_Capture', 'Causes_Arret_Capture','Username'];
+	} else {
+		var valid_field = ['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'N_site', 'Pays', 'Prefecture', 'Sous-prefecture',
+			'Ville/village', 'Site_capture', 'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec', 'Proximite_village_km', 
+			'Proximite_source_m', 'Sortie/entree1', 'Presence_entree1', 'Nb_entree1_espece1', 'Famille_entree1CS1', 'Genre_entree1CS1', 
+			'Espece_entree1CS1', 'Nb_entree1_espece2', 'Famille_entree1CS2', 'Genre_entree1CS2', 'Espece_entree1CS2', 
+			'Nb_entree1_espece3', 'Famille_entree1CS3', 'Genre_entree1CS3', 'Espece_entree1CS3', 'Nb_entree1_espece4', 'Famille_entree1CS4', 
+			'Genre_entree1CS4', 'Espece_entree1CS4', 'Nb_entree1_espece5', 'Famille_entree1CS5', 'Genre_entree1CS5', 'Espece_entree1CS5', 
+			'Nb_entree1_espece6', 'Famille_entree1CS6', 'Genre_entree1CS6', 'Espece_entree1CS6', 'Nb_entree1_espece7', 'Famille_entree1CS7', 
+			'Genre_entree1CS7', 'Espece_entree1CS7', 'Nb_entree1_espece8', 'Famille_entree1CS8', 'Genre_entree1CS8', 'Espece_entree1CS8', 
+			'Sortie/entree2', 'Presence_entree2', 'Nb_entree2_espece1', 'Famille_entree2CS1', 'Genre_entree2CS1', 'Espece_entree2CS1', 
+			'Nb_entree2_espece2', 'Famille_entree2CS2', 'Genre_entree2CS2', 'Espece_entree2CS2', 'Nb_entree2_espece3', 'Famille_entree2CS3', 
+			'Genre_entree2CS3', 'Espece_entree2CS3', 'Nb_entree2_espece4', 'Famille_entree2CS4', 'Genre_entree2CS4', 'Espece_entree2CS4', 
+			'Nb_entree2_espece5', 'Famille_entree2CS5', 'Genre_entree2CS5', 'Espece_entree2CS5', 'Nb_entree2_espece6', 'Famille_entree2CS6', 
+			'Genre_entree2CS6', 'Espece_entree2CS6', 'Nb_entree2_espece7', 'Famille_entree2CS7', 'Genre_entree2CS7', 'Espece_entree2CS7', 
+			'Nb_entree2_espece8', 'Famille_entree2CS8', 'Genre_entree2CS8', 'Espece_entree2CS8', 'Famille_observe1', 'Genre_observe1', 
+			'Espece_observe1', 'Famille_observe2', 'Genre_observe2', 'Espece_observe2', 'Famille_observe3', 'Genre_observe3', 'Espece_observe3', 
+			'Nb_CS_morte1', 'Famille_morte1', 'Genre_morte1', 'Espece_morte1', 'Nb_CS_morte2', 'Famille_morte2', 'Genre_morte2', 'Espece_morte2', 
+			'Nb_CS_morte3', 'Famille_morte3', 'Genre_morte3', 'Espece_morte3', 'Nb_CS_morte4', 'Famille_morte4', 'Genre_morte4', 'Espece_morte4', 
+			'Remarque', 'Nb_filet_sol', 'IDFilet_1', 'Filet_sol_m2_1', 'EntreeFilet_1', 'HauteurFilet_1', 'Filet_debut_1', 'Filet_fin_1', 'Filet_temps_1', 
+			'Nb_capture_filet_1', 'Nb_preleve_filet_1', 'IDFilet_2', 'Filet_sol_m2_2', 'EntreeFilet_2', 'HauteurFilet_2', 'Filet_debut_2', 'Filet_fin_2', 
+			'Filet_temps_2', 'Nb_capture_filet_2', 'Nb_preleve_Filet_2', 'NbHarp', 'IDHarp_1', 'EntreeHarp_1', 'Harp_debut_1', 'Harp_fin_1', 
+			'Harp_temps_1', 'Nb_capture_harp_1', 'Nb_preleve_harp_1', 'IDHarp_2', 'EntreeHarp_2', 'Harp_debut_2', 'Harp_fin_2', 'Harp_temps_2',
+			'Nb_capture_harp_2', 'Nb_preleve_harp_2', 'Saison', 'Climat', 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger', 
+			'Username']
+
+		
+	}
 
 var field = [];
 var data = [];
@@ -200,7 +228,12 @@ function fields_is_valid() {
 };
 
 function is_only_one_country() {
-	var i_pays = 13;
+	if (import_table != '_astre_transvihmi_guinee') {
+		var i_pays = 13
+	} else {
+		
+		var i_pays = 12;
+	};
 	
 	var rowContent = lines[1].trim().split(";");
 	var country = rowContent[i_pays]; 
@@ -281,7 +314,7 @@ function search_N_identification_Recursif_Journalieres(/*localDB,*/ i, j, k, N_i
 						
 						//addEspeceInTableReferenceBatCapturees(i);
 		    			
-		    			//search_N_identification_Recursif_Missions(i-1);
+		    			search_N_identification_Recursif_Journalieres(i-1);
 		    			//addEspeceInTableReferenceBatCapturees(i);
 		    			
 				    /*} else {
@@ -296,12 +329,12 @@ function search_N_identification_Recursif_Journalieres(/*localDB,*/ i, j, k, N_i
 		    		
 		    		for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 		    			
-		    			if ((rowCountContent < 24)
+		    			/*if ((rowCountContent < 24)
 		    					|| ((rowCountContent > 44) && (rowCountContent < 51)) 
 		        				|| ((rowCountContent > 71) && (rowCountContent < 129)) 
 		        				|| ((rowCountContent > 177) && (rowCountContent < 180))
 		        				|| ((rowCountContent > 228) && (rowCountContent < 231))
-		        				|| (rowCountContent > 279)) {
+		        				|| (rowCountContent > 279)) {*/
 		    			
 			    			var name_field = field[rowCountContent];
 							var rowContent = tab[/*numero_individu*/i][rowCountContent]
@@ -311,7 +344,7 @@ function search_N_identification_Recursif_Journalieres(/*localDB,*/ i, j, k, N_i
 							new_doc[name_field] = rowContent;
 								
 							addValueInTableReferenceJournalieres(rowCountContent, rowContent);
-		    			}	
+		    			//}	
 					};
 					
 					//addEspeceInTableReferenceBatCapturees(i);
@@ -321,7 +354,7 @@ function search_N_identification_Recursif_Journalieres(/*localDB,*/ i, j, k, N_i
 					new_doc.N_identification_journalieres = /*String(numero_individu)*/new_code;
 					new_doc.Username = localStorage.getItem('loginUsername');
 					
-					myTab = null;
+					/*myTab = null;
 					myTab = new Array();
 					if (typeof myTab !== "undefined") {
 						
@@ -379,7 +412,7 @@ function search_N_identification_Recursif_Journalieres(/*localDB,*/ i, j, k, N_i
 					console.log(FiletSol);
 					FiletSol = JSON.parse(FiletSol);
 					
-					new_doc.FiletSol = FiletSol;
+					new_doc.FiletSol = FiletSol;*/
 					
 					put_new_id_journalieres(new_doc/*, i*/);
 					
@@ -425,12 +458,12 @@ function put_with_id_journalieres(id, i) {
 		
 		for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 			
-			if ((rowCountContent < 24)
+			/*if ((rowCountContent < 24)
     				|| ((rowCountContent > 44) && (rowCountContent < 51)) 
        				|| ((rowCountContent > 71) && (rowCountContent < 129)) 
        				|| ((rowCountContent > 177) && (rowCountContent < 180))
        				|| ((rowCountContent > 228) && (rowCountContent < 231))
-       				|| (rowCountContent > 279)) {
+       				|| (rowCountContent > 279)) {*/
 				var name_field = field[rowCountContent];
 				
 				var rowContent = tab[i][rowCountContent];
@@ -439,7 +472,7 @@ function put_with_id_journalieres(id, i) {
 				
 				doc.Username = localStorage.getItem('loginUsername');
 					
-				myTab = null;
+				/*myTab = null;
 				myTab = new Array();
 				if (typeof myTab !== "undefined") {
 					
@@ -497,9 +530,9 @@ function put_with_id_journalieres(id, i) {
 				console.log(FiletSol);
 				FiletSol = JSON.parse(FiletSol);
 				
-				doc.FiletSol = FiletSol;
+				doc.FiletSol = FiletSol;*/
 			
-			}		
+			//}		
 		};
 		
 		//addEspeceInTableReferenceBatCapturees(i);
@@ -511,7 +544,7 @@ function put_with_id_journalieres(id, i) {
 						synchronizeBatCapturees();
 					};
 				};*/
-				search_N_identification_Recursif_Journalieres(/*localDB, */i-1)
+				//search_N_identification_Recursif_Journalieres(/*localDB, */i-1)
 			});
 		});
 	}).catch(function (err) {
@@ -818,8 +851,16 @@ function addFilet(NumFiletX, LongueurFiletX, HauteurFiletX, Lat_degre_decFiletX,
 
 function addValueInTableReferenceJournalieres(rowCountContent, rowContent) {
 	
+	
+	if (import_table != '_astre_transvihmi_guinee') {
+		var i_pays = 13
+	} else {
+		
+		var i_pays = 5;
+	};
+	
 	//Pays
-	if ((rowCountContent == 13) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+	if ((rowCountContent == i_pays) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
 		if (rowContent != '') {
 			var new_pays = true;
 			for (var i = 0; i < tabPays.length; i++) {

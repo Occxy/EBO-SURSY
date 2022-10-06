@@ -56,7 +56,7 @@
     <!-- Notifications-->
     <script src="vendor/messenger-hubspot/build/js/messenger.min.js"></script>
     <script src="vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
-    <!-- <script src="js/home-premium.js"></script> -->
+    <!-- <script src="js/home-premium.js"> </script> -->
     
     <!-- Bootstrap DatePicker-->
     <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
@@ -78,7 +78,7 @@
     
     <script src="js/pouchdb.authentication.js"></script> 
     <script src="js/pouchdb-6.4.2.min.js"></script> 
-    
+   
     <script src="js/function.js"></script>
     <script src="js/menu.js"></script>
     
@@ -90,15 +90,15 @@
      
     
   </head>
-  <body onload="loaded()">
-  
+  <body onload="showConnexionStatus()">
+   
     <script>
 		logged_only();
 		var clickedBtn = null;
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
-		localStorage['table_chauves_souris_non_invasives'] = 'chauves_souris_non_invasives' + nom_table;
-		loadjs('js/load-db-bat-non-invasives.js');
+		localStorage['faune_table'] = 'faune' + nom_table;
+		loadjs('js/load-db-faune.js');
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -242,7 +242,7 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
-	                	    <li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
 	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
 	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
@@ -263,11 +263,11 @@
 	                        	<li id="li_importation_viande_de_brousse_nhp_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=viande_de_brousse_nhp">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
-	                    	<li id="li_grand_singe_antilope_transvihmi_rdcDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_rdcDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
-	                      	  <ul id="ul_grand_singe_antilope_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
-	                        	<li id="li_grand_singe_antilope_transvihmi_rdc" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_rdc">données</a></li>                            
-	                        	<li id="li_grand_singe_antilope_map_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=grand_singe_antilope">carte</a></li>
-	                        	<li id="li_importation_grand_singe_antilope_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=grands_singes_antilopes">importation/exportation</a></li>
+	                    	<li id="li_grand_singe_antilope_transvihmi_camerounDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_camerounDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                      	  <ul id="ul_grand_singe_antilope_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_cameroun">données</a></li>                            
+	                        	<li id="li_grand_singe_antilope_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=grand_singe_antilope">carte</a></li>
+	                        	<li id="li_importation_grand_singe_antilope_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
 	                      </ul>
@@ -316,6 +316,13 @@
 	                        	<li id="li_viande_de_brousse_transvihmi_rdc" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_rdc">données</a></li>                            
 	                        	<li id="li_viande_de_brousse_map_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=viande_de_brousse">carte</a></li>
 	                        	<li id="li_importation_viande_de_brousse_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=viande_de_brousse">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
+	                    	<li id="li_grand_singe_antilope_transvihmi_rdcDropdown" name="1"><a id="a_grand_singe_antilope_transvihmi_rdcDropdown" name="1" href="#ul_grand_singe_antilope_transvihmi_rdcDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Grand_singe_antilope"></i>Grands singes / Antilopes</a>
+	                      	  <ul id="ul_grand_singe_antilope_transvihmi_rdcDropdown" name="1" class="collapse list-unstyled">
+	                        	<li id="li_grand_singe_antilope_transvihmi_rdc" name="1"><a href="liste_grands_singes_antilopes.html?table=_transvihmi_rdc">données</a></li>                            
+	                        	<li id="li_grand_singe_antilope_map_transvihmi_rdc" name="1"><a href="cartographie.html?table=_transvihmi_rdc&type=grand_singe_antilope">carte</a></li>
+	                        	<li id="li_importation_grand_singe_antilope_transvihmi_rdc" name="1"><a href="import_export.html?table=_transvihmi_rdc&type=grands_singes_antilopes">importation/exportation</a></li>
 	                      	  </ul>
 	                    	</li>
 	                      </ul>
@@ -538,7 +545,7 @@
                    	    </li>
                    	    
                       </ul>
-                    </li>       
+                    </li>      
                     
                     <li id="li_astre_transvihmiDropdown" name="6"> <a id="a_astre_transvihmiDropdown" name="6" href="#ul_astre_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad-transvihmi"></i> </a>
                       <ul id="ul_astre_transvihmiDropdown" name="6" class="collapse list-unstyled">
@@ -582,21 +589,20 @@
 	                              </ul>
 	                            </li>
 	                          </ul>
-	                        </li>                          
-                          </ul>
-                   	    </li>     
-                   	    
-                   	    <li id="li_faune_astre_transvihmi_guineeDropdown" name="6"><a id="a_faune_astre_transvihmi_guineeDropdown" name="6" href="#ul_faune_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline;text-align: right;padding-right: 40px;"> <i class="icon-Picto_ANTILOPE"></i>Faune</a>
-	                      <ul id="ul_faune_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-	                         <li id="li_faune_astre_transvihmi_guinee" name="6"><a href="liste_faune.html?table=_astre_transvihmi_guinee">données</a></li>                            
-	                         <li id="li_faune_map_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=faune">carte</a></li>
-	                         <li id="li_importation_faune_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=faune">importation/exportation</a></li>
-	                      </ul>
-	                    </li>
+	                        </li>
+	                        
+	                        <li id="li_faune_astre_transvihmi_guineeDropdown" name="6"><a id="a_faune_astre_transvihmi_guineeDropdown" name="6" href="#ul_faune_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline;text-align: right;padding-right: 40px;"> <i class="icon-Picto_ANTILOPE"></i>Faune</a>
+	                      	  <ul id="ul_faune_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+	                        	<li id="li_faune_astre_transvihmi_guinee" name="6"><a href="liste_faune.html?table=_astre_transvihmi_guinee">données</a></li>                            
+	                        	<li id="li_faune_map_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=faune">carte</a></li>
+	                        	<li id="li_importation_faune_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=faune">importation/exportation</a></li>
+	                      	  </ul>
+	                    	</li>
 	                    	                           
+                          </ul>
+                   	    </li>         
                       </ul>
-                   	</li>                  	    
-                                
+                    </li>      
 
 					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
                       <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
@@ -676,7 +682,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Collecte non-invasive</h2>
+              <h2 class="no-margin-bottom">Base de données de la faune</h2>
             </div>
           </header>
           
@@ -689,13 +695,14 @@
                       <script type="text/javascript">
 		                    var line = document.createElement("div");
 		                    line.innerHTML = 
-		                    	'<h4 class="title">Nouvelle Chauve-souris' +
-		                    	'<a id="button_add" href="ajouter_modifier_chauves_souris_non_invasives.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
-		                    	'<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
-		                        '</h4>';
+		                    	'<h4 class="title">Nouvelle faune' +
+		                    	'<a id="button_add" href="ajouter_modifier_faune.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+		                    	'<a id="button_importer_cameras_trap" href="import_export.html?table=' + nom_table + '&type=faune" class="btn btn btn-primary btn-fill float-right" >Importer les cameras-trap des grottes</a>' +
+			                    '<a id="button_selection_delete" style="color:white;margin-right:20px" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
+		                    	'</h4>';
 		                    document.getElementById("button_table").appendChild(line);
-			         	 </script>
-			         	 <!-- <a id="button_add" href="new_bat_non_invasives_astre.html" class="btn btn btn-primary btn-fill">Ajouter</a></h4> -->
+			           </script>
+                      <!--<a id="button_add" href="new_viande_de_brousse_mivegec.html" class="btn btn btn-primary btn-fill">Ajouter</a></h4>-->
                     </div>      
                     <div class="card-body">                      
                       <div class="content table-responsive table-full-width">
@@ -703,10 +710,11 @@
                           
                           <thead>
 				            <tr>
-				              <th>Date</th>
-				              <th>Pays</th>
-				              <th>Région</th>
-				              <th>Site de collecte</th>
+				              <th>ID NI faune</th>				              
+				              <th>Date_collecte</th>
+				              <th>Prefecture</th>
+				              <th>Site de capture</th>
+				              <th>Espece animale</th>
 				              <th>Action</th>
 				            </tr>
 				          </thead>
@@ -808,23 +816,23 @@
 	</div>
 	
 	<script type="text/javascript">
-	
+		
 		var clickedBtn;
 	
-	    $(document).on('click', ".deletebtn", function (e) {
+    	$(document).on('click', ".deletebtn", function (e) {
 	    	e.preventDefault();
 	    	var ID = $(this).data('id');
 	      	$('#confirmdeletebtn').data('id', ID);
-	   	    clickedBtn = this;
-	     	// show the modal dialog
-	    });	
-	    
-	    $("#button_selection_delete").click(function(e){
+	   		clickedBtn = this;
+	      	// show the modal dialog
+	    });		
+    	
+    	$("#button_selection_delete").click(function(e){
 	    	e.preventDefault();
 	   		clickedBtn = this;
 	      	// show the modal dialog
 	    });	
-	    
+    	
 	    $("#confirmdeletebtn").click(function(e){
 	    	e.preventDefault();
 	    	
@@ -832,16 +840,17 @@
 	    	
 	    	var ID = $(this).data('id');
 	    	localStorage['ID'] = ID;
-	    	localStorage['delete_record_table'] = 'chauves_souris_non_invasives' + nom_table;
-	    	if (clickedBtn){ // make sure we have assigned a reference
+	    	localStorage['delete_record_table'] = 'viande_de_brousse' + nom_table;
+	    	//loadjs('js/delete-record.js');
+	    	if(clickedBtn){ // make sure we have assigned a reference
 		    	//$(clickedBtn).closest("tr").remove();
-		 		table.row($(clickedBtn).closest('tr')).remove().draw();
+	    		table.row($(clickedBtn).closest('tr')).remove().draw();
 	        	clickedBtn = null; // not necessary
 	        	$('#deletemodal').modal('hide');
 	        	loadjs('js/delete-record.js');
 	        // close the modal dialog.
 	      	}
-	    });    
+	    });
 	    
 	    $("#confirmdeletebtnall").click(function(e){
 	    	e.preventDefault();
@@ -855,35 +864,34 @@
 		    	    table.row($(this).parents('tr')).remove().draw();
 		    	});
 		    	
-		    	localStorage['delete_checked_records_table'] = 'chauves_souris_non_invasives' + nom_table;
+		    	localStorage['delete_checked_records_table'] = 'site' + nom_table;
 		    	localStorage.setItem("array_checked_records", JSON.stringify(array_checked_records));
 		    	loadjs('js/delete-selected-record.js');
 		    	table.draw();
 	    	}
 	    	$('#deletemodalall').modal('hide');
 	    });
-	</script>
+   </script>
 	
 	<script type="text/javascript">
 		$(document).on('click', ".modifybtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_chauves_souris_non_invasives' + nom_table;
-   			//localStorage['ID_chauves_souris_non_invasives_astre'] = ID;
+   			var ID_table = 'ID_viande_de_brousse' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'ajouter_modifier_chauves_souris_non_invasives.html?option=2&table=' + nom_table;
+   			window.location = 'ajouter_modifier_viande_de_brousse.html?option=2&table=' + nom_table;
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_chauves_souris_non_invasives' + nom_table;
+   			var ID_table = 'ID_viande_de_brousse' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_chauves_souris_non_invasives.html?table=' + nom_table;
+   			window.location = 'consulter_viande_de_brousse.html?table=' + nom_table;
 	 	});
   	</script>  
   	
   	<script type="text/javascript">
-		
-  	 	document.addEventListener("keydown", function(event) {
+  	
+  		document.addEventListener("keydown", function(event) {
 		  if (event.keyCode == 13) {
 		    event.preventDefault();
 		    return false;
@@ -897,10 +905,10 @@
 		} else if (nom_table == '_mivegec') {
 			institut = 'mivegec';
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
-				|| (nom_table == '_astre_gabon')) {				
+				|| (nom_table == '_astre_gabon')) {
 			institut = 'astre';
 		} else if (nom_table == '_astre_transvihmi_guinee') {
-			institut = 'astre_transvihmi';			
+			institut = 'astre_transvihmi';
 		};
 		
 		expanded(nom_table);
@@ -924,30 +932,17 @@
 	    	catch(error) {
 	    	};
 	    	
-			var component_li = document.getElementById('li_bat' + nom_table + 'Dropdown');
+			var component_li = document.getElementById('li_faune' + nom_table + 'Dropdown');
 			component_li.classList.add('active');
-			var component_a = document.getElementById('a_bat' + nom_table + 'Dropdown');
+			var component_a = document.getElementById('a_faune' + nom_table + 'Dropdown');
 			component_a.setAttribute('aria-expanded', 'true');
-			var component_ul =  document.getElementById('ul_bat' + nom_table + 'Dropdown');
+			var component_ul =  document.getElementById('ul_faune' + nom_table + 'Dropdown');
 			component_ul.classList.add('show');
-			
-			var component_li = document.getElementById('li_bat' + nom_table + 'NonInvasivesDropdown');
-			component_li.classList.add('active');
-			var component_a = document.getElementById('a_bat' + nom_table + 'NonInvasivesDropdown');
-			component_a.setAttribute('aria-expanded', 'true');
-			var component_ul =  document.getElementById('ul_bat' + nom_table + 'NonInvasivesDropdown');
-			component_ul.classList.add('show');
-			
-			var component_li = document.getElementById('li_bat_non_invasives' + nom_table);
+		
+			var component_li = document.getElementById('li_faune' + nom_table);
 			component_li.classList.add('active');
 		};
-  		
-		if (bat_non_invasives_table == 'chauves_souris_non_invasives_astre_transvihmi_guinee') {
-			document.getElementsByTagName('th')[0].innerHTML = 'Date de début';
-			document.getElementsByTagName('th')[1].innerHTML = 'Date de fin';
-			document.getElementsByTagName('th')[2].innerHTML = 'Préfecture';
-			document.getElementsByTagName('th')[3].innerHTML = 'Site de capture';
-		}
+		
   		
 	</script> 
 	

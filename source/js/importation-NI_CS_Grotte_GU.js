@@ -8,11 +8,11 @@ if (localStorage.getItem('debug') === null) {
 };
 
 /*var nom_equipe;	
-if (import_table == 'chauves_souris_capturees_astre') {
+if (import_table == 'chauves_souris_Noninvasives_astre') {
 	nom_equipe = '_astre';
-} else if (import_table == 'chauves_souris_capturees_transvihmi') {
+} else if (import_table == 'chauves_souris_Noninvasives_transvihmi') {
 	nom_equipe = '_transvihmi';
-} else if (import_table == 'chauves_souris_capturees_mivegec') {
+} else if (import_table == 'chauves_souris_Noninvasives_mivegec') {
 	nom_equipe = '_mivegec';
 };*/
 
@@ -35,55 +35,29 @@ var tabFilet = [];
 
 var tabImportedFile = new Array();
 
-if (import_table != '_astre_transvihmi_guinee') {
 	var valid_field = 
-		['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
-		 'Equipe', 'Pays', 'Region_capture', 'Site_capture', 'Lieu_capture',
-	     'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec',
-	     'Proximite_village_km', 'Methode_capture', 'NumFilet'/*, 'LongueurFilet',
-	     'HauteurFilet', 'Lat_degre_decFilet', 'LatitudeFilet', 'Long_degre_decFilet',
-	     'LongitudeFilet'*/, 'Lat_degre_dec_Lieu_capture', 'Latitude_Lieu_capture', 
-	     'Long_degre_dec_Lieu_capture', 'Longitude_Lieu_capture',
-	     'Collier', 'Type_collier', 'Num_serie',
-	     'Type_chauve_souris', 'Espece_identifiee', 'Famille_terrain', 'Genre_terrain', 'Espece_terrain',
-	     'Famille_labo', 'Genre_labo', 'Espece_labo', 'Famille_consensus', 'Genre_consensus', 
-	     'Espece_consensus', 'Sexe', 'Age', 'Gestante', 'Lactation', 'Suitee', 'Sexe_enfant',
-	     'Poids_enfant', 'Identifiant_enfant', 'Vivante', 'Cause_deces', 'Poids_gr',
-	     'L_avant_bras_mm', 'L_totale_corps_mm', 'Taille_yeux', 'L_queue_mm',
-	     'L_metacarpe_3ieme_doigt_mm', 'Couleur_pelage_dorsal',
-	     'Couleur_pelage_ventral', 'Photo', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 
-	     'Sang_tube_EDTA', 'Feces_RNAl', 'Urine', 'Urine_DUS_nombre_cercles',
-	     'Feces_urine_RNAl', 'Ecouvillon_gorge_RNAl', 'Ecouvillon_rectal_RNAl',
-	     'Ectoparasites_ethanol', 'Poils_ethanol', 'Wing_punch_ethanol',
-	     'Feces_culture_glycerol', 'Feces_ethanol', 'Sperme', 'Lait', 'Autres_echantillons_remarques',
-	     'Specimen_entier', 'Specimen_preserve_dans', 'Prelevement_organe',
-	     'Foie_formol', 'Foie_RNAl', 'Rate_formol', 'Rate_RNAl', 'Reins_formol',
-	     'Reins_RNAl', 'Intestins_formol', 'Intestins_RNAl', 'Poumons_formol',
-	     'Poumons_RNAl', 'Coeur_formol','Coeur_RNAl', 'Ggl_lymph_formol',
-	     'Ggl_lymph_RNAl', 'Testicules_formol', 'Testicules_RNAl', 'Peau_formol',
-	     'Peau_RNAl', 'Muscles_formol', 'Muscles_RNAl', 'Cerveau_formol',
-	     'Cerveau_RNAl', 'Autre', 'Autre_formol', 'Autre_RNAl', 'Remarques_echantillons'];
-	} else {
-		var valid_field = 
-			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date', 'Equipe', 'Pays', 'Prefecture', 
-			 'Sous-prefecture', 'Ville/village', 'Site_capture', 'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec', 
-			 'Proximite_village_km', 'Proximite_source_m', 'Methode_capture', 'NumFilet/piege', 'LongueurFilet', 'HauteurFilet', 'Lat_degre_decFilet', 
-			 'LatitudeFilet', 'Long_degre_decFilet', 'LongitudeFilet', 'Lat_degre_dec_Lieu_capture', 'Latitude_Lieu_capture', 
-			 'Long_degre_dec_Lieu_capture', 'Longitude_Lieu_capture', 'Type_chauve_souris', 'Espece_identifiee', 'Famille_terrain', 'Genre_terrain', 
-			 'Espece_terrain', 'Famille_labo', 'Genre_labo', 'Espece_labo', 'Famille_consensus', 'Genre_consensus', 'Espece_consensus', 'Sexe', 
-			 'Age', 'Gestante', 'Lactation', 'Suitee', 'Sexe_enfant', 'Poids_enfant', 'Identifiant_enfant', 'Vivante', 'Cause_deces', 'Poids_gr', 
-			 'L_avant_bras_mm', 'Ailes_WS', 'L_totale_corps_Ltc_mm', 'TL_L_Totale_avec_queue_mm', 'Taille_yeux', 'L_queue_T_mm', 'E_mm', 'Tr_mm', 'Tib_mm', 
-			 'HF_L_arriere_pied_mm', 'NL_breadth_larg_feuille_de_nez_mm', 'NL_lenght_mm', 'L_metacarpe_3ieme_doigt_mm', 'Couleur_pelage_dorsal', 
-			 'Couleur_pelage_ventral', 'Photo', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 'Sang_tube_EDTA', 'Feces_RNAl', 'Urine', 
-			 'Urine_DUS_nombre_cercles', 'Feces_urine_RNAl', 'Ecouvillon_gorge_RNAl', 'Ecouvillon_rectal_RNAl', 'Ectoparasites_ethanol', 
-			 'Poils_ethanol', 'Wing_punch_ethanol', 'Feces_culture_glycerol', 'Feces_ethanol', 'Sperme', 'Lait', 'Autres_echantillons_remarques', 
-			 'Specimen_entier', 'Specimen_preserve_dans', 'Prelevement_organe', 'Foie_formol', 'Foie_RNAl', 'Rate_formol', 'Rate_RNAl', 
-			 'Reins_formol', 'Reins_RNAl', 'Intestins_formol', 'Intestins_RNAl', 'Poumons_formol', 'Poumons_RNAl', 'Coeur_formol', 'Coeur_RNAl', 
-			 'Ggl_lymph_formol', 'Ggl_lymph_RNAl', 'Testicules_formol', 'Testicules_RNAl', 'Peau_formol', 'Peau_RNAl', 'Muscles_formol', 
-			 'Muscles_RNAl', 'Cerveau_formol', 'Cerveau_RNAl', 'Autre', 'Autre_formol', 'Autre_RNAl', 'Remarques_echantillons', 'Username', 
-			 'Filet_temps', 'Arret_Capture']
+		['Equipe', 'N_site', 'Pays', 'Prefecture', 'Sous-prefecture', 'Ville/village', 'Site_capture', 'Environnement', 'Latitude', 'Lat_degre_dec', 
+		 'Longitude', 'Long_degre_dec', 'Proximite_village_km', 'Proximite_source_m', 'Date_debut_NI', 'Heure_debut_NI', 'Date_fin_NI', 'Heure_fin_NI', 
+		 'Estimation_population', 'Changement_disposition_espece', 'Précisez', 'Famille_observe_1', 'Genre_observe_1', 'Espece_observe_1', 
+		 'Famille_observe_2', 'Genre_observe_2', 'Espece_observe_2', 'Famille_observe_3', 'Genre_observe_3', 'Espece_observe_3', 'Famille_observe_4', 
+		 'Genre_observe_4', 'Espece_observe_4', 'Famille_observe_5', 'Genre_observe_5', 'Espece_observe_5', 'ID_NI_preleve_debut', 'ID_NI_preleve_fin', 
+		 'Famille_observe1_bache_1', 'Genre_observe1_bache_1', 'Espece_observe1_bache_1', 'Famille_observe2_bache_1', 'Genre_observe2_bache_1', 
+		 'Espece_observe2_bache_1', 'ID_NI_debut_bache_1', 'ID_NI_fin_bache_1', 'Famille_observe1_bache_2', 'Genre_observe1_bache_2', 
+		 'Espece_observe1_bache_2', 'Famille_observe2_bache_2', 'Genre_observe2_bache_2', 'Espece_observe2_bache_2', 'ID_NI_debut_bache_2', 
+		 'ID_NI_fin_bache_2', 'Famille_observe1_bache_3', 'Genre_observe1_bache_3', 'Espece_observe1_bache_3', 'Famille_observe2_bache_3', 
+		 'Genre_observe2_bache_3', 'Espece_observe2_bache_3', 'ID_NI_debut_bache_3', 'ID_NI_fin_bache_3', 'Famille_observe1_bache_4', 
+		 'Genre_observe1_bache_4', 'Espece_observe1_bache_4', 'Famille_observe2_bache_4', 'Genre_observe2_bache_4', 'Espece_observe2_bache_4', 
+		 'ID_NI_debut_bache_4', 'ID_NI_fin_bache_4', 'Famille_observe1_bache_5', 'Genre_observe1_bache_5', 'Espece_observe1_bache_5', 
+		 'Famille_observe2_bache_5', 'Genre_observe2_bache_5', 'Espece_observe2_bache_5', 'ID_NI_debut_bache_5', 'ID_NI_fin_bache_5', 
+		 'Famille_observe1_bache_6', 'Genre_observe1_bache_6', 'Espece_observe1_bache_6', 'Famille_observe2_bache_6', 'Genre_observe2_bache_6', 
+		 'Espece_observe2_bache_6', 'ID_NI_debut_bache_6', 'ID_NI_fin_bache_6', 'Famille_observe1_bache_7', 'Genre_observe1_bache_7', 
+		 'Espece_observe1_bache_7', 'Famille_observe2_bache_7', 'Genre_observe2_bache_7', 'Espece_observe2_bache_7', 'ID_NI_debut_bache_7', 
+		 'ID_NI_fin_bache_7', 'Famille_observe1_bache_8', 'Genre_observe1_bache_8', 'Espece_observe1_bache_8', 'Famille_observe2_bache_8', 
+		 'Genre_observe2_bache_8', 'Espece_observe2_bache_8', 'ID_NI_debut_bache_8', 'ID_NI_fin_bache_8', 'Famille_observe1_bache_9', 
+		 'Genre_observe1_bache_9', 'Espece_observe1_bache_9', 'Famille_observe2_bache_9', 'Genre_observe2_bache_9', 'Espece_observe2_bache_9', 
+		 'ID_NI_debut_bache_9', 'ID_NI_fin_bache_9', 'Famille_observe1_bache_10', 'Genre_observe1_bache_10', 'Espece_observe1_bache_10', 
+		 'Famille_observe2_bache_10', 'Genre_observe2_bache_10', 'Espece_observe2_bache_10', 'ID_NI_debut_bache_10', 'ID_NI_fin_bache_10', 'Remarque']
 
-	}
 
 var field = [];
 var data = [];
@@ -208,10 +182,6 @@ function importation() {
 		field = lines[0].trim().split(";");
 		rowContent_length = field.length;
 		
-		alert(field.length);
-		alert(valid_field.length);
-		
-		
 		//verif valid template
 		if (fields_is_valid()) {
 			
@@ -231,7 +201,7 @@ function importation() {
 				for (var line = 1; line < lines_length; line++) {
 					rowContent = lines[line].trim().split(";");
 					//console.log(rowContent[0]);
-					fill_tab_datas_bat_capturees(rowContent[0], line);
+					fill_tab_datas_bat_Noninvasives(rowContent[0], line);
 				};*/
 				
 				for (var line = 1; line < lines_length; line++) {
@@ -258,7 +228,7 @@ function importation() {
 						var DB = new PouchDB(import_table + debug);
 					};*/
 					
-					search_N_identification_Recursif_CS(lines_length-1);
+					search_N_identification_Recursif_Collecte(lines_length-1);
 				//};
 				
 			} else {
@@ -285,7 +255,7 @@ function fields_is_valid() {
 
 function is_only_one_country() {
 	
-	var i_pays = 6;
+	var i_pays = 2;
 	
 	var rowContent = lines[1].trim().split(";");
 	var country = rowContent[i_pays]; 
@@ -298,7 +268,7 @@ function is_only_one_country() {
 	return true;
 };
 
-/*function fill_tab_datas_bat_capturees(id, file_line) {
+/*function fill_tab_datas_bat_Noninvasives(id, file_line) {
 	var numero_individu_string = extraireNombre(id);
 	var numero_individu = Number(numero_individu_string);
 	
@@ -323,29 +293,30 @@ function is_only_one_country() {
 			var DB = new PouchDB(import_table + debug);
 		};*/
 		
-		/*search_N_identification_Recursif_CS(tab_max);
+		/*search_N_identification_Recursif_Collecte(tab_max);
 	};
 };*/
 
-function search_N_identification_Recursif_CS(/*localDB, */i) {
+function search_N_identification_Recursif_Collecte(/*localDB, */i) {
 	
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'chauves_souris_non_invasives' + import_table + debug);
 	} else {
-		var DB = new PouchDB('chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB('chauves_souris_non_invasives' + import_table + debug);
 	};
 	
 	if (i > -1) {
 
 		//if (typeof tab[i] !== "undefined") {
-			//var N_identification_CS = tab[i][0];
+			//var N_identification_Collecte = tab[i][0];
 		if (typeof tabImportedFile[i] !== "undefined") {
-			var N_identification_CS = tabImportedFile[i][0];
-	
+			//var N_identification_Collecte = tabImportedFile[i][0];
+			
+			var N_identification_Collecte = tabImportedFile[i][36] + tabImportedFile[i][37];
 			
 			DB.find({
-		       	selector: {N_identification_CS: N_identification_CS}
+		       	selector: {N_identification_Collecte: N_identification_Collecte}
 			}).then(function (result) {
 		    	
 		    	if (result.docs.length > 0) {
@@ -353,92 +324,146 @@ function search_N_identification_Recursif_CS(/*localDB, */i) {
 		    		row++;
 		    		
 		    		/*var id = result.docs[0]._id;
-	    			put_with_id_bat_capturees(id, i);
+	    			put_with_id_bat_Noninvasives(id, i);
 	    			
 	    			for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 						//var rowContent = tab[i][rowCountContent]
 	    				var rowContent = tabImportedFile[i][rowCountContent]
-						addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
+						addValueInTableReferenceBatNoninvasives(rowCountContent, rowContent);
 	    			};
 					
-					addEspeceInTableReferenceBatCapturees(i);
-	    			search_N_identification_Recursif_CS(i-1);*/
+					addEspeceInTableReferenceBatNoninvasives(i);
+	    			search_N_identification_Recursif_Collecte(i-1);*/
 	    			
 		    		
 		    		
-		    		if (record_change_bat_capturees(i, result, rowContent_length)) {
+		    		if (record_change_bat_Noninvasives(i, result, rowContent_length)) {
 		    			var id = result.docs[0]._id;
-		    			put_with_id_bat_capturees(id, i);
+		    			put_with_id_bat_Noninvasives(id, i);
 		    			
 		    			for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 							//var rowContent = tab[i][rowCountContent]
 		    				var rowContent = tabImportedFile[i][rowCountContent]
-							addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
+							addValueInTableReferenceBatNoninvasives(rowCountContent, rowContent);
 		    			};
 						
-						addEspeceInTableReferenceBatCapturees(i);
+						addEspeceInTableReferenceBatNoninvasives(i);
 		    			
-		    			search_N_identification_Recursif_CS(i-1);
-		    			//addEspeceInTableReferenceBatCapturees(i);
+		    			search_N_identification_Recursif_Collecte(i-1);
+		    			//addEspeceInTableReferenceBatNoninvasives(i);
 		    			
 				    } else {
-		    			search_N_identification_Recursif_CS(i-1);
+		    			search_N_identification_Recursif_Collecte(i-1);
 				    };
 		    	} else {
 		    		
 		    		var new_doc = {};
 		    		
-		    		//var numero_individu_string = extraireNombre(N_identification_CS);
+		    		//var numero_individu_string = extraireNombre(N_identification_Collecte);
 		    		//var numero_individu = Number(numero_individu_string);
 		    		
 		    		for(var rowCountContent = 0; rowCountContent < rowContent_length; rowCountContent++) {
 						var name_field = field[rowCountContent];
 						//var rowContent = tab[numero_individu][rowCountContent]
-						var rowContent = tabImportedFile[i][rowCountContent]
+						
+						if ((rowCountContent == 2) && (tabImportedFile[i][rowCountContent] == "Guinee")) {
+							var rowContent = 'Guinée'
+						} else {
+							var rowContent = tabImportedFile[i][rowCountContent]
+						}
+						
 						
 						
 						//trim pour Famille/Genre/Espèce
-						if (import_table != '_astre_transvihmi_guinee') {
-							if (rowCountContent > 29 && rowCountContent < 39) {
-								if ((rowCountContent === 30) || (rowCountContent === 33) || (rowCountContent === 36)) {
-									new_doc[name_field] = rowContent.trim().toUpperCase();
-								} else {
-									new_doc[name_field] = rowContent.trim();	
-								};
+						if (rowCountContent > 20 && rowCountContent < 36) {
+							if ((rowCountContent === 21) || (rowCountContent === 24) || (rowCountContent === 27)
+							    || (rowCountContent === 30) || (rowCountContent === 33)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
 							} else {
-								new_doc[name_field] = rowContent;
-								
-								addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
+								new_doc[name_field] = rowContent.trim();	
 							};
-						} else {
-							if (rowCountContent > 31 && rowCountContent < 41) {
-								if ((rowCountContent === 32) || (rowCountContent === 35) || (rowCountContent === 38)) {
-									new_doc[name_field] = rowContent.trim().toUpperCase();
-								} else {
-									new_doc[name_field] = rowContent.trim();	
-								};
+						} else if (rowCountContent > 37 && rowCountContent < 44) {
+							if ((rowCountContent === 38) || (rowCountContent === 41)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
 							} else {
-								new_doc[name_field] = rowContent;
-								
-								addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
+								new_doc[name_field] = rowContent.trim();	
+							}
+		    			} else if (rowCountContent > 45 && rowCountContent < 52) {
+							if ((rowCountContent === 46) || (rowCountContent === 49)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
 							};
-						}
+		    			} else if (rowCountContent > 53 && rowCountContent < 60) {
+							if ((rowCountContent === 54) || (rowCountContent === 57)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 61 && rowCountContent < 68) {
+							if ((rowCountContent === 62) || (rowCountContent === 65)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 69 && rowCountContent < 76) {
+							if ((rowCountContent === 70) || (rowCountContent === 73)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 77 && rowCountContent < 84) {
+							if ((rowCountContent === 78) || (rowCountContent === 81)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 85 && rowCountContent < 92) {
+							if ((rowCountContent === 86) || (rowCountContent === 89)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 93 && rowCountContent < 100) {
+							if ((rowCountContent === 94) || (rowCountContent === 97)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 101 && rowCountContent < 108) {
+							if ((rowCountContent === 102) || (rowCountContent === 105)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else if (rowCountContent > 109 && rowCountContent < 116) {
+							if ((rowCountContent === 110) || (rowCountContent === 113)) {
+								new_doc[name_field] = rowContent.trim().toUpperCase();
+							} else {
+								new_doc[name_field] = rowContent.trim();	
+							};
+	    				} else {
+							new_doc[name_field] = rowContent;
+							
+							addValueInTableReferenceBatNoninvasives(rowCountContent, rowContent);
+						};
+						
 							
 					};
 					
-					addEspeceInTableReferenceBatCapturees(i);
+					addEspeceInTableReferenceBatNoninvasives(i);
 					
 					var id = uuid();
 					new_doc._id = id;
-					//new_doc.Numero_individu = String(numero_individu);
+					new_doc.N_identification_Collecte = tabImportedFile[i][36] + tabImportedFile[i][37];
 					new_doc.Username = localStorage.getItem('loginUsername');
 								
-					put_new_id_bat_capturees(new_doc, i);
+					put_new_id_bat_Noninvasives(new_doc, i);
 					
 					move();
 					row++;
 					
-					search_N_identification_Recursif_CS(/*localDB, */i-1);
+					search_N_identification_Recursif_Collecte(/*localDB, */i-1);
 		    		
 		    	}
 		    }).catch(function (err) {
@@ -448,33 +473,33 @@ function search_N_identification_Recursif_CS(/*localDB, */i) {
 			console.log("full - " + i);
 		} else {
 			
-			//addEspeceInTableReferenceBatCapturees(i);
+			//addEspeceInTableReferenceBatNoninvasives(i);
 			
 			console.log("empty - " + i);
 			move();
 			row++;
 			
-			search_N_identification_Recursif_CS(/*localDB, */i-1);
+			search_N_identification_Recursif_Collecte(/*localDB, */i-1);
 			
 		};
 	} else {
 		
-		synchronizeBatCapturees();
+		synchronizeBatNoninvasives();
 		if (localStorage.getItem('web') !== 'oui') {
 			synchronizeEspece('espece');
 		}
 	};
 };
 
-function put_with_id_bat_capturees(id, i) {
+function put_with_id_bat_Noninvasives(id, i) {
 	
 	var sN_identification;
 		
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'chauves_souris_non_invasives' + import_table + debug);
 	} else {
-		var DB = new PouchDB('chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB('chauves_souris_non_invasives' + import_table + debug);
 	};
 	DB.get(id).then(function (doc) {
 		
@@ -482,9 +507,13 @@ function put_with_id_bat_capturees(id, i) {
 			var name_field = field[rowCountContent];
 			
 			//var rowContent = tab[i][rowCountContent];
-			var rowContent = tabImportedFile[i][rowCountContent];		
+			if ((rowCountContent == 2) && (tabImportedFile[i][rowCountContent] == "Guinee")) {
+				var rowContent = 'Guinée'
+			} else {
+				var rowContent = tabImportedFile[i][rowCountContent]
+			}		
 			
-			//addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
+			//addValueInTableReferenceBatNoninvasives(rowCountContent, rowContent);
 						
 			//trim pour Famille/Genre/Espèce
 			if (rowCountContent > 26 && rowCountContent < 36) {	
@@ -504,13 +533,13 @@ function put_with_id_bat_capturees(id, i) {
 
 		};
 		
-		//addEspeceInTableReferenceBatCapturees(i);
+		//addEspeceInTableReferenceBatNoninvasives(i);
 		
 		return DB.put(doc).then(function () {
 			return DB.get(id).then(function () {
 				/*if (i == tab_max) {
 					if (navigator.onLine) {
-						synchronizeBatCapturees();
+						synchronizeBatNoninvasives();
 					};
 				};*/
 			});
@@ -522,12 +551,12 @@ function put_with_id_bat_capturees(id, i) {
 };
 
 
-function put_new_id_bat_capturees(doc, i) {
+function put_new_id_bat_Noninvasives(doc, i) {
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB(remote_couchdb + 'chauves_souris_non_invasives' + import_table + debug);
 	} else {
-		var DB = new PouchDB('chauves_souris_capturees' + import_table + debug);
+		var DB = new PouchDB('chauves_souris_non_invasives' + import_table + debug);
 	};
 	DB.put(doc).then(function () {
 		console.log('put - add : ' + i);
@@ -536,12 +565,12 @@ function put_new_id_bat_capturees(doc, i) {
 	});
 };
 
-function synchronizeBatCapturees() {
+function synchronizeBatNoninvasives() {
 	
 	if (localStorage.getItem('web') !== 'oui') {
-		var localDB = new PouchDB('chauves_souris_capturees' + import_table + debug);
+		var localDB = new PouchDB('chauves_souris_non_invasives' + import_table + debug);
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var remoteDB = new PouchDB(remote_couchdb + 'chauves_souris_capturees' + import_table + debug, {skip_setup: true});
+		var remoteDB = new PouchDB(remote_couchdb + 'chauves_souris_non_invasives' + import_table + debug, {skip_setup: true});
 		localDB.sync(remoteDB, {batch_size: 20}).on('complete', (info) => {              
 			hide_progress_bar();
 			enable_li();
@@ -919,11 +948,11 @@ function synchronizeEspece(table) {
 	};
 };
 
-function record_change_bat_capturees(i, result, rowContent_length) {
+function record_change_bat_Noninvasives(i, result, rowContent_length) {
     
 	var doc = result.docs[0];
 	
-	//var num_string = extraireNombre(result.docs[0].N_identification_CS);
+	//var num_string = extraireNombre(result.docs[0].N_identification_Collecte);
 	//var num = Number(num_string);
 		
 	//var name_field = field[num];
@@ -1000,152 +1029,161 @@ function record_exists(result) {
     };
 };*/
 
-function addValueInTableReferenceBatCapturees(rowCountContent, rowContent) {
-	if (import_table != '_astre_transvihmi_guinee') {
-		//N_identification
-		if (rowCountContent == 0) {
-			sN_identification = rowContent;
-		} else
-		//N_site
-		if ((rowCountContent == 3) && (rowContent !== String(''))) {
-			var new_site = true;
-			for (var i = 0; i < tabN_site.length; i++) {
-				if (tabN_site[i] == String(rowContent)) {
-					new_site = false;
-				};
-			};
-			if (new_site) {
-				tabN_site.push(rowContent);
-				tabNewN_site.push(rowContent);		
-			};
-		} else
-		//Pays
-		if ((rowCountContent == 6) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_pays = true;
-			for (var i = 0; i < tabPays.length; i++) {
-				if (tabPays[i] == String(rowContent)) {
-					new_pays = false;
-				};
-			};
-			if (new_pays) {
-				tabPays.push(rowContent);
-				tabNewPays.push(rowContent);		
-			};
-		} else
-		//Lieu_capture
-		if ((rowCountContent == 9) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_lieu_capture = true;
-			for (var i = 0; i < tabLieu_capture.length; i++) {
-				if (tabLieu_capture[i] == String(rowContent)) {
-					new_lieu_capture = false;
-				};
-			};
-			if (new_lieu_capture) {
-				tabLieu_capture.push(rowContent);
-				tabNewLieu_capture.push(rowContent);		
-			};
-		} else
-		//Environnement
-		/*if ((rowCountContent == 9) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_environnement = true;
-			for (var i = 0; i < tabEnvironnement.length; i++) {
-				if (tabEnvironnement[i] == String(rowContent)) {
-					new_environnement = false;
-				};
-			};
-			if (new_environnement) {
-				tabEnvironnement.push(rowContent);
-				tabNewEnvironnement.push(rowContent);		
-			};
-		} else*/
-		//Methode_capture
-		if ((rowCountContent == 16) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_methode_capture = true;
-			for (var i = 0; i < tabMethode_capture.length; i++) {
-				if (tabMethode_capture[i] == String(rowContent)) {
-					new_methode_capture = false;
-				};
-			};
-			if (new_methode_capture) {
-				tabMethode_capture.push(rowContent);
-				tabNewMethode_capture.push(rowContent);		
-			};
-		} else 
-		//Couleur_pelage_dorsal
-		if ((rowCountContent == 52) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_couleur_pelage_dorsal = true;
-			for (var i = 0; i < tabCouleur_pelage_dorsal.length; i++) {
-				if (tabCouleur_pelage_dorsal[i] == String(rowContent)) {
-					new_couleur_pelage_dorsal = false;
-				};
-			};
-			if (new_couleur_pelage_dorsal) {
-				tabCouleur_pelage_dorsal.push(rowContent);
-				tabNewCouleur_pelage_dorsal.push(rowContent);		
-			};
-		} else 
-		//Couleur_pelage_ventral
-		if ((rowCountContent == 53) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_couleur_pelage_ventral = true;
-			for (var i = 0; i < tabCouleur_pelage_ventral.length; i++) {
-				if (tabCouleur_pelage_ventral[i] == String(rowContent)) {
-					new_couleur_pelage_ventral = false;
-				};
-			};
-			if (new_couleur_pelage_ventral) {
-				tabCouleur_pelage_ventral.push(rowContent);
-				tabNewCouleur_pelage_ventral.push(rowContent);		
+function addValueInTableReferenceBatNoninvasives(rowCountContent, rowContent) {
+		
+	//N_identification
+	if (rowCountContent == 0) {
+		sN_identification = rowContent;
+	} else
+	//N_site
+	/*if ((rowCountContent == 3) && (rowContent !== String(''))) {
+		var new_site = true;
+		for (var i = 0; i < tabN_site.length; i++) {
+			if (tabN_site[i] == String(rowContent)) {
+				new_site = false;
 			};
 		};
- 	} else {
- 		if (rowCountContent == 0) {
-			sN_identification = rowContent;
-		} else
-		//Pays
-		if ((rowCountContent == 6) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
-			var new_pays = true;
-			for (var i = 0; i < tabPays.length; i++) {
-				if (tabPays[i] == String(rowContent)) {
-					new_pays = false;
-				};
+		if (new_site) {
+			tabN_site.push(rowContent);
+			tabNewN_site.push(rowContent);		
+		};
+	} else*/
+	//Pays
+	if ((rowCountContent == 2) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+		var new_pays = true;
+		for (var i = 0; i < tabPays.length; i++) {
+			if (tabPays[i] == String(rowContent)) {
+				new_pays = false;
 			};
-			if (new_pays) {
-				tabPays.push(rowContent);
-				tabNewPays.push(rowContent);		
+		};
+		if (new_pays) {
+			tabPays.push(rowContent);
+			tabNewPays.push(rowContent);		
+		};
+	}/* else
+	//Lieu_capture
+	if ((rowCountContent == 9) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+		var new_lieu_capture = true;
+		for (var i = 0; i < tabLieu_capture.length; i++) {
+			if (tabLieu_capture[i] == String(rowContent)) {
+				new_lieu_capture = false;
 			};
-		}
- 	}
+		};
+		if (new_lieu_capture) {
+			tabLieu_capture.push(rowContent);
+			tabNewLieu_capture.push(rowContent);		
+		};
+	} else
+	//Methode_capture
+	if ((rowCountContent == 16) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+		var new_methode_capture = true;
+		for (var i = 0; i < tabMethode_capture.length; i++) {
+			if (tabMethode_capture[i] == String(rowContent)) {
+				new_methode_capture = false;
+			};
+		};
+		if (new_methode_capture) {
+			tabMethode_capture.push(rowContent);
+			tabNewMethode_capture.push(rowContent);		
+		};
+	} else 
+	//Couleur_pelage_dorsal
+	if ((rowCountContent == 52) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+		var new_couleur_pelage_dorsal = true;
+		for (var i = 0; i < tabCouleur_pelage_dorsal.length; i++) {
+			if (tabCouleur_pelage_dorsal[i] == String(rowContent)) {
+				new_couleur_pelage_dorsal = false;
+			};
+		};
+		if (new_couleur_pelage_dorsal) {
+			tabCouleur_pelage_dorsal.push(rowContent);
+			tabNewCouleur_pelage_dorsal.push(rowContent);		
+		};
+	} else 
+	//Couleur_pelage_ventral
+	if ((rowCountContent == 53) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+		var new_couleur_pelage_ventral = true;
+		for (var i = 0; i < tabCouleur_pelage_ventral.length; i++) {
+			if (tabCouleur_pelage_ventral[i] == String(rowContent)) {
+				new_couleur_pelage_ventral = false;
+			};
+		};
+		if (new_couleur_pelage_ventral) {
+			tabCouleur_pelage_ventral.push(rowContent);
+			tabNewCouleur_pelage_ventral.push(rowContent);		
+		};
+	};*/
 		
 	
 	return true;
 };
 
-function addEspeceInTableReferenceBatCapturees(i) {
+function addEspeceInTableReferenceBatNoninvasives(i) {
 	//console.log(i + ' : ' + tab[i][28].trim() + ' ' + tab[i][30].trim() + ' ' + tab[i][31].trim() + ' ' + tab[i][32].trim());
 	//console.log(i + ' : ' + tab[i][28].trim() + ' ' + tab[i][33].trim() + ' ' + tab[i][34].trim() + ' ' + tab[i][35].trim());
 	//console.log(i + ' : ' + tab[i][28].trim() + ' ' + tab[i][36].trim() + ' ' + tab[i][37].trim() + ' ' + tab[i][38].trim());
 	
-	if (import_table != '_astre_transvihmi_guinee') {
-		console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][30].trim() + ' ' + tabImportedFile[i][31].trim() + ' ' + tabImportedFile[i][32].trim());
-		console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][33].trim() + ' ' + tabImportedFile[i][34].trim() + ' ' + tabImportedFile[i][35].trim());
-		console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][36].trim() + ' ' + tabImportedFile[i][37].trim() + ' ' + tabImportedFile[i][38].trim());
-		
-		Espece1 = tabImportedFile[i][30].trim().toUpperCase() + ' ' + tabImportedFile[i][31].trim() + ' ' + tabImportedFile[i][32].trim();
-		Espece2 = tabImportedFile[i][33].trim().toUpperCase() + ' ' + tabImportedFile[i][34].trim() + ' ' + tabImportedFile[i][35].trim();
-		Espece3 = tabImportedFile[i][36].trim().toUpperCase() + ' ' + tabImportedFile[i][37].trim() + ' ' + tabImportedFile[i][38].trim();
-	} else {
-		console.log(i + ' : ' + tabImportedFile[i][30].trim() + ' ' + tabImportedFile[i][32].trim() + ' ' + tabImportedFile[i][33].trim() + ' ' + tabImportedFile[i][34].trim());
-		console.log(i + ' : ' + tabImportedFile[i][30].trim() + ' ' + tabImportedFile[i][35].trim() + ' ' + tabImportedFile[i][36].trim() + ' ' + tabImportedFile[i][37].trim());
-		console.log(i + ' : ' + tabImportedFile[i][30].trim() + ' ' + tabImportedFile[i][38].trim() + ' ' + tabImportedFile[i][39].trim() + ' ' + tabImportedFile[i][38].trim());
-		
-		Espece1 = tabImportedFile[i][32].trim().toUpperCase() + ' ' + tabImportedFile[i][33].trim() + ' ' + tabImportedFile[i][34].trim();
-		Espece2 = tabImportedFile[i][35].trim().toUpperCase() + ' ' + tabImportedFile[i][36].trim() + ' ' + tabImportedFile[i][37].trim();
-		Espece3 = tabImportedFile[i][38].trim().toUpperCase() + ' ' + tabImportedFile[i][39].trim() + ' ' + tabImportedFile[i][40].trim();
-	} 
+	console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][30].trim() + ' ' + tabImportedFile[i][31].trim() + ' ' + tabImportedFile[i][32].trim());
+	console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][33].trim() + ' ' + tabImportedFile[i][34].trim() + ' ' + tabImportedFile[i][35].trim());
+	console.log(i + ' : ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][36].trim() + ' ' + tabImportedFile[i][37].trim() + ' ' + tabImportedFile[i][38].trim());
+	
+	
+	//Espece
+	//Espece1 = tab[i][30].trim().toUpperCase() + ' ' + tab[i][31].trim() + ' ' + tab[i][32].trim();
+	//Espece2 = tab[i][33].trim().toUpperCase() + ' ' + tab[i][34].trim() + ' ' + tab[i][35].trim();
+	//Espece3 = tab[i][36].trim().toUpperCase() + ' ' + tab[i][37].trim() + ' ' + tab[i][38].trim();
+	
+	Espece1 = tabImportedFile[i][21].trim().toUpperCase() + ' ' + tabImportedFile[i][22].trim() + ' ' + tabImportedFile[i][23].trim();
+	Espece2 = tabImportedFile[i][24].trim().toUpperCase() + ' ' + tabImportedFile[i][25].trim() + ' ' + tabImportedFile[i][26].trim();
+	Espece3 = tabImportedFile[i][27].trim().toUpperCase() + ' ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][29].trim();
+	Espece4 = tabImportedFile[i][30].trim().toUpperCase() + ' ' + tabImportedFile[i][31].trim() + ' ' + tabImportedFile[i][32].trim();
+	Espece5 = tabImportedFile[i][33].trim().toUpperCase() + ' ' + tabImportedFile[i][34].trim() + ' ' + tabImportedFile[i][35].trim();
+	Espece6 = tabImportedFile[i][38].trim().toUpperCase() + ' ' + tabImportedFile[i][39].trim() + ' ' + tabImportedFile[i][40].trim();
+	Espece7 = tabImportedFile[i][41].trim().toUpperCase() + ' ' + tabImportedFile[i][42].trim() + ' ' + tabImportedFile[i][43].trim();
+	Espece8 = tabImportedFile[i][46].trim().toUpperCase() + ' ' + tabImportedFile[i][47].trim() + ' ' + tabImportedFile[i][48].trim();
+	Espece9 = tabImportedFile[i][49].trim().toUpperCase() + ' ' + tabImportedFile[i][50].trim() + ' ' + tabImportedFile[i][51].trim();
+	Espece10 = tabImportedFile[i][54].trim().toUpperCase() + ' ' + tabImportedFile[i][55].trim() + ' ' + tabImportedFile[i][56].trim();
+	Espece11 = tabImportedFile[i][57].trim().toUpperCase() + ' ' + tabImportedFile[i][58].trim() + ' ' + tabImportedFile[i][59].trim();
+	Espece12 = tabImportedFile[i][62].trim().toUpperCase() + ' ' + tabImportedFile[i][63].trim() + ' ' + tabImportedFile[i][64].trim();
+	Espece13 = tabImportedFile[i][65].trim().toUpperCase() + ' ' + tabImportedFile[i][66].trim() + ' ' + tabImportedFile[i][67].trim();
+	Espece14 = tabImportedFile[i][70].trim().toUpperCase() + ' ' + tabImportedFile[i][71].trim() + ' ' + tabImportedFile[i][72].trim();
+	Espece15 = tabImportedFile[i][73].trim().toUpperCase() + ' ' + tabImportedFile[i][74].trim() + ' ' + tabImportedFile[i][75].trim();
+	Espece16 = tabImportedFile[i][78].trim().toUpperCase() + ' ' + tabImportedFile[i][79].trim() + ' ' + tabImportedFile[i][80].trim();
+	Espece17 = tabImportedFile[i][81].trim().toUpperCase() + ' ' + tabImportedFile[i][28].trim() + ' ' + tabImportedFile[i][29].trim();
+	Espece18 = tabImportedFile[i][86].trim().toUpperCase() + ' ' + tabImportedFile[i][87].trim() + ' ' + tabImportedFile[i][88].trim();
+	Espece19 = tabImportedFile[i][89].trim().toUpperCase() + ' ' + tabImportedFile[i][90].trim() + ' ' + tabImportedFile[i][91].trim();
+	Espece20 = tabImportedFile[i][94].trim().toUpperCase() + ' ' + tabImportedFile[i][95].trim() + ' ' + tabImportedFile[i][96].trim();
+	Espece21 = tabImportedFile[i][97].trim().toUpperCase() + ' ' + tabImportedFile[i][98].trim() + ' ' + tabImportedFile[i][99].trim();
+	Espece22 = tabImportedFile[i][102].trim().toUpperCase() + ' ' + tabImportedFile[i][103].trim() + ' ' + tabImportedFile[i][104].trim();
+	Espece23 = tabImportedFile[i][105].trim().toUpperCase() + ' ' + tabImportedFile[i][106].trim() + ' ' + tabImportedFile[i][107].trim();
+	Espece24 = tabImportedFile[i][110].trim().toUpperCase() + ' ' + tabImportedFile[i][111].trim() + ' ' + tabImportedFile[i][112].trim();
+	Espece25 = tabImportedFile[i][113].trim().toUpperCase() + ' ' + tabImportedFile[i][114].trim() + ' ' + tabImportedFile[i][115].trim();
 	
 	addNewEspeceInTab(Espece1);
 	addNewEspeceInTab(Espece2);
 	addNewEspeceInTab(Espece3);
+	addNewEspeceInTab(Espece4);
+	addNewEspeceInTab(Espece5);
+	addNewEspeceInTab(Espece6);
+	addNewEspeceInTab(Espece7);
+	addNewEspeceInTab(Espece8);
+	addNewEspeceInTab(Espece9);
+	addNewEspeceInTab(Espece10);
+	addNewEspeceInTab(Espece11);
+	addNewEspeceInTab(Espece12);
+	addNewEspeceInTab(Espece13);
+	addNewEspeceInTab(Espece14);
+	addNewEspeceInTab(Espece15);
+	addNewEspeceInTab(Espece16);
+	addNewEspeceInTab(Espece17);
+	addNewEspeceInTab(Espece18);
+	addNewEspeceInTab(Espece19);
+	addNewEspeceInTab(Espece20);
+	addNewEspeceInTab(Espece21);
+	addNewEspeceInTab(Espece22);
+	addNewEspeceInTab(Espece23);
+	addNewEspeceInTab(Espece24);
+	addNewEspeceInTab(Espece25);
 	
 	function addNewEspeceInTab(Espece) {
 		var new_espece = true;
@@ -1161,11 +1199,7 @@ function addEspeceInTableReferenceBatCapturees(i) {
 		if (new_espece) {			
 			tabEspece.push(Espece.trim());
 			tabNewEspece.push(Espece.trim());
-			if (import_table != '_astre_transvihmi_guinee') {
-				tabNewRegimeAlimentaire.push(tabImportedFile[i][28].trim());
-			} else {
-				tabNewRegimeAlimentaire.push(tabImportedFile[i][30].trim());
-			}
+			tabNewRegimeAlimentaire.push(/*tabImportedFile[i][28].trim()*/'Manquant');
 		};
 	};	
 };
