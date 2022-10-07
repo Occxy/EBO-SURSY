@@ -8,3 +8,5 @@ npm run deploy
 export GH_TOKEN=47b9ff371f4108bdcf4a28e27e9ce1c6265757cf
 
 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
+
+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

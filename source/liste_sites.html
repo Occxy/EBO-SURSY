@@ -99,7 +99,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['site_table'] = 'site' + nom_table;
-		loadjs('js/load-db-site.js');
+		
 
 	</script> 
   
@@ -927,6 +927,7 @@
 			component_li.classList.add('active');
   		};
   		
+  		loadjs('js/load-db-site.js');
 	</script> 
   </body>
 </html>

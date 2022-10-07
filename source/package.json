@@ -1,6 +1,6 @@
 {
   "name": "EBO-SURSY",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "",
   "main": "main.js",
   "dependencies": {
@@ -11,6 +11,7 @@
     "electron-is-dev": "^1.2.0",
     "electron-updater": "^4.6.5",
     "fs-extra": "^10.1.0",
+    "node": "^18.10.0",
     "update-electron-app": "^1.5.0"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "electron-packager": "^13.1.1"
   },
   "scripts": {
+	"start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder build --mac --win --publish never",
     "deploy": "electron-builder build --mac --win --publish always"
