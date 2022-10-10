@@ -208,8 +208,8 @@ function importation() {
 		field = lines[0].trim().split(";");
 		rowContent_length = field.length;
 		
-		alert(field.length);
-		alert(valid_field.length);
+		/*alert(field.length);
+		alert(valid_field.length);*/
 		
 		
 		//verif valid template

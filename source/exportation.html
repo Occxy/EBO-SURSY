@@ -724,18 +724,18 @@
     			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
     			 'Equipe', 'Pays', 'Region_capture', 'Site_capture', 'Lieu_capture',
     		     'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec',
-    		     'Proximite_village_km', 'Methode_capture', 'NumFilet',	'LongueurFilet',
+    		     'Proximite_village_km', 'Methode_capture', /*'NumFilet',	'LongueurFilet',
     		     'HauteurFilet', 'Lat_degre_decFilet', 'LatitudeFilet', 'Long_degre_decFilet',
     		     'LongitudeFilet',	'Lat_degre_dec_Lieu_capture', 'Latitude_Lieu_capture',
     		     'Long_degre_dec_Lieu_capture', 'Longitude_Lieu_capture', /*'Arret_Capture',
-    		     'Causes_Arret_Capture',*/ 'Type_chauve_souris',
+    		     'Causes_Arret_Capture',*/ 'Collier', 'Type_collier', 'Num_serie', 'Type_chauve_souris',
     		     'Espece_identifiee', 'Famille_terrain', 'Genre_terrain', 'Espece_terrain',
     		     'Famille_labo', 'Genre_labo', 'Espece_labo', 'Famille_consensus', 'Genre_consensus', 
     		     'Espece_consensus', 'Sexe', 'Age', 'Gestante', 'Lactation', 'Suitee', 'Sexe_enfant',
     		     'Poids_enfant', 'Identifiant_enfant', 'Vivante', 'Cause_deces', 'Poids_gr',
     		     'L_avant_bras_mm', 'L_totale_corps_mm', 'Taille_yeux', 'L_queue_mm',
     		     'L_metacarpe_3ieme_doigt_mm', 'Couleur_pelage_dorsal',
-    		     'Couleur_pelage_ventral', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 
+    		     'Couleur_pelage_ventral', 'Photo', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 
     		     'Sang_tube_EDTA', 'Feces_RNAl', 'Urine', 'Urine_DUS_nombre_cercles',
     		     'Feces_urine_RNAl', 'Ecouvillon_gorge_RNAl', 'Ecouvillon_rectal_RNAl',
     		     'Ectoparasites_ethanol', 'Poils_ethanol', 'Wing_punch_ethanol',
@@ -752,18 +752,19 @@
     		var fields_CSV_head = 'N_identification_CS;N_identification_mere;Numero_mission;N_site;Date;' +
 						 'Equipe;Pays;Region_capture;Site_capture;Lieu_capture;' +
 					     'Environnement;Latitude;Lat_degre_dec;Longitude;Long_degre_dec;' +
-					     'Proximite_village_km;Methode_capture;NumFilet;LongueurFilet;' +
+					     'Proximite_village_km;Methode_capture;' + /*NumFilet;LongueurFilet;' +
     		     		 'HauteurFilet;Lat_degre_decFilet;LatitudeFilet;Long_degre_decFilet;' +
-    		     		 'LongitudeFilet;Lat_degre_dec_Lieu_capture;Latitude_Lieu_capture;' +
+    		     		 'LongitudeFilet;*/
+    		     		 'Lat_degre_dec_Lieu_capture;Latitude_Lieu_capture;' +
     		     		 'Long_degre_dec_Lieu_capture;Longitude_Lieu_capture;' /*Arret_Capture;'*/ +
-    		     		 /*'Causes_Arret_Capture;'*/'Type_chauve_souris;' +
+    		     		 /*'Causes_Arret_Capture;'*/'Collier;Type_collier;Num_serie;Type_chauve_souris;' +
 					     'Espece_identifiee;Famille_terrain;Genre_terrain;Espece_terrain;' +
 					     'Famille_labo;Genre_labo;Espece_labo;Famille_consensus;Genre_consensus;' + 
 					     'Espece_consensus;Sexe;Age;Gestante;Lactation;Suitee;Sexe_enfant;' +
 					     'Poids_enfant;Identifiant_enfant;Vivante;Cause_deces;Poids_gr;' +
 					     'L_avant_bras_mm;L_totale_corps_mm;Taille_yeux;L_queue_mm;' +
 					     'L_metacarpe_3ieme_doigt_mm;Couleur_pelage_dorsal;' +
-					     'Couleur_pelage_ventral;Remarques_anomalies;Sang_DBS_nb_cercles;' + 
+					     'Couleur_pelage_ventral;Photo;Remarques_anomalies;Sang_DBS_nb_cercles;' + 
 					     'Sang_tube_EDTA;Feces_RNAl;Urine;Urine_DUS_nombre_cercles;' +
 					     'Feces_urine_RNAl;Ecouvillon_gorge_RNAl;Ecouvillon_rectal_RNAl;' +
 					     'Ectoparasites_ethanol;Poils_ethanol;Wing_punch_ethanol;' +
@@ -814,7 +815,9 @@
     							  'Age;M_ou_V;Sero_status_SIV;SIV_pcr;DNA_species;Username;\r\n';	
     	} else if (type_table == 'donnees_journalieres') {
     		var fields = 
-    			['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'N_site',
+    			['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 
+    			 'Pairs_impairs', 'Sans_ID_1', 'Sans_ID_2', 'Sans_ID_3', 'Avec_ID_1', 'Avec_ID_2', 'Avec_ID_3',
+    			 'Numero_mission', 'N_site',
     			 'Pays', 'Region_capture', 'Site_capture', 'Environnement',	'Proximite_village_km',
     			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Roost_diurne', 'Presence_diurne', 
     			 'Famille_diurne1', 'Genre_diurne1', 'Espece_diurne1',
@@ -839,9 +842,20 @@
     			 'Copulations', 
     			 'Famille_copulations', 'Genre_copulations', 'Espece_copulations',
     			 'Suitee', 
-    			 'Famille_suitee', 'Genre_suitee', 'Espece_suitee', 
+    			 'Famille_suitee1', 'Genre_suitee1', 'Espece_suitee1', 
+    			 'Famille_suitee2', 'Genre_suitee2', 'Espece_suitee2', 
+    			 'Famille_suitee3', 'Genre_suitee3', 'Espece_suitee3', 
+    			 'Famille_suitee4', 'Genre_suitee4', 'Espece_suitee4',
     			 'Agressions',
-    			 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',
+    			 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',    			 
+    			 'Gestante', 'Famille_gestante1', 'Genre_gestante1', 'Espece_gestante1', 
+    			 'Famille_gestante2', 'Genre_gestante2', 'Espece_gestante2', 
+    			 'Famille_gestante3', 'Genre_gestante3', 'Espece_gestante3', 
+    			 'Famille_gestante4', 'Genre_gestante4', 'Espece_gestante4', 
+    			 'Lactante', 'Famille_lactante1', 'Genre_lactante1', 'Espece_lactante1', 
+    			 'Famille_lactante2', 'Genre_lactante2', 'Espece_lactante2', 
+    			 'Famille_lactante3', 'Genre_lactante3', 'Espece_lactante3', 
+    			 'Famille_lactante4', 'Genre_lactante4', 'Espece_lactante4',    			 
     			 'Filet_canopee_nb_7', 'Filet_canopee_m2_7',
     			 'NumFilet7_1', 'LongueurFilet7_1', 'HauteurFilet7_1',
     			 'NumFilet7_2', 'LongueurFilet7_2', 'HauteurFilet7_2',
@@ -871,7 +885,9 @@
     			 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger', 
     			 'Username'];
     		
-    		var fields_CSV_head = 'Date;Equipe;ID_CS_preleve_debut;ID_CS_preleve_fin;N_site;' +
+    		var fields_CSV_head = 'Date;Equipe;ID_CS_preleve_debut;ID_CS_preleve_fin;' + 
+    							  'Pairs_impairs;Sans_ID_1;Sans_ID_2;Sans_ID_3;Avec_ID_1;Avec_ID_2;Avec_ID_3;' +
+    							  'Numero_mission;N_site;' +
 					    		  'Pays;Region_capture;Site_capture;Environnement;Proximite_village_km;' +
 					    		  'Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Roost_diurne;Presence_diurne;' + 
 					    		  'Famille_diurne1;Genre_diurne1;Espece_diurne1;' +
@@ -896,9 +912,20 @@
 					    		  'Copulations;' +
 					    		  'Famille_copulations;Genre_copulations;Espece_copulations;' +
 					    		  'Suitee;' +
-					    		  'Famille_suitee;Genre_suitee;Espece_suitee;' +
+					    		  'Famille_suitee1;Genre_suitee1;Espece_suitee1;' +
+					    		  'Famille_suitee2;Genre_suitee2;Espece_suitee2;' +
+					    		  'Famille_suitee3;Genre_suitee3;Espece_suitee3;' +
+					    		  'Famille_suitee4;Genre_suitee4;Espece_suitee4;' +
 					    		  'Agressions;' +
 					    		  'Famille_agressions;Genre_agressions;Espece_agressions;' +
+					    		  'Gestante;Famille_gestante1;Genre_gestante1;Espece_gestante1;' + 
+					    		  'Famille_gestante2;Genre_gestante2;Espece_gestante2;' + 
+					    		  'Famille_gestante3;Genre_gestante3;Espece_gestante3;' + 
+					    		  'Famille_gestante4;Genre_gestante4;Espece_gestante4;' + 
+					    	      'Lactante;Famille_lactante1;Genre_lactante1;Espece_lactante1;' + 
+					    		  'Famille_lactante2;Genre_lactante2;Espece_lactante2;' + 
+					    		  'Famille_lactante3;Genre_lactante3;Espece_lactante3;' + 
+					    		  'Famille_lactante4;Genre_lactante4;Espece_lactante4;' + 
 					    		  'Filet_canopee_nb_7;Filet_canopee_m2_7;' + 
 					    		  'NumFilet7_1;LongueurFilet7_1;HauteurFilet7_1;' +
 					    		  'NumFilet7_2;LongueurFilet7_2;HauteurFilet7_2;' +
@@ -930,7 +957,7 @@
     	} else if (type_table == 'donnees_mission') {
     		var fields = 
     			['Date_debut', 'Date_fin', 'Equipe', 'ID_CS_debut', 'ID_CS_fin', 
-    			 'ID_non_invasif_debut', 'ID_non_invasif_fin', 'N_site', 'Pays', 
+    			 'ID_non_invasif_debut', 'ID_non_invasif_fin', 'Numero_mission', 'N_site', 'Pays', 
     			 'Region_capture', 'Site_capture', 'Environnement', 'Proximite_village_km', 
     			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type', 
     			 'Type_Roost', 'Proximite_eau', 'Hauteur_canope', 'Description_site', 'ID_genet_espece', 
@@ -946,7 +973,7 @@
     			 'Camera_trap', 'Heure_debut_camera', 'Heure_fin_camera', 'Username']
     		
     		var fields_CSV_head = 'Date_debut;Date_fin;Equipe;ID_CS_debut;ID_CS_fin;' +
-    		                      'ID_non_invasif_debut;ID_non_invasif_fin;N_site;Pays;' +
+    		                      'ID_non_invasif_debut;ID_non_invasif_fin;Numero_mission;N_site;Pays;' +
     		                      'Region_capture;Site_capture;Environnement;' +
     		                      'Proximite_village_km;Lat_degre_dec;Latitude;' +
     		                      'Long_degre_dec;Longitude;Type;Type_Roost;Proximite_eau;' +
@@ -1071,17 +1098,20 @@
 	    				obj.Long_degre_dec = row.doc.Long_degre_dec
 	    				obj.Proximite_village_km = row.doc.Proximite_village_km 
 	   					obj.Methode_capture = row.doc.Methode_capture
-	    				obj.NumFilet = row.doc.NumFilet	
+	    				/*obj.NumFilet = row.doc.NumFilet	
 	    				obj.LongueurFilet = row.doc.LongueurFilet	
 	    				obj.HauteurFilet = row.doc.HauteurFilet	
 	    				obj.Lat_degre_decFilet = row.doc.Lat_degre_decFilet	
 	    				obj.LatitudeFilet = row.doc.LatitudeFilet	
 	    				obj.Long_degre_decFilet	 = row.doc.Long_degre_decFilet
-	    				obj.LongitudeFilet = row.doc.LongitudeFilet	
+	    				obj.LongitudeFilet = row.doc.LongitudeFilet	*/
 	    				obj.Lat_degre_dec_Lieu_capture = row.doc.Lat_degre_dec_Lieu_capture	
 	   					obj.Latitude_Lieu_capture = row.doc.Latitude_Lieu_capture	
 	   					obj.Long_degre_dec_Lieu_capture = row.doc.Long_degre_dec_Lieu_capture
 	    				obj.Longitude_Lieu_capture = row.doc.Longitude_Lieu_capture	
+	    				obj.Collier = row.doc.Collier		
+	    				obj.Type_collier = row.doc.Type_collier	
+	    				obj.Num_serie = row.doc.Num_serie
 	    				obj.Type_chauve_souris = row.doc.Type_chauve_souris
 	    				obj.Espece_identifiee = row.doc.Espece_identifiee 
 	   					obj.Famille_terrain = row.doc.Famille_terrain 
@@ -1111,6 +1141,7 @@
 	   					obj.L_metacarpe_3ieme_doigt_mm = row.doc.L_metacarpe_3ieme_doigt_mm 
 	    				obj.Couleur_pelage_dorsal = row.doc.Couleur_pelage_dorsal
 	    				obj.Couleur_pelage_ventral = row.doc.Couleur_pelage_ventral 
+	    				obj.Photo = row.doc.Photo
 	   					obj.Remarques_anomalies = row.doc.Remarques_anomalies 
 	   					obj.Sang_DBS_nb_cercles = row.doc.Sang_DBS_nb_cercles 
 	   					obj.Sang_tube_EDTA = row.doc.Sang_tube_EDTA 
@@ -1836,7 +1867,7 @@
 	    			
 	    			
 					
-				LongueurFilet = '';
+				/*LongueurFilet = '';
 				HauteurFilet = '';
 				Lat_degre_decFilet = '';
 				LatitudeFilet = '';
@@ -1892,7 +1923,10 @@
 				}
 	   			
 				var Filet_temps = '';
-				var Arret_Capture = '';
+				var Arret_Capture = '';*/
+				
+				
+
 				
 				var id;
 				try {
@@ -2066,17 +2100,20 @@
 	   					Long_degre_dec + ';' +
 	   					Proximite_village_km + ';' + 
 	   					row.Methode_capture + ';' +
-	    				row.NumFilet + ';' +	
+	    				/*row.NumFilet + ';' +	
 	    				LongueurFilet + ';' +	
 	    				HauteurFilet + ';' +	
 	    				Lat_degre_decFilet + ';' +	
 	   					LatitudeFilet + ';' +	
 	   					Long_degre_decFilet	 + ';' +
-	   					LongitudeFilet + ';' +	
+	   					LongitudeFilet + ';' +*/	
 	   					Lat_degre_dec_Lieu_capture + ';' +	
 	   					row.Latitude_Lieu_capture + ';' +	
 	    				Long_degre_dec_Lieu_capture + ';' +
-	    				row.Longitude_Lieu_capture + ';' +	
+	    				row.Longitude_Lieu_capture + ';' +
+	    				row.Collier + ';' +
+	    				row.Type_collier + ';' +	
+	    				row.Num_serie + ';' +
 	    				row.Type_chauve_souris + ';' +
 	    				row.Espece_identifiee + ';' + 
 	   					row.Famille_terrain + ';' + 
@@ -2106,6 +2143,7 @@
 	    				L_metacarpe_3ieme_doigt_mm + ';' + 
 	    				row.Couleur_pelage_dorsal + ';' +
 	    				row.Couleur_pelage_ventral + ';' + 
+	    				row.Photo + ';' + 
 	   					row.Remarques_anomalies.split(';').join(',') + ';' + 
 	   					Sang_DBS_nb_cercles + ';' + 
 	   					row.Sang_tube_EDTA + ';' + 
@@ -2152,9 +2190,9 @@
 	    				row.Autre_formol + ';' + 
 	    				row.Autre_RNAl + ';' + 
 	   					row.Remarques_echantillons.split(';').join(',') + ';' +
-	   					Username + ';' +
+	   					Username /*+ ';' +
 	   					Filet_temps + ';' +  
-	   					Arret_Capture + ";\r\n"
+	   					Arret_Capture*/ + ";\r\n"
     			
 	   			} else {
 	   				if (array_selected_fields.indexOf('N_identification_CS') > -1) {
@@ -2208,7 +2246,7 @@
 	    			if (array_selected_fields.indexOf('Methode_capture') > -1) {
 	    				CSV = CSV + row.Methode_capture + ";"
 	    			};
-	    			if (array_selected_fields.indexOf('NumFilet') > -1) {
+	    			/*if (array_selected_fields.indexOf('NumFilet') > -1) {
 	    				CSV = CSV + row.NumFilet + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('LongueurFilet') > -1) {
@@ -2228,7 +2266,7 @@
 	    			};
 	    			if (array_selected_fields.indexOf('LongitudeFilet') > -1) {
 	    				CSV = CSV + LongitudeFilet + ";"
-	    			};
+	    			};*/
 	    			if (array_selected_fields.indexOf('Lat_degre_dec_Lieu_capture') > -1) {
 	    				CSV = CSV + Lat_degre_dec_Lieu_capture + ";"
 	    			};
@@ -2240,6 +2278,15 @@
 	    			};
 	    			if (array_selected_fields.indexOf('Longitude_Lieu_capture') > -1) {
 	    				CSV = CSV + row.Longitude_Lieu_capture + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Collier') > -1) {
+	    				CSV = CSV + row.Collier + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Type_collier') > -1) {
+	    				CSV = CSV + row.Type_collier + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Num_serie') > -1) {
+	    				CSV = CSV + row.Num_serie + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
 	    				CSV = CSV + row.Type_chauve_souris + ";"
@@ -2327,6 +2374,9 @@
 	    			};
 	    			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
 	    				CSV = CSV + row.Couleur_pelage_ventral + ";"
+	    			};
+	    			if (array_selected_fields.indexOf('Photo') > -1) {
+	    				CSV = CSV + row.Photo + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
 	    				CSV = CSV + row.Remarques_anomalies.split(';').join(',') + ";"
@@ -2469,12 +2519,12 @@
 	    			if (array_selected_fields.indexOf('Username') > -1) {
 	    				CSV = CSV + Username + ";"
 	    			};
-	    			if (array_selected_fields.indexOf('Filet_temps') > -1) {
+	    			/*if (array_selected_fields.indexOf('Filet_temps') > -1) {
 	    				CSV = CSV + Filet_temps + ";"
 	    			};
 	    			if (array_selected_fields.indexOf('Arret_Capture') > -1) {
 	    				CSV = CSV + Arret_Capture + ";"
-	    			};
+	    			};*/
 	    			CSV = CSV + "\r\n";
 	   			}
   				count--
@@ -2544,7 +2594,7 @@
 			if (array_selected_fields.indexOf('Methode_capture') > -1) {
 				CSV = CSV + 'Methode_capture;'
 			};
-			if (array_selected_fields.indexOf('NumFilet') > -1) {
+			/*if (array_selected_fields.indexOf('NumFilet') > -1) {
 				CSV = CSV + 'NumFilet;'
 			};
 			if (array_selected_fields.indexOf('LongueurFilet') > -1) {
@@ -2564,7 +2614,7 @@
 			};
 			if (array_selected_fields.indexOf('LongitudeFilet') > -1) {
 				CSV = CSV + 'LongitudeFilet;'
-			};
+			};*/
 			if (array_selected_fields.indexOf('Lat_degre_dec_Lieu_capture') > -1) {
 				CSV = CSV + 'Lat_degre_dec_Lieu_capture;'
 			};
@@ -2576,6 +2626,15 @@
 			};
 			if (array_selected_fields.indexOf('Longitude_Lieu_capture') > -1) {
 				CSV = CSV + 'Longitude_Lieu_capture;'
+			};
+			if (array_selected_fields.indexOf('Collier') > -1) {
+				CSV = CSV + 'Collier;'
+			};
+			if (array_selected_fields.indexOf('Type_collier') > -1) {
+				CSV = CSV + 'Type_collier;'
+			};
+			if (array_selected_fields.indexOf('Num_serie') > -1) {
+				CSV = CSV + 'Num_serie;'
 			};
 			if (array_selected_fields.indexOf('Type_chauve_souris') > -1) {
 				CSV = CSV + 'Type_chauve_souris;'
@@ -2663,6 +2722,9 @@
 			};
 			if (array_selected_fields.indexOf('Couleur_pelage_ventral') > -1) {
 				CSV = CSV + 'Couleur_pelage_ventral;'
+			};
+			if (array_selected_fields.indexOf('Photo') > -1) {
+				CSV = CSV + 'Photo;'
 			};
 			if (array_selected_fields.indexOf('Remarques_anomalies') > -1) {
 				CSV = CSV + 'Remarques_anomalies;'
@@ -4951,6 +5013,14 @@
 				    			row.doc.Equipe + ';' +
 				    			row.doc.ID_CS_preleve_debut + ';' +
 				    			row.doc.ID_CS_preleve_fin + ';' +
+				    			row.doc.Pairs_impairs + ';' +
+				    			row.doc.Sans_ID_1 + ';' +	
+				    			row.doc.Sans_ID_2 + ';' +	
+				    			row.doc.Sans_ID_3 + ';' +	
+				    			row.doc.Avec_ID_1 + ';' +	
+				    			row.doc.Avec_ID_2 + ';' +	
+				    			row.doc.Avec_ID_3 + ';' +	
+				    			row.doc.Numero_mission + ';' +
 				    			row.doc.N_site + ';' +
 				    			Pays + ';' +
 				    			Region_capture + ';' +
@@ -5011,13 +5081,48 @@
 										  + row.doc.Genre_copulations + ';' 
 										  + row.doc.Espece_copulations + ';'
 										  + row.doc.Suitee + ';'
-										  + row.doc.Famille_suitee + ';' 
-										  + row.doc.Genre_suitee + ';'
-										  + row.doc.Espece_suitee + ';'
+										  + row.doc.Famille_suitee1 + ';' 
+										  + row.doc.Genre_suitee1 + ';'
+										  + row.doc.Espece_suitee1 + ';'
+										  + row.doc.Famille_suitee2 + ';' 
+										  + row.doc.Genre_suitee2 + ';'
+										  + row.doc.Espece_suitee2 + ';'
+										  + row.doc.Famille_suitee3 + ';' 
+										  + row.doc.Genre_suitee3 + ';'
+										  + row.doc.Espece_suitee3 + ';'
+										  + row.doc.Famille_suitee4 + ';' 
+										  + row.doc.Genre_suitee4 + ';'
+										  + row.doc.Espece_suitee4 + ';'
 										  + row.doc.Agressions + ';'
 										  + row.doc.Famille_agressions + ';' 
 										  + row.doc.Genre_agressions + ';' 
 										  + row.doc.Espece_agressions + ';'
+										  + row.doc.Gestante + ';'
+										  + row.doc.Famille_gestante1 + ';'	
+										  + row.doc.Genre_gestante1 + ';'	
+										  + row.doc.Espece_gestante1 + ';'	
+										  + row.doc.Famille_gestante2 + ';'	
+										  + row.doc.Genre_gestante2 + ';'
+										  + row.doc.Espece_gestante2 + ';'	
+										  + row.doc.Famille_gestante3 + ';'	
+										  + row.doc.Genre_gestante3 + ';'	
+										  + row.doc.Espece_gestante3 + ';'	
+										  + row.doc.Famille_gestante4 + ';'	
+										  + row.doc.Genre_gestante4 + ';'	
+										  + row.doc.Espece_gestante4 + ';'	
+										  + row.doc.Lactante + ';'	
+										  + row.doc.Famille_lactante1 + ';'	
+										  + row.doc.Genre_lactante1 + ';'	
+										  + row.doc.Espece_lactante1 + ';'	
+										  + row.doc.Famille_lactante2 + ';'	
+										  + row.doc.Genre_lactante2 + ';'	
+										  + row.doc.Espece_lactante2 + ';'	
+										  + row.doc.Famille_lactante3 + ';'	
+										  + row.doc.Genre_lactante3 + ';'	
+										  + row.doc.Espece_lactante3 + ';'	
+										  + row.doc.Famille_lactante4 + ';'	
+										  + row.doc.Genre_lactante4 + ';'	
+										  + row.doc.Espece_lactante4 + ';'
 										  + row.doc.Filet_canopee_nb_7 + ';' 
 										  + row.doc.Filet_canopee_m2_7 + ';'
 										  
@@ -5154,13 +5259,48 @@
 										  + row.doc.Genre_copulations + ';' 
 										  + row.doc.Espece_copulations + ';'
 										  + row.doc.Suitee + ';'
-										  + row.doc.Famille_suitee + ';' 
-										  + row.doc.Genre_suitee + ';'
-										  + row.doc.Espece_suitee + ';'
+										  + row.doc.Famille_suitee1 + ';' 
+										  + row.doc.Genre_suitee1 + ';'
+										  + row.doc.Espece_suitee1 + ';'
+										  + row.doc.Famille_suitee2 + ';' 
+										  + row.doc.Genre_suitee2 + ';'
+										  + row.doc.Espece_suitee2 + ';'
+										  + row.doc.Famille_suitee3 + ';' 
+										  + row.doc.Genre_suitee3 + ';'
+										  + row.doc.Espece_suitee3 + ';'
+										  + row.doc.Famille_suitee4 + ';' 
+										  + row.doc.Genre_suitee4 + ';'
+										  + row.doc.Espece_suitee4 + ';'
 										  + row.doc.Agressions + ';'
 										  + row.doc.Famille_agressions + ';' 
 										  + row.doc.Genre_agressions + ';' 
 										  + row.doc.Espece_agressions + ';'
+										  + row.doc.Gestante + ';'
+										  + row.doc.Famille_gestante1 + ';'	
+										  + row.doc.Genre_gestante1 + ';'	
+										  + row.doc.Espece_gestante1 + ';'	
+										  + row.doc.Famille_gestante2 + ';'	
+										  + row.doc.Genre_gestante2 + ';'
+										  + row.doc.Espece_gestante2 + ';'	
+										  + row.doc.Famille_gestante3 + ';'	
+										  + row.doc.Genre_gestante3 + ';'	
+										  + row.doc.Espece_gestante3 + ';'	
+										  + row.doc.Famille_gestante4 + ';'	
+										  + row.doc.Genre_gestante4 + ';'	
+										  + row.doc.Espece_gestante4 + ';'	
+										  + row.doc.Lactante + ';'	
+										  + row.doc.Famille_lactante1 + ';'	
+										  + row.doc.Genre_lactante1 + ';'	
+										  + row.doc.Espece_lactante1 + ';'	
+										  + row.doc.Famille_lactante2 + ';'	
+										  + row.doc.Genre_lactante2 + ';'	
+										  + row.doc.Espece_lactante2 + ';'	
+										  + row.doc.Famille_lactante3 + ';'	
+										  + row.doc.Genre_lactante3 + ';'	
+										  + row.doc.Espece_lactante3 + ';'	
+										  + row.doc.Famille_lactante4 + ';'	
+										  + row.doc.Genre_lactante4 + ';'	
+										  + row.doc.Espece_lactante4 + ';'
 										  + row.doc.Filet_canopee_nb_7 + ';' 
 										  + row.doc.Filet_canopee_m2_7 + ';'
 										  
@@ -5255,6 +5395,30 @@
 	    		if (array_selected_fields.indexOf('ID_CS_preleve_fin') > -1) {
 	    			CSV = CSV + 'ID_CS_preleve_fin;'
 	    		};
+	    		if (array_selected_fields.indexOf('Pairs_impairs') > -1) {
+	    			CSV = CSV + 'Pairs_impairs;'
+	    		};
+	    		if (array_selected_fields.indexOf('Sans_ID_1') > -1) {
+	    			CSV = CSV + 'Sans_ID_1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Sans_ID_2') > -1) {
+	    			CSV = CSV + 'Sans_ID_2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Sans_ID_3') > -1) {
+	    			CSV = CSV + 'Sans_ID_3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Avec_ID_1') > -1) {
+	    			CSV = CSV + 'Avec_ID_1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Avec_ID_2') > -1) {
+	    			CSV = CSV + 'Avec_ID_2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Avec_ID_3') > -1) {
+	    			CSV = CSV + 'Avec_ID_3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Numero_mission') > -1) {
+	    			CSV = CSV + 'Numero_mission;'
+	    		};	
 	    		if (array_selected_fields.indexOf('N_site') > -1) {
 	    			CSV = CSV + 'N_site;'
 	    		};
@@ -5474,13 +5638,40 @@
 	    		if (array_selected_fields.indexOf('Suitee') > -1) {
 	    			CSV = CSV + 'Suitee;'
 	    		};
-	    		if (array_selected_fields.indexOf('Famille_suitee') > -1) {
+	    		if (array_selected_fields.indexOf('Famille_suitee1') > -1) {
 	    			CSV = CSV + 'Famille_suitee;'
 	    		};
-	    		if (array_selected_fields.indexOf('Genre_suitee') > -1) {
+	    		if (array_selected_fields.indexOf('Genre_suitee1') > -1) {
 	    			CSV = CSV + 'Genre_suitee;'
 	    		};
-	    		if (array_selected_fields.indexOf('Espece_suitee') > -1) {
+	    		if (array_selected_fields.indexOf('Espece_suitee1') > -1) {
+	    			CSV = CSV + 'Espece_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_suitee2') > -1) {
+	    			CSV = CSV + 'Famille_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_suitee2') > -1) {
+	    			CSV = CSV + 'Genre_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_suitee2') > -1) {
+	    			CSV = CSV + 'Espece_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_suitee3') > -1) {
+	    			CSV = CSV + 'Famille_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_suitee3') > -1) {
+	    			CSV = CSV + 'Genre_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_suitee3') > -1) {
+	    			CSV = CSV + 'Espece_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_suitee4') > -1) {
+	    			CSV = CSV + 'Famille_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_suitee4') > -1) {
+	    			CSV = CSV + 'Genre_suitee;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_suitee4') > -1) {
 	    			CSV = CSV + 'Espece_suitee;'
 	    		};
 	    		if (array_selected_fields.indexOf('Agressions') > -1) {
@@ -5495,6 +5686,86 @@
 	    		if (array_selected_fields.indexOf('Espece_agressions') > -1) {
 	    			CSV = CSV + 'Espece_agressions;'
 	    		};
+	    		
+	    		if (array_selected_fields.indexOf('Gestante') > -1) {
+	    			CSV = CSV + 'Gestante;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_gestante1') > -1) {
+	    			CSV = CSV + 'Famille_gestante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_gestante1') > -1) {
+	    			CSV = CSV + 'Genre_gestante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_gestante1') > -1) {
+	    			CSV = CSV + 'Espece_gestante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_gestante2') > -1) {
+	    			CSV = CSV + 'Famille_gestante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_gestante2') > -1) {
+	    			CSV = CSV + 'Genre_gestante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_gestante2') > -1) {
+	    			CSV = CSV + 'Espece_gestante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_gestante3') > -1) {
+	    			CSV = CSV + 'Famille_gestante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_gestante3') > -1) {
+	    			CSV = CSV + 'Genre_gestante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_gestante3') > -1) {
+	    			CSV = CSV + 'Espece_gestante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_gestante4') > -1) {
+	    			CSV = CSV + 'Famille_gestante4;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_gestante4') > -1) {
+	    			CSV = CSV + 'Genre_gestante4;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_gestante4') > -1) {
+	    			CSV = CSV + 'Espece_gestante4;'
+	    		};
+	    		if (array_selected_fields.indexOf('Lactante') > -1) {
+	    			CSV = CSV + 'Lactante;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_lactante1') > -1) {
+	    			CSV = CSV + 'Famille_lactante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_lactante1') > -1) {
+	    			CSV = CSV + 'Genre_lactante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_lactante1') > -1) {
+	    			CSV = CSV + 'Espece_lactante1;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_lactante2') > -1) {
+	    			CSV = CSV + 'Famille_lactante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_lactante2') > -1) {
+	    			CSV = CSV + 'Genre_lactante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_lactante2') > -1) {
+	    			CSV = CSV + 'Espece_lactante2;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_lactante3') > -1) {
+	    			CSV = CSV + 'Famille_lactante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_lactante3') > -1) {
+	    			CSV = CSV + 'Genre_lactante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_lactante3') > -1) {
+	    			CSV = CSV + 'Espece_lactante3;'
+	    		};
+	    		if (array_selected_fields.indexOf('Famille_lactante4') > -1) {
+	    			CSV = CSV + 'Famille_lactante4;'
+	    		};
+	    		if (array_selected_fields.indexOf('Genre_lactante4') > -1) {
+	    			CSV = CSV + 'Genre_lactante4;'
+	    		};
+	    		if (array_selected_fields.indexOf('Espece_lactante4') > -1) {
+	    			CSV = CSV + 'Espece_lactante4;'
+	    		};																									
+
 	    		if (array_selected_fields.indexOf('Filet_canopee_nb_7') > -1) {
 	    			CSV = CSV + 'Filet_canopee_nb_7;'
 	    		};
@@ -5815,6 +6086,30 @@
 						};
 						if (array_selected_fields.indexOf('ID_CS_preleve_fin') > -1) {
 							CSV = CSV + row.doc.ID_CS_preleve_fin + ";"
+						};
+						if (array_selected_fields.indexOf('Pairs_impairs') > -1) {
+							CSV = CSV + row.doc.Pairs_impairs + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_1') > -1) {
+							CSV = CSV + row.doc.Sans_ID_1 + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_2') > -1) {
+							CSV = CSV + row.doc.Sans_ID_2 + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_3') > -1) {
+							CSV = CSV + row.doc.Sans_ID_3 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_1') > -1) {
+							CSV = CSV + row.doc.Avec_ID_1 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_2') > -1) {
+							CSV = CSV + row.doc.Avec_ID_2 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_3') > -1) {
+							CSV = CSV + row.doc.Avec_ID_3 + ";"
+						};
+						if (array_selected_fields.indexOf('Numero_mission') > -1) {
+							CSV = CSV + row.doc.Numero_mission + ";"
 						};
 						if (array_selected_fields.indexOf('N_site') > -1) {
 							CSV = CSV + row.doc.N_site + ";"
@@ -6203,15 +6498,42 @@
 						if (array_selected_fields.indexOf('Suitee') > -1) {
 							CSV = CSV + row.doc.Suitee + ";"
 						};
-						if (array_selected_fields.indexOf('Famille_suitee') > -1) {
-							CSV = CSV + row.doc.Famille_suitee + ";"
-						};
-						if (array_selected_fields.indexOf('Genre_suitee') > -1) {
-							CSV = CSV + row.doc.Genre_suitee + ";"
-						};
-						if (array_selected_fields.indexOf('Espece_suitee') > -1) {
-							CSV = CSV + row.doc.Espece_suitee + ";"
-						};
+						if (array_selected_fields.indexOf('Famille_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee4') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee4') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee4') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee4 + ";"
+			    		};
 						if (array_selected_fields.indexOf('Agressions') > -1) {
 							CSV = CSV + row.doc.Agressions + ";"
 						};
@@ -6224,6 +6546,84 @@
 						if (array_selected_fields.indexOf('Espece_agressions') > -1) {
 							CSV = CSV + row.doc.Espece_agressions + ";"
 						};
+						if (array_selected_fields.indexOf('Gestante') > -1) {
+			    			CSV = CSV + row.doc.Gestante + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_gestante1') > -1) {
+			    			CSV = CSV + row.doc.Famille_gestante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_gestante1') > -1) {
+			    			CSV = CSV + row.doc.Genre_gestante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_gestante1') > -1) {
+			    			CSV = CSV + row.doc.Espece_gestante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_gestante2') > -1) {
+			    			CSV = CSV + row.doc.Famille_gestante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_gestante2') > -1) {
+			    			CSV = CSV + row.doc.Genre_gestante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_gestante2') > -1) {
+			    			CSV = CSV + row.doc.Espece_gestante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_gestante3') > -1) {
+			    			CSV = CSV + row.doc.Famille_gestante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_gestante3') > -1) {
+			    			CSV = CSV + row.doc.Genre_gestante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_gestante3') > -1) {
+			    			CSV = CSV + row.doc.Espece_gestante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_gestante4') > -1) {
+			    			CSV = CSV + row.doc.Famille_gestante4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_gestante4') > -1) {
+			    			CSV = CSV + row.doc.Genre_gestante4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_gestante4') > -1) {
+			    			CSV = CSV + row.doc.Espece_gestante4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Lactante') > -1) {
+			    			CSV = CSV + row.doc.Lactante + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_lactante1') > -1) {
+			    			CSV = CSV + row.doc.Famille_lactante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_lactante1') > -1) {
+			    			CSV = CSV + row.doc.Genre_lactante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_lactante1') > -1) {
+			    			CSV = CSV + row.doc.Espece_lactante1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_lactante2') > -1) {
+			    			CSV = CSV + row.doc.Famille_lactante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_lactante2') > -1) {
+			    			CSV = CSV + row.doc.Genre_lactante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_lactante2') > -1) {
+			    			CSV = CSV + row.doc.Espece_lactante2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_lactante3') > -1) {
+			    			CSV = CSV + row.doc.Famille_lactante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_lactante3') > -1) {
+			    			CSV = CSV + row.doc.Genre_lactante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_lactante3') > -1) {
+			    			CSV = CSV + row.doc.Espece_lactante3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_lactante4') > -1) {
+			    			CSV = CSV + row.doc.Famille_lactante4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_lactante4') > -1) {
+			    			CSV = CSV + row.doc.Genre_lactante4 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_lactante4') > -1) {
+			    			CSV = CSV + row.doc.Espece_lactante4 + ";"
+			    		};				
 						if (array_selected_fields.indexOf('Filet_canopee_nb_7') > -1) {
 							CSV = CSV + row.doc.Filet_canopee_nb_7 + ";"
 						};
@@ -6759,6 +7159,30 @@
 						if (array_selected_fields.indexOf('ID_CS_preleve_fin') > -1) {
 							CSV = CSV + row.doc.ID_CS_preleve_fin + ";"
 						};
+						if (array_selected_fields.indexOf('Pairs_impairs') > -1) {
+							CSV = CSV + row.doc.Pairs_impairs + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_1') > -1) {
+							CSV = CSV + row.doc.Sans_ID_1 + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_2') > -1) {
+							CSV = CSV + row.doc.Sans_ID_2 + ";"
+						};
+						if (array_selected_fields.indexOf('Sans_ID_3') > -1) {
+							CSV = CSV + row.doc.Sans_ID_3 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_1') > -1) {
+							CSV = CSV + row.doc.Avec_ID_1 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_2') > -1) {
+							CSV = CSV + row.doc.Avec_ID_2 + ";"
+						};
+						if (array_selected_fields.indexOf('Avec_ID_3') > -1) {
+							CSV = CSV + row.doc.Avec_ID_3 + ";"
+						};
+						if (array_selected_fields.indexOf('Numero_mission') > -1) {
+							CSV = CSV + row.doc.Numero_mission + ";"
+						};
 						if (array_selected_fields.indexOf('N_site') > -1) {
 							CSV = CSV + row.doc.N_site + ";"
 						};
@@ -7146,15 +7570,36 @@
 						if (array_selected_fields.indexOf('Suitee') > -1) {
 							CSV = CSV + row.doc.Suitee + ";"
 						};
-						if (array_selected_fields.indexOf('Famille_suitee') > -1) {
-							CSV = CSV + row.doc.Famille_suitee + ";"
-						};
-						if (array_selected_fields.indexOf('Genre_suitee') > -1) {
-							CSV = CSV + row.doc.Genre_suitee + ";"
-						};
-						if (array_selected_fields.indexOf('Espece_suitee') > -1) {
-							CSV = CSV + row.doc.Espece_suitee + ";"
-						};
+						if (array_selected_fields.indexOf('Famille_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee1') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee1 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee2') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee2 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Genre_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Genre_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Espece_suitee3') > -1) {
+			    			CSV = CSV + row.doc.Espece_suitee3 + ";"
+			    		};
+			    		if (array_selected_fields.indexOf('Famille_suitee4') > -1) {
+			    			CSV = CSV + row.doc.Famille_suitee4 + ";"
+			    		};
 						if (array_selected_fields.indexOf('Agressions') > -1) {
 							CSV = CSV + row.doc.Agressions + ";"
 						};
@@ -7757,6 +8202,7 @@
 							row.doc.ID_CS_fin + ';' + 
 							row.doc.ID_non_invasif_debut + ';' + 
 							row.doc.ID_non_invasif_fin + ';' + 
+							row.doc.Numero_mission + ';' + 
 							row.doc.N_site + ';' + 
 							Pays + ';' + 
 							Region_capture + ';' + 
@@ -7822,6 +8268,7 @@
 							row.doc.ID_CS_fin + ';' + 
 							row.doc.ID_non_invasif_debut + ';' + 
 							row.doc.ID_non_invasif_fin + ';' + 
+							row.doc.Numero_mission + ';' + 
 							row.doc.N_site + ';' + 
 							row.doc.Pays + ';' + 
 							row.doc.Region_capture + ';' + 
@@ -7909,6 +8356,9 @@
 			};
 			if (array_selected_fields.indexOf('ID_non_invasif_fin') > -1) {
 				CSV = CSV + 'ID_non_invasif_fin;'
+			};
+			if (array_selected_fields.indexOf('Numero_mission') > -1) {
+				CSV = CSV + 'Numero_mission;'
 			};
 			if (array_selected_fields.indexOf('N_site') > -1) {
 				CSV = CSV + 'N_site;'
@@ -8167,6 +8617,9 @@
 						};
 						if (array_selected_fields.indexOf('ID_non_invasif_fin') > -1) {
 							CSV = CSV + row.doc.ID_non_invasif_fin + ";"
+						};
+						if (array_selected_fields.indexOf('Numero_mission') > -1) {
+							CSV = CSV + row.doc.Numero_mission + ";"
 						};
 						if (array_selected_fields.indexOf('N_site') > -1) {
 							CSV = CSV + row.doc.N_site + ";"
@@ -8525,6 +8978,9 @@
 						};
 						if (array_selected_fields.indexOf('ID_non_invasif_fin') > -1) {
 							CSV = CSV + row.doc.ID_non_invasif_fin + ";"
+						};
+						if (array_selected_fields.indexOf('Numero_mission') > -1) {
+							CSV = CSV + row.doc.Numero_mission + ";"
 						};
 						if (array_selected_fields.indexOf('N_site') > -1) {
 							CSV = CSV + row.doc.N_site + ";"

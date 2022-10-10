@@ -95,7 +95,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['donnees_mission'] = 'donnees_mission' + nom_table;
-		loadjs('js/load-db-mission.js');
+		
 
 	</script> 
   
@@ -921,6 +921,8 @@
 			var component_li = document.getElementById('li_suivi_longitudinal_donnees_missions' + nom_table);
 			component_li.classList.add('active');
 		};
+		
+		loadjs('js/load-db-mission.js');
 		
 		if (donnees_mission == 'donnees_mission_astre_transvihmi_guinee') {
 			document.getElementsByTagName('th')[0].innerHTML = 'Date début mission';

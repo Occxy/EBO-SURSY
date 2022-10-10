@@ -99,7 +99,7 @@
 		//alert('nom_table:' + nom_table)
 		
 		
-		loadjs('js/load-db-journalieres.js');
+		
 
 	</script> 
   
@@ -952,6 +952,8 @@
 			var component_li = document.getElementById('li_suivi_longitudinal_donnees_journalieres' + nom_table);
 			component_li.classList.add('active');
 		};
+		
+		loadjs('js/load-db-journalieres.js');
 		
 		if (donnees_journalieres == 'donnees_journalieres_astre_transvihmi_guinee') {
 			document.getElementsByTagName('th')[0].innerHTML = 'Date';

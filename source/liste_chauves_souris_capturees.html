@@ -96,7 +96,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['table_chauves_souris_capturees'] = 'chauves_souris_capturees' + nom_table;
-		loadjs('js/load-db-bat-capturees.js');
+		
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -949,9 +949,13 @@
 			component_li.classList.add('active');
 		};
 		
+		loadjs('js/load-db-bat-capturees.js');
+		
 		if (bat_capturees_table == 'chauves_souris_capturees_astre_transvihmi_guinee') {
 			document.getElementsByTagName('th')[3].innerHTML = 'Site capture';
 		}
+		
+		
   		
 	</script> 
   </body>
