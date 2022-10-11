@@ -34,6 +34,7 @@ function createWindow () {
     height: 1200,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false
     },
   });
   mainWindow.loadFile('index.html');
@@ -61,6 +62,7 @@ app.on('activate', () => {
 
 ipcMain.on('app_version', (event) => {
 	event.sender.send('app_version', { version: app.getVersion() });
+	//window.localStorage.setItem('version_app_detection]', app.getVersion());
 });
 
 

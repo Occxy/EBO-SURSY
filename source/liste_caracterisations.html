@@ -99,7 +99,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['caracterisations_table'] = 'caracterisations_grottes' + nom_table;
-		loadjs('js/load-db-caracterisations.js');
+		
 
 	</script> 
   
@@ -924,6 +924,8 @@
 			}
 			catch(error) {
 	    	};
+	    	
+	    	loadjs('js/load-db-caracterisations.js');
 	    	
 			var component_li = document.getElementById('li_caracterisations' + nom_table);
 			component_li.classList.add('active');

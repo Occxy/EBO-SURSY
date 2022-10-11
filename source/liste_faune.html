@@ -98,7 +98,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['faune_table'] = 'faune' + nom_table;
-		loadjs('js/load-db-faune.js');
+		
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -938,6 +938,8 @@
 			component_a.setAttribute('aria-expanded', 'true');
 			var component_ul =  document.getElementById('ul_faune' + nom_table + 'Dropdown');
 			component_ul.classList.add('show');
+			
+			loadjs('js/load-db-faune.js');
 		
 			var component_li = document.getElementById('li_faune' + nom_table);
 			component_li.classList.add('active');
