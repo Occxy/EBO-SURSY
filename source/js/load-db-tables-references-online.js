@@ -47,7 +47,15 @@ if  (debug !== '') {
 		  'donnees_mission_mivegec_debug', 'donnees_journalieres_mivegec_debug',
 		  'grands_singes_antilopes_transvihmi_cameroun_debug', 'grands_singes_antilopes_transvihmi_rdc_debug',
 		  'grands_singes_antilopes_transvihmi_rca_debug', 'grands_singes_antilopes_transvihmi_rwanda_debug',
-		  'animals_ipg_guinee_debug'];
+		  'animals_ipg_guinee_debug',
+		  'chauves_souris_capturees_astre_transvihmi_guinee_debug', 'chauves_souris_non_invasives_astre_transvihmi_guinee_debug',
+		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
+		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
+		  'faune_astre_transvihmi_guinee_debug',
+		  'username', 'version'];
+	
+	
+
 } else if ((code_equipe === '1') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
 						  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
@@ -89,7 +97,11 @@ if  (debug !== '') {
 	tables_principales = ['animals_ipg_guinee'];	
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_astre_guinee', 'chauves_souris_non_invasives_astre_guinee', 
-						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee'];
+						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee',
+						  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
+						  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
+						  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
+						  'faune_astre_transvihmi_guinee'];
 }  else if ((code_equipe === '6') && (nom_pays == 'congo')) {
 	tables_principales = ['chauves_souris_capturees_astre_congo', 'chauves_souris_non_invasives_astre_congo', 
 		  'site_astre_congo', 'donnees_mission_astre_congo', 'donnees_journalieres_astre_congo'/*, 'espece_astre_congo'*/];
@@ -102,7 +114,11 @@ if  (debug !== '') {
 		  'chauves_souris_capturees_astre_congo', 'chauves_souris_non_invasives_astre_congo', 
 		  'site_astre_congo', 'donnees_mission_astre_congo', 'donnees_journalieres_astre_congo',
 		  'chauves_souris_capturees_astre_gabon', 'chauves_souris_non_invasives_astre_gabon', 
-		  'site_astre_gabon', 'donnees_mission_astre_gabon', 'donnees_journalieres_astre_gabon'];
+		  'site_astre_gabon', 'donnees_mission_astre_gabon', 'donnees_journalieres_astre_gabon',
+		  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
+		  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
+		  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
+		  'faune_astre_transvihmi_guinee'];
 }
 
 var tabCount = new Array();
@@ -129,8 +145,12 @@ if  (debug !== '') {
 		 'phenologie_astre_congo_debug', 'activite_humaine_astre_congo_debug',
 		 'espece_astre_gabon_debug', 'pays_astre_gabon_debug', 'lieu_capture_astre_gabon_debug', 'lieu_collecte_astre_gabon_debug', 'methode_capture_astre_gabon_debug',
 		 'couleur_pelage_dorsal_astre_gabon_debug', 'couleur_pelage_ventral_astre_gabon_debug',  	
-		 'phenologie_astre_gabon_debug', 'activite_humaine_astre_gabon_debug'
+		 'phenologie_astre_gabon_debug', 'activite_humaine_astre_gabon_debug',
+		 'pays_astre_transvihmi_guinee_debug', 'espece_astre_transvihmi_guinee_debug', 'activite_humaine_astre_transvihmi_guinee_debug',
+		 'couleur_pelage_dorsal_astre_transvihmi_guinee_debug', 'couleur_pelage_ventral_astre_transvihmi_guinee_debug'
 		 ];
+	
+	
 } else if ((code_equipe === '1') && (nom_pays == 'guinee')) {
 	var tables_references = 
 		['espece_transvihmi_guinee', 'pays_transvihmi_guinee', 'lieu_capture_transvihmi_guinee', 'lieu_collecte_transvihmi_guinee', 'methode_capture_transvihmi_guinee', 
@@ -174,7 +194,9 @@ if  (debug !== '') {
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	var tables_references = 
 		['espece_astre_guinee', 'pays_astre_guinee', 'lieu_capture_astre_guinee', 'lieu_collecte_astre_guinee', 'methode_capture_astre_guinee', 'phenologie_astre_guinee', 'activite_humaine_astre_guinee',
-		 'couleur_pelage_dorsal_astre_guinee', 'couleur_pelage_ventral_astre_guinee'];
+		 'couleur_pelage_dorsal_astre_guinee', 'couleur_pelage_ventral_astre_guinee',
+		 'pays_astre_transvihmi_guinee', 'espece_astre_transvihmi_guinee', 'activite_humaine_astre_transvihmi_guinee',
+		 'couleur_pelage_dorsal_astre_transvihmi_guinee', 'couleur_pelage_ventral_astre_transvihmi_guinee'];
 } else if ((code_equipe === '6') && (nom_pays == 'congo')) {
 	var tables_references = 
 		['espece_astre_congo', 'pays_astre_congo', 'lieu_capture_astre_congo', 'lieu_collecte_astre_congo', 'methode_capture_astre_congo', 'phenologie_astre_congo', 'activite_humaine_astre_congo',
@@ -190,8 +212,12 @@ if  (debug !== '') {
    		 'espece_astre_congo', 'pays_astre_congo', 'lieu_capture_astre_congo', 'lieu_collecte_astre_congo', 'methode_capture_astre_congo', 'phenologie_astre_congo', 'activite_humaine_astre_congo',
    		 'couleur_pelage_dorsal_astre_congo', 'couleur_pelage_ventral_astre_congo',
 		 'espece_astre_gabon', 'pays_astre_gabon', 'lieu_capture_astre_gabon', 'lieu_collecte_astre_gabon', 'methode_capture_astre_gabon', 'phenologie_astre_gabon', 'activite_humaine_astre_gabon',
-		 'couleur_pelage_dorsal_astre_gabon', 'couleur_pelage_ventral_astre_gabon'];
+		 'couleur_pelage_dorsal_astre_gabon', 'couleur_pelage_ventral_astre_gabon',
+		 'pays_astre_transvihmi_guinee', 'espece_astre_transvihmi_guinee', 'activite_humaine_astre_transvihmi_guinee',
+		 'couleur_pelage_dorsal_astre_transvihmi_guinee', 'couleur_pelage_ventral_astre_transvihmi_guinee'];
 }
+
+step = 100 / (tables_principales.length + tables_references.length);
 
 var tables_principales_count = tables_principales.length;
 load_tables_count(tables_principales_count);
@@ -250,7 +276,7 @@ function loadCount_total() {
 	total_progress_count = total_progress_count + 17 * 20;
 	
 	progressbar_count = Math.round(total_progress_count / 20);
-	step = 100 / progressbar_count; 
+	//step = 100 / progressbar_count; 
 	localStorage['step'] = step;
 	localStorage['non_multiple_de_20_count'] = non_multiple_de_20_count;
 	
@@ -319,9 +345,9 @@ function load_tables_principales(i) {
 		var remoteDB = new PouchDB(remote_couchdb + tables_principales[i-1] /*+ debug*/, {skip_setup: true});
 		localDB.sync(remoteDB, {batch_size: 20}).on('complete', (info) => {
 			count_total = localStorage.getItem('doc_' + tables_principales[i-1] + '_progress_count') / 20;
-			for (var j=0; j<count_total; j++) {
+			//for (var j=0; j<count_total; j++) {
 				move();
-			};
+			//};
 			return load_tables_principales(i-1);
 		}).on('change', (change) => {
 			count++;  //to count how many data is sync
@@ -338,6 +364,7 @@ function load_tables_principales(i) {
 function move() {
     var elem = document.getElementById("myBar");    
     width = width + step;
+    //alert(width)
     //alert("width : " + width + " - step :" + step);
     console.log("width : " + width);
     elem.style.width = width + '%';

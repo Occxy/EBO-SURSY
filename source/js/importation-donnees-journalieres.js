@@ -232,7 +232,7 @@ function is_only_one_country() {
 		var i_pays = 13
 	} else {
 		
-		var i_pays = 12;
+		var i_pays = 5;
 	};
 	
 	var rowContent = lines[1].trim().split(";");

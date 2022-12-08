@@ -45,7 +45,6 @@ $(document).ready(function() {
 	} else {
 		var table = $('#example').DataTable({
 			columnDefs: [
-				 { type: 'formatted-num', targets: 0}, 
 				 {  type: 'date-eu', targets: 1} 
 			],
 			columns: [

@@ -18,7 +18,7 @@ function chargement_des_tables_de_reference(table) {
 	};
 			
 	var nom_equipe;
-	if ((table == '_astre_guinee') || (table == '_astre_congo') || (table == '_astre_gabon') || (table == '_astre_transvihmi_guinee')) {
+	if ((table == '_astre_guinee') || (table == '_astre_congo') || (table == '_astre_gabon')) {
 		var site = 'site' + table;
 		var pays = 'pays' + table;
 		var lieu_collecte = 'lieu_collecte' + table;
@@ -53,7 +53,15 @@ function chargement_des_tables_de_reference(table) {
 			[site, pays, lieu_collecte, lieu_capture, methode_capture, espece, activite_humaine,
 			 espece_animal, preleve_chez, methode_chasse, destination, type_animal, etat_carcasse_animal,
 			 qualite_echantillon, endroit_prelevement, couleur_pelage_dorsal, couleur_pelage_ventral];
-	};
+	} else if (table == '_astre_transvihmi_guinee') {
+		var caracterisations_grottes = 'caracterisations_grottes' + table;
+		var pays = 'pays' + table;
+		var activite_humaine = 'activite_humaine' + table;
+		var couleur_pelage_dorsal = 'couleur_pelage_dorsal' + table;
+		var couleur_pelage_ventral = 'couleur_pelage_ventral' + table;
+		var tables_references =  
+			[caracterisations_grottes, pays, activite_humaine, couleur_pelage_dorsal, couleur_pelage_ventral];
+	};;
 	
 	
 	if ((table != '_mivegec_congo') && (table != '_mivegec_gabon') ) {

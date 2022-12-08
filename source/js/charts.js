@@ -1,5 +1,7 @@
-var lineChartDonneesMission_Astre_Congo;
-var lineChartDonneesJournalieres_Astre_Congo;
+var lineChartDonneesMission_Astre;
+var lineChartDonneesJournalieres_Astre;
+
+var code_equipe = localStorage.getItem('code_equipe');
 
 function extraireNombre(str) { 
    	return str.match(/[0-9]+/g)
@@ -10,7 +12,7 @@ function extraireNombre(str) {
     return year === null ? 'Now' : year[0];
 }
     
- const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+ var monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
 		"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
 ];
 
@@ -31,6 +33,7 @@ function extraireNombre(str) {
 //Charts Gradients
 //------------------------------------------------------ //
 var ctx1 = $("canvas").get(0).getContext("2d");
+//var ctx1 = $("#canvas")[0].getContext('2d');
 var gradient1 = ctx1.createLinearGradient(150, 0, 150, 300);
 gradient1.addColorStop(0, 'rgba(133, 180, 242, 0.91)');
 gradient1.addColorStop(1, 'rgba(255, 119, 119, 0.94)');
@@ -89,13 +92,13 @@ function select_year(select, table) {
     		});
     		
     		if (code_equipe == 20) {
-    			lineChartDonneesMission_Astre_Congo.data.datasets[0].data = monthValues;
-    			lineChartDonneesMission_Astre_Congo.update();
+    			lineChartDonneesMission_Astre.data.datasets[0].data = monthValues;
+    			lineChartDonneesMission_Astre.update();
     	    } else if (code_equipe == 6) {
-    	    	if (nom_pays == 'congo') {
-    	    		lineChartDonneesMission_Astre_Congo.data.datasets[0].data = monthValues;
-    	    		lineChartDonneesMission_Astre_Congo.update();
-    	    	}
+    	    	//if (nom_pays == 'congo') {
+    	    	lineChartDonneesMission_Astre.data.datasets[0].data = monthValues;
+    	    	lineChartDonneesMission_Astre.update();
+    	    	//}
     	    }
     		
     		  
@@ -199,15 +202,15 @@ function select_year(select, table) {
 	    	});
 	    	
 	   		if (code_equipe == 20) {
-	   			lineChartDonneesJournalieres_Astre_Congo.data.labels = dayLabels;
-	   			lineChartDonneesJournalieres_Astre_Congo.data.datasets[0].data = dayValues;
-	   			lineChartDonneesJournalieres_Astre_Congo.update(); 
+	   			lineChartDonneesJournalieres_Astre.data.labels = dayLabels;
+	   			lineChartDonneesJournalieres_Astre.data.datasets[0].data = dayValues;
+	   			lineChartDonneesJournalieres_Astre.update(); 
 		   	} else if (code_equipe == 6) {
-    	    	if (nom_pays == 'congo') {
-    	    		lineChartDonneesJournalieres_Astre_Congo.data.labels = dayLabels;
-    	    		lineChartDonneesJournalieres_Astre_Congo.data.datasets[0].data = dayValues;
-    	    		lineChartDonneesJournalieres_Astre_Congo.update(); 
-    		   	}
+    	    	//if (nom_pays == 'congo') {
+    	    		lineChartDonneesJournalieres_Astre.data.labels = dayLabels;
+    	    		lineChartDonneesJournalieres_Astre.data.datasets[0].data = dayValues;
+    	    		lineChartDonneesJournalieres_Astre.update(); 
+    		   	//}
     	    }
 	   		
 	   		 
@@ -304,11 +307,11 @@ function lineChartExample() {
 	});
 	
 	if (code_equipe == 20) {
-		lineChartDonneesMission_Astre_Congo = lineChartExample1;
+		lineChartDonneesMission_Astre = lineChartExample1;
    	} else if (code_equipe == 6) {
-    	if (nom_pays == 'congo') {
-    		lineChartDonneesMission_Astre_Congo = lineChartExample1;
-    	}
+    	//if (nom_pays == 'congo') {
+    		lineChartDonneesMission_Astre = lineChartExample1;
+    	//}
     }
 	
 	
@@ -379,11 +382,11 @@ function lineChart1(labels) {
 	});
 	
 	if (code_equipe == 20) {
-		lineChartDonneesJournalieres_Astre_Congo = myLineChart;
+		lineChartDonneesJournalieres_Astre = myLineChart;
    	} else if (code_equipe == 6) {
-    	if (nom_pays == 'congo') {
-    		lineChartDonneesJournalieres_Astre_Congo = myLineChart;
-    	}
+    	//if (nom_pays == 'congo') {
+    		lineChartDonneesJournalieres_Astre = myLineChart;
+    	//}
     }
 	
 	
@@ -399,22 +402,22 @@ $(document).ready(function () {
     var nom_pays = localStorage.getItem('nom_pays');
     
     if (code_equipe == 20) {
-    	var yearElement = document.getElementById('year_astre_congo');
-   	    select_year(yearElement, 'donnees_mission_astre_congo');
+    	var yearElement = document.getElementById('year_astre');
+   	    select_year(yearElement, 'donnees_mission_astre_guinee');
 
-   	    var monthElement = document.getElementById('month_astre_congo');
-   	    var yearElement = document.getElementById('year1_astre_congo');
-   	    select_month(monthElement, yearElement, 'donnees_journalieres_astre_congo');
+   	    var monthElement = document.getElementById('month_astre');
+   	    var yearElement = document.getElementById('year1_astre');
+   	    select_month(monthElement, yearElement, 'donnees_journalieres_astre_guinee');
    	
     } else if (code_equipe == 6) {
-    	if (nom_pays == 'congo') {
-    	    var yearElement = document.getElementById('year_astre_congo');
-    	    select_year(yearElement, 'donnees_mission_astre_congo');
+    	//if (nom_pays == 'congo') {
+    	    var yearElement = document.getElementById('year_astre_guinee');
+    	    select_year(yearElement, 'donnees_mission_astre_guinee');
 
-    	    var monthElement = document.getElementById('month_astre_congo');
-    	    var yearElement = document.getElementById('year1_astre_congo');
-    	    select_month(monthElement, yearElement, 'donnees_journalieres_astre_congo');
-    	}
+    	    var monthElement = document.getElementById('month_astre_guinee');
+    	    var yearElement = document.getElementById('year1_astre_guinee');
+    	    select_month(monthElement, yearElement, 'donnees_journalieres_astre_guinee');
+    	//}
     }
         
 

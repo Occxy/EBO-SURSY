@@ -19,13 +19,57 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 	} else if (html == 'non_invasives') {
 		var Famille_1 = document.getElementById('Famille_1');
 		var Famille_2 = document.getElementById('Famille_2');
-		var Famille_3 = document.getElementById('Famille_3');
+		var Famille_3 = document.getElementById('Famille_3');		
 		var Genre_1 = document.getElementById('Genre_1');
 		var Genre_2 = document.getElementById('Genre_2');
 		var Genre_3 = document.getElementById('Genre_3');
 		var Espece_1 = document.getElementById('Espece_1');
 		var Espece_2 = document.getElementById('Espece_2');
 		var Espece_3 = document.getElementById('Espece_3');
+	} else if (html == 'non_invasives_astre_transvihmi') {
+		var Famille_observe_1 = document.getElementById('Famille_observe_1');
+		var Famille_observe_2 = document.getElementById('Famille_observe_2');
+		var Famille_observe_3 = document.getElementById('Famille_observe_3');
+		var Famille_observe_4 = document.getElementById('Famille_observe_4');
+		var Famille_observe_5 = document.getElementById('Famille_observe_5');
+		var Famille_observe1_bache_1 = document.getElementById('Famille_observe1_bache_1');
+		var Famille_observe2_bache_1 = document.getElementById('Famille_observe2_bache_1');
+		var Famille_observe1_bache_2 = document.getElementById('Famille_observe1_bache_2');
+		var Famille_observe2_bache_2 = document.getElementById('Famille_observe2_bache_2');
+		var Famille_observe1_bache_3 = document.getElementById('Famille_observe1_bache_3');
+		var Famille_observe2_bache_3 = document.getElementById('Famille_observe2_bache_3');
+		var Famille_observe1_bache_4 = document.getElementById('Famille_observe1_bache_4');
+		var Famille_observe2_bache_4 = document.getElementById('Famille_observe2_bache_4');
+		var Famille_observe1_bache_5 = document.getElementById('Famille_observe1_bache_5');
+		var Famille_observe2_bache_5 = document.getElementById('Famille_observe2_bache_5');
+		var Famille_observe1_bache_6 = document.getElementById('Famille_observe1_bache_6');
+		var Famille_observe2_bache_6 = document.getElementById('Famille_observe2_bache_6');
+		var Famille_observe1_bache_7 = document.getElementById('Famille_observe1_bache_7');
+		var Famille_observe2_bache_7 = document.getElementById('Famille_observe2_bache_7');
+		var Famille_observe1_bache_8 = document.getElementById('Famille_observe1_bache_8');
+		var Famille_observe2_bache_8 = document.getElementById('Famille_observe2_bache_8');
+		var Famille_observe1_bache_9 = document.getElementById('Famille_observe1_bache_9');
+		var Famille_observe2_bache_9 = document.getElementById('Famille_observe2_bache_9');
+		var Famille_observe1_bache_10 = document.getElementById('Famille_observe1_bache_10');
+		var Famille_observe2_bache_10 = document.getElementById('Famille_observe2_bache_10');
+		var Genre_observe_1 = document.getElementById('Genre_observe_1');
+		var Genre_observe_2 = document.getElementById('Genre_observe_2');
+		var Genre_observe_3 = document.getElementById('Genre_observe_3');
+		var Genre_observe_4 = document.getElementById('Genre_observe_4');
+		var Genre_observe_5 = document.getElementById('Genre_observe_5');
+		var Genre_observe1_bache_1 = document.getElementById('Genre_observe1_bache_1');
+		var Genre_observe2_bache_1 = document.getElementById('Genre_observe2_bache_1');
+		var Genre_observe1_bache_2 = document.getElementById('Genre_observe1_bache_2');
+		var Genre_observe2_bache_2 = document.getElementById('Genre_observe2_bache_2');
+		var Espece_observe_1 = document.getElementById('Espece_observe_1');
+		var Espece_observe_2 = document.getElementById('Espece_observe_2');
+		var Espece_observe_3 = document.getElementById('Espece_observe_3');
+		var Espece_observe_4 = document.getElementById('Espece_observe_4');
+		var Espece_observe_5 = document.getElementById('Espece_observe_5');
+		var Espece_observe1_bache_1 = document.getElementById('Espece_observe1_bache_1');
+		var Espece_observe2_bache_1 = document.getElementById('Espece_observe2_bache_1');
+		var Espece_observe1_bache_2 = document.getElementById('Espece_observe1_bache_2');
+		var Espece_observe2_bache_2 = document.getElementById('Espece_observe2_bache_2');
 	} else if (html == 'viande_de_brousse') {
 		var Famille = document.getElementById('Famille');
 		var Genre = document.getElementById('Genre');
@@ -152,6 +196,32 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 									Famille_1.options[Famille_1.options.length] = new Option(value, value);
 						    		Famille_2.options[Famille_2.options.length] = new Option(value, value);
 						    		Famille_3.options[Famille_3.options.length] = new Option(value, value);
+					    		} else if (html == 'non_invasives_astre_transvihmi') {
+					    			Famille_observe_1.options[Famille_observe_1.options.length] = new Option(value, value);
+						    		Famille_observe_2.options[Famille_observe_2.options.length] = new Option(value, value);
+						    		Famille_observe_3.options[Famille_observe_3.options.length] = new Option(value, value);
+						    		Famille_observe_4.options[Famille_observe_4.options.length] = new Option(value, value);
+						    		Famille_observe_5.options[Famille_observe_5.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_1.options[Famille_observe1_bache_1.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_1.options[Famille_observe2_bache_1.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_2.options[Famille_observe1_bache_2.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_2.options[Famille_observe2_bache_2.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_3.options[Famille_observe1_bache_3.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_3.options[Famille_observe2_bache_3.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_4.options[Famille_observe1_bache_4.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_4.options[Famille_observe2_bache_4.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_5.options[Famille_observe1_bache_5.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_5.options[Famille_observe2_bache_5.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_6.options[Famille_observe1_bache_6.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_6.options[Famille_observe2_bache_6.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_7.options[Famille_observe1_bache_7.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_7.options[Famille_observe2_bache_7.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_8.options[Famille_observe1_bache_8.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_8.options[Famille_observe2_bache_8.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_9.options[Famille_observe1_bache_9.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_9.options[Famille_observe2_bache_9.options.length] = new Option(value, value);
+						    		Famille_observe1_bache_10.options[Famille_observe1_bache_10.options.length] = new Option(value, value);
+						    		Famille_observe2_bache_10.options[Famille_observe2_bache_10.options.length] = new Option(value, value);
 					    		} else if (html == 'capturees') {
 									Famille_terrain.options[Famille_terrain.options.length] = new Option(value, value);
 						    		Famille_labo.options[Famille_labo.options.length] = new Option(value, value);
@@ -188,7 +258,33 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 								Famille_1.options[Famille_1.options.length] = new Option(value, value);
 					    		Famille_2.options[Famille_2.options.length] = new Option(value, value);
 					    		Famille_3.options[Famille_3.options.length] = new Option(value, value);
-				    		} else if (html == 'capturees') {
+				    		} else if (html == 'non_invasives_astre_transvihmi') {
+				    			Famille_observe_1.options[Famille_observe_1.options.length] = new Option(value, value);
+					    		Famille_observe_2.options[Famille_observe_2.options.length] = new Option(value, value);
+					    		Famille_observe_3.options[Famille_observe_3.options.length] = new Option(value, value);
+					    		Famille_observe_4.options[Famille_observe_4.options.length] = new Option(value, value);
+					    		Famille_observe_5.options[Famille_observe_5.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_1.options[Famille_observe1_bache_1.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_1.options[Famille_observe2_bache_1.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_2.options[Famille_observe1_bache_2.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_2.options[Famille_observe2_bache_2.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_3.options[Famille_observe1_bache_3.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_3.options[Famille_observe2_bache_3.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_4.options[Famille_observe1_bache_4.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_4.options[Famille_observe2_bache_4.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_5.options[Famille_observe1_bache_5.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_5.options[Famille_observe2_bache_5.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_6.options[Famille_observe1_bache_6.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_6.options[Famille_observe2_bache_6.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_7.options[Famille_observe1_bache_7.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_7.options[Famille_observe2_bache_7.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_8.options[Famille_observe1_bache_8.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_8.options[Famille_observe2_bache_8.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_9.options[Famille_observe1_bache_9.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_9.options[Famille_observe2_bache_9.options.length] = new Option(value, value);
+					    		Famille_observe1_bache_10.options[Famille_observe1_bache_10.options.length] = new Option(value, value);
+					    		Famille_observe2_bache_10.options[Famille_observe2_bache_10.options.length] = new Option(value, value);
+				    		 }else if (html == 'capturees') {
 								Famille_terrain.options[Famille_terrain.options.length] = new Option(value, value);
 					    		Famille_labo.options[Famille_labo.options.length] = new Option(value, value);
 					    		Famille_consensus.options[Famille_consensus.options.length] = new Option(value, value);
@@ -281,6 +377,82 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 								if (Famille_3.value == value) {
 									Genre_3.options[Genre_3.options.length] = new Option(value2, value2);
 								}
+				    		} else if (html == 'non_invasives_astre_transvihmi') {
+								if (Famille_observe_1.value == value) {
+									Genre_observe_1.options[Genre_observe_1.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe_2.value == value) {
+									Genre_observe_2.options[Genre_observe_2.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe_3.value == value) {
+									Genre_observe_3.options[Genre_observe_3.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe_4.value == value) {
+									Genre_observe_4.options[Genre_observe_4.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe_5.value == value) {
+									Genre_observe_5.options[Genre_observe_5.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_1.value == value) {
+									Genre_observe1_bache_1.options[Genre_observe1_bache_1.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_1.value == value) {
+									Genre_observe2_bache_1.options[Genre_observe2_bache_1.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_2.value == value) {
+									Genre_observe1_bache_2.options[Genre_observe1_bache_2.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_2.value == value) {
+									Genre_observe2_bache_2.options[Genre_observe2_bache_2.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_3.value == value) {
+									Genre_observe1_bache_3.options[Genre_observe1_bache_3.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_3.value == value) {
+									Genre_observe2_bache_3.options[Genre_observe2_bache_3.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_4.value == value) {
+									Genre_observe1_bache_4.options[Genre_observe1_bache_4.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_4.value == value) {
+									Genre_observe2_bache_4.options[Genre_observe2_bache_4.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_5.value == value) {
+									Genre_observe1_bache_5.options[Genre_observe1_bache_5.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_5.value == value) {
+									Genre_observe2_bache_5.options[Genre_observe2_bache_5.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_6.value == value) {
+									Genre_observe1_bache_6.options[Genre_observe1_bache_6.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_6.value == value) {
+									Genre_observe2_bache_6.options[Genre_observe2_bache_6.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_7.value == value) {
+									Genre_observe1_bache_7.options[Genre_observe1_bache_7.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_7.value == value) {
+									Genre_observe2_bache_7.options[Genre_observe2_bache_7.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_8.value == value) {
+									Genre_observe1_bache_8.options[Genre_observe1_bache_8.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_8.value == value) {
+									Genre_observe2_bache_8.options[Genre_observe2_bache_8.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_9.value == value) {
+									Genre_observe1_bache_9.options[Genre_observe1_bache_9.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_9.value == value) {
+									Genre_observe2_bache_9.options[Genre_observe2_bache_9.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe1_bache_10.value == value) {
+									Genre_observe1_bache_10.options[Genre_observe1_bache_10.options.length] = new Option(value2, value2);
+								}
+								if (Famille_observe2_bache_10.value == value) {
+									Genre_observe2_bache_10.options[Genre_observe2_bache_10.options.length] = new Option(value2, value2);
+								}
 				    		} else if (html == 'capturees') {
 				    			if (Famille_terrain.value == value) {
 				    				Genre_terrain.options[Genre_terrain.options.length] = new Option(value2, value2);
@@ -358,6 +530,82 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 							}
 							if (Famille_3.value == value) {
 								Genre_3.options[Genre_3.options.length] = new Option(value2, value2);
+							}
+			    		} else if (html == 'non_invasives_astre_transvihmi') {
+							if (Famille_observe_1.value == value) {
+								Genre_observe_1.options[Genre_observe_1.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe_2.value == value) {
+								Genre_observe_2.options[Genre_observe_2.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe_3.value == value) {
+								Genre_observe_3.options[Genre_observe_3.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe_4.value == value) {
+								Genre_observe_4.options[Genre_observe_4.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe_5.value == value) {
+								Genre_observe_5.options[Genre_observe_5.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_1.value == value) {
+								Genre_observe1_bache_1.options[Genre_observe1_bache_1.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_1.value == value) {
+								Genre_observe2_bache_1.options[Genre_observe2_bache_1.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_2.value == value) {
+								Genre_observe1_bache_2.options[Genre_observe1_bache_2.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_2.value == value) {
+								Genre_observe2_bache_2.options[Genre_observe2_bache_2.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_3.value == value) {
+								Genre_observe1_bache_3.options[Genre_observe1_bache_3.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_3.value == value) {
+								Genre_observe2_bache_3.options[Genre_observe2_bache_3.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_4.value == value) {
+								Genre_observe1_bache_4.options[Genre_observe1_bache_4.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_4.value == value) {
+								Genre_observe2_bache_4.options[Genre_observe2_bache_4.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_5.value == value) {
+								Genre_observe1_bache_5.options[Genre_observe1_bache_5.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_5.value == value) {
+								Genre_observe2_bache_5.options[Genre_observe2_bache_5.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_6.value == value) {
+								Genre_observe1_bache_6.options[Genre_observe1_bache_6.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_6.value == value) {
+								Genre_observe2_bache_6.options[Genre_observe2_bache_6.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_7.value == value) {
+								Genre_observe1_bache_7.options[Genre_observe1_bache_7.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_7.value == value) {
+								Genre_observe2_bache_7.options[Genre_observe2_bache_7.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_8.value == value) {
+								Genre_observe1_bache_8.options[Genre_observe1_bache_8.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_8.value == value) {
+								Genre_observe2_bache_8.options[Genre_observe2_bache_8.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_9.value == value) {
+								Genre_observe1_bache_9.options[Genre_observe1_bache_9.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_9.value == value) {
+								Genre_observe2_bache_9.options[Genre_observe2_bache_9.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe1_bache_10.value == value) {
+								Genre_observe1_bache_10.options[Genre_observe1_bache_10.options.length] = new Option(value2, value2);
+							}
+							if (Famille_observe2_bache_10.value == value) {
+								Genre_observe2_bache_10.options[Genre_observe2_bache_10.options.length] = new Option(value2, value2);
 							}
 			    		} else if (html == 'capturees') {
 			    			if (Famille_terrain.value == value) {
@@ -499,6 +747,82 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 								if ((Famille_3.value == value) && (Genre_3.value == value2)) {
 									Espece_3.options[Espece_3.options.length] = new Option(value3, value3);
 								}
+				    		} else if (html == 'non_invasives_astre_transvihmi') {
+								if ((Famille_observe_1.value == value) && (Genre_observe_1.value == value2))  {
+									Espece_observe_1.options[Espece_observe_1.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe_2.value == value) && (Genre_observe_2.value == value2)) {
+									Espece_observe_2.options[Espece_observe_2.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe_3.value == value) && (Genre_observe_3.value == value2)) {
+									Espece_observe_3.options[Espece_observe_3.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe_4.value == value) && (Genre_observe_4.value == value2)) {
+									Espece_observe_4.options[Espece_observe_4.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe_5.value == value) && (Genre_observe_5.value == value2)) {
+									Espece_observe_5.options[Espece_observe_5.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_1.value == value) && (Genre_observe1_bache_1.value == value2)) {
+									Espece_observe1_bache_1.options[Espece_observe1_bache_1.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_1.value == value) && (Genre_observe2_bache_1.value == value2)) {
+									Espece_observe2_bache_1.options[Espece_observe2_bache_1.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_2.value == value) && (Genre_observe1_bache_2.value == value2)) {
+									Espece_observe1_bache_2.options[Espece_observe1_bache_2.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_2.value == value) && (Genre_observe2_bache_2.value == value2)) {
+									Espece_observe2_bache_2.options[Espece_observe2_bache_2.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_3.value == value) && (Genre_observe1_bache_3.value == value2)) {
+									Espece_observe1_bache_3.options[Espece_observe1_bache_3.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_3.value == value) && (Genre_observe2_bache_3.value == value2)) {
+									Espece_observe2_bache_3.options[Espece_observe2_bache_3.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_4.value == value) && (Genre_observe1_bache_4.value == value2)) {
+									Espece_observe1_bache_4.options[Espece_observe1_bache_4.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_4.value == value) && (Genre_observe2_bache_4.value == value2)) {
+									Espece_observe2_bache_4.options[Espece_observe2_bache_4.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_5.value == value) && (Genre_observe1_bache_5.value == value2)) {
+									Espece_observe1_bache_5.options[Espece_observe1_bache_5.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_5.value == value) && (Genre_observe2_bache_5.value == value2)) {
+									Espece_observe2_bache_5.options[Espece_observe2_bache_5.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_6.value == value) && (Genre_observe1_bache_6.value == value2)) {
+									Espece_observe1_bache_6.options[Espece_observe1_bache_6.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_6.value == value) && (Genre_observe2_bache_6.value == value2)) {
+									Espece_observe2_bache_6.options[Espece_observe2_bache_6.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_7.value == value) && (Genre_observe1_bache_7.value == value2)) {
+									Espece_observe1_bache_7.options[Espece_observe1_bache_7.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_7.value == value) && (Genre_observe2_bache_7.value == value2)) {
+									Espece_observe2_bache_7.options[Espece_observe2_bache_7.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_8.value == value) && (Genre_observe1_bache_8.value == value2)) {
+									Espece_observe1_bache_8.options[Espece_observe1_bache_8.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_8.value == value) && (Genre_observe2_bache_8.value == value2)) {
+									Espece_observe2_bache_8.options[Espece_observe2_bache_8.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_9.value == value) && (Genre_observe1_bache_9.value == value2)) {
+									Espece_observe1_bache_9.options[Espece_observe1_bache_9.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_9.value == value) && (Genre_observe2_bache_9.value == value2)) {
+									Espece_observe2_bache_9.options[Espece_observe2_bache_9.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe1_bache_10.value == value) && (Genre_observe1_bache_10.value == value2)) {
+									Espece_observe1_bache_10.options[Espece_observe1_bache_10.options.length] = new Option(value3, value3);
+								}
+								if ((Famille_observe2_bache_10.value == value) && (Genre_observe2_bache_10.value == value2)) {
+									Espece_observe2_bache_10.options[Espece_observe2_bache_10.options.length] = new Option(value3, value3);
+								}
 				    		} else if (html == 'capturees') {
 				    			if ((Famille_terrain.value == value) && (Genre_terrain.value == value2)) {
 				    				Espece_terrain.options[Espece_terrain.options.length] = new Option(value3, value3);
@@ -575,6 +899,82 @@ function addReference(nom_table, html, table, field, select, select2, select3) {
 							}
 							if ((Famille_3.value == value) && (Genre_3.value == value2)) {
 								Espece_3.options[Espece_3.options.length] = new Option(value3, value3);
+							}
+			    		} else if (html == 'non_invasives_astre_transvihmi') {
+							if ((Famille_observe_1.value == value) && (Genre_observe_1.value == value2))  {
+								Espece_observe_1.options[Espece_observe_1.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe_2.value == value) && (Genre_observe_2.value == value2)) {
+								Espece_observe_2.options[Espece_observe_2.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe_3.value == value) && (Genre_observe_3.value == value2)) {
+								Espece_observe_3.options[Espece_observe_3.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe_4.value == value) && (Genre_observe_4.value == value2)) {
+								Espece_observe_4.options[Espece_observe_4.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe_5.value == value) && (Genre_observe_5.value == value2)) {
+								Espece_observe_5.options[Espece_observe_5.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_1.value == value) && (Genre_observe1_bache_1.value == value2)) {
+								Espece_observe1_bache_1.options[Espece_observe1_bache_1.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_1.value == value) && (Genre_observe2_bache_1.value == value2)) {
+								Espece_observe2_bache_1.options[Espece_observe2_bache_1.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_2.value == value) && (Genre_observe1_bache_2.value == value2)) {
+								Espece_observe1_bache_2.options[Espece_observe1_bache_2.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_2.value == value) && (Genre_observe2_bache_2.value == value2)) {
+								Espece_observe2_bache_2.options[Espece_observe2_bache_2.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_3.value == value) && (Genre_observe1_bache_3.value == value2)) {
+								Espece_observe1_bache_3.options[Espece_observe1_bache_3.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_3.value == value) && (Genre_observe2_bache_3.value == value2)) {
+								Espece_observe2_bache_3.options[Espece_observe2_bache_3.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_4.value == value) && (Genre_observe1_bache_4.value == value2)) {
+								Espece_observe1_bache_4.options[Espece_observe1_bache_4.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_4.value == value) && (Genre_observe2_bache_4.value == value2)) {
+								Espece_observe2_bache_4.options[Espece_observe2_bache_4.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_5.value == value) && (Genre_observe1_bache_5.value == value2)) {
+								Espece_observe1_bache_5.options[Espece_observe1_bache_5.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_5.value == value) && (Genre_observe2_bache_5.value == value2)) {
+								Espece_observe2_bache_5.options[Espece_observe2_bache_5.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_6.value == value) && (Genre_observe1_bache_6.value == value2)) {
+								Espece_observe1_bache_6.options[Espece_observe1_bache_6.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_6.value == value) && (Genre_observe2_bache_6.value == value2)) {
+								Espece_observe2_bache_6.options[Espece_observe2_bache_6.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_7.value == value) && (Genre_observe1_bache_7.value == value2)) {
+								Espece_observe1_bache_7.options[Espece_observe1_bache_7.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_7.value == value) && (Genre_observe2_bache_7.value == value2)) {
+								Espece_observe2_bache_7.options[Espece_observe2_bache_7.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_8.value == value) && (Genre_observe1_bache_8.value == value2)) {
+								Espece_observe1_bache_8.options[Espece_observe1_bache_8.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_8.value == value) && (Genre_observe2_bache_8.value == value2)) {
+								Espece_observe2_bache_8.options[Espece_observe2_bache_8.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_9.value == value) && (Genre_observe1_bache_9.value == value2)) {
+								Espece_observe1_bache_9.options[Espece_observe1_bache_9.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_9.value == value) && (Genre_observe2_bache_9.value == value2)) {
+								Espece_observe2_bache_9.options[Espece_observe2_bache_9.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe1_bache_10.value == value) && (Genre_observe1_bache_10.value == value2)) {
+								Espece_observe1_bache_10.options[Espece_observe1_bache_10.options.length] = new Option(value3, value3);
+							}
+							if ((Famille_observe2_bache_10.value == value) && (Genre_observe2_bache_10.value == value2)) {
+								Espece_observe2_bache_10.options[Espece_observe2_bache_10.options.length] = new Option(value3, value3);
 							}
 			    		} else if (html == 'capturees') {
 			    			if ((Famille_terrain.value == value) && (Genre_terrain.value == value2)) {

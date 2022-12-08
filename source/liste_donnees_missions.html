@@ -525,10 +525,19 @@
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
                                               
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
-			                
+	                        <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
 			                    
@@ -666,11 +675,22 @@
                     <div class="card-header" id="button_table">
                       	<script type="text/javascript">
 		                  var line = document.createElement("div");
-		                  line.innerHTML = 
+		                  
+		                  var donnees_mission = localStorage.getItem('donnees_mission');
+		          		
+		          		  if (donnees_mission == 'donnees_mission_astre_transvihmi_guinee') {
+		                  	  line.innerHTML = 
 		                   	  '<h4 class="title">Nouvelle mission' +
-		                      '<a id="button_add" href="ajouter_modifier_donnees_missions.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+		                      '<a id="button_add" href="ajouter_modifier_donnees_missions_astre_transvihmi.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
 		                      '<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
 		                      '</h4>';
+		          		  } else {
+		          			  line.innerHTML = 
+			                  '<h4 class="title">Nouvelle mission' +
+			                  '<a id="button_add" href="ajouter_modifier_donnees_missions.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+			                  '<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
+			                  '</h4>'; 
+		          		  }
 		                  document.getElementById("button_table").appendChild(line);
 			         	</script>
                       <!-- <a id="button_add" href="new_suivi_longitudinal_donnees_missions_astre.html" class="btn btn btn-primary btn-fill">Ajouter</a></h4> -->
@@ -850,14 +870,22 @@
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_donnees_mission' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'ajouter_modifier_donnees_missions.html?option=2&table=' + nom_table;
+   			if (donnees_mission == 'donnees_mission_astre_transvihmi_guinee') {
+   				window.location = 'ajouter_modifier_donnees_missions_astre_transvihmi.html?option=2&table=' + nom_table;
+   			} else {
+   				window.location = 'ajouter_modifier_donnees_missions.html?option=2&table=' + nom_table;
+   			}
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_donnees_mission' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_donnees_missions.html?table=' + nom_table;
+   			if (donnees_mission == 'donnees_mission_astre_transvihmi_guinee') {
+   				window.location = 'consulter_donnees_missions_astre_transvihmi.html?table=' + nom_table;
+   			} else {
+   				window.location = 'consulter_donnees_missions.html?table=' + nom_table;
+   			}
 	 	});
   	</script>  
   	
@@ -923,6 +951,8 @@
 		};
 		
 		loadjs('js/load-db-mission.js');
+		
+		var donnees_mission = localStorage.getItem('donnees_mission');
 		
 		if (donnees_mission == 'donnees_mission_astre_transvihmi_guinee') {
 			document.getElementsByTagName('th')[0].innerHTML = 'Date début mission';

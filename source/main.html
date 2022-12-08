@@ -68,29 +68,13 @@
     
     <script src="js/loadjs.js"></script>
     
-    <!-- <script src="js/charts.js"></script> -->
+    
     
     <!-- <script src="js/load-page.js"></script> -->
     
   </head>
   <body onload="showConnexionStatus()"> 
-    <script>
-		logged_only();
-		if (localStorage.getItem('db_loaded') != '1') {
-			if (localStorage.getItem('web') === 'oui') {
-				loadjs('js/load-db-web.js');
-			} else if (navigator.onLine) {
-				loadjs('js/load-db-tables-references-online.js');
-			} else {
-		     	loadjs('js/load-alldbs-offline.js');
-	        };
-		} else {
-			loadjs('js/db_loaded.js');
-		};
-		
-		
-				
-	</script>	   
+       
     
     <div class="page">
       <!-- Main Navbar-->
@@ -513,10 +497,20 @@
                         
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
-                                              
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
+                            
+                            <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 			                
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
@@ -562,10 +556,7 @@
 	                    	                           
                           </ul>
                    	    </li>
-                   	    
-                   	    
-                   	    
-                      </ul>
+                   	  </ul>
                     </li>                    
 
 					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
@@ -647,7 +638,7 @@
               <div class="row">
                 <!-- Line Charts-->
                 <div class="col-lg-12">
-                  <div class="line-chart-example card" name="6" pays="congo" style="display: none;">
+                  <div class="line-chart-example card" name="6" pays="guinee" style="display: none;">
                     <div class="card-close">
                       <div class="dropdown">
                         <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
@@ -663,10 +654,14 @@
                     
                     <div class="row">
                       <div class="col-lg-6">
-		                <label for="year_astre_congo">Année : </label>
-					    <select id="year_astre_congo" class="form-control" onchange="select_year(this, 'donnees_mission_astre_congo')">
+		                <label for="year_astre">Année : </label>
+					    <select id="year_astre" class="form-control" onchange="select_year(this, 'donnees_mission_astre_guinee')">
 					      <option>2019</option>            
 		                  <option>2020</option>
+		                  <option>2021</option>
+		                  <option selected>2022</option>		                  
+		                  <option>2023</option>
+		                  <option>2024</option>
 		                </select>
 					  </div>
 					</div>	
@@ -692,11 +687,11 @@
                 
                 	<div class="row">
                       <div class="col-lg-6">
-		                <label for="month_astre_congo">Mois : </label>
-					    <select id="month_astre_congo" class="form-control" onchange="select_month(this, year1_astre_congo, 'donnees_journalieres_astre_congo')">
+		                <label for="month_astre">Mois : </label>
+					    <select id="month_astre" class="form-control" onchange="select_month(this, year1_astre, 'donnees_journalieres_astre_guinee')">
 					      <option>Janvier</option>            
 		                  <option>Février</option>
-		                  <option>Mars</option>            
+		                  <option selected>Mars</option>            
 		                  <option>Avril</option>
 		                  <option>Mai</option>            
 		                  <option>Juin</option>
@@ -711,10 +706,14 @@
 					</div>
                     <div class="row">
                       <div class="col-lg-6">
-		                <label for="year1_astre_congo">Année : </label>
-					    <select id="year1_astre_congo" class="form-control" onchange="select_month(month_astre_congo, this, 'donnees_journalieres_astre_congo')">
+		                <label for="year1_astre">Année : </label>
+					    <select id="year1_astre" class="form-control" onchange="select_month(month_astre, this, 'donnees_journalieres_astre_guinee')">
 					      <option>2019</option>            
 		                  <option>2020</option>
+		                  <option>2021</option>
+		                  <option selected>2022</option>
+		                  <option>2023</option>
+		                  <option>2024</option>
 		                </select>
 					  </div>
 					</div> 
@@ -1102,6 +1101,24 @@
                   
                   <div name="6" pays="guinee" style="display: none;">
                     <div class="card">
+                      <div class="card-header">
+                        <h4>ASTRE / TRANVIHMI - Guinée - Chauves-souris capturées</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-6">                    	      
+	      			        <div class="form-group">
+	      			    	  <label>Nombre d'enregistrement collecté : </label>
+	      			    	  <label id="label_chauves_souris_capturees_astre_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
+					        </div>  
+					      </div>                                                                                    
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div name="6" pays="guinee" style="display: none;">
+                    <div class="card">
                   	  <div class="card-header">
                         <h4>ASTRE - Guinée - Collecte non-invasive</h4>
                       </div>
@@ -1147,6 +1164,24 @@
 	      			        <div class="form-group">
 	      			    	  <label>Nombre d'enregistrement collecté : </label>
 	      			    	  <label id="label_chauves_souris_non_invasives_astre_gabon_count" style="color:red;font-weight: bold;"></label>
+	      			    	</div>
+					      </div>                                                                                     
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div name="6" pays="guinee" style="display: none;">
+                    <div class="card">
+                  	  <div class="card-header">
+                        <h4>ASTRE / TRANSVIHMI - Guinée - Collecte non-invasive</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-6">                    	      
+	      			        <div class="form-group">
+	      			    	  <label>Nombre d'enregistrement collecté : </label>
+	      			    	  <label id="label_chauves_souris_non_invasives_astre_transvihmi_guinee_count" style="color:red;font-weight: bold;"></label>
 	      			    	</div>
 					      </div>                                                                                     
                         </div>
@@ -1220,6 +1255,31 @@
 		component_a.classList.add('active');
 		
   	</script> 
+  	
+  	<script>
+		logged_only();
+		if (localStorage.getItem('db_loaded') != '1') {
+			if (localStorage.getItem('web') === 'oui') {
+				loadjs('js/load-db-web.js');
+			} else if (navigator.onLine) {
+				loadjs('js/load-db-tables-references-online.js');
+			} else {
+		     	loadjs('js/load-alldbs-offline.js');
+	        };
+		} else {
+			loadjs('js/db_loaded.js');
+		};
+		
+		
+				
+	</script>	
+	
+	<script src="js/charts.js"></script>
+	
+	<script>
+		document.getElementById("year_astre").onchange();
+		document.getElementById("year1_astre").onchange();
+	</script>
   
 </html>
 	 

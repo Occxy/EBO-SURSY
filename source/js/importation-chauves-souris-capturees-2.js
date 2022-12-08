@@ -122,19 +122,21 @@ DB.allDocs({
 }).catch(function (err) {
 	console.log(err);
 });*/
-var siteTablesData = JSON.parse(localStorage.getItem('site' + import_table + 'TablesData'));
-siteTablesData.rows.forEach(function(row){   
-	tabN_site.push(row.doc.N_site);
-});
-tab_Pays();
-
-function tab_Pays() {
-	var paysTablesData = JSON.parse(localStorage.getItem('pays' + import_table + 'TablesData'));
-	paysTablesData.rows.forEach(function(row){   
-		tabPays.push(row.doc.Pays);
+if (import_table != '_astre_transvihmi_guinee') {
+	var siteTablesData = JSON.parse(localStorage.getItem('site' + import_table + 'TablesData'));
+	siteTablesData.rows.forEach(function(row){   
+		tabN_site.push(row.doc.N_site);
 	});
 	tab_Lieu_Capture();
+} else {
+	var caracterisations_grottesTablesData = JSON.parse(localStorage.getItem('caracterisations_grottes' + import_table + 'TablesData'));
+	caracterisations_grottesTablesData.rows.forEach(function(row){   
+		tabN_site.push(row.doc.N_site);
+	});
+	tab_Couleur_pelage_dorsal()
 }
+
+
 
 function tab_Lieu_Capture() {
 	var lieu_captureTablesData = JSON.parse(localStorage.getItem('lieu_capture' + import_table + 'TablesData'));
@@ -194,7 +196,15 @@ function tab_Couleur_pelage_ventral() {
 		tabCouleur_pelage_ventral.push(row.doc.Couleur_pelage_ventral);
 	});
 	
-	importation()
+	tab_Pays()
+}
+
+function tab_Pays() {
+	var paysTablesData = JSON.parse(localStorage.getItem('pays' + import_table + 'TablesData'));
+	paysTablesData.rows.forEach(function(row){   
+		tabPays.push(row.doc.Pays);
+	});
+	importation();
 }
 
 function importation() {
@@ -399,8 +409,10 @@ function search_N_identification_Recursif_CS(/*localDB, */i) {
 						
 						//trim pour Famille/Genre/Espèce
 						if (import_table != '_astre_transvihmi_guinee') {
-							if (rowCountContent > 29 && rowCountContent < 39) {
-								if ((rowCountContent === 30) || (rowCountContent === 33) || (rowCountContent === 36)) {
+							//if (rowCountContent > 29 && rowCountContent < 39) {
+							//	if ((rowCountContent === 30) || (rowCountContent === 33) || (rowCountContent === 36)) {
+							if (rowCountContent > 26 && rowCountContent < 36) {	
+								if ((rowCountContent === 27) || (rowCountContent === 30) || (rowCountContent === 33)) {
 									new_doc[name_field] = rowContent.trim().toUpperCase();
 								} else {
 									new_doc[name_field] = rowContent.trim();	
@@ -487,7 +499,7 @@ function put_with_id_bat_capturees(id, i) {
 			//addValueInTableReferenceBatCapturees(rowCountContent, rowContent);
 						
 			//trim pour Famille/Genre/Espèce
-			if (rowCountContent > 26 && rowCountContent < 36) {	
+			/*if (rowCountContent > 26 && rowCountContent < 36) {	
 				if ((rowCountContent === 27) || (rowCountContent === 30) || (rowCountContent === 33)) {
 					doc[name_field] = rowContent.trim().toUpperCase();
 				} else {
@@ -495,7 +507,38 @@ function put_with_id_bat_capturees(id, i) {
 				};
 			} else {
 				doc[name_field] = rowContent;
-			};
+			};*/
+			
+			if (import_table != '_astre_transvihmi_guinee') {
+				//if (rowCountContent > 29 && rowCountContent < 39) {
+				//	if ((rowCountContent === 30) || (rowCountContent === 33) || (rowCountContent === 36)) {
+				if (rowCountContent > 26 && rowCountContent < 36) {	
+					if ((rowCountContent === 27) || (rowCountContent === 30) || (rowCountContent === 33)) {
+						doc[name_field] = rowContent.trim().toUpperCase();
+					} else {
+						doc[name_field] = rowContent.trim();	
+					};
+				} else {
+					doc[name_field] = rowContent;
+				};
+			} else {
+				//Species
+				if (rowCountContent > 31 && rowCountContent < 41) {
+					if ((rowCountContent === 32) || (rowCountContent === 35) || (rowCountContent === 38)) {
+						doc[name_field] = rowContent.trim().toUpperCase();
+					} else if ((rowCountContent === 33) || (rowCountContent === 36) || (rowCountContent === 39)) {
+						doc[name_field] = rowContent[0].toUpperCase() + rowContent.slice(1).toLowerCase();
+					} else {
+						doc[name_field] = rowContent.trim();	
+					};
+				} else {
+					doc[name_field] = rowContent;
+				};
+				//Age
+				if (rowCountContent === 42) {
+					doc[name_field] = rowContent[0].toUpperCase() + rowContent.slice(1).toLowerCase();
+				}
+			}
 			
 			doc.Username = localStorage.getItem('loginUsername');
 			//doc.Username = 'MorganeL';
@@ -1114,6 +1157,32 @@ function addValueInTableReferenceBatCapturees(rowCountContent, rowContent) {
 				tabNewPays.push(rowContent);		
 			};
 		}
+ 		//Couleur_pelage_dorsal
+		if ((rowCountContent == 65) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+			var new_couleur_pelage_dorsal = true;
+			for (var i = 0; i < tabCouleur_pelage_dorsal.length; i++) {
+				if (tabCouleur_pelage_dorsal[i] == String(rowContent)) {
+					new_couleur_pelage_dorsal = false;
+				};
+			};
+			if (new_couleur_pelage_dorsal) {
+				tabCouleur_pelage_dorsal.push(rowContent);
+				tabNewCouleur_pelage_dorsal.push(rowContent);		
+			};
+		} else 
+		//Couleur_pelage_ventral
+		if ((rowCountContent == 66) && (rowContent != String('')) && (rowContent != String('Manquant'))) {
+			var new_couleur_pelage_ventral = true;
+			for (var i = 0; i < tabCouleur_pelage_ventral.length; i++) {
+				if (tabCouleur_pelage_ventral[i] == String(rowContent)) {
+					new_couleur_pelage_ventral = false;
+				};
+			};
+			if (new_couleur_pelage_ventral) {
+				tabCouleur_pelage_ventral.push(rowContent);
+				tabNewCouleur_pelage_ventral.push(rowContent);		
+			};
+		};
  	}
 		
 	

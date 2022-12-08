@@ -21,6 +21,29 @@ function chargement_des_tables_de_reference(table, option) {
 	} else {
 		debug = localStorage.getItem('debug');
 	};
+	
+	var N_site = document.getElementById("N_site");	
+	if (localStorage.getItem('web') === 'oui') {
+		var remote_couchdb = localStorage.getItem('remote_couchdb');
+		var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
+	} else {
+		var DB = new PouchDB('caracterisations_grottes' + nom_table + debug);
+	};
+	DB.allDocs({  		
+		include_docs: true,
+		attachments: true
+	}).then(function (result) {
+		// handle result
+		if (typeof(JSON.stringify(result)) != "undefined"){  
+	    	var caracterisationsTablesData = JSON.parse(JSON.stringify(result));
+	    	
+	    	caracterisationsTablesData.rows.forEach(function(row){   
+	    		N_site.options[N_site.options.length] = new Option(row.doc.N_site, row.doc.N_site/*row.id*/);
+	    	});		
+		}
+	}).catch(function (err) {
+		console.log(err);
+	});
 		
 	var Pays = document.getElementById("Pays");		
 	if (localStorage.getItem('web') === 'oui') {
@@ -84,13 +107,12 @@ function modifier(table, option) {
 		}
 		
 		addValue('Equipe');
-		addValue('N_site');
 		
-		//addValue('Date');
-		/*$('#Date').datepicker('setDate', result.rows[0].doc.Date);
-		//addValue('Equipe');*/
 		addValue('Pays');
-		addValue('Region_capture');
+		addValue('Prefecture');
+		addValue('Site_capture');
+		addValue('Sous_prefecture');
+		addValue('Ville_village');
 		addValue('Site_capture');
 		addValue('Environnement');
 		addValue('Lat_degre_dec');
@@ -98,6 +120,9 @@ function modifier(table, option) {
 		addValue('Long_degre_dec');
 		addValue('Longitude');
 		addValue('Proximite_village_km');
+		addValue('Proximite_source_m');
+		addValue('N_site', true);
+		
 		addValue('ID_camera_1');	
 		addValue('NumSD_inseree_1');	
 		addValue('NumSD_remplacee_1');	
@@ -210,14 +235,13 @@ function modifier(table, option) {
 					};
 				}
 				
-				addValue('Equipe');
-				addValue('N_site');
+				addValue('Equipe');		
 				
-				//addValue('Date');
-				/*$('#Date').datepicker('setDate', result.rows[0].doc.Date);
-				//addValue('Equipe');*/
 				addValue('Pays');
-				addValue('Region_capture');
+				addValue('Prefecture');
+				addValue('Site_capture');
+				addValue('Sous_prefecture');
+				addValue('Ville_village');
 				addValue('Site_capture');
 				addValue('Environnement');
 				addValue('Lat_degre_dec');
@@ -225,7 +249,10 @@ function modifier(table, option) {
 				addValue('Long_degre_dec');
 				addValue('Longitude');
 				addValue('Proximite_village_km');
-				addValue('ID_camera_1');	
+				addValue('Proximite_source_m');
+				addValue('N_site', true);
+				
+				addValue('ID_camera_1');
 				addValue('NumSD_inseree_1');	
 				addValue('NumSD_remplacee_1');	
 				$('#Date_debut_camera_1').datepicker('setDate', result.rows[0].doc.Date_debut_camera_1);

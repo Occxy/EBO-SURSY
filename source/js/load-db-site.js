@@ -31,7 +31,7 @@ $(document).ready(function() {
         */
 	var table = $('#example').DataTable({
 		columnDefs: [
-			 { type: 'date-eu', targets: 2 }
+			 { type: 'date-eu', targets: 1 }
 		],
 		columns: [			
 			{ data: null, render: 'N_site'},					

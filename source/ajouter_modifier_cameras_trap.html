@@ -558,10 +558,19 @@
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
                                               
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
-			                
+	                        <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
 			                    
@@ -693,7 +702,7 @@
 	                    if ((option == 0) || (option == 1)) {
 	                    	line.innerHTML = '<h4>Nouvelle camera-trap</h4>';
 			            } else if (option == 2) {
-			              	var ID = 'ID_site' + nom_table;
+			              	var ID = 'ID_caracterisations' + nom_table;
 		                  	line.innerHTML = '<h4>Modifier la camera-trap : ID = '+ localStorage.getItem(ID) + '</h4>';
 	                    }
 	                   	document.getElementById("header").appendChild(line);
@@ -702,27 +711,25 @@
                     <div class="card-body">                                            
                       <form id="documentForm" name="documentForm" class="needs-validation" method="post" novalidate>
 				        
+				        
 				        <div class="card bg-light">
 				          <div class="card-header card-header-transparent d-flex align-items-center">
-                            <h3 class="h4">Données de la camera-trap</h3>
+                            <h3 class="h4">Données de caractérisation</h3>
                           </div>
                           <div class="card-body">
-		      				
 		      				<div class="row">
-		      			      <div class="col-lg-6">
-		      			        <div class="form-group">
-		                          <label for="Equipe">Equipe</label>
-		                          <input type="text" class="form-control" id="Equipe" placeholder="Equipe">
-		                        </div>
-		      				  </div>
-		      				  <div class="col-lg-6">
-		      			        <div class="form-group">
-		                          <label for="N_site">N_site</label>
-		                          <input type="text" class="form-control" id="N_site" placeholder="N_site">
-		                        </div>
-		      				  </div>
-		      				</div>
-		      				 
+		      				  <div class="col-lg-8">
+			                    <div class="form-group">
+				                  <label for="N_site">Numéro de site</label>
+				                  <select id="N_site" class="form-control" onchange="select_N_site(this)">
+	                                  <option></option>
+	                          	    </select>
+				                  <div class="invalid-feedback">
+				        	  	    S'il vous plaît fournir un Numéro de site valide !
+				      		  	  </div>
+				      		  	</div>
+				      		  </div>   
+		                    </div>	 
 		      			    	      				      			    
 		      			    <div class="row">
 		      			      <div class="col-lg-6">           
@@ -743,8 +750,8 @@
 		      			      </div> 
 		      			      <div class="col-lg-6">
 		      			        <div class="form-group">
-		                          <label for="Region_capture">Région (ex. nom de la ville, nom du parc...)</label>
-		                          <input type="text" class="form-control" id="Region_capture" placeholder="Région (ex. nom de la ville, nom du parc...)">
+		                          <label for="Prefecture">Préfecture</label>
+		                          <input type="text" class="form-control" id="Prefecture" placeholder="Préfecture">
 		                        </div>
 		      			      </div>
 		      			    </div>	 
@@ -752,25 +759,43 @@
 		      			    <div class="row">
 		      			      <div class="col-lg-6">
 		      			        <div class="form-group">
+		                          <label for="Sous_prefecture">Sous-prefecture</label>
+		                          <input type="text" class="form-control" id="Sous_prefecture" placeholder="Sous-prefecture">
+		                        </div>
+		      				  </div>
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Ville_village">Ville/village</label>
+		                          <input type="text" class="form-control" id="Ville_village" placeholder="Ville/village">
+		                        </div>
+		      				  </div>
+		      				  
+		      				</div>    
+		      				
+		      					
+		      				
+		      			    
+		      			    <div class="row">
+	                    	  <div class="col-lg-6">
+		      			        <div class="form-group">
 		                          <label for="Site_capture">Site précis de capture (ex. village, lieu-dit)</label>
 		                          <input type="text" class="form-control" id="Site_capture" placeholder="Site précis de capture (ex. village, lieu-dit)">
 		                        </div>
 		      				  </div>
-		      			    
 		      				  <div class="col-lg-6">
 		      			        <div class="form-group">
 		                          <label for="Environnement">Environnement</label>
 		                          <input type="text" class="form-control" id="Environnement" placeholder="Environnement">
 		                        </div>
-		      				  </div>
-		      				</div>    
-		      			    
-		      			    <div class="row">
-	                    	  <div class="col-lg-4">
-		      			    	<div class="form-group">
-		      			    	  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
+		      				  </div>		
+		      				</div> 
+		      				
+		      				<div class="row">  
+		      				  <div class="col-lg-4">      			        
+							    <div class="form-group">
+								  <label for="Lat_degre_dec">Latitude coord. (deg. déc.)</label>
 								  <input type="text" class="form-control" id="Lat_degre_dec" placeholder="Latitude coordonnées" >
-								</div>
+								</div>	
 							  </div>
 							  <div class="col-lg-2">	
 								<div class="form-group">	  
@@ -809,11 +834,37 @@
 	                        </div>
 	                        
 	                        <div class="row">
-	                    	  <div class="col-lg-4">      
-	                            <div class="form-group">
-		                          <label for="Proximite_village_km">Proximité du village en km</label>
-		                          <input type="text" class="form-control" id="Proximite_village_km" placeholder="Proximité du village en km" >
-		                        </div>	      				  
+                              <div class="col-lg-6">                    	      
+	      			    	    <div class="form-group">
+	      			    	      <label for="Proximite_village_km">Proximite village km</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control" id="Proximite_village_km" placeholder="Proximite village km">	                                
+	    					      </div>
+	    					    </div>
+							  </div>
+						      <div class="col-lg-6">	
+							    <div class="form-group">	  
+							      <label for="Proximite_source_m">Proximite source m</label>
+				          	      <input type="text" class="form-control" id="Proximite_source_m" placeholder="Proximite source m" >
+                        	    </div>											    
+                              </div>
+                            </div>
+	                        		      
+		      			  </div>
+                        </div>
+                        
+				        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données des cameras-trap</h3>
+                          </div>
+                          <div class="card-body">
+		      				
+		      				<div class="row">
+		      			      <div class="col-lg-6">
+		      			        <div class="form-group">
+		                          <label for="Equipe">Equipe</label>
+		                          <input type="text" class="form-control" id="Equipe" placeholder="Equipe">
+		                        </div>
 		      				  </div>
 		      			    </div>	
 		      			    
@@ -1395,6 +1446,162 @@
         </div>
       </div>
     </div>
+    
+    <script type="text/javascript">	
+	    function select_N_site(select) {			
+			var valeurN_site = select.options[select.selectedIndex].text;	
+			
+			if (valeurN_site == "") {
+				
+				var Pays = document.getElementById("Pays");			
+				try {
+					Pays.value = '';	
+					Pays.disabled = false;
+				}
+				catch(err) {
+				};
+				
+				var Prefecture = document.getElementById("Prefecture");
+				Prefecture.value = '';
+				Prefecture.disabled = false;
+				
+				var Sous_prefecture = document.getElementById("Sous_prefecture");
+				Sous_prefecture.value = '';
+				Sous_prefecture.disabled = false;
+				
+				var Ville_village = document.getElementById("Ville_village");
+				Ville_village.value = '';
+				Ville_village.disabled = false;
+				
+				var Site_capture = document.getElementById("Site_capture");
+				Site_capture.value = '';
+				Site_capture.disabled = false;
+				
+				var Environnement = document.getElementById("Environnement");
+				Environnement.value = '';
+				Environnement.disabled = false;
+				
+				var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+				Lat_degre_dec.value = '';
+				Lat_degre_dec.disabled = false;
+				
+				var Latitude = document.getElementById("Latitude");
+				Latitude.value = '';
+				Latitude.disabled = false;
+				
+				var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+				Lat_degre_dec.value = '';
+				Lat_degre_dec.disabled = false;
+				
+				var Longitude = document.getElementById("Longitude");
+				Longitude.value = '';
+				Longitude.disabled = false;
+				
+				var Long_degre_dec = document.getElementById("Long_degre_dec");
+				Long_degre_dec.value = '';
+				Long_degre_dec.disabled = false;
+				
+				var Proximite_village_km = document.getElementById("Proximite_village_km");
+				Proximite_village_km.value = '';
+				Proximite_village_km.disabled = false;
+				
+				var Proximite_source_m = document.getElementById("Proximite_source_m");
+				Proximite_source_m.value = '';
+				Proximite_source_m.disabled = false;
+				
+				
+			} else {
+			
+				if (localStorage.getItem('web') === 'oui') {
+					var remote_couchdb = localStorage.getItem('remote_couchdb');
+					var DB = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
+				} else {
+					var DB = new PouchDB('caracterisations_grottes' + nom_table + debug);
+				};	
+				
+				DB.find({
+					selector: {N_site: valeurN_site},
+					fields: ['_id', 'N_site']
+				}).then(function (result) {
+			
+					if (localStorage.getItem('web') === 'oui') {
+						var remote_couchdb = localStorage.getItem('remote_couchdb');
+						var DB2 = new PouchDB(remote_couchdb + 'caracterisations_grottes' + nom_table + debug);
+					} else {
+						var DB2 = new PouchDB('caracterisations_grottes' + nom_table + debug);
+					};	
+					
+					console.log(JSON.stringify(result));
+					var res =  JSON.parse(JSON.stringify(result));
+					id = res.docs[0]._id;
+		    		
+					DB2.get(id).then(function (doc) {
+											
+						var Pays = document.getElementById("Pays");			
+						try {
+							Pays.value = doc.Pays;	
+							Pays.disabled = true;
+						}
+						catch(err) {
+						};
+						
+						var Prefecture = document.getElementById("Prefecture");
+						Prefecture.value = doc.Prefecture;
+						Prefecture.disabled = true;
+						
+						var Sous_prefecture = document.getElementById("Sous_prefecture");
+						Sous_prefecture.value = doc['Sous-prefecture'];
+						Sous_prefecture.disabled = true;
+												
+						var Ville_village = document.getElementById("Ville_village");
+						Ville_village.value = doc['Ville/village'];
+						Ville_village.disabled = true;
+												
+						var Site_capture = document.getElementById("Site_capture");
+						Site_capture.value = doc.Site_capture;
+						Site_capture.disabled = true;
+						
+						var Environnement = document.getElementById("Environnement");
+						Environnement.value = doc.Environnement;
+						Environnement.disabled = true;
+						
+						var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+						Lat_degre_dec.value = doc.Lat_degre_dec;
+						Lat_degre_dec.disabled = true;
+						
+						var Latitude = document.getElementById("Latitude");
+						Latitude.value = doc.Latitude;
+						Latitude.disabled = true;
+						
+						var Lat_degre_dec = document.getElementById("Lat_degre_dec");
+						Lat_degre_dec.value = doc.Lat_degre_dec;
+						Lat_degre_dec.disabled = true;
+						
+						var Longitude = document.getElementById("Longitude");
+						Longitude.value = doc.Longitude;
+						Longitude.disabled = true;
+						
+						var Long_degre_dec = document.getElementById("Long_degre_dec");
+						Long_degre_dec.value = doc.Long_degre_dec;
+						Long_degre_dec.disabled = true;
+						
+						var Proximite_village_km = document.getElementById("Proximite_village_km");
+						Proximite_village_km.value = doc.Proximite_village_km;
+						Proximite_village_km.disabled = true;
+						
+						var Proximite_source_m = document.getElementById("Proximite_source_m");
+						Proximite_source_m.value = doc.Proximite_source_m;
+						Proximite_source_m.disabled = true;
+						
+						
+					})
+				});
+				
+				//var DB = new PouchDB('site_astre' + debug);
+				
+			}
+		}
+	</script>
 	
     <script type="text/javascript">
     	$('.input-datepicker').datepicker({
@@ -1537,9 +1744,9 @@
   		        } else {
   		          event.preventDefault();
   		        if ((option == 0) || (option == 1)) {
-	  		      	addSite();
+	  		      	addCamerasTrap();
 	  		  	  } else if ((option == 2)) {
-	  		  		modifySite();
+	  		  		modifyCamerasTrap();
 	  		  	  }
   		        } 		        
   		        form.classList.add('was-validated');
@@ -1548,7 +1755,7 @@
   		  }, false);
   		})();
  		
-  		function addSite() {  
+  		function addCamerasTrap() {  
   			
   			//alert('add');
   			
@@ -1562,14 +1769,17 @@
 			var Equipe = document.getElementById('Equipe').value;	
 			var N_site = document.getElementById('N_site').value;		
 			var Pays = document.getElementById('Pays').value;		
-			var Region_capture = document.getElementById('Region_capture').value;				
-			var Site_capture = document.getElementById('Site_capture').value;				
+			var Prefecture = document.getElementById('Prefecture').value;	
+			var Sous_prefecture = document.getElementById('Sous_prefecture').value;
+			var Ville_village = document.getElementById('Ville_village').value;			
+			var Site_capture = document.getElementById('Site_capture').value;		
 			var Environnement = document.getElementById('Environnement').value;			
-			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
 			var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;			
 			var Latitude = document.getElementById('Latitude').value;			
-			var Long_degre_dec = document.getElementById('Long_degre_dec').value;		
+			var Long_degre_dec = document.getElementById('Long_degre_dec').value;
 			var Longitude = document.getElementById('Longitude').value;			
+			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
+			var Proximite_source_m = document.getElementById('Proximite_source_m').value;	
 			var ID_camera_1 = document.getElementById('ID_camera_1').value;			
 			var NumSD_inseree_1 = document.getElementById('NumSD_inseree_1').value;			
 			var NumSD_remplacee_1 = document.getElementById('NumSD_remplacee_1').value;			
@@ -1638,14 +1848,18 @@
 		  	    doc.Equipe = Equipe;	
 				doc.N_site = N_site;		
 				doc.Pays = Pays;		
-				doc.Region_capture = Region_capture;				
-				doc.Site_capture = Site_capture;				
+				doc.Prefecture = Prefecture;	
+				doc['Sous-prefecture'] = Sous_prefecture;	
+				doc['Ville/village'] = Ville_village;	
+				doc.Site_capture = Site_capture;
 				doc.Environnement = Environnement;			
-				doc.Proximite_village_km = Proximite_village_km;		
+						
 				doc.Lat_degre_dec = Lat_degre_dec;			
 				doc.Latitude = Latitude;			
 				doc.Long_degre_dec = Long_degre_dec;		
 				doc.Longitude = Longitude;			
+				doc.Proximite_village_km = Proximite_village_km;
+				doc.Proximite_source_m = Proximite_source_m;
 				doc.ID_camera_1 = ID_camera_1;			
 				doc.NumSD_inseree_1 = NumSD_inseree_1;			
 				doc.NumSD_remplacee_1 = NumSD_remplacee_1;			
@@ -1719,14 +1933,17 @@
 				Equipe: Equipe,	
 				N_site: N_site,		
 				Pays: Pays,		
-				Region_capture: Region_capture,				
-				Site_capture: Site_capture,				
-				Environnement: Environnement,			
-				Proximite_village_km: Proximite_village_km,		
+				Prefecture: Prefecture,
+				'Sous-prefecture': Sous_prefecture,
+				'Ville/village': Ville_village,		
+				Site_capture: Site_capture,
+				Environnement: Environnement,				
 				Lat_degre_dec: Lat_degre_dec,			
 				Latitude: Latitude,			
 				Long_degre_dec: Long_degre_dec,		
-				Longitude: Longitude,			
+				Longitude: Longitude,		
+				Proximite_village_km: Proximite_village_km,	
+				Proximite_source_m: Proximite_source_m,
 				ID_camera_1: ID_camera_1,			
 				NumSD_inseree_1: NumSD_inseree_1,			
 				NumSD_remplacee_1: NumSD_remplacee_1,			
@@ -1822,7 +2039,7 @@
 			});	
   		};
   		
-  		function modifySite() {  
+  		function modifyCamerasTrap() {  
 			var l = Ladda.create( document.querySelector( '.ladda-button' ) );
 
 			// Start loading
@@ -1832,14 +2049,17 @@
 			var Equipe = document.getElementById('Equipe').value;	
 			var N_site = document.getElementById('N_site').value;		
 			var Pays = document.getElementById('Pays').value;		
-			var Region_capture = document.getElementById('Region_capture').value;				
-			var Site_capture = document.getElementById('Site_capture').value;				
+			var Prefecture = document.getElementById('Prefecture').value;		
+			var Sous_prefecture = document.getElementById('Sous_prefecture').value;		
+			var Ville_village = document.getElementById('Ville_village').value;		
+			var Site_capture = document.getElementById('Site_capture').value;	
 			var Environnement = document.getElementById('Environnement').value;			
-			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
 			var Lat_degre_dec = document.getElementById('Lat_degre_dec').value;			
 			var Latitude = document.getElementById('Latitude').value;			
 			var Long_degre_dec = document.getElementById('Long_degre_dec').value;		
 			var Longitude = document.getElementById('Longitude').value;			
+			var Proximite_village_km = document.getElementById('Proximite_village_km').value;		
+			var Proximite_source_m = document.getElementById('Proximite_source_m').value;
 			var ID_camera_1 = document.getElementById('ID_camera_1').value;			
 			var NumSD_inseree_1 = document.getElementById('NumSD_inseree_1').value;			
 			var NumSD_remplacee_1 = document.getElementById('NumSD_remplacee_1').value;			
@@ -1921,14 +2141,17 @@
 					doc.Equipe = Equipe;	
 					doc.N_site = N_site;		
 					doc.Pays = Pays;		
-					doc.Region_capture = Region_capture;				
-					doc.Site_capture = Site_capture;				
-					doc.Environnement = Environnement;			
-					doc.Proximite_village_km = Proximite_village_km;		
+					doc.Prefecture = Prefecture;	
+					doc['Sous-prefecture'] = Sous_prefecture;	
+					doc['Ville/village'] = Ville_village;	
+					doc.Site_capture = Site_capture;					
+					doc.Environnement = Environnement;							
 					doc.Lat_degre_dec = Lat_degre_dec;			
 					doc.Latitude = Latitude;			
 					doc.Long_degre_dec = Long_degre_dec;		
-					doc.Longitude = Longitude;			
+					doc.Longitude = Longitude;		
+					doc.Proximite_village_km = Proximite_village_km;
+					doc.Proximite_source_m = Proximite_source_m;
 					doc.ID_camera_1 = ID_camera_1;			
 					doc.NumSD_inseree_1 = NumSD_inseree_1;			
 					doc.NumSD_remplacee_1 = NumSD_remplacee_1;			
@@ -2060,6 +2283,17 @@
 	  			var component_a = document.getElementById('a' + nom_table + 'Dropdown');
 				component_a.setAttribute('aria-expanded', 'true');
 				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			}
+			catch(error) {
+	    	};
+	    	
+	    	try {
+	  			var component_li = document.getElementById('li_cameras_trap' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+	  			var component_a = document.getElementById('a_cameras_trap' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_cameras_trap' + nom_table + 'Dropdown');
 				component_ul.classList.add('show');
 			}
 			catch(error) {

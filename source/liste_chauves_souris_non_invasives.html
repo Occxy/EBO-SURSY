@@ -546,10 +546,19 @@
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
                                               
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
-			                
+	                        <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
 			                    
@@ -688,11 +697,22 @@
                     <div class="card-header" id="button_table">
                       <script type="text/javascript">
 		                    var line = document.createElement("div");
-		                    line.innerHTML = 
-		                    	'<h4 class="title">Nouvelle Chauve-souris' +
-		                    	'<a id="button_add" href="ajouter_modifier_chauves_souris_non_invasives.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+							
+		                    var table_chauves_souris_non_invasives = localStorage.getItem('table_chauves_souris_non_invasives');
+			          		
+			          		if (table_chauves_souris_non_invasives == 'chauves_souris_non_invasives_astre_transvihmi_guinee') {
+		                    	line.innerHTML = 
+		                    	'<h4 class="title">Nouvelle collecte' +
+		                    	'<a id="button_add" href="ajouter_modifier_chauves_souris_non_invasives_astre_transvihmi.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
 		                    	'<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
 		                        '</h4>';
+			          		} else {
+			          			line.innerHTML = 
+			                    '<h4 class="title">Nouvelle collecte' +
+			                    '<a id="button_add" href="ajouter_modifier_chauves_souris_non_invasives.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+			                    '<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
+			                    '</h4>';
+			          		}
 		                    document.getElementById("button_table").appendChild(line);
 			         	 </script>
 			         	 <!-- <a id="button_add" href="new_bat_non_invasives_astre.html" class="btn btn btn-primary btn-fill">Ajouter</a></h4> -->
@@ -870,14 +890,18 @@
    			var ID_table = 'ID_chauves_souris_non_invasives' + nom_table;
    			//localStorage['ID_chauves_souris_non_invasives_astre'] = ID;
    			localStorage[ID_table] = ID;
-   			window.location = 'ajouter_modifier_chauves_souris_non_invasives.html?option=2&table=' + nom_table;
+   			window.location = 'ajouter_modifier_chauves_souris_non_invasives_astre_transvihmi.html?option=2&table=' + nom_table;
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_chauves_souris_non_invasives' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_chauves_souris_non_invasives.html?table=' + nom_table;
+   			if (table_chauves_souris_non_invasives == 'chauves_souris_non_invasives_astre_transvihmi_guinee') {
+   				window.location = 'consulter_chauves_souris_non_invasives_astre_transvihmi.html?table=' + nom_table;
+   			} else {
+   				window.location = 'consulter_chauves_souris_non_invasives.html?table=' + nom_table;
+   			}
 	 	});
   	</script>  
   	
@@ -943,6 +967,8 @@
 		};
 		
 		loadjs('js/load-db-bat-non-invasives.js');
+		
+		var table_chauves_souris_non_invasives = localStorage.getItem('table_chauves_souris_non_invasives');
   		
 		if (bat_non_invasives_table == 'chauves_souris_non_invasives_astre_transvihmi_guinee') {
 			document.getElementsByTagName('th')[0].innerHTML = 'Date de début';

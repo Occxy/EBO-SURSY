@@ -553,10 +553,19 @@
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
                                               
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
-			                
+	                        <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
 			                    
@@ -840,7 +849,7 @@
 	    	
 	    	var ID = $(this).data('id');
 	    	localStorage['ID'] = ID;
-	    	localStorage['delete_record_table'] = 'viande_de_brousse' + nom_table;
+	    	localStorage['delete_record_table'] = 'faune' + nom_table;
 	    	//loadjs('js/delete-record.js');
 	    	if(clickedBtn){ // make sure we have assigned a reference
 		    	//$(clickedBtn).closest("tr").remove();
@@ -864,7 +873,7 @@
 		    	    table.row($(this).parents('tr')).remove().draw();
 		    	});
 		    	
-		    	localStorage['delete_checked_records_table'] = 'site' + nom_table;
+		    	localStorage['delete_checked_records_table'] = 'faune' + nom_table;
 		    	localStorage.setItem("array_checked_records", JSON.stringify(array_checked_records));
 		    	loadjs('js/delete-selected-record.js');
 		    	table.draw();
@@ -876,16 +885,16 @@
 	<script type="text/javascript">
 		$(document).on('click', ".modifybtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_viande_de_brousse' + nom_table;
+   			var ID_table = 'ID_faune' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'ajouter_modifier_viande_de_brousse.html?option=2&table=' + nom_table;
+   			window.location = 'ajouter_modifier_faune.html?option=2&table=' + nom_table;
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_viande_de_brousse' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_viande_de_brousse.html?table=' + nom_table;
+   			window.location = 'consulter_faune.html?table=' + nom_table;
 	 	});
   	</script>  
   	

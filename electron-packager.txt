@@ -7,6 +7,13 @@ bitbucket
 npm run deploy
 export GH_TOKEN=47b9ff371f4108bdcf4a28e27e9ce1c6265757cf
 
+chmod +x "$(npm bin)/electron-builder"
+
+chmod +x "$(npm bin)/node-pre-gyp"
+
+⨯ Command failed: codesign
+xattr -cr *
+
 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
 
 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

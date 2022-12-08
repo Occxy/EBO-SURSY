@@ -541,10 +541,20 @@
                         <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                           <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
                                               
-	                        <li id="li_caracterisations_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-			                
-			                <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Camera-trap grottes</a></li>                            
-			                
+	                        <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
+		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
+		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+			                                  
+	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
+		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
+		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
+			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    
 	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
 	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
 			                    
@@ -685,7 +695,7 @@
 		                    line.innerHTML = 
 		                    	'<h4 class="title"> Nouvelle caraterisation de grotte' +
 		                    	'<a id="button_add" href="ajouter_modifier_caracterisations.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
-		                    	'<a id="button_importer_caracterisations" href="import_export.html?table=' + nom_table + '&type=caracterisations" class="btn btn btn-primary btn-fill float-right" >Importer les caractérisations des grottes</a>' +
+		                    	//'<a id="button_importer_caracterisations" href="import_export.html?table=' + nom_table + '&type=caracterisations" class="btn btn btn-primary btn-fill float-right" >Importer les caractérisations des grottes</a>' +
 		                    	'<a id="button_selection_delete" style="color:white;margin-right:20px" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
 		                    	'</h4>';
 		                    document.getElementById("button_table").appendChild(line);
@@ -876,7 +886,8 @@
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_caracterisations' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_caracterisations.html?table=' + nom_table;
+   			window.location = 'consulter_caracterisations_grottes_astre_transvihmi.html?table=' + nom_table;
+   			
 	 	});
   	</script>  
   	
@@ -925,9 +936,20 @@
 			catch(error) {
 	    	};
 	    	
+	    	try {
+	  			var component_li = document.getElementById('li_caracterisations_grottes' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+	  			var component_a = document.getElementById('a_caracterisations_grottes' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_caracterisations_grottes' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			}
+			catch(error) {
+	    	};
+	    	
 	    	loadjs('js/load-db-caracterisations.js');
 	    	
-			var component_li = document.getElementById('li_caracterisations' + nom_table);
+	    	var component_li = document.getElementById('li_caracterisations_grottes' + nom_table);
 			component_li.classList.add('active');
   		};
   		

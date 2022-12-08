@@ -22,8 +22,9 @@ $(document).ready(function() {
 	if (donnees_journalieres != 'donnees_journalieres_astre_transvihmi_guinee') {
 		var table = $('#example').DataTable({
 			columnDefs: [
-				 { type: 'date-eu', targets: 2 }
+				 { type: 'date-eu', targets: 0 },
 			],
+			order: [[0, 'asc']],
 			columns: [
 				{ data: null, render: 'Date'},					
 				{ data: null, render: 'N_site'},
@@ -40,8 +41,9 @@ $(document).ready(function() {
 	} else {
 		var table = $('#example').DataTable({
 			columnDefs: [
-				 { type: 'date-eu', targets: 2 }
+				 { type: 'date-eu', targets: 0 },
 			],
+			order: [[0, 'asc']],
 			columns: [
 				{ data: null, render: 'Date'},					
 				{ data: null, render: 'ID_CS_preleve_debut'},

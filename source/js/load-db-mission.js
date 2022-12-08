@@ -22,8 +22,10 @@ $(document).ready(function() {
 	if (donnees_mission != 'donnees_mission_astre_transvihmi_guinee') {
 		table = $('#example').DataTable({
 			columnDefs: [
-				 { type: 'date-eu', targets: 2 }
+				 { type: 'date-eu', targets: 0 },
+				 { type: 'date-eu', targets: 1 },
 			],
+			order: [[0, 'asc']],
 			columns: [
 				{ data: null, render: 'Date_debut'},					
 				{ data: null, render: 'Date_fin'},
@@ -39,8 +41,10 @@ $(document).ready(function() {
 	} else {
 		table = $('#example').DataTable({
 			columnDefs: [
-				 { type: 'date-eu', targets: 2 }
+				 { type: 'date-eu', targets: 0 },
+				 { type: 'date-eu', targets: 1 },
 			],
+			order: [[0, 'asc']],
 			columns: [
 				{ data: null, render: 'Date_debut_mission'},					
 				{ data: null, render: 'Date_fin_mission'},

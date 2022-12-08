@@ -34,7 +34,7 @@ $(document).ready(function() {
 			 { type: 'date-eu', targets: 2 }
 		],
 		columns: [			
-			{ data: null, render: 'Region_capture'},					
+			{ data: null, render: 'Prefecture'},					
 			{ data: null, render: 'Site_capture'},
 	        { data: null, render: 'ID_camera_1'},
 	        { data: null, render: 'Date_debut_camera_1'},
@@ -60,7 +60,7 @@ $(document).ready(function() {
     		var dataTablesData = JSON.parse(JSON.stringify(result));
 	    				    		
     		dataTablesData.rows.forEach(function(row){   
-    			table.row.add(new Cameras_trap(row.doc.Region_capture, row.doc.Site_capture, row.doc.ID_camera_1, row.doc.Date_debut_camera_1, row.doc.Heure_debut_camera_1,  
+    			table.row.add(new Cameras_trap(row.doc.Prefecture, row.doc.Site_capture, row.doc.ID_camera_1, row.doc.Date_debut_camera_1, row.doc.Heure_debut_camera_1,  
     				"<td><button data-id='" + row.doc._id + "' class='btn btn-danger btn-sm deletebtn' data-title='Supprimer' data-toggle='modal' data-target='#deletemodal'><span class='fa fa-trash'></span></button>" +
                     "<button data-id='" + row.doc._id + "' class='btn btn-primary btn-sm modifybtn' data-title='Modifier'><span class='fa fa-pencil'></span></button>" +
                     "<button data-id='" + row.doc._id + "' class='btn btn-info btn-sm seebtn showbtn' data-title='Consulter'><span class='fa fa-search'></span></button>" +
@@ -77,11 +77,11 @@ $(document).ready(function() {
 					
 });
 
-function Cameras_trap(Region_capture, Site_capture, ID_camera_1, Date_debut_camera_1, Heure_debut_camera_1, Action) {
-    if (Region_capture !== null) {
-    	this._Region_capture = Region_capture;
+function Cameras_trap(Prefecture, Site_capture, ID_camera_1, Date_debut_camera_1, Heure_debut_camera_1, Action) {
+    if (Prefecture !== null) {
+    	this._Prefecture = Prefecture;
     } else {
-    	this._Region_capture = '';
+    	this._Prefecture = '';
     };
     if (Site_capture !== null) {
     	this._Site_capture = Site_capture; 
@@ -106,8 +106,8 @@ function Cameras_trap(Region_capture, Site_capture, ID_camera_1, Date_debut_came
     
     this._Action = Action;
     		    
-    this.Region_capture = function() {
-        return this._Region_capture;
+    this.Prefecture = function() {
+        return this._Prefecture;
     };
         
     this.Site_capture  = function () {

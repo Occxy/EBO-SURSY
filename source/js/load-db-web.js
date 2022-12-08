@@ -347,7 +347,10 @@ if  (debug !== '') {
 		  'donnees_mission_astre_gabon_debug', 'donnees_journalieres_astre_gabon_debug',
 		  'chauves_souris_capturees_mivegec_debug', 'chauves_souris_non_invasives_mivegec_debug',
 		  'site_mivegec_debug', 
-		  'donnees_mission_mivegec_debug', 'donnees_journalieres_mivegec_debug'];
+		  'donnees_mission_mivegec_debug', 'donnees_journalieres_mivegec_debug',
+		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
+		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
+		  'faune_astre_transvihmi_guinee_debug'];
 } else if ((code_equipe === '1') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
 						  'viande_de_brousse_guinee_transvihmi_guinee', 'site_transvihmi_guinee', 
