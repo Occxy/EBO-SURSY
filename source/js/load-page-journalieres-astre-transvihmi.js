@@ -120,6 +120,8 @@ function modifier(table, option) {
 		addValue('Environnement');
 		addValue('Lat_degre_dec');
 		addValue('Latitude');
+		addValue('Long_degre_dec');
+		addValue('Longitude');
 		addValue('Proximite_village_km');	
 	    addValue('Proximite_source_m');
 		addValue('N_site', true);

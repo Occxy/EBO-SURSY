@@ -146,6 +146,7 @@ function enable_li() {
 			click_li(id);
 		} else if ((id !== '') && (name === code_equipe)) {
 			click_li(id);
+			
 		}
 		
 		if ((nom_pays !== 'tous') && (attribut_pays != null)) {
@@ -153,6 +154,14 @@ function enable_li() {
 				unclick_li(id);
 			}
 		}
+		
+		console.log(id.substr(0,18))
+		
+		if ((nom_pays == 'guinee') && (code_equipe == '1') && (id.indexOf('astre_transvihmi') > -1)) {
+			click_li(id);
+		}
+		
+		
 		
 	});
 	

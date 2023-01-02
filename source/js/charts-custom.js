@@ -603,7 +603,7 @@ $(document).ready(function () {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(75, 204, 140, 1)",
-                    data: [65, 59, 90, 81, 56, 55]
+                    data: [1, 1, 1, 1, 2, 3]
                 },
                 {
                     label: "Second dataset",
@@ -614,9 +614,19 @@ $(document).ready(function () {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255, 119, 119, 1)",
-                    data: [50, 60, 80, 45, 96, 70]
+                    data: [3, 2, 1, 2, 2, 3]
                 }
             ]
+        },
+        options: {
+        	scale: {
+        	    ticks: {
+        	        beginAtZero: true,
+        	        max: 5,
+        	        min: 0,
+        	        stepSize: 1
+        	    }
+        	}
         }
     });
     var radarChartExample = {

@@ -1905,7 +1905,11 @@
 						Lat_degre_dec.disabled = true;
 						
 						var Longitude = document.getElementById("Longitude");
-						Longitude.value = doc.Longitude;
+						if (doc.Longitude == 'O') {
+							Longitude.value = 'W';
+						} else {
+							Longitude.value = doc.Longitude;
+						}
 						Longitude.disabled = true;
 						
 						var Long_degre_dec = document.getElementById("Long_degre_dec");

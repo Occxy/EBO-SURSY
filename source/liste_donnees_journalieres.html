@@ -912,7 +912,11 @@
    			var ID = $(this).attr("data-id");
    			var ID_table = 'ID_donnees_journalieres' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_donnees_journalieres.html?table=' + nom_table;
+   			if (donnees_journalieres == 'donnees_journalieres_astre_transvihmi_guinee') {
+   				window.location = 'consulter_donnees_journalieres_astre_transvihmi.html?table=' + nom_table;
+   			} else {
+   				window.location = 'consulter_donnees_journalieres.html?table=' + nom_table;
+   			}
 	 	});
   	</script>  
   	
