@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "electron": "^21.1.0",
-    "electron-builder": "^23.6",
+    "electron-builder": "^22.14.13",
     "electron-notarize": "^1.2.1",
     "electron-packager": "^13.1.1"
   },
