@@ -95,8 +95,7 @@
 	            	          show_version.innerText = arg.version;
 	            	        });
             	  		} else if (localStorage.getItem('web') === 'oui') {
-            	  			const { version } = require('./package.json');
-            	  			show_version.innerText = version;
+            	  			show_version.innerText = localStorage.getItem('version');
             	  		}
             	  	  </script>
             	  	</h1>
