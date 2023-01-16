@@ -867,13 +867,13 @@
     			 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type_site', 'Proximite_village_km',
     			 'Type_chauves_souris', 'Famille_1', 'Genre_1', 'Espece_1', 'Famille_2', 'Genre_2', 'Espece_2', 'Famille_3', 
     			 'Genre_3', 'Espece_3', 'Remarques', 'N_identification_echantillon', 'Type_echantillon', 'Nbre_feces_par_tube',
-    			 'Urine_methode', 'Urine_papier_buvard_nbre_cercles', 'Username'];
+    			 'Urine_methode', 'Urine_papier_buvard_nbre_cercles', 'Methode_collecte', 'Username'];
     		
     		var fields_CSV_head = 'Date;Heure_debut;Heure_fin;N_site;Equipe;Pays;Region_collecte;Site_collecte;Environnement;' + 
         			 	'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Type_site;Proximite_village_km;' +
         			 	'Type_chauves_souris;Famille_1;Genre_1;Espece_1;Famille_2;Genre_2;Espece_2;Famille_3;' +
         			 	'Genre_3;Espece_3;Remarques;N_identification_echantillon;Type_echantillon;Nbre_feces_par_tube;' +
-        			 	'Urine_methode;Urine_papier_buvard_nbre_cercles;Username;\r\n';	
+        			 	'Urine_methode;Urine_papier_buvard_nbre_cercles;Methode_collecte;Username;\r\n';	
     	} else if (type_table == 'viande_de_brousse') {
     		var fields = 
     			['N_identification_echantillon', 'N_site', 'Date', 'Pays', 'Enqueteur', 'Region_collecte', 'Site_collecte', 'Environnement', 
@@ -4001,6 +4001,7 @@
 				    			row1.Nbre_feces_par_tube + ';' +	
 				    			row1.Urine_methode + ';' +	
 				    			row1.Urine_papier_buvard_nbre_cercles + ";" +
+				    			row.doc.Methode_collecte + ";" +
 				    			row.doc.Username + ";\r\n"
 								
 				    			count--		
@@ -4047,6 +4048,7 @@
 				    			row1.Nbre_feces_par_tube + ';' +	
 				    			row1.Urine_methode + ';' +	
 				    			row1.Urine_papier_buvard_nbre_cercles + ";" +
+				    			row.doc.Methode_collecte + ";" +
 				    			row.doc.Username + ";\r\n"
 				    			
 				    			count--		

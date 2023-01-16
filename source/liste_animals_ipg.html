@@ -95,7 +95,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['table_animals_ipg'] = 'animals' + nom_table;
-		loadjs('js/load-db-animals-ipg.js');
+		
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -855,6 +855,8 @@
 			}
 	    	catch(error) {
 	    	};*/
+	    	
+	    	loadjs('js/load-db-animals-ipg.js');
 	    	
 			var component_li = document.getElementById('li_animals' + nom_table);
 			component_li.classList.add('active');

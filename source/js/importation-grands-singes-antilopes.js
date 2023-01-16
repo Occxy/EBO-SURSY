@@ -176,6 +176,8 @@ function search_N_identification_Recursif(/*localDB, */i) {
 		    	}
 		    }).catch(function (err) {
 		       	console.log(err);
+		       	alert(N_labo)
+		        alert(tab[i][8]);
 		    });
 			
 			console.log("full - " + i);
