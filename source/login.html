@@ -84,7 +84,7 @@
             	  	</div>
             	  	<!-- <h1>Projet EBO-SURSY</h1> -->
             	  	<h1 style="color:red;"> v.
-            	  	  <label id="version"></label> 
+            	  	  <label id="show_version"></label> 
             	  	  <script type="text/javascript">
             	  		if (localStorage.getItem('web') === 'non') {
             	  			const { ipcRenderer } = require('electron');
@@ -92,10 +92,11 @@
 	            	  	    ipcRenderer.send('app_version');
 	            	        ipcRenderer.on('app_version', (event, arg) => {
 	            	          ipcRenderer.removeAllListeners('app_version');
-	            	          version.innerText = arg.version;
+	            	          show_version.innerText = arg.version;
 	            	        });
             	  		} else if (localStorage.getItem('web') === 'oui') {
-            	  	    	version.innerText = localStorage.getItem('version_app_detection')
+            	  			const { version } = require('./package.json');
+            	  			show_version.innerText = version;
             	  		}
             	  	  </script>
             	  	</h1>
