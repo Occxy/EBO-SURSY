@@ -86,10 +86,10 @@
             	  	<h1 style="color:red;"> v.
             	  	  <label id="show_version"></label> 
             	  	  <script type="text/javascript">
+            	  	    var show_version = document.getElementById('show_version');
             	  		if (localStorage.getItem('web') === 'non') {
             	  			const { ipcRenderer } = require('electron');
-	            	  		const version = document.getElementById('version');
-	            	  	    ipcRenderer.send('app_version');
+	            	  		ipcRenderer.send('app_version');
 	            	        ipcRenderer.on('app_version', (event, arg) => {
 	            	          ipcRenderer.removeAllListeners('app_version');
 	            	          show_version.innerText = arg.version;
