@@ -157,7 +157,7 @@ function enable_li() {
 		
 		console.log(id.substr(0,18))
 		
-		if ((nom_pays == 'guinee') && (code_equipe == '1') && (id.indexOf('astre_transvihmi') > -1)) {
+		if (((nom_pays == 'guinee') || (nom_pays == 'tous')) && (code_equipe == '1') && (id.indexOf('astre_transvihmi') > -1)) {
 			click_li(id);
 		}
 		
@@ -213,11 +213,16 @@ function show_infos() {
 	} else {
 		$('div').each(function() {
 			var name = this.getAttribute('name');
+			var id = this.getAttribute('id');
 			if (name === code_equipe) {
 		       	//var elem = this;
 		       	//elem.style.display="block";
 		       	this.style.display="block";
-		       };
+		    };
+		    if (((nom_pays == 'guinee') || (nom_pays == 'tous')) && (code_equipe == '1') 
+		    		&& ((id == 'astre_transvihmi_chauves_souris_capturees') || (id == 'astre_transvihmi_chauves_non_invasives') || (id == 'astre_transvihmi_faune')) ) {
+		    	this.style.display="block";
+			}
 		});
 	}
 };

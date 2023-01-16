@@ -15,20 +15,20 @@ if (localStorage.getItem('debug') === null) {
 var fonction = localStorage.getItem('fonction');
 
 var chauves_souris_capturees_transvihmi_guinee = 'chauves_souris_capturees_transvihmi_guinee' + debug + '_count';
+var chauves_souris_capturees_astre_transvihmi_guinee = 'chauves_souris_capturees_astre_transvihmi_guinee' + debug + '_count';
 var chauves_souris_capturees_transvihmi_cameroun = 'chauves_souris_capturees_transvihmi_cameroun' + debug + '_count';
 var chauves_souris_capturees_transvihmi_rdc = 'chauves_souris_capturees_transvihmi_rdc' + debug + '_count';
 var chauves_souris_capturees_astre_guinee = 'chauves_souris_capturees_astre_guinee' + debug + '_count';
 var chauves_souris_capturees_astre_congo = 'chauves_souris_capturees_astre_congo' + debug + '_count';
 var chauves_souris_capturees_astre_gabon = 'chauves_souris_capturees_astre_gabon' + debug + '_count';
-var chauves_souris_capturees_astre_transvihmi_guinee = 'chauves_souris_capturees_astre_transvihmi_guinee' + debug + '_count';
 var chauves_souris_non_invasives_transvihmi_guinee = 'chauves_souris_non_invasives_transvihmi_guinee' + debug + '_count';
+var chauves_souris_non_invasives_astre_transvihmi_guinee = 'chauves_souris_non_invasives_astre_transvihmi_guinee' + debug + '_count';
 var chauves_souris_non_invasives_transvihmi_rdc = 'chauves_souris_non_invasives_transvihmi_rdc' + debug + '_count';
 var chauves_souris_non_invasives_transvihmi_cameroun = 'chauves_souris_non_invasives_transvihmi_cameroun' + debug + '_count';
 var chauves_souris_non_invasives_transvihmi_rdc = 'chauves_souris_non_invasives_transvihmi_rdc' + debug + '_count';
 var chauves_souris_non_invasives_astre_guinee = 'chauves_souris_non_invasives_astre_guinee' + debug + '_count';
 var chauves_souris_non_invasives_astre_congo = 'chauves_souris_non_invasives_astre_congo' + debug + '_count';
 var chauves_souris_non_invasives_astre_gabon = 'chauves_souris_non_invasives_astre_gabon' + debug + '_count';
-var chauves_souris_non_invasives_astre_transvihmi_guinee = 'chauves_souris_non_invasives_astre_transvihmi_guinee' + debug + '_count';
 var viande_de_brousse_transvihmi_guinee = 'viande_de_brousse_transvihmi_guinee' + debug + '_count';
 var viande_de_brousse_transvihmi_cameroun = 'viande_de_brousse_transvihmi_cameroun' + debug + '_count';
 var viande_de_brousse_transvihmi_rdc = 'viande_de_brousse_transvihmi_rdc' + debug + '_count';
@@ -36,8 +36,10 @@ var animals_mivegec_congo = 'animals_mivegec_congo' + debug + '_count';
 var animals_mivegec_gabon = 'animals_mivegec_gabon' + debug + '_count';
 var individus_cibu = 'individus_cibu' + debug + '_count';
 var prelevements_cibu = 'prelevements_cibu' + debug + '_count';
+var faune_astre_transvihmi_guinee = 'faune_astre_transvihmi_guinee' + debug + '_count';
 
 document.getElementById("label_chauves_souris_capturees_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_transvihmi_guinee);
+document.getElementById("label_chauves_souris_capturees_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_transvihmi_guinee);
 document.getElementById("label_chauves_souris_capturees_transvihmi_cameroun_count").innerHTML = localStorage.getItem(chauves_souris_capturees_transvihmi_cameroun);
 document.getElementById("label_chauves_souris_capturees_transvihmi_rdc_count").innerHTML = localStorage.getItem(chauves_souris_capturees_transvihmi_rdc);
 document.getElementById("label_chauves_souris_capturees_astre_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_guinee);
@@ -45,6 +47,7 @@ document.getElementById("label_chauves_souris_capturees_astre_congo_count").inne
 document.getElementById("label_chauves_souris_capturees_astre_gabon_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_gabon);
 document.getElementById("label_chauves_souris_capturees_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_transvihmi_guinee);
 document.getElementById("label_chauves_souris_non_invasives_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_non_invasives_transvihmi_guinee);
+document.getElementById("label_chauves_souris_non_invasives_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_non_invasives_astre_transvihmi_guinee);
 document.getElementById("label_chauves_souris_non_invasives_transvihmi_rdc_count").innerHTML = localStorage.getItem(chauves_souris_non_invasives_transvihmi_rdc);
 document.getElementById("label_chauves_souris_non_invasives_transvihmi_cameroun_count").innerHTML = localStorage.getItem(chauves_souris_non_invasives_transvihmi_cameroun);
 document.getElementById("label_chauves_souris_non_invasives_transvihmi_rdc_count").innerHTML = localStorage.getItem(chauves_souris_non_invasives_transvihmi_rdc);
@@ -60,6 +63,8 @@ document.getElementById("label_animals_mivegec_congo_count").innerHTML = localSt
 document.getElementById("label_animals_mivegec_gabon_count").innerHTML = localStorage.getItem(animals_mivegec_gabon);
 document.getElementById("label_individus_cibu_count").innerHTML = localStorage.getItem(individus_cibu);
 document.getElementById("label_prelevements_cibu_count").innerHTML = localStorage.getItem(prelevements_cibu);
+
+document.getElementById("label_faune_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(faune_astre_transvihmi_guinee);
 
 if (String(fonction) == 'admin') {
 	
