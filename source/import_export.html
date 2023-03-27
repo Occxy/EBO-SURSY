@@ -618,7 +618,8 @@
                       
                     	<li id="li_ipg_guineeDropdown" name="5" pays="guinee"> <a id="a_ipg_guineeDropdown" name="5" href="#ul_ipg_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                       	  <ul id="ul_ipg_guineeDropdown" name="5" pays="guinee" class="collapse list-unstyled">
-                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">données</a></li>                            
+                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">1er jeu de données</a></li>                            
+		                    <li id="li_animals_ipg_guinee_2" name="5"><a href="liste_animals_ipg_2.html?table=_ipg_guinee">2ème jeu de données</a></li>
 		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
 		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
                           </ul>
@@ -658,6 +659,27 @@
                   	  <div class="row">
                         <div class="col-lg-12">
                           <label id="button_open" class="btn btn-primary btn-fill btn-file">
+    						Ouvrir le fichier <input type="file">
+						  </label>
+						  <label id="file_name" ></label>
+						</div>
+                      </div>
+                      <div class="row" id="success_label" style="display: none;">
+                        <div class="col-lg-12">
+                          <label id="success" style="color:red;">success</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card" id="ipg_2" style="display:none;">                  
+                    <div class="card-header">
+                  	  <h4 id="card4">Importation pour le deuxième jeu de données</h4>
+                	</div>
+                	<div class="card-body">  
+                  	  <div class="row">
+                        <div class="col-lg-12">
+                          <label id="button_open_2" class="btn btn-primary btn-fill btn-file">
     						Ouvrir le fichier <input type="file">
 						  </label>
 						  <label id="file_name" ></label>
@@ -882,6 +904,32 @@
             	    	loadjs('js/importation-cameras-trap.js');
             	    } else if (type_table == 'faune') {
             	    	loadjs('js/importation-faune.js');
+            	    }
+        	    };
+				reader.readAsText(file, 'ISO-8859-1');
+        	    //reader.readAsText(file, 'WINDOWS-1252');
+        	    
+			});
+        });
+        
+        $(document).ready( function() {
+       		$('#button_open_2 :file').on('fileselect', function(event, numFiles, label) {
+       			
+       			var input = $(this).parents('.input-group').find(':text'),
+        	        log = numFiles > 1 ? numFiles + ' files selected' : label;
+        	        
+        	    var file = event.target.files[0];
+        	    var reader = new FileReader();
+        	    
+        	     reader.onload = function(event) {
+        	   		console.log(event.target.result);
+        	    	localStorage['file_import'] = event.target.result;
+        	    	
+        	    	var label =  document.getElementById("file_name");
+        	    	label.innerHTML = log;
+        	    	
+        	    	if (type_table == 'animals_ipg') {
+            	    	loadjs('js/importation-animal-ipg-2.js');
             	    }
         	    };
 				reader.readAsText(file, 'ISO-8859-1');
@@ -1176,9 +1224,12 @@
 					document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
 					document.getElementById("card3").innerHTML = "Exporter les animaux";
 				} else if (type_table == 'animals_ipg') {
-					document.getElementById("card1").innerHTML = "Importation des animaux";
-					document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
-					document.getElementById("card3").innerHTML = "Exporter les animaux";
+					document.getElementById("card1").innerHTML = "Importation pour le premier jeu de données";
+					document.getElementById("card2").innerHTML = "Téléchargement du template pour le premier jeu de données";
+					document.getElementById("card3").innerHTML = "Exporter le premier jeu de données";
+					
+					document.getElementById("ipg_2").style.display = "block";
+					
 				} else if (type_table == 'faune') { 
 					var component_li = document.getElementById('li_faune' + nom_table + 'Dropdown');
 					component_li.classList.add('active');

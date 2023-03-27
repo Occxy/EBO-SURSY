@@ -295,7 +295,7 @@ function put_with_id_cameras_trap(id, i) {
 						synchronizeBatCapturees();
 					};
 				};*/
-				search_N_identification_Recursif_Caracterisations(/*localDB, */i-1)
+				//search_N_identification_Recursif_Caracterisations(/*localDB, */i-1)
 			});
 		});
 	}).catch(function (err) {

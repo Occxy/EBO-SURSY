@@ -48,7 +48,7 @@ if  (debug !== '') {
 		  'grands_singes_antilopes_transvihmi_cameroun_debug', 'grands_singes_antilopes_transvihmi_rdc_debug',
 		  'grands_singes_antilopes_transvihmi_gabon_debug',
 		  'grands_singes_antilopes_transvihmi_rca_debug', 'grands_singes_antilopes_transvihmi_rwanda_debug',
-		  'animals_ipg_guinee_debug',
+		  'animals_ipg_guinee_debug', 'animals_ipg_guinee_2_debug',
 		  'chauves_souris_capturees_astre_transvihmi_guinee_debug', 'chauves_souris_non_invasives_astre_transvihmi_guinee_debug',
 		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
 		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
