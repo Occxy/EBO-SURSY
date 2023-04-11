@@ -104,7 +104,7 @@ if  (debug !== '') {
 } else if ((code_equipe === '2') && (nom_pays == 'tous')) {
 	tables_principales = ['animals_mivegec_congo', 'animals_mivegec_gabon'];
 } else if ((code_equipe === '5') && (nom_pays == 'tous')) {
-	tables_principales = ['animals_ipg_guinee'];	
+	tables_principales = ['animals_ipg_guinee', 'animals_ipg_guinee_2'];	
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_astre_guinee', 'chauves_souris_non_invasives_astre_guinee', 
 						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee',
