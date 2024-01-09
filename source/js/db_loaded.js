@@ -418,4 +418,49 @@ if (String(fonction) == 'admin') {
 	loadjs('js/charts.js');
 }
 
+
+/*var DB = new PouchDB(remote_couchdb + 'chauves_souris_capturees_transvihmi_rdc');
+var newLongValue = '18.31420';
+var newDirValue = 'E';
+
+// Fonction pour mettre à jour un document en fonction de l'ID
+function updateDocument(ID) {
+    DB.find({
+        selector: { N_identification_CS: ID }
+    }).then(function (result) {
+        if (result.docs.length > 0) {
+            var docId = result.docs[0]._id;
+            return DB.get(docId).then(function (doc) {
+                doc.Long_degre_dec = newLongValue;
+                doc.Longitude = newDirValue;
+                return DB.put(doc);
+            }).then(function () {
+                console.log('Champs mis à jour pour ' + ID);
+            }).catch(function (err) {
+                console.log('Erreur lors de la mise à jour pour ' + ID + ': ', err);
+            });
+        } else {
+            console.log('Aucun document correspondant à cet ID : ' + ID);
+        }
+    }).catch(function (err) {
+        console.log('Erreur lors de la recherche du document pour ' + ID + ': ', err);
+    });
+}
+
+// Fonction pour mettre à jour les documents en séquence avec un délai entre chaque mise à jour
+function updateSequentially(start, end) {
+    var i = start;
+    var intervalId = setInterval(function () {
+        if (i <= end) {
+            var ID = 'CCRD' + i;
+            updateDocument(ID);
+            i++;
+        } else {
+            clearInterval(intervalId);
+        }
+    }, 1000); // Délai d'une seconde entre chaque mise à jour (1000 ms = 1 seconde)
+}
+
+updateSequentially(3280, 3319); // Mettre à jour les documents de 2678*/
+
 enable_li();

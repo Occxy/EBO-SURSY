@@ -48,7 +48,7 @@ if  (debug !== '') {
 		  'grands_singes_antilopes_transvihmi_cameroun_debug', 'grands_singes_antilopes_transvihmi_rdc_debug',
 		  'grands_singes_antilopes_transvihmi_gabon_debug',
 		  'grands_singes_antilopes_transvihmi_rca_debug', 'grands_singes_antilopes_transvihmi_rwanda_debug',
-		  'animals_ipg_guinee_debug', 'animals_ipg_guinee_2_debug',
+		  'animals_ipg_guinee_debug', 'animals_ipg_guinee_2_debug', 'animals_ipg_guinee_3_debug', 'animals_ipg_guinee_3_debug',
 		  'chauves_souris_capturees_astre_transvihmi_guinee_debug', 'chauves_souris_non_invasives_astre_transvihmi_guinee_debug',
 		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
 		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
@@ -104,7 +104,7 @@ if  (debug !== '') {
 } else if ((code_equipe === '2') && (nom_pays == 'tous')) {
 	tables_principales = ['animals_mivegec_congo', 'animals_mivegec_gabon'];
 } else if ((code_equipe === '5') && (nom_pays == 'tous')) {
-	tables_principales = ['animals_ipg_guinee', 'animals_ipg_guinee_2'];	
+	tables_principales = ['animals_ipg_guinee', 'animals_ipg_guinee_2', 'animals_ipg_guinee_3', 'animals_ipg_guinee_4'];	
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_astre_guinee', 'chauves_souris_non_invasives_astre_guinee', 
 						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee',
@@ -228,6 +228,7 @@ if  (debug !== '') {
 }
 
 step = 100 / (tables_principales.length + tables_references.length);
+
 
 var tables_principales_count = tables_principales.length;
 load_tables_count(tables_principales_count);

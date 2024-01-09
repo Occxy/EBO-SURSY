@@ -26,7 +26,7 @@ $(document).ready(function() {
 			{ data: null, render: 'Date', width: '15%'},
 			{ data: null, render: 'Number', width: '10%'},
 	        { data: null, render: 'Square', width: '10%'},
-	        { data: null, render: 'Commun', width: '10%'},
+	        { data: null, render: 'Commune', width: '10%'},
 	        { data: null, render: 'Town', width: '10%'},
 	        { data: null, render: 'Action', width: '10%'}
 	    ],
@@ -50,7 +50,7 @@ $(document).ready(function() {
     		var dataTablesData = JSON.parse(JSON.stringify(result));
 	    				    		
     		dataTablesData.rows.forEach(function(row){   
-    			table.row.add(new Animal(row.doc['Commun name'], row.doc.Date, row.doc.Number, row.doc.Square, row.doc.Commun, row.doc.Town,
+    			table.row.add(new Animal(row.doc['Commun name'], row.doc.Date, row.doc.Number, row.doc.Square, row.doc.Commune, row.doc.Town,
     				"<td><button data-id='" + row.doc._id + "' class='btn btn-danger btn-sm deletebtn' data-title='Supprimer' data-toggle='modal' data-target='#deletemodal'><span class='fa fa-trash'></span></button>" +
                     "<button data-id='" + row.doc._id + "' class='btn btn-primary btn-sm modifybtn' data-title='Modifier'><span class='fa fa-pencil'></span></button>" +
                     "<button data-id='" + row.doc._id + "' class='btn btn-info btn-sm seebtn showbtn' data-title='Consulter'><span class='fa fa-search'></span></button>" +
@@ -69,7 +69,7 @@ $(document).ready(function() {
 					
 });
 
-function Animal(Commun_name, Date, Number, Square, Commun, Town, Action) {
+function Animal(Commun_name, Date, Number, Square, Commune, Town, Action) {
     if (Commun_name !== null) {
     	this._Commun_name = Commun_name;
     } else {
@@ -90,10 +90,10 @@ function Animal(Commun_name, Date, Number, Square, Commun, Town, Action) {
     } else {
     	this._Square = '';
     };
-    if (Commun !== null) {
-    	this._Commun = Commun;	
+    if (Commune !== null) {
+    	this._Commune = Commune;	
     } else {
-    	this._Commun = '';
+    	this._Commune = '';
     };
     if (Town !== null) {
     	this._Town = Town;	
@@ -118,8 +118,8 @@ function Animal(Commun_name, Date, Number, Square, Commun, Town, Action) {
         return this._Square;
     };
 
-    this.Commun = function () {
-        return this._Commun;
+    this.Commune = function () {
+        return this._Commune;
     };
     
     this.Town = function () {

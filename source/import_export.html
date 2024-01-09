@@ -620,6 +620,8 @@
                       	  <ul id="ul_ipg_guineeDropdown" name="5" pays="guinee" class="collapse list-unstyled">
                             <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">1er jeu de données</a></li>                            
 		                    <li id="li_animals_ipg_guinee_2" name="5"><a href="liste_animals_ipg_2.html?table=_ipg_guinee">2ème jeu de données</a></li>
+		                    <li id="li_animals_ipg_guinee_3" name="5"><a href="liste_animals_ipg_3.html?table=_ipg_guinee">3ème jeu de données</a></li>
+		                    <li id="li_animals_ipg_guinee_4" name="5"><a href="liste_animals_ipg_4.html?table=_ipg_guinee">4ème jeu de données</a></li>
 		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
 		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
                           </ul>
@@ -653,7 +655,7 @@
                   
                   <div class="card">                  
                     <div class="card-header">
-                  	  <h4 id="card1">Importation des chauves-souris capturées</h4>
+                  	  <h4 id="card1">Importation des bats captured</h4>
                 	</div>
                 	<div class="card-body">  
                   	  <div class="row">
@@ -693,9 +695,51 @@
                     </div>
                   </div>
                   
+                  <div class="card" id="ipg_3" style="display:none;">                  
+                    <div class="card-header">
+                  	  <h4 id="card4">Importation pour le troisième jeu de données</h4>
+                	</div>
+                	<div class="card-body">  
+                  	  <div class="row">
+                        <div class="col-lg-12">
+                          <label id="button_open_3" class="btn btn-primary btn-fill btn-file">
+    						Ouvrir le fichier <input type="file">
+						  </label>
+						  <label id="file_name" ></label>
+						</div>
+                      </div>
+                      <div class="row" id="success_label" style="display: none;">
+                        <div class="col-lg-12">
+                          <label id="success" style="color:red;">success</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card" id="ipg_4" style="display:none;">                  
+                    <div class="card-header">
+                  	  <h4 id="card4">Importation pour le quatrième jeu de données</h4>
+                	</div>
+                	<div class="card-body">  
+                  	  <div class="row">
+                        <div class="col-lg-12">
+                          <label id="button_open_4" class="btn btn-primary btn-fill btn-file">
+    						Ouvrir le fichier <input type="file">
+						  </label>
+						  <label id="file_name" ></label>
+						</div>
+                      </div>
+                      <div class="row" id="success_label" style="display: none;">
+                        <div class="col-lg-12">
+                          <label id="success" style="color:red;">success</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                   <div class="card">                  
                     <div class="card-header">
-                  	  <h4 id="card2">Téléchargement du template des chauves-souris capturées</h4>
+                  	  <h4 id="card2">Téléchargement du template des bats captured</h4>
                 	</div>
                 	<div class="card-body">  
                   	  <div class="row">
@@ -751,7 +795,7 @@
                   
                   <div class="card">                  
                     <div class="card-header">
-                  	  <h4 id="card3">Exporter les chauves-souris capturées</h4>
+                  	  <h4 id="card3">Exporter les bats captured</h4>
                   	</div>
                   	<div class="card-body">  
                   	  <div class="row">
@@ -930,6 +974,58 @@
         	    	
         	    	if (type_table == 'animals_ipg') {
             	    	loadjs('js/importation-animal-ipg-2.js');
+            	    }
+        	    };
+				reader.readAsText(file, 'ISO-8859-1');
+        	    //reader.readAsText(file, 'WINDOWS-1252');
+        	    
+			});
+        });
+        
+        $(document).ready( function() {
+       		$('#button_open_3 :file').on('fileselect', function(event, numFiles, label) {
+       			
+       			var input = $(this).parents('.input-group').find(':text'),
+        	        log = numFiles > 1 ? numFiles + ' files selected' : label;
+        	        
+        	    var file = event.target.files[0];
+        	    var reader = new FileReader();
+        	    
+        	     reader.onload = function(event) {
+        	   		console.log(event.target.result);
+        	    	localStorage['file_import'] = event.target.result;
+        	    	
+        	    	var label =  document.getElementById("file_name");
+        	    	label.innerHTML = log;
+        	    	
+        	    	if (type_table == 'animals_ipg') {
+            	    	loadjs('js/importation-animal-ipg-3.js');
+            	    }
+        	    };
+				reader.readAsText(file, 'ISO-8859-1');
+        	    //reader.readAsText(file, 'WINDOWS-1252');
+        	    
+			});
+        });
+        
+        $(document).ready( function() {
+       		$('#button_open_4 :file').on('fileselect', function(event, numFiles, label) {
+       			
+       			var input = $(this).parents('.input-group').find(':text'),
+        	        log = numFiles > 1 ? numFiles + ' files selected' : label;
+        	        
+        	    var file = event.target.files[0];
+        	    var reader = new FileReader();
+        	    
+        	     reader.onload = function(event) {
+        	   		console.log(event.target.result);
+        	    	localStorage['file_import'] = event.target.result;
+        	    	
+        	    	var label =  document.getElementById("file_name");
+        	    	label.innerHTML = log;
+        	    	
+        	    	if (type_table == 'animals_ipg') {
+            	    	loadjs('js/importation-animal-ipg-4.js');
             	    }
         	    };
 				reader.readAsText(file, 'ISO-8859-1');
@@ -1140,9 +1236,9 @@
 					var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
 					component_ul.classList.add('show');
 					
-					document.getElementById("card1").innerHTML = "Importation des chauves-souris capturées";
-					document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris capturées";
-					document.getElementById("card3").innerHTML = "Exporter les chauves-souris capturées";
+					document.getElementById("card1").innerHTML = "Importation des bats captured";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des bats captured";
+					document.getElementById("card3").innerHTML = "Exporter les bats captured";
 				} else if (type_table == 'chauves_souris_non_invasives') {
 					var component_li = document.getElementById('li_bat' + nom_table + 'NonInvasivesDropdown');
 					component_li.classList.add('active');
@@ -1229,6 +1325,8 @@
 					document.getElementById("card3").innerHTML = "Exporter le premier jeu de données";
 					
 					document.getElementById("ipg_2").style.display = "block";
+					document.getElementById("ipg_3").style.display = "block";
+					document.getElementById("ipg_4").style.display = "block";
 					
 				} else if (type_table == 'faune') { 
 					var component_li = document.getElementById('li_faune' + nom_table + 'Dropdown');

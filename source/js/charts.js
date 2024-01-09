@@ -256,7 +256,7 @@ function lineChartExample() {
 	    		"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"],
 	        datasets: [
 	            {
-	                label: "Nombre de chauves-souris capturées",
+	                label: "Nombre de bats captured",
 	                fill: true,
 	                lineTension: 0.3,
 	                backgroundColor: gradient1,
