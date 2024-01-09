@@ -39,6 +39,8 @@ var prelevements_cibu = 'prelevements_cibu' + debug + '_count';
 var faune_astre_transvihmi_guinee = 'faune_astre_transvihmi_guinee' + debug + '_count';
 var ip_guinee_betail_1 = 'animals_ipg_guinee' + debug + '_count';
 var ip_guinee_betail_2 = 'animals_ipg_guinee_2' + debug + '_count';
+var ip_guinee_betail_3 = 'animals_ipg_guinee_3' + debug + '_count';
+var ip_guinee_betail_4 = 'animals_ipg_guinee_4' + debug + '_count';
 
 document.getElementById("label_chauves_souris_capturees_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_transvihmi_guinee);
 document.getElementById("label_chauves_souris_capturees_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_transvihmi_guinee);
@@ -67,7 +69,8 @@ document.getElementById("label_individus_cibu_count").innerHTML = localStorage.g
 document.getElementById("label_prelevements_cibu_count").innerHTML = localStorage.getItem(prelevements_cibu);
 document.getElementById("label_prelevements_ip_guinee_1_count").innerHTML = localStorage.getItem(ip_guinee_betail_1);
 document.getElementById("label_prelevements_ip_guinee_2_count").innerHTML = localStorage.getItem(ip_guinee_betail_2);
-
+document.getElementById("label_prelevements_ip_guinee_3_count").innerHTML = localStorage.getItem(ip_guinee_betail_3);
+document.getElementById("label_prelevements_ip_guinee_4_count").innerHTML = localStorage.getItem(ip_guinee_betail_4);
 
 document.getElementById("label_faune_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(faune_astre_transvihmi_guinee);
 
