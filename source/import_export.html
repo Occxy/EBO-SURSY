@@ -230,6 +230,13 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
+	                	    <li id="li_rongeurs_transvihmi_camerounDropdown" name="1"><a id="a_rongeurs_transvihmi_camerounDropdown" name="1" href="#ul_rongeurs_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-rodent"></i>Rongeurs</a>
+		                      <ul id="ul_rongeurs_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_rongeurs_transvihmi_cameroun" name="1"><a href="liste_rongeurs.html?table=_transvihmi_cameroun">données</a></li>                            
+		                        <li id="li_rongeurs_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=rongeurs">carte</a></li>
+		                        <li id="li_importation_rongeurs_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=rongeurs">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
 	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
@@ -774,7 +781,9 @@
 				     				file = 'CT'
 				     			} else if (type_table == 'faune') {
 				     				file = 'FA'
-				     			}   	               		
+				     			} else if (type_table == 'rongeurs') {
+				     				file = 'RO'
+				     			}    	               		
 			               		line.innerHTML = 
 			                          '<a id="button_download" class="btn btn-primary btn-fill" href="templates/' +
 			                          file + 
@@ -1339,7 +1348,18 @@
 					document.getElementById("card1").innerHTML = "Importation de la faune";
 					document.getElementById("card2").innerHTML = "Téléchargement du template de la faune";
 					document.getElementById("card3").innerHTML = "Exporter la faune";
-				} 
+				} else if (type_table == 'rongeurs') { 
+					var component_li = document.getElementById('li_rongeurs' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_rongeurs' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_rongeurs' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des rongeurs";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des ongeurs";
+					document.getElementById("card3").innerHTML = "Exporter les rongeurs";
+				}  
 				
 				if (type_table == 'chauves_souris_capturees') {
 					var component_li = document.getElementById('li_importation_bat_capturees' + nom_table);
@@ -1361,6 +1381,8 @@
 					var component_li = document.getElementById('li_importation_faune' + nom_table);
 				} else if (type_table == 'caracterisations_grottes') {
 					var component_li = document.getElementById('li_importation_caracterisations' + nom_table);
+				} else if (type_table == 'rongeurs') {
+					var component_li = document.getElementById('li_importation_rongeurs' + nom_table);
 				}
 				component_li.classList.add('active');
 			}

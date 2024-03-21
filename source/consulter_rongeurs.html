@@ -95,7 +95,7 @@
     
     <script src="js/uuid.js"></script>
     
-    <script src="js/load-page-animals-consultation.js"></script> 
+    <script src="js/load-page-rongeurs-consultation.js"></script> 
     
     <script src="js/addReference.js"></script> 
     
@@ -104,7 +104,7 @@
 	
 	   
   </head>
-  <body onload="chargement_des_animaux()">
+  <body onload="chargement_des_chauves_souris_capturees_consultation()">
   
     <script>
 		logged_only();
@@ -119,7 +119,7 @@
 		} else {
 			debug = localStorage.getItem('debug');
 		};
-		var html = 'animals';
+		var html = 'capturees';
 		
 	</script> 
   
@@ -381,23 +381,49 @@
 	                    
                     <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
                       <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
-                    
-                    	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
-                      	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
-                            <li id="li_animals_mivegec_congo" name="2"><a href="liste_animals.html?table=_mivegec_congo">données</a></li>                            
-		                    <li id="li_animals_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_capturees">carte</a></li>
-		                    <li id="li_importation_animals_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=animals">importation/exportation</a></li>                            
-                          </ul>
-		                </li>    
+                        
+                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="liste_sites.html?table=_mivegec">Site</a></li>                            
 		                
-		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
-                      	  <ul id="ul_mivegec_gabonDropdown" name="2" pays="gabon" class="collapse list-unstyled">
-                            <li id="li_animals_mivegec_gabon" name="2"><a href="liste_animals.html?table=_mivegec_gabon">données</a></li>                            
-		                    <li id="li_animals_map_mivegec_gabon" name="2"><a href="cartographie.html?table=_mivegec_gabon&type=chauves_souris_capturees">carte</a></li>
-		                    <li id="li_importation_animals_mivegec_gabon" name="2"><a href="import_export.html?table=_mivegec_gabon&type=animals">importation/exportation</a></li>                            
-                          </ul>
-		                </li>                   	
-                      
+                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
+		                    
+		                    <li id="li_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
+			                  <ul id="ul_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" class="collapse list-unstyled">
+			                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_mivegec">données missions</a></li>
+			                   	<li id="li_importation_suivi_longitudinal_donnees_missions_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_mission">importation/exportation</a></li>                            
+	                          </ul>
+			                </li>
+		                    	                    
+		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
+			                  <ul id="ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" class="collapse list-unstyled">
+			                     <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_mivegec">données journalières</a></li>                            
+	                        	 <li id="li_importation_suivi_longitudinal_donnees_journalieres_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_journalieres">importation/exportation</a></li>                            
+	                          </ul>
+			                </li>
+		                    
+		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
+		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_capturees_mivegec" name="2"><a href="liste_chauves_souris_capturees.html?table=_mivegec">données</a></li>                            
+		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_capturees">carte</a></li>
+		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_capturees">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
+		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
+		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
+		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="liste_chauves_souris_non_invasives.html?table=_mivegec">données</a></li> 
+	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_non_invasives">carte</a></li>
+    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_non_invasives">importation/exportation</a></li>
+                              </ul>
+		                    </li>
+	                      </ul>
+                	    </li>
+                	     <li id="li_viande_de_brousse_mivegecDropdown" name="2"><a id="a_viande_de_brousse_mivegecDropdown" name="2" href="#ul_viande_de_brousse_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
+                      	  <ul id="ul_viande_de_brousse_mivegecDropdown" class="collapse list-unstyled">
+                        	<li id="li_viande_de_brousse_mivegec" name="2"><a href="liste_viande_de_brousse.html?table=_mivegec">données</a></li>                            
+                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=viande_de_brousse">carte</a></li>
+                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=viande_de_brousse">importation/exportation</a></li>
+                      	  </ul>
+                    	</li>                    	
                       </ul>
                     </li>
                                         
@@ -599,7 +625,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Base de données des animaux</h2>
+              <h2 class="no-margin-bottom">Base de données des Rongeurs</h2>
             </div>
           </header>
           
@@ -609,7 +635,7 @@
                 <div class="col-lg-12">                  
                   <div class="card">        
                    <div class="card-header" id="header">
-                     <h4>Consulter les animaux<a id="button_print" style="color:white;" class="btn btn btn-primary btn-fill">Imprimer</a></h4> 
+                     <h4>Consulter les rongeurs<a id="button_print" style="color:white;" class="btn btn btn-primary btn-fill">Imprimer</a></h4> 
                     </div>
                       
                     <div class="card-body">                                            
@@ -617,12 +643,14 @@
 				        
 				        <div class="canvas_div_pdf">
 				        
-				        <div class="card bg-light">
 				        
-				          	
-				        	
+				        
+				        			      	    
+				        
+		      				
+				        <div class="card bg-light">	
 				          <div class="card-header card-header-transparent d-flex align-items-center">
-                            <h3 class="h4">Données</h3>
+                            <h3 class="h4">Identification</h3>
                           </div>
                           
                           
@@ -636,310 +664,770 @@
 	    					    </div>
 							  </div>
 						    </div>
-                            
                             <div class="row">
-                              <div class="col-lg-6">                    	      
+                              <div class="col-lg-12">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="ID_animal_value">ID animal : </label>
-					              <label id="ID_animal_value"></label>
+	      			    	      <label for="Num_rongeur_value">N° de rongeur : </label>
+					              <label id="Num_rongeur_value"></label>
 	    					    </div>
 							  </div>
+						    </div>  
+						    <div class="row">
 						      <div class="col-lg-6">	
 							    <div class="form-group">	  
-							      <label for="pays_value">Pays : </label>
-				          	      <label id="pays_value"></label>
+							      <label for="CODE_rongeur_value">Code unique individu Rongeur Cameroun-n° : </label>
+				          	      <label id="CODE_rongeur_value"></label>
                         	    </div>											    
                               </div>
-                            </div>
-                              
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="mission_value">Mission : </label>
-					              <label id="mission_value"></label>
-	                            </div>
+						    </div>                                                                                   
+                          </div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données du site</h3>
+                          </div>
+                          <div class="card-body">
+		      				
+		      			  	<div class="row">
+		      				  <div class="col-lg-6">
+	            				<div class="form-group">
+				                  <label for="N_site_value">N site : </label>
+			                      <label id="N_site_value"></label>
+			                    </div> 
+			                  </div>
+			                  <div class="col-lg-6">           
+			                    <div class="form-group">
+			                      <label for="Pays_value">Pays : </label>
+			                      <label id="Pays_value"></label>
+			      			    </div>
+			      			  </div>
+	    					</div>	
+		      				 
+			      			<div class="row">
+			      			  <div class="col-lg-6">
+			      			    <div class="form-group">
+			                      <label for="Region_capture_value">Région : </label>
+			                      <label id="Region_capture_value"></label>
+			                    </div>
+			      			  </div>
+			      			  <div class="col-lg-6">
+			      			    <div class="form-group">
+			                      <label for="Site_capture_value">Site : </label>
+			                      <label id="Site_capture_value"></label>
+			                    </div>
+			      			  </div>
+			      			</div>	 
+			      			         		
+			      			<div class="row">
+			      			  <div class="col-lg-6">	    
+			      			    <div class="form-group">
+			                      <label for="Environnement_value">Environnement : </label>
+			                      <label id="Environnement_value"></label>
+			                    </div>
+			      			  </div>
+			      			  <div class="col-lg-6">      
+		                        <div class="form-group">
+			                      <label for="Proximite_village_km_value">Proximité du village : </label>
+			                      <label id="Proximite_village_km_value"></label>
+			                    </div>	      				  
+			      			  </div>
+			      		    </div>     			    
+			      			    
+			      			<div class="row">
+		                      <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Lat_degre_dec_value">Latitude coord. : </label>
+							      <label id="Lat_degre_dec_value"></label>
+								</div>
 							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="date_value">Date : </label>
-				          	      <label id="date_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="village_value">Village : </label>
-				          	      <label id="village_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="type_chasse_capture_value">Type chasse/capture : </label>
-					              <label id="type_chasse_capture_value"></label>
-	                            </div>
-							  </div>
-							</div>
-							
-							<div class="row">
 							  <div class="col-lg-6">	
 							    <div class="form-group">	  
-							      <label for="Point_GPS_LAT_value">Point GPS LAT : </label>
-				          	      <label id="Point_GPS_LAT_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="Point_GPS_LONG_value">Point GPS LONG : </label>
-				          	      <label id="Point_GPS_LONG_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="animal_value">Animal : </label>
-					              <label id="animal_value"></label>
-	                            </div>
+								  <label for="Latitude_value">Latitude</label>
+		                          <label id="Latitude_value"></label>
+		                        </div>	
+		                      </div>		
+		                    </div>		
+		                     
+		                    <div class="row">							    
+		                      <div class="col-lg-6">      			        
+							    <div class="form-group">
+							      <label for="Long_degre_dec_value">Longitude coord. : </label>
+								  <label id="Long_degre_dec_value"></label>
+								</div>	
 							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="especes_value">Especes : </label>
-				          	      <label id="especes_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="sexes_value">Sexes : </label>
-				          	      <label id="sexes_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="age_value">Age : </label>
-					              <label id="age_value"></label>
-	                            </div>
-							  </div>
-							</div>
-						    
-						    <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="poids_value">Poids (gramme) : </label>
-				          	      <label id="poids_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="etat-physioloque_value">Etat-physioloque : </label>
-				          	      <label id="etat-physioloque_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="plasma_value">Plasma : </label>
-					              <label id="plasma_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="serum_value">Serum : </label>
-				          	      <label id="serum_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                              
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="blood_spot_value">Blood spot : </label>
-				          	      <label id="blood_spot_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="coeur_value">Cœur : </label>
-					              <label id="coeur_value"></label>
-	                            </div>
-							  </div>
-							</div>
-						    
-						    <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="cerveau_value">Cerveau : </label>
-				          	      <label id="cerveau_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="foie_rate_value">Foie/rate : </label>
-				          	      <label id="foie_rate_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="glandes_salivaires_value">Glandes Salivaires : </label>
-					              <label id="glandes_salivaires_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="poumons_value">Poumons : </label>
-				          	      <label id="poumons_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="reins_value">Reins : </label>
-				          	      <label id="reins_value"></label>
-                        	    </div>											    
-                              </div>                            
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="intestins_value">Intestins : </label>
-					              <label id="intestins_value"></label>
-	                            </div>
-							  </div>
-							</div>
-
-                            <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="urine_value">Urine : </label>
-				          	      <label id="urine_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ecouvillon_salivaire_value">Ecouvillon salivaire : </label>
-				          	      <label id="ecouvillon_salivaire_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="ecouvillon_rectal_value">Ecouvillon rectal : </label>
-					              <label id="ecouvillon_rectal_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ecouvillon_nasal_valuel">Ecouvillon nasal : </label>
-				          	      <label id="ecouvillon_nasal_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ectoparasites_value">Ectoparasites : </label>
-				          	      <label id="ectoparasites_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="placenta_value">Placenta : </label>
-					              <label id="placenta_value"></label>
-	                            </div>
-							  </div>
-							</div>
-                            
-                            <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="liquide_amniotique_value">Liquide amniotique : </label>
-				          	      <label id="liquide_amniotique_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="testicules_value">Testicules : </label>
-				          	      <label id="testicules_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="lesions_ou_nodules_value">Lesions ou nodules : </label>
-					              <label id="lesions_ou_nodules_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="lait_value">Lait : </label>
-				          	      <label id="lait_value"></label>
-                        	    </div>											    
-                              </div>
-                           	</div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="foetus_value">Foetus : </label>
-				          	      <label id="foetus_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">  		
-		      			      <div class="col-lg-12">	      
-	    	      			    <div class="form-group">
-		      			          <label for="observation_value">Observation : </label>
-		                    	  <label id="observation_value"></label>
+							  <div class="col-lg-6">
+							    <div class="form-group">
+		                          <label for="Longitude_value">Longitude : </label>
+		                          <label id="Longitude_value"></label>
 		                        </div>
-		      			      </div>
-		                    </div> 
+		                      </div>
+		                    </div>
+		                    
+			      		  </div>
+                        </div>
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données de capture</h3>
+                          </div>
+                          <div class="card-body">
+                          	<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="NumMission_NumSite_value">Numéro de mission + Numéro de site : </label>
+			                      <label id="NumMission_NumSite_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Date_value">Date de prélèvement : </label>                              
+		                          <label id="Date_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+                          	
+                          	<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="J_value">N° de jour de capture : </label>
+			                      <label id="J_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Equipe_value">Nom de l'équipe terrain : </label>                              
+		                          <label id="Equipe_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Num_piege_value">Numéro de piège : </label>
+			                      <label id="Num_piege_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Type_piege_value">Piège Sherman ou Grillagé : </label>                              
+		                          <label id="Type_piege_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Zone_capture_value">Zone_capture : </label>
+			                      <label id="Zone_capture_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Emplacement_piege_value">Emplacement du piège (Transect ou zone village) : </label>                              
+		                          <label id="Emplacement_piege_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Detail_emplacement_value">Détail de l'emplacement (type de forêt, champs, N° de maison , pièces etc.) : </label>
+			                      <label id="Detail_emplacement_value"></label>
+			                    </div>  	
+			                  </div>                         	   
+                          	</div>
+                          	
+                          	<div class="row">
+		                      <div class="col-lg-6">
+			      			    <div class="form-group">
+			      			      <label for="Lat_degre_dec_Piegevalue">Latitude coord. Piège : </label>
+							      <label id="Lat_degre_dec_Piege_value"></label>
+								</div>
+							  </div>
+							  <div class="col-lg-6">	
+							    <div class="form-group">	  
+								  <label for="Latitude_Piege_value">Latitude Piège</label>
+		                          <label id="Latitude_Piege_value"></label>
+		                        </div>	
+		                      </div>		
+		                    </div>		
+		                     
+		                    <div class="row">							    
+		                      <div class="col-lg-6">      			        
+							    <div class="form-group">
+							      <label for="Long_degre_dec_Piege_value">Longitude coord. Piège : </label>
+								  <label id="Long_degre_dec_Piege_value"></label>
+								</div>	
+							  </div>
+							  <div class="col-lg-6">
+							    <div class="form-group">
+		                          <label for="Longitude_Piege_value">Longitude Piège : </label>
+		                          <label id="Longitude_Piege_value"></label>
+		                        </div>
+		                      </div>
+		                    </div>
 		                    
 		                    <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="guano_value">Guano : </label>
-					              <label id="guano_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="longueur_bras_value">Longueur bras : </label>
-				          	      <label id="longueur_bras_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Contention_value">Personne assurant la contention : </label>
+			                      <label id="Contention_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Preleveur_value">Personne assurant le prélèvement : </label>                              
+		                          <label id="Preleveur_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Autopsie_value">Personne assurant l'autopsie : </label>
+			                      <label id="Autopsie_value"></label>
+			                    </div>  	
+			                  </div>                         	   
+                          	</div>
+		                    
+			      		  
+		                                  	      			      	      			      
+		      			  </div>		      			      	      			      	      			      
+		      			</div>
+		      			
+		      			
+                        
+                        <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Données de l'individu capturé</h3>
+                          </div>
+                          <div class="card-body">
+                          
+                          <div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Identification_espece_value">L'espèce at-elle été identifiée ? </label>
+			                      <label id="Identification_espece_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Age_value">Age : </label>                              
+		                          <label id="Age_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Sexe_value">Sexe : </label>
+			                      <label id="Sexe_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	</div>
+							
+							<div class="row">                    	  	    
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille_terrain_value">Famille - terrain : </label>
+		                          <label id="Famille_terrain_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre_terrain_value">Genre - terrain : </label>
+		                          <label id="Genre_terrain_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece_terrain_value">Espece - terrain : </label>
+		                          <label id="Espece_terrain_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Famille_labo_value">Famille - labo : </label>
+		                          <label id="Famille_labo_value"></label>	      				      
+		      			        </div>	
+		      			      </div> 
+		      			   </div> 
+		      			    
+		      			   <div class="row">
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Genre_labo_value">Genre - labo : </label>
+		                          <label id="Genre_labo_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Espece_labo_value">Espece - labo : </label>
+		                          <label id="Espece_labo_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="F_gestante_value">Femelle gestante : </label>
+			                      <label id="F_gestante_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Nbtotal_paires_mamelles_value">Nb total de paires de mamelles : </label>                              
+		                          <label id="Nbtotal_paires_mamelles_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="N_mamelles_pectorales_value">Nb de paire en position pectorale : </label>
+			                      <label id="N_mamelles_pectorales_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="N_mamelles_abdominales_value">Nb de paire en position abdominale : </label>
+		                          <label id="N_mamelles_abdominales_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+							
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="N_mamelles_inguinales_value">Nb de paire en position inguinale : </label>
+		                          <label id="N_mamelles_inguinales_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Male_testicules_descendues_value">Testicules descendues (-> mâle adulte actif) : </label>
+		                          <label id="Male_testicules_descendues_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Male_longueur_testicules_value">Longeur des testicules si descendues (en mm) : </label>
+		                          <label id="Male_longueur_testicules_value"></label>	      				      
+		      			        </div>	
+		      			      </div> 
+							  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Photo_value">Animal pris en photo : </label>
+		                          <label id="Photo_value"></label>	      				      
+		      			        </div>	
+		      			      </div>
+		      			   </div> 
+		      			    
+		      			   <div class="row">
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Couleur_pelage_dorsal_value">Couleur pelage dorsal : </label>
+		                          <label id="Couleur_pelage_dorsal_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Couleur_pelage_ventral_value">Couleur pelage ventral : </label>
+		                          <label id="Couleur_pelage_ventral_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Remarques_anomalies_value">Anomalies, blessures, apparence (rayures) etc. : </label>
+			                      <label id="Remarques_anomalies_value"></label>
+			                    </div>  	
+			                  </div>                         	   
+                          	</div>
+                        
+	                        
+		      			    
+		      			  </div>		      			      	      			      	      			      
+		      			</div>
+		      			
+		      			<div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Mesures morphologiques</h3>
+                          </div>
+                          <div class="card-body">
+                          
                             <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="longueur_avant_bras_value">Longueur avant bras : </label>
-				          	      <label id="longueur_avant_bras_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="longueur_corporelle_value">Longueur corporelle : </label>
-					              <label id="longueur_corporelle_value"></label>
-	                            </div>
-							  </div>
-						    </div>
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Poids_sac_rongeur_g_value">Poids du sac avec rongeur (en gramme) : </label>
+			                      <label id="Poids_sac_rongeur_g_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Poids_sac_g_value">Poids du sac vide (en gramme) : </label>                              
+		                          <label id="Poids_sac_g_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Poids_g_value">Poids du rongeur (en gramme) : </label>
+			                      <label id="Poids_g_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="L_totale_corps_Ltc_mm_value">Longeur totale tête+ corps (sans la queue)  (en mm) : </label>
+		                          <label id="L_totale_corps_Ltc_mm_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+							
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="L_queue_mm_value">Longeur de la queue (en mm) : </label>
+		                          <label id="L_queue_mm_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="L_patte_arriere_Tib_mm_value">Longueur du pieds arrière (en mm) : </label>
+		                          <label id="L_patte_arriere_Tib_mm_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="L_crane_mm_value">Longueur du crane (en mm) : </label>
+		                          <label id="L_crane_mm_value"></label>	      				      
+		      			        </div>	
+		      			      </div> 
+							  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="L_oreille_mm_value">Longueur du crane (en mm) : </label>
+		                          <label id="L_oreille_mm_value"></label>	      				      
+		      			        </div>	
+		      			      </div>
+		      			   </div> 
+		      			    
+		      			   <div class="row">
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Taille_yeux_value">Taille des yeux : </label>
+		                          <label id="Taille_yeux_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			    </div>
+	      			          
+		      			    		                
 		                  </div>
+		                </div>
+		                
+		                <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Relâche, euthanasie ou recapture</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Relache_vivant_value">Animal relâché vivant : </label>
+			                      <label id="Relache_vivant_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Cause_deces_value">Cause de décès : </label>                              
+		                          <label id="Cause_deces_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Recapture_value">Animal déjà capturé : </label>
+			                      <label id="Recapture_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Comment_recapture_value">Nb de recaptures - Date et n° de pièges recapture : </label>
+		                          <label id="Comment_recapture_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+							
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Euthanasie_value">Euthanasie : </label>
+		                          <label id="Euthanasie_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Methode_eutha_value">Méthode d'euthanasie : </label>
+		                          <label id="Methode_eutha_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Dosage_Ketamine_mL_value">Dose de kétamine injectée (en ml) : </label>
+		                          <label id="Dosage_Ketamine_mL_value"></label>	      				      
+		      			        </div>	
+		      			      </div>
+		      			   </div> 
+		                  </div>
+		                </div>
+		                
+		                <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Echantillons</h3>
+                          </div>
+                          <div class="card-body">
+	                       	<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Biopsie_oreille_BO_value">Nb de tube de biopsie d'oreille (ethanol) : </label>
+			                      <label id="Biopsie_oreille_BO_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Ecouv_Salive_RNAl_SA_value">Nb de tubes d'écouvillons de salive (RNAlater) : </label>                              
+		                          <label id="Ecouv_Salive_RNAl_SA_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Ecouv_Urogenital_RNAl_URO_value">Nb de tubes d'écouvillons d'urogénitaux (RNAlater) : </label>
+			                      <label id="Ecouv_Urogenital_RNAl_URO_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Urine_RNAl_UR_value">Nb de tubes d'écouvillons d'urine (RNAlater) : </label>
+		                          <label id="Urine_RNAl_UR_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+							
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Ecouv_rectal_RNAl_RE_value">Nb de tubes d'écouvillons d'urine (RNAlater) : </label>
+		                          <label id="Ecouv_rectal_RNAl_RE_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Feces_RNAl_FE_value">Nb de tubes de fèces (RNAlater) : </label>
+		                          <label id="Feces_RNAl_FE_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Sang_DBS_nb_cercles_value">Nombre de cercles complet de sang sur DBS : </label>
+		                          <label id="Sang_DBS_nb_cercles_value"></label>	      				      
+		      			        </div>	
+		      			      </div> 
+							  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Ectoparasites_Tiques_Eth_EP_TI_value">Nb de tubes d'ectoparasites: Tiques (ethanol) : </label>
+		                          <label id="Ectoparasites_Tiques_Eth_EP_TI_value"></label>	      				      
+		      			        </div>	
+		      			      </div>
+		      			   </div> 
+		      			    
+		      			   <div class="row">
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Ectoparasites_Puces_Eth_EP_PU_value">Nb de tubes d'ectoparasites: Puces (ethanol) : </label>
+		                          <label id="Ectoparasites_Puces_Eth_EP_PU_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Poils_ethanol_PO_value">Nb de tubes de poils (1e mission uniquement) : </label>
+		                          <label id="Poils_ethanol_PO_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Autres_echantillons_value">Nb de tube autre échantillon prélevé : </label>
+			                      <label id="Autres_echantillons_value"></label>
+			                    </div>  	
+			                  </div>     
+							  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Autres_echantillons_details_value">Nature de l'autre échantillon prélevé : </label>
+			                      <label id="Autres_echantillons_details_value"></label>
+			                    </div>  	
+			                  </div> 							  
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-12">
+		       					<div class="form-group">
+				                  <label for="Remarques_echantillons_value">ex: présence de sang sur écouvillons; sang prélevé après euthanasie (sang post mortem), etc. : </label>
+			                      <label id="Remarques_echantillons_value"></label>
+			                    </div>  	
+			                  </div>                         	   
+                          	</div>		     
+		      			    
+		                  </div>
+		                </div>
+		                
+		                <div class="card bg-light">
+				          <div class="card-header card-header-transparent d-flex align-items-center">
+                            <h3 class="h4">Autopsie</h3>
+                          </div>
+                          <div class="card-body">
+	                       	<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Coeur_RNAl_CO_value">Nombre de tube d'organe (RNAlater) : cœur : </label>
+			                      <label id="Coeur_RNAl_CO_value"></label>
+			                    </div>  	
+			                  </div>
+                          	  <div class="col-lg-6">
+		            			<div class="form-group">
+		                          <label for="Poumon_RNAl_PO_value">Nombre de tube d'organe (RNAlater)  : poumon : </label>                              
+		                          <label id="Poumon_RNAl_PO_value"></label>
+		                        </div> 
+		    				  </div>                          	   
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Foie_RNAl_FO_value">Nombre de tube d'organe (RNAlater)  : foie : </label>
+			                      <label id="Foie_RNAl_FO_value"></label>
+			                    </div>  	
+			                  </div>                        	   
+                          	  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Rate_RNAl_RA_value">Nombre de tube d'organe (RNAlater)  : rate : </label>
+		                          <label id="Rate_RNAl_RA_value"></label>
+		                        </div>	
+		      			      </div> 
+		      			    </div>  
+							
+		      			    <div class="row">    
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="Rein_RNAl_RN_value">Nombre de tube d'organe (RNAlater)  : rein : </label>
+		                          <label id="Rein_RNAl_RN_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Testicule_RNAl_TE_value">Nombre de tube d'organe (RNAlater)  : testicules : </label>
+		                          <label id="Testicule_RNAl_TE_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+		      			    
+		      			    <div class="row">
+		      			      <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Ovaire_RNAl_OV_value">Nombre de tube d'organe (RNAlater)  : ovaire : </label>
+		                          <label id="Ovaire_RNAl_OV_value"></label>	      				      
+		      			        </div>	
+		      			      </div> 
+							  <div class="col-lg-6">   			    
+		      			        <div class="form-group">
+		                          <label for="Embryon_RNAl_EM_value">Nombre de tube d'organe (RNAlater)  : embryon : </label>
+		                          <label id="Embryon_RNAl_EM_value"></label>	      				      
+		      			        </div>	
+		      			      </div>
+		      			   </div> 
+		      			    
+		      			   <div class="row">
+		      			      <div class="col-lg-6"> 		    
+		      			        <div class="form-group">
+		                          <label for="F_gestante_nb_embryons_value">Nb d'embryons si femelle gestante et autopsie : </label>
+		                          <label id="F_gestante_nb_embryons_value"></label>
+		      			        </div>  
+		      			      </div> 
+		      			      <div class="col-lg-6">     			    
+		      			        <div class="form-group">
+		                          <label for="Intestins_RNAl_INT_value">Nombre de tube d'organe (RNAlater)  : intestins : </label>
+		                          <label id="Intestins_RNAl_INT_value"></label>	      				      
+		      			        </div>
+		      			      </div>
+		      			    </div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Peau_RNAl_PE_value">Nombre de tube d'organe (RNAlater) : peau : </label>
+			                      <label id="Peau_RNAl_PE_value"></label>
+			                    </div>  	
+			                  </div>     
+							  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Cerveau_RNAl_CE_value">Nombre de tube d'organe (RNAlater)  : cerveau : </label>
+			                      <label id="Cerveau_RNAl_CE_value"></label>
+			                    </div>  	
+			                  </div> 							  
+                          	</div>
+							
+							<div class="row">
+                          	  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Autre_Organe_RNAl_value">Nombre de tube d'organe (RNAlater)  : autre organe : </label>
+			                      <label id="Autre_Organe_RNAl_value"></label>
+			                    </div>  	
+			                  </div>        
+							  <div class="col-lg-6">
+		       					<div class="form-group">
+				                  <label for="Details_autre_organe_RNAl_value">Nature de l'autre organe prélevé : </label>
+			                      <label id="Details_autre_organe_RNAl_value"></label>
+			                    </div>  	
+			                  </div> 							  
+                          	</div>	     
+		      			    
+		                  </div>
+		                </div>
+		                
 		                </div>
 		                
                         <!-- <div class="card-body text-right" id="header_button">
@@ -1075,7 +1563,7 @@
 		if ((nom_table == '_transvihmi_guinee') || (nom_table == '_transvihmi_cameroun')
 			|| (nom_table == '_transvihmi_rdc')) {
 			institut = 'transvihmi';			
-		} else if ((nom_table == '_mivegec_congo') || (nom_table == '_mivegec_gabon')) {
+		} else if (nom_table == '_mivegec') {
 			institut = 'mivegec';
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
 				|| (nom_table == '_astre_gabon')) {
@@ -1103,25 +1591,15 @@
 	    	catch(error) {
 	    	};
 	    	
-			/*var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
+			var component_li = document.getElementById('li_rongeurs' + nom_table + 'Dropdown');
 			component_li.classList.add('active');
-			var component_a = document.getElementById('a_animals' + nom_table + 'Dropdown');
+			var component_a = document.getElementById('a_rongeurs' + nom_table + 'Dropdown');
 			component_a.setAttribute('aria-expanded', 'true');
-			var component_ul =  document.getElementById('ul_animals' + nom_table + 'Dropdown');
-			component_ul.classList.add('show');*/
+			var component_ul =  document.getElementById('ul_rongeurs' + nom_table + 'Dropdown');
+			component_ul.classList.add('show');
 			
-			/*try {
-				var component_li = document.getElementById('li_bat' + nom_table + 'CaptureesDropdown');
-				component_li.classList.add('active');
-				var component_a = document.getElementById('a_bat' + nom_table + 'CaptureesDropdown');
-				component_a.setAttribute('aria-expanded', 'true');
-				var component_ul =  document.getElementById('ul_bat' + nom_table + 'CaptureesDropdown');
-				component_ul.classList.add('show');
-			}
-	    	catch(error) {
-	    	};*/
-	    	
-			var component_li = document.getElementById('li_animals' + nom_table);
+			
+			var component_li = document.getElementById('li_rongeurs' + nom_table);
 			component_li.classList.add('active');
 		};
 		

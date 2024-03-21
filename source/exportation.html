@@ -238,6 +238,13 @@
 			                    </li>
 		                      </ul>
 	                	    </li>
+	                	    <li id="li_rongeurs_transvihmi_camerounDropdown" name="1"><a id="a_rongeurs_transvihmi_camerounDropdown" name="1" href="#ul_rongeurs_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-rodent"></i>Rongeurs</a>
+		                      <ul id="ul_rongeurs_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
+		                        <li id="li_rongeurs_transvihmi_cameroun" name="1"><a href="liste_rongeurs.html?table=_transvihmi_cameroun">données</a></li>                            
+		                        <li id="li_rongeurs_map_transvihmi_cameroun" name="1"><a href="cartographie.html?table=_transvihmi_cameroun&type=rongeurs">carte</a></li>
+		                        <li id="li_importation_rongeurs_transvihmi_cameroun" name="1"><a href="import_export.html?table=_transvihmi_cameroun&type=rongeurs">importation/exportation</a></li>                            
+                              </ul>
+		                    </li>
 	                	    <li id="li_viande_de_brousse_transvihmi_camerounDropdown" name="1"><a id="a_viande_de_brousse_transvihmi_camerounDropdown" name="1" href="#ul_viande_de_brousse_transvihmi_camerounDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
 	                      	  <ul id="ul_viande_de_brousse_transvihmi_camerounDropdown" name="1" class="collapse list-unstyled">
 	                        	<li id="li_viande_de_brousse_transvihmi_cameroun" name="1"><a href="liste_viande_de_brousse.html?table=_transvihmi_cameroun">données</a></li>                            
@@ -802,6 +809,8 @@
         	loadjs('js/exportation_caracterisations_grottes_astre_transvihmi.js')
         } else if ((localStorage.getItem('export_table') == '_astre_transvihmi_guinee') && (type_table == 'cameras_trap')) {
         	loadjs('js/exportation_cameras_trap_astre_transvihmi.js')
+        } else if ((localStorage.getItem('export_table') == '_transvihmi_cameroun') && (type_table == 'rongeurs')) {
+        	loadjs('js/exportation_rongeurs.js')
         }  else if (type_table == 'chauves_souris_capturees') {
     		var fields = 
     			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
@@ -10037,9 +10046,11 @@
 		console.log(fields);
 		
 		if (nom_table != '_astre_transvihmi_guinee') {
-			for (var i = 0; i < fields.length; i++) {
-				multiselect1.options[i] = new Option(fields[i], fields[i]);
-			};
+			if (type_table != 'rongeurs') {
+				for (var i = 0; i < fields.length; i++) {
+					multiselect1.options[i] = new Option(fields[i], fields[i]);
+				};
+			}
 		}
 	</script> 
 	
@@ -10204,6 +10215,13 @@
 					component_a.setAttribute('aria-expanded', 'true');
 					var component_ul =  document.getElementById('ul_faune' + nom_table + 'Dropdown');
 					component_ul.classList.add('show');
+				} else if (type_table == 'rongeurs') { 
+					var component_li = document.getElementById('li_rongeurs' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_rongeurs' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_rongeurs' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
 				};
 				
 				if (type_table == 'chauves_souris_capturees') {
@@ -10226,6 +10244,8 @@
 					var component_li = document.getElementById('li_importation_animals' + nom_table);
 				}  else if (type_table == 'faune') {
 					var component_li = document.getElementById('li_importation_faune' + nom_table);
+				}  else if (type_table == 'rongeurs') {
+					var component_li = document.getElementById('li_importation_rongeurs' + nom_table);
 				}
 				component_li.classList.add('active');
 			}

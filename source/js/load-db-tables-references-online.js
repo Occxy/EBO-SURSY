@@ -53,6 +53,7 @@ if  (debug !== '') {
 		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
 		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
 		  'faune_astre_transvihmi_guinee_debug',
+		  'rongeurs_transvihmi_cameroun_debug',
 		  'username', 'version'];
 	
 	
@@ -69,7 +70,7 @@ if  (debug !== '') {
 			tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
 				  'viande_de_brousse_transvihmi_cameroun', 'viande_de_brousse_nhp_transvihmi_cameroun', 'site_transvihmi_cameroun', 
 				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
-				  'grands_singes_antilopes_transvihmi_cameroun'];
+				  'grands_singes_antilopes_transvihmi_cameroun, rongeurs_transvihmi_cameroun'];
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
@@ -96,7 +97,7 @@ if  (debug !== '') {
 		  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
 		  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
 		  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
-		  'faune_astre_transvihmi_guinee'];
+		  'faune_astre_transvihmi_guinee', 'rongeurs_transvihmi_cameroun'];
 } else if ((code_equipe === '2') && (nom_pays == 'congo')) {
 	tables_principales = ['animals_mivegec_congo'];
 } else if ((code_equipe === '2') && (nom_pays == 'gabon')) {
@@ -157,7 +158,9 @@ if  (debug !== '') {
 		 'couleur_pelage_dorsal_astre_gabon_debug', 'couleur_pelage_ventral_astre_gabon_debug',  	
 		 'phenologie_astre_gabon_debug', 'activite_humaine_astre_gabon_debug',
 		 'pays_astre_transvihmi_guinee_debug', 'espece_astre_transvihmi_guinee_debug', 'activite_humaine_astre_transvihmi_guinee_debug',
-		 'couleur_pelage_dorsal_astre_transvihmi_guinee_debug', 'couleur_pelage_ventral_astre_transvihmi_guinee_debug'
+		 'couleur_pelage_dorsal_astre_transvihmi_guinee_debug', 'couleur_pelage_ventral_astre_transvihmi_guinee_debug',
+		 'rongeurs_couleur_pelage_dorsal_transvihmi_cameroun_debug', 'rongeurs_couleur_pelage_ventral_transvihmi_cameroun_debug', 'rongeurs_espece_transvihmi_cameroun_debug',
+		 'rongeurs_site_capture_transvihmi_cameroun_debug'
 		 ];
 	
 	
@@ -172,7 +175,8 @@ if  (debug !== '') {
 		['espece_transvihmi_cameroun', 'pays_transvihmi_cameroun', 'lieu_capture_transvihmi_cameroun', 'lieu_collecte_transvihmi_cameroun', 'methode_capture_transvihmi_cameroun', 
 		 'couleur_pelage_dorsal_transvihmi_cameroun', 'couleur_pelage_ventral_transvihmi_cameroun',  	
 		 'preleve_chez_transvihmi_cameroun', 'methode_chasse_transvihmi_cameroun', 'destination_transvihmi_cameroun', 'type_animal_transvihmi_cameroun', 'etat_carcasse_animal_transvihmi_cameroun',
-		 'qualite_echantillon_transvihmi_cameroun', 'endroit_prelevement_transvihmi_cameroun', 'espece_animal_transvihmi_cameroun', 'phenologie_transvihmi_cameroun', 'activite_humaine_transvihmi_cameroun'];
+		 'qualite_echantillon_transvihmi_cameroun', 'endroit_prelevement_transvihmi_cameroun', 'espece_animal_transvihmi_cameroun', 'phenologie_transvihmi_cameroun', 'activite_humaine_transvihmi_cameroun',
+		 'rongeurs_couleur_pelage_dorsal_transvihmi_cameroun', 'rongeurs_couleur_pelage_ventral_transvihmi_cameroun', 'rongeurs_espece_transvihmi_cameroun', 'rongeurs_site_capture_transvihmi_cameroun'];
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {
 	var tables_references = 
 		['espece_transvihmi_rdc', 'pays_transvihmi_rdc', 'lieu_capture_transvihmi_rdc', 'lieu_collecte_transvihmi_rdc', 'methode_capture_transvihmi_rdc', 
@@ -189,6 +193,7 @@ if  (debug !== '') {
 		 'couleur_pelage_dorsal_transvihmi_cameroun', 'couleur_pelage_ventral_transvihmi_cameroun',  	
 		 'preleve_chez_transvihmi_cameroun', 'methode_chasse_transvihmi_cameroun', 'destination_transvihmi_cameroun', 'type_animal_transvihmi_cameroun', 'etat_carcasse_animal_transvihmi_cameroun',
 		 'qualite_echantillon_transvihmi_cameroun', 'endroit_prelevement_transvihmi_cameroun', 'espece_animal_transvihmi_cameroun', 'phenologie_transvihmi_cameroun', 'activite_humaine_transvihmi_cameroun',
+		 'rongeurs_couleur_pelage_dorsal_transvihmi_cameroun', 'rongeurs_couleur_pelage_ventral_transvihmi_cameroun', 'rongeurs_espece_transvihmi_cameroun', 'rongeurs_site_capture_transvihmi_cameroun',
 		 'espece_transvihmi_rdc', 'pays_transvihmi_rdc', 'lieu_capture_transvihmi_rdc', 'lieu_collecte_transvihmi_rdc', 'methode_capture_transvihmi_rdc', 
 		 'couleur_pelage_dorsal_transvihmi_rdc', 'couleur_pelage_ventral_transvihmi_rdc',  	
 		 'preleve_chez_transvihmi_rdc', 'methode_chasse_transvihmi_rdc', 'destination_transvihmi_rdc', 'type_animal_transvihmi_rdc', 'etat_carcasse_animal_transvihmi_rdc',
