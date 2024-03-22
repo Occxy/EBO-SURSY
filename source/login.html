@@ -317,7 +317,7 @@
 			  		var localDB = new PouchDB('username');
 				  	localDB.find({
 				    	selector: {username: username},
-						fields: ['_id',  'equipe', 'code_equipe', 'pays', 'fonction', 'role', 'username', 'email', 'password', 'confirmation_token', 'confirmed_at',
+						fields: ['_id',  'equipe', 'code_equipe', 'light', 'pays', 'fonction', 'role', 'username', 'email', 'password', 'confirmation_token', 'confirmed_at',
 				  	  			 'reset_token', 'reset_at', 'remember_token']
 				  	}).then(function (result) {
 					
@@ -332,6 +332,7 @@
 				    			var pays = result.docs[0].pays;
 				    			var fonction = result.docs[0].fonction;
 				    			var role = result.docs[0].role;
+				    			var light = result.docs[0].light;
 				    			
 				    			if (reset_token != '') {
 				    				addAlertFlash('danger', 
@@ -357,6 +358,7 @@
 										localStorage['nom_pays'] = pays;
 										localStorage['fonction'] = fonction;
 										localStorage['role'] = role;
+										localStorage['light'] = light;
 										
 										/*var useSpecieTable = document.getElementById('useSpecieTable');
 										if (useSpecieTable.checked == true) {
@@ -427,7 +429,7 @@
 			  		var remoteDB2 = new PouchDB(remote_couchdb + 'username'); 
 			  		remoteDB2.find({
 				    	selector: {username: username},
-						fields: ['_id',  'equipe', 'code_equipe', 'pays', 'fonction', 'role', 'username', 'email', 'password', 'confirmation_token', 'confirmed_at',
+						fields: ['_id',  'equipe', 'code_equipe', 'light', 'pays', 'fonction', 'role', 'username', 'email', 'password', 'confirmation_token', 'confirmed_at',
 				  	  			 'reset_token', 'reset_at', 'remember_token']
 				  	}).then(function (result) {
 				  		
@@ -443,6 +445,7 @@
 				    			var pays = result.docs[0].pays;
 				    			var fonction = result.docs[0].fonction;
 				    			var role = result.docs[0].role;
+				    			var light = result.docs[0].light;
 				    			
 				    			if (reset_token != '') {
 				    				addAlertFlash('danger', 
@@ -468,6 +471,7 @@
 										localStorage['nom_pays'] = pays;
 										localStorage['fonction'] = fonction;
 										localStorage['role'] = role;
+										localStorage['light'] = light;
 										
 										/*var useSpecieTable = document.getElementById('useSpecieTable');
 										if (useSpecieTable.checked == true) {

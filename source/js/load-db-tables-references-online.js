@@ -4,6 +4,7 @@ var width = 0;
 var remote_couchdb = localStorage.getItem('remote_couchdb');
 var code_equipe = localStorage.getItem('code_equipe');
 var nom_pays = localStorage.getItem('nom_pays');
+var light = localStorage.getItem('light');
 
 
 
@@ -67,10 +68,17 @@ if  (debug !== '') {
 						  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
 						  'faune_astre_transvihmi_guinee'];
 } else if ((code_equipe === '1') && (nom_pays == 'cameroun')) {
+	if (light == '1') {
 			tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
-				  'viande_de_brousse_transvihmi_cameroun', 'viande_de_brousse_nhp_transvihmi_cameroun', 'site_transvihmi_cameroun', 
+				  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
 				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
-				  'grands_singes_antilopes_transvihmi_cameroun, rongeurs_transvihmi_cameroun'];
+				  'rongeurs_transvihmi_cameroun'];
+	} else {
+		tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
+			  'viande_de_brousse_transvihmi_cameroun', 'viande_de_brousse_nhp_transvihmi_cameroun', 'site_transvihmi_cameroun', 
+			  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
+			  'grands_singes_antilopes_transvihmi_cameroun', 'rongeurs_transvihmi_cameroun'];
+	}
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
@@ -82,22 +90,39 @@ if  (debug !== '') {
 } else if ((code_equipe === '1') && (nom_pays == 'rwanda')) {
 	tables_principales = ['grands_singes_antilopes_transvihmi_rwanda'];
 } else if ((code_equipe === '1') && (nom_pays == 'tous')) {
-	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
-		  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
-		  'donnees_mission_transvihmi_guinee', 'donnees_journalieres_transvihmi_guinee',
-		  'chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
-		  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
-		  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
-		  'chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
-		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
-		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',
-		  'grands_singes_antilopes_transvihmi_cameroun', 'grands_singes_antilopes_transvihmi_rdc',
-		  'grands_singes_antilopes_transvihmi_gabon',
-		  'grands_singes_antilopes_transvihmi_rca', 'grands_singes_antilopes_transvihmi_rwanda',
-		  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
-		  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
-		  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
-		  'faune_astre_transvihmi_guinee', 'rongeurs_transvihmi_cameroun'];
+	if (light == '1') {
+		tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
+			  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
+			  'donnees_mission_transvihmi_guinee', 'donnees_journalieres_transvihmi_guinee',
+			  'chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
+			  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
+			  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
+			  'chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
+			  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
+			  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',			  
+			  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
+			  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
+			  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
+			  'rongeurs_transvihmi_cameroun'];
+		} else {
+			tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
+				  'viande_de_brousse_transvihmi_guinee', 'site_transvihmi_guinee', 
+				  'donnees_mission_transvihmi_guinee', 'donnees_journalieres_transvihmi_guinee',
+				  'chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
+				  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
+				  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
+				  'chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
+				  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
+				  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',
+				  'grands_singes_antilopes_transvihmi_cameroun', 'grands_singes_antilopes_transvihmi_rdc',
+				  'grands_singes_antilopes_transvihmi_gabon',
+				  'grands_singes_antilopes_transvihmi_rca', 'grands_singes_antilopes_transvihmi_rwanda',
+				  'chauves_souris_capturees_astre_transvihmi_guinee', 'chauves_souris_non_invasives_astre_transvihmi_guinee',
+				  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
+				  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
+				  'faune_astre_transvihmi_guinee', 'rongeurs_transvihmi_cameroun'];
+		}
+	
 } else if ((code_equipe === '2') && (nom_pays == 'congo')) {
 	tables_principales = ['animals_mivegec_congo'];
 } else if ((code_equipe === '2') && (nom_pays == 'gabon')) {
