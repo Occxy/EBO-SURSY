@@ -98,7 +98,7 @@
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
 		localStorage['viande_de_brousse_nhp_table'] = 'viande_de_brousse_nhp' + nom_table;
-		loadjs('js/load-db-viande-de-brousse-nhp.js');
+		
 	</script> 
   
     <!-- <script type="text/javascript">
@@ -875,6 +875,7 @@
 			component_li.classList.add('active');
 		};
 		
+		loadjs('js/load-db-viande-de-brousse-nhp.js');
   		
 	</script> 
 	
