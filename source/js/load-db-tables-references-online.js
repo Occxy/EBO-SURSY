@@ -125,7 +125,7 @@ if  (debug !== '') {
 		}
 	
 } else if ((code_equipe === '2') && (nom_pays == 'congo')) {
-	tables_principales = ['animals_mivegec_congo'];
+	tables_principales = ['chauves_souris_organes_mivegec_congo', 'chauves_souris_guano_mivegec_congo'];
 } else if ((code_equipe === '2') && (nom_pays == 'gabon')) {
 	tables_principales = ['animals_mivegec_gabon'];
 } else if ((code_equipe === '2') && (nom_pays == 'tous')) {
