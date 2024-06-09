@@ -351,7 +351,8 @@ if  (debug !== '') {
 		  'chauves_souris_capturees_astre_transvihmi_guinee_debug', 'chauves_souris_non_invasives_astre_transvihmi_guinee_debug',
 		  'caracterisations_grottes_astre_transvihmi_guinee_debug', 'cameras_trap_astre_transvihmi_guinee_debug',
 		  'donnees_mission_astre_transvihmi_guinee_debug', 'donnees_journalieres_astre_transvihmi_guinee_debug',
-		  'faune_astre_transvihmi_guinee_debug'];
+		  'faune_astre_transvihmi_guinee_debug',
+		  'animals_mivegec_gabon_debug', 'chauves_souris_organes_mivegec_congo_debug'];
 } else if ((code_equipe === '1') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_guinee', 'chauves_souris_non_invasives_transvihmi_guinee',
 						  'viande_de_brousse_guinee_transvihmi_guinee', 'site_transvihmi_guinee', 
@@ -383,6 +384,10 @@ if  (debug !== '') {
 		  'caracterisations_grottes_astre_transvihmi_guinee', 'cameras_trap_astre_transvihmi_guinee',
 		  'donnees_mission_astre_transvihmi_guinee', 'donnees_journalieres_astre_transvihmi_guinee',
 		  'faune_astre_transvihmi_guinee'];
+} else if ((code_equipe === '2') && (nom_pays == 'tous')) {
+	tables_principales = ['animals_mivegec_gabon', 'chauves_souris_organes_mivegec_congo']; 
+} else if ((code_equipe === '5') && (nom_pays == 'tous')) {
+	tables_principales = ['animals_ipg_guinee', 'animals_ipg_guinee_2', 'animals_ipg_guinee_3', 'animals_ipg_guinee_4', 'animals_ipg_guinee_5',];
 } else if ((code_equipe === '6') && (nom_pays == 'guinee')) {
 	tables_principales = ['chauves_souris_capturees_astre_guinee', 'chauves_souris_non_invasives_astre_guinee', 
 						  'site_astre_guinee', 'donnees_mission_astre_guinee', 'donnees_journalieres_astre_guinee',

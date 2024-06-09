@@ -94,7 +94,7 @@
 		var clickedBtn = null;
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
-		localStorage['table_animals_ipg'] = 'animals' + nom_table + '_2';
+		localStorage['table_chauves_souris_guano'] = 'chauves_souris_guano' + nom_table;
 		
 	</script> 
   
@@ -372,10 +372,25 @@
                     
                     	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
                       	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
-                            <li id="li_animals_mivegec_congo" name="2"><a href="liste_animals.html?table=_mivegec_congo">données</a></li>                            
-		                    <li id="li_animals_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_capturees">carte</a></li>
-		                    <li id="li_importation_animals_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=animals">importation/exportation</a></li>                            
-                          </ul>
+                            <li id="li_chauves_souris_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_chauves_souris_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+			                    <li id="li_chauves_souris_organes_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_organes_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_organes_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Organes</a>
+	                          	  <ul id="ul_chauves_souris_organes_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_organes_mivegec_congo" name="2"><a href="liste_chauves_souris_organes_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_organes_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_organes_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li> 
+		                        <li id="li_chauves_souris_guano_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_guano_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_guano_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Guano</a>
+	                          	  <ul id="ul_chauves_souris_guano_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_guano_mivegec_congo" name="2"><a href="liste_chauves_souris_guano_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_guano_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_guano_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li>
+		                      </ul>
+		                    </li> 
+		                  </ul>
 		                </li>    
 		                
 		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
@@ -516,74 +531,7 @@
                    	    </li>
                    	    
                       </ul>
-                    </li>             
-                    
-                    <li id="li_astre_transvihmiDropdown" name="6"> <a id="a_astre_transvihmiDropdown" name="6" href="#ul_astre_transvihmiDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-cirad-transvihmi"></i> </a>
-                      <ul id="ul_astre_transvihmiDropdown" name="6" class="collapse list-unstyled">
-                        
-                        <li id="li_astre_transvihmi_guineeDropdown" name="6" pays="guinee"> <a id="a_astre_transvihmi_guineeDropdown" name="6" href="#ul_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
-                          <ul id="ul_astre_transvihmi_guineeDropdown" name="6" pays="guinee" class="collapse list-unstyled">
-                            
-                            <li id="li_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6"><a id="a_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="1" href="#ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Caractérisations</a>
-		                      <ul id="ul_caracterisations_grottes_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-		                       <li id="li_caracterisations_grottes_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_caracterisations.html?table=_astre_transvihmi_guinee">Caractérisations grottes</a></li>                            
-		                		<li id="li_importation_caracterisations_grottes_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=caracterisations_grottes">importation/exportation</a></li>                            
-                              </ul>
-		                    </li>
-			                                  
-	                        <li id="li_cameras_trap_astre_transvihmi_guineeDropdown" name="6"><a id="a_cameras_trap_astre_transvihmi_guineeDropdown" name="1" href="#ul_cameras_trap_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Cameras-trap</a>
-		                      <ul id="ul_cameras_trap_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-		                        <li id="li_cameras_trap_astre_transvihmi_guinee" name="6" style="text-align: right"><a href="liste_cameras_trap.html?table=_astre_transvihmi_guinee">Cameras-trap grottes</a></li>                            
-			                	<li id="li_importation_cameras_trap_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=cameras_trap">importation/exportation</a></li>                            
-                              </ul>
-		                    </li>
-			                
-	                        <li id="li_bat_astre_transvihmi_guineeDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
-	                          <ul id="ul_bat_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-			                    
-			                    <li id="li_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
-			                      <ul id="ul_suivi_longitudinal_donnees_missions_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-			                        <li id="li_suivi_longitudinal_donnees_missions_astre_transvihmi_guinee" name="6"style="text-align: right"><a href="liste_donnees_missions.html?table=_astre_transvihmi_guinee">données missions</a></li>
-			                    	<li id="li_importation_suivi_longitudinal_donnees_missions_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=donnees_mission">importation/exportation</a></li>                            
-	                              </ul>
-			                    </li>
-			                    
-			                    <li id="li_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="6"><a id="a_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
-			                      <ul id="ul_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-			                        <li id="li_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guinee" name="6"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_astre_transvihmi_guinee">données journalières</a></li>                            
-	                        		<li id="li_importation_suivi_longitudinal_donnees_journalieres_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=donnees_journalieres">importation/exportation</a></li>                            
-	                              </ul>
-			                    </li>
-	                        		                    
-			                    <li id="li_bat_astre_transvihmi_guineeCaptureesDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeCaptureesDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeCaptureesDropdown" aria-expanded="false" data-toggle="collapse">Capturées</a>
-			                      <ul id="ul_bat_astre_transvihmi_guineeCaptureesDropdown" name="6" class="collapse list-unstyled">
-			                        <li id="li_bat_capturees_astre_transvihmi_guinee" name="6"><a href="liste_chauves_souris_capturees.html?table=_astre_transvihmi_guinee">données</a></li>                            
-			                        <li id="li_bat_map_capturees_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=chauves_souris_capturees">carte</a></li>
-			                        <li id="li_importation_bat_capturees_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=chauves_souris_capturees">importation/exportation</a></li>                            
-	                              </ul>
-			                    </li>
-			                    <li id="li_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6"><a id="a_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6" href="#ul_bat_astre_transvihmi_guineeNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse">Non invasives</a>
-			                      <ul id="ul_bat_astre_transvihmi_guineeNonInvasivesDropdown" name="6" class="collapse list-unstyled">
-			                        <li id="li_bat_non_invasives_astre_transvihmi_guinee" name="6"><a href="liste_chauves_souris_non_invasives.html?table=_astre_transvihmi_guinee">données</a></li> 
-		                            <li id="li_bat_map_non_invasives_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=chauves_souris_non_invasives">carte</a></li>
-	    	                        <li id="li_importation_bat_non_invasives_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=chauves_souris_non_invasives">importation/exportation</a></li>
-	                              </ul>
-	                            </li>
-	                          </ul>
-	                        </li>
-	                        
-	                        <li id="li_faune_astre_transvihmi_guineeDropdown" name="6"><a id="a_faune_astre_transvihmi_guineeDropdown" name="6" href="#ul_faune_astre_transvihmi_guineeDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline;text-align: right;padding-right: 40px;"> <i class="icon-Picto_ANTILOPE"></i>Faune</a>
-	                      	  <ul id="ul_faune_astre_transvihmi_guineeDropdown" name="6" class="collapse list-unstyled">
-	                        	<li id="li_faune_astre_transvihmi_guinee" name="6"><a href="liste_faune.html?table=_astre_transvihmi_guinee">données</a></li>                            
-	                        	<li id="li_faune_map_astre_transvihmi_guinee" name="6"><a href="cartographie.html?table=_astre_transvihmi_guinee&type=faune">carte</a></li>
-	                        	<li id="li_importation_faune_astre_transvihmi_guinee" name="6"><a href="import_export.html?table=_astre_transvihmi_guinee&type=faune">importation/exportation</a></li>
-	                      	  </ul>
-	                    	</li>
-	                    	                           
-                          </ul>
-                   	    </li>
-                   	  </ul>
-                    </li>      
+                    </li>                   
 
 					<li id="li_CIBUDropdown" name="3"> <a id="a_CIBUDropdown" name="3" href="#ul_CIBUDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-institut-pasteur"></i> </a>
                       <ul id="ul_CIBUDropdown" name ="3" class="collapse list-unstyled">
@@ -631,11 +579,7 @@
                           
                         <li id="li_ipg_guineeDropdown" name="5" pays="guinee"> <a id="a_ipg_guineeDropdown" name="5" href="#ul_ipg_guineeDropdown" aria-expanded="false" data-toggle="collapse">Guinée</a>
                       	  <ul id="ul_ipg_guineeDropdown" name="5" pays="guinee" class="collapse list-unstyled">
-                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">1er jeu de données</a></li>                            
-		                    <li id="li_animals_ipg_guinee_2" name="5"><a href="liste_animals_ipg_2.html?table=_ipg_guinee">2ème jeu de données</a></li>
-		                    <li id="li_animals_ipg_guinee_3" name="5"><a href="liste_animals_ipg_3.html?table=_ipg_guinee">3ème jeu de données</a></li>
-		                    <li id="li_animals_ipg_guinee_4" name="5"><a href="liste_animals_ipg_4.html?table=_ipg_guinee">4ème jeu de données</a></li>
-		                    <li id="li_animals_ipg_guinee_5" name="5"><a href="liste_animals_ipg_5.html?table=_ipg_guinee">5ème jeu de données</a></li>
+                            <li id="li_animals_ipg_guinee" name="5"><a href="liste_animals_ipg.html?table=_ipg_guinee">données</a></li>                            
 		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
 		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
                           </ul>
@@ -672,7 +616,7 @@
 		                    var line = document.createElement("div");
 		                    line.innerHTML = 
 		                    	'<h4 class="title">Nouvel animal' +
-		                    	'<a id="button_add" href="ajouter_modifier_animals_ipg_2.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+		                    	'<a id="button_add" href="ajouter_modifier_chauves_souris_guano_mivegec_congo.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
 		                    	'<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
 		                    	'</h4>';
 		                    document.getElementById("button_table").appendChild(line);
@@ -684,14 +628,16 @@
                         <table id="example" class="table table-striped table-sm compact nowrap"> 
                           
                           <thead>
-				            <tr>
-				              <th>Commun name</th>
-				              <th>Date</th>
-				              <th>Number</th>
-				              <th>Square</th>
-				              <th>Commun</th>
-				              <th>Town</th>
+				            <tr>			
+				            
+				              <th>Mission</th>
+				              <th>Date de collecte</th>
+				              <th>Identifiant plaques</th>
+				              <th>Nd de guanos</th>
+				              <th>Village</th>
 				              <th>Action</th>
+				              
+				              
 				            </tr>
 				          </thead>
                           <!-- <tbody>
@@ -816,7 +762,7 @@
 	    	 
 	    	var ID = $(this).data('id');
 	    	localStorage['ID'] = ID;
-	    	localStorage['delete_record_table'] = 'animals' + nom_table + '_2';
+	    	localStorage['delete_record_table'] = 'chauves_souris_guano' + nom_table;
 	    	if(clickedBtn){ // make sure we have assigned a reference
 		    	//$(clickedBtn).closest("tr").remove().draw();
 	    		table.row($(clickedBtn).closest('tr')).remove().draw();
@@ -839,7 +785,7 @@
 		    	    table.row($(this).parents('tr')).remove().draw();
 		    	 });
 		    	
-		    	localStorage['delete_checked_records_table'] = 'animals' + nom_table + '_2';
+		    	localStorage['delete_checked_records_table'] = 'chauves_souris_guano' + nom_table;
 		    	localStorage.setItem("array_checked_records", JSON.stringify(array_checked_records));
 		    	loadjs('js/delete-selected-record.js');
 		    	table.draw();
@@ -851,17 +797,17 @@
 	<script type="text/javascript">
 		$(document).on('click', ".modifybtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_animals' + nom_table + '_2';
+   			var ID_table = 'ID_chauves_souris_guano' + nom_table;
    			localStorage[ID_table] = ID;
    			
-   			window.location = 'ajouter_modifier_animals_ipg_2.html?option=2&table=' + nom_table;
+   			window.location = 'ajouter_modifier_chauves_souris_guano_mivegec_congo.html?option=2&table=' + nom_table;
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_animals' + nom_table + '_2';
+   			var ID_table = 'ID_chauves_souris_guano' + nom_table;
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_animals_ipg_2.html?table=' + nom_table;
+   			window.location = 'consulter_chauves_souris_guano_mivegec_congo.html?table=' + nom_table;
 	 	});
   	</script>  
   	
@@ -883,8 +829,6 @@
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
 				|| (nom_table == '_astre_gabon')) {
 			institut = 'astre';
-		} else if ((nom_table == '_ipg_guinee') || (nom_table == '_ipg_guinee_2')) {
-			institut = 'ipg';
 		};
 		
 		expanded(nom_table);
@@ -904,9 +848,25 @@
 				component_a.setAttribute('aria-expanded', 'true');
 				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
 				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
 			}
 	    	catch(error) {
 	    	};
+	    	
+	    		
 	    	
 			/*var component_li = document.getElementById('li_animals' + nom_table + 'Dropdown');
 			component_li.classList.add('active');
@@ -926,9 +886,9 @@
 	    	catch(error) {
 	    	};*/
 	    	
-	    	loadjs('js/load-db-animals-ipg-2.js');
+	    	loadjs('js/load-db-chauves-souris-guano-mivegec-congo.js');
 	    	
-			var component_li = document.getElementById('li_animals' + nom_table + '_2');
+			var component_li = document.getElementById('li_chauves_souris_guano' + nom_table);
 			component_li.classList.add('active');
 		};
   		

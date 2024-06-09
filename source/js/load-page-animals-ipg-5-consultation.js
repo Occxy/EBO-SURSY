@@ -8,7 +8,7 @@ function chargement_des_animaux() {
 
 function chargement_des_donnees(table) {
 	
-	var id = localStorage.getItem('ID_animals' + table + '_2');
+	var id = localStorage.getItem('ID_animals' + table + '_5');
 
 	var debug;
 	if (localStorage.getItem('debug') === null) {
@@ -19,9 +19,9 @@ function chargement_des_donnees(table) {
 		
 	if (localStorage.getItem('web') === 'oui') {
 		var remote_couchdb = localStorage.getItem('remote_couchdb');
-		var DB = new PouchDB(remote_couchdb + 'animals' + table + '_2' + debug);
+		var DB = new PouchDB(remote_couchdb + 'animals' + table + '_5' + debug);
 	} else {
-		var DB = new PouchDB('animals' + table + '_2' + debug);
+		var DB = new PouchDB('animals' + table + '_5' + debug);
 	};
 	DB.allDocs({  		
 		keys: [id],
@@ -51,7 +51,7 @@ function chargement_des_donnees(table) {
 			showValue('Date');
 			showValue('Number');
 			showValue('Square');
-			showValue('Commun');
+			showValue('Commune');
 			showValue('Town');
 			showValue('Prefecture');
 			showValue('Point_GPS_LAT');

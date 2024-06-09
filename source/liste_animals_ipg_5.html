@@ -94,7 +94,7 @@
 		var clickedBtn = null;
 		let searchParams = new URLSearchParams(window.location.search);
 		nom_table = searchParams.get('table');
-		localStorage['table_animals_ipg'] = 'animals' + nom_table + '_2';
+		localStorage['table_animals_ipg'] = 'animals' + nom_table + '_5';
 		
 	</script> 
   
@@ -672,7 +672,7 @@
 		                    var line = document.createElement("div");
 		                    line.innerHTML = 
 		                    	'<h4 class="title">Nouvel animal' +
-		                    	'<a id="button_add" href="ajouter_modifier_animals_ipg_2.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
+		                    	'<a id="button_add" href="ajouter_modifier_animals_ipg_5.html?option=0&table=' + nom_table + '" class="btn btn btn-primary btn-fill">Ajouter</a>' +
 		                    	'<a id="button_selection_delete" style="color:white;" class="btn btn btn-primary btn-fill float-right" data-toggle="modal" data-target="#deletemodalall" >Supprimer la sélection</a>' +
 		                    	'</h4>';
 		                    document.getElementById("button_table").appendChild(line);
@@ -689,7 +689,7 @@
 				              <th>Date</th>
 				              <th>Number</th>
 				              <th>Square</th>
-				              <th>Commun</th>
+				              <th>Commune</th>
 				              <th>Town</th>
 				              <th>Action</th>
 				            </tr>
@@ -816,7 +816,7 @@
 	    	 
 	    	var ID = $(this).data('id');
 	    	localStorage['ID'] = ID;
-	    	localStorage['delete_record_table'] = 'animals' + nom_table + '_2';
+	    	localStorage['delete_record_table'] = 'animals' + nom_table + '_5';
 	    	if(clickedBtn){ // make sure we have assigned a reference
 		    	//$(clickedBtn).closest("tr").remove().draw();
 	    		table.row($(clickedBtn).closest('tr')).remove().draw();
@@ -839,7 +839,7 @@
 		    	    table.row($(this).parents('tr')).remove().draw();
 		    	 });
 		    	
-		    	localStorage['delete_checked_records_table'] = 'animals' + nom_table + '_2';
+		    	localStorage['delete_checked_records_table'] = 'animals' + nom_table + '_5';
 		    	localStorage.setItem("array_checked_records", JSON.stringify(array_checked_records));
 		    	loadjs('js/delete-selected-record.js');
 		    	table.draw();
@@ -851,17 +851,17 @@
 	<script type="text/javascript">
 		$(document).on('click', ".modifybtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_animals' + nom_table + '_2';
+   			var ID_table = 'ID_animals' + nom_table + '_5';
    			localStorage[ID_table] = ID;
    			
-   			window.location = 'ajouter_modifier_animals_ipg_2.html?option=2&table=' + nom_table;
+   			window.location = 'ajouter_modifier_animals_ipg_5.html?option=2&table=' + nom_table;
 	 	});
 		
 		$(document).on('click', ".showbtn", function () {
    			var ID = $(this).attr("data-id");
-   			var ID_table = 'ID_animals' + nom_table + '_2';
+   			var ID_table = 'ID_animals' + nom_table + '_5';
    			localStorage[ID_table] = ID;
-   			window.location = 'consulter_animals_ipg_2.html?table=' + nom_table;
+   			window.location = 'consulter_animals_ipg_5.html?table=' + nom_table;
 	 	});
   	</script>  
   	
@@ -883,7 +883,8 @@
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
 				|| (nom_table == '_astre_gabon')) {
 			institut = 'astre';
-		} else if ((nom_table == '_ipg_guinee') || (nom_table == '_ipg_guinee_2')) {
+		} else if ((nom_table == '_ipg_guinee') || (nom_table == '_ipg_guinee_2' || (nom_table == '_ipg_guinee_3') || (nom_table == '_ipg_guinee_4')
+				|| (nom_table == '_ipg_guinee_5'))) {
 			institut = 'ipg';
 		};
 		
@@ -926,9 +927,9 @@
 	    	catch(error) {
 	    	};*/
 	    	
-	    	loadjs('js/load-db-animals-ipg-2.js');
+	    	loadjs('js/load-db-animals-ipg-5.js');
 	    	
-			var component_li = document.getElementById('li_animals' + nom_table + '_2');
+			var component_li = document.getElementById('li_animals' + nom_table + '_5');
 			component_li.classList.add('active');
 		};
   		

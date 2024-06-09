@@ -363,10 +363,25 @@
                     
                     	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
                       	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
-                            <li id="li_animals_mivegec_congo" name="2"><a href="liste_animals.html?table=_mivegec_congo">données</a></li>                            
-		                    <li id="li_animals_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_capturees">carte</a></li>
-		                    <li id="li_importation_animals_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=animals">importation/exportation</a></li>                            
-                          </ul>
+                            <li id="li_chauves_souris_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_chauves_souris_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+			                    <li id="li_chauves_souris_organes_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_organes_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_organes_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Organes</a>
+	                          	  <ul id="ul_chauves_souris_organes_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_organes_mivegec_congo" name="2"><a href="liste_chauves_souris_organes_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_organes_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_organes_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li> 
+		                        <li id="li_chauves_souris_guano_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_guano_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_guano_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Guano</a>
+	                          	  <ul id="ul_chauves_souris_guano_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_guano_mivegec_congo" name="2"><a href="liste_chauves_souris_guano_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_guano_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_guano_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li>
+		                      </ul>
+		                    </li> 
+		                  </ul>
 		                </li>    
 		                
 		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
@@ -629,6 +644,7 @@
 		                    <li id="li_animals_ipg_guinee_2" name="5"><a href="liste_animals_ipg_2.html?table=_ipg_guinee">2ème jeu de données</a></li>
 		                    <li id="li_animals_ipg_guinee_3" name="5"><a href="liste_animals_ipg_3.html?table=_ipg_guinee">3ème jeu de données</a></li>
 		                    <li id="li_animals_ipg_guinee_4" name="5"><a href="liste_animals_ipg_4.html?table=_ipg_guinee">4ème jeu de données</a></li>
+		                    <li id="li_animals_ipg_guinee_5" name="5"><a href="liste_animals_ipg_5.html?table=_ipg_guinee">5ème jeu de données</a></li>
 		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
 		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
                           </ul>
@@ -731,6 +747,27 @@
                   	  <div class="row">
                         <div class="col-lg-12">
                           <label id="button_open_4" class="btn btn-primary btn-fill btn-file">
+    						Ouvrir le fichier <input type="file">
+						  </label>
+						  <label id="file_name" ></label>
+						</div>
+                      </div>
+                      <div class="row" id="success_label" style="display: none;">
+                        <div class="col-lg-12">
+                          <label id="success" style="color:red;">success</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card" id="ipg_5" style="display:none;">                  
+                    <div class="card-header">
+                  	  <h4 id="card4">Importation pour le cinquième jeu de données</h4>
+                	</div>
+                	<div class="card-body">  
+                  	  <div class="row">
+                        <div class="col-lg-12">
+                          <label id="button_open_5" class="btn btn-primary btn-fill btn-file">
     						Ouvrir le fichier <input type="file">
 						  </label>
 						  <label id="file_name" ></label>
@@ -957,7 +994,11 @@
             	    	loadjs('js/importation-cameras-trap.js');
             	    } else if (type_table == 'faune') {
             	    	loadjs('js/importation-faune.js');
-            	    }
+            	    } else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+        	    		loadjs('js/importation-chauves-souris-organes-mivegec-congo.js');
+         	    	} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+        	    		loadjs('js/importation-chauves-souris-guano-mivegec-congo.js');
+         	    	}
         	    };
 				reader.readAsText(file, 'ISO-8859-1');
         	    //reader.readAsText(file, 'WINDOWS-1252');
@@ -1035,6 +1076,32 @@
         	    	
         	    	if (type_table == 'animals_ipg') {
             	    	loadjs('js/importation-animal-ipg-4.js');
+            	    }
+        	    };
+				reader.readAsText(file, 'ISO-8859-1');
+        	    //reader.readAsText(file, 'WINDOWS-1252');
+        	    
+			});
+        });
+        
+        $(document).ready( function() {
+       		$('#button_open_5 :file').on('fileselect', function(event, numFiles, label) {
+       			
+       			var input = $(this).parents('.input-group').find(':text'),
+        	        log = numFiles > 1 ? numFiles + ' files selected' : label;
+        	        
+        	    var file = event.target.files[0];
+        	    var reader = new FileReader();
+        	    
+        	     reader.onload = function(event) {
+        	   		console.log(event.target.result);
+        	    	localStorage['file_import'] = event.target.result;
+        	    	
+        	    	var label =  document.getElementById("file_name");
+        	    	label.innerHTML = log;
+        	    	
+        	    	if (type_table == 'animals_ipg') {
+            	    	loadjs('js/importation-animal-ipg-5.js');
             	    }
         	    };
 				reader.readAsText(file, 'ISO-8859-1');
@@ -1328,6 +1395,42 @@
 					document.getElementById("card1").innerHTML = "Importation des animaux";
 					document.getElementById("card2").innerHTML = "Téléchargement du template des animaux";
 					document.getElementById("card3").innerHTML = "Exporter les animaux";
+				} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+					var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					var component_li = document.getElementById('li_chauves_sourisguano' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris_organes' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris_organes' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des chauves-souris - organes";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris - organes";
+					document.getElementById("card3").innerHTML = "Exporter les chauves-souris - organes";
+				} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+					var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					var component_li = document.getElementById('li_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					document.getElementById("card1").innerHTML = "Importation des chauves-souris - guano";
+					document.getElementById("card2").innerHTML = "Téléchargement du template des chauves-souris - guano";
+					document.getElementById("card3").innerHTML = "Exporter les chauves-souris - guano";
 				} else if (type_table == 'animals_ipg') {
 					document.getElementById("card1").innerHTML = "Importation pour le premier jeu de données";
 					document.getElementById("card2").innerHTML = "Téléchargement du template pour le premier jeu de données";
@@ -1336,6 +1439,7 @@
 					document.getElementById("ipg_2").style.display = "block";
 					document.getElementById("ipg_3").style.display = "block";
 					document.getElementById("ipg_4").style.display = "block";
+					document.getElementById("ipg_5").style.display = "block";
 					
 				} else if (type_table == 'faune') { 
 					var component_li = document.getElementById('li_faune' + nom_table + 'Dropdown');
@@ -1375,6 +1479,10 @@
 					var component_li = document.getElementById('li_importation_grand_singe_antilope' + nom_table);
 				} else if (type_table == 'animals') {
 					var component_li = document.getElementById('li_importation_animals' + nom_table);
+				} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+					var component_li = document.getElementById('li_importation_chauves_souris_organes' + nom_table);
+				} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+					var component_li = document.getElementById('li_importation_chauves_souris_guano' + nom_table);
 				} else if (type_table == 'animals_ipg') {
 					var component_li = document.getElementById('li_importation_animals' + nom_table);
 				} else if (type_table == 'faune') {

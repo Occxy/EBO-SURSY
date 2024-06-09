@@ -17,7 +17,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 800px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -110,6 +110,8 @@
     
     <script src="node_modules/alasql/dist/alasql.js"></script> 
     
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkVt9iPB0ozDe8l0gVXoguLUjtum8vnj0&callback" async defer></script>
+    
   </head>
   
   <body onload="loaded()">
@@ -122,22 +124,7 @@
 		type_table = searchParams.get('type');
 		//localStorage['map_table'] = nom_table;
 		
-		if (type_table == 'chauves_souris_capturees') {
-			localStorage['map_table'] = 'chauves_souris_capturees' + nom_table;
-			loadjs('js/load-db-map-chauves-souris-capturees.js');
-		} else if (type_table == 'chauves_souris_non_invasives') {
-			localStorage['map_table'] = 'chauves_souris_non_invasives' + nom_table;
-			loadjs('js/load-db-map-chauves-souris-non-invasives.js');
-		} else if (type_table == 'viande_de_brousse') { 
-			localStorage['map_table'] = 'viande_de_brousse' + nom_table;
-			loadjs('js/load-db-map-viande-de-brousse.js');
-		} else if (type_table == 'animals_ipg') { 
-			localStorage['map_table'] = 'animals' + nom_table;
-			loadjs('js/load-db-map-ipg.js');
-		} else if (type_table == 'rongeurs') { 
-			localStorage['map_table'] = 'rongeurs' + nom_table;
-			loadjs('js/load-db-map-rongeurs.js');
-		}    
+		
 			
 		//loadjs('js/load-db-map.js');
 		
@@ -414,49 +401,38 @@
 	                    
                     <li id="li_mivegecDropdown" name="2"> <a id="a_mivegecDropdown" name="2" href="#ul_mivegecDropdown" aria-expanded="false" data-toggle="collapse"> <i class="a-logo-mivegec"></i> </a>
                       <ul id="ul_mivegecDropdown" name="2" class="collapse list-unstyled">
-                        
-                        <li id="li_site_mivegec" name="2" style="text-align: right"><a href="liste_sites.html?table=_mivegec">Site</a></li>                            
+                    
+                    	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
+                      	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
+                            <li id="li_chauves_souris_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_chauves_souris_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+			                    <li id="li_chauves_souris_organes_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_organes_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_organes_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Organes</a>
+	                          	  <ul id="ul_chauves_souris_organes_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_organes_mivegec_congo" name="2"><a href="liste_chauves_souris_organes_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_organes_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_organes_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li> 
+		                        <li id="li_chauves_souris_guano_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_guano_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_guano_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Guano</a>
+	                          	  <ul id="ul_chauves_souris_guano_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_guano_mivegec_congo" name="2"><a href="liste_chauves_souris_guano_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_guano_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_guano_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li>
+		                      </ul>
+		                    </li> 
+		                  </ul>
+		                </li>     
 		                
-                        <li id="li_bat_mivegecDropdown" name="2"><a id="a_bat_mivegecDropdown" name="2" href="#ul_bat_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
-                          <ul id="ul_bat_mivegecDropdown" name="2" class="collapse list-unstyled">
-		                    
-		                    <li id="li_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_missions_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données missions</a>
-			                  <ul id="ul_suivi_longitudinal_donnees_missions_mivegecDropdown" name="1" class="collapse list-unstyled">
-			                    <li id="li_suivi_longitudinal_donnees_missions_mivegec" name="1"style="text-align: right"><a href="liste_donnees_missions.html?table=_mivegec">données missions</a></li>
-			                   	<li id="li_importation_suivi_longitudinal_donnees_missions_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_mission">importation/exportation</a></li>                            
-	                          </ul>
-			                </li>
-		                    	                    
-		                    <li id="li_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1"><a id="a_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" href="#ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" aria-expanded="false" data-toggle="collapse">Suivi longitudinal - données journalières</a>
-			                  <ul id="ul_suivi_longitudinal_donnees_journalieres_mivegecDropdown" name="1" class="collapse list-unstyled">
-			                     <li id="li_suivi_longitudinal_donnees_journalieres_mivegec" name="1"style="text-align: right"><a href="liste_donnees_journalieres.html?table=_mivegec">données journalières</a></li>                            
-	                        	 <li id="li_importation_suivi_longitudinal_donnees_journalieres_mivegec" name="1"><a href="import_export.html?table=_mivegec&type=donnees_journalieres">importation/exportation</a></li>                            
-	                          </ul>
-			                </li>
-		                    
-		                    <li id="li_bat_mivegecCaptureesDropdown" name="2"><a id="a_bat_mivegecCaptureesDropdown" name="2" href="#ul_bat_mivegecCaptureesDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-capturee"></i>Capturées</a>
-		                      <ul id="ul_bat_mivegecCaptureesDropdown" name="2" class="collapse list-unstyled">
-		                        <li id="li_bat_capturees_mivegec" name="2"><a href="liste_chauves_souris_capturees.html?table=_mivegec">données</a></li>                            
-		                        <li id="li_bat_map_capturees_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_capturees">carte</a></li>
-		                        <li id="li_importation_bat_capturees_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_capturees">importation/exportation</a></li>                            
-                              </ul>
-		                    </li>
-		                    <li id="li_bat_mivegecNonInvasivesDropdown" name="2"><a id="a_bat_mivegecNonInvasivesDropdown" name="2" href="#ul_bat_mivegecNonInvasivesDropdown" aria-expanded="false" data-toggle="collapse"></i>Non invasives</a>
-		                      <ul id="ul_bat_mivegecNonInvasivesDropdown" name="2" class="collapse list-unstyled">
-		                        <li id="li_bat_non_invasives_mivegec" name="2"><a href="liste_chauves_souris_non_invasives.html?table=_mivegec">données</a></li> 
-	                            <li id="li_bat_map_non_invasives_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=chauves_souris_non_invasives">carte</a></li>
-    	                        <li id="li_importation_bat_non_invasives_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=chauves_souris_non_invasives">importation/exportation</a></li>
-                              </ul>
-		                    </li>
-	                      </ul>
-                	    </li>
-                	     <li id="li_viande_de_brousse_mivegecDropdown" name="2"><a id="a_viande_de_brousse_mivegecDropdown" name="2" href="#ul_viande_de_brousse_mivegecDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Picto_ANTILOPE"></i>Viande de brousse</a>
-                      	  <ul id="ul_viande_de_brousse_mivegecDropdown" class="collapse list-unstyled">
-                        	<li id="li_viande_de_brousse_mivegec" name="2"><a href="liste_viande_de_brousse.html?table=_mivegec">données</a></li>                            
-                        	<li id="li_viande_de_brousse_map_mivegec" name="2"><a href="cartographie.html?table=_mivegec&type=viande_de_brousse">carte</a></li>
-                        	<li id="li_importation_viande_de_brousse_mivegec" name="2"><a href="import_export.html?table=_mivegec&type=viande_de_brousse">importation/exportation</a></li>
-                      	  </ul>
-                    	</li>                    	
+		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
+                      	  <ul id="ul_mivegec_gabonDropdown" name="2" pays="gabon" class="collapse list-unstyled">
+                            <li id="li_animals_mivegec_gabon" name="2"><a href="liste_animals.html?table=_mivegec_gabon">données</a></li>                            
+		                    <li id="li_animals_map_mivegec_gabon" name="2"><a href="cartographie.html?table=_mivegec_gabon&type=animals">carte</a></li>
+		                    <li id="li_importation_animals_mivegec_gabon" name="2"><a href="import_export.html?table=_mivegec_gabon&type=animals">importation/exportation</a></li>                            
+                          </ul>
+		                </li>                   	
+                      
                       </ul>
                     </li>
                                         
@@ -706,6 +682,7 @@
 		                    <li id="li_animals_ipg_guinee_2" name="5"><a href="liste_animals_ipg_2.html?table=_ipg_guinee">2ème jeu de données</a></li>
 		                    <li id="li_animals_ipg_guinee_3" name="5"><a href="liste_animals_ipg_3.html?table=_ipg_guinee">3ème jeu de données</a></li>
 		                    <li id="li_animals_ipg_guinee_4" name="5"><a href="liste_animals_ipg_4.html?table=_ipg_guinee">4ème jeu de données</a></li>
+		                    <li id="li_animals_ipg_guinee_5" name="5"><a href="liste_animals_ipg_5.html?table=_ipg_guinee">5ème jeu de données</a></li>
 		                    <li id="li_animals_map_ipg_guinee" name="5"><a href="cartographie.html?table=_ipg_guinee&type=animals_ipg">carte</a></li>
 		                    <li id="li_importation_animals_ipg_guinee" name="5"><a href="import_export.html?table=_ipg_guinee&type=animals_ipg">importation/exportation</a></li>                            
                           </ul>
@@ -812,15 +789,23 @@
 		} else if (type_table == 'rongeurs') {
 			document.getElementById("header").innerHTML = "Rongeurs";
 			document.getElementById("header2").innerHTML = "Carte des rongeurs";
+		} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+			document.getElementById("header").innerHTML = "Chauves-souris - organes";
+			document.getElementById("header2").innerHTML = "Carte des chauves-souris - organes";
+		} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+			document.getElementById("header").innerHTML = "Chauves-souris - guano";
+			document.getElementById("header2").innerHTML = "Carte des chauves-souris - guano";
+		} else if (type_table == 'animals') {
+			document.getElementById("header").innerHTML = "Animaux";
+			document.getElementById("header2").innerHTML = "Carte des animaux";
 		}
-
 			
 		var institut;
 		if ((nom_table == '_transvihmi_guinee') || (nom_table == '_transvihmi_cameroun')
 			|| (nom_table == '_transvihmi_rdc') || (nom_table == '_transvihmi_gabon')
 			|| (nom_table == '_transvihmi_rca') || (nom_table == '_transvihmi_rwanda')) {
 			institut = 'transvihmi';			
-		} else if (nom_table == '_mivegec') {
+		} else if ((nom_table == '_mivegec_congo') || (nom_table == '_mivegec_gabon')) {
 			institut = 'mivegec';
 		} else if ((nom_table == '_astre_guinee') || (nom_table == '_astre_congo')
 				|| (nom_table == '_astre_gabon')) {				
@@ -886,7 +871,35 @@
 				component_a.setAttribute('aria-expanded', 'true');
 				var component_ul =  document.getElementById('ul_rongeurs' + nom_table + 'Dropdown');
 				component_ul.classList.add('show');
-			};
+			} else if (type_table == 'chauves_souris_organes_mivegec_congo') { 
+				var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris_organes' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris_organes' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris_organes' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			} else if (type_table == 'chauves_souris_guano_mivegec_congo') { 
+				var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+			}
 			
 			if (type_table == 'chauves_souris_capturees') {
 				var component_li = document.getElementById('li_bat_map_capturees' + nom_table);
@@ -898,11 +911,44 @@
 				var component_li = document.getElementById('li_animals_map' + nom_table);
 			} else if (type_table == 'rongeurs') {
 				var component_li = document.getElementById('li_rongeurs_map' + nom_table);
-			}  
+			} else if (type_table == 'chauves_souris_organes_mivegec_congo') { 
+				var component_li = document.getElementById('li_chauves_souris_organes_map' + nom_table);
+			} else if (type_table == 'chauves_souris_guano_mivegec_congo') { 
+				var component_li = document.getElementById('li_chauves_souris_guano_map' + nom_table);
+			} else if (type_table == 'animals') { 
+				var component_li = document.getElementById('li_animals_map' + nom_table);
+			}
 			component_li.classList.add('active');
 		};
-			
+		
+		if (type_table == 'chauves_souris_capturees') {
+			localStorage['map_table'] = 'chauves_souris_capturees' + nom_table;
+			loadjs('js/load-db-map-chauves-souris-capturees.js');
+		} else if (type_table == 'chauves_souris_non_invasives') {
+			localStorage['map_table'] = 'chauves_souris_non_invasives' + nom_table;
+			loadjs('js/load-db-map-chauves-souris-non-invasives.js');
+		} else if (type_table == 'viande_de_brousse') { 
+			localStorage['map_table'] = 'viande_de_brousse' + nom_table;
+			loadjs('js/load-db-map-viande-de-brousse.js');
+		} else if (type_table == 'animals_ipg') { 
+			localStorage['map_table'] = 'animals' + nom_table;
+			loadjs('js/load-db-map-ipg.js');
+		} else if (type_table == 'rongeurs') { 
+			localStorage['map_table'] = 'rongeurs' + nom_table;
+			loadjs('js/load-db-map-rongeurs.js');
+		} else if (type_table == 'chauves_souris_organes_mivegec_congo') { 
+			localStorage['map_table'] = 'chauves_souris_organes' + nom_table;
+			loadjs('js/load-db-map-chauves-souris-organes-mivegec-congo.js');
+		} else if (type_table == 'chauves_souris_guano_mivegec_congo') { 
+			localStorage['map_table'] = 'chauves_souris_guano' + nom_table;
+			loadjs('js/load-db-map-chauves-souris-guano-mivegec-congo.js');
+		} else if (type_table == 'animals') { 
+			localStorage['map_table'] = 'animals' + nom_table;
+			loadjs('js/load-db-map-chauves-souris-mivegec-gabon.js');
+		}   
 	</script>
+	
+	
     
   </body>
   

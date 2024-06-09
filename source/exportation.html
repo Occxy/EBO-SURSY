@@ -371,10 +371,25 @@
                     
                     	<li id="li_mivegec_congoDropdown" name="2" pays="congo"> <a id="a_mivegec_congoDropdown" name="2" href="#ul_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse">Congo</a>
                       	  <ul id="ul_mivegec_congoDropdown" name="2" pays="congo" class="collapse list-unstyled">
-                            <li id="li_animals_mivegec_congo" name="2"><a href="liste_animals.html?table=_mivegec_congo">données</a></li>                            
-		                    <li id="li_animals_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_capturees">carte</a></li>
-		                    <li id="li_importation_animals_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=animals">importation/exportation</a></li>                            
-                          </ul>
+                            <li id="li_chauves_souris_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> <i class="icon-Chauve-souris_Black2"></i>Chauve-souris</a>
+	                          <ul id="ul_chauves_souris_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+			                    <li id="li_chauves_souris_organes_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_organes_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_organes_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Organes</a>
+	                          	  <ul id="ul_chauves_souris_organes_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_organes_mivegec_congo" name="2"><a href="liste_chauves_souris_organes_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_organes_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_organes_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_organes_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li> 
+		                        <li id="li_chauves_souris_guano_mivegec_congoDropdown" name="2"><a id="a_chauves_souris_guano_mivegec_congoDropdown" name="2" href="#ul_chauves_souris_guano_mivegec_congoDropdown" aria-expanded="false" data-toggle="collapse" style="text-decoration:underline"> Guano</a>
+	                          	  <ul id="ul_chauves_souris_guano_mivegec_congoDropdown" name="2" class="collapse list-unstyled">
+					                <li id="li_chauves_souris_guano_mivegec_congo" name="2"><a href="liste_chauves_souris_guano_mivegec_congo.html?table=_mivegec_congo">données</a></li>                            
+				                    <li id="li_chauves_souris_guano_map_mivegec_congo" name="2"><a href="cartographie.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">carte</a></li>
+				                    <li id="li_importation_chauves_souris_guano_mivegec_congo" name="2"><a href="import_export.html?table=_mivegec_congo&type=chauves_souris_guano_mivegec_congo">importation/exportation</a></li>                            
+                                  </ul>
+		                        </li>
+		                      </ul>
+		                    </li> 
+		                  </ul>
 		                </li>    
 		                
 		                <li id="li_mivegec_gabonDropdown" name="2" pays="gabon"> <a id="a_mivegec_gabonDropdown" name="2" href="#ul_mivegec_gabonDropdown" aria-expanded="false" data-toggle="collapse">Gabon</a>
@@ -682,6 +697,10 @@
 	     				table = 'animaux'
 	     			} else if (type_table == 'caracterisations_grottes') {
 	     				table = 'caractérisations des grottes'
+	     			} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+	     				table = 'chauves-souris (organes)'
+	     			} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+	     				table = 'chauves-souris (guano)'
 	     			}
 			       	line.innerHTML = 
 			        	'<h4>Liste des champs des ' +
@@ -811,7 +830,11 @@
         	loadjs('js/exportation_cameras_trap_astre_transvihmi.js')
         } else if ((localStorage.getItem('export_table') == '_transvihmi_cameroun') && (type_table == 'rongeurs')) {
         	loadjs('js/exportation_rongeurs.js')
-        }  else if (type_table == 'chauves_souris_capturees') {
+        } else if ((localStorage.getItem('export_table') == '_mivegec_congo') && (type_table == 'chauves_souris_organes_mivegec_congo')) {
+        	loadjs('js/exportation_chauves_souris_organes_mivegec_congo.js')
+        } else if ((localStorage.getItem('export_table') == '_mivegec_congo') && (type_table == 'chauves_souris_guano_mivegec_congo')) {
+        	loadjs('js/exportation_chauves_souris_guano_mivegec_congo.js')
+        }   else if (type_table == 'chauves_souris_capturees') {
     		var fields = 
     			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
     			 'Equipe', 'Pays', 'Region_capture', 'Site_capture', 'Lieu_capture',
@@ -1645,7 +1668,7 @@
 				
 				CSV = fields_CSV_head;
 				
-				if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 					var res = alasql("SELECT * FROM ? ORDER BY Num", [tabCS] );
 			    			
 				    var CS = JSON.stringify(res);
@@ -1669,15 +1692,15 @@
 				    		tableData.rows.forEach(function(row){   
 				    			/*if (type_table == 'chauves_souris_capturees') {
 				    				addChauves_souris_capturees(row, false);
-				    			} else */if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    			} else */if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addChauves_souris_non_invasives(tableData, row);
 				    	    	} else if (type_table == 'viande_de_brousse') {
 				    	    		addViande_de_brousse(row);
 				    	    	} else if (type_table == 'viande_de_brousse_nhp') {
 				    	    		addViande_de_brousse_NHP(row);
-				    	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addDonnees_journalieres(row);
-				    	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addDonnees_missions(row);
 				    	    	} else if (type_table == 'animals') {
 				    	    		addAnimals(row);
@@ -1715,15 +1738,15 @@
 				array_selected_fields.push($(sel).val()); 
 			});
 			
-			if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+			if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				addChauves_souris_capturees_selected_heading();
-			} else if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+			} else if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 	    		addChauves_souris_non_invasives_selected_heading();
 	    	} else if (type_table == 'viande_de_brousse') {
 	    		addViandes_de_brousse_selected_heading();
-	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 	    		addJournalieres_selected_heading();
-	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 	    		addMissions_selected_heading();
 	    	} else if (type_table == 'animals') {
 	    		addAnimals_selected_heading();
@@ -1781,7 +1804,7 @@
 				
 				//CSV = fields_CSV_head;
 				
-				if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				if ((type_table == 'chauves_souris_capturees') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 					var res = alasql("SELECT * FROM ? ORDER BY Num", [tabCS] );
 			    			
 				    var CS = JSON.stringify(res);
@@ -1805,13 +1828,13 @@
 				    		tableData.rows.forEach(function(row){   
 				    			/*if (type_table == 'chauves_souris_capturees') {
 				    				addChauves_souris_capturees(row, true);
-				    			} else*/ if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    			} else*/ if ((type_table == 'chauves_souris_non_invasives') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addChauves_souris_non_invasives_selected(tableData, row);
 				    	    	} else if (type_table == 'viande_de_brousse') {
 				    	    		addViandes_de_brousse_selected(row);
-				    	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    	    	} else if ((type_table == 'donnees_journalieres') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addJournalieres_selected(row);
-				    	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee')) {
+				    	    	} else if ((type_table == 'donnees_mission') && (localStorage.getItem('export_table') != '_astre_transvihmi_guinee') && (localStorage.getItem('export_table') != '_mivegec_congo')) {
 				    	    		addMissions_selected(row);
 				    	    	} else if (type_table == 'animals') {
 				    	    		addAnimals_selected(row);
@@ -10046,7 +10069,7 @@
 		console.log(fields);
 		
 		if (nom_table != '_astre_transvihmi_guinee') {
-			if (type_table != 'rongeurs') {
+			if ((type_table != 'rongeurs') && (type_table != 'chauves_souris_organes_mivegec_congo') && (type_table != 'chauves_souris_guano_mivegec_congo')) {
 				for (var i = 0; i < fields.length; i++) {
 					multiselect1.options[i] = new Option(fields[i], fields[i]);
 				};
@@ -10222,6 +10245,36 @@
 					component_a.setAttribute('aria-expanded', 'true');
 					var component_ul =  document.getElementById('ul_rongeurs' + nom_table + 'Dropdown');
 					component_ul.classList.add('show');
+				} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+					var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					var component_li = document.getElementById('li_chauves_souris_organes' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris_organes' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris_organes' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+				} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+					var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
+					var component_li = document.getElementById('li_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_li.classList.add('active');
+					var component_a = document.getElementById('a_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_a.setAttribute('aria-expanded', 'true');
+					var component_ul =  document.getElementById('ul_chauves_souris_guano' + nom_table + 'Dropdown');
+					component_ul.classList.add('show');
+					
 				};
 				
 				if (type_table == 'chauves_souris_capturees') {
@@ -10246,6 +10299,10 @@
 					var component_li = document.getElementById('li_importation_faune' + nom_table);
 				}  else if (type_table == 'rongeurs') {
 					var component_li = document.getElementById('li_importation_rongeurs' + nom_table);
+				} else if (type_table == 'chauves_souris_organes_mivegec_congo') {
+					var component_li = document.getElementById('li_importation_chauves_souris_organes' + nom_table);
+				} else if (type_table == 'chauves_souris_guano_mivegec_congo') {
+					var component_li = document.getElementById('li_importation_chauves_souris_guano' + nom_table);
 				}
 				component_li.classList.add('active');
 			}
