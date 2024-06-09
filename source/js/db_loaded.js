@@ -68,7 +68,6 @@ document.getElementById("label_viande_de_brousse_transvihmi_rdc_count").innerHTM
 document.getElementById("label_animals_mivegec_gabon_count").innerHTML = localStorage.getItem(animals_mivegec_gabon);
 document.getElementById("label_chauves_souris_organes_mivegec_congo_count").innerHTML = localStorage.getItem(chauves_souris_organes_mivegec_congo);
 document.getElementById("label_chauves_souris_guano_mivegec_congo_count").innerHTML = localStorage.getItem(chauves_souris_guano_mivegec_congo);
-alert(localStorage.getItem(chauves_souris_guano_mivegec_congo))
 document.getElementById("label_individus_cibu_count").innerHTML = localStorage.getItem(individus_cibu);
 document.getElementById("label_prelevements_cibu_count").innerHTML = localStorage.getItem(prelevements_cibu);
 document.getElementById("label_prelevements_ip_guinee_1_count").innerHTML = localStorage.getItem(ip_guinee_betail_1);
