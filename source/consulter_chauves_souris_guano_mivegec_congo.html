@@ -95,7 +95,7 @@
     
     <script src="js/uuid.js"></script>
     
-    <script src="js/load-page-animals-consultation.js"></script> 
+    <script src="js/load-page-chauves-souris-guano-mivegec-congo-consultation.js"></script> 
     
     <script src="js/addReference.js"></script> 
     
@@ -104,7 +104,7 @@
 	
 	   
   </head>
-  <body onload="chargement_des_animaux()">
+  <body onload="chargement_des_chauves_souris()">
   
     <script>
 		logged_only();
@@ -119,7 +119,7 @@
 		} else {
 			debug = localStorage.getItem('debug');
 		};
-		var html = 'animals';
+		var html = 'chauves-souris';
 		
 	</script> 
   
@@ -614,7 +614,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Base de données des animaux</h2>
+              <h2 class="no-margin-bottom">Base de données des chauves-souris - guano</h2>
             </div>
           </header>
           
@@ -624,7 +624,7 @@
                 <div class="col-lg-12">                  
                   <div class="card">        
                    <div class="card-header" id="header">
-                     <h4>Consulter les animaux<a id="button_print" style="color:white;" class="btn btn btn-primary btn-fill">Imprimer</a></h4> 
+                     <h4>Consulter les chauves-souris - guano<a id="button_print" style="color:white; margin-left:20px;" class="btn btn btn-primary btn-fill"">Imprimer</a></h4> 
                     </div>
                       
                     <div class="card-body">                                            
@@ -639,9 +639,7 @@
 				          <div class="card-header card-header-transparent d-flex align-items-center">
                             <h3 class="h4">Données</h3>
                           </div>
-                          
-                          
-                          
+                                                    
                           <div class="card-body">
                           	<div class="row">
                               <div class="col-lg-12">                    	      
@@ -655,14 +653,14 @@
                             <div class="row">
                               <div class="col-lg-6">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="ID_animal_value">ID animal : </label>
-					              <label id="ID_animal_value"></label>
+	      			    	      <label for="Mission_value">Mission : </label>
+					              <label id="Mission_value"></label>
 	    					    </div>
 							  </div>
 						      <div class="col-lg-6">	
 							    <div class="form-group">	  
-							      <label for="pays_value">Pays : </label>
-				          	      <label id="pays_value"></label>
+							      <label for="Date_de_collecte_value">Date de collecte : </label>
+				          	      <label id="Date_de_collecte_value"></label>
                         	    </div>											    
                               </div>
                             </div>
@@ -670,33 +668,27 @@
                             <div class="row">
                               <div class="col-lg-6">                    	      
 	      			    	    <div class="form-group">
-	      			    	      <label for="mission_value">Mission : </label>
-					              <label id="mission_value"></label>
+	      			    	      <label for="Identifiant_plaques_value">Identifiant plaques : </label>
+					              <label id="Identifiant_plaques_value"></label>
 	                            </div>
 							  </div>
 						      <div class="col-lg-6">	
 							    <div class="form-group">	  
-							      <label for="date_value">Date : </label>
-				          	      <label id="date_value"></label>
+							      <label for="Nd_de_guanos_value">Nd de guanos : </label>
+				          	      <label id="Nd_de_guanos_value"></label>
                         	    </div>											    
                               </div>
                             </div>
                             
-                            <div class="row">
-                              <div class="col-lg-6">	
+							<div class="row">
+							  <div class="col-lg-6">	
 							    <div class="form-group">	  
-							      <label for="village_value">Village : </label>
-				          	      <label id="village_value"></label>
+							      <label for="Village_value">Village : </label>
+				          	      <label id="Village_value"></label>
                         	    </div>											    
                               </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="type_chasse_capture_value">Type chasse/capture : </label>
-					              <label id="type_chasse_capture_value"></label>
-	                            </div>
-							  </div>
 							</div>
-							
+							 
 							<div class="row">
 							  <div class="col-lg-6">	
 							    <div class="form-group">	  
@@ -712,250 +704,6 @@
                               </div>
                             </div>
                             
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="animal_value">Animal : </label>
-					              <label id="animal_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="especes_value">Especes : </label>
-				          	      <label id="especes_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="sexes_value">Sexes : </label>
-				          	      <label id="sexes_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="age_value">Age : </label>
-					              <label id="age_value"></label>
-	                            </div>
-							  </div>
-							</div>
-						    
-						    <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="poids_value">Poids (gramme) : </label>
-				          	      <label id="poids_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="etat-physioloque_value">Etat-physioloque : </label>
-				          	      <label id="etat-physioloque_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="plasma_value">Plasma : </label>
-					              <label id="plasma_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="serum_value">Serum : </label>
-				          	      <label id="serum_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                              
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="blood_spot_value">Blood spot : </label>
-				          	      <label id="blood_spot_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="coeur_value">Cœur : </label>
-					              <label id="coeur_value"></label>
-	                            </div>
-							  </div>
-							</div>
-						    
-						    <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="cerveau_value">Cerveau : </label>
-				          	      <label id="cerveau_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="foie_rate_value">Foie/rate : </label>
-				          	      <label id="foie_rate_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="glandes_salivaires_value">Glandes Salivaires : </label>
-					              <label id="glandes_salivaires_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="poumons_value">Poumons : </label>
-				          	      <label id="poumons_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="reins_value">Reins : </label>
-				          	      <label id="reins_value"></label>
-                        	    </div>											    
-                              </div>                            
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="intestins_value">Intestins : </label>
-					              <label id="intestins_value"></label>
-	                            </div>
-							  </div>
-							</div>
-
-                            <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="urine_value">Urine : </label>
-				          	      <label id="urine_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ecouvillon_salivaire_value">Ecouvillon salivaire : </label>
-				          	      <label id="ecouvillon_salivaire_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="ecouvillon_rectal_value">Ecouvillon rectal : </label>
-					              <label id="ecouvillon_rectal_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ecouvillon_nasal_valuel">Ecouvillon nasal : </label>
-				          	      <label id="ecouvillon_nasal_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="ectoparasites_value">Ectoparasites : </label>
-				          	      <label id="ectoparasites_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="placenta_value">Placenta : </label>
-					              <label id="placenta_value"></label>
-	                            </div>
-							  </div>
-							</div>
-                            
-                            <div class="row">
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="liquide_amniotique_value">Liquide amniotique : </label>
-				          	      <label id="liquide_amniotique_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="testicules_value">Testicules : </label>
-				          	      <label id="testicules_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="lesions_ou_nodules_value">Lesions ou nodules : </label>
-					              <label id="lesions_ou_nodules_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="lait_value">Lait : </label>
-				          	      <label id="lait_value"></label>
-                        	    </div>											    
-                              </div>
-                           	</div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="foetus_value">Foetus : </label>
-				          	      <label id="foetus_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">  		
-		      			      <div class="col-lg-12">	      
-	    	      			    <div class="form-group">
-		      			          <label for="observation_value">Observation : </label>
-		                    	  <label id="observation_value"></label>
-		                        </div>
-		      			      </div>
-		                    </div> 
-		                    
-		                    <div class="row">
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="guano_value">Guano : </label>
-					              <label id="guano_value"></label>
-	                            </div>
-							  </div>
-						      <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="longueur_bras_value">Longueur bras : </label>
-				          	      <label id="longueur_bras_value"></label>
-                        	    </div>											    
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-lg-6">	
-							    <div class="form-group">	  
-							      <label for="longueur_avant_bras_value">Longueur avant bras : </label>
-				          	      <label id="longueur_avant_bras_value"></label>
-                        	    </div>											    
-                              </div>
-                              <div class="col-lg-6">                    	      
-	      			    	    <div class="form-group">
-	      			    	      <label for="longueur_corporelle_value">Longueur corporelle : </label>
-					              <label id="longueur_corporelle_value"></label>
-	                            </div>
-							  </div>
-						    </div>
-		                  </div>
-		                </div>
 		                
                         <!-- <div class="card-body text-right" id="header_button">
                         
@@ -1114,6 +862,20 @@
 				component_a.setAttribute('aria-expanded', 'true');
 				var component_ul =  document.getElementById('ul' + nom_table + 'Dropdown');
 				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
+				
+				var component_li = document.getElementById('li_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_li.classList.add('active');
+				var component_a = document.getElementById('a_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_a.setAttribute('aria-expanded', 'true');
+				var component_ul =  document.getElementById('ul_chauves_souris_guano' + nom_table + 'Dropdown');
+				component_ul.classList.add('show');
 			}
 	    	catch(error) {
 	    	};
@@ -1136,7 +898,7 @@
 	    	catch(error) {
 	    	};*/
 	    	
-			var component_li = document.getElementById('li_animals' + nom_table);
+	    	var component_li = document.getElementById('li_chauves_souris_guano' + nom_table);
 			component_li.classList.add('active');
 		};
 		
