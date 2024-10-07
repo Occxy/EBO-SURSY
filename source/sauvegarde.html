@@ -599,6 +599,7 @@
 		                    	<option>chauves_souris_capturees_</option>
 		                    	<option>chauves_souris_non_invasives_</option>
 		                    	<option>viande_de_brousse_</option>
+		                    	<option>rongeurs_</option>
 		                    </select>
 		                  </div>
 	                      <div class="col-lg-4">
@@ -974,6 +975,61 @@
 							
 				    		tableData.rows.forEach(function(row){   
 				    			addViande_de_brousse(row);
+				    	    });		
+				    		
+				    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+			    			
+				    		
+				    		//saveAs(blob, "testfile1.csv");
+				    		//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+				    		
+				    		
+						}
+					}).catch(function (err) {
+						console.log(err);
+					});
+					
+					
+					
+				}).catch((error) => {
+				});
+  	  		} else if (type_table == 'rongeurs_') {
+
+	  	  		rowcount = 0;
+	  	  		var DB = new PouchDB("http://localhost:5984/" + liste_tables);
+			
+				DB.info().then((infos) => {
+					
+					count = infos.doc_count;
+					
+					fields_CSV_head = 'Num_rongeur;CODE_rongeur;NumMission_NumSite;N_site;Date;J;Equipe;Pays;' +
+					'Num_piege;Type_piege;Site_capture;Emplacement_piege;Detail_emplacement;Lat_degre_dec_Piege;Latitude_Piege;' +
+					'Long_degre_dec_Piege;Longitude_Piege;Contention;Preleveur;Autopsie;Identification_espece;Famille_terrain;' +
+					'Genre_terrain;Espece_terrain;Famille_labo;Genre_labo;Espece_labo;Sexe;Age;F_gestante;F_lactante;Nbtotal_paires_mamelles;' +
+					'N_mamelles_pectorales;N_mamelles_abdominales;N_mamelles_inguinales;Male_testicules_descendues;Male_longueur_testicules;' +
+					'Poids_sac_rongeur_g;Poids_sac_g;Poids_g;L_totale_corps_Ltc_mm;L_queue_mm;L_patte_arriere_Tib_mm;L_crane_mm;' +
+					'L_oreille_mm;Taille_yeux;Couleur_pelage_dorsal;Couleur_pelage_ventral;Photo;Remarques_anomalies;Relache_vivant;' +
+					'Cause_deces;Recapture;Comment_recapture;Euthanasie;Methode_eutha;Dosage_Ketamine_mL;Biopsie_oreille_BO;Ecouv_Salive_RNAl_SA;' +
+					'Ecouv_Urogenital_RNAl_URO;Urine_RNAl_UR;Ecouv_rectal_RNAl_RE;Feces_RNAl_FE;Sang_DBS_nb_cercles;Ectoparasites_Tiques_Eth_EP_TI;' +
+					'Ectoparasites_Puces_Eth_EP_PU;Poils_ethanol_PO;Autres_echantillons;Autres_echantillons_details;Coeur_RNAl_CO;' +
+					'Poumon_RNAl_PO;Foie_RNAl_FO;Rate_RNAl_RA;Rein_RNAl_RN;Testicule_RNAl_TE;Ovaire_RNAl_OV;Embryon_RNAl_EM;' +
+					'F_gestante_nb_embryons;Intestins_RNAl_INT;Peau_RNAl_PE;Cerveau_RNAl_CE;Autre_Organe_RNAl;Details_autre_organe_RNAl;' +
+					'Remarques_echantillons;Username;\r\n';
+					
+					CSV = fields_CSV_head;
+					
+					
+					
+					DB.allDocs({  		
+						include_docs: true,
+						attachments: true
+					}).then(function (result) {
+						// handle result
+						if (typeof(JSON.stringify(result)) != "undefined"){  
+				    		var tableData = JSON.parse(JSON.stringify(result));
+							
+				    		tableData.rows.forEach(function(row){   
+				    			addRongeurs(row);
 				    	    });		
 				    		
 				    		//var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
@@ -1574,298 +1630,123 @@
 				
     		
     	};
+    	
+    	function addRongeurs(row, selected) {
+    		
+    		console.log('ok');
+    		
+
+    		
+    		if (count > 0) {
+    			
+    			
+    			CSV = CSV +
+    					
+    					row.doc.Num_rongeur + ';' +
+    	   				row.doc.CODE_rongeur + ';' +
+    	   				row.doc.NumMission_NumSite + ';' +
+    	   				row.doc.N_site + ';' +
+    	   				row.doc.Date + ';' +
+    	   				row.doc.J + ';' +
+    	   				row.doc.Equipe + ';' +
+    	   				row.doc.Pays + ';' +
+    					row.doc.Num_piege + ';' +
+    					row.doc.Type_piege + ';' +
+    					row.doc.Site_capture + ';' +
+    					row.doc.Emplacement_piege + ';' +
+    					row.doc.Detail_emplacement.replaceAll(';',',') + ';' +
+    					row.doc.Lat_degre_dec_Piege + ';' +
+    					row.doc.Latitude_Piege + ';' +
+    					row.doc.Long_degre_dec_Piege + ';' + 
+    					row.doc.Longitude_Piege + ';' +
+    					row.doc.Contention + ';' +
+    					row.doc.Preleveur + ';' +
+    					row.doc.Autopsie + ';' +
+    					row.doc.Identification_espece + ';' +
+    					row.doc.Famille_terrain + ';' +
+    					row.doc.Genre_terrain + ';' +
+    					row.doc.Espece_terrain + ';' +
+    					row.doc.Famille_labo + ';' +
+    					row.doc.Genre_labo + ';' +
+    					row.doc.Espece_labo + ';' +
+    					row.doc.Sexe + ';' +
+    					row.doc.Age + ';' +
+    					row.doc.F_gestante + ';' +
+    					row.doc.F_lactante + ';' +
+    					row.doc.Nbtotal_paires_mamelles + ';' +
+    					row.doc.N_mamelles_pectorales + ';' +
+    					row.doc.N_mamelles_abdominales + ';' +
+    					row.doc.N_mamelles_inguinales + ';' +
+    					row.doc.Male_testicules_descendues + ';' +
+    					row.doc.Male_longueur_testicules + ';' +
+    					row.doc.Poids_sac_rongeur_g + ';' +
+    					row.doc.Poids_sac_g + ';' +
+    					row.doc.Poids_g + ';' +
+    					row.doc.L_totale_corps_Ltc_mm + ';' +
+    					row.doc.L_queue_mm + ';' +
+    					row.doc.L_patte_arriere_Tib_mm + ';' +
+    					row.doc.L_crane_mm + ';' +
+    					row.doc.L_oreille_mm + ';' +
+    					row.doc.Taille_yeux + ';' +
+    					row.doc.Couleur_pelage_dorsal + ';' +
+    					row.doc.Couleur_pelage_ventral + ';' +
+    					row.doc.Photo + ';' +
+    					row.doc.Remarques_anomalies.replaceAll(';',',') + ';' +
+    					row.doc.Relache_vivant + ';' +
+    					row.doc.Cause_deces + ';' +
+    					row.doc.Recapture + ';' +
+    					row.doc.Comment_recapture.replaceAll(';',',') + ';' +
+    					row.doc.Euthanasie + ';' +
+    					row.doc.Methode_eutha + ';' +
+    					row.doc.Dosage_Ketamine_mL + ';' +
+    					row.doc.Biopsie_oreille_BO + ';' +
+    					row.doc.Ecouv_Salive_RNAl_SA + ';' +
+    					row.doc.Ecouv_Urogenital_RNAl_URO + ';' +
+    					row.doc.Urine_RNAl_UR + ';' +
+    					row.doc.Ecouv_rectal_RNAl_RE + ';' +
+    					row.doc.Feces_RNAl_FE + ';' +
+    					row.doc.Sang_DBS_nb_cercles + ';' +
+    					row.doc.Ectoparasites_Tiques_Eth_EP_TI + ';' +
+    					row.doc.Ectoparasites_Puces_Eth_EP_PU + ';' +
+    					row.doc.Poils_ethanol_PO + ';' +
+    					row.doc.Autres_echantillons + ';' +
+    					row.doc.Autres_echantillons_details + ';' +
+    					row.doc.Coeur_RNAl_CO + ';' +
+    					row.doc.Poumon_RNAl_PO + ';' +
+    					row.doc.Foie_RNAl_FO + ';' +
+    					row.doc.Rate_RNAl_RA + ';' +
+    					row.doc.Rein_RNAl_RN + ';' +
+    					row.doc.Testicule_RNAl_TE + ';' +
+    					row.doc.Ovaire_RNAl_OV + ';' +
+    					row.doc.Embryon_RNAl_EM + ';' +
+    					row.doc.F_gestante_nb_embryons + ';' +
+    					row.doc.Intestins_RNAl_INT + ';' +
+    					row.doc.Peau_RNAl_PE + ';' +
+    					row.doc.Cerveau_RNAl_CE + ';' +
+    					row.doc.Autre_Organe_RNAl + ';' +
+    					row.doc.Details_autre_organe_RNAl + ';' +
+    					row.doc.Remarques_echantillons + ';' +
+    			  	 
+    					row.doc.Username + ';\r\n'
+    					
+    					count--
+	    				console.log(count);
+    			
+    					if (count == 0) {
+	    		    		var blob = new Blob(['\ufeff' + CSV], {type: "text/csv;charset=ISO-8859-1"});
+	    		    			
+	    			    	//saveAs(blob, "testfile1.csv");
+	    			    	//saveAs(blob, "ebo-sursy" + clock.now + ".csv");
+	    		    		saveAs(blob, liste_tables.value + ".csv");
+	    		    	}
+    				}
+    				
+    				
+    		
+    				
+    		
+    	}
 		
-		/*function heading(type_table) {
-			
-			if (type_table == 'chauves_souris_capturees') {
-				
-				
-	    		var fields = 
-	    			['N_identification_CS', 'N_identification_mere', 'Numero_mission', 'N_site', 'Date',
-	    			 'Equipe', 'Pays', 'Region_capture', 'Site_capture', 'Lieu_capture',
-	    		     'Environnement', 'Latitude', 'Lat_degre_dec', 'Longitude', 'Long_degre_dec',
-	    		     'Proximite_village_km', 'Methode_capture', 'NumFilet',	'LongueurFilet',
-	    		     'HauteurFilet', 'Lat_degre_decFilet', 'LatitudeFilet', 'Long_degre_decFilet',
-	    		     'LongitudeFilet',	'Lat_degre_dec_Lieu_capture', 'Latitude_Lieu_capture',
-	    		     'Long_degre_dec_Lieu_capture', 'Longitude_Lieu_capture',  'Type_chauve_souris',
-	    		     'Espece_identifiee', 'Famille_terrain', 'Genre_terrain', 'Espece_terrain',
-	    		     'Famille_labo', 'Genre_labo', 'Espece_labo', 'Famille_consensus', 'Genre_consensus', 
-	    		     'Espece_consensus', 'Sexe', 'Age', 'Gestante', 'Lactation', 'Suitee', 'Sexe_enfant',
-	    		     'Poids_enfant', 'Identifiant_enfant', 'Vivante', 'Cause_deces', 'Poids_gr',
-	    		     'L_avant_bras_mm', 'L_totale_corps_mm', 'Taille_yeux', 'L_queue_mm',
-	    		     'L_metacarpe_3ieme_doigt_mm', 'Couleur_pelage_dorsal',
-	    		     'Couleur_pelage_ventral', 'Remarques_anomalies', 'Sang_DBS_nb_cercles', 
-	    		     'Sang_tube_EDTA', 'Feces_RNAl', 'Urine', 'Urine_DUS_nombre_cercles',
-	    		     'Feces_urine_RNAl', 'Ecouvillon_gorge_RNAl', 'Ecouvillon_rectal_RNAl',
-	    		     'Ectoparasites_ethanol', 'Poils_ethanol', 'Wing_punch_ethanol',
-	    		     'Feces_culture_glycerol', 'Feces_ethanol', 'Sperme', 'Lait', 'Autres_echantillons_remarques',
-	    		     'Specimen_entier', 'Specimen_preserve_dans', 'Prelevement_organe',
-	    		     'Foie_formol', 'Foie_RNAl', 'Rate_formol', 'Rate_RNAl', 'Reins_formol',
-	    		     'Reins_RNAl', 'Intestins_formol', 'Intestins_RNAl', 'Poumons_formol',
-	    		     'Poumons_RNAl', 'Coeur_formol', 'Coeur_RNAl', 'Ggl_lymph_formol',
-	    		     'Ggl_lymph_RNAl', 'Testicules_formol', 'Testicules_RNAl', 'Peau_formol',
-	    		     'Peau_RNAl', 'Muscles_formol', 'Muscles_RNAl', 'Cerveau_formol',
-	    		     'Cerveau_RNAl', 'Autre', 'Autre_formol', 'Autre_RNAl', 'Remarques_echantillons', 'Username',
-	    		     'Filet_temps', 'Arret_Capture'];
-	    		
-	    		fields_CSV_head = 'N_identification_CS;N_identification_mere;Numero_mission;N_site;Date;' +
-							 'Equipe;Pays;Region_capture;Site_capture;Lieu_capture;' +
-						     'Environnement;Latitude;Lat_degre_dec;Longitude;Long_degre_dec;' +
-						     'Proximite_village_km;Methode_capture;NumFilet;LongueurFilet;' +
-	    		     		 'HauteurFilet;Lat_degre_decFilet;LatitudeFilet;Long_degre_decFilet;' +
-	    		     		 'LongitudeFilet;Lat_degre_dec_Lieu_capture;Latitude_Lieu_capture;' +
-	    		     		 'Long_degre_dec_Lieu_capture;Longitude_Lieu_capture;Type_chauve_souris;' +
-						     'Espece_identifiee;Famille_terrain;Genre_terrain;Espece_terrain;' +
-						     'Famille_labo;Genre_labo;Espece_labo;Famille_consensus;Genre_consensus;' + 
-						     'Espece_consensus;Sexe;Age;Gestante;Lactation;Suitee;Sexe_enfant;' +
-						     'Poids_enfant;Identifiant_enfant;Vivante;Cause_deces;Poids_gr;' +
-						     'L_avant_bras_mm;L_totale_corps_mm;Taille_yeux;L_queue_mm;' +
-						     'L_metacarpe_3ieme_doigt_mm;Couleur_pelage_dorsal;' +
-						     'Couleur_pelage_ventral;Remarques_anomalies;Sang_DBS_nb_cercles;' + 
-						     'Sang_tube_EDTA;Feces_RNAl;Urine;Urine_DUS_nombre_cercles;' +
-						     'Feces_urine_RNAl;Ecouvillon_gorge_RNAl;Ecouvillon_rectal_RNAl;' +
-						     'Ectoparasites_ethanol;Poils_ethanol;Wing_punch_ethanol;' +
-						     'Feces_culture_glycerol;Feces_ethanol;Sperme;Lait;Autres_echantillons_remarques;' +
-						     'Specimen_entier;Specimen_preserve_dans;Prelevement_organe;' +
-						     'Foie_formol;Foie_RNAl;Rate_formol;Rate_RNAl;Reins_formol;' +
-						     'Reins_RNAl;Intestins_formol;Intestins_RNAl;Poumons_formol;' +
-						     'Poumons_RNAl;Coeur_formol;Coeur_RNAl;Ggl_lymph_formol;' +
-						     'Ggl_lymph_RNAl;Testicules_formol;Testicules_RNAl;Peau_formol;' +
-						     'Peau_RNAl;Muscles_formol;Muscles_RNAl;Cerveau_formol;' +
-						     'Cerveau_RNAl;Autre;Autre_formol;Autre_RNAl;Remarques_echantillons;Username;' +
-						     'Filet_temps;Arret_Capture;\r\n';	
-						     
-						     alert(fields_CSV_head)
-	    		
-	    	} else if (type_table == 'chauves_souris_non_invasives') {
-	    		var fields = 
-	    			['Date', 'Heure_debut', 'Heure_fin', 'N_site', 'Equipe', 'Pays', 'Region_collecte', 'Site_collecte', 'Environnement', 
-	    			 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type_site', 'Proximite_village_km',
-	    			 'Type_chauves_souris', 'Famille_1', 'Genre_1', 'Espece_1', 'Famille_2', 'Genre_2', 'Espece_2', 'Famille_3', 
-	    			 'Genre_3', 'Espece_3', 'Remarques', 'N_identification_echantillon', 'Type_echantillon', 'Nbre_feces_par_tube',
-	    			 'Urine_methode', 'Urine_papier_buvard_nbre_cercles', 'Username'];
-	    		
-	    		var fields_CSV_head = 'Date;Heure_debut;Heure_fin;N_site;Equipe;Pays;Region_collecte;Site_collecte;Environnement;' + 
-	        			 	'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Type_site;Proximite_village_km;' +
-	        			 	'Type_chauves_souris;Famille_1;Genre_1;Espece_1;Famille_2;Genre_2;Espece_2;Famille_3;' +
-	        			 	'Genre_3;Espece_3;Remarques;N_identification_echantillon;Type_echantillon;Nbre_feces_par_tube;' +
-	        			 	'Urine_methode;Urine_papier_buvard_nbre_cercles;Username;\r\n';	
-	    	} else if (type_table == 'viande_de_brousse') {
-	    		var fields = 
-	    			['N_identification_echantillon', 'N_site', 'Date', 'Pays', 'Enqueteur', 'Region_collecte', 'Site_collecte', 'Environnement', 
-					 'Lieu_collecte', 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Proximite_village_km', 'Preleve_chez', 'Tue_par_chasseur', 
-					 'Methode_chasse', 'Nbre_pieges', 'Distance_village', 'Duree_de_chasse', 'Destination', 'Lieu_vente', 'Prix_vente', 
-					 'Type_animal', 'Espece_nom_local', 'Famille', 'Genre', 'Espece', 'Sexe', 'Age', 'Mort_depuis', 'Etat_carcasse_animal', 
-					 'Decoupage_carcasse', 'L_total_corps', 'Poids', 'Observations_carcasse', 'Collecte_sang_DBS', 'Qualite_echantillon', 
-					 'Endroit_prelevement', 'Remarques_echantillon', 'Username'];
-	    		
-	    		var fields_CSV_head = 'N_identification_echantillon;N_site;Date;Pays;Enqueteur;Region_collecte;Site_collecte;Environnement;' +
-	    							  'Lieu_collecte;Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Proximite_village_km;Preleve_chez;Tue_par_chasseur;' +
-	    							  'Methode_chasse;Nbre_pieges;Distance_village;Duree_de_chasse;Destination;Lieu_vente;Prix_vente;' +
-	    							  'Type_animal;Espece_nom_local;Famille;Genre;Espece;Sexe;Age;Mort_depuis;Etat_carcasse_animal;' +
-	    							  'Decoupage_carcasse;L_total_corps;Poids;Observations_carcasse;Collecte_sang_DBS;Qualite_echantillon;' +
-	    							  'Endroit_prelevement;Remarques_echantillon;Username;\r\n';	
-	    	} else if (type_table == 'donnees_journalieres') {
-	    		var fields = 
-	    			['Date', 'Equipe', 'ID_CS_preleve_debut', 'ID_CS_preleve_fin', 'N_site',
-	    			 'Pays', 'Region_capture', 'Site_capture', 'Environnement',	'Proximite_village_km',
-	    			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Roost_diurne', 'Presence_diurne', 
-	    			 'Famille_diurne1', 'Genre_diurne1', 'Espece_diurne1',
-	    			 'Famille_diurne2', 'Genre_diurne2', 'Espece_diurne2',
-	    			 'Famille_diurne3', 'Genre_diurne3', 'Espece_diurne3',
-	    			 'Famille_diurne4', 'Genre_diurne4', 'Espece_diurne4',
-	    			 'Famille_diurne5', 'Genre_diurne5', 'Espece_diurne5',
-	    			 'Famille_diurne6', 'Genre_diurne6', 'Espece_diurne6',
-	    			 'Famille_diurne7', 'Genre_diurne7', 'Espece_diurne7',
-	    			 'Methode_comptage_diurne', 'Resultat_comptage_diurne_1', 'Resultat_comptage_diurne_2',
-	    			 'Utilisation_site_nocturne', 'Aliment_consomme', 'Presence_nocturne',
-	    			 'Famille_nocturne1', 'Genre_nocturne1',	'Espece_nocturne1',
-	    			 'Famille_nocturne2', 'Genre_nocturne2',	'Espece_nocturne2',
-	    			 'Famille_nocturne3', 'Genre_nocturne3',	'Espece_nocturne3',
-	    			 'Famille_nocturne4', 'Genre_nocturne4',	'Espece_nocturne4',
-	    			 'Famille_nocturne5', 'Genre_nocturne5',	'Espece_nocturne5',
-	    			 'Famille_nocturne6', 'Genre_nocturne6',	'Espece_nocturne6',
-	    			 'Famille_nocturne7', 'Genre_nocturne7',	'Espece_nocturne7',
-	    			 'Methode_comptage_nocturne', 'Resultat_comptage_nocturne_1', 'Resultat_comptage_nocturne_2',
-	    			 'Vocalisations', 'Parade_sexuelle',
-	    			 'Famille_vocalisations', 'Genre_vocalisations', 'Espece_vocalisations',
-	    			 'Copulations', 
-	    			 'Famille_copulations', 'Genre_copulations', 'Espece_copulations',
-	    			 'Suitee', 
-	    			 'Famille_suitee', 'Genre_suitee', 'Espece_suitee', 
-	    			 'Agressions',
-	    			 'Famille_agressions', 'Genre_agressions', 'Espece_agressions',
-	    			 'Filet_canopee_nb_7', 'Filet_canopee_m2_7',
-	    			 'NumFilet7_1', 'LongueurFilet7_1', 'HauteurFilet7_1',
-	    			 'NumFilet7_2', 'LongueurFilet7_2', 'HauteurFilet7_2',
-	    			 'NumFilet7_3', 'LongueurFilet7_3', 'HauteurFilet7_3',
-	    			 'NumFilet7_4', 'LongueurFilet7_4', 'HauteurFilet7_4',
-	    			 'NumFilet7_5', 'LongueurFilet7_5', 'HauteurFilet7_5',
-	    			 'NumFilet7_6', 'LongueurFilet7_6', 'HauteurFilet7_6',
-	    			 'NumFilet7_7', 'LongueurFilet7_7', 'HauteurFilet7_7',
-	    			 'Filet_canopee_nb_20', 'Filet_canopee_m2_20',
-	    			 'NumFilet20_1', 'LongueurFilet20_1', 'HauteurFilet20_1',
-	    			 'NumFilet20_2', 'LongueurFilet20_2', 'HauteurFilet20_2',
-	    			 'NumFilet20_3', 'LongueurFilet20_3', 'HauteurFilet20_3',
-	    			 'NumFilet20_4', 'LongueurFilet20_4', 'HauteurFilet20_4',
-	    			 'NumFilet20_5', 'LongueurFilet20_5', 'HauteurFilet20_5',
-	    			 'NumFilet20_6', 'LongueurFilet20_6', 'HauteurFilet20_6',
-	    			 'NumFilet20_7', 'LongueurFilet20_7', 'HauteurFilet20_7',
-	    			 'Filet_sol_nb', 'Filet_sol_m2',
-	    			 'NumFiletSol_1', 'LongueurFiletSol_1', 'HauteurFiletSol_1',
-	    			 'NumFiletSol_2', 'LongueurFiletSol_2', 'HauteurFiletSol_2',
-	    			 'NumFiletSol_3', 'LongueurFiletSol_3', 'HauteurFiletSol_3',
-	    			 'NumFiletSol_4', 'LongueurFiletSol_4', 'HauteurFiletSol_4',
-	    			 'NumFiletSol_5', 'LongueurFiletSol_5', 'HauteurFiletSol_5',
-	    			 'NumFiletSol_6', 'LongueurFiletSol_6', 'HauteurFiletSol_6',
-	    			 'NumFiletSol_7', 'LongueurFiletSol_7', 'HauteurFiletSol_7',
-	    			 'Filet_debut', 'Filet_fin', 'Filet_temps', 'Filet_capture_nb', 'Harp_debut',
-	    			 'Harp_fin', 'Harp_temps', 'Harpe_nb', 'Saison', 'Climat', 'Autre_climat',
-	    			 'Precipitation', 'Vent', 'Lune', 'Temperature_logger', 'Humidite_logger', 
-	    			 'Username'];
-	    		
-	    		var fields_CSV_head = 'Date;Equipe;ID_CS_preleve_debut;ID_CS_preleve_fin;N_site;' +
-						    		  'Pays;Region_capture;Site_capture;Environnement;Proximite_village_km;' +
-						    		  'Lat_degre_dec;Latitude;Long_degre_dec;Longitude;Roost_diurne;Presence_diurne;' + 
-						    		  'Famille_diurne1;Genre_diurne1;Espece_diurne1;' +
-						    		  'Famille_diurne2;Genre_diurne2;Espece_diurne2;' +
-						    		  'Famille_diurne3;Genre_diurne3;Espece_diurne3;' +
-						    		  'Famille_diurne4;Genre_diurne4;Espece_diurne4;' +
-						    		  'Famille_diurne5;Genre_diurne5;Espece_diurne5;' +
-						    		  'Famille_diurne6;Genre_diurne6;Espece_diurne6;' +
-						    		  'Famille_diurne7;Genre_diurne7;Espece_diurne7;' +
-						    		  'Methode_comptage_diurne;Resultat_comptage_diurne_1;Resultat_comptage_diurne_2;' +
-						    		  'Utilisation_site_nocturne;Aliment_consomme;Presence_nocturne;' +
-						    		  'Famille_nocturne1;Genre_nocturne1;Espece_nocturne1;' +
-						    		  'Famille_nocturne2;Genre_nocturne2;Espece_nocturne2;' +
-						    		  'Famille_nocturne3;Genre_nocturne3;Espece_nocturne3;' +
-						    		  'Famille_nocturne4;Genre_nocturne4;Espece_nocturne4;' +
-						    		  'Famille_nocturne5;Genre_nocturne5;Espece_nocturne5;' +
-						    		  'Famille_nocturne6;Genre_nocturne6;Espece_nocturne6;' +
-						    		  'Famille_nocturne7;Genre_nocturne7;Espece_nocturne7;' +
-						    		  'Methode_comptage_nocturne;Resultat_comptage_nocturne_1;Resultat_comptage_nocturne_2;' +
-						    		  'Vocalisations;Parade_sexuelle;' +
-						    		  'Famille_vocalisations;Genre_vocalisations;Espece_vocalisations;' +
-						    		  'Copulations;' +
-						    		  'Famille_copulations;Genre_copulations;Espece_copulations;' +
-						    		  'Suitee;' +
-						    		  'Famille_suitee;Genre_suitee;Espece_suitee;' +
-						    		  'Agressions;' +
-						    		  'Famille_agressions;Genre_agressions;Espece_agressions;' +
-						    		  'Filet_canopee_nb_7;Filet_canopee_m2_7;' + 
-						    		  'NumFilet7_1;LongueurFilet7_1;HauteurFilet7_1;' +
-						    		  'NumFilet7_2;LongueurFilet7_2;HauteurFilet7_2;' +
-						    		  'NumFilet7_3;LongueurFilet7_3;HauteurFilet7_3;' +
-						    		  'NumFilet7_4;LongueurFilet7_4;HauteurFilet7_4;' +
-						    		  'NumFilet7_5;LongueurFilet7_5;HauteurFilet7_5;' +
-						    		  'NumFilet7_6;LongueurFilet7_6;HauteurFilet7_6;' +
-						    		  'NumFilet7_7;LongueurFilet7_7;HauteurFilet7_7;' +
-						    		  'Filet_canopee_nb_20;Filet_canopee_m2_20;' + 
-						    		  'NumFilet20_1;LongueurFilet20_1;HauteurFilet20_1;' +
-						    		  'NumFilet20_2;LongueurFilet20_2;HauteurFilet20_2;' +
-						    		  'NumFilet20_3;LongueurFilet20_3;HauteurFilet20_3;' +
-						    		  'NumFilet20_4;LongueurFilet20_4;HauteurFilet20_4;' +
-						    		  'NumFilet20_5;LongueurFilet20_5;HauteurFilet20_5;' +
-						    		  'NumFilet20_6;LongueurFilet20_6;HauteurFilet20_6;' +
-						    		  'NumFilet20_7;LongueurFilet20_7;HauteurFilet20_7;' +
-						    		  'Filet_sol_nb;Filet_sol_m2;' +
-						    		  'NumFiletSol_1;LongueurFiletSol_1;HauteurFiletSol_1;' +
-						    		  'NumFiletSol_2;LongueurFiletSol_2;HauteurFiletSol_2;' +
-						    		  'NumFiletSol_3;LongueurFiletSol_3;HauteurFiletSol_3;' +
-						    		  'NumFiletSol_4;LongueurFiletSol_4;HauteurFiletSol_4;' +
-						    		  'NumFiletSol_5;LongueurFiletSol_5;HauteurFiletSol_5;' +
-						    		  'NumFiletSol_6;LongueurFiletSol_6;HauteurFiletSol_6;' +
-						    		  'NumFiletSol_7;LongueurFiletSol_7;HauteurFiletSol_7;' +
-						    		  'Filet_debut;Filet_fin;Filet_temps;Filet_capture_nb;Harp_debut;' +
-						    		  'Harp_fin;Harp_temps;Harpe_nb;Saison;Climat;Autre_climat;' +
-						    		  'Precipitation;Vent;Lune;Temperature_logger;' + 
-						    		  'Humidite_logger;Username;\r\n';	
-	    	} else if (type_table == 'donnees_mission') {
-	    		var fields = 
-	    			['Date_debut', 'Date_fin', 'Equipe', 'ID_CS_debut', 'ID_CS_fin', 
-	    			 'ID_non_invasif_debut', 'ID_non_invasif_fin', 'N_site', 'Pays', 
-	    			 'Region_capture', 'Site_capture', 'Environnement', 'Proximite_village_km', 
-	    			 'Lat_degre_dec', 'Latitude', 'Long_degre_dec', 'Longitude', 'Type', 
-	    			 'Type_Roost', 'Proximite_eau', 'Hauteur_canope', 'Description_site', 'ID_genet_espece', 
-	    			 'Famille1', 'Genre1', 'Espece1', 'Phenologie1', 'Statut1', 
-	    			 'Famille2', 'Genre2', 'Espece2', 'Phenologie2', 'Statut2', 
-	    			 'Famille3', 'Genre3', 'Espece3', 'Phenologie3', 'Statut3', 
-	    			 'Famille4', 'Genre4', 'Espece4', 'Phenologie4', 'Statut4', 
-	    			 'Famille5', 'Genre5', 'Espece5', 'Phenologie5', 'Statut5', 
-	    			 'Famille6', 'Genre6', 'Espece6', 'Phenologie6', 'Statut6', 
-	    			 'Famille7', 'Genre7', 'Espece7', 'Phenologie7', 'Statut7', 
-	    			 'Espece_animale_sauvage', 'Espece_animale_domestique', 'Interaction', 
-	    			 'Description_interaction_animaux', 'Activite_humaine', 'Description_interaction_homme', 
-	    			 'Camera_trap', 'Heure_debut_camera', 'Heure_fin_camera', 'Username']
-	    		
-	    		var fields_CSV_head = 'Date_debut;Date_fin;Equipe;ID_CS_debut;ID_CS_fin;' +
-	    		                      'ID_non_invasif_debut;ID_non_invasif_fin;N_site;Pays;' +
-	    		                      'Region_capture;Site_capture;Environnement;' +
-	    		                      'Proximite_village_km;Lat_degre_dec;Latitude;' +
-	    		                      'Long_degre_dec;Longitude;Type;Type_Roost;Proximite_eau;' +
-	    		                      'Hauteur_canope;Description_site;ID_genet_espece;' +
-	    		                      'Famille1;Genre1;Espece1;Phenologie1;Statut1;' +
-	    		                      'Famille2;Genre2;Espece2;Phenologie2;Statut2;' +
-	    		                      'Famille3;Genre3;Espece3;Phenologie3;Statut3;' +
-	    		                      'Famille4;Genre4;Espece4;Phenologie4;Statut4;' +
-	    		                      'Famille5;Genre5;Espece5;Phenologie5;Statut5;' +
-	    		                      'Famille6;Genre6;Espece6;Phenologie6;Statut6;' +
-	    		                      'Famille7;Genre7;Espece7;Phenologie7;Statut7;' +
-	    		                      'Espece_animale_sauvage;Espece_animale_domestique;' +
-	    		                      'Interaction;Description_interaction_animaux;' +
-	    		                      'Activite_humaine;Description_interaction_homme;' +
-	    		                      'Camera_trap;Heure_debut_camera;Heure_fin_camera;' +
-	    		                      'Username;\r\n'
-	
-	    		
-	    		
-	    	} else if (type_table == 'animals') {
-	    		var fields = 
-	    			['ID_animal', 'pays', 'mission', 'date', 'village', 'type_chasse_capture',
-	    			 'Point_GPS_LAT', 'Point_GPS_LONG', 'animal', 'especes', 'sexes', 'age',
-	    			 'poids', 'etat-physioloque', 'plasma', 'serum', 'blood_spot', 'coeur', 
-	    			 'cerveau', 'foie_rate', 'glandes_salivaires', 'poumons', 'reins', 
-	    			 'intestins', 'urine', 'ecouvillon_salivaire', 'ecouvillon_rectal', 
-	    			 'ecouvillon_nasal', 'ectoparasites', 'placenta', 'liquide_amniotique', 
-	    			 'testicules', 'lesions_ou_nodules', 'lait', 'foetus', 'observation', 
-	    			 'guano', 'longueur_bras', 'longueur_avant_bras', 'longueur_corporelle',
-	    			 'Username']
-	    		
-	    		var fields_CSV_head = 'ID_animal;pays;mission;date;village;type_chasse_capture;' +
-				 'Point_GPS_LAT;Point_GPS_LONG;animal;especes;sexes;age;' +
-				 'poids;etat-physioloque;plasma;serum;blood_spot;coeur;' +
-				 'cerveau;foie_rate;glandes_salivaires;poumons;reins;' + 
-				 'intestins;urine;ecouvillon_salivaire;ecouvillon_rectal;' + 
-				 'ecouvillon_nasal;ectoparasites;placenta;liquide_amniotique;' + 
-				 'testicules;lesions_ou_nodules;lait;foetus;observation;' +
-				 'guano;longueur_bras;longueur_avant_bras;longueur_corporelle;'+
-				 'Username;\r\n'
-			} else if (type_table == 'grands_singes_antilopes') {
-	    		var fields = 
-	    			['N_espece_terrain', 'date_collecte', 'pays', 'lieu_code', 'lieu_principal',	
-	    			 'lieu_detail', 'fraicheur', 'boite_labo', 'N_labo', 'temp1', 'temp2', 'espece_labo_mitDNA',
-	    			 'espece_labo_12S', 'espece_consensus', 'individu_microsatellite', 'sous-espece', 'temp3', 'point_GPS', 
-	    			 'GPS_corrige', 'observations_terrain', 'preveleur', 'autres_observations',
-	    			 'Username']
-	    		
-	    		var fields_CSV_head = 'N_espece_terrain;date_collecte;pays;lieu_code;lieu_principal;' +
-	    	     'lieu_detail;fraicheur;boite_labo;N_labo;temp1;temp2;espece_labo_mitDNA;' +
-	    	     'espece_labo_12S;espece_consensus;individu_microsatellite;sous-espece;temp3;point_GPS;' +
-				 'GPS_corrige;observations_terrain;preveleur;autres_observations;' + 
-				 'Username;\r\n'
-			} else if (type_table == 'animals_ipg') {
-	    		var fields = 
-	    			['ID', 'Especes', 'Sampling_date', 'Weight', 'Enclos', 'Age',
-	    			 'Sex', 'Sampling_site', 'Owner_name', 'Origin',
-	    			 'Point_GPS_LAT', 'Point_GPS_LONG', 'Other_information',
-	    			 'Username']
-	    		
-	    		var fields_CSV_head = 'ID;Especes;Sampling_date;Weight;Enclos;Age;' +
-	    		 'Sex;Sampling_site;Owner_name;Origin;' +
-				 'Point_GPS_LAT;Point_GPS_LONG;Other_information;' +
-				 'Username;\r\n'
-			}
-		}*/
   		
   		
   		function extraireNombre(str) { 

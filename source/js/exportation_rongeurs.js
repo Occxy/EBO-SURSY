@@ -244,7 +244,7 @@ function addRongeursTransvihmiCamerounRecord(row, selected) {
 				row.Type_piege + ';' +
 				row.Site_capture + ';' +
 				row.Emplacement_piege + ';' +
-				row.Detail_emplacement + ';' +
+				row.Detail_emplacement.replaceAll(';',',') + ';' +
 				row.Lat_degre_dec_Piege + ';' +
 				row.Latitude_Piege + ';' +
 				row.Long_degre_dec_Piege + ';' + 
@@ -281,11 +281,11 @@ function addRongeursTransvihmiCamerounRecord(row, selected) {
 				row.Couleur_pelage_dorsal + ';' +
 				row.Couleur_pelage_ventral + ';' +
 				row.Photo + ';' +
-				row.Remarques_anomalies + ';' +
+				row.Remarques_anomalies.replaceAll(';',',') + ';' +
 				row.Relache_vivant + ';' +
 				row.Cause_deces + ';' +
 				row.Recapture + ';' +
-				row.Comment_recapture + ';' +
+				row.Comment_recapture.replaceAll(';',',') + ';' +
 				row.Euthanasie + ';' +
 				row.Methode_eutha + ';' +
 				row.Dosage_Ketamine_mL + ';' +

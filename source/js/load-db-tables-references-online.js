@@ -81,10 +81,10 @@ if  (debug !== '') {
 			  'grands_singes_antilopes_transvihmi_cameroun', 'rongeurs_transvihmi_cameroun'];
 	}
 } else if ((code_equipe === '1') && (nom_pays == 'rdc')) {
-	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
+	tables_principales = ['chauves_souris_capturees_transvihmi_rdc'	,
+			  'grands_singes_antilopes_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'viande_de_brousse_transvihmi_rdc', 'site_transvihmi_rdc', 
-		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc',
-		  'grands_singes_antilopes_transvihmi_rdc'];
+		  'donnees_mission_transvihmi_rdc', 'donnees_journalieres_transvihmi_rdc'];
 } else if ((code_equipe === '1') && (nom_pays == 'rca')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_rdc', 'chauves_souris_non_invasives_transvihmi_rdc',
 		  'grands_singes_antilopes_transvihmi_rca'];
