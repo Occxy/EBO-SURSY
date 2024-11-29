@@ -43,6 +43,7 @@ var ip_guinee_betail_2 = 'animals_ipg_guinee_2' + debug + '_count';
 var ip_guinee_betail_3 = 'animals_ipg_guinee_3' + debug + '_count';
 var ip_guinee_betail_4 = 'animals_ipg_guinee_4' + debug + '_count';
 var ip_guinee_betail_5 = 'animals_ipg_guinee_5' + debug + '_count';
+var rongeurs_transvihmi_cameroun = 'rongeurs_transvihmi_cameroun' + debug + '_count';
 
 document.getElementById("label_chauves_souris_capturees_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_transvihmi_guinee);
 document.getElementById("label_chauves_souris_capturees_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(chauves_souris_capturees_astre_transvihmi_guinee);
@@ -77,6 +78,8 @@ document.getElementById("label_prelevements_ip_guinee_4_count").innerHTML = loca
 document.getElementById("label_prelevements_ip_guinee_5_count").innerHTML = localStorage.getItem(ip_guinee_betail_5);
 
 document.getElementById("label_faune_astre_transvihmi_guinee_count").innerHTML = localStorage.getItem(faune_astre_transvihmi_guinee);
+
+document.getElementById("label_rongeurs_transvihmi_cameroun_count").innerHTML = localStorage.getItem(rongeurs_transvihmi_cameroun);
 
 if (String(fonction) == 'admin') {
 	

@@ -56,7 +56,8 @@ if  (debug !== '') {
 } else if ((code_equipe === '1') && (nom_pays == 'cameroun')) {
 	tables_principales = ['chauves_souris_capturees_transvihmi_cameroun', 'chauves_souris_non_invasives_transvihmi_cameroun',
 						  'viande_de_brousse_transvihmi_cameroun', 'site_transvihmi_cameroun', 
-						  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun'];
+						  'donnees_mission_transvihmi_cameroun', 'donnees_journalieres_transvihmi_cameroun',
+					      'rongeurs_transvihmi_cameroun'];
 }
 
 var tables_principales_count = tables_principales.length;
